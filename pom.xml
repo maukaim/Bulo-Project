@@ -9,7 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <revision>1.0-SNAPSHOT</revision>
+<!--        <revision>1.0-SNAPSHOT</revision>-->
+        <boule.trigger.api>1.0-SNAPSHOT</boule.trigger.api>
         <spring.boot.version>2.4.4</spring.boot.version>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
@@ -32,6 +33,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>boule-trigger-core</artifactId>
+            <groupId>com.maukaim.boule</groupId>
+            <version>${boule.trigger.api}</version>
         </dependency>
     </dependencies>
 
