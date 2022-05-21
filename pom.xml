@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maukaim.boule</groupId>
-    <artifactId>boule-triggers</artifactId>
+    <artifactId>triggers-service</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
     <properties>
@@ -16,10 +16,8 @@
     </properties>
 
     <modules>
-
         <module>boule-trigger-core</module>
         <module>boule-trigger-scheduler</module>
         <module>boule-trigger-swagger</module>
     </modules>
-
 </project>
