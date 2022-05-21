@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.maukaim.boule.trigger.swagger.MaukaimSwaggerAutoConfiguration
