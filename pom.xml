@@ -13,11 +13,11 @@
         <spring.boot.version>2.4.4</spring.boot.version>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <boule.commons.version>1.0.0-SNAPSHOT</boule.commons.version>
     </properties>
 
     <modules>
         <module>boule-trigger-core</module>
         <module>boule-trigger-scheduler</module>
-        <module>boule-trigger-swagger</module>
     </modules>
 </project>

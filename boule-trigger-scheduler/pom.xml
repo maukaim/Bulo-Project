@@ -50,12 +50,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.maukaim.boule</groupId>
-            <artifactId>boule-trigger-swagger</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>

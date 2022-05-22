@@ -10,7 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>boule-trigger-core</artifactId>
+    <properties>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <dependencies>
+        <dependency>
+            <groupId>com.maukaim.boule</groupId>
+            <artifactId>swagger-starter</artifactId>
+            <version>${boule.commons.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
@@ -19,11 +30,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
 
     <build>
     <plugins>
