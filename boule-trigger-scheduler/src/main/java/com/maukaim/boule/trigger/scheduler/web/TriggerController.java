@@ -1,8 +1,8 @@
 package com.maukaim.boule.trigger.scheduler.web;
 
-import com.maukaim.boule.trigger.core.TriggerId;
 import com.maukaim.boule.trigger.scheduler.ScheduleTriggerConfig;
 import com.maukaim.boule.trigger.scheduler.ScheduleTriggerService;
+import com.maukaim.boule.triggers.api.TriggerId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

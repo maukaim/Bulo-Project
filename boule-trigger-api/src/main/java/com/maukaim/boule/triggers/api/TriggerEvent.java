@@ -1,4 +1,4 @@
-package com.maukaim.boule.trigger.core;
+package com.maukaim.boule.triggers.api;
 
 import java.time.Instant;
 

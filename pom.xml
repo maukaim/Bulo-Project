@@ -19,5 +19,6 @@
     <modules>
         <module>boule-trigger-core</module>
         <module>boule-trigger-scheduler</module>
+        <module>boule-trigger-api</module>
     </modules>
 </project>

@@ -1,10 +1,10 @@
 package com.maukaim.boule.trigger.scheduler;
 
 import com.google.common.collect.Maps;
-import com.maukaim.boule.trigger.core.TriggerEvent;
 import com.maukaim.boule.trigger.core.TriggerEventPublisher;
-import com.maukaim.boule.trigger.core.TriggerId;
 import com.maukaim.boule.trigger.core.TriggerService;
+import com.maukaim.boule.triggers.api.TriggerEvent;
+import com.maukaim.boule.triggers.api.TriggerId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;

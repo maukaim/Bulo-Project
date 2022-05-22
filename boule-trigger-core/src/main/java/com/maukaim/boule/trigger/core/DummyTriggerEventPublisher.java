@@ -1,5 +1,7 @@
 package com.maukaim.boule.trigger.core;
 
+import com.maukaim.boule.triggers.api.TriggerEvent;
+
 import java.time.Instant;
 
 public class DummyTriggerEventPublisher implements TriggerEventPublisher {

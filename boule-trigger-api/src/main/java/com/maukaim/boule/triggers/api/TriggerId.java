@@ -1,4 +1,4 @@
-package com.maukaim.boule.trigger.core;
+package com.maukaim.boule.triggers.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

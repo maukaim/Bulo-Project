@@ -2,7 +2,7 @@ package com.maukaim.boule.trigger.scheduler;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.boule.trigger.core.TriggerId;
+import com.maukaim.boule.triggers.api.TriggerId;
 
 public class ScheduleTriggerConfig {
     private final TriggerId triggerId;
