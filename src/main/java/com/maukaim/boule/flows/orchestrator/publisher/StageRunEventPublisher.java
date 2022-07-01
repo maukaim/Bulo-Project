@@ -1,21 +1,25 @@
 package com.maukaim.boule.flows.orchestrator.publisher;
 
-import java.util.Set;
-
 public interface StageRunEventPublisher {
     /**
      * Publish request to relevant micro-service.
-     * @param flowRunId concerned by the request.
-     * @param stageIds concerned by the request.
+     * @param globalStageId concerned by the request
+     * @param stageRunId assigned to the run.
      * @return did we publish request successfully?
      */
-    boolean requestAsyncRun(String flowRunId, Set<String> stageIds);
+    boolean requestAsyncRunExecution(String globalStageId, String stageRunId);
 
     /**
      * Publish request to cancel a run to relevant micro-service.
-     * @param flowRunId concerned by the request
-     * @param stageId concerned by the request.
+     * @param stageRunId concerned by the request.
      * @return was it canceled?
      */
-    boolean requestSyncCancel(String flowRunId, String stageId);
+    void requestAsyncRunCancellation(String stageRunId);
+
+    /**
+     * REST call to executor directly to request a cancel.
+     * @param stageRunId concerned by the request.
+     * @return was it canceled?
+     */
+    boolean requestSyncRunCancellation(String stageRunId, String executorId);
 }

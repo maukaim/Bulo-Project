@@ -1,8 +1,6 @@
 package com.maukaim.boule.flows.orchestrator.publisher;
 
-import com.maukaim.boule.flows.orchestrator.run.FlowRun;
-
-import java.util.Set;
+import com.maukaim.boule.flows.orchestrator.flow.run.FlowRun;
 
 public interface FlowRunUpdatePublisher {
     /**

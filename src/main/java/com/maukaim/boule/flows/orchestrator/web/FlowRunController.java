@@ -1,15 +1,19 @@
 package com.maukaim.boule.flows.orchestrator.web;
 
-import com.maukaim.boule.flows.orchestrator.run.FlowRun;
-import com.maukaim.boule.flows.orchestrator.run.FlowRunCacheException;
-import com.maukaim.boule.flows.orchestrator.run.FlowRunService;
-import com.maukaim.boule.flows.orchestrator.run.FlowRunServiceImpl;
+import com.maukaim.boule.flows.orchestrator.flow.run.FlowRun;
+import com.maukaim.boule.flows.orchestrator.flow.run.FlowRunCacheException;
+import com.maukaim.boule.flows.orchestrator.flow.FlowRunService;
+import com.maukaim.boule.flows.orchestrator.flow.run.FlowRunServiceImpl;
+import com.maukaim.boule.flows.orchestrator.flow.view.FlowStageId;
 import com.maukaim.boule.flows.orchestrator.web.view.FlowRunView;
 import com.maukaim.boule.flows.orchestrator.web.view.FlowRunViewFactory;
 import com.maukaim.boule.triggers.api.TriggerEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/flows/runs")
@@ -23,8 +27,10 @@ public class FlowRunController {
 
     @PostMapping(value = "/add")
     public ResponseEntity<FlowRunView> startFlow(@RequestBody TriggerEvent triggerEvent) {
-        FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getTriggerId().getFlowId(),
-                triggerEvent.getTriggerId().getStageId());
+        Set<FlowStageId> flowStageIds = triggerEvent.getTriggerId().getStageIds().stream()
+                .map(FlowStageId::of)
+                .collect(Collectors.toUnmodifiableSet());
+        FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getTriggerId().getFlowId(), flowStageIds);
         return ResponseEntity.ok(FlowRunViewFactory.build(flowRun));
     }
 

@@ -2,7 +2,7 @@ package com.maukaim.boule.flows.orchestrator.publisher.impl;
 
 import com.maukaim.boule.flows.orchestrator.publisher.FlowRunUpdatePublisher;
 import com.maukaim.boule.flows.orchestrator.publisher.util.DummyMessageUtil;
-import com.maukaim.boule.flows.orchestrator.run.FlowRun;
+import com.maukaim.boule.flows.orchestrator.flow.run.FlowRun;
 
 public class DummyFlowRunUpdatePublisherImpl implements FlowRunUpdatePublisher {
     @Override
