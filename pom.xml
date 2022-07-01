@@ -42,7 +42,7 @@
         </dependency>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>swagger-starter</artifactId>
+            <artifactId>bulo-swagger-starter</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
 
