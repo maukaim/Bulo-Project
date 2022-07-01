@@ -1,14 +1,17 @@
 package com.maukaim.boule.flows.orchestrator.flow.run;
 
 import com.maukaim.boule.flows.orchestrator.publisher.FlowRunUpdatePublisher;
-import com.maukaim.boule.flows.orchestrator.util.CloseableLock;
-import com.maukaim.boule.flows.orchestrator.util.EntityLockAcquisitionException;
+import com.maukaim.boule.flows.orchestrator.util.CloseableEntityLock;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class FlowRunCacheImpl implements FlowRunCache {
     private final FlowRunUpdatePublisher flowRunUpdatePublisher;
     private final ConcurrentHashMap<String, FlowRun> flowRunById = new ConcurrentHashMap<>();
+    private final Map<String, ReentrantLock> lockByEntityId = new ConcurrentHashMap<>();
 
     public FlowRunCacheImpl(FlowRunUpdatePublisher flowRunUpdatePublisher) {
         this.flowRunUpdatePublisher = flowRunUpdatePublisher;
@@ -21,7 +24,6 @@ public class FlowRunCacheImpl implements FlowRunCache {
 
     @Override
     public FlowRun update(FlowRun flowRun) {
-        //TODO: Add concept of versions ? What Pros? What Cons?
         FlowRun newVersion = this.flowRunById.compute(flowRun.getFlowRunId(), (id, previous) -> flowRun);
         flowRunUpdatePublisher.publishUpdate(newVersion);
         return newVersion;
@@ -40,11 +42,30 @@ public class FlowRunCacheImpl implements FlowRunCache {
     }
 
     @Override
-    public CloseableLock<FlowRun> getAndLock(String runId) {
-        FlowRun flowRun = this.flowRunById.get(runId);
-        if (flowRun == null) {
-            throw new EntityLockAcquisitionException("Locking impossible, No FlowRun in cache with Id: " + runId);
+    public CloseableEntityLock<FlowRun> getAndLock(String runId) {
+        this.lockByEntityId.compute(runId, LockHandler::lock);
+        return CloseableEntityLock.of(this.getRun(runId), () -> this.lockByEntityId.compute(runId, LockHandler::unLock));
+    }
+
+
+    private static class LockHandler {
+        private static ReentrantLock lock(String id, ReentrantLock lock) {
+            if (lock == null) {
+                lock = new ReentrantLock();
+            }
+            lock.lock();
+            return lock;
         }
-        return CloseableLock.of(flowRun);
+
+        private static <L extends Lock> L unLock(String id, L lock) {
+            if (lock != null) {
+                try {
+                    lock.unlock();
+                } catch (IllegalMonitorStateException ignored) {
+                    return lock;
+                }
+            }
+            return null;
+        }
     }
 }
