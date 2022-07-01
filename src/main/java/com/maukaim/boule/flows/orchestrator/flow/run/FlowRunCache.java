@@ -1,6 +1,6 @@
 package com.maukaim.boule.flows.orchestrator.flow.run;
 
-import com.maukaim.boule.flows.orchestrator.util.CloseableLock;
+import com.maukaim.boule.flows.orchestrator.util.CloseableEntityLock;
 
 public interface FlowRunCache {
     FlowRun getRun(String flowRunId);
@@ -9,5 +9,5 @@ public interface FlowRunCache {
 
     FlowRun update(FlowRun flowRun);
 
-    CloseableLock<FlowRun> getAndLock(String runId);
+    CloseableEntityLock<FlowRun> getAndLock(String runId);
 }

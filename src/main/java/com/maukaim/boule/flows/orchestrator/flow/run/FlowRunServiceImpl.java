@@ -6,6 +6,7 @@ import com.maukaim.boule.flows.orchestrator.flow.view.FlowStageId;
 import com.maukaim.boule.flows.orchestrator.flow.view.FlowView;
 import com.maukaim.boule.flows.orchestrator.stage.run.StageRunService;
 import com.maukaim.boule.flows.orchestrator.stage.run.model.StageRunView;
+import com.maukaim.boule.flows.orchestrator.util.CloseableEntityLock;
 
 import java.util.Map;
 import java.util.Optional;
@@ -29,11 +30,11 @@ public class FlowRunServiceImpl implements FlowRunService {
     public FlowRun startRun(String flowId, Set<FlowStageId> rootStageIds) {
         FlowView flowView = this.getExistingFlow(flowId);
 
-        Set<FlowStageId> stagesToRun;
+        Set<FlowStageId> flowStagesToRunId;
         if (rootStageIds == null || rootStageIds.isEmpty()) {
-            stagesToRun = flowView.getExecutionGraph().getRootsIds();
+            flowStagesToRunId = flowView.getExecutionGraph().getRootsIds();
         } else if (flowView.areRootStages(rootStageIds)) {
-            stagesToRun = rootStageIds;
+            flowStagesToRunId = rootStageIds;
         } else {
             throw new FlowRunStartException(String.format("Flow [%s] does not recognize one of the Stages %s as a root.",
                     flowView.getFlowId(),
@@ -42,7 +43,7 @@ public class FlowRunServiceImpl implements FlowRunService {
 
         FlowRun newRunNonPersisted = FlowRunFactory.create(flowView);
         FlowRun newRunPersisted = this.flowRunCache.add(newRunNonPersisted);
-        Map<String, StageRunView> stageRunById = this.stageRunService.startRuns(newRunPersisted.getFlowRunId(), stagesToRun);
+        Map<String, StageRunView> stageRunById = this.stageRunService.startRuns(newRunPersisted.getFlowRunId(), flowStagesToRunId);
 
         return this.computeStageRunViewUnderLock(newRunPersisted.getFlowRunId(), (previous) -> stageRunById);
     }
@@ -62,8 +63,8 @@ public class FlowRunServiceImpl implements FlowRunService {
 
     @Override
     public FlowRun computeStageRunViewUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRunView>> stageRunViewComputer) {
-        try (var lockedEntity = this.flowRunCache.getAndLock(flowRunId)) {
-            FlowRun flowRun = lockedEntity.getValue();
+        try (CloseableEntityLock<FlowRun> lockedEntity = this.flowRunCache.getAndLock(flowRunId)) {
+            FlowRun flowRun = lockedEntity.getEntity();
             Map<String, StageRunView> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
