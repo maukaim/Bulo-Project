@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.maukaim.boule</groupId>
+    <groupId>com.maukaim.bulo</groupId>
     <artifactId>triggers-service</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
@@ -13,12 +13,12 @@
         <spring.boot.version>2.4.4</spring.boot.version>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-        <boule.commons.version>1.0.0-SNAPSHOT</boule.commons.version>
+        <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
     </properties>
 
     <modules>
-        <module>boule-trigger-core</module>
-        <module>boule-trigger-scheduler</module>
-        <module>boule-trigger-api</module>
+        <module>bulo-triggers-api</module>
+        <module>bulo-triggers-core</module>
+        <module>bulo-trigger-scheduler</module>
     </modules>
 </project>
