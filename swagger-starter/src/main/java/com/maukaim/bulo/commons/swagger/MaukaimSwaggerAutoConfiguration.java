@@ -1,11 +1,11 @@
-package com.maukaim.boule.commons.swagger;
+package com.maukaim.bulo.commons.swagger;
 
-import com.maukaim.boule.commons.swagger.config.MaukaimSwaggerProperties;
-import com.maukaim.boule.commons.swagger.config.springfox.SpringfoxConfigurationProperties;
-import com.maukaim.boule.commons.swagger.config.springfox.SwaggerUiWebFluxConfiguration;
-import com.maukaim.boule.commons.swagger.config.springfox.SwaggerUiWebMvcConfiguration;
-import com.maukaim.boule.commons.swagger.config.DocketCustomizer;
-import com.maukaim.boule.commons.swagger.config.SwaggerConfigCustomizer;
+import com.maukaim.bulo.commons.swagger.config.MaukaimSwaggerProperties;
+import com.maukaim.bulo.commons.swagger.config.springfox.SpringfoxConfigurationProperties;
+import com.maukaim.bulo.commons.swagger.config.springfox.SwaggerUiWebFluxConfiguration;
+import com.maukaim.bulo.commons.swagger.config.springfox.SwaggerUiWebMvcConfiguration;
+import com.maukaim.bulo.commons.swagger.config.DocketCustomizer;
+import com.maukaim.bulo.commons.swagger.config.SwaggerConfigCustomizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

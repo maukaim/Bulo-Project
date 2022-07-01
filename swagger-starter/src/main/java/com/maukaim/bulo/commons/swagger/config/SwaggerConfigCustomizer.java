@@ -1,4 +1,4 @@
-package com.maukaim.boule.commons.swagger.config;
+package com.maukaim.bulo.commons.swagger.config;
 
 @FunctionalInterface
 public interface SwaggerConfigCustomizer {
