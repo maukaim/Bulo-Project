@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>common-modules</artifactId>
+        <artifactId>bulo-common-modules</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>swagger-starter</artifactId>
+    <artifactId>bulo-swagger-starter</artifactId>
     <properties>
         <springfox.version>3.0.0</springfox.version>
     </properties>
