@@ -19,6 +19,6 @@
     <modules>
 <!--        <module>triggers-service</module>-->
 <!--        <module>flows-orchestrator-service</module>-->
-<!--        <module>common-modules</module>-->
+        <module>bulo-common-modules</module>
     </modules>
 </project>
