@@ -1,0 +1,3 @@
+[submodule "common-Boys"]
+	path = common-Boys
+	url = git@github.com:maukaim/bulo-common-modules.git
