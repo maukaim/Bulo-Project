@@ -21,6 +21,7 @@
     <modules>
         <module>bulo-swagger-starter</module>
         <module>bulo-common-models</module>
+        <module>bulo-common-utils</module>
     </modules>
 
     <build>
