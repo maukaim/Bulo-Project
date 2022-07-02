@@ -19,7 +19,7 @@
     </properties>
 
     <modules>
-        <module>swagger-starter</module>
+        <module>bulo-swagger-starter</module>
     </modules>
 
     <build>
