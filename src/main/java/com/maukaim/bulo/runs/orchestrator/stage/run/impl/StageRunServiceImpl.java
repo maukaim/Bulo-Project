@@ -7,6 +7,8 @@ import com.maukaim.bulo.runs.orchestrator.stage.run.StageRunService;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunView;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunViewFactory;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +29,7 @@ public class StageRunServiceImpl implements StageRunService {
             StageRunView newRunView = StageRunViewFactory.requested(flowRunId, stageId);
             boolean started = this.stageRunEventPublisher.requestAsyncRunExecution(stageId.getGlobalStageId(), newRunView.getStageRunId());
             this.stageRunCache.put(newRunView.getStageRunId(), newRunView.getFlowStageId(), newRunView.getFlowRunId());
-            result.put(newRunView.getStageRunId(), started ? newRunView : StageRunViewFactory.failed(newRunView));
+            result.put(newRunView.getStageRunId(), started ? newRunView : StageRunViewFactory.failed(newRunView, Instant.now()));
         }
         return result;
     }

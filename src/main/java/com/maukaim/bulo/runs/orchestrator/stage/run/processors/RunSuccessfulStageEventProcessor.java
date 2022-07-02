@@ -39,7 +39,7 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuc
             }
 
             Map<String, StageRunView> result = new HashMap<>();
-            result.put(event.getStageRunId(), StageRunViewFactory.success(actualRunView));
+            result.put(event.getStageRunId(), StageRunViewFactory.success(actualRunView, event.getInstant()));
 
             Set<FlowStageId> childrenIds = actualFlowRun.getExecutionGraph().getChildren(actualRunView.getFlowStageId());
             if(!actualFlowRun.getFlowRunStatus().isTerminal() && !childrenIds.isEmpty()){

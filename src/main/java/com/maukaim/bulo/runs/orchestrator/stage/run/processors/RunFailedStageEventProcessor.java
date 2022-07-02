@@ -42,7 +42,7 @@ public class RunFailedStageEventProcessor extends StageEventProcessor<RunFailedS
                 }
             }
 
-            return Map.of(event.getStageRunId(), StageRunViewFactory.failed(actualView));
+            return Map.of(event.getStageRunId(), StageRunViewFactory.failed(actualView, event.getInstant()));
         });
     }
 }

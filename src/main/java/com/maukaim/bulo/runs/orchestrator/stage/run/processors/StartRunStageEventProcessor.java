@@ -37,7 +37,7 @@ public class StartRunStageEventProcessor extends StageEventProcessor<StartRunSta
                     this.stageRunService.requestCancel(event.getStageRunId(), actualView.getExecutorId());
                 }
             }
-            StageRunView nextView = StageRunViewFactory.launched(actualView);
+            StageRunView nextView = StageRunViewFactory.launched(actualView, event.getInstant());
             return Map.of(event.getStageRunId(), nextView);
         });
     }
