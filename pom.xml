@@ -50,6 +50,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-common-utils</artifactId>
+            <version>${bulo.commons.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-swagger-starter</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>

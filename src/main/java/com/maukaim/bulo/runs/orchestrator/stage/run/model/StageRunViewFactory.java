@@ -1,5 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.stage.run.model;
 
+import com.maukaim.bulo.common.utils.TimeHelper;
 import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
 
 import java.time.Instant;
@@ -26,18 +27,18 @@ public class StageRunViewFactory {
     public static StageRunView failed(StageRunView previousView, Instant endTime) {
         return new StageRunView(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.FAILED.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
                 previousView.getStartTime(),
-                endTime.isAfter(previousView.getEndTime()) ? endTime : previousView.getEndTime());
+                TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
     }
 
     public static StageRunView cancelled(StageRunView previousView, Instant endTime) {
         return new StageRunView(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.CANCELLED.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
                 previousView.getStartTime(),
-                endTime.isAfter(previousView.getEndTime()) ? endTime : previousView.getEndTime());
+                TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
     }
 
     public static StageRunView success(StageRunView previousView, Instant endTime) {
         return new StageRunView(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.SUCCESS.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
                 previousView.getStartTime(),
-                endTime.isAfter(previousView.getEndTime()) ? endTime : previousView.getEndTime());
+                TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
     }
 }
