@@ -5,6 +5,7 @@ import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunStatus;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunView;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -54,6 +55,10 @@ public class FlowRun {
 
     public boolean allRunsAreTerminated() {
         return this.stageRunViewByIds.values().stream().allMatch(StageRunView::isTerminated);
+    }
+
+    public Collection<StageRunView> getAllStageRuns() {
+        return this.getStageRunsById().values();
     }
 
     public Set<StageRunView> getInFlightStageRuns() {
