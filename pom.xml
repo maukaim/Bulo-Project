@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maukaim.bulo</groupId>
-    <artifactId>triggers-service</artifactId>
+    <artifactId>bulo-triggers-service</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
     <properties>
