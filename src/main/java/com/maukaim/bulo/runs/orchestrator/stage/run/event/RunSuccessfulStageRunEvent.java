@@ -23,6 +23,7 @@ public class RunSuccessfulStageRunEvent implements StageRunEvent {
         return stageRunId;
     }
 
+    @Override
     public Instant getInstant() {
         return instant;
     }
