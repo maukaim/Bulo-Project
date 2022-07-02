@@ -27,7 +27,7 @@ public class RunCancelledStageEventProcessor extends StageEventProcessor<RunCanc
                 throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
             }
 
-            StageRunView computedView = StageRunViewFactory.cancelled(actualView);
+            StageRunView computedView = StageRunViewFactory.cancelled(actualView, event.getInstant());
             return Map.of(event.getStageRunId(), computedView);
         });
     }

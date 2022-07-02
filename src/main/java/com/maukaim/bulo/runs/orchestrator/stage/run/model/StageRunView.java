@@ -3,21 +3,25 @@ package com.maukaim.bulo.runs.orchestrator.stage.run.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
 
+import java.time.Instant;
+
 public class StageRunView {
     private final String stageRunId;
     private final FlowStageId flowStageId;
     private final String flowRunId;
     private final StageRunStatus stageRunStatus;
     private final String executorId;
-//    private final Date startTime;
-//    private final Date endTime;
+    private final Instant startTime;
+    private final Instant endTime;
 
-    public StageRunView(String stageRunId, FlowStageId flowStageId, String flowRunId, StageRunStatus stageRunStatus, String executorId) {
+    public StageRunView(String stageRunId, FlowStageId flowStageId, String flowRunId, StageRunStatus stageRunStatus, String executorId, Instant startTime, Instant endTime) {
         this.stageRunId = stageRunId;
         this.flowStageId = flowStageId;
         this.flowRunId = flowRunId;
         this.stageRunStatus = stageRunStatus;
         this.executorId = executorId;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public String getStageRunId() {
@@ -41,18 +45,28 @@ public class StageRunView {
     }
 
     @JsonIgnore
-    public boolean isTerminated(){
+    public boolean isTerminated() {
         return this.getStageRunStatus() != null && this.getStageRunStatus().isTerminal();
+    }
+
+    public Instant getEndTime() {
+        return endTime;
+    }
+
+    public Instant getStartTime() {
+        return startTime;
     }
 
     @Override
     public String toString() {
         return "StageRunView{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", stageId='" + flowStageId + '\'' +
+                ", flowStageId=" + flowStageId +
                 ", flowRunId='" + flowRunId + '\'' +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
                 '}';
     }
 }
