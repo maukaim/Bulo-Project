@@ -35,11 +35,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-triggers-api</artifactId>
             <version>${bulo.trigger.api}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-common-models</artifactId>
+            <version>${bulo.commons.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-swagger-starter</artifactId>
