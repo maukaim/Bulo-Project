@@ -1,5 +1,10 @@
-# Bulo-Project \[ALPHA\ version]
-Your time is worth to save.  
+# Bulo-Project (ALPHA version)  
+<div align="center">
+    <img src="./bulo-logo.svg" /><br>
+    <i>Your time is worth to save. </i><br/>
+</div>
+
+
 
 ## Project Definition  
 
