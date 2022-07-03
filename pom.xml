@@ -11,6 +11,7 @@
     <properties>
 <!--        <revision>1.0-SNAPSHOT</revision>-->
         <bulo.trigger.api>1.0-SNAPSHOT</bulo.trigger.api>
+        <bulo.flows.api>1.0-SNAPSHOT</bulo.flows.api>
         <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
         <spring.boot.version>2.4.4</spring.boot.version>
         <maven.compiler.source>16</maven.compiler.source>
@@ -34,6 +35,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-flows-api</artifactId>
+            <version>${bulo.flows.api}</version>
         </dependency>
 
         <dependency>

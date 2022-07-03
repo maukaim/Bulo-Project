@@ -1,5 +1,7 @@
 package com.maukaim.bulo.runs.orchestrator.flow.view;
 
+import com.maukaim.bulo.flows.api.FlowStageId;
+
 import java.util.Set;
 
 public class FlowView {
