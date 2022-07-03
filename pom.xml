@@ -10,9 +10,10 @@
     <version>${revision}</version>
     <properties>
         <revision>1.0-SNAPSHOT</revision>
-        <spring.boot.version>2.4.4</spring.boot.version>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.boot.version>2.4.4</spring.boot.version>
         <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
     </properties>
 
