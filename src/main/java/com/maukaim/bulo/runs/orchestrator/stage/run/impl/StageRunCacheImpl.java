@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.stage.run.impl;
 
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
+import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.stage.run.StageRunCache;
 import org.jgrapht.alg.util.Pair;
 

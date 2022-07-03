@@ -1,10 +1,10 @@
 package com.maukaim.bulo.runs.orchestrator.web;
 
+import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRun;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRunCacheException;
 import com.maukaim.bulo.runs.orchestrator.flow.FlowRunService;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRunServiceImpl;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.web.view.FlowRunView;
 import com.maukaim.bulo.runs.orchestrator.web.view.FlowRunViewFactory;
 import com.maukaim.bulo.triggers.api.TriggerEvent;

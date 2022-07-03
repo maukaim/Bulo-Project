@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrator.web.view;
 
 import com.maukaim.bulo.common.utils.TimeHelper;
+import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRun;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunView;
 
 import java.time.Instant;

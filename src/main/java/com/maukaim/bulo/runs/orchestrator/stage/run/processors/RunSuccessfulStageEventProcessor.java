@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrator.stage.run.processors;
 
+import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRun;
 import com.maukaim.bulo.runs.orchestrator.flow.FlowRunService;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.stage.run.StageEventProcessor;
 import com.maukaim.bulo.runs.orchestrator.stage.run.StageRunService;
 import com.maukaim.bulo.runs.orchestrator.stage.run.event.RunSuccessfulStageRunEvent;
