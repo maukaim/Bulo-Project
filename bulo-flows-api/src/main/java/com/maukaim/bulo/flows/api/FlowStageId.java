@@ -1,5 +1,8 @@
 package com.maukaim.bulo.flows.api;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class FlowStageId {
@@ -10,7 +13,8 @@ public class FlowStageId {
         return new FlowStageId(globalStageId, null);
     }
 
-    public static FlowStageId of(String globalStageId, Integer marker){
+    @JsonCreator
+    public static FlowStageId of(@JsonProperty("globalStageId") String globalStageId, @JsonProperty("marker")Integer marker){
         return new FlowStageId(globalStageId, marker);
     }
     protected FlowStageId(String globalStageId, Integer marker) {
