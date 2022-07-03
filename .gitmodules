@@ -7,3 +7,6 @@
 [submodule "bulo-runs-orchestrator"]
 	path = bulo-runs-orchestrator-service
 	url = git@github.com:maukaim/bulo-runs-orchestrator.git
+[submodule "bulo-flows-service"]
+	path = bulo-flows-service
+	url = git@github.com:maukaim/bulo-flows-service.git
