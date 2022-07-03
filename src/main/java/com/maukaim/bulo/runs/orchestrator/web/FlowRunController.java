@@ -32,9 +32,7 @@ public class FlowRunController {
 
     @PostMapping(value = "/add")
     public ResponseEntity<FlowRunView> startFlow(@RequestBody TriggerEvent triggerEvent) {
-        Set<FlowStageId> flowStageIds = triggerEvent.getTriggerId().getStageIds().stream()
-                .map(FlowStageId::of)
-                .collect(Collectors.toUnmodifiableSet());
+        Set<FlowStageId> flowStageIds = triggerEvent.getTriggerId().getFlowStageIds();
         FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getTriggerId().getFlowId(), flowStageIds);
         return ResponseEntity.ok(FlowRunViewFactory.build(flowRun));
     }
