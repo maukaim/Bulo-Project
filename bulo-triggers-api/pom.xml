@@ -14,9 +14,16 @@
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <bulo.flows.api>1.0-SNAPSHOT</bulo.flows.api>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-flows-api</artifactId>
+            <version>${bulo.flows.api}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>

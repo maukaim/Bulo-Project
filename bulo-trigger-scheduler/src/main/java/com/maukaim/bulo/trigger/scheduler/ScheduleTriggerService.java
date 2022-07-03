@@ -1,6 +1,7 @@
 package com.maukaim.bulo.trigger.scheduler;
 
 import com.google.common.collect.Maps;
+import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.trigger.core.TriggerEventPublisher;
 import com.maukaim.bulo.trigger.core.TriggerService;
 import com.maukaim.bulo.triggers.api.TriggerEvent;
@@ -57,7 +58,7 @@ public class ScheduleTriggerService implements TriggerService<ScheduleTriggerCon
     }
 
     @Override
-    public boolean removeTrigger(String flowId, Set<String> stageIds) {
+    public boolean removeTrigger(String flowId, Set<FlowStageId> stageIds) {
         TriggerId key = TriggerId.of(flowId, stageIds);
         if(this.scheduledFutureCache.containsKey(key)){
             ScheduledFuture<?> removedItem = this.scheduledFutureCache.remove(key);

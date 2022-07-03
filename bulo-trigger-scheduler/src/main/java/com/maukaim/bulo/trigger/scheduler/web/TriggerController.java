@@ -1,5 +1,6 @@
 package com.maukaim.bulo.trigger.scheduler.web;
 
+import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.trigger.scheduler.ScheduleTriggerConfig;
 import com.maukaim.bulo.trigger.scheduler.ScheduleTriggerService;
 import com.maukaim.bulo.triggers.api.TriggerId;
@@ -20,10 +21,8 @@ public class TriggerController {
     }
 
     @DeleteMapping(value = "/remove")
-    public ResponseEntity<Boolean> removeSchedule(@RequestParam String flowId,
-                                                  @RequestParam Set<String> stageIds) {
-        TriggerId triggerId = TriggerId.of(flowId, stageIds);
-        boolean isRemoved = this.triggerService.removeTrigger(triggerId.getFlowId(), triggerId.getStageIds());
+    public ResponseEntity<Boolean> removeSchedule(@RequestBody TriggerId triggerId) {
+        boolean isRemoved = this.triggerService.removeTrigger(triggerId.getFlowId(), triggerId.getFlowStageIds());
         return ResponseEntity.ok(isRemoved);
     }
 
