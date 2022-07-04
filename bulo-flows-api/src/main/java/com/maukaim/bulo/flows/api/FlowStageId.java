@@ -19,7 +19,7 @@ public class FlowStageId {
     }
     protected FlowStageId(String globalStageId, Integer marker) {
         this.globalStageId = globalStageId;
-        this.marker = marker;
+        this.marker = marker == null ? 0 : marker;
     }
 
     public String getGlobalStageId() {
