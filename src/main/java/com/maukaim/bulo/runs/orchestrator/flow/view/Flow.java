@@ -1,17 +1,18 @@
 package com.maukaim.bulo.runs.orchestrator.flow.view;
 
+import com.maukaim.bulo.flows.api.ExecutionGraph;
 import com.maukaim.bulo.flows.api.FlowStageId;
 
 import java.util.Set;
 
-public class FlowView {
+public class Flow {
     private final String flowId;
     private final String admin;
     private final String team;
     private final ExecutionGraph<FlowStageId> executionGraph;
     private final boolean allowParallelRun;
 
-    public FlowView(String flowId, String admin, String team, ExecutionGraph<FlowStageId> executionGraph, boolean allowParallelRun) {
+    public Flow(String flowId, String admin, String team, ExecutionGraph<FlowStageId> executionGraph, boolean allowParallelRun) {
         this.flowId = flowId;
         this.admin = admin;
         this.team = team;

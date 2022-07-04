@@ -1,12 +1,12 @@
 package com.maukaim.bulo.runs.orchestrator.config;
 
-import com.maukaim.bulo.runs.orchestrator.flow.FlowViewService;
+import com.maukaim.bulo.runs.orchestrator.flow.FlowService;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRunCache;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRunCacheImpl;
 import com.maukaim.bulo.runs.orchestrator.flow.run.FlowRunServiceImpl;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowViewCache;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowViewCacheImpl;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowViewServiceImpl;
+import com.maukaim.bulo.runs.orchestrator.flow.view.FlowCache;
+import com.maukaim.bulo.runs.orchestrator.flow.view.FlowCacheImpl;
+import com.maukaim.bulo.runs.orchestrator.flow.view.FlowServiceImpl;
 import com.maukaim.bulo.runs.orchestrator.publisher.FlowRunUpdatePublisher;
 import com.maukaim.bulo.runs.orchestrator.publisher.StageRunEventPublisher;
 import com.maukaim.bulo.runs.orchestrator.publisher.impl.DummyFlowRunUpdatePublisherImpl;
@@ -48,20 +48,20 @@ public class DependencyProvider {
     }
 
     @Bean
-    public FlowViewService flowServiceImpl(FlowViewCache flowViewCache){
-        return new FlowViewServiceImpl(flowViewCache);
+    public FlowService flowServiceImpl(FlowCache flowCache){
+        return new FlowServiceImpl(flowCache);
     }
 
     @Bean
-    public FlowRunService flowRunServiceImpl(FlowViewService flowViewService,
+    public FlowRunService flowRunServiceImpl(FlowService flowService,
                                              FlowRunCache flowRunCache,
                                              StageRunService stageRunService){
-        return new FlowRunServiceImpl(flowViewService, flowRunCache, stageRunService);
+        return new FlowRunServiceImpl(flowService, flowRunCache, stageRunService);
     }
 
     @Bean
-    public FlowViewCache flowViewCacheImpl(){
-        FlowViewCacheImpl flowViewCache = new FlowViewCacheImpl();
+    public FlowCache flowViewCacheImpl(){
+        FlowCacheImpl flowViewCache = new FlowCacheImpl();
         flowViewCache.put(FLOW_1.getFlowId(), FLOW_1);
         return flowViewCache;
     }

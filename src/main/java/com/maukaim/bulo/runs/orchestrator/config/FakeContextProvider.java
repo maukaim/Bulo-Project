@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrator.config;
 
 import com.maukaim.bulo.flows.api.FlowStageId;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowView;
-import com.maukaim.bulo.runs.orchestrator.flow.view.UnmodifiableAcyclicExecutionGraph;
+import com.maukaim.bulo.runs.orchestrator.flow.view.Flow;
+import com.maukaim.bulo.flows.api.UnmodifiableAcyclicExecutionGraph;
 
 import java.util.Map;
 import java.util.Set;
@@ -16,7 +16,7 @@ public class FakeContextProvider {
     public static final FlowStageId STAGE_5 = FlowStageId.of("STAGE_5");
     public static final FlowStageId STAGE_6 = FlowStageId.of("STAGE_6");
 
-    public static final FlowView FLOW_1 = new FlowView("FLOW_1",
+    public static final Flow FLOW_1 = new Flow("FLOW_1",
             "Julien",
             "FOLAB",
             new UnmodifiableAcyclicExecutionGraph(

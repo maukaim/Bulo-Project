@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrator.flow.run;
 
 import com.maukaim.bulo.flows.api.FlowStageId;
-import com.maukaim.bulo.runs.orchestrator.flow.view.ExecutionGraph;
+import com.maukaim.bulo.flows.api.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunStatus;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunView;
 

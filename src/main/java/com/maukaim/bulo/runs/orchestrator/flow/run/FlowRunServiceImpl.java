@@ -2,8 +2,8 @@ package com.maukaim.bulo.runs.orchestrator.flow.run;
 
 import com.maukaim.bulo.flows.api.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.flow.FlowRunService;
-import com.maukaim.bulo.runs.orchestrator.flow.FlowViewService;
-import com.maukaim.bulo.runs.orchestrator.flow.view.FlowView;
+import com.maukaim.bulo.runs.orchestrator.flow.FlowService;
+import com.maukaim.bulo.runs.orchestrator.flow.view.Flow;
 import com.maukaim.bulo.runs.orchestrator.stage.run.StageRunService;
 import com.maukaim.bulo.runs.orchestrator.stage.run.model.StageRunView;
 import com.maukaim.bulo.runs.orchestrator.util.CloseableEntityLock;
@@ -15,41 +15,41 @@ import java.util.function.Function;
 
 public class FlowRunServiceImpl implements FlowRunService {
 
-    private final FlowViewService flowViewService;
+    private final FlowService flowService;
     private final FlowRunCache flowRunCache;
     private final StageRunService stageRunService;
 
-    public FlowRunServiceImpl(FlowViewService flowViewService, FlowRunCache flowRunCache,
+    public FlowRunServiceImpl(FlowService flowService, FlowRunCache flowRunCache,
                               StageRunService stageRunService) {
-        this.flowViewService = flowViewService;
+        this.flowService = flowService;
         this.flowRunCache = flowRunCache;
         this.stageRunService = stageRunService;
     }
 
     @Override
     public FlowRun startRun(String flowId, Set<FlowStageId> rootStageIds) {
-        FlowView flowView = this.getExistingFlow(flowId);
+        Flow flow = this.getExistingFlow(flowId);
 
         Set<FlowStageId> flowStagesToRunId;
         if (rootStageIds == null || rootStageIds.isEmpty()) {
-            flowStagesToRunId = flowView.getExecutionGraph().getRootsIds();
-        } else if (flowView.areRootStages(rootStageIds)) {
+            flowStagesToRunId = flow.getExecutionGraph().getRootsIds();
+        } else if (flow.areRootStages(rootStageIds)) {
             flowStagesToRunId = rootStageIds;
         } else {
             throw new FlowRunStartException(String.format("Flow [%s] does not recognize one of the Stages %s as a root.",
-                    flowView.getFlowId(),
+                    flow.getFlowId(),
                     rootStageIds));
         }
 
-        FlowRun newRunNonPersisted = FlowRunFactory.create(flowView);
+        FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunCache.add(newRunNonPersisted);
         Map<String, StageRunView> stageRunById = this.stageRunService.startRuns(newRunPersisted.getFlowRunId(), flowStagesToRunId);
 
         return this.computeStageRunViewUnderLock(newRunPersisted.getFlowRunId(), (previous) -> stageRunById);
     }
 
-    private FlowView getExistingFlow(String flowId) {
-        Optional<FlowView> optionalFlow = this.flowViewService.getFlow(flowId);
+    private Flow getExistingFlow(String flowId) {
+        Optional<Flow> optionalFlow = this.flowService.getFlow(flowId);
         if (optionalFlow.isEmpty()) {
             throw new FlowRunStartException("No flow existing with id: " + flowId);
         }
