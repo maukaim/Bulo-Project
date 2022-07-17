@@ -8,7 +8,7 @@ import com.maukaim.bulo.runs.orchestrator.io.in.AcknowledgeRequestStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.io.in.RunCancelledStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.io.in.RunFailedStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.io.in.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.runs.orchestrator.io.in.StageRunEvent;
+import com.maukaim.bulo.common.io.StageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.StageEventManager;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.StageRunCache;
 import com.maukaim.bulo.runs.orchestrator.io.in.StartRunStageRunEvent;

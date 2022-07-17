@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun;
 
 import com.maukaim.bulo.runs.orchestrator.core.flowrun.FlowRunService;
-import com.maukaim.bulo.runs.orchestrator.io.in.StageRunEvent;
+import com.maukaim.bulo.common.io.StageRunEvent;
 
 public abstract class StageEventProcessor<SE extends StageRunEvent> {
 

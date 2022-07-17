@@ -1,8 +1,10 @@
 package com.maukaim.bulo.runs.orchestrator.io.in;
 
+import com.maukaim.bulo.common.io.StageRunEvent;
+
 import java.time.Instant;
 
-public abstract class BasicStageRunEvent implements StageRunEvent{
+public abstract class BasicStageRunEvent implements StageRunEvent {
     protected final String stageRunId;
     protected final Instant instant;
 

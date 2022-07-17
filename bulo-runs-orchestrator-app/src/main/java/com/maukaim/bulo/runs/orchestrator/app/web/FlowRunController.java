@@ -1,12 +1,12 @@
 package com.maukaim.bulo.runs.orchestrator.app.web;
 
-import com.maukaim.bulo.flows.api.FlowStageId;
+import com.maukaim.bulo.commons.core.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.app.web.view.FlowRunView;
 import com.maukaim.bulo.runs.orchestrator.app.web.view.FlowRunViewFactory;
 import com.maukaim.bulo.runs.orchestrator.core.flowrun.model.FlowRun;
 import com.maukaim.bulo.runs.orchestrator.core.flowrun.FlowRunCacheException;
 import com.maukaim.bulo.runs.orchestrator.core.flowrun.FlowRunService;
-import com.maukaim.bulo.triggers.api.TriggerEvent;
+import com.maukaim.bulo.triggers.api.BasicTriggerEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +29,9 @@ public class FlowRunController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<FlowRunView> startFlow(@RequestBody TriggerEvent triggerEvent) {
-        Set<FlowStageId> flowStageIds = triggerEvent.getTriggerId().getFlowStageIds();
-        FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getTriggerId().getFlowId(), flowStageIds);
+    public ResponseEntity<FlowRunView> startFlow(@RequestBody BasicTriggerEvent triggerEvent) {
+        Set<FlowStageId> flowStageIds = triggerEvent.getFlowStageIds();
+        FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getFlowId(), flowStageIds);
         return ResponseEntity.ok(FlowRunViewFactory.build(flowRun));
     }
 

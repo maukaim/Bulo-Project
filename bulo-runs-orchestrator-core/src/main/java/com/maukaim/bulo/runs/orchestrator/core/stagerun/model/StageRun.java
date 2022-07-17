@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.maukaim.bulo.flows.api.FlowStageId;
+import com.maukaim.bulo.commons.core.models.FlowStageId;
 
 import java.time.Instant;
 

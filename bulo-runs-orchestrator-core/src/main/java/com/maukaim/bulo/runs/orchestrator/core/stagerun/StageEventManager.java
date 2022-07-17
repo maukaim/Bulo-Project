@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun;
 
-import com.maukaim.bulo.runs.orchestrator.io.in.StageRunEvent;
+import com.maukaim.bulo.common.io.StageRunEvent;
 
 import java.util.HashMap;
 import java.util.Map;

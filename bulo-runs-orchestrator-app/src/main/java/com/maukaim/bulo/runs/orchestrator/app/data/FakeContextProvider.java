@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrator.app.data;
 
-import com.maukaim.bulo.flows.api.FlowStageId;
+import com.maukaim.bulo.commons.core.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.core.flow.Flow;
-import com.maukaim.bulo.flows.api.UnmodifiableAcyclicExecutionGraph;
+import com.maukaim.bulo.commons.core.models.UnmodifiableAcyclicExecutionGraph;
 
 import java.util.Map;
 import java.util.Set;
