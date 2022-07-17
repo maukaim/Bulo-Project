@@ -1,21 +1,23 @@
 package com.maukaim.bulo.triggers.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.maukaim.bulo.common.io.TriggerEvent;
+import com.maukaim.bulo.commons.core.models.FlowStageId;
 
 import java.time.Instant;
+import java.util.Set;
 
-public class TriggerEvent {
-    private final TriggerId triggerId;
+public class BasicTriggerEvent implements TriggerEvent {
     private final Instant instant;
+    private String flowId;
+    private Set<FlowStageId> flowStageIds;
 
-    public TriggerEvent(@JsonProperty("triggerId") TriggerId triggerId,
-                        @JsonProperty("instant") Instant instant) {
-        this.triggerId = triggerId;
+    public BasicTriggerEvent(@JsonProperty("flowId") String flowId,
+                             @JsonProperty("flowStageIds") Set<FlowStageId> flowStageIds,
+                             @JsonProperty("instant") Instant instant) {
+        this.flowId = flowId;
+        this.flowStageIds = flowStageIds;
         this.instant = instant;
-    }
-
-    public TriggerId getTriggerId() {
-        return triggerId;
     }
 
     public Instant getInstant() {
@@ -23,10 +25,21 @@ public class TriggerEvent {
     }
 
     @Override
+    public String getFlowId() {
+        return flowId;
+    }
+
+    @Override
+    public Set<FlowStageId> getFlowStageIds() {
+        return flowStageIds;
+    }
+
+    @Override
     public String toString() {
-        return "TriggerEvent{" +
-                "triggerId=" + triggerId +
-                ", instant=" + instant +
+        return "BasicTriggerEvent{" +
+                "instant=" + instant +
+                ", flowId='" + flowId + '\'' +
+                ", flowStageIds=" + flowStageIds +
                 '}';
     }
 }

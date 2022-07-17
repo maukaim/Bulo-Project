@@ -1,10 +1,10 @@
 package com.maukaim.bulo.trigger.scheduler;
 
 import com.google.common.collect.Maps;
-import com.maukaim.bulo.flows.api.FlowStageId;
+import com.maukaim.bulo.commons.core.models.FlowStageId;
 import com.maukaim.bulo.trigger.core.TriggerEventPublisher;
 import com.maukaim.bulo.trigger.core.TriggerService;
-import com.maukaim.bulo.triggers.api.TriggerEvent;
+import com.maukaim.bulo.triggers.api.BasicTriggerEvent;
 import com.maukaim.bulo.triggers.api.TriggerId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -45,7 +45,11 @@ public class ScheduleTriggerService implements TriggerService<ScheduleTriggerCon
 
     @Override
     public ScheduleTriggerConfig setTrigger(ScheduleTriggerConfig triggerConfig) {
-        Runnable task = () -> this.eventPublisher.publish(new TriggerEvent(triggerConfig.getTriggerId(), Instant.now()));
+        Runnable task = () -> this.eventPublisher.publish(new BasicTriggerEvent(
+                triggerConfig.getTriggerId().getFlowId(),
+                triggerConfig.getTriggerId().getFlowStageIds(),
+                Instant.now()));
+
         CronTrigger cronTrigger = new CronTrigger(triggerConfig.getCronExpression());
         ScheduledFuture<?> scheduledFuture = this.executors.schedule(task, cronTrigger);
         this.scheduledFutureCache.compute(triggerConfig.getTriggerId(),(k,v)->{

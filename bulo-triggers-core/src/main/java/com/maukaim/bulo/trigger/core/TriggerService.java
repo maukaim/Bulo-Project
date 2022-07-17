@@ -1,6 +1,7 @@
 package com.maukaim.bulo.trigger.core;
 
-import com.maukaim.bulo.flows.api.FlowStageId;
+
+import com.maukaim.bulo.commons.core.models.FlowStageId;
 
 import java.util.Set;
 
