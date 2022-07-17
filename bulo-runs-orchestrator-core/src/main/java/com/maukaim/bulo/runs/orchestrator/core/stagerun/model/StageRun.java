@@ -1,7 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.models.FlowStageId;
 
 import java.time.Instant;
 
@@ -44,7 +43,6 @@ public class StageRun {
         return executorId;
     }
 
-    @JsonIgnore
     public boolean isTerminated() {
         return this.getStageRunStatus() != null && this.getStageRunStatus().isTerminal();
     }

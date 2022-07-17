@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.core.flowrun;
 
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.core.flow.FlowService;
 import com.maukaim.bulo.runs.orchestrator.core.flow.Flow;
 import com.maukaim.bulo.runs.orchestrator.core.flowrun.model.FlowRun;

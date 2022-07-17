@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun.model;
 
-import com.maukaim.bulo.commons.core.utils.TimeHelper;
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.core.TimeHelper;
+import com.maukaim.bulo.commons.models.FlowStageId;
 
 import java.time.Instant;
 import java.util.UUID;

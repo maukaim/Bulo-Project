@@ -21,6 +21,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-commons-serialization</artifactId>
+            <version>${bulo.commons.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.11.4</version>

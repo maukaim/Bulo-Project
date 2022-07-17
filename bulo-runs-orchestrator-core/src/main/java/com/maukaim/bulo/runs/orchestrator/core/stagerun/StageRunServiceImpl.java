@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun;
 
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.core.StageRunEventPublisher;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.model.StageRun;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.model.StageRunFactory;
