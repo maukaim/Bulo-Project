@@ -1,4 +1,4 @@
-package com.maukaim.bulo.commons.core.utils;
+package com.maukaim.bulo.commons.core;
 
 import java.time.Instant;
 

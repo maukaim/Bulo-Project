@@ -21,7 +21,9 @@
     <modules>
         <module>bulo-swagger-starter</module>
         <module>bulo-commons-core</module>
-        <module>bulo-common-io</module>
+        <module>bulo-commons-io</module>
+        <module>bulo-commons-models</module>
+        <module>bulo-commons-serialization</module>
     </modules>
 
     <build>

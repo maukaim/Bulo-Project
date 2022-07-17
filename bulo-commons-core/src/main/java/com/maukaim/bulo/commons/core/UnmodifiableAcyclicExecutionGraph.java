@@ -1,4 +1,6 @@
-package com.maukaim.bulo.commons.core.models;
+package com.maukaim.bulo.commons.core;
+
+import com.maukaim.bulo.commons.models.FlowStageId;
 
 import java.util.HashMap;
 import java.util.HashSet;

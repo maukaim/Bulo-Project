@@ -1,4 +1,4 @@
-package com.maukaim.bulo.commons.core.models;
+package com.maukaim.bulo.commons.models;
 
 
 import java.util.Objects;

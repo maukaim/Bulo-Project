@@ -12,4 +12,8 @@ public enum StageRunEventType {
     StageRunEventType(String description) {
         this.description = description;
     }
+
+    public String getDescription() {
+        return description;
+    }
 }
