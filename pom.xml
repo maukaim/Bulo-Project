@@ -6,10 +6,12 @@
 
     <groupId>com.maukaim.bulo</groupId>
     <artifactId>bulo-runs-orchestrator-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
+
+    <packaging>pom</packaging>
 
     <properties>
-<!--        <revision>1.0-SNAPSHOT</revision>-->
+        <revision>1.0-SNAPSHOT</revision>
         <bulo.trigger.api>1.0-SNAPSHOT</bulo.trigger.api>
         <bulo.flows.api>1.0-SNAPSHOT</bulo.flows.api>
         <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
@@ -19,76 +21,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-api</artifactId>
-            <version>${bulo.flows.api}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-api</artifactId>
-            <version>${bulo.trigger.api}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-common-models</artifactId>
-            <version>${bulo.commons.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-common-utils</artifactId>
-            <version>${bulo.commons.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-swagger-starter</artifactId>
-            <version>${bulo.commons.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jgrapht</groupId>
-            <artifactId>jgrapht-core</artifactId>
-            <version>1.5.1</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
+    <modules>
+        <module>bulo-runs-orchestrator-app</module>
+        <module>bulo-runs-orchestrator-core</module>
+        <module>bulo-runs-orchestrator-serialization-module</module>
+        <module>bulo-runs-orchestrator-io-module</module>
+    </modules>
 </project>
