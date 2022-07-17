@@ -12,11 +12,6 @@
 
     <artifactId>bulo-flows-app</artifactId>
 
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -37,19 +32,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-api</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-common-models</artifactId>
-            <version>${bulo.commons.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-common-utils</artifactId>
+            <artifactId>bulo-commons-core</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
 
