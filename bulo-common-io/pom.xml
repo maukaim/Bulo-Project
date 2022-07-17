@@ -11,6 +11,13 @@
 
     <artifactId>bulo-common-io</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-commons-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
     <build>
         <pluginManagement>
             <plugins>

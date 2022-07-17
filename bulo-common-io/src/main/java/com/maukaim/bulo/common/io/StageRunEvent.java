@@ -1,9 +1,6 @@
-package com.maukaim.bulo.runs.orchestrator.io.in;
-
-import com.maukaim.bulo.commons.events.ExternalEvent;
+package com.maukaim.bulo.common.io;
 
 public interface StageRunEvent extends ExternalEvent {
     StageRunEventType getEventType();
-
     String getStageRunId();
 }

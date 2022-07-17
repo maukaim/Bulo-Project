@@ -20,8 +20,7 @@
 
     <modules>
         <module>bulo-swagger-starter</module>
-        <module>bulo-common-models</module>
-        <module>bulo-common-utils</module>
+        <module>bulo-commons-core</module>
         <module>bulo-common-io</module>
     </modules>
 

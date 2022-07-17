@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-commons</artifactId>
+    <artifactId>bulo-commons-core</artifactId>
 
     <build>
         <pluginManagement>

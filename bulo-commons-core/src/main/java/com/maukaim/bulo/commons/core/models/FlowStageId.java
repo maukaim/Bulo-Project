@@ -1,7 +1,5 @@
 package com.maukaim.bulo.commons.core.models;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
@@ -13,8 +11,7 @@ public class FlowStageId {
         return new FlowStageId(globalStageId, null);
     }
 
-    @JsonCreator
-    public static FlowStageId of(@JsonProperty("globalStageId") String globalStageId, @JsonProperty("marker")Integer marker){
+    public static FlowStageId of(String globalStageId, Integer marker){
         return new FlowStageId(globalStageId, marker);
     }
     protected FlowStageId(String globalStageId, Integer marker) {
