@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.app;
 
 
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.models.FlowStageId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
