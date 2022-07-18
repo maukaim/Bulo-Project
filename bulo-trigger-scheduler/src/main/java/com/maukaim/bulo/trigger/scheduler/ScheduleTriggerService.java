@@ -1,7 +1,7 @@
 package com.maukaim.bulo.trigger.scheduler;
 
 import com.google.common.collect.Maps;
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.trigger.core.TriggerEventPublisher;
 import com.maukaim.bulo.trigger.core.TriggerService;
 import com.maukaim.bulo.triggers.api.BasicTriggerEvent;

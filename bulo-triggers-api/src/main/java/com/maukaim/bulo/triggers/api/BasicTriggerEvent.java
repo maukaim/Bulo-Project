@@ -2,7 +2,7 @@ package com.maukaim.bulo.triggers.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.common.io.TriggerEvent;
-import com.maukaim.bulo.commons.core.models.FlowStageId;
+import com.maukaim.bulo.commons.models.FlowStageId;
 
 import java.time.Instant;
 import java.util.Set;
