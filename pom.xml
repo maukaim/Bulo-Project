@@ -18,8 +18,9 @@
     </properties>
 
     <modules>
-        <module>bulo-triggers-api</module>
         <module>bulo-triggers-core</module>
         <module>bulo-trigger-scheduler</module>
+        <module>bulo-triggers-io-module</module>
+        <module>bulo-triggers-serialization-module</module>
     </modules>
 </project>

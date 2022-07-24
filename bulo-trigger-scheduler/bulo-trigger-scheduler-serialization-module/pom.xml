@@ -3,24 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bulo-triggers-service</artifactId>
+        <artifactId>bulo-trigger-scheduler</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-triggers-core</artifactId>
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
+    <artifactId>bulo-trigger-scheduler-serialization-module</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-io-module</artifactId>
+            <artifactId>bulo-trigger-scheduler-io-module</artifactId>
             <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

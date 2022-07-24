@@ -9,14 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-trigger-scheduler</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>bulo-trigger-scheduler-core</module>
-        <module>bulo-trigger-scheduler-io-module</module>
-        <module>bulo-trigger-scheduler-serialization-module</module>
-        <module>bulo-trigger-scheduler-app</module>
-        <module>bulo-trigger-scheduler-cron-spring-engine</module>
-    </modules>
+    <artifactId>bulo-triggers-io-module</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-commons-io</artifactId>
+            <version>${bulo.commons.version}</version>
+        </dependency>
+    </dependencies>
 </project>
