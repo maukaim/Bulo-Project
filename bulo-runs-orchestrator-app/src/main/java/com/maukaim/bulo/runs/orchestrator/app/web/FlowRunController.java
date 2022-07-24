@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrator.app.web;
 
-import com.maukaim.bulo.common.io.TriggerEvent;
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.app.web.view.FlowRunView;
 import com.maukaim.bulo.runs.orchestrator.app.web.view.FlowRunViewFactory;
