@@ -50,7 +50,7 @@ public class UnmodifiableAcyclicExecutionGraph implements ExecutionGraph<FlowSta
     }
 
     private void validateAcyclic(Map<FlowStageId, Set<FlowStageId>> stageToAncestors) {
-        new AcyclicValidator(stageToAncestors).validate();
+        new AcyclicValidator<>(stageToAncestors).validate();
     }
 
     private void setUp() {
@@ -92,34 +92,6 @@ public class UnmodifiableAcyclicExecutionGraph implements ExecutionGraph<FlowSta
         @Override
         public boolean test(FlowStageId stageId) {
             return !this.allStages.contains(stageId);
-        }
-    }
-
-    private static class AcyclicValidator {
-        private final Map<FlowStageId, Set<FlowStageId>> ancestorIdsByStageId;
-
-        public AcyclicValidator(Map<FlowStageId, Set<FlowStageId>> ancestorIdsByStageId) {
-            this.ancestorIdsByStageId = Map.copyOf(ancestorIdsByStageId);
-        }
-
-        public void validate() throws IllegalArgumentException {
-            Set<FlowStageId> stageIds = this.ancestorIdsByStageId.keySet();
-            for (FlowStageId stageId : stageIds) {
-                validate(stageId, new HashSet<>());
-            }
-        }
-
-        private void validate(FlowStageId stageId, Set<FlowStageId> visited) {
-            if (!visited.contains(stageId)) {
-                visited.add(stageId);
-                for (FlowStageId parentId : this.ancestorIdsByStageId.getOrDefault(stageId, Set.of())) {
-                    this.validate(parentId, new HashSet<>(visited));
-                }
-            } else {
-                throw new IllegalArgumentException(String.format(
-                        "Cyclic Graph detected! Please check on stage %s",
-                        stageId));
-            }
         }
     }
 
