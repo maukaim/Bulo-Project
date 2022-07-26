@@ -21,5 +21,6 @@
         <module>bulo-runs-orchestrator-service</module>
         <module>bulo-common-modules</module>
         <module>bulo-flows-service</module>
+        <module>bulo-stage-models-registry-service</module>
     </modules>
 </project>
