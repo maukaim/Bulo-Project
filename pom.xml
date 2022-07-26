@@ -17,13 +17,14 @@
     </properties>
 
     <modules>
-        <module>bulo-trigger-services</module>
-        <module>bulo-runs-orchestrator-service</module>
         <module>bulo-common-modules</module>
+        <module>bulo-runs-orchestrator-service</module>
         <module>bulo-flows-service</module>
-        <module>bulo-stage-models-registry-service</module>
         <module>bulo-stages-service</module>
-        <module>bulo-users-service</module>
+        <module>bulo-stage-models-registry-service</module>
+        <module>bulo-stage-run-executor-services</module>
+        <module>bulo-trigger-services</module>
         <module>bulo-teams-service</module>
+        <module>bulo-users-service</module>
     </modules>
 </project>

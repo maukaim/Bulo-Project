@@ -22,3 +22,6 @@
 [submodule "bulo-teams-service"]
 	path = bulo-teams-service
 	url = git@github.com:maukaim/bulo-teams-service.git
+[submodule "bulo-stage-run-executor-services"]
+	path = bulo-stage-run-executor-services
+	url = git@github.com:maukaim/bulo-stage-run-executor-services.git
