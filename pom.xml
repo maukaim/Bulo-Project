@@ -24,5 +24,6 @@
         <module>bulo-stage-models-registry-service</module>
         <module>bulo-stages-service</module>
         <module>bulo-users-service</module>
+        <module>bulo-teams-service</module>
     </modules>
 </project>
