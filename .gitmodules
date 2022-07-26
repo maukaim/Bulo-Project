@@ -13,3 +13,6 @@
 [submodule "bulo-stage-models-registry-service"]
 	path = bulo-stage-models-registry-service
 	url = git@github.com:maukaim/bulo-stage-models-registry-service.git
+[submodule "bulo-stages-service"]
+	path = bulo-stages-service
+	url = git@github.com:maukaim/bulo-stages-service.git

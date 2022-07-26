@@ -22,5 +22,6 @@
         <module>bulo-common-modules</module>
         <module>bulo-flows-service</module>
         <module>bulo-stage-models-registry-service</module>
+        <module>bulo-stages-service</module>
     </modules>
 </project>
