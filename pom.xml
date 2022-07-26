@@ -17,7 +17,7 @@
     </properties>
 
     <modules>
-        <module>bulo-triggers-service</module>
+        <module>bulo-trigger-services</module>
         <module>bulo-runs-orchestrator-service</module>
         <module>bulo-common-modules</module>
         <module>bulo-flows-service</module>
