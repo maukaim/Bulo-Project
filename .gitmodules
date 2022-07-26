@@ -1,8 +1,8 @@
 [submodule "common-Boys"]
 	path = bulo-common-modules
 	url = git@github.com:maukaim/bulo-common-modules.git
-[submodule "bulo-triggers-service"]
-	path = bulo-triggers-service
+[submodule "bulo-trigger-services"]
+	path = bulo-trigger-services
 	url = git@github.com:maukaim/bulo-triggers-service.git
 [submodule "bulo-runs-orchestrator"]
 	path = bulo-runs-orchestrator-service
