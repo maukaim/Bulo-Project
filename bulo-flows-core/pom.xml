@@ -5,15 +5,24 @@
     <parent>
         <artifactId>bulo-flows-service</artifactId>
         <groupId>com.maukaim.bulo</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bulo-flows-core</artifactId>
 
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-flows-io-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-commons-models</artifactId>
+            <version>${bulo.commons.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
