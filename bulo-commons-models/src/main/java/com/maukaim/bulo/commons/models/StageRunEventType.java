@@ -1,4 +1,4 @@
-package com.maukaim.bulo.commons.io;
+package com.maukaim.bulo.commons.models;
 
 public enum StageRunEventType {
     ACKNOWLEDGE_REQUEST("Acknowledge the request, the executor will process it soon."),
