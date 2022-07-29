@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.core.flowrun.model;
 
-import com.maukaim.bulo.commons.core.ExecutionGraph;
+import com.maukaim.bulo.runs.orchestrator.core.util.ExecutionGraph;
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.model.StageRunStatus;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.model.StageRun;

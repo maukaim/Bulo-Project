@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.app.data;
 
-import com.maukaim.bulo.commons.core.UnmodifiableAcyclicExecutionGraph;
+import com.maukaim.bulo.runs.orchestrator.core.util.UnmodifiableAcyclicExecutionGraph;
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrator.core.flow.Flow;
 
