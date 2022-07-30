@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.core.flow;
 
-import com.maukaim.bulo.commons.core.ExecutionGraph;
+import com.maukaim.bulo.runs.orchestrator.core.util.ExecutionGraph;
 import com.maukaim.bulo.commons.models.FlowStageId;
 
 import java.util.Set;

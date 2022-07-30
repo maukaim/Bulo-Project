@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrator.io.in;
 
-import com.maukaim.bulo.commons.io.StageRunEventType;
+import com.maukaim.bulo.commons.models.StageRunEventType;
 
 import java.time.Instant;
 
