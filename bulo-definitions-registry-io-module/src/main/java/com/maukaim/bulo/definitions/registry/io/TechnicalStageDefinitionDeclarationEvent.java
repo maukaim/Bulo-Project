@@ -5,12 +5,12 @@ import com.maukaim.bulo.definitions.registry.io.model.TechnicalStageDefinition;
 
 import java.time.Instant;
 
-public class DeclareTechnicalStageDefinitionEvent implements ExternalEvent {
+public class TechnicalStageDefinitionDeclarationEvent implements ExternalEvent {
     private String stageExecutorId;
     private TechnicalStageDefinition technicalStageDefinition;
     private Instant instant;
 
-    public DeclareTechnicalStageDefinitionEvent(String stageExecutorId, TechnicalStageDefinition technicalStageDefinition, Instant instant) {
+    public TechnicalStageDefinitionDeclarationEvent(String stageExecutorId, TechnicalStageDefinition technicalStageDefinition, Instant instant) {
         this.stageExecutorId = stageExecutorId;
         this.technicalStageDefinition = technicalStageDefinition;
         this.instant = instant;
@@ -20,7 +20,7 @@ public class DeclareTechnicalStageDefinitionEvent implements ExternalEvent {
         return stageExecutorId;
     }
 
-    public TechnicalStageDefinition getStageModel() {
+    public TechnicalStageDefinition getTechnicalStageDefinition() {
         return technicalStageDefinition;
     }
 

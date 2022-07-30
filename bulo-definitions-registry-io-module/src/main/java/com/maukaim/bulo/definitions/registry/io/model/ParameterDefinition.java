@@ -1,8 +1,5 @@
 package com.maukaim.bulo.definitions.registry.io.model;
 
-/**
- *
- */
 public class ParameterDefinition {
     private String name;
     private Class type;
@@ -22,7 +19,7 @@ public class ParameterDefinition {
         return name;
     }
 
-    public Class getType() {
+    public Class<?> getType() {
         return type;
     }
 
@@ -48,4 +45,5 @@ public class ParameterDefinition {
                 ", required=" + required +
                 '}';
     }
+
 }

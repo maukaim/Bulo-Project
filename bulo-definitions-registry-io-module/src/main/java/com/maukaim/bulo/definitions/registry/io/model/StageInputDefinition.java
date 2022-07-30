@@ -3,19 +3,21 @@ package com.maukaim.bulo.definitions.registry.io.model;
 import com.maukaim.bulo.commons.models.IStageInputDefinition;
 
 public class StageInputDefinition implements IStageInputDefinition {
-    private Boolean acceptMultiple;
-    private Boolean isRequired;
+    private Boolean canBeMultiple;
+    private Boolean required;
     private Class type;
 
-    public StageInputDefinition(Boolean acceptMultiple, Boolean isRequired, Class type) {
-        this.acceptMultiple = acceptMultiple;
-        this.isRequired = isRequired;
+    public StageInputDefinition(Boolean acceptMultiple,
+                                Boolean required,
+                                Class type) {
+        this.canBeMultiple = acceptMultiple;
+        this.required = required;
         this.type = type;
     }
 
     @Override
     public boolean canBeMultiple() {
-        return acceptMultiple;
+        return canBeMultiple;
     }
 
     @Override
@@ -25,7 +27,6 @@ public class StageInputDefinition implements IStageInputDefinition {
 
     @Override
     public Boolean isRequired() {
-        return isRequired;
+        return required;
     }
-
 }

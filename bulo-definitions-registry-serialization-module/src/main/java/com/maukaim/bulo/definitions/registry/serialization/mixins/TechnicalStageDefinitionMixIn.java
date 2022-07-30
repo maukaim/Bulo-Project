@@ -11,9 +11,9 @@ import java.util.Map;
 
 public class TechnicalStageDefinitionMixIn {
     @JsonCreator
-    public TechnicalStageDefinitionMixIn(@JsonProperty("stageModelId") String stageModelId,
-                                         @JsonProperty("inputs") Map<String, StageInputDefinition> inputsByName,
-                                         @JsonProperty("outputs") Map<String, StageOutputDefinition> outputsByName,
+    public TechnicalStageDefinitionMixIn(@JsonProperty("technicalStageId") String technicalStageId,
+                                         @JsonProperty("inputsByName") Map<String, StageInputDefinition> inputsByName,
+                                         @JsonProperty("outputsByName") Map<String, StageOutputDefinition> outputsByName,
                                          @JsonProperty("parameters") List<ParameterDefinition> parameters) {
     }
 }

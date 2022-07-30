@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StageInputDefinitionMixIn {
     @JsonCreator
-    public StageInputDefinitionMixIn(@JsonProperty("canBeMultiple") Boolean acceptMultiple, @JsonProperty("isRequired") Boolean isRequired, @JsonProperty("type") Class type) {
+    public StageInputDefinitionMixIn(
+            @JsonProperty("canBeMultiple") Boolean acceptMultiple,
+            @JsonProperty("required") Boolean required,
+            @JsonProperty("type") Class type) {
     }
 }
