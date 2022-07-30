@@ -1,11 +1,11 @@
 package com.maukaim.bulo.commons.swagger;
 
+import com.maukaim.bulo.commons.swagger.config.DocketCustomizer;
 import com.maukaim.bulo.commons.swagger.config.MaukaimSwaggerProperties;
+import com.maukaim.bulo.commons.swagger.config.SwaggerConfigCustomizer;
 import com.maukaim.bulo.commons.swagger.config.springfox.SpringfoxConfigurationProperties;
 import com.maukaim.bulo.commons.swagger.config.springfox.SwaggerUiWebFluxConfiguration;
 import com.maukaim.bulo.commons.swagger.config.springfox.SwaggerUiWebMvcConfiguration;
-import com.maukaim.bulo.commons.swagger.config.DocketCustomizer;
-import com.maukaim.bulo.commons.swagger.config.SwaggerConfigCustomizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -54,9 +54,6 @@ import java.util.List;
         HttpMessageConvertersAutoConfiguration.class,
         RepositoryRestMvcAutoConfiguration.class})
 public class MaukaimSwaggerAutoConfiguration {
-
-    public static final String securitySchemaOauth2 = "oauth2scheme";
-
     @Autowired
     private MaukaimSwaggerProperties swaggerProperties;
 
@@ -71,32 +68,41 @@ public class MaukaimSwaggerAutoConfiguration {
         this.configurationCustomizers.forEach(customizer -> customizer.customize(this.swaggerProperties));
     }
 
-
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(this.apiInfo())
+    public Docket api(ApiInfo apiInfo) {
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo)
                 .select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .directModelSubstitute(Class.class, String.class);
+        docketCustomizers.forEach(docketCustomizer -> docketCustomizer.customize(docket));
+        return docket;
     }
 
-    private ApiInfo apiInfo() {
-        Contact contact = new Contact(
-                "Julien Elkaim",
-                "maukaim.com",
-                "julienelk@gmail.com"
-        );
+    @Bean
+    public ApiInfo getApiInfo(Contact contact) {
         return new ApiInfo(
-                "Moula Market Connector - Swagger",
-                "Development sweetness at its highest!",
-                "1.0",
-                "-",
+                defaultedStringValue(swaggerProperties.getTitle(), "Bulo Swagger - Default title"),
+                defaultedStringValue(swaggerProperties.getDescription(), "Bulo service's swagger."),
+                defaultedStringValue(swaggerProperties.getVersion(), "VERSION_UNKNOWN"),
+                defaultedStringValue(swaggerProperties.getTermOfServiceUrl(), null),
                 contact,
-                "MIT License",
-                "https://opensource.org/licenses/mit-license.php",
+                defaultedStringValue(swaggerProperties.getLicense(), "LICENSE_UNKNOWN"),
+                defaultedStringValue(swaggerProperties.getLicenseUrl(), null),
                 new ArrayList<>());
     }
 
+    @Bean
+    public Contact getContact() {
+        return new Contact(
+                defaultedStringValue(swaggerProperties.getContactName(), "Julien Elkaim"),
+                defaultedStringValue(swaggerProperties.getContactUrl(), "maukaim.com"),
+                defaultedStringValue(swaggerProperties.getContactEmail(), "julienelk@gmail.com"));
+    }
+
+    private String defaultedStringValue(String current, String defaultValue) {
+        return current == null || current.isBlank() ? defaultValue : current;
+    }
 }
