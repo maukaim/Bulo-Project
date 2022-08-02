@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maukaim.bulo</groupId>
-    <artifactId>bulo-stage-models-registry-service</artifactId>
+    <artifactId>bulo-definitions-registry-service</artifactId>
     <version>${revision}</version>
 
     <packaging>pom</packaging>
@@ -20,9 +20,9 @@
     </properties>
 
     <modules>
-        <module>bulo-stage-models-registry-core</module>
-        <module>bulo-stage-models-registry-app</module>
-        <module>bulo-stage-models-registry-io-module</module>
-        <module>bulo-stage-models-registry-serialization-module</module>
+        <module>bulo-definitions-registry-core</module>
+        <module>bulo-definitions-registry-app</module>
+        <module>bulo-definitions-registry-io-module</module>
+        <module>bulo-definitions-registry-serialization-module</module>
     </modules>
 </project>
