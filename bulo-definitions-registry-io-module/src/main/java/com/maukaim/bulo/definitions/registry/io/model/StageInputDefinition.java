@@ -1,18 +1,18 @@
 package com.maukaim.bulo.definitions.registry.io.model;
 
-import com.maukaim.bulo.commons.models.IStageInputDefinition;
+import com.maukaim.bulo.commons.models.definitions.InputDefinition;
 
-public class StageInputDefinition implements IStageInputDefinition {
+public class StageInputDefinition implements InputDefinition {
     private Boolean canBeMultiple;
     private Boolean required;
-    private Class type;
+    private String typeId;
 
     public StageInputDefinition(Boolean acceptMultiple,
                                 Boolean required,
-                                Class type) {
+                                String typeId) {
         this.canBeMultiple = acceptMultiple;
         this.required = required;
-        this.type = type;
+        this.typeId = typeId;
     }
 
     @Override
@@ -21,8 +21,8 @@ public class StageInputDefinition implements IStageInputDefinition {
     }
 
     @Override
-    public Class getType() {
-        return type;
+    public String getIOTypeId() {
+        return typeId;
     }
 
     @Override

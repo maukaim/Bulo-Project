@@ -1,14 +1,14 @@
 package com.maukaim.bulo.definitions.registry.io.model;
 
-import com.maukaim.bulo.commons.models.IStageOutputDefinition;
+import com.maukaim.bulo.commons.models.definitions.OutputDefinition;
 
-public class StageOutputDefinition implements IStageOutputDefinition {
+public class StageOutputDefinition implements OutputDefinition {
     private Boolean canBeMultiple;
-    private Class type;
+    private String typeId;
 
-    public StageOutputDefinition(Boolean canBeMultiple, Class type) {
+    public StageOutputDefinition(Boolean canBeMultiple, String typeId) {
         this.canBeMultiple = canBeMultiple;
-        this.type = type;
+        this.typeId = typeId;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class StageOutputDefinition implements IStageOutputDefinition {
     }
 
     @Override
-    public Class getType() {
-        return type;
+    public String getIOTypeId() {
+        return typeId;
     }
 }

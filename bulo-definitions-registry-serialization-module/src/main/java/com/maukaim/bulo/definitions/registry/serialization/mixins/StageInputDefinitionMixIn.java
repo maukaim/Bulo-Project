@@ -8,6 +8,6 @@ public class StageInputDefinitionMixIn {
     public StageInputDefinitionMixIn(
             @JsonProperty("canBeMultiple") Boolean acceptMultiple,
             @JsonProperty("required") Boolean required,
-            @JsonProperty("type") Class type) {
+            @JsonProperty("type") String type) {
     }
 }
