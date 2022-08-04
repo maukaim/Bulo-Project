@@ -7,9 +7,10 @@ import com.maukaim.bulo.stages.models.stage.TechnicalStage;
 
 public interface StageAdapter {
     TechnicalStage adapte(TechnicalStageData data);
+
     FunctionalStage adapte(FunctionalStageData data);
 
     TechnicalStage adapte(String stageId, TechnicalStageData data);
-    FunctionalStage adapte(String stageId, FunctionalStageData data);
 
+    FunctionalStage adapte(String stageId, FunctionalStageData data);
 }

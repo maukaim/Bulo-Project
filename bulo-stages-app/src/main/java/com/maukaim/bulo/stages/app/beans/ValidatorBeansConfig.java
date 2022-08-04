@@ -7,9 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ValidatorBeansConfig {
-
     @Bean
-    public TechnicalStageValidator technicalStageValidator(){
+    public TechnicalStageValidator technicalStageValidator() {
         return new TechnicalStageValidatorImpl();
     }
 }

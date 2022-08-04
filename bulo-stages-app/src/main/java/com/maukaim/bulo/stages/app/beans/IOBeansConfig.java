@@ -1,7 +1,8 @@
 package com.maukaim.bulo.stages.app.beans;
 
-import com.maukaim.bulo.stages.app.io.DirectStageUpdateEventPublisherImpl;
 import com.maukaim.bulo.io.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.StageUpdateEventPublisher;
+import com.maukaim.bulo.stages.app.io.DummyStageUpdateEventPublisher;
 import com.maukaim.bulo.stages.app.io.StageUpdateEventConsumerImpl;
 import com.maukaim.bulo.stages.core.StageAdapter;
 import com.maukaim.bulo.stages.persistence.StageStoreImpl;
@@ -13,15 +14,12 @@ public class IOBeansConfig {
 
     @Bean
     public StageUpdateEventConsumer stageUpdateEventConsumer(StageStoreImpl stageStore,
-                                                             StageAdapter stageAdapter,
-                                                             DirectStageUpdateEventPublisherImpl publisher){
-        StageUpdateEventConsumerImpl consumer = new StageUpdateEventConsumerImpl(stageStore, stageAdapter);
-        publisher.setConsumer(consumer);
-        return consumer;
+                                                             StageAdapter stageAdapter) {
+        return new StageUpdateEventConsumerImpl(stageStore, stageAdapter);
     }
 
     @Bean
-    public DirectStageUpdateEventPublisherImpl stageUpdateEventPublisher(){
-        return new DirectStageUpdateEventPublisherImpl();
+    public StageUpdateEventPublisher stageUpdateEventPublisher() {
+        return new DummyStageUpdateEventPublisher();
     }
 }

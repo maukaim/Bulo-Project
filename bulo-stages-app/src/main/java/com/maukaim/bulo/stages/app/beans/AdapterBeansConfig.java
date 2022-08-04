@@ -19,31 +19,32 @@ import org.springframework.context.annotation.Configuration;
 public class AdapterBeansConfig {
 
     @Bean
-    public ParameterAdapter parameterAdapter(){
+    public ParameterAdapter parameterAdapter() {
         return new ParameterAdapterImpl();
     }
+
     @Bean
-    public StageAdapter stageAdapter(ParameterAdapter parameterAdapter){
+    public StageAdapter stageAdapter(ParameterAdapter parameterAdapter) {
         return new StageAdapterImpl(parameterAdapter);
     }
 
     @Bean
-    public ParameterDataAdapter parameterDataAdapter(){
+    public ParameterDataAdapter parameterDataAdapter() {
         return new ParameterDataAdapterImpl();
     }
 
     @Bean
-    public StageDataAdapter stageDataAdapter(ParameterDataAdapter parameterDataAdapter){
+    public StageDataAdapter stageDataAdapter(ParameterDataAdapter parameterDataAdapter) {
         return new StageDataAdapterImpl(parameterDataAdapter);
     }
 
     @Bean
-    public ParameterDefinitionAdapter parameterDefinitionAdapter(){
+    public ParameterDefinitionAdapter parameterDefinitionAdapter() {
         return new ParameterDefinitionAdapterImpl();
     }
 
     @Bean
-    public TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter){
+    public TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter) {
         return new TechnicalStageDefinitionAdapterImpl(parameterDefinitionAdapter);
     }
 }

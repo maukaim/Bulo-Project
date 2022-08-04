@@ -3,7 +3,6 @@ package com.maukaim.bulo.io.definitions;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinitionData implements ParameterDefinitionInterface {
-
     private String name;
     private String valueType;
     private String hint;

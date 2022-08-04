@@ -7,5 +7,4 @@ import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
 
 public interface TechnicalStageValidator {
     ValidationReport validate(TechnicalStageData stageData, TechnicalStageDefinition definition);
-
 }

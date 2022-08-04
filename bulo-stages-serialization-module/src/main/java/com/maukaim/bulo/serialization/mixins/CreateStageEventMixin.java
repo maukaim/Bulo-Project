@@ -10,5 +10,6 @@ public class CreateStageEventMixin {
     @JsonCreator
     public CreateStageEventMixin(
             @JsonProperty("stageData") StageData stageData,
-            @JsonProperty("instant") Instant instant){}
+            @JsonProperty("instant") Instant instant) {
+    }
 }

@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.io.stages.ParameterData;
 
-import java.time.Instant;
 import java.util.List;
 
 public class FunctionalStageDataMixin {
     @JsonCreator
-    public FunctionalStageDataMixin(@JsonProperty("parameters") List<ParameterData> parameters){}
+    public FunctionalStageDataMixin(@JsonProperty("parameters") List<ParameterData> parameters) {
+    }
 }

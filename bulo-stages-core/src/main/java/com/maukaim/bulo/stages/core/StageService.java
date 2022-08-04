@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface StageService {
     List<Stage> getAll();
+
     Stage getById(String id);
+
     StageCreateReport addStage(StageData stageData);
+
     Stage remove(String stageId);
 }

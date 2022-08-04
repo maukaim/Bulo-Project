@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface TechnicalStageDefinitionService {
     TechnicalStageDefinition put(TechnicalStageDefinitionData data);
+
     TechnicalStageDefinition remove(String definitionId);
+
     TechnicalStageDefinition getById(String definitionId);
+
     List<TechnicalStageDefinition> getAll();
 }

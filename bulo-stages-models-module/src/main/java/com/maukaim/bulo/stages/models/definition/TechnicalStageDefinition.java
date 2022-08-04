@@ -4,7 +4,7 @@ import com.maukaim.bulo.commons.models.TechnicalStageDefinitionInterface;
 
 import java.util.List;
 
-public class TechnicalStageDefinition  implements TechnicalStageDefinitionInterface {
+public class TechnicalStageDefinition implements TechnicalStageDefinitionInterface {
     private String id;
     private List<ParameterDefinition> parameters;
 

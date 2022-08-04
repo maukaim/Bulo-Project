@@ -8,11 +8,11 @@ public class ValidationReport {
 
     public static final ValidationReport DEFAULT_SUCCESS_REPORT = yes();
 
-    public static ValidationReport no(List<String> details){
+    public static ValidationReport no(List<String> details) {
         return new ValidationReport(false, details);
     }
 
-    public static ValidationReport yes(){
+    public static ValidationReport yes() {
         return new ValidationReport(true, List.of());
     }
 

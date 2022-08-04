@@ -39,9 +39,8 @@ public class StagesController {
     }
 
     @PostMapping(value = "/onUpdateEvent")
-    public ResponseEntity<Stage> onExternalUpdate(@RequestBody StageUpdateEvent event){
+    public ResponseEntity<Stage> onExternalUpdate(@RequestBody StageUpdateEvent event) {
         this.consumer.consume(event);
         return ResponseEntity.ok(this.service.getById(event.getStageId()));
     }
-
 }

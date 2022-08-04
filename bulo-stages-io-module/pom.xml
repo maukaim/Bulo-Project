@@ -18,5 +18,4 @@
             <version>${bulo.commons.version}</version>
         </dependency>
     </dependencies>
-
 </project>

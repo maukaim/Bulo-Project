@@ -18,7 +18,7 @@ public class DeleteStageEvent implements ExternalEvent {
         return instant;
     }
 
-    public String getStageId(){
+    public String getStageId() {
         return stageId;
     }
 

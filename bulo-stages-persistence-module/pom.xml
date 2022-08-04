@@ -11,7 +11,6 @@
 
     <artifactId>bulo-stages-persistency-module</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
