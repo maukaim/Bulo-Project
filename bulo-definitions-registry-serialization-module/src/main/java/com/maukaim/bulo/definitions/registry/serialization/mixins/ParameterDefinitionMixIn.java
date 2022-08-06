@@ -8,7 +8,7 @@ public class ParameterDefinitionMixIn {
     @JsonCreator
     public ParameterDefinitionMixIn(
             @JsonProperty("name") String name,
-            @JsonProperty("type") Class<?> type,
+            @JsonProperty("valueType") String valueType,
             @JsonProperty("hint") String hint,
             @JsonProperty("description") String description,
             @JsonProperty("required") boolean required) {

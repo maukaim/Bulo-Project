@@ -9,7 +9,7 @@ import com.maukaim.bulo.definitions.registry.serialization.mixins.*;
 
 import java.util.Map;
 
-public class DefinitionsRegistryMixinsConfig {
+public class MixinsConfig {
 
     public static Map<Class<?>, Class<?>> DEFINITIONS_REGISTRY_JACKSON_MIXIN = Map.of(
             TechnicalStageDefinitionDeclarationEvent.class, TechnicalStageDefinitionDeclarationEventMixIn.class,

@@ -1,26 +1,29 @@
 package com.maukaim.bulo.definitions.registry.io.model;
 
-public class ParameterDefinition {
+import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
+
+public class ParameterDefinition implements ParameterDefinitionInterface {
     private String name;
-    private Class type;
+    private String valueType;
     private String hint;
     private String description;
     private Boolean required;
 
-    public ParameterDefinition(String name, Class type, String hint, String description, boolean required) {
+    public ParameterDefinition(String name, String valueType, String hint, String description, boolean required) {
         this.name = name;
-        this.type = type;
+        this.valueType = valueType;
         this.hint = hint;
         this.description = description;
         this.required = required;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public Class<?> getType() {
-        return type;
+    public String getValueType() {
+        return valueType;
     }
 
     public String getHint() {
@@ -39,7 +42,7 @@ public class ParameterDefinition {
     public String toString() {
         return "Parameters{" +
                 "key='" + name + '\'' +
-                ", type=" + type +
+                ", valueType=" + valueType +
                 ", hint='" + hint + '\'' +
                 ", description='" + description + '\'' +
                 ", required=" + required +

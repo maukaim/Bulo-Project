@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.registry.core;
 
 import com.maukaim.bulo.definitions.registry.io.TechnicalStageDefinitionPublisher;
-import com.maukaim.bulo.definitions.registry.io.model.TSDEventType;
+import com.maukaim.bulo.commons.io.DefinitionEventType;
 import com.maukaim.bulo.definitions.registry.io.model.TechnicalStageDefinition;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class TechnicalStageDefinitionServiceImpl implements TechnicalStageDefini
         } else {
             throw new RuntimeException("Definition rejected: " + definition.getTechnicalStageDefinitionId());
         }
-        this.definitionPublisher.publish(TSDEventType.UPDATE, definition);
+        this.definitionPublisher.publish(DefinitionEventType.UPDATE, definition);
     }
 
     @Override

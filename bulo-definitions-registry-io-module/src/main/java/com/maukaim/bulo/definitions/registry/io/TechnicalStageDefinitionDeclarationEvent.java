@@ -31,9 +31,9 @@ public class TechnicalStageDefinitionDeclarationEvent implements ExternalEvent {
 
     @Override
     public String toString() {
-        return "DeclareStageModelEvent{" +
+        return "TechnicalStageDefinitionDeclarationEvent{" +
                 "stageExecutorId='" + stageExecutorId + '\'' +
-                ", stageModel=" + technicalStageDefinition +
+                ", technicalStageDefinition=" + technicalStageDefinition +
                 ", instant=" + instant +
                 '}';
     }

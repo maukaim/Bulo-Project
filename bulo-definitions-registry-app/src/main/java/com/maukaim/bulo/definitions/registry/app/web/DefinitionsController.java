@@ -20,7 +20,7 @@ public class DefinitionsController implements TechnicalStageDefinitionConsumer<R
 
     @Override
     @PostMapping(value = "/register")
-    public ResponseEntity<?> register(@RequestBody TechnicalStageDefinitionDeclarationEvent event) {
+    public ResponseEntity<?> consume(@RequestBody TechnicalStageDefinitionDeclarationEvent event) {
         this.service.add(event.getStageExecutorId(), event.getTechnicalStageDefinition());
         return ResponseEntity.ok().build();
     }

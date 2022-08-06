@@ -3,6 +3,7 @@ package com.maukaim.bulo.definitions.registry.io.model;
 import java.util.List;
 import java.util.Map;
 
+// TODO: should go to a models-module, as per the new architecture.
 public class TechnicalStageDefinition {
     private String technicalStageDefinitionId;
     private Map<String, StageInputDefinition> inputsByName;
