@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maukaim.bulo</groupId>
-    <artifactId>bulo-stage-run-executor-services</artifactId>
+    <artifactId>bulo-executor-services</artifactId>
     <version>${revision}</version>
-
     <packaging>pom</packaging>
 
     <properties>
@@ -20,5 +19,11 @@
     </properties>
 
     <modules>
+        <module>bulo-executor-app</module>
+        <module>bulo-executor-core</module>
+        <module>bulo-executor-io-module</module>
+        <module>bulo-executor-serialization-module</module>
+        <module>bulo-executor-default-runners</module>
+        <module>bulo-executor-persistence-module</module>
     </modules>
 </project>
