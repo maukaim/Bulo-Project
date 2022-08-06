@@ -1,6 +1,6 @@
 package com.maukaim.bulo.commons.io;
 
-public interface StageRunEvent extends ExternalEvent {
+public interface IStageRunEvent extends ExternalEvent {
     StageRunEventType getEventType();
     String getStageRunId();
 }
