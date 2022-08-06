@@ -20,9 +20,14 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-stages-models-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-core</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
     </dependencies>
-
 </project>
