@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-stages-persistency-module</artifactId>
+    <artifactId>bulo-stages-persistence-module</artifactId>
 
     <dependencies>
         <dependency>
