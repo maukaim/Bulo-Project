@@ -1,9 +1,9 @@
 package com.maukaim.bulo.runs.orchestrator.core.stagerun;
 
 import com.maukaim.bulo.runs.orchestrator.core.flowrun.FlowRunService;
-import com.maukaim.bulo.commons.io.StageRunEvent;
+import com.maukaim.bulo.commons.io.IStageRunEvent;
 
-public abstract class StageEventProcessor<SE extends StageRunEvent> {
+public abstract class StageEventProcessor<SE extends IStageRunEvent> {
 
     protected final FlowRunService flowRunService;
 
@@ -11,7 +11,7 @@ public abstract class StageEventProcessor<SE extends StageRunEvent> {
         this.flowRunService = flowRunService;
     }
 
-    public void castAndProcess(StageRunEvent event, String flowRunId) {
+    public void castAndProcess(IStageRunEvent event, String flowRunId) {
         SE casted = this.getExpectedStageEventClass().cast(event);
         this.process(casted, flowRunId);
     }

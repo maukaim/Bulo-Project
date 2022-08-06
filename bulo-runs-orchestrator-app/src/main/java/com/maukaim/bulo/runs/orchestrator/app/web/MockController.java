@@ -8,7 +8,7 @@ import com.maukaim.bulo.runs.orchestrator.io.in.AcknowledgeRequestStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.io.in.RunCancelledStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.io.in.RunFailedStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.io.in.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.commons.io.StageRunEvent;
+import com.maukaim.bulo.commons.io.IStageRunEvent;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.StageEventManager;
 import com.maukaim.bulo.runs.orchestrator.core.stagerun.StageRunCache;
 import com.maukaim.bulo.runs.orchestrator.io.in.StartRunStageRunEvent;
@@ -61,7 +61,7 @@ public class MockController {
         return standardProcess(event);
     }
 
-    private ResponseEntity<FlowRunView> standardProcess(StageRunEvent event){
+    private ResponseEntity<FlowRunView> standardProcess(IStageRunEvent event){
         this.stageEventManager.process(event);
         return ResponseEntity.ok(getLatestView(this.stageRuncache.getFlowRunId(event.getStageRunId())));
     }
