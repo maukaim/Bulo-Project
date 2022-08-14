@@ -23,7 +23,8 @@
         <module>bulo-executor-core</module>
         <module>bulo-executor-io-module</module>
         <module>bulo-executor-serialization-module</module>
-        <module>bulo-executor-default-runners</module>
-        <module>bulo-executor-persistence-module</module>
+        <module>bulo-executor-data-management-module</module>
+        <module>bulo-executor-internal-api-module</module>
+        <module>bulo-runners</module>
     </modules>
 </project>

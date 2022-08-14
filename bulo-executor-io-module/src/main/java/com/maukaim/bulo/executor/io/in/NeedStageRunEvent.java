@@ -9,14 +9,14 @@ import java.util.Set;
 public class NeedStageRunEvent implements ExternalEvent {
     private String globalStageId;
     private String stageRunId;
-    private Map<String, Set<String>> ancestorStageRunIdsByInputName;
+    private Map<String, Map<String, Set<String>>> ancestorsOutputByInputName; // Map<InputName, Map<AncestorRunId, Set<OutputName>>>
     private Instant instant;
 
 
-    public NeedStageRunEvent(String globalStageId, String stageRunId, Map<String, Set<String>> ancestorStageRunIdsByInputName, Instant instant) {
+    public NeedStageRunEvent(String globalStageId, String stageRunId, Map<String, Map<String,Set<String>>> ancestorStageRunIdsByInputName, Instant instant) {
         this.globalStageId = globalStageId;
         this.stageRunId = stageRunId;
-        this.ancestorStageRunIdsByInputName = ancestorStageRunIdsByInputName;
+        this.ancestorsOutputByInputName = ancestorStageRunIdsByInputName;
         this.instant = instant;
     }
 
@@ -33,8 +33,8 @@ public class NeedStageRunEvent implements ExternalEvent {
         return stageRunId;
     }
 
-    public Map<String, Set<String>> getAncestorStageRunIdsByInputName() {
-        return ancestorStageRunIdsByInputName;
+    public Map<String, Map<String, Set<String>>> getAncestorsOutputByInputName() {
+        return ancestorsOutputByInputName;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class NeedStageRunEvent implements ExternalEvent {
         return "NeedStageRunEvent{" +
                 "globalStageId='" + globalStageId + '\'' +
                 ", stageRunId='" + stageRunId + '\'' +
-                ", ancestorStageRunIdsByInputName=" + ancestorStageRunIdsByInputName +
+                ", ancestorStageRunIdsByInputName=" + ancestorsOutputByInputName +
                 ", instant=" + instant +
                 '}';
     }
