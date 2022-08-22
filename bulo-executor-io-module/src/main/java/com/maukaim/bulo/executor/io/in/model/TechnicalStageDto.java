@@ -1,13 +1,15 @@
-package com.maukaim.bulo.executor.core.api.stages;
+package com.maukaim.bulo.executor.io.in.model;
+
+
+import com.maukaim.bulo.commons.models.StageType;
 
 import java.util.List;
 
-public class Stage {
+public class TechnicalStageDto extends StageDto {
     private String definitionId;
-    protected List<Parameter> parameters;
 
-    public Stage(List<Parameter> parameters, String definitionId) {
-        this.parameters = parameters;
+    public TechnicalStageDto(List<ParameterDto> parameters, String definitionId) {
+        super(StageType.TECHNICAL, parameters);
         this.definitionId = definitionId;
     }
 
@@ -15,14 +17,11 @@ public class Stage {
         return definitionId;
     }
 
-    public List<Parameter> getParameters() {
-        return parameters;
-    }
-
     @Override
     public String toString() {
         return "TechnicalStageData{" +
                 "definitionId='" + definitionId + '\'' +
+                ", stageType=" + stageType +
                 ", parameters=" + parameters +
                 '}';
     }

@@ -2,17 +2,17 @@ package com.maukaim.bulo.executor.io.in;
 
 import com.maukaim.bulo.commons.io.ExternalEvent;
 import com.maukaim.bulo.commons.io.StageUpdateEventType;
-import com.maukaim.bulo.executor.io.in.model.StageData;
+import com.maukaim.bulo.executor.io.in.model.StageDto;
 
 import java.time.Instant;
 
 public class StageUpdateEvent implements ExternalEvent {
     private String stageId;
     private StageUpdateEventType eventType;
-    private StageData stage;
+    private StageDto stage;
     private Instant instant;
 
-    public StageUpdateEvent(String stageId, StageData stage, StageUpdateEventType eventType, Instant instant) {
+    public StageUpdateEvent(String stageId, StageDto stage, StageUpdateEventType eventType, Instant instant) {
         this.stageId = stageId;
         this.stage = stage;
         this.eventType = eventType;
@@ -27,7 +27,7 @@ public class StageUpdateEvent implements ExternalEvent {
         return eventType;
     }
 
-    public StageData getStage() {
+    public StageDto getStage() {
         return stage;
     }
 
