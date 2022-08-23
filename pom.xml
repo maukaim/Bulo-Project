@@ -26,5 +26,7 @@
         <module>bulo-executors-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-users-module</module>
+        <module>app-micro-services</module>
+        <module>app-standalone</module>
     </modules>
 </project>
