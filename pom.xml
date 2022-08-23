@@ -24,5 +24,7 @@
         <module>bulo-users-core</module>
         <module>bulo-users-io-module</module>
         <module>bulo-users-serialization-module</module>
+        <module>bulo-users-data-module</module>
+        <module>bulo-users-data-lifecycle-module</module>
     </modules>
 </project>
