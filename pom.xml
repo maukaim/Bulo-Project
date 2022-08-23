@@ -23,7 +23,7 @@
         <module>bulo-stages-module</module>
         <module>bulo-definitions-registry-service</module>
         <module>bulo-triggers-module</module>
-        <module>bulo-executor-services</module>
+        <module>bulo-executors-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-users-module</module>
     </modules>
