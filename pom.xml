@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maukaim.bulo</groupId>
-    <artifactId>bulo-teams-service</artifactId>
+    <artifactId>bulo-teams-module</artifactId>
     <version>${revision}</version>
 
     <packaging>pom</packaging>
