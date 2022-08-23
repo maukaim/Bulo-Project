@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-definitions-registry-app</artifactId>
+    <artifactId>bulo-definitions-app</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -31,13 +31,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-registry-core</artifactId>
+            <artifactId>bulo-definitions-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-registry-serialization-module</artifactId>
+            <artifactId>bulo-definitions-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

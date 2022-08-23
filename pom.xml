@@ -20,9 +20,9 @@
     </properties>
 
     <modules>
-        <module>bulo-definitions-registry-core</module>
-        <module>bulo-definitions-registry-app</module>
-        <module>bulo-definitions-registry-io-module</module>
-        <module>bulo-definitions-registry-serialization-module</module>
+        <module>bulo-definitions-core</module>
+        <module>bulo-definitions-app</module>
+        <module>bulo-definitions-io-module</module>
+        <module>bulo-definitions-serialization-module</module>
     </modules>
 </project>
