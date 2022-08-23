@@ -4,9 +4,9 @@
 [submodule "bulo-triggers-module"]
 	path = bulo-triggers-module
 	url = git@github.com:maukaim/bulo-triggers-module.git
-[submodule "bulo-runs-orchestrator"]
-	path = bulo-runs-orchestrator-service
-	url = git@github.com:maukaim/bulo-runs-orchestrator.git
+[submodule "bulo-runs-orchestrators-module"]
+	path = bulo-runs-orchestrators-module
+	url = git@github.com:maukaim/bulo-runs-orchestrators-module.git
 [submodule "bulo-flows-service"]
 	path = bulo-flows-service
 	url = git@github.com:maukaim/bulo-flows-service.git

@@ -18,7 +18,7 @@
 
     <modules>
         <module>bulo-common-modules</module>
-        <module>bulo-runs-orchestrator-service</module>
+        <module>bulo-runs-orchestrators-module</module>
         <module>bulo-flows-service</module>
         <module>bulo-stages-module</module>
         <module>bulo-definitions-registry-service</module>
