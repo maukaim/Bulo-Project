@@ -22,9 +22,11 @@
     </properties>
 
     <modules>
-        <module>bulo-runs-orchestrator-app</module>
-        <module>bulo-runs-orchestrator-core</module>
-        <module>bulo-runs-orchestrator-serialization-module</module>
-        <module>bulo-runs-orchestrator-io-module</module>
+        <module>bulo-runs-orchestrators-app</module>
+        <module>bulo-runs-orchestrators-core</module>
+        <module>bulo-runs-orchestrators-serialization-module</module>
+        <module>bulo-runs-orchestrators-io-module</module>
+        <module>bulo-runs-orchestrators-data-module</module>
+        <module>bulo-runs-orchestrators-data-lifecycle-module</module>
     </modules>
 </project>
