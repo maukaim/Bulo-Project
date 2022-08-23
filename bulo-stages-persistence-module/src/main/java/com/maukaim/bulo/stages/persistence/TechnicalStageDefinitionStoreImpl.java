@@ -3,6 +3,7 @@ package com.maukaim.bulo.stages.persistence;
 import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
 import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class TechnicalStageDefinitionStoreImpl implements TechnicalStageDefiniti
     private final Map<String, TechnicalStageDefinition> technicalStageDefinitionById;
 
     public TechnicalStageDefinitionStoreImpl(Map<String, TechnicalStageDefinition> initialCache) {
-        this.technicalStageDefinitionById = initialCache;
+        this.technicalStageDefinitionById = new HashMap<>(initialCache);
     }
 
     @Override
