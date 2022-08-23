@@ -24,8 +24,8 @@
         <module>bulo-stages-core</module>
         <module>bulo-stages-io-module</module>
         <module>bulo-stages-serialization-module</module>
-        <module>bulo-stages-models-module</module>
-        <module>bulo-stages-persistence-module</module>
+        <module>bulo-stages-data-module</module>
+        <module>bulo-stages-data-lifecycle-module</module>
     </modules>
 
 </project>

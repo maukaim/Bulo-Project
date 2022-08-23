@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-models-module</artifactId>
+            <artifactId>bulo-stages-data-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

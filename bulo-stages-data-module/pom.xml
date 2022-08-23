@@ -9,19 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-stages-persistence-module</artifactId>
+    <artifactId>bulo-stages-data-module</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-models-module</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-io-module</artifactId>
-            <version>${revision}</version>
+            <artifactId>bulo-commons-models</artifactId>
+            <version>${bulo.commons.version}</version>
         </dependency>
     </dependencies>
 </project>

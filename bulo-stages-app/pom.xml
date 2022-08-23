@@ -43,7 +43,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-persistence-module</artifactId>
+            <artifactId>bulo-stages-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
