@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bulo-trigger-scheduler</artifactId>
+        <artifactId>bulo-triggers-scheduler</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-trigger-scheduler-app</artifactId>
+    <artifactId>bulo-triggers-scheduler-app</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -31,19 +31,19 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-trigger-scheduler-core</artifactId>
+            <artifactId>bulo-triggers-scheduler-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-trigger-scheduler-cron-spring-engine</artifactId>
+            <artifactId>bulo-triggers-scheduler-cron-spring-engine</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-trigger-scheduler-serialization-module</artifactId>
+            <artifactId>bulo-triggers-scheduler-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
