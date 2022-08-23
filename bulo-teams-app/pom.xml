@@ -37,6 +37,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-teams-data-lifecycle-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-teams-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>

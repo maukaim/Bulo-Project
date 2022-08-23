@@ -24,6 +24,8 @@
         <module>bulo-teams-io-module</module>
         <module>bulo-teams-serialization-module</module>
         <module>bulo-teams-core</module>
+        <module>bulo-teams-data-module</module>
+        <module>bulo-teams-data-lifecycle-module</module>
     </modules>
 
 </project>
