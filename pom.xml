@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maukaim.bulo</groupId>
-    <artifactId>bulo-runs-orchestrator-service</artifactId>
+    <artifactId>bulo-runs-orchestrators-module</artifactId>
     <version>${revision}</version>
 
     <packaging>pom</packaging>
