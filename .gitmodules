@@ -13,9 +13,9 @@
 [submodule "bulo-definitions-registry-service"]
 	path = bulo-definitions-registry-service
 	url = git@github.com:maukaim/bulo-definitions-registry-service.git
-[submodule "bulo-stages-service"]
-	path = bulo-stages-service
-	url = git@github.com:maukaim/bulo-stages-service.git
+[submodule "bulo-stages-module"]
+	path = bulo-stages-module
+	url = git@github.com:maukaim/bulo-stages-module.git
 [submodule "bulo-users-module"]
 	path = bulo-users-module
 	url = git@github.com:maukaim/bulo-users-module.git

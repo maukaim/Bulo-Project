@@ -20,7 +20,7 @@
         <module>bulo-common-modules</module>
         <module>bulo-runs-orchestrator-service</module>
         <module>bulo-flows-service</module>
-        <module>bulo-stages-service</module>
+        <module>bulo-stages-module</module>
         <module>bulo-definitions-registry-service</module>
         <module>bulo-triggers-module</module>
         <module>bulo-executor-services</module>
