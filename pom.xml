@@ -25,6 +25,6 @@
         <module>bulo-trigger-services</module>
         <module>bulo-executor-services</module>
         <module>bulo-teams-service</module>
-        <module>bulo-users-service</module>
+        <module>bulo-users-module</module>
     </modules>
 </project>

@@ -16,9 +16,9 @@
 [submodule "bulo-stages-service"]
 	path = bulo-stages-service
 	url = git@github.com:maukaim/bulo-stages-service.git
-[submodule "bulo-users-service"]
+[submodule "bulo-users-module"]
 	path = bulo-users-module
-	url = git@github.com:maukaim/bulo-users-service.git
+	url = git@github.com:maukaim/bulo-users-module.git
 [submodule "bulo-teams-service"]
 	path = bulo-teams-service
 	url = git@github.com:maukaim/bulo-teams-service.git
