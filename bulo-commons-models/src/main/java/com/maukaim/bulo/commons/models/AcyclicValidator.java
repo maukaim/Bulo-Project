@@ -1,4 +1,4 @@
-package com.maukaim.bulo.commons.core;
+package com.maukaim.bulo.commons.models;
 
 import java.util.HashSet;
 import java.util.Map;
