@@ -19,12 +19,12 @@
     </properties>
 
     <modules>
-        <module>bulo-executor-app</module>
-        <module>bulo-executor-core</module>
-        <module>bulo-executor-io-module</module>
-        <module>bulo-executor-serialization-module</module>
-        <module>bulo-executor-data-management-module</module>
-        <module>bulo-executor-internal-api-module</module>
-        <module>bulo-runners</module>
+        <module>bulo-executors-app</module>
+        <module>bulo-executors-core</module>
+        <module>bulo-executors-io-module</module>
+        <module>bulo-executors-serialization-module</module>
+        <module>bulo-executors-data-lifecycle-module</module>
+        <module>bulo-executors-data-module</module>
+        <module>bulo-runners-module</module>
     </modules>
 </project>
