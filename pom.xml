@@ -21,7 +21,7 @@
         <module>bulo-runs-orchestrators-module</module>
         <module>bulo-flows-module</module>
         <module>bulo-stages-module</module>
-        <module>bulo-definitions-registry-service</module>
+        <module>bulo-definitions-module</module>
         <module>bulo-triggers-module</module>
         <module>bulo-executors-module</module>
         <module>bulo-teams-module</module>
