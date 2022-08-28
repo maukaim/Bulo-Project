@@ -1,10 +1,9 @@
 package com.maukaim.bulo.flows.core;
 
-import com.maukaim.bulo.flows.io.FlowData;
+import com.maukaim.bulo.flows.data.models.flow.Flow;
 
 public interface FlowService {
     Flow getFlow(String flowId);
-    Flow create(FlowData flowData);
-    Flow update(FlowData flowData);
+    Flow put(Flow flow);
     Flow archive(String flowId);
 }

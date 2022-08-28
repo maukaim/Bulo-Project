@@ -24,6 +24,8 @@
         <module>bulo-flows-core</module>
         <module>bulo-flows-io-module</module>
         <module>bulo-flows-serialization-module</module>
+        <module>bulo-flows-data-module</module>
+        <module>bulo-flows-data-lifecycle-module</module>
     </modules>
 
 </project>

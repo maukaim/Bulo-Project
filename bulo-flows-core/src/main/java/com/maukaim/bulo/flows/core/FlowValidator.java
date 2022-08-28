@@ -1,8 +1,7 @@
 package com.maukaim.bulo.flows.core;
 
-import com.maukaim.bulo.flows.io.FlowData;
+import com.maukaim.bulo.flows.data.models.flow.Flow;
 
 public interface FlowValidator {
-    boolean validate(FlowData flowData);
-    boolean validate(FlowData flowData, Flow existingFlow);
+    boolean validate(Flow flow) throws FlowValidationException;
 }

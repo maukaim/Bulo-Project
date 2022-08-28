@@ -20,8 +20,8 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-models</artifactId>
-            <version>${bulo.commons.version}</version>
+            <artifactId>bulo-flows-data-module</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 
