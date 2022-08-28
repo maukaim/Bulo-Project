@@ -3,7 +3,6 @@ package com.maukaim.bulo.flows.io.definition;
 import java.util.List;
 import java.util.Map;
 
-// TODO: should go to a models-module, as per the new architecture.
 public class TechnicalStageDefinitionDto {
     private String technicalStageDefinitionId;
     private Map<String, StageInputDefinitionDto> inputsByName;

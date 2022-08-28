@@ -16,7 +16,6 @@ import com.maukaim.bulo.flows.data.models.stage.TechnicalStage;
 import java.util.*;
 import java.util.stream.Collectors;
 
-//TODO: Rewrite validator
 public class FlowValidatorImpl implements FlowValidator {
     private final StageService stageService;
     private final DefinitionService definitionService;
