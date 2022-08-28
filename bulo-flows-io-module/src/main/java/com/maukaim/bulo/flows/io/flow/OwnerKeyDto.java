@@ -3,16 +3,16 @@ package com.maukaim.bulo.flows.io.flow;
 import java.util.Objects;
 
 public class OwnerKeyDto {
-    private final String id;
+    private final String ownerId;
     private final OwnerKeyTypeDto type;
 
-    public OwnerKeyDto(String id, OwnerKeyTypeDto type) {
-        this.id = id;
+    public OwnerKeyDto(String ownerId, OwnerKeyTypeDto type) {
+        this.ownerId = ownerId;
         this.type = type;
     }
 
-    public String getId() {
-        return id;
+    public String getOwnerId() {
+        return ownerId;
     }
 
     public OwnerKeyTypeDto getType() {
@@ -24,11 +24,19 @@ public class OwnerKeyDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OwnerKeyDto ownerKeyDto = (OwnerKeyDto) o;
-        return id.equals(ownerKeyDto.id) && type == ownerKeyDto.type;
+        return ownerId.equals(ownerKeyDto.ownerId) && type == ownerKeyDto.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type);
+        return Objects.hash(ownerId, type);
+    }
+
+    @Override
+    public String toString() {
+        return "OwnerKeyDto{" +
+                "ownerId='" + ownerId + '\'' +
+                ", type=" + type +
+                '}';
     }
 }

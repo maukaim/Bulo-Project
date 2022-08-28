@@ -25,7 +25,7 @@ public class IoDependencyDto {
     public String toString() {
         return "IoDependencyDto{" +
                 "inputId='" + inputId + '\'' +
-                ", inputProvider=" + inputProviders +
+                ", inputProviders=" + inputProviders +
                 '}';
     }
 

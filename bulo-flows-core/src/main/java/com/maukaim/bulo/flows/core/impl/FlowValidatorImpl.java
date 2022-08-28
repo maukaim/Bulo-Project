@@ -44,7 +44,6 @@ public class FlowValidatorImpl implements FlowValidator {
             throw new FlowValidationException("Acyclic test failed on dependency graph. Following reason: " + t.getMessage());
         }
 
-        Set<FlowStageId> flowStageIds = FlowUtils.getAllFlowStageIds(flow);
         for (FlowStage flowStage : flowStages) {
             String stageId = flowStage.getFlowStageId().getGlobalStageId();
             Stage stage = this.stageService.getById(stageId);
@@ -61,40 +60,23 @@ public class FlowValidatorImpl implements FlowValidator {
 
     private void technicalStageValidation(FlowStage flowStage, TechnicalStage stage) throws FlowValidationException {
         String definitionId = stage.getDefinitionId();
-        StageDefinition definition = this.definitionService.getById(definitionId);
-        if (definition == null) {
+        StageDefinition stagDefinition = this.definitionService.getById(definitionId);
+        if (stagDefinition == null) {
             throw new FlowValidationException(String.format(
                     "No definition for technical stage %s so we can't validate the Flow.", stage.getStageId()));
         }
-        this.stageParameterValidator.validate(stage, definition);
+        this.stageParameterValidator.validate(stage, stagDefinition);
 
         Set<IoDependency> ioDependencies = flowStage.getIoDependencies();
-        this.stageInputValidator.validate(ioDependencies, definition);
+        this.stageInputValidator.validate(ioDependencies, stagDefinition);
 
         for (IoDependency ioDependency : ioDependencies) {
             String inputId = ioDependency.getInputId();
             Set<InputProvider> inputProviders = ioDependency.getInputProviders();
-            Map<StageDefinition, Set<String>> verifiableStages = filterAndGetOnlyTechnicalStages(inputProviders);
-            StageInputDefinition stageInputDefinition = definition.getInputsByName().get(inputId);
-            this.flowStageIoValidator.validate(inputId, stageInputDefinition, verifiableStages);
+            StageInputDefinition stageInputDefinition = stagDefinition.getInputsByName().get(inputId);
+            this.flowStageIoValidator.validate(inputId, stageInputDefinition, inputProviders);
         }
 
-    }
-
-    //TODO: perf issue
-    private Map<StageDefinition, Set<String>> filterAndGetOnlyTechnicalStages(Collection<InputProvider> inputProviders) {
-        Map<StageDefinition, Set<String>> result = new HashMap<>();
-        for ( InputProvider inputProvider : inputProviders) {
-            FlowStageId flowStageId = inputProvider.getFlowStageId();
-            Stage stage = this.stageService.getById(flowStageId.getGlobalStageId());
-
-            if (stage instanceof TechnicalStage) {
-                String definitionId = ((TechnicalStage) stage).getDefinitionId();
-                StageDefinition definition = this.definitionService.getById(definitionId);
-                result.put(definition, inputProvider.getOutputIds());
-            }
-        }
-        return result;
     }
 
     private Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies(Set<FlowStage> flowStages) {

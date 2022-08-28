@@ -39,4 +39,14 @@ public class FlowDto implements FlowInterface{
     public boolean isParallelRunAllowed() {
         return allowParallelRun;
     }
+
+    @Override
+    public String toString() {
+        return "FlowDto{" +
+                "flowId='" + flowId + '\'' +
+                ", ownerKeys=" + ownerKeys +
+                ", flowStages=" + flowStages +
+                ", allowParallelRun=" + allowParallelRun +
+                '}';
+    }
 }

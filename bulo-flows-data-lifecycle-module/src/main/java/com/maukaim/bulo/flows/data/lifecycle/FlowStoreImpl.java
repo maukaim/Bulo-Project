@@ -50,6 +50,7 @@ public class FlowStoreImpl implements FlowStore {
     }
 
     public Flow save(Flow flow){
+        System.out.println("Saving flow: " + flow);
         this.flowById.put(flow.getFlowId(), flow);
         return flow;
     }

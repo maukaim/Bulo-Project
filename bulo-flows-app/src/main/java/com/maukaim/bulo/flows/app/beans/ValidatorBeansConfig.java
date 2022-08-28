@@ -24,8 +24,9 @@ public class ValidatorBeansConfig {
     }
 
     @Bean
-    public FlowStageIoValidator flowStageIoValidator(){
-        return new FlowStageIoValidatorImpl();
+    public FlowStageIoValidator flowStageIoValidator(StageService stageService,
+                                                     DefinitionService definitionService){
+        return new FlowStageIoValidatorImpl(definitionService, stageService);
     }
 
     @Bean

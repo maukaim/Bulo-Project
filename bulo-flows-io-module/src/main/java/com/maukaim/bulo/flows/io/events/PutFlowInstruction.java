@@ -14,7 +14,7 @@ public class PutFlowInstruction implements ExternalEvent {
         this.instant = instant;
     }
 
-    public FlowDto getFlowDto() {
+    public FlowDto getFlow() {
         return flowDto;
     }
 
@@ -26,7 +26,7 @@ public class PutFlowInstruction implements ExternalEvent {
     @Override
     public String toString() {
         return "CreateFlowRequest{" +
-                "flowData=" + flowDto +
+                "flow=" + flowDto +
                 '}';
     }
 }

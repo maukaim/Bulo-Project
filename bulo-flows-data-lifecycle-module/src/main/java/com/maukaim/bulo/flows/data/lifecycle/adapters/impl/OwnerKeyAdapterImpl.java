@@ -10,7 +10,7 @@ public class OwnerKeyAdapterImpl implements OwnerKeyAdapter {
 
     @Override
     public OwnerKey adapte(OwnerKeyDto dto) {
-        return new OwnerKey(dto.getId(), adapteOwnerKeyType(dto.getType()));
+        return new OwnerKey(dto.getOwnerId(), adapteOwnerKeyType(dto.getType()));
     }
 
     private OwnerKeyType adapteOwnerKeyType(OwnerKeyTypeDto type) {

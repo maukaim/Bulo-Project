@@ -1,5 +1,6 @@
 package com.maukaim.bulo.flows.app.beans;
 
+import com.maukaim.bulo.flows.app.data.FakeProvider;
 import com.maukaim.bulo.flows.data.FlowStore;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.data.StageStore;
@@ -17,18 +18,24 @@ import java.util.Map;
 public class DataBeansConfig {
 
     @Bean
-    public StageStore stageStore(){
-        return new StageStoreImpl(Map.of());
+    public StageStore stageStore() {
+        return new StageStoreImpl(Map.of(
+                FakeProvider.STAGE_1.getStageId(), FakeProvider.STAGE_1,
+                FakeProvider.STAGE_2.getStageId(), FakeProvider.STAGE_2
+        ));
     }
 
     @Bean
-    public StageDefinitionStore stageDefinitionStore(){
-        return new StageDefinitionStoreImpl(Map.of());
+    public StageDefinitionStore stageDefinitionStore() {
+        return new StageDefinitionStoreImpl(Map.of(
+                FakeProvider.STAGE_DEF_1.getStageDefinitionId(), FakeProvider.STAGE_DEF_1,
+                FakeProvider.STAGE_DEF_2.getStageDefinitionId(), FakeProvider.STAGE_DEF_2
+        ));
     }
 
     @Bean
     public FlowStoreImpl flowStoreImpl(FlowEventPublisher flowEventPublisher,
-                               FlowDtoAdapter flowDtoAdapter){
+                                       FlowDtoAdapter flowDtoAdapter) {
         return new FlowStoreImpl(Map.of(), flowEventPublisher, flowDtoAdapter);
     }
 }

@@ -34,4 +34,12 @@ public class InputProvider {
     public int hashCode() {
         return Objects.hash(flowStageId);
     }
+
+    @Override
+    public String toString() {
+        return "InputProvider{" +
+                "flowStageId=" + flowStageId +
+                ", outputIds=" + outputIds +
+                '}';
+    }
 }

@@ -37,7 +37,7 @@ public class FlowEvent implements ExternalEvent {
     public String toString() {
         return "FlowEvent{" +
                 "instant=" + instant +
-                ", flowDto=" + flow +
+                ", flow=" + flow +
                 ", flowEventType=" + flowEventType +
                 '}';
     }

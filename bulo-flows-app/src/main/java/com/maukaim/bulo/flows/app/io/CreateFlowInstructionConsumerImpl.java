@@ -17,7 +17,7 @@ public class CreateFlowInstructionConsumerImpl implements CreateFlowInstructionC
 
     @Override
     public void onCreateOrUpdate(PutFlowInstruction instruction) {
-        Flow flowToCreate = this.flowAdapter.adapte(instruction.getFlowDto());
+        Flow flowToCreate = this.flowAdapter.adapte(instruction.getFlow());
         this.flowService.put(flowToCreate);
     }
 }
