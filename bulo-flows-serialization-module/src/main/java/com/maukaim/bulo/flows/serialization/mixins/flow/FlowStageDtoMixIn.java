@@ -11,6 +11,6 @@ public class FlowStageDtoMixIn {
 
     @JsonCreator
     public FlowStageDtoMixIn(@JsonProperty("flowStageId") FlowStageId flowStageId,
-                             @JsonProperty("IoDependencies") Set<IoDependencyDto> ioDependencies) {
+                             @JsonProperty("ioDependencies") Set<IoDependencyDto> ioDependencies) {
     }
 }

@@ -12,6 +12,7 @@ public class DeserializerConfig {
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer customizer() {
         return jacksonObjectMapperBuilder -> {
+            jacksonObjectMapperBuilder.autoDetectGettersSetters(false);
             jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(MixinsConfig.SERIALIZATION_JACKSON_MIXIN);
         };
