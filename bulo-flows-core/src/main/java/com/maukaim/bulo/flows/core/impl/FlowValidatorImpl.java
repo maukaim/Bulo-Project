@@ -3,7 +3,6 @@ package com.maukaim.bulo.flows.core.impl;
 import com.maukaim.bulo.commons.models.AcyclicValidator;
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.flows.core.*;
-import com.maukaim.bulo.flows.core.util.FlowUtils;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
@@ -38,12 +37,13 @@ public class FlowValidatorImpl implements FlowValidator {
             throw new FlowValidationException("Dependency Graph can't be null or empty");
         }
 
+        Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies = simplifiedIoDependencies(flowStages);
         try {
-            new AcyclicValidator<>(simplifiedIoDependencies(flowStages)).validate();
+            new AcyclicValidator<>(simplifiedIoDependencies).validate();
         } catch (Throwable t) {
             throw new FlowValidationException("Acyclic test failed on dependency graph. Following reason: " + t.getMessage());
         }
-
+        validateAllAncestorsArePresent(simplifiedIoDependencies);
         for (FlowStage flowStage : flowStages) {
             String stageId = flowStage.getFlowStageId().getGlobalStageId();
             Stage stage = this.stageService.getById(stageId);
@@ -56,6 +56,20 @@ public class FlowValidatorImpl implements FlowValidator {
             }
         }
         return true;
+    }
+
+    private void validateAllAncestorsArePresent(Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies) throws FlowValidationException {
+        for (Map.Entry<FlowStageId, Set<FlowStageId>> entry : simplifiedIoDependencies.entrySet()) {
+            Set<FlowStageId> ancestors = entry.getValue();
+            for (FlowStageId ancestorId : ancestors) {
+                if(!simplifiedIoDependencies.containsKey(ancestorId)){
+                    throw new FlowValidationException(String.format(
+                            "%s marked as ancestor of %s but not present itself in the Flow.",
+                            ancestorId, entry.getKey())
+                    );
+                }
+            }
+        }
     }
 
     private void technicalStageValidation(FlowStage flowStage, TechnicalStage stage) throws FlowValidationException {
@@ -76,7 +90,6 @@ public class FlowValidatorImpl implements FlowValidator {
             StageInputDefinition stageInputDefinition = stagDefinition.getInputsByName().get(inputId);
             this.flowStageIoValidator.validate(inputId, stageInputDefinition, inputProviders);
         }
-
     }
 
     private Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies(Set<FlowStage> flowStages) {
