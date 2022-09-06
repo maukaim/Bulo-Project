@@ -10,6 +10,8 @@ import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.data.models.StageInputDefinition;
 import com.maukaim.bulo.executors.data.result.StageRunResult;
 import com.maukaim.bulo.executors.data.result.StageRunStatus;
+import com.maukaim.bulo.executors.data.runs.StageRunAncestor;
+import com.maukaim.bulo.executors.data.runs.StageRunDependency;
 import com.maukaim.bulo.executors.data.stages.Parameter;
 import com.maukaim.bulo.executors.data.stages.Stage;
 
@@ -34,7 +36,7 @@ public class StageRunEventProcessorImpl implements StageRunEventProcessor {
     }
 
     @Override
-    public void onStageRunRequest(String globalStageId, String stageRunId, Map<String, Map<String, Set<String>>> ancestorsOutputByInputName) {
+    public void onStageRunRequest(String globalStageId, String stageRunId, Set<StageRunDependency> dependencies) {
         this.stageRunResultStore.put(StageRunResult.of(stageRunId, StageRunStatus.ACKNOWLEDGED));
 
         Stage stage = this.stageStore.getById(globalStageId);
@@ -46,11 +48,13 @@ public class StageRunEventProcessorImpl implements StageRunEventProcessor {
 
         Map<String, List<String>> inputsByName = new HashMap<>();
         List<String> failReasons = new ArrayList<>();
-        for (String inputName : ancestorsOutputByInputName.keySet()) {
-            Map<String, Set<String>> outputNamesByAncestorRunIds = ancestorsOutputByInputName.get(inputName);
+        for (StageRunDependency dependency : dependencies) {
+            String inputName = dependency.getInputId();
+            Set<StageRunAncestor> ancestors = dependency.getAncestors();
 
             List<String> inputs = new ArrayList<>();
-            for (String ancestorRunId : outputNamesByAncestorRunIds.keySet()) {
+            for (StageRunAncestor ancestor : ancestors) {
+                String ancestorRunId = ancestor.getStageRunId();
                 StageRunResult runResult = this.stageRunResultStore.getById(ancestorRunId);
                 if (runResult == null) {
                     failReasons.add(String.format("Ancestor's runId %s does not exist.", ancestorRunId));
@@ -58,7 +62,7 @@ public class StageRunEventProcessorImpl implements StageRunEventProcessor {
                     failReasons.add(String.format("Ancestor's run (%s) is not successfully terminated. Current status: %s.",
                             ancestorRunId, runResult.getStatus()));
                 } else {
-                    List<String> outputs = outputNamesByAncestorRunIds.get(ancestorRunId).stream()
+                    List<String> outputs = ancestor.getOutputIds().stream()
                             .map(outputName -> runResult.getOutputs().get(outputName))
                             .collect(Collectors.toList());
                     inputs.addAll(outputs);

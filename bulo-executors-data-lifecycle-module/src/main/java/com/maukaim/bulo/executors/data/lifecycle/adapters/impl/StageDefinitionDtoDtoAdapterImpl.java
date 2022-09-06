@@ -1,6 +1,10 @@
-package com.maukaim.bulo.executors.data.lifecycle.adapters;
+package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
 
+import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
+import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
+import com.maukaim.bulo.executors.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
+import com.maukaim.bulo.executors.data.lifecycle.adapters.StageOutputDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.io.out.model.StageDefinitionDto;
 

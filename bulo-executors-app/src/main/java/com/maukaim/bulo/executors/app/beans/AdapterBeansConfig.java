@@ -1,6 +1,7 @@
 package com.maukaim.bulo.executors.app.beans;
 
 import com.maukaim.bulo.executors.data.lifecycle.adapters.*;
+import com.maukaim.bulo.executors.data.lifecycle.adapters.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,5 +32,15 @@ public class AdapterBeansConfig {
                 stageInputDefinitionDtoAdapter,
                 stageOutputDefinitionDtoAdapter,
                 parameterDefinitionDtoAdapter);
+    }
+
+    @Bean
+    public StageRunDependencyAdapter stageRunDependencyAdapter(StageRunAncestorAdapter stageRunAncestorAdapter) {
+        return new StageRunDependencyAdapterImpl(stageRunAncestorAdapter);
+    }
+
+    @Bean
+    public StageRunAncestorAdapter stageRunAncestorAdapter() {
+        return new StageRunAncestorAdapterImpl();
     }
 }

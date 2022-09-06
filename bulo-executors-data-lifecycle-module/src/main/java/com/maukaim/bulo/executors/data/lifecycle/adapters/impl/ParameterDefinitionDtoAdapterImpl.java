@@ -1,5 +1,6 @@
-package com.maukaim.bulo.executors.data.lifecycle.adapters;
+package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
+import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.models.ParameterDefinition;
 import com.maukaim.bulo.executors.io.out.model.ParameterDefinitionDto;
 

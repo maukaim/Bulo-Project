@@ -7,6 +7,8 @@ import com.maukaim.bulo.executors.io.in.model.StageDto;
 import java.time.Instant;
 
 public class StageUpdateEvent implements ExternalEvent {
+    //TODO: Les StageUpdate ne sont pas encore recup. manque un consumer pour aller droit sur le StageStore
+    // Manque les consumers en regle generale de toutes facons.
     private String stageId;
     private StageUpdateEventType eventType;
     private StageDto stage;

@@ -1,10 +1,11 @@
 package com.maukaim.bulo.executors.core;
 
-import java.util.Map;
+import com.maukaim.bulo.executors.data.runs.StageRunDependency;
+
 import java.util.Set;
 
 public interface StageRunEventProcessor {
     void onStageRunRequest(String globalStageId,
                            String stageRunId,
-                           Map<String, Map<String, Set<String>>> ancestorsOutputByInputName);
+                           Set<StageRunDependency> dependencies);
 }
