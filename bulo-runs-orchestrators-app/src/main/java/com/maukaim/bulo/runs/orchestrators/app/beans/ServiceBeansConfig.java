@@ -5,7 +5,7 @@ import com.maukaim.bulo.runs.orchestrators.core.FlowService;
 import com.maukaim.bulo.runs.orchestrators.core.impl.FlowRunServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.core.impl.FlowServiceImpl;
-import com.maukaim.bulo.runs.orchestrators.data.StageRunConnector;
+import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.impl.StageRunServiceImpl;

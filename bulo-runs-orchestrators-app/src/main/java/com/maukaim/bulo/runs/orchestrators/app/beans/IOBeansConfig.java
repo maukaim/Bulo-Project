@@ -1,5 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
+import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowRunEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.StageRunEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.TriggerEventConsumerImpl;
@@ -8,8 +9,10 @@ import com.maukaim.bulo.runs.orchestrators.app.io.publishers.DummyNeedStageRunCa
 import com.maukaim.bulo.runs.orchestrators.app.io.publishers.DummyNeedStageRunExecutionEventPublisherImpl;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunEventService;
+import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.FlowRunStoreImpl;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.FlowRunAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.flows.FlowAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowRunAdapter;
 import com.maukaim.bulo.runs.orchestrators.io.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,18 +27,24 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public TriggerEventConsumer triggerEventConsumer(FlowRunService flowRunService){
+    public TriggerEventConsumer triggerEventConsumer(FlowRunService flowRunService) {
         return new TriggerEventConsumerImpl(flowRunService);
     }
 
     @Bean
-    public StageRunEventConsumer stageRunEventConsumer(StageRunEventService stageRunEventService){
+    public StageRunEventConsumer stageRunEventConsumer(StageRunEventService stageRunEventService) {
         return new StageRunEventConsumerImpl(stageRunEventService);
     }
 
     @Bean
-    public FlowRunEventPublisher flowRunUpdatePublisher() {
+    public FlowRunEventPublisher flowRunEventPublisher() {
         return new DummyFlowRunEventPublisherImpl();
+    }
+
+    @Bean
+    public FlowEventConsumer flowEventConsumer(FlowAdapter flowAdapter,
+                                               FlowStore flowStore) {
+        return new FlowEventConsumerImpl(flowAdapter, flowStore);
     }
 
     @Bean

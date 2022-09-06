@@ -1,6 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.commons.io.IStageRunEvent;
+import com.maukaim.bulo.runs.orchestrators.core.StageEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunEventService;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 
@@ -32,7 +33,7 @@ public class StageRunEventServiceImpl implements StageRunEventService {
     public void process(IStageRunEvent event) {
         StageEventProcessor<? extends IStageRunEvent> stageEventProcessor = this.processorByEventType.get(event.getClass());
         if (stageEventProcessor != null) {
-            stageEventProcessor.castAndProcess(event, this.stageRunStore.getFlowRunId(event.getStageRunId())); //TODO Here don't manage yet if stageRunNotMapped to anyone;
+            stageEventProcessor.castAndProcess(event, this.stageRunStore.getFlowRunId(event.getStageRunId()));
         } else {
             throw new IllegalArgumentException("Subtype of StageEvent not supported: " + event.getClass().getSimpleName());
         }

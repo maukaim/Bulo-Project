@@ -3,9 +3,10 @@ package com.maukaim.bulo.runs.orchestrators.core.impl;
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
-import com.maukaim.bulo.runs.orchestrators.data.StageRunConnector;
-import com.maukaim.bulo.runs.orchestrators.data.models.StageRun;
+import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.core.factories.StageRunFactory;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -23,15 +24,21 @@ public class StageRunServiceImpl implements StageRunService {
     }
 
     @Override
-    public Map<String, StageRun> startRuns(String flowRunId, Set<FlowStageId> stageIds) {
+    public Map<String, StageRun> startRuns(String flowRunId, Map<FlowStageId, Set<StageRunDependency>> flowStageToRunByDependencies) {
         Map<String, StageRun> result = new HashMap<>();
-        for (FlowStageId stageId : stageIds) {
-            StageRun newRunView = StageRunFactory.requested(flowRunId, stageId);
-            boolean started = this.stageRunConnector.sendRun(stageId.getGlobalStageId(), newRunView.getStageRunId());
-            this.stageRunStore.put(newRunView.getStageRunId(), newRunView.getFlowStageId(), newRunView.getFlowRunId());
+        for (FlowStageId flowStageId : flowStageToRunByDependencies.keySet()) {
+            Set<StageRunDependency> stageRunDependencies = flowStageToRunByDependencies.get(flowStageId);
+            StageRun newRunView = StageRunFactory.requested(flowRunId, flowStageId, stageRunDependencies);
+            boolean started = this.stageRunConnector.sendRun(flowStageId.getGlobalStageId(), newRunView.getStageRunId(), stageRunDependencies);
+            this.stageRunStore.put(newRunView.getStageRunId(), newRunView);
             result.put(newRunView.getStageRunId(), started ? newRunView : StageRunFactory.failed(newRunView, Instant.now()));
         }
         return result;
+    }
+
+    @Override
+    public StageRun getById(String stageRunId) {
+        return this.stageRunStore.getById(stageRunId);
     }
 
     @Override

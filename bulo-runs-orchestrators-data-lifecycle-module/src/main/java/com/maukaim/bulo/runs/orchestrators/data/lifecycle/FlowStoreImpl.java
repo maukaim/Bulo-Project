@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle;
 
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
-import com.maukaim.bulo.runs.orchestrators.data.models.Flow;
+import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,7 +15,12 @@ public class FlowStoreImpl implements FlowStore {
     }
 
     @Override
-    public void put(String flowId, Flow flow) {
-        this.cache.put(flowId, flow);
+    public void put(Flow flow) {
+        this.cache.put(flow.getFlowId(), flow);
+    }
+
+    @Override
+    public Flow remove(String flowId) {
+        return this.cache.remove(flowId);
     }
 }

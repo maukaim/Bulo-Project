@@ -1,12 +1,12 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle;
 
-import com.maukaim.bulo.runs.orchestrators.data.models.CloseableEntityLock;
-import com.maukaim.bulo.runs.orchestrators.data.models.FlowRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.CloseableEntityLock;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.FlowRunDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowRunDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.io.FlowRunEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.io.both.FlowRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.both.model.FlowRunDto;
+import com.maukaim.bulo.runs.orchestrators.io.events.FlowRunEvent;
+import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunDto;
 
 import java.time.Instant;
 import java.util.Map;

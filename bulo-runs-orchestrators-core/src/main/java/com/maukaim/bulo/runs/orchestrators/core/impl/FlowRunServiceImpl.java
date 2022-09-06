@@ -5,18 +5,21 @@ import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.exceptions.FlowRunStartException;
 import com.maukaim.bulo.runs.orchestrators.core.FlowService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
+import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
-import com.maukaim.bulo.runs.orchestrators.data.models.Flow;
+import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FlowRunFactory;
-import com.maukaim.bulo.runs.orchestrators.data.models.FlowRun;
-import com.maukaim.bulo.runs.orchestrators.data.models.FlowRunStatus;
-import com.maukaim.bulo.runs.orchestrators.data.models.StageRun;
-import com.maukaim.bulo.runs.orchestrators.data.models.CloseableEntityLock;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.CloseableEntityLock;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class FlowRunServiceImpl implements FlowRunService {
 
@@ -35,23 +38,28 @@ public class FlowRunServiceImpl implements FlowRunService {
     @Override
     public FlowRun startRun(String flowId, Set<FlowStageId> rootStageIds) {
         Flow flow = this.getExistingFlow(flowId);
-
+        Set<FlowStageId> rootIds = FlowUtils.getRootIds(flow);
         Set<FlowStageId> flowStagesToRunId;
         if (rootStageIds == null || rootStageIds.isEmpty()) {
-            flowStagesToRunId = flow.getExecutionGraph().getRootsIds();
-        } else if (flow.areRootStages(rootStageIds)) {
+            flowStagesToRunId = rootIds;
+        } else if (rootIds.containsAll(rootStageIds)) {
             flowStagesToRunId = rootStageIds;
         } else {
-            throw new FlowRunStartException(String.format("Flow [%s] does not recognize one of the Stages %s as a root.",
+            throw new FlowRunStartException(String.format("Flow [%s] does not recognize one of the FlowStages %s as a root.",
                     flow.getFlowId(),
                     rootStageIds));
         }
 
         FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunStore.add(newRunNonPersisted);
-        Map<String, StageRun> stageRunById = this.stageRunService.startRuns(newRunPersisted.getFlowRunId(), flowStagesToRunId);
+        Map<String, StageRun> stageRunById = this.stageRunService.startRuns(newRunPersisted.getFlowRunId(), resolve(flowStagesToRunId));
 
         return this.computeStageRunViewUnderLock(newRunPersisted.getFlowRunId(), (previous) -> stageRunById);
+    }
+
+    private Map<FlowStageId, Set<StageRunDependency>> resolve(Set<FlowStageId> flowStageIds) {
+        return flowStageIds == null ? Map.of() : flowStageIds.stream()
+                .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of()));
     }
 
     private Flow getExistingFlow(String flowId) {

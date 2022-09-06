@@ -1,16 +1,15 @@
 package com.maukaim.bulo.runs.orchestrators.serialization;
 
-import com.maukaim.bulo.runs.orchestrators.io.both.FlowRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.in.*;
-import com.maukaim.bulo.runs.orchestrators.io.out.NeedStageRunCancellationEvent;
-import com.maukaim.bulo.runs.orchestrators.io.out.NeedStageRunExecutionEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.*;
+import com.maukaim.bulo.runs.orchestrators.io.events.NeedStageRunCancellationEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.NeedStageRunExecutionEvent;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.*;
 
 import java.util.Map;
 
 public class MixinsConfig {
 
-    public static Map<Class<?>, Class<?>> SERIALIZATION_JACKSON_MIXIN = Map.of(
+    public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = Map.of(
             AcknowledgeRequestStageRunEvent.class, AcknowledgeRequestStageRunEventMixIn.class,
             RunCancelledStageRunEvent.class, StandardStageRunEventMixin.class,
             RunFailedStageRunEvent.class, StandardStageRunEventMixin.class,

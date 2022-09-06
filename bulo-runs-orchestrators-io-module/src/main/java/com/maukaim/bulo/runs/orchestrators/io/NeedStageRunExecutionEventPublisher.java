@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.io;
 
-import com.maukaim.bulo.runs.orchestrators.io.out.NeedStageRunExecutionEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.NeedStageRunExecutionEvent;
 
 public interface NeedStageRunExecutionEventPublisher {
     boolean publish(NeedStageRunExecutionEvent needStageRunExecutionEvent);

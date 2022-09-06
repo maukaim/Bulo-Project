@@ -1,10 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.app.data;
 
-import com.maukaim.bulo.runs.orchestrators.data.models.UnmodifiableAcyclicExecutionGraph;
+import com.maukaim.bulo.runs.orchestrators.data.flow.*;
 import com.maukaim.bulo.commons.models.FlowStageId;
-import com.maukaim.bulo.runs.orchestrators.data.models.Flow;
 
-import java.util.Map;
 import java.util.Set;
 
 public class FakeContextProvider {
@@ -17,17 +15,37 @@ public class FakeContextProvider {
     public static final FlowStageId STAGE_6 = FlowStageId.of("STAGE_6");
 
     public static final Flow FLOW_1 = new Flow("FLOW_1",
-            "Julien",
-            "FOLAB",
-            new UnmodifiableAcyclicExecutionGraph(
-                    Map.of(
-                            STAGE_1, Set.of(),
-                            STAGE_2, Set.of(),
-                            STAGE_3, Set.of(STAGE_1),
-                            STAGE_1_BIS, Set.of(STAGE_3),
-                            STAGE_4, Set.of(STAGE_1, STAGE_2),
-                            STAGE_5, Set.of(STAGE_3, STAGE_2),
-                            STAGE_6, Set.of(STAGE_3)
+            Set.of(new OwnerKey("Maukaim", OwnerKeyType.TEAM)),
+            Set.of(
+                    new FlowStage(STAGE_1, Set.of()),
+                    new FlowStage(STAGE_2, Set.of()),
+                    new FlowStage(STAGE_3, Set.of(
+                            new InputDependency("INPUT_1", Set.of(
+                                    new InputProvider(STAGE_1, Set.of("OUTPUT_1"))
+                            ))
                     )),
+                    new FlowStage(STAGE_1_BIS, Set.of(
+                            new InputDependency("INPUT_1", Set.of(
+                                    new InputProvider(STAGE_3, Set.of("OUTPUT_1"))
+                            ))
+                    )),
+                    new FlowStage(STAGE_4, Set.of(
+                            new InputDependency("INPUT_1", Set.of(
+                                    new InputProvider(STAGE_1, Set.of("OUTPUT_1")),
+                                    new InputProvider(STAGE_2, Set.of("OUTPUT_1"))
+                            ))
+                    )),
+                    new FlowStage(STAGE_5, Set.of(
+                            new InputDependency("INPUT_1", Set.of(
+                                    new InputProvider(STAGE_3, Set.of("OUTPUT_1")),
+                                    new InputProvider(STAGE_2, Set.of("OUTPUT_1"))
+                            ))
+                    )),
+                    new FlowStage(STAGE_6, Set.of(
+                            new InputDependency("INPUT_1", Set.of(
+                                    new InputProvider(STAGE_3, Set.of("OUTPUT_1"))
+                            ))
+                    ))
+            ),
             false);
 }

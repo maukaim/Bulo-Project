@@ -13,7 +13,7 @@ public class DeserializerConfig {
     public Jackson2ObjectMapperBuilderCustomizer customizer() {
         return jacksonObjectMapperBuilder -> {
             jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXIN);
-            jacksonObjectMapperBuilder.mixIns(MixinsConfig.SERIALIZATION_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(MixinsConfig.ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN);
         };
     }
 }

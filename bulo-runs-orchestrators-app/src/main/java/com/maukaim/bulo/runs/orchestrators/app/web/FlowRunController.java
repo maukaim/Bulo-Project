@@ -3,12 +3,12 @@ package com.maukaim.bulo.runs.orchestrators.app.web;
 import com.maukaim.bulo.runs.orchestrators.app.web.view.FlowRunView;
 import com.maukaim.bulo.runs.orchestrators.app.web.view.FlowRunViewFactory;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.FlowRunStoreException;
-import com.maukaim.bulo.runs.orchestrators.data.models.FlowRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.io.FlowRunEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.io.TriggerEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.io.both.FlowRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.in.BasicTriggerEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.FlowRunEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.BasicTriggerEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/flows/runs")
+@RequestMapping("api/v1/orchestrator/flowRuns")
 public class FlowRunController {
     private final FlowRunService flowRunService;
     private final TriggerEventConsumer triggerEventConsumer;
@@ -52,7 +52,7 @@ public class FlowRunController {
     }
 
     @PostMapping(value = "/onUpdate")
-    public ResponseEntity<FlowRunView> startFlow(@RequestBody FlowRunEvent flowRunEvent) {
+    public ResponseEntity<FlowRunView> flowRunEvent(@RequestBody FlowRunEvent flowRunEvent) {
         this.flowRunEventConsumer.onFlowRunEvent(flowRunEvent);
         FlowRun flowRunPersisted = this.flowRunService.getById(flowRunEvent.getFlowRunDto().getFlowRunId());
         return ResponseEntity.ok(FlowRunViewFactory.build(flowRunPersisted));
