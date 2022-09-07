@@ -14,6 +14,7 @@ public abstract class StageDto {
         this.parameters = parameters;
     }
 
+
     public StageType getStageType() {
         return stageType;
     }

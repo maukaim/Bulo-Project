@@ -4,7 +4,7 @@ import com.maukaim.bulo.commons.io.StageRunEventType;
 
 import java.time.Instant;
 
-public final class AcknowledgeStageRunEvent extends StageRunEvent {
+public class AcknowledgeStageRunEvent extends StageRunEvent {
     private final String executorId;
 
     public AcknowledgeStageRunEvent(String executorId,

@@ -24,10 +24,9 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public StageDefinitionDtoAdapter technicalStageDefinitionDtoAdapter(
-            ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
-            StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter,
-            StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter) {
+    public StageDefinitionDtoAdapter technicalStageDefinitionDtoAdapter(ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
+                                                                        StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter,
+                                                                        StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter) {
         return new StageDefinitionDtoDtoAdapterImpl(
                 stageInputDefinitionDtoAdapter,
                 stageOutputDefinitionDtoAdapter,
@@ -42,5 +41,25 @@ public class AdapterBeansConfig {
     @Bean
     public StageRunAncestorAdapter stageRunAncestorAdapter() {
         return new StageRunAncestorAdapterImpl();
+    }
+
+    @Bean
+    public StageRunResultDtoAdapter stageRunResultDtoAdapter() {
+        return new StageRunResultDtoAdapterImpl();
+    }
+
+    @Bean
+    public StageRunResultAdapter stageRunResultAdapter() {
+        return new StageRunResultAdapterImpl();
+    }
+
+    @Bean
+    public StageAdapter stageAdapter(ParameterAdapter parameterAdapter) {
+        return new StageAdapterImpl(parameterAdapter);
+    }
+
+    @Bean
+    public ParameterAdapter parameterAdapter() {
+        return new ParameterAdapterImpl();
     }
 }

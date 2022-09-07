@@ -5,6 +5,7 @@ import com.maukaim.bulo.executors.core.StageRunnerRegistry;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.executors.data.StageRunResultStore;
 import com.maukaim.bulo.executors.data.StageStore;
+import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunResultDtoAdapter;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.executors.data.lifecycle.StageRunResultStoreImpl;
@@ -14,6 +15,7 @@ import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolver;
 import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolverImpl;
 import com.maukaim.bulo.executors.io.StageDefinitionDeclarationEventPublisher;
 import com.maukaim.bulo.executors.io.StageRunEventPublisher;
+import com.maukaim.bulo.executors.io.StageRunResultEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -37,9 +39,11 @@ public class DataBeansConfig {
     }
 
     @Bean
-    public StageRunResultStore runResultStore(StageRunEventPublisher stageRunEventPublisher,
-                                              StageRunEventResolver runEventResolver) {
-        return new StageRunResultStoreImpl(Map.of(), stageRunEventPublisher, runEventResolver);
+    public StageRunResultStoreImpl runResultStore(StageRunEventPublisher stageRunEventPublisher,
+                                              StageRunEventResolver runEventResolver,
+                                              StageRunResultDtoAdapter stageRunResultDtoAdapter,
+                                              StageRunResultEventPublisher stageRunResultEventPublisher) {
+        return new StageRunResultStoreImpl(Map.of(), stageRunEventPublisher, runEventResolver, stageRunResultEventPublisher, stageRunResultDtoAdapter);
     }
 
     @Bean StageRunEventResolver stageRunEventResolver(){

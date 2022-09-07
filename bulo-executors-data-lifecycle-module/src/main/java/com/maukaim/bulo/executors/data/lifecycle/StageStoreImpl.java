@@ -17,4 +17,14 @@ public class StageStoreImpl implements StageStore {
     public Stage getById(String globalStageId) {
         return this.cache.get(globalStageId);
     }
+
+    @Override
+    public void put(String stageId, Stage stage) {
+        this.cache.put(stageId, stage);
+    }
+
+    @Override
+    public Stage remove(String globalStageId) {
+        return this.cache.remove(globalStageId);
+    }
 }

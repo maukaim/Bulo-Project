@@ -1,7 +1,8 @@
-package com.maukaim.bulo.executors.serialization.mixins;
+package com.maukaim.bulo.executors.serialization.mixins.runs;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.maukaim.bulo.executors.io.in.model.StageRunDependencyDto;
 
 import java.time.Instant;
 import java.util.Map;
@@ -11,7 +12,7 @@ public class NeedStageRunEventMixIn {
     @JsonCreator
     public NeedStageRunEventMixIn(@JsonProperty("stageId") String globalStageId,
                                   @JsonProperty("stageRunId") String stageRunId,
-                                  @JsonProperty("ancestorsByInputName") Map<String, Map<String, Set<String>>> ancestorStageRunIdsByInputName,
+                                  @JsonProperty("dependencies") Set<StageRunDependencyDto> dependencies,
                                   @JsonProperty("instant") Instant instant){
 
     }
