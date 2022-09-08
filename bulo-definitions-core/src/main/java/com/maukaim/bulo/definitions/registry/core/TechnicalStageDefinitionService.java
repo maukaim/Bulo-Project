@@ -1,11 +1,11 @@
 package com.maukaim.bulo.definitions.registry.core;
 
-import com.maukaim.bulo.definitions.registry.io.model.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
 
 import java.util.List;
 
 public interface TechnicalStageDefinitionService {
-    void add(String stageExecutorId, TechnicalStageDefinition definition);
+    void register(String stageExecutorId, TechnicalStageDefinition definition);
 
     TechnicalStageDefinition get(String definitionId);
 

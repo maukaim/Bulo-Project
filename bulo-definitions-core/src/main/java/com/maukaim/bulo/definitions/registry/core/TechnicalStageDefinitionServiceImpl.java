@@ -1,45 +1,41 @@
 package com.maukaim.bulo.definitions.registry.core;
 
-import com.maukaim.bulo.definitions.registry.io.TechnicalStageDefinitionPublisher;
-import com.maukaim.bulo.commons.io.DefinitionEventType;
-import com.maukaim.bulo.definitions.registry.io.model.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.TechnicalStageDefinitionStore;
 
 import java.util.List;
 
 public class TechnicalStageDefinitionServiceImpl implements TechnicalStageDefinitionService {
     private final List<TechnicalStageDefinitionValidator> validators;
-    private final TechnicalStageDefinitionRepository definitionRepository;
-    private final TechnicalStageDefinitionPublisher definitionPublisher;
+    private final TechnicalStageDefinitionStore definitionStore;
 
-    public TechnicalStageDefinitionServiceImpl(TechnicalStageDefinitionRepository definitionRepository,
-                                               List<TechnicalStageDefinitionValidator> validators,
-                                               TechnicalStageDefinitionPublisher definitionPublisher) {
-        this.definitionRepository = definitionRepository;
+    public TechnicalStageDefinitionServiceImpl(TechnicalStageDefinitionStore definitionStore,
+                                               List<TechnicalStageDefinitionValidator> validators) {
+        this.definitionStore = definitionStore;
         this.validators = validators;
-        this.definitionPublisher = definitionPublisher;
     }
 
     @Override
-    public void add(String stageExecutorId, TechnicalStageDefinition definition) {
-        TechnicalStageDefinition existingDefinition = definitionRepository.get(definition.getTechnicalStageDefinitionId());
+    public void register(String stageExecutorId, TechnicalStageDefinition definition) {
+        TechnicalStageDefinition existingDefinition = definitionStore.get(definition.getTechnicalStageDefinitionId());
         if (existingDefinition != null && existingDefinition.equals(definition)) {
-            this.definitionRepository.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
+            this.definitionStore.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
         } else if (this.validators.stream().allMatch(validator -> validator.validate(definition))) {
-            this.definitionRepository.putDefinition(definition);
-            this.definitionRepository.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
+            this.definitionStore.addDefinition(definition);
+            this.definitionStore.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
         } else {
             throw new RuntimeException("Definition rejected: " + definition.getTechnicalStageDefinitionId());
         }
-        this.definitionPublisher.publish(DefinitionEventType.UPDATE, definition);
+
     }
 
     @Override
     public TechnicalStageDefinition get(String definitionId) {
-        return this.definitionRepository.get(definitionId);
+        return this.definitionStore.get(definitionId);
     }
 
     @Override
     public List<TechnicalStageDefinition> getAll() {
-        return this.definitionRepository.getAll();
+        return this.definitionStore.getAll();
     }
 }

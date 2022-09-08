@@ -1,8 +1,8 @@
 package com.maukaim.bulo.definitions.registry.core.validators;
 
+import com.maukaim.bulo.definitions.data.ParameterDefinition;
+import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionValidator;
-import com.maukaim.bulo.definitions.registry.io.model.ParameterDefinition;
-import com.maukaim.bulo.definitions.registry.io.model.TechnicalStageDefinition;
 
 import java.util.List;
 
