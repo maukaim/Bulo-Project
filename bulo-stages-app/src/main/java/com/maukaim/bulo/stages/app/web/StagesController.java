@@ -1,12 +1,18 @@
 package com.maukaim.bulo.stages.app.web;
 
 
-import com.maukaim.bulo.io.CreateStageEvent;
-import com.maukaim.bulo.io.DeleteStageEvent;
-import com.maukaim.bulo.io.StageUpdateEvent;
-import com.maukaim.bulo.io.StageUpdateEventConsumer;
 import com.maukaim.bulo.stages.core.StageService;
+import com.maukaim.bulo.stages.io.CreateStageEventConsumer;
+import com.maukaim.bulo.stages.io.DeleteStageEventConsumer;
+import com.maukaim.bulo.stages.io.StageUpdateEventConsumer;
+import com.maukaim.bulo.stages.io.events.CreateStageEvent;
+import com.maukaim.bulo.stages.io.events.DeleteStageEvent;
+import com.maukaim.bulo.stages.io.events.StageUpdateEvent;
+import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
+import com.maukaim.bulo.stages.io.models.stages.StageDto;
+import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
 import com.maukaim.bulo.stages.models.stage.Stage;
+import com.maukaim.bulo.stages.persistence.adapters.StageAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,21 +22,31 @@ import java.util.Collection;
 @RequestMapping("api/v1/stages")
 public class StagesController {
     private final StageService service;
-    private StageUpdateEventConsumer consumer;
+    private final StageUpdateEventConsumer consumer;
+    private final DeleteStageEventConsumer deleteStageEventConsumer;
+    private final CreateStageEventConsumer createStageEventConsumer;
 
-    public StagesController(StageService service, StageUpdateEventConsumer consumer) {
+    public StagesController(StageService service,
+                            StageUpdateEventConsumer consumer,
+                            DeleteStageEventConsumer deleteStageEventConsumer,
+                            CreateStageEventConsumer createStageEventConsumer) {
         this.service = service;
         this.consumer = consumer;
+        this.deleteStageEventConsumer = deleteStageEventConsumer;
+        this.createStageEventConsumer = createStageEventConsumer;
     }
 
     @PostMapping(value = "/create")
     public ResponseEntity<?> create(@RequestBody CreateStageEvent event) {
-        return ResponseEntity.ok(this.service.addStage(event.getStageData()));
+        String stageId = this.createStageEventConsumer.consume(event);
+        return ResponseEntity.ok(stageId);
     }
 
     @DeleteMapping(value = "/remove")
     public ResponseEntity<?> remove(@RequestBody DeleteStageEvent event) {
-        return ResponseEntity.ok(this.service.remove(event.getStageId()));
+        Stage stageToBeRemoved = this.service.getById(event.getStageId());
+        this.deleteStageEventConsumer.consume(event);
+        return ResponseEntity.ok(stageToBeRemoved);
     }
 
     @GetMapping(value = "/getAll")

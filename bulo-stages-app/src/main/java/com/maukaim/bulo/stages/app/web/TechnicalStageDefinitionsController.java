@@ -1,7 +1,8 @@
 package com.maukaim.bulo.stages.app.web;
 
 
-import com.maukaim.bulo.io.TechnicalStageDefinitionEvent;
+import com.maukaim.bulo.stages.io.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
 import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
 import org.springframework.http.ResponseEntity;
@@ -13,18 +14,17 @@ import java.util.Collection;
 @RequestMapping("api/v1/definitions")
 public class TechnicalStageDefinitionsController {
     private final TechnicalStageDefinitionService service;
+    private final TechnicalStageDefinitionEventConsumer definitionEventConsumer;
 
-    public TechnicalStageDefinitionsController(TechnicalStageDefinitionService service) {
+    public TechnicalStageDefinitionsController(TechnicalStageDefinitionService service, TechnicalStageDefinitionEventConsumer definitionEventConsumer) {
         this.service = service;
+        this.definitionEventConsumer = definitionEventConsumer;
     }
 
     @PostMapping(value = "/onEvent")
     public ResponseEntity<TechnicalStageDefinition> onEvent(@RequestBody TechnicalStageDefinitionEvent event) {
-        TechnicalStageDefinition definition = switch (event.getEventType()) {
-            case UPDATE -> this.service.put(event.getTechnicalStageDefinition());
-            case DELETE -> this.service.remove(event.getTechnicalStageDefinition().getId());
-        };
-        return ResponseEntity.ok(definition);
+        this.definitionEventConsumer.consume(event);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/getAll")

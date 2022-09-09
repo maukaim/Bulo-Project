@@ -1,7 +1,6 @@
 package com.maukaim.bulo.stages.core;
 
-import com.maukaim.bulo.io.stages.StageData;
-import com.maukaim.bulo.stages.core.stage.StageCreateReport;
+import com.maukaim.bulo.stages.core.validators.StageCreateReport;
 import com.maukaim.bulo.stages.models.stage.Stage;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface StageService {
 
     Stage getById(String id);
 
-    StageCreateReport addStage(StageData stageData);
+    StageCreateReport addStage(Stage stage);
 
     Stage remove(String stageId);
 }

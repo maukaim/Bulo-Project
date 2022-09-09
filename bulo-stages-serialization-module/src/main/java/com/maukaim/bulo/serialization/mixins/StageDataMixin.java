@@ -2,8 +2,8 @@ package com.maukaim.bulo.serialization.mixins;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.maukaim.bulo.io.stages.FunctionalStageData;
-import com.maukaim.bulo.io.stages.TechnicalStageData;
+import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
+import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
 
 @JsonTypeInfo(
         property = "stageType",
@@ -12,8 +12,8 @@ import com.maukaim.bulo.io.stages.TechnicalStageData;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = TechnicalStageData.class, name = "TECHNICAL"),
-        @JsonSubTypes.Type(value = FunctionalStageData.class, name = "FUNCTIONAL")
+        @JsonSubTypes.Type(value = TechnicalStageDto.class, name = "TECHNICAL"),
+        @JsonSubTypes.Type(value = FunctionalStageDto.class, name = "FUNCTIONAL")
 })
 public class StageDataMixin {
 }

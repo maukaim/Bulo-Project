@@ -1,8 +1,10 @@
 package com.maukaim.bulo.stages.app.beans;
 
-import com.maukaim.bulo.stages.core.*;
-import com.maukaim.bulo.stages.core.definitions.TechnicalStageDefinitionServiceImpl;
-import com.maukaim.bulo.stages.core.stage.StageServiceImpl;
+import com.maukaim.bulo.stages.core.StageService;
+import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
+import com.maukaim.bulo.stages.core.impl.StageServiceImpl;
+import com.maukaim.bulo.stages.core.impl.TechnicalStageDefinitionServiceImpl;
+import com.maukaim.bulo.stages.core.validators.TechnicalStageValidator;
 import com.maukaim.bulo.stages.models.StageStore;
 import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
 import org.springframework.context.annotation.Bean;
@@ -12,21 +14,18 @@ import org.springframework.context.annotation.Configuration;
 public class ServiceBeansConfig {
 
     @Bean
-    public TechnicalStageDefinitionService technicalStageDefinitionService(TechnicalStageDefinitionStore technicalStageDefinitionStore,
-                                                                           TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter) {
-        return new TechnicalStageDefinitionServiceImpl(technicalStageDefinitionStore, technicalStageDefinitionAdapter);
+    public TechnicalStageDefinitionService technicalStageDefinitionService(TechnicalStageDefinitionStore technicalStageDefinitionStore) {
+        return new TechnicalStageDefinitionServiceImpl(technicalStageDefinitionStore);
     }
 
     @Bean
     public StageService stageService(StageStore stageStore,
                                      TechnicalStageDefinitionService technicalStageDefinitionService,
-                                     TechnicalStageValidator validator,
-                                     StageAdapter stageAdapter) {
+                                     TechnicalStageValidator validator) {
         return new StageServiceImpl(
                 stageStore,
                 technicalStageDefinitionService,
-                validator,
-                stageAdapter
+                validator
         );
     }
 }

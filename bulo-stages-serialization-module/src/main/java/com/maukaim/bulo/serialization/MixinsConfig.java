@@ -2,16 +2,16 @@ package com.maukaim.bulo.serialization;
 
 
 
-import com.maukaim.bulo.io.CreateStageEvent;
-import com.maukaim.bulo.io.DeleteStageEvent;
-import com.maukaim.bulo.io.StageUpdateEvent;
-import com.maukaim.bulo.io.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.io.definitions.ParameterDefinitionData;
-import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionData;
-import com.maukaim.bulo.io.stages.FunctionalStageData;
-import com.maukaim.bulo.io.stages.ParameterData;
-import com.maukaim.bulo.io.stages.StageData;
-import com.maukaim.bulo.io.stages.TechnicalStageData;
+import com.maukaim.bulo.stages.io.events.CreateStageEvent;
+import com.maukaim.bulo.stages.io.events.DeleteStageEvent;
+import com.maukaim.bulo.stages.io.events.StageUpdateEvent;
+import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
+import com.maukaim.bulo.stages.io.models.definitions.ParameterDefinitionDto;
+import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
+import com.maukaim.bulo.stages.io.models.stages.ParameterDto;
+import com.maukaim.bulo.stages.io.models.stages.StageDto;
+import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
 import com.maukaim.bulo.serialization.mixins.*;
 
 import java.util.Map;
@@ -23,11 +23,11 @@ public class MixinsConfig {
             TechnicalStageDefinitionEvent.class, TechnicalStageDefinitionEventMixin.class,
             StageUpdateEvent.class, StageUpdateEventMixin.class,
             DeleteStageEvent.class, DeleteStageEventMixin.class,
-            FunctionalStageData.class, FunctionalStageDataMixin.class,
-            ParameterData.class, ParameterDataMixin.class,
-            TechnicalStageData.class, TechnicalStageDataMixin.class,
-            TechnicalStageDefinitionData.class, TechnicalStageDefinitionDataMixin.class,
-            ParameterDefinitionData.class, ParameterDefinitionDataMixin.class,
-            StageData.class, StageDataMixin.class
+            FunctionalStageDto.class, FunctionalStageDataMixin.class,
+            ParameterDto.class, ParameterDataMixin.class,
+            TechnicalStageDto.class, TechnicalStageDataMixin.class,
+            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDataMixin.class,
+            ParameterDefinitionDto.class, ParameterDefinitionDataMixin.class,
+            StageDto.class, StageDataMixin.class
     );
 }
