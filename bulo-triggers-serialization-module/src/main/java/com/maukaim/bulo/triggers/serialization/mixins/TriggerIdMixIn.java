@@ -6,9 +6,9 @@ import com.maukaim.bulo.commons.models.FlowStageId;
 
 import java.util.Set;
 
-public class TriggerIdMixin {
+public class TriggerIdMixIn {
 
     @JsonCreator
-    public TriggerIdMixin(@JsonProperty("flowId") String flowId,
+    public TriggerIdMixIn(@JsonProperty("flowId") String flowId,
                           @JsonProperty("flowStageIds") Set<FlowStageId> flowStageIds){}
 }

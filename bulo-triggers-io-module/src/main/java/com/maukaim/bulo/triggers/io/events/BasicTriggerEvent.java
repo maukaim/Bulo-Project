@@ -1,4 +1,5 @@
-package com.maukaim.bulo.triggers.io.out;
+package com.maukaim.bulo.triggers.io.events;
+
 
 import com.maukaim.bulo.commons.io.TriggerEvent;
 import com.maukaim.bulo.commons.models.FlowStageId;

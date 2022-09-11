@@ -17,6 +17,8 @@
         <module>bulo-triggers-scheduler-serialization-module</module>
         <module>bulo-triggers-scheduler-app</module>
         <module>bulo-triggers-scheduler-cron-spring-engine</module>
+        <module>bulo-triggers-scheduler-data-module</module>
+        <module>bulo-triggers-scheduler-data-lifecycle-module</module>
     </modules>
 
 </project>

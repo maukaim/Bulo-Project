@@ -3,7 +3,7 @@ package com.maukaim.bulo.trigger.scheduler.app.beans;
 import com.maukaim.bulo.trigger.scheduler.core.CronExecutorService;
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
 import com.maukaim.bulo.trigger.scheduler.cron.spring.engine.SpringCronExecutorServiceImpl;
-import com.maukaim.bulo.triggers.core.TriggerEventPublisher;
+import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -13,9 +13,9 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 public class ServiceBeansConfig {
 
     @Bean
-    public ScheduleTriggerService getTriggerService(TriggerEventPublisher triggerEventPublisher,
+    public ScheduleTriggerService getTriggerService(TriggerConnector triggerConnector,
                                                     CronExecutorService cronExecutorService) {
-        return new ScheduleTriggerService(cronExecutorService, triggerEventPublisher);
+        return new ScheduleTriggerService(cronExecutorService, triggerConnector);
     }
 
     @Bean

@@ -49,6 +49,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-triggers-scheduler-data-lifecycle-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-serialization</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
