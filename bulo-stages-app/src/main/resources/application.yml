@@ -1,8 +1,0 @@
-server:
-  port: 10007
-
-maukaim:
-  swagger:
-    title: Stages Micro-Service
-    version: ALPHA
-    enabled: true
