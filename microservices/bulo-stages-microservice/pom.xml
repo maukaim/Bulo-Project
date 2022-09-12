@@ -3,22 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bulo-project</artifactId>
+        <artifactId>app-micro-services</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>app-micro-services</artifactId>
+    <artifactId>bulo-stages-microservice</artifactId>
     <packaging>pom</packaging>
 
     <properties>
-        <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
-        <spring.boot.version>2.4.4</spring.boot.version>
+        <stages.module.version>1.0-SNAPSHOT</stages.module.version>
     </properties>
 
     <modules>
-        <module>bulo-flows-microservice</module>
-        <module>bulo-stages-microservice</module>
+        <module>bulo-stages-app</module>
+        <module>bulo-stages-data-lifecycle-module</module>
     </modules>
 </project>
