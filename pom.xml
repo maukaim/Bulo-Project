@@ -8,6 +8,7 @@
     <artifactId>bulo-triggers-module</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
+
     <properties>
         <revision>1.0-SNAPSHOT</revision>
         <maven.compiler.source>16</maven.compiler.source>

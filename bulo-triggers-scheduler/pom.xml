@@ -11,6 +11,7 @@
 
     <artifactId>bulo-triggers-scheduler</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>bulo-triggers-scheduler-core</module>
         <module>bulo-triggers-scheduler-io-module</module>
