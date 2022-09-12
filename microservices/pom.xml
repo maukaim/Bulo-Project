@@ -23,5 +23,6 @@
         <module>bulo-runs-orchestrator-microservice</module>
         <module>bulo-definitions-microservice</module>
         <module>bulo-executors-microservice</module>
+        <module>bulo-triggers-microservices</module>
     </modules>
 </project>
