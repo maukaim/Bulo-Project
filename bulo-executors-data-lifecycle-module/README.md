@@ -1,1 +1,0 @@
-module responsible of the application data lifecycle (store, transfer, persistence,...)
