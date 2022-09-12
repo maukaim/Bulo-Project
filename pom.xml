@@ -17,6 +17,9 @@
     </properties>
 
     <modules>
+        <module>microservices</module>
+        <module>desktop</module>
+
         <module>bulo-commons-module</module>
         <module>bulo-runs-orchestrators-module</module>
         <module>bulo-flows-module</module>
@@ -26,7 +29,5 @@
         <module>bulo-executors-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-users-module</module>
-        <module>app-micro-services</module>
-        <module>app-standalone</module>
     </modules>
 </project>
