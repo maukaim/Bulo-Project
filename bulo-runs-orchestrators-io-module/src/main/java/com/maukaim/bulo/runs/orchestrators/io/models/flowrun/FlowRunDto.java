@@ -8,14 +8,14 @@ public class FlowRunDto {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraphDto executionGraph;
-    private final Map<String, StageRunDto> stageRunViewByIds;
+    private final Map<String, StageRunDto> stageRunByIds;
     private final FlowRunStatusDto flowRunStatus;
 
-    public FlowRunDto(String flowRunId, String flowId, ExecutionGraphDto executionGraph, Map<String, StageRunDto> stageRunViewByIds, FlowRunStatusDto flowRunStatus) {
+    public FlowRunDto(String flowRunId, String flowId, ExecutionGraphDto executionGraph, Map<String, StageRunDto> stageRunByIds, FlowRunStatusDto flowRunStatus) {
         this.flowRunId = flowRunId;
         this.flowId = flowId;
         this.executionGraph = executionGraph;
-        this.stageRunViewByIds = stageRunViewByIds;
+        this.stageRunByIds = stageRunByIds;
         this.flowRunStatus = flowRunStatus;
     }
 
@@ -32,7 +32,7 @@ public class FlowRunDto {
     }
 
     public Map<String, StageRunDto> getStageRunByIds() {
-        return stageRunViewByIds;
+        return stageRunByIds;
     }
 
     public FlowRunStatusDto getFlowRunStatus() {
@@ -45,7 +45,7 @@ public class FlowRunDto {
                 "flowRunId='" + flowRunId + '\'' +
                 ", flowId='" + flowId + '\'' +
                 ", executionGraph=" + executionGraph +
-                ", stageRunViewByIds=" + stageRunViewByIds +
+                ", stageRunViewByIds=" + stageRunByIds +
                 ", flowRunStatus=" + flowRunStatus +
                 '}';
     }

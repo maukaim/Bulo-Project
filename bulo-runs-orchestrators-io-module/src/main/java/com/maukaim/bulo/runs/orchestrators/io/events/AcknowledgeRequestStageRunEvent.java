@@ -10,13 +10,8 @@ public final class AcknowledgeRequestStageRunEvent extends BasicStageRunEvent {
     public AcknowledgeRequestStageRunEvent(String executorId,
                                            String stageRunId,
                                            Instant instant) {
-        super(stageRunId, instant);
+        super(stageRunId, instant, StageRunEventType.ACKNOWLEDGE_REQUEST);
         this.executorId = executorId;
-    }
-
-    @Override
-    public StageRunEventType getEventType() {
-        return StageRunEventType.ACKNOWLEDGE_REQUEST;
     }
 
     public String getExecutorId() {

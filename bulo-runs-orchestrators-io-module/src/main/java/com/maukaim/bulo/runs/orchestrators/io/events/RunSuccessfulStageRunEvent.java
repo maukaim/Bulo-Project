@@ -7,12 +7,7 @@ import java.time.Instant;
 public class RunSuccessfulStageRunEvent extends BasicStageRunEvent {
 
     public RunSuccessfulStageRunEvent(String stageRunId, Instant instant) {
-        super(stageRunId, instant);
-    }
-
-    @Override
-    public StageRunEventType getEventType() {
-        return StageRunEventType.RUN_SUCCESSFUL;
+        super(stageRunId, instant, StageRunEventType.RUN_SUCCESSFUL);
     }
 }
 

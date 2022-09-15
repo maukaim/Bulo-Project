@@ -7,11 +7,6 @@ import java.time.Instant;
 public class RunFailedStageRunEvent extends BasicStageRunEvent {
 
     public RunFailedStageRunEvent(String stageRunId, Instant instant) {
-        super(stageRunId, instant);
-    }
-
-    @Override
-    public StageRunEventType getEventType() {
-        return StageRunEventType.RUN_FAILED;
+        super(stageRunId, instant, StageRunEventType.RUN_FAILED);
     }
 }
