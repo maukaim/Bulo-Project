@@ -32,7 +32,7 @@ public class ExecutionGraphDtoAdapterImpl implements ExecutionGraphDtoAdapter {
     }
 
     private Set<FlowStageDependencyDto> resolve(Set<FlowStageDependency> stageRunDependencies) {
-        return stageRunDependencies == null ? null : stageRunDependencies.stream()
+        return stageRunDependencies == null ? Set.of() : stageRunDependencies.stream()
                 .map(this.stageRunDependencyAdapter::adapte)
                 .collect(Collectors.toSet());
     }

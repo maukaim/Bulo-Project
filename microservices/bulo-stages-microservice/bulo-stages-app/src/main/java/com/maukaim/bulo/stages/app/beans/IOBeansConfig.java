@@ -1,5 +1,6 @@
 package com.maukaim.bulo.stages.app.beans;
 
+import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
@@ -9,6 +10,7 @@ import com.maukaim.bulo.stages.persistence.StageStoreImpl;
 import com.maukaim.bulo.stages.persistence.adapters.TechnicalStageDefinitionAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class IOBeansConfig {
@@ -20,8 +22,13 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public StageUpdateEventPublisher stageUpdateEventPublisher() {
-        return new DummyStageUpdateEventPublisher();
+    public StageUpdateEventPublisher stageUpdateEventPublisher(SystemConnector systemConnector) {
+        return new StageUpdateEventPublisherImpl(systemConnector);
+    }
+
+    @Bean
+    public SystemConnector systemConnector(){
+        return new SystemConnector(new RestTemplate());
     }
 
     @Bean

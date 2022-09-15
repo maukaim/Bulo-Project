@@ -9,15 +9,22 @@ import com.maukaim.bulo.flows.data.lifecycle.adapters.FlowAdapter;
 import com.maukaim.bulo.flows.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import com.maukaim.bulo.flows.io.*;
+import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class IoBeansConfig {
 
     @Bean
-    public FlowEventPublisher flowEventPublisher() {
-        return new FlowEventPublisherImpl();
+    public FlowEventPublisher flowEventPublisher(SystemConnector systemConnector) {
+        return new FlowEventPublisherImpl(systemConnector);
+    }
+
+    @Bean
+    public SystemConnector systemConnector(){
+        return new SystemConnector(new RestTemplate());
     }
 
     @Bean

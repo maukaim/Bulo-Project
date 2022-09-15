@@ -19,14 +19,14 @@ public class FlowStageDependencyAdapterImpl implements FlowStageDependencyAdapte
 
     @Override
     public FlowStageDependency adapte(FlowStageDependencyDto dto) {
-        return new FlowStageDependency(
+        return dto == null ? null : new FlowStageDependency(
                 dto.getInputId(),
                 resolve(dto.getAncestors())
         );
     }
 
     private Set<FlowStageAncestor> resolve(Set<FlowStageAncestorDto> flowStageAncestorDtos) {
-        return flowStageAncestorDtos == null ? null : flowStageAncestorDtos.stream()
+        return flowStageAncestorDtos == null ? Set.of() : flowStageAncestorDtos.stream()
                 .map(this.flowStageAncestorAdapter::adapte)
                 .collect(Collectors.toSet());
     }

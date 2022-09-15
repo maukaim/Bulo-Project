@@ -1,12 +1,13 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
+import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowRunEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.StageRunEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.TriggerEventConsumerImpl;
-import com.maukaim.bulo.runs.orchestrators.app.io.publishers.DummyFlowRunEventPublisherImpl;
-import com.maukaim.bulo.runs.orchestrators.app.io.publishers.DummyNeedStageRunCancellationEventPublisherImpl;
-import com.maukaim.bulo.runs.orchestrators.app.io.publishers.DummyNeedStageRunExecutionEventPublisherImpl;
+import com.maukaim.bulo.runs.orchestrators.app.io.publishers.FlowRunEventPublisherImpl;
+import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunCancellationEventPublisherImpl;
+import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunExecutionEventPublisherImpl;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunEventService;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
@@ -16,6 +17,7 @@ import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.Flo
 import com.maukaim.bulo.runs.orchestrators.io.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class IOBeansConfig {
@@ -37,8 +39,12 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public FlowRunEventPublisher flowRunEventPublisher() {
-        return new DummyFlowRunEventPublisherImpl();
+    public SystemConnector systemConnector(){
+        return new SystemConnector(new RestTemplate());
+    }
+    @Bean
+    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector systemConnector) {
+        return new FlowRunEventPublisherImpl(systemConnector);
     }
 
     @Bean
@@ -48,12 +54,12 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher() {
-        return new DummyNeedStageRunExecutionEventPublisherImpl();
+    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector systemConnector) {
+        return new NeedStageRunExecutionEventPublisherImpl(systemConnector);
     }
 
     @Bean
-    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher() {
-        return new DummyNeedStageRunCancellationEventPublisherImpl();
+    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector systemConnector) {
+        return new NeedStageRunCancellationEventPublisherImpl(systemConnector);
     }
 }

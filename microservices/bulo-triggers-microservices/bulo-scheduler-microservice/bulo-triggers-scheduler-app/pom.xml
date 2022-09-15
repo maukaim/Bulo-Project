@@ -37,6 +37,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-ms-connectivity-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-triggers-scheduler-cron-spring-engine</artifactId>
             <version>${triggers.module.version}</version>
         </dependency>

@@ -21,7 +21,7 @@ public class StageController {
     }
 
     @PostMapping(value = "/onEvent")
-    public ResponseEntity<Stage> onResultEvent(@RequestBody StageUpdateEvent event) {
+    public ResponseEntity<Stage> onStageUpdate(@RequestBody StageUpdateEvent event) {
         this.stageUpdateEventConsumer.onStageUpdateEvent(event);
         Stage stage = this.stageStore.getById(event.getStageId());
         return ResponseEntity.ok(stage);

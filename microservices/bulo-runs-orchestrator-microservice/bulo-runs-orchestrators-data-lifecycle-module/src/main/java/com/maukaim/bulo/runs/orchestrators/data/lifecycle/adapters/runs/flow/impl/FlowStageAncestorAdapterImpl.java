@@ -9,6 +9,6 @@ import java.util.Set;
 public class FlowStageAncestorAdapterImpl implements FlowStageAncestorAdapter {
     @Override
     public FlowStageAncestor adapte(FlowStageAncestorDto dto) {
-        return new FlowStageAncestor(dto.getFlowStageId(), Set.copyOf(dto.getOutputIds()));
+        return dto == null ? null : new FlowStageAncestor(dto.getFlowStageId(), Set.copyOf(dto.getOutputIds()));
     }
 }

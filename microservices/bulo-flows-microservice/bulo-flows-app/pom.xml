@@ -32,6 +32,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-ms-connectivity-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-flows-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>

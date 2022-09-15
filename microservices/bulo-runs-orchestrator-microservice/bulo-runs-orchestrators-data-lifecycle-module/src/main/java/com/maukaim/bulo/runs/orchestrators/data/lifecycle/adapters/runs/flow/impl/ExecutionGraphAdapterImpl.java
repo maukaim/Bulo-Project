@@ -26,13 +26,13 @@ public class ExecutionGraphAdapterImpl implements ExecutionGraphAdapter {
     }
 
     private Set<FlowStageDependency> resolveFlowStageDependencies(Set<FlowStageDependencyDto> dependencyDtos) {
-        return dependencyDtos == null ? null : dependencyDtos.stream()
+        return dependencyDtos == null ? Set.of() : dependencyDtos.stream()
                 .map(this.flowStageDependencyAdapter::adapte)
                 .collect(Collectors.toSet());
     }
 
     private Map<FlowStageId, Set<FlowStageDependency>> resolveFlowRunStages(Set<FlowRunStageDto> flowRunStages) {
-        return flowRunStages == null ? null : flowRunStages.stream()
+        return flowRunStages == null ? Map.of() : flowRunStages.stream()
                 .collect(Collectors.toMap(
                         FlowRunStageDto::getFlowStageId,
                         flowRunStageDto -> this.resolveFlowStageDependencies(flowRunStageDto.getFlowStageDependencies())

@@ -1,0 +1,6 @@
+server:
+  port: 10008
+
+maukaim:
+  swagger:
+    enabled: true

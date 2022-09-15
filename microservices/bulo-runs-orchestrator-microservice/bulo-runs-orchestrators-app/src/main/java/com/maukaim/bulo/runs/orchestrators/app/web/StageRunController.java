@@ -7,12 +7,8 @@ import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.io.StageRunEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.io.events.AcknowledgeRequestStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.events.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.*;
 import com.maukaim.bulo.commons.io.IStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.events.StartRunStageRunEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +30,17 @@ public class StageRunController {
         this.stageRunEventConsumer = stageRunEventConsumer;
         this.flowRunService = flowRunService;
         this.stageRunService = stageRunService;
+    }
+
+    @PostMapping(value="/onStageRunEvent")
+    public ResponseEntity<FlowRunView> onStageRunEvent(@RequestBody BasicStageRunEvent event){
+        return switch (event.getEventType()) {
+            case ACKNOWLEDGE_REQUEST -> stageRunAcknowledged((AcknowledgeRequestStageRunEvent) event);
+            case LAUNCH_RUN -> startStageRun((StartRunStageRunEvent) event);
+            case RUN_CANCELLED -> stageRunHasCancelled((RunCancelledStageRunEvent) event);
+            case RUN_FAILED ->stageRunHasFailed((RunFailedStageRunEvent) event);
+            case RUN_SUCCESSFUL ->stageRunSucceed((RunSuccessfulStageRunEvent) event);
+        };
     }
 
     @PostMapping(value = "/stageRunAcknowledged")
