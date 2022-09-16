@@ -18,4 +18,12 @@ public class TechnicalStageDefinitionDto {
     public List<ParameterDefinitionDto> getParameters() {
         return parameters;
     }
+
+    @Override
+    public String toString() {
+        return "TechnicalStageDefinitionDto{" +
+                "technicalStageDefinitionId='" + technicalStageDefinitionId + '\'' +
+                ", parameters=" + parameters +
+                '}';
+    }
 }

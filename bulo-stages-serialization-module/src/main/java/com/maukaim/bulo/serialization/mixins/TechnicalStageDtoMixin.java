@@ -6,9 +6,9 @@ import com.maukaim.bulo.stages.io.models.stages.ParameterDto;
 
 import java.util.List;
 
-public class TechnicalStageDataMixin {
+public class TechnicalStageDtoMixin {
     @JsonCreator
-    public TechnicalStageDataMixin(@JsonProperty("parameters") List<ParameterDto> parameters,
-                                   @JsonProperty("definitionId") String definitionId) {
+    public TechnicalStageDtoMixin(@JsonProperty("parameters") List<ParameterDto> parameters,
+                                  @JsonProperty("definitionId") String definitionId) {
     }
 }

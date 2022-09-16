@@ -23,11 +23,11 @@ public class MixinsConfig {
             TechnicalStageDefinitionEvent.class, TechnicalStageDefinitionEventMixin.class,
             StageUpdateEvent.class, StageUpdateEventMixin.class,
             DeleteStageEvent.class, DeleteStageEventMixin.class,
-            FunctionalStageDto.class, FunctionalStageDataMixin.class,
-            ParameterDto.class, ParameterDataMixin.class,
-            TechnicalStageDto.class, TechnicalStageDataMixin.class,
-            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDataMixin.class,
-            ParameterDefinitionDto.class, ParameterDefinitionDataMixin.class,
-            StageDto.class, StageDataMixin.class
+            FunctionalStageDto.class, FunctionalStageDtoMixin.class,
+            ParameterDto.class, ParameterDtoMixin.class,
+            TechnicalStageDto.class, TechnicalStageDtoMixin.class,
+            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDtoMixin.class,
+            ParameterDefinitionDto.class, ParameterDefinitionDtoMixin.class,
+            StageDto.class, StageDtoMixin.class
     );
 }

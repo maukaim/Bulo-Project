@@ -40,7 +40,7 @@ public class ParameterDefinitionDto implements ParameterDefinitionInterface {
 
     @Override
     public String toString() {
-        return "ParameterDefinitionData{" +
+        return "ParameterDefinitionDto{" +
                 "name='" + name + '\'' +
                 ", valueType='" + valueType + '\'' +
                 ", hint='" + hint + '\'' +

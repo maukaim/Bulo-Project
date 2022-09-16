@@ -15,6 +15,6 @@ import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
         @JsonSubTypes.Type(value = TechnicalStageDto.class, name = "TECHNICAL"),
         @JsonSubTypes.Type(value = FunctionalStageDto.class, name = "FUNCTIONAL")
 })
-public class StageDataMixin {
+public class StageDtoMixin {
 }
 

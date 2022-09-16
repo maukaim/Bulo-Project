@@ -6,8 +6,8 @@ import com.maukaim.bulo.stages.io.models.stages.ParameterDto;
 
 import java.util.List;
 
-public class FunctionalStageDataMixin {
+public class FunctionalStageDtoMixin {
     @JsonCreator
-    public FunctionalStageDataMixin(@JsonProperty("parameters") List<ParameterDto> parameters) {
+    public FunctionalStageDtoMixin(@JsonProperty("parameters") List<ParameterDto> parameters) {
     }
 }
