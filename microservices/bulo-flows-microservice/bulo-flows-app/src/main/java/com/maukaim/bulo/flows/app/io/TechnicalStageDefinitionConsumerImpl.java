@@ -18,6 +18,7 @@ public class TechnicalStageDefinitionConsumerImpl implements TechnicalStageDefin
 
     @Override
     public void consume(TechnicalStageDefinitionEvent event) {
+        System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
             case UPDATE -> save(event.getTechnicalStageDefinition());
             case DELETE -> delete(event.getTechnicalStageDefinition());

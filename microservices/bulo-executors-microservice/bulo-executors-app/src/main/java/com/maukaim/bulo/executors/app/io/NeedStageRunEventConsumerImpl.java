@@ -22,6 +22,7 @@ public class NeedStageRunEventConsumerImpl implements NeedStageRunEventConsumer 
 
     @Override
     public void onStageUpdateEvent(NeedStageRunEvent event) {
+        System.out.println("Consume event: " + event);
         Set<StageRunDependency> stageRunDependencies = resolve(event.getDependencies());
         this.stageRunEventProcessor.onStageRunRequest(event.getGlobalStageId(),
                 event.getStageRunId(), stageRunDependencies);

@@ -16,6 +16,7 @@ public class TriggerEventConsumerImpl implements TriggerEventConsumer {
     }
     @Override
     public String onTriggerEvent(BasicTriggerEvent triggerEvent) {
+        System.out.println("Consume event: " + triggerEvent);
         Set<FlowStageId> flowStageIds = triggerEvent.getFlowStageIds();
         FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getFlowId(), flowStageIds);
         return flowRun != null? flowRun.getFlowRunId() : null;

@@ -20,24 +20,24 @@ public class StageAdapterImpl implements StageAdapter {
     }
 
     @Override
-    public Stage adapte(StageDto dto) {
+    public Stage adapte(String stageId, StageDto dto) {
         return switch (dto.getStageType()) {
-            case TECHNICAL -> adapteTechnicalStage((TechnicalStageDto) dto);
-            case FUNCTIONAL -> adapteFunctionalStage((FunctionalStageDto) dto);
+            case TECHNICAL -> adapteTechnicalStage(stageId, (TechnicalStageDto) dto);
+            case FUNCTIONAL -> adapteFunctionalStage(stageId, (FunctionalStageDto) dto);
             default -> throw new IllegalStateException("Unexpected value: " + dto.getStageType());
         };
     }
 
-    private FunctionalStage adapteFunctionalStage(FunctionalStageDto dto) {
+    private FunctionalStage adapteFunctionalStage(String stageId, FunctionalStageDto dto) {
         return new FunctionalStage(
-                dto.getStageId(),
+                stageId,
                 dto.getParameters().stream().map(parameterAdapter::adapte).collect(Collectors.toList())
         );
     }
 
-    private TechnicalStage adapteTechnicalStage(TechnicalStageDto dto) {
+    private TechnicalStage adapteTechnicalStage(String stageId, TechnicalStageDto dto) {
         return new TechnicalStage(
-                dto.getStageId(),
+                stageId,
                 dto.getParameters().stream().map(parameterAdapter::adapte).collect(Collectors.toList()),
                 dto.getDefinitionId()
         );

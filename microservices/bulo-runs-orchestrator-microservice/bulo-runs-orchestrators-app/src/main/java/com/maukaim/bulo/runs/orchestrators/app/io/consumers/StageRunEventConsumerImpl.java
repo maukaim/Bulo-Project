@@ -13,6 +13,7 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
 
     @Override
     public void onStageRunEvent(IStageRunEvent stageRunEvent) {
+        System.out.println("Consume event: " + stageRunEvent);
         this.stageRunEventService.process(stageRunEvent);
     }
 }

@@ -7,6 +7,6 @@ import com.maukaim.bulo.flows.io.definition.StageInputDefinitionDto;
 public class StageInputDefinitionAdapterImpl implements StageInputDefinitionAdapter {
     @Override
     public StageInputDefinition adapte(StageInputDefinitionDto dto) {
-        return new StageInputDefinition(dto.canBeMultiple(), dto.isRequired(), dto.getIOTypeId());
+        return new StageInputDefinition(dto.isCanBeMultiple(), dto.isRequired(), dto.getTypeId());
     }
 }

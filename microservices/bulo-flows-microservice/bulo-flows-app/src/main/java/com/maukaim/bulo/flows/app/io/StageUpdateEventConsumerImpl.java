@@ -18,14 +18,15 @@ public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
 
     @Override
     public void onStageUpdate(StageUpdateEvent event) {
+        System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
-            case UPDATE -> save(event.getStage());
+            case UPDATE -> save(event.getStageId(), event.getStage());
             case DELETE -> delete(event.getStageId());
         }
     }
 
-    private void save(StageDto dto) {
-        Stage stageToSave = this.stageAdapter.adapte(dto);
+    private void save(String stageId, StageDto dto) {
+        Stage stageToSave = this.stageAdapter.adapte(stageId, dto);
         this.stageStore.put(stageToSave);
     }
 

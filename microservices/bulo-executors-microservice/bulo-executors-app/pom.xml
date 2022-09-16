@@ -37,6 +37,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-ms-connectivity-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-executors-serialization-module</artifactId>
             <version>${executors.module.version}</version>
         </dependency>

@@ -20,7 +20,6 @@ public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     @Override
     public void consume(StageUpdateEvent event) {
         System.out.println("Consuming event: " + event);
-
         switch (event.getEventType()) {
             case UPDATE -> this.update(event);
             case DELETE -> this.stageStore.delete(event.getStageId());

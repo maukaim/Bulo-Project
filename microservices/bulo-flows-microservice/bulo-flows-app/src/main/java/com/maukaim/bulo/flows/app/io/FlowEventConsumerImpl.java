@@ -18,6 +18,8 @@ public class FlowEventConsumerImpl implements FlowEventConsumer {
 
     @Override
     public void onFlowEvent(FlowEvent event) {
+        System.out.println("Consume event: " + event);
+
         switch (event.getFlowEventType()) {
             case UPDATED -> save(event.getFlow());
             case ARCHIVED -> remove(event.getFlow());

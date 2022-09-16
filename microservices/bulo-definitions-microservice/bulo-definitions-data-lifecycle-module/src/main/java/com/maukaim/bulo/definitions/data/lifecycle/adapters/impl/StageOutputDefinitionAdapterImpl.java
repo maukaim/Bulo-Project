@@ -8,8 +8,8 @@ public class StageOutputDefinitionAdapterImpl implements StageOutputDefinitionAd
     @Override
     public StageOutputDefinition adapte(StageOutputDefinitionDto dto) {
         return new StageOutputDefinition(
-                dto.canBeMultiple(),
-                dto.getIOTypeId()
+                dto.isCanBeMultiple(),
+                dto.getTypeId()
         );
     }
 }

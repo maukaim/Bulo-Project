@@ -17,7 +17,7 @@ public class TriggerEventPublisherImpl implements TriggerEventPublisher {
 
     @Override
     public void publish(BasicTriggerEvent event) {
-        System.out.println("Will publish....");
+        System.out.println("Publish event: " + event);
         this.systemConnector.sendToConsumers(EventType.TRIGGER, event);
     }
 }

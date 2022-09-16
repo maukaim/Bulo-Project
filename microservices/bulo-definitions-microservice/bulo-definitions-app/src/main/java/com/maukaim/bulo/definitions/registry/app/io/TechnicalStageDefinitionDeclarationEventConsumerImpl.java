@@ -17,6 +17,7 @@ public class TechnicalStageDefinitionDeclarationEventConsumerImpl implements Tec
 
     @Override
     public void consume(TechnicalStageDefinitionDeclarationEvent event) {
+        System.out.println("Consume event: " + event);
         TechnicalStageDefinition definition = this.technicalStageDefinitionAdapter.adapte(event.getTechnicalStageDefinition());
         this.technicalStageDefinitionService.register(event.getStageExecutorId(), definition);
     }

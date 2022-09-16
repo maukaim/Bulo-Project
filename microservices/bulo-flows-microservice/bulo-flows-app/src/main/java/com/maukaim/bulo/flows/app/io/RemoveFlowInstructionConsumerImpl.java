@@ -13,6 +13,7 @@ public class RemoveFlowInstructionConsumerImpl implements RemoveFlowInstructionC
 
     @Override
     public void onRemove(RemoveFlowInstruction instruction) {
+        System.out.println("Consume instruction: " + instruction);
         String flowId = instruction.getFlowId();
         this.flowService.archive(flowId);
     }

@@ -17,6 +17,7 @@ public class StageRunResultEventConsumerImpl implements StageRunResultEventConsu
 
     @Override
     public void onStageRunResultEvent(StageRunResultEvent event) {
+        System.out.println("Consume event: " + event);
         StageRunResult stageRunResult = this.stageRunResultAdapter.adapte(event.getStageRunResult());
         this.stageRunResultStore.save(stageRunResult);
     }

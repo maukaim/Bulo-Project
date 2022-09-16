@@ -18,6 +18,7 @@ public class ScheduleTriggerConsumerImpl implements ScheduleTriggerConsumer {
 
     @Override
     public void consume(ScheduleTriggerConfigDto triggerConfig) {
+        System.out.println("Consume event: " + triggerConfig);
         ScheduleTriggerConfig config = this.configAdapter.adapte(triggerConfig);
         this.triggerService.setTrigger(config);
     }

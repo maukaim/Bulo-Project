@@ -8,9 +8,9 @@ public class StageInputDefinitionAdapterImpl implements StageInputDefinitionAdap
     @Override
     public StageInputDefinition adapte(StageInputDefinitionDto dto) {
         return new StageInputDefinition(
-                dto.canBeMultiple(),
+                dto.isCanBeMultiple(),
                 dto.isRequired(),
-                dto.getIOTypeId()
+                dto.getTypeId()
         );
     }
 }

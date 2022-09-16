@@ -14,6 +14,7 @@ public class DeleteStageEventConsumerImpl implements DeleteStageEventConsumer {
 
     @Override
     public String consume(DeleteStageEvent event) {
+        System.out.println("Consume event: " + event);
         Stage removed = this.stageService.remove(event.getStageId());
         return removed.getStageId();
     }

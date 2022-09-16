@@ -17,11 +17,9 @@ public class SystemConnector {
         boolean result = true;
         for (Consumer consumer : consumers) {
             try{
-                this.restTemplate.postForEntity(consumer.toUrl(),event, String.class);
+                this.restTemplate.postForEntity(consumer.toUrl(),event, Void.class);
             }catch (Exception e){
-                System.out.println(">>> Error while contacting consumer " + consumer);
-                System.out.println(e);
-                e.printStackTrace();
+                System.out.println(">>> Error while contacting consumer " + consumer.getService().getServiceName() + " ERROR: " + e.getMessage());
                 result = false;
             }
         }

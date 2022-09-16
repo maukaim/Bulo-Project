@@ -21,6 +21,7 @@ public class CreateStageEventConsumerImpl implements CreateStageEventConsumer {
 
     @Override
     public String consume(CreateStageEvent event) {
+        System.out.println("Consume event: " + event);
         StageDto stageDto = event.getStageDto();
         Stage stage = switch (stageDto.getStageType()) {
             case TECHNICAL -> this.stageAdapter.adapte((TechnicalStageDto) stageDto);

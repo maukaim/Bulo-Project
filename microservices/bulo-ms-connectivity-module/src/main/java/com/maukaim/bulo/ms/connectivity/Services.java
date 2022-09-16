@@ -11,7 +11,7 @@ public class Services {
             "flows", "localhost", "10005");
 
     public static Service DEFINITIONS_SERVICE = new Service(
-            "scheduler", "localhost", "10006");
+            "definitions", "localhost", "10006");
 
     public static Service STAGES_SERVICE = new Service(
             "stages", "localhost", "10007");
