@@ -12,7 +12,7 @@ import java.util.Map;
 public class StageInputDefinitionDtoMixIn {
     @JsonCreator
     public StageInputDefinitionDtoMixIn(
-            @JsonProperty("acceptMultiple") Boolean acceptMultiple,
+            @JsonProperty("canBeMultiple") Boolean acceptMultiple,
             @JsonProperty("required") Boolean required,
             @JsonProperty("typeId") String typeId) {
     }

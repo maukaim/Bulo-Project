@@ -26,7 +26,7 @@ public class StageDefinitionDeclarationEvent implements ExternalEvent {
 
     @Override
     public Instant getInstant() {
-        return null;
+        return instant;
     }
 
     @Override

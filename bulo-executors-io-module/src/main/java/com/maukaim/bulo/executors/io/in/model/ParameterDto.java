@@ -28,4 +28,14 @@ public class ParameterDto {
     public String getAdditionalDetails() {
         return additionalDetails;
     }
+
+    @Override
+    public String toString() {
+        return "ParameterDto{" +
+                "value='" + value + '\'' +
+                ", name='" + name + '\'' +
+                ", valueType='" + valueType + '\'' +
+                ", additionalDetails='" + additionalDetails + '\'' +
+                '}';
+    }
 }
