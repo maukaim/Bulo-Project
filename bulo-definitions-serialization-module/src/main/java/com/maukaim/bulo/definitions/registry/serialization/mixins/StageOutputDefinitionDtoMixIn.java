@@ -6,6 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StageOutputDefinitionDtoMixIn {
     @JsonCreator
     public StageOutputDefinitionDtoMixIn(@JsonProperty("canBeMultiple") Boolean acceptMultiple,
-                                         @JsonProperty("type") String typeId) {
+                                         @JsonProperty("typeId") String typeId) {
     }
 }

@@ -14,7 +14,7 @@ public class MixinsConfig {
 
     public static Map<Class<?>, Class<?>> DEFINITIONS_REGISTRY_JACKSON_MIXIN = Map.of(
             TechnicalStageDefinitionDeclarationEvent.class, TechnicalStageDefinitionDeclarationEventMixIn.class,
-            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionMixIn.class,
+            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDtoMixIn.class,
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class,

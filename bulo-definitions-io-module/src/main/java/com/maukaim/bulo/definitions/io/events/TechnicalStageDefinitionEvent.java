@@ -30,4 +30,13 @@ public class TechnicalStageDefinitionEvent implements GlobalDefinitionEvent {
     public Instant getInstant() {
         return instant;
     }
+
+    @Override
+    public String toString() {
+        return "TechnicalStageDefinitionEvent{" +
+                "technicalStageDefinition=" + technicalStageDefinition +
+                ", eventType=" + eventType +
+                ", instant=" + instant +
+                '}';
+    }
 }
