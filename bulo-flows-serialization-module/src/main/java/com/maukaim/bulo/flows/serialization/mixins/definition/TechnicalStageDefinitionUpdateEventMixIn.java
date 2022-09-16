@@ -9,7 +9,7 @@ import java.time.Instant;
 
 public class TechnicalStageDefinitionUpdateEventMixIn {
     @JsonCreator
-    public TechnicalStageDefinitionUpdateEventMixIn(@JsonProperty("definition") TechnicalStageDefinitionDto definitionDto,
+    public TechnicalStageDefinitionUpdateEventMixIn(@JsonProperty("technicalStageDefinition") TechnicalStageDefinitionDto definitionDto,
                                                     @JsonProperty("eventType") DefinitionEventType eventType,
                                                     @JsonProperty("instant") Instant instant){}
 }

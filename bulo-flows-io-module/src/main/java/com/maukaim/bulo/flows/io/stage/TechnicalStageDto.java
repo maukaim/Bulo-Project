@@ -6,10 +6,10 @@ import com.maukaim.bulo.commons.models.StageType;
 import java.util.List;
 
 public class TechnicalStageDto extends StageDto {
-    private String definitionId;
+    private final String definitionId;
 
-    public TechnicalStageDto(String globalStageId, List<ParameterDto> parameters, String definitionId) {
-        super(globalStageId, StageType.TECHNICAL, parameters);
+    public TechnicalStageDto(List<ParameterDto> parameters, String definitionId) {
+        super(StageType.TECHNICAL, parameters);
         this.definitionId = definitionId;
     }
 
@@ -21,7 +21,6 @@ public class TechnicalStageDto extends StageDto {
     public String toString() {
         return "TechnicalStageDto{" +
                 "definitionId='" + definitionId + '\'' +
-                ", globalStageId='" + stageId + '\'' +
                 ", stageType=" + stageType +
                 ", parameters=" + parameters +
                 '}';

@@ -28,7 +28,7 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
         if ((inputProviders == null || inputProviders.size() == 0) && stageInputDefinition.isRequired()) {
             throw new FlowValidationException("Problem, we expect this input to get at least 1 provider: " + inputId);
         }
-        if (!stageInputDefinition.canBeMultiple()) {
+        if (!stageInputDefinition.isCanBeMultiple()) {
             if (inputProviders.size() == 1) {
                 InputProvider inputProvider = inputProviders.iterator().next();
                 if (inputProvider.getOutputIds().size() == 1) {
@@ -64,12 +64,12 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
     }
 
     private void checkOutputDefinitionAgainstInputDefinition(StageOutputDefinition stageOutputDefinition, StageInputDefinition stageInputDefinition, boolean multipleOutputAllowed) throws FlowValidationException {
-        if (stageOutputDefinition.canBeMultiple() && !multipleOutputAllowed) {
+        if (stageOutputDefinition.isCanBeMultiple() && !multipleOutputAllowed) {
             throw new FlowValidationException("Input Provider potentially provide a collection. Not allowed here.");
         }
-        if (!stageOutputDefinition.getIOTypeId().equalsIgnoreCase(stageInputDefinition.getIOTypeId())) {
+        if (!stageOutputDefinition.getTypeId().equalsIgnoreCase(stageInputDefinition.getTypeId())) {
             throw new FlowValidationException(String.format("Output of ancestor is type %s but input expected should be type %s",
-                    stageOutputDefinition.getIOTypeId(), stageInputDefinition.getIOTypeId()));
+                    stageOutputDefinition.getTypeId(), stageInputDefinition.getTypeId()));
         }
     }
 

@@ -12,12 +12,12 @@ public class StageOutputDefinition implements OutputDefinition {
     }
 
     @Override
-    public boolean canBeMultiple() {
+    public boolean isCanBeMultiple() {
         return canBeMultiple;
     }
 
     @Override
-    public String getIOTypeId() {
+    public String getTypeId() {
         return typeId;
     }
 
