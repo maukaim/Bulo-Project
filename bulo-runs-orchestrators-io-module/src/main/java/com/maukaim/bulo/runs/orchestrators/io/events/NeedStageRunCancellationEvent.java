@@ -27,4 +27,13 @@ public class NeedStageRunCancellationEvent implements ExternalEvent {
     public String getExecutorId() {
         return executorId;
     }
+
+    @Override
+    public String toString() {
+        return "NeedStageRunCancellationEvent{" +
+                "stageRunId='" + stageRunId + '\'' +
+                ", executorId='" + executorId + '\'' +
+                ", instant=" + instant +
+                '}';
+    }
 }

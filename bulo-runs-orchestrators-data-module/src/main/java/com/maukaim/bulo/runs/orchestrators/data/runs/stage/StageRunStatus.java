@@ -7,6 +7,7 @@ public enum StageRunStatus {
     REQUESTED("Stage run requested."),
     ACKNOWLEDGED("Stage Run acknowledged by a StageExecutor. In Process to be run."),
     RUNNING("StageExecutor started to run."),
+    TO_BE_CANCELLED("Stage cancel requested."),
     CANCELLED("Stage cancelled."),
     FAILED("Stage run is failed"),
     SUCCESS("Stage run is successful.");

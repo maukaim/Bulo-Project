@@ -17,7 +17,7 @@ public class StageRunFactory {
     }
 
     public static StageRun requested(StageRun previousView) {
-        return new StageRun(UUID.randomUUID().toString(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.REQUESTED, null, previousView.getStageRunDependencies(), Instant.now(), previousView.getEndTime());
+        return new StageRun(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.REQUESTED, null, previousView.getStageRunDependencies(), Instant.now(), previousView.getEndTime());
     }
 
 
@@ -33,14 +33,19 @@ public class StageRunFactory {
                 previousView.getEndTime());
     }
 
-    public static StageRun failed(StageRun previousView, Instant endTime) {
-        return new StageRun(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.FAILED.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
-                previousView.getStageRunDependencies(), previousView.getStartTime(),
-                TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
+    public static StageRun toBeCancelled(StageRun previousView) {
+        return new StageRun(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.TO_BE_CANCELLED.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
+                previousView.getStageRunDependencies(), previousView.getStartTime(), previousView.getEndTime());
     }
 
     public static StageRun cancelled(StageRun previousView, Instant endTime) {
         return new StageRun(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.CANCELLED.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
+                previousView.getStageRunDependencies(), previousView.getStartTime(),
+                TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
+    }
+
+    public static StageRun failed(StageRun previousView, Instant endTime) {
+        return new StageRun(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.FAILED.resolveComparedTo(previousView.getStageRunStatus()), previousView.getExecutorId(),
                 previousView.getStageRunDependencies(), previousView.getStartTime(),
                 TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
     }

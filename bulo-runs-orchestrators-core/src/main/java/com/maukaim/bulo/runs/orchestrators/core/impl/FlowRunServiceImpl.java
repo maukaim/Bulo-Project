@@ -9,7 +9,6 @@ import com.maukaim.bulo.runs.orchestrators.core.factories.FlowRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.CloseableEntityLock;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
@@ -77,15 +76,11 @@ public class FlowRunServiceImpl implements FlowRunService {
     }
 
     @Override
-    public FlowRun computeStageRunViewUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
-        try (CloseableEntityLock<FlowRun> lockedEntity = this.flowRunStore.getAndLock(flowRunId)) {
-            FlowRun flowRun = lockedEntity.getEntity();
-
+    public synchronized FlowRun computeStageRunViewUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
+        return this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
             Map<String, StageRun> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
-
-            this.flowRunStore.put(newFlowRunValue);
 
             List<StageRun> tobeRequestedStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStageRunStatus() == StageRunStatus.TO_BE_REQUESTED)
@@ -97,10 +92,9 @@ public class FlowRunServiceImpl implements FlowRunService {
                 FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(newFlowRunValue, stageRunsAfterRequest);
                 flowRunAfterRequested = FlowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
 
-                this.flowRunStore.put(flowRunAfterRequested);
                 return flowRunAfterRequested;
             }
-        }
+        });
     }
 
     private FlowRunStatus resolveStatus(FlowRun flowRun) {

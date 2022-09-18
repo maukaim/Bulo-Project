@@ -3,10 +3,12 @@ package com.maukaim.bulo.runs.orchestrators.core.impl;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
-import com.maukaim.bulo.runs.orchestrators.io.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.core.factories.StageRunFactory;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunStatus;
+import com.maukaim.bulo.runs.orchestrators.io.events.RunFailedStageRunEvent;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class RunFailedStageEventProcessor extends StageEventProcessor<RunFailedStageRunEvent> {
@@ -26,6 +28,7 @@ public class RunFailedStageEventProcessor extends StageEventProcessor<RunFailedS
     public void process(RunFailedStageRunEvent event, String flowRunId) {
         System.out.println("Received FAILED run Event, will proceed -> " + event);
         this.flowRunService.computeStageRunViewUnderLock(flowRunId, (actualFlowRun) -> {
+            Map<String, StageRun> result = new HashMap<>();
             StageRun actualView = actualFlowRun.getStageRunsById().get(event.getStageRunId());
             if (actualView == null) {
                 throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
@@ -33,16 +36,18 @@ public class RunFailedStageEventProcessor extends StageEventProcessor<RunFailedS
 
             for (StageRun stageRun : actualFlowRun.getInFlightStageRuns()) {
                 String stageRunId = stageRun.getStageRunId();
-                if(!event.getStageRunId().equals(stageRunId)) {
-                    if(stageRun.getExecutorId() == null){
+                if (!event.getStageRunId().equals(stageRunId) && stageRun.getStageRunStatus() != StageRunStatus.TO_BE_CANCELLED) {
+                    result.put(stageRunId, StageRunFactory.toBeCancelled(stageRun));
+                    if (stageRun.getExecutorId() == null) {
                         this.stageRunService.requestCancel(stageRunId);
-                    }else{
+                    } else {
                         this.stageRunService.requestCancel(stageRunId, stageRun.getExecutorId());
                     }
                 }
             }
 
-            return Map.of(event.getStageRunId(), StageRunFactory.failed(actualView, event.getInstant()));
+            result.put(event.getStageRunId(), StageRunFactory.failed(actualView, event.getInstant()));
+            return result;
         });
     }
 }

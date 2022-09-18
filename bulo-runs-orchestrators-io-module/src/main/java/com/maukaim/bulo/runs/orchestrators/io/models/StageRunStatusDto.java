@@ -5,6 +5,7 @@ public enum StageRunStatusDto {
     REQUESTED,
     ACKNOWLEDGED,
     RUNNING,
+    TO_BE_CANCELLED,
     CANCELLED,
     FAILED,
     SUCCESS;
