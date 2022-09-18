@@ -43,8 +43,9 @@ public class ProcessorBeansConfig {
     }
 
     @Bean
-    public StageEventProcessor<?> runCancelledStageEventProcessor(FlowRunService flowRunService) {
-        return new RunCancelledStageEventProcessor(flowRunService);
+    public StageEventProcessor<?> runCancelledStageEventProcessor(FlowRunService flowRunService,
+                                                                  StageRunService stageRunService) {
+        return new RunCancelledStageEventProcessor(flowRunService, stageRunService);
     }
 
     @Bean

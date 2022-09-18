@@ -33,37 +33,34 @@ public class StageRunController {
     }
 
     @PostMapping(value="/onStageRunEvent")
-    public ResponseEntity<FlowRunView> onStageRunEvent(@RequestBody BasicStageRunEvent event){
-        return switch (event.getEventType()) {
-            case ACKNOWLEDGE_REQUEST -> stageRunAcknowledged((AcknowledgeRequestStageRunEvent) event);
-            case LAUNCH_RUN -> startStageRun((StartRunStageRunEvent) event);
-            case RUN_CANCELLED -> stageRunHasCancelled((RunCancelledStageRunEvent) event);
-            case RUN_FAILED ->stageRunHasFailed((RunFailedStageRunEvent) event);
-            case RUN_SUCCESSFUL ->stageRunSucceed((RunSuccessfulStageRunEvent) event);
-        };
+    public void onStageRunEvent(@RequestBody BasicStageRunEvent event){
+        new Thread(()-> {
+            switch (event.getEventType()) {
+                case ACKNOWLEDGE_REQUEST -> stageRunAcknowledged((AcknowledgeRequestStageRunEvent) event);
+                case LAUNCH_RUN -> startStageRun((StartRunStageRunEvent) event);
+                case RUN_CANCELLED -> stageRunHasCancelled((RunCancelledStageRunEvent) event);
+                case RUN_FAILED -> stageRunHasFailed((RunFailedStageRunEvent) event);
+                case RUN_SUCCESSFUL -> stageRunSucceed((RunSuccessfulStageRunEvent) event);
+            }
+        }).start();
     }
 
-    @PostMapping(value = "/stageRunAcknowledged")
     public ResponseEntity<FlowRunView> stageRunAcknowledged(@RequestBody AcknowledgeRequestStageRunEvent event) {
         return standardProcess(event);
     }
 
-    @PostMapping(value = "/stageRunStart")
     public ResponseEntity<FlowRunView> startStageRun(@RequestBody StartRunStageRunEvent event) {
         return standardProcess(event);
     }
 
-    @PostMapping(value = "/stageRunFailed")
     public ResponseEntity<FlowRunView> stageRunHasFailed(@RequestBody RunFailedStageRunEvent event) {
         return standardProcess(event);
     }
 
-    @PostMapping(value = "/stageRunCancelled")
     public ResponseEntity<FlowRunView> stageRunHasCancelled(@RequestBody RunCancelledStageRunEvent event) {
         return standardProcess(event);
     }
 
-    @PostMapping(value = "/stageRunSuccess")
     public ResponseEntity<FlowRunView> stageRunSucceed(@RequestBody RunSuccessfulStageRunEvent event) {
         return standardProcess(event);
     }

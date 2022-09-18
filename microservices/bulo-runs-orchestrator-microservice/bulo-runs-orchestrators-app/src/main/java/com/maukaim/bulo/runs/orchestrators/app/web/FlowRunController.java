@@ -45,16 +45,12 @@ public class FlowRunController {
     }
 
     @PostMapping(value = "/startFlowRun")
-    public ResponseEntity<FlowRunView> startFlow(@RequestBody BasicTriggerEvent triggerEvent) {
-        String flowRunId = this.triggerEventConsumer.onTriggerEvent(triggerEvent);
-        FlowRun flowRun = this.flowRunService.getById(flowRunId);
-        return ResponseEntity.ok(FlowRunViewFactory.build(flowRun));
+    public void startFlow(@RequestBody BasicTriggerEvent triggerEvent) {
+        new Thread(()-> this.triggerEventConsumer.onTriggerEvent(triggerEvent)).start();
     }
 
     @PostMapping(value = "/onUpdate")
-    public ResponseEntity<FlowRunView> flowRunEvent(@RequestBody FlowRunEvent flowRunEvent) {
-        this.flowRunEventConsumer.onFlowRunEvent(flowRunEvent);
-        FlowRun flowRunPersisted = this.flowRunService.getById(flowRunEvent.getFlowRunDto().getFlowRunId());
-        return ResponseEntity.ok(FlowRunViewFactory.build(flowRunPersisted));
+    public void flowRunEvent(@RequestBody FlowRunEvent flowRunEvent) {
+        new Thread(()->this.flowRunEventConsumer.onFlowRunEvent(flowRunEvent)).start();
     }
 }

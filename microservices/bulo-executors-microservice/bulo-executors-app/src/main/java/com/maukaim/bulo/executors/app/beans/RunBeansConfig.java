@@ -8,6 +8,7 @@ import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.runners.embedded.NameProvider;
 import com.maukaim.bulo.runners.embedded.PrintYoloRunner;
+import com.maukaim.bulo.runners.embedded.SlowPrintYoloRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,6 +29,10 @@ public class RunBeansConfig {
         return new NameProvider();
     }
 
+    @Bean
+    public StageRunner slowYoloRunner() {
+        return new SlowPrintYoloRunner();
+    }
 
     @Bean
     public StageRunnerRegistry runnerRegistry(List<StageRunner> runners) {

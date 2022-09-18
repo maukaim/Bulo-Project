@@ -1,24 +1,20 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle;
 
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.CloseableEntityLock;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowRunDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.io.FlowRunEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.io.events.FlowRunEvent;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunDto;
 
 import java.time.Instant;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.BiFunction;
 
 public class FlowRunStoreImpl implements FlowRunStore {
     private final FlowRunEventPublisher flowRunEventPublisher;
     private final FlowRunDtoAdapter flowRunDtoAdapter;
     private final ConcurrentHashMap<String, FlowRun> flowRunById = new ConcurrentHashMap<>();
-    private final Map<String, ReentrantLock> lockByEntityId = new ConcurrentHashMap<>();
 
     public FlowRunStoreImpl(FlowRunEventPublisher flowRunEventPublisher,
                             FlowRunDtoAdapter flowRunDtoAdapter) {
@@ -41,6 +37,11 @@ public class FlowRunStoreImpl implements FlowRunStore {
     }
 
     @Override
+    public FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer){
+        return this.flowRunById.compute(flowRunId, valueComputer);
+    }
+
+    @Override
     public FlowRun add(FlowRun flowRun) {
         FlowRun persistedValue = this.flowRunById.compute(flowRun.getFlowRunId(), (id, existingValue) -> {
             if (existingValue != null) {
@@ -54,36 +55,8 @@ public class FlowRunStoreImpl implements FlowRunStore {
         return persistedValue;
     }
 
-    public FlowRun save(FlowRun flowRun){
+    public FlowRun save(FlowRun flowRun) {
         System.out.println("Will save flowRun -> " + flowRun);
         return this.flowRunById.put(flowRun.getFlowRunId(), flowRun);
-    }
-
-    @Override
-    public CloseableEntityLock<FlowRun> getAndLock(String runId) {
-        this.lockByEntityId.compute(runId, LockHandler::lock);
-        return CloseableEntityLock.of(this.getRun(runId), () -> this.lockByEntityId.compute(runId, LockHandler::unLock));
-    }
-
-
-    private static class LockHandler {
-        private static ReentrantLock lock(String id, ReentrantLock lock) {
-            if (lock == null) {
-                lock = new ReentrantLock();
-            }
-            lock.lock();
-            return lock;
-        }
-
-        private static <L extends Lock> L unLock(String id, L lock) {
-            if (lock != null) {
-                try {
-                    lock.unlock();
-                } catch (IllegalMonitorStateException ignored) {
-                    return lock;
-                }
-            }
-            return null;
-        }
     }
 }

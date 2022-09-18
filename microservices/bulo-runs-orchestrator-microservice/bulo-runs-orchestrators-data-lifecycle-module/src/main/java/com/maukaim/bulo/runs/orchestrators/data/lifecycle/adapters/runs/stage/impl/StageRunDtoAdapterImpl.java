@@ -45,6 +45,7 @@ public class StageRunDtoAdapterImpl implements StageRunDtoAdapter {
             case REQUESTED -> StageRunStatusDto.REQUESTED;
             case ACKNOWLEDGED -> StageRunStatusDto.ACKNOWLEDGED;
             case RUNNING -> StageRunStatusDto.RUNNING;
+            case TO_BE_CANCELLED -> StageRunStatusDto.TO_BE_CANCELLED;
             case CANCELLED -> StageRunStatusDto.CANCELLED;
             case FAILED -> StageRunStatusDto.FAILED;
             case SUCCESS -> StageRunStatusDto.SUCCESS;
