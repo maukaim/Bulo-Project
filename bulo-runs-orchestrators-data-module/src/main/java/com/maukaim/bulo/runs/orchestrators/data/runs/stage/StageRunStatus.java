@@ -3,6 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 import java.util.Set;
 
 public enum StageRunStatus {
+    TO_BE_REQUESTED("Stage run to be requested soon."),
     REQUESTED("Stage run requested."),
     ACKNOWLEDGED("Stage Run acknowledged by a StageExecutor. In Process to be run."),
     RUNNING("StageExecutor started to run."),

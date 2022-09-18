@@ -26,9 +26,6 @@ public class AcknowledgeStageEventProcessor extends StageEventProcessor<Acknowle
         System.out.println("Received Acknowledgment Event, will proceed -> " + event);
         this.flowRunService.computeStageRunViewUnderLock(flowRunId, (actualFlowRun) -> {
             StageRun stageRun = actualFlowRun.getStageRunsById().get(event.getStageRunId());
-            if (stageRun == null) {
-                throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
-            }
             if(actualFlowRun.getFlowRunStatus().isProblem() && !stageRun.getStageRunStatus().isTerminal()){
                     this.stageRunService.requestCancel(stageRun.getStageRunId(), event.getExecutorId());
             }

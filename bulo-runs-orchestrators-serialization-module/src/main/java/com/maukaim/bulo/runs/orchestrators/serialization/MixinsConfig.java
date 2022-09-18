@@ -2,6 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.serialization;
 
 import com.maukaim.bulo.runs.orchestrators.io.events.*;
 import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.flow.*;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.*;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunAncestorDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
@@ -34,9 +35,19 @@ public class MixinsConfig {
             BasicStageRunEvent.class, BasicStageRunEventMixIn.class
     );
 
+    public static Map<Class<?>,Class<?>> FLOW_MIXINS = Map.of(
+            FlowEvent.class, FlowEventMixIn.class,
+            FlowDto.class, FlowDtoMixIn.class,
+            OwnerKeyDto.class, OwnerKeyDtoMixIn.class,
+            FlowStageDto.class, FlowStageDtoMixIn.class,
+            InputDependencyDto.class, InputDependencyDtoMixIn.class,
+            InputProviderDto.class, InputProviderDtoMixIn.class
+    );
+
     public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
         putAll(STAGE_RUN_EVENTS_MIXINS);
         putAll(FLOW_RUN_MIXINS);
+        putAll(FLOW_MIXINS);
         put(BasicTriggerEvent.class, TriggerEventMixIn.class);
         put(NeedStageRunCancellationEvent.class, NeedStageRunCancellationEventMixIn.class);
         put(NeedStageRunExecutionEvent.class, NeedStageRunExecutionEventMixIn.class);

@@ -2,19 +2,21 @@ package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
-import com.maukaim.bulo.runs.orchestrators.core.exceptions.FlowRunStartException;
 import com.maukaim.bulo.runs.orchestrators.core.FlowService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
+import com.maukaim.bulo.runs.orchestrators.core.exceptions.FlowRunStartException;
+import com.maukaim.bulo.runs.orchestrators.core.factories.FlowRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
-import com.maukaim.bulo.runs.orchestrators.core.factories.FlowRunFactory;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.CloseableEntityLock;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.CloseableEntityLock;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunStatus;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -52,9 +54,8 @@ public class FlowRunServiceImpl implements FlowRunService {
 
         FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunStore.add(newRunNonPersisted);
-        Map<String, StageRun> stageRunById = this.stageRunService.startRuns(newRunPersisted.getFlowRunId(), resolve(flowStagesToRunId));
-
-        return this.computeStageRunViewUnderLock(newRunPersisted.getFlowRunId(), (previous) -> stageRunById);
+        Map<String, StageRun> stageRunsToRequest = this.stageRunService.getNextStageRun(newRunPersisted.getFlowRunId(), resolve(flowStagesToRunId));
+        return this.computeStageRunViewUnderLock(newRunPersisted.getFlowRunId(), (previous) -> stageRunsToRequest);
     }
 
     private Map<FlowStageId, Set<StageRunDependency>> resolve(Set<FlowStageId> flowStageIds) {
@@ -79,10 +80,26 @@ public class FlowRunServiceImpl implements FlowRunService {
     public FlowRun computeStageRunViewUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
         try (CloseableEntityLock<FlowRun> lockedEntity = this.flowRunStore.getAndLock(flowRunId)) {
             FlowRun flowRun = lockedEntity.getEntity();
+
             Map<String, StageRun> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
-            return this.flowRunStore.put(newFlowRunValue);
+
+            this.flowRunStore.put(newFlowRunValue);
+
+            List<StageRun> tobeRequestedStageRuns = stageRunViewToUpdate.values().stream()
+                    .filter(stageRun -> stageRun.getStageRunStatus() == StageRunStatus.TO_BE_REQUESTED)
+                    .collect(Collectors.toList());
+            if (tobeRequestedStageRuns.isEmpty()) {
+                return newFlowRunValue;
+            } else {
+                Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(tobeRequestedStageRuns);
+                FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(newFlowRunValue, stageRunsAfterRequest);
+                flowRunAfterRequested = FlowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
+
+                this.flowRunStore.put(flowRunAfterRequested);
+                return flowRunAfterRequested;
+            }
         }
     }
 

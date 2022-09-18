@@ -1,7 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.commons.models.FlowStageId;
-import com.maukaim.bulo.runs.orchestrators.core.FlowService;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageEventProcessor;
@@ -46,14 +45,14 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuc
 
             Set<FlowStageId> childrenIds = actualFlowRun.getExecutionGraph().getChildren(actualStageRun.getFlowStageId());
             if(!actualFlowRun.getFlowRunStatus().isTerminal() && !childrenIds.isEmpty()){
-                    result.putAll(this.requestRunIfAuthorized(actualFlowRun, actualStageRun.getFlowStageId(), childrenIds));
+                    result.putAll(this.getStageRunsToBeRequestedIfAuthorized(actualFlowRun, actualStageRun.getFlowStageId(), childrenIds));
             }
 
             return result;
         });
     }
 
-    private Map<String, StageRun> requestRunIfAuthorized(FlowRun flowRun, FlowStageId currentStageId, Set<FlowStageId> children) {
+    private Map<String, StageRun> getStageRunsToBeRequestedIfAuthorized(FlowRun flowRun, FlowStageId currentStageId, Set<FlowStageId> children) {
         String flowRunId = flowRun.getFlowRunId();
         Map<FlowStageId, Set<StageRunDependency>> childrenToStart = children.stream()
                 .filter(childStageId -> flowRun.otherAncestorsAreSuccessful(childStageId, currentStageId))
@@ -61,7 +60,7 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuc
                         flowStageId -> flowStageId,
                         flowStageId -> this.getDependencies(flowStageId, flowRun)
                         ));
-        return this.stageRunService.startRuns(flowRunId, childrenToStart);
+        return this.stageRunService.getNextStageRun(flowRunId, childrenToStart);
     }
 
     //TODO: tout ca devrait sortir de la class non?

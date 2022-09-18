@@ -2,13 +2,16 @@ package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
+import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.core.factories.StageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -18,20 +21,28 @@ public class StageRunServiceImpl implements StageRunService {
     private final StageRunStore stageRunStore;
 
     public StageRunServiceImpl(StageRunConnector stageRunConnector,
-            StageRunStore stageRunStore) {
+                               StageRunStore stageRunStore) {
         this.stageRunConnector = stageRunConnector;
         this.stageRunStore = stageRunStore;
     }
 
-    @Override
-    public Map<String, StageRun> startRuns(String flowRunId, Map<FlowStageId, Set<StageRunDependency>> flowStageToRunByDependencies) {
+    public Map<String,StageRun> getNextStageRun(String flowRunId, Map<FlowStageId, Set<StageRunDependency>> flowStageToRunByDependencies){
         Map<String, StageRun> result = new HashMap<>();
         for (FlowStageId flowStageId : flowStageToRunByDependencies.keySet()) {
             Set<StageRunDependency> stageRunDependencies = flowStageToRunByDependencies.get(flowStageId);
-            StageRun newRunView = StageRunFactory.requested(flowRunId, flowStageId, stageRunDependencies);
-            boolean started = this.stageRunConnector.sendRun(flowStageId.getGlobalStageId(), newRunView.getStageRunId(), stageRunDependencies);
+            StageRun newRunView = StageRunFactory.toBeRequested(flowRunId, flowStageId, stageRunDependencies);
             this.stageRunStore.put(newRunView.getStageRunId(), newRunView);
-            result.put(newRunView.getStageRunId(), started ? newRunView : StageRunFactory.failed(newRunView, Instant.now()));
+            result.put(newRunView.getStageRunId(), newRunView);
+        }
+        return result;
+    }
+
+    @Override
+    public Map<String, StageRun> startRuns(Collection<StageRun> toBeRequestedStageRuns) {
+        Map<String, StageRun> result = new HashMap<>();
+        for (StageRun stageRunToBeRequested : toBeRequestedStageRuns) {
+            boolean started = this.stageRunConnector.sendRun(stageRunToBeRequested.getFlowStageId().getGlobalStageId(), stageRunToBeRequested.getStageRunId(), stageRunToBeRequested.getStageRunDependencies());
+            result.put(stageRunToBeRequested.getStageRunId(), started ? StageRunFactory.requested(stageRunToBeRequested) : StageRunFactory.failed(stageRunToBeRequested, Instant.now()));
         }
         return result;
     }

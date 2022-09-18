@@ -12,9 +12,14 @@ import java.util.UUID;
 
 public class StageRunFactory {
 
-    public static StageRun requested(String flowRunId, FlowStageId stageId, Set<StageRunDependency> stageRunDependencies) {
-        return new StageRun(UUID.randomUUID().toString(), stageId, flowRunId, StageRunStatus.REQUESTED, null, stageRunDependencies, Instant.now(), null);
+    public static StageRun toBeRequested(String flowRunId, FlowStageId stageId, Set<StageRunDependency> stageRunDependencies) {
+        return new StageRun(UUID.randomUUID().toString(), stageId, flowRunId, StageRunStatus.TO_BE_REQUESTED, null, stageRunDependencies, null, null);
     }
+
+    public static StageRun requested(StageRun previousView) {
+        return new StageRun(UUID.randomUUID().toString(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.REQUESTED, null, previousView.getStageRunDependencies(), Instant.now(), previousView.getEndTime());
+    }
+
 
     public static StageRun acknowledged(StageRun previousView, String executorId) {
         return new StageRun(previousView.getStageRunId(), previousView.getFlowStageId(), previousView.getFlowRunId(), StageRunStatus.ACKNOWLEDGED.resolveComparedTo(previousView.getStageRunStatus()), executorId,
