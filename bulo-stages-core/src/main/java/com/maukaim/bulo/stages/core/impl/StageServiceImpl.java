@@ -13,8 +13,7 @@ import com.maukaim.bulo.stages.models.stage.TechnicalStage;
 
 import java.util.List;
 
-import static com.maukaim.bulo.stages.core.validators.StageCreateReport.DEFAULT_SUCCESS_REPORT;
-import static com.maukaim.bulo.stages.core.validators.StageCreateReport.failReport;
+import static com.maukaim.bulo.stages.core.validators.StageCreateReport.*;
 
 public class StageServiceImpl implements StageService {
     private final StageStore stageStore;
@@ -59,26 +58,26 @@ public class StageServiceImpl implements StageService {
 
     private StageCreateReport addFunctionalStage(FunctionalStage stage) {
         this.stageStore.put(stage);
-        return DEFAULT_SUCCESS_REPORT;
+        return successReport(stage.getStageId(), DEFAULT_SUCCESS_REPORT);
     }
 
     private StageCreateReport addTechnicalStage(TechnicalStage stage) {
         String definitionId = stage.getDefinitionId();
         if (definitionId == null) {
-            return failReport("No definition identifier provided to create the TechnicalStage. Impossible to validate.");
+            return failReport(stage.getStageId(), "No definition identifier provided to create the TechnicalStage. Impossible to validate.");
         }
 
         TechnicalStageDefinition definition = this.technicalStageDefinitionService.getById(definitionId);
         if (definition == null) {
-            return failReport(String.format("No definition found with identifier %s", definitionId));
+            return failReport(stage.getStageId(), String.format("No definition found with identifier %s", definitionId));
         }
 
         ValidationReport validationReport = technicalStageValidator.validate(stage, definition);
         if (validationReport.isValidated()) {
             this.stageStore.put(stage);
-            return DEFAULT_SUCCESS_REPORT;
+            return successReport(stage.getStageId(), DEFAULT_SUCCESS_REPORT);
         } else {
-            return failReport(validationReport.getDetails());
+            return failReport(stage.getStageId(), validationReport.getDetails());
         }
 
     }
