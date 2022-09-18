@@ -39,7 +39,7 @@ public class ConsumersProvider {
                     new Consumer(Services.DEFINITIONS_SERVICE, "api/v1/definitions/register")
             );
             case NEED_STAGE_RUN_CANCEL -> List.of(
-                    //Ignored
+                    new Consumer(Services.EXECUTORS_SERVICE, "api/v1/executors/runs/needCancel")
             );
         };
     }

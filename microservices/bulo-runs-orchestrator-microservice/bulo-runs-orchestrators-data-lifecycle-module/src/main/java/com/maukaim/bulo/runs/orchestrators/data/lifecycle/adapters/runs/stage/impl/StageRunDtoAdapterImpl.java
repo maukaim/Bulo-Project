@@ -41,6 +41,7 @@ public class StageRunDtoAdapterImpl implements StageRunDtoAdapter {
 
     private StageRunStatusDto resolve(StageRunStatus stageRunStatus) {
         return switch (stageRunStatus){
+            case TO_BE_REQUESTED -> StageRunStatusDto.TO_BE_REQUESTED;
             case REQUESTED -> StageRunStatusDto.REQUESTED;
             case ACKNOWLEDGED -> StageRunStatusDto.ACKNOWLEDGED;
             case RUNNING -> StageRunStatusDto.RUNNING;

@@ -1,6 +1,5 @@
 package com.maukaim.bulo.executors.app.beans;
 
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.executors.app.io.*;
 import com.maukaim.bulo.executors.core.StageRunEventProcessor;
@@ -19,14 +18,14 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class IOBeansConfig {
+public class IoBeansConfig {
 
     @Bean
-    public SystemConnector systemConnector(Jackson2ObjectMapperBuilderCustomizer customizer){
+    public SystemConnector systemConnector(Jackson2ObjectMapperBuilderCustomizer customizer) {
         return new SystemConnector(getRestTemplate(customizer));
     }
 
-    private RestTemplate getRestTemplate(Jackson2ObjectMapperBuilderCustomizer customizer){
+    private RestTemplate getRestTemplate(Jackson2ObjectMapperBuilderCustomizer customizer) {
         Jackson2ObjectMapperBuilder objectMapperBuilder = Jackson2ObjectMapperBuilder.json();
         customizer.customize(objectMapperBuilder);
         ObjectMapper objectMapper = objectMapperBuilder.build();
@@ -56,6 +55,11 @@ public class IOBeansConfig {
     public NeedStageRunEventConsumer needStageRunEventConsumer(StageRunEventProcessor stageRunEventProcessor,
                                                                StageRunDependencyAdapter stageRunDependencyAdapter) {
         return new NeedStageRunEventConsumerImpl(stageRunEventProcessor, stageRunDependencyAdapter);
+    }
+
+    @Bean
+    public NeedStageRunCancelEventConsumer needStageRunCancelEventConsumer(StageRunEventProcessor stageRunEventProcessor) {
+        return new NeedStageRunCancelEventConsumerImpl(stageRunEventProcessor);
     }
 
     @Bean
