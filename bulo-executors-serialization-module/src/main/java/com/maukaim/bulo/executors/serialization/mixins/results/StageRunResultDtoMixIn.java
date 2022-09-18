@@ -11,7 +11,7 @@ import java.util.Map;
 public class StageRunResultDtoMixIn {
     @JsonCreator
     public StageRunResultDtoMixIn(@JsonProperty("stageRunId") String stageRunId,
-                                  @JsonProperty("stageRunStatus") StageRunStatusDto status,
+                                  @JsonProperty("status") StageRunStatusDto status,
                                   @JsonProperty("outputsByName") Map<String, String> outputsByName) {
     }
 }

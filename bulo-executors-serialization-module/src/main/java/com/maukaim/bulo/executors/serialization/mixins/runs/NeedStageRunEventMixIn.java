@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class NeedStageRunEventMixIn {
     @JsonCreator
-    public NeedStageRunEventMixIn(@JsonProperty("stageId") String globalStageId,
+    public NeedStageRunEventMixIn(@JsonProperty("globalStageId") String globalStageId,
                                   @JsonProperty("stageRunId") String stageRunId,
                                   @JsonProperty("dependencies") Set<StageRunDependencyDto> dependencies,
                                   @JsonProperty("instant") Instant instant){

@@ -41,4 +41,14 @@ public class StageRunManagerImpl implements StageRunManager {
         }
         return false;
     }
+
+    @Override
+    public boolean cancel(String stageRunId) {
+        if(this.scheduledStageRun.containsKey(stageRunId)){
+            Future<?> future = this.scheduledStageRun.get(stageRunId);
+            return future.cancel(true);
+        }else{
+            return false;
+        }
+    }
 }

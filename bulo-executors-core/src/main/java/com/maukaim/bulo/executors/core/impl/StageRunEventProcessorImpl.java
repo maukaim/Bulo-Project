@@ -36,7 +36,7 @@ public class StageRunEventProcessorImpl implements StageRunEventProcessor {
     }
 
     @Override
-    public void onStageRunRequest(String globalStageId, String stageRunId, Set<StageRunDependency> dependencies) {
+    public void onRunRequest(String globalStageId, String stageRunId, Set<StageRunDependency> dependencies) {
         this.stageRunResultStore.put(StageRunResult.of(stageRunId, StageRunStatus.ACKNOWLEDGED));
 
         Stage stage = this.stageStore.getById(globalStageId);
@@ -96,6 +96,15 @@ public class StageRunEventProcessorImpl implements StageRunEventProcessor {
                 parametersByName);
         boolean hasBeenAccepted = this.runnerManager.submit(stageRunConfig);
         if (!hasBeenAccepted) {
+            StageRunResult cancelledStageRun = StageRunResult.of(stageRunId, StageRunStatus.CANCELLED);
+            this.stageRunResultStore.put(cancelledStageRun);
+        }
+    }
+
+    @Override
+    public void onCancelRequest(String stageRunId) {
+        boolean isCancelled = this.runnerManager.cancel(stageRunId);
+        if(isCancelled){
             StageRunResult cancelledStageRun = StageRunResult.of(stageRunId, StageRunStatus.CANCELLED);
             this.stageRunResultStore.put(cancelledStageRun);
         }

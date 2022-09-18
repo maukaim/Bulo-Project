@@ -1,5 +1,6 @@
 package com.maukaim.bulo.executors.serialization;
 
+import com.maukaim.bulo.executors.io.in.NeedStageRunCancelEvent;
 import com.maukaim.bulo.executors.io.in.NeedStageRunEvent;
 import com.maukaim.bulo.executors.io.in.StageUpdateEvent;
 import com.maukaim.bulo.executors.io.in.model.ParameterDto;
@@ -45,6 +46,7 @@ public class MixinsConfig {
             RunSuccessfulStageRunEvent.class, StandardStageRunEventMixIn.class,
             StartRunStageRunEvent.class, StandardStageRunEventMixIn.class,
             NeedStageRunEvent.class, NeedStageRunEventMixIn.class,
+            NeedStageRunCancelEvent.class, NeedStageRunCancelEventMixIn.class,
             StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class,
             StageRunDependencyDto.class, StageRunDependencyDtoMixIn.class
     );

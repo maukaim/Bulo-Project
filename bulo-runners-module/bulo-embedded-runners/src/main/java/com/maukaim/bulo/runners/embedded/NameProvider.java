@@ -4,6 +4,7 @@ import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.models.ParameterDefinition;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.data.models.StageOutputDefinition;
+import com.maukaim.bulo.executors.data.runs.ExecutionCancelledException;
 import com.maukaim.bulo.runners.core.MissingInputException;
 import com.maukaim.bulo.runners.core.RunnerUtils;
 
@@ -27,9 +28,15 @@ public class NameProvider implements StageRunner {
     }
 
     @Override
-    public Map<String, String> run(Map<String, String> inputs, Map<String, String> parameters) {
+    public Map<String, String> run(Map<String, String> inputs, Map<String, String> parameters) throws ExecutionCancelledException {
         String name = getOrThrow(parameters, ParametersProvider.PARAM_NAME);
         System.out.println("Will return name -> " + name);
+        try {
+            Thread.sleep(450000);
+        } catch (InterruptedException e) {
+            throw new ExecutionCancelledException();
+        }
+
         return Map.of(OutputsProvider.RESULT_NAME, name);
     }
 
