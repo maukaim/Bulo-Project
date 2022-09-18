@@ -32,7 +32,7 @@ public class NameProvider implements StageRunner {
         String name = getOrThrow(parameters, ParametersProvider.PARAM_NAME);
         System.out.println("Will return name -> " + name);
         try {
-            Thread.sleep(450000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             throw new ExecutionCancelledException();
         }

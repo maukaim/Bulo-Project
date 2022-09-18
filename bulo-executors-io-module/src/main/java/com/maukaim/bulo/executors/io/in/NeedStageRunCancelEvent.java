@@ -21,4 +21,12 @@ public class NeedStageRunCancelEvent implements ExternalEvent {
     public Instant getInstant() {
         return instant;
     }
+
+    @Override
+    public String toString() {
+        return "NeedStageRunCancelEvent{" +
+                "stageRunId='" + stageRunId + '\'' +
+                ", instant=" + instant +
+                '}';
+    }
 }

@@ -14,8 +14,8 @@ import java.util.Map;
 
 //TODO: Add an ObjectMapper so it is able to translate inputs and Parameters
 
-public class PrintYoloRunner implements StageRunner {
-    private final static String DEF_ID = "PrintYolo";
+public class SlowPrintYoloRunner implements StageRunner {
+    private final static String DEF_ID = "SlowPrintYolo";
 
     @Override
     public StageDefinition getDefinition() {
@@ -33,13 +33,13 @@ public class PrintYoloRunner implements StageRunner {
         String subject = getOrThrow(inputs, InputsProvider.SUBJECT_NAME);
         String isUpperCase = getOrThrow(parameters, ParametersProvider.UPPERCASE_NAME);
         String Greetings = getOrThrow(parameters, ParametersProvider.GREETINGS_NAME);
-
-        System.out.println("Please let me sleep, just 30s...");
+        System.out.println("Please let me sleep, just 50s...");
         try {
-            Thread.sleep(30000);
+            Thread.sleep(50000);
         } catch (InterruptedException e) {
             throw new ExecutionCancelledException();
         }
+
         String yolo = (Greetings == null ? "" : Greetings) + " Yolo " + subject;
         yolo = isTrue(isUpperCase) ? yolo.toUpperCase() : yolo;
         System.out.println(yolo);
