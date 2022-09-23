@@ -18,7 +18,7 @@
 
     <modules>
         <module>microservices</module>
-        <module>desktop</module>
+        <module>standalone</module>
 
         <module>bulo-commons-module</module>
         <module>bulo-runs-orchestrators-module</module>
