@@ -1,4 +1,4 @@
-package com.maukaim.bulo.definitions.io.models;
+package com.maukaim.bulo.commons.io.instructions.models;
 
 import com.maukaim.bulo.commons.models.definitions.InputDefinition;
 

@@ -5,6 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FlowStageIdMixIn {
     @JsonCreator
-    FlowStageIdMixIn(@JsonProperty("globalStageId") String globalStageId, @JsonProperty("marker") Integer marker){
+    FlowStageIdMixIn(@JsonProperty("stageId") String stageId, @JsonProperty("marker") Integer marker){
     }
 }

@@ -1,4 +1,4 @@
-package com.maukaim.bulo.definitions.io.models;
+package com.maukaim.bulo.commons.io.instructions.models;
 
 import java.util.List;
 import java.util.Map;
