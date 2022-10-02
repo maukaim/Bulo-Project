@@ -5,8 +5,8 @@ import com.maukaim.bulo.commons.models.StageType;
 import java.util.List;
 
 public class FunctionalStage extends Stage {
-    public FunctionalStage(String globalStageId, List<Parameter> parameters) {
-        super(globalStageId, StageType.FUNCTIONAL, parameters);
+    public FunctionalStage(String stageId, List<Parameter> parameters) {
+        super(stageId, StageType.FUNCTIONAL, parameters);
     }
 
     @Override

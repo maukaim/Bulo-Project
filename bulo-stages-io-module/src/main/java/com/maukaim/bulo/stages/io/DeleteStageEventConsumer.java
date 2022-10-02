@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.io;
 
-import com.maukaim.bulo.stages.io.events.DeleteStageEvent;
+import com.maukaim.bulo.stages.io.events.DeleteStageInstruction;
 
 public interface DeleteStageEventConsumer {
-    String consume(DeleteStageEvent event);
+    String consume(DeleteStageInstruction event);
 }

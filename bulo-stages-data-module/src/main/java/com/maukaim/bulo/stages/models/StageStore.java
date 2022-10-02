@@ -5,7 +5,7 @@ import com.maukaim.bulo.stages.models.stage.Stage;
 import java.util.List;
 
 public interface StageStore {
-    Stage getById(String globalStageId);
+    Stage getById(String stageId);
 
     Stage put(Stage stage);
 

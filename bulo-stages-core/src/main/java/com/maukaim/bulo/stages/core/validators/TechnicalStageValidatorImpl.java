@@ -1,5 +1,6 @@
 package com.maukaim.bulo.stages.core.validators;
 
+import com.maukaim.bulo.stages.core.TechnicalStageValidator;
 import com.maukaim.bulo.stages.models.definition.ParameterDefinition;
 import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
 import com.maukaim.bulo.stages.models.stage.Parameter;

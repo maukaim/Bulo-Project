@@ -5,11 +5,11 @@ import com.maukaim.bulo.stages.io.models.stages.StageDto;
 
 import java.time.Instant;
 
-public class CreateStageEvent implements ExternalEvent {
+public class CreateStageInstruction implements ExternalEvent {
     private StageDto stageDto;
     private Instant instant;
 
-    public CreateStageEvent(StageDto stageDto, Instant instant) {
+    public CreateStageInstruction(StageDto stageDto, Instant instant) {
         this.stageDto = stageDto;
         this.instant = instant;
     }

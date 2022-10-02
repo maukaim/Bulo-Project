@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.io;
 
-import com.maukaim.bulo.stages.io.events.CreateStageEvent;
+import com.maukaim.bulo.stages.io.events.CreateStageInstruction;
 
 public interface CreateStageEventConsumer {
-    String consume(CreateStageEvent event);
+    String consume(CreateStageInstruction event);
 }

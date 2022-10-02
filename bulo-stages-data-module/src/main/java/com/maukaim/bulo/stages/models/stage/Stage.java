@@ -9,8 +9,8 @@ public abstract class Stage {
     protected StageType stageType;
     protected List<Parameter> parameters;
 
-    public Stage(String globalStageId, StageType stageType, List<Parameter> parameters) {
-        this.stageId = globalStageId;
+    public Stage(String stageId, StageType stageType, List<Parameter> parameters) {
+        this.stageId = stageId;
         this.stageType = stageType;
         this.parameters = parameters;
     }

@@ -4,11 +4,11 @@ import com.maukaim.bulo.commons.io.ExternalEvent;
 
 import java.time.Instant;
 
-public class DeleteStageEvent implements ExternalEvent {
+public class DeleteStageInstruction implements ExternalEvent {
     private final Instant instant;
     private final String stageId;
 
-    public DeleteStageEvent(String stageId, Instant instant) {
+    public DeleteStageInstruction(String stageId, Instant instant) {
         this.instant = instant;
         this.stageId = stageId;
     }
@@ -26,7 +26,7 @@ public class DeleteStageEvent implements ExternalEvent {
     public String toString() {
         return "DeleteStageEvent{" +
                 "instant=" + instant +
-                ", globalStageId='" + stageId + '\'' +
+                ", stageId='" + stageId + '\'' +
                 '}';
     }
 }

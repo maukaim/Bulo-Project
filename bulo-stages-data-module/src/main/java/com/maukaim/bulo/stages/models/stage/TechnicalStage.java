@@ -7,8 +7,8 @@ import java.util.List;
 public class TechnicalStage extends Stage {
     private String definitionId;
 
-    public TechnicalStage(String globalStageId, List<Parameter> parameters, String definitionId) {
-        super(globalStageId, StageType.TECHNICAL, parameters);
+    public TechnicalStage(String stageId, List<Parameter> parameters, String definitionId) {
+        super(stageId, StageType.TECHNICAL, parameters);
         this.definitionId = definitionId;
     }
 
