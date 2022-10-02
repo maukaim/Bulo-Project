@@ -8,7 +8,9 @@ public interface TechnicalStageDefinitionStore {
 
     Set<String> addExecutor(String stageExecutorId, String technicalStageDefinitionId);
 
-    TechnicalStageDefinition get(String technicalStageDefinitionId);
+    TechnicalStageDefinition getById(String technicalStageDefinitionId);
 
     List<TechnicalStageDefinition> getAll();
+
+    boolean removeExecutor(String executorId, String definitionId);
 }

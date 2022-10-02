@@ -17,7 +17,7 @@ public class TechnicalStageDefinitionServiceImpl implements TechnicalStageDefini
 
     @Override
     public void register(String stageExecutorId, TechnicalStageDefinition definition) {
-        TechnicalStageDefinition existingDefinition = definitionStore.get(definition.getTechnicalStageDefinitionId());
+        TechnicalStageDefinition existingDefinition = definitionStore.getById(definition.getTechnicalStageDefinitionId());
         if (existingDefinition != null && existingDefinition.equals(definition)) {
             this.definitionStore.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
         } else if (this.validators.stream().allMatch(validator -> validator.validate(definition))) {
@@ -26,12 +26,16 @@ public class TechnicalStageDefinitionServiceImpl implements TechnicalStageDefini
         } else {
             throw new RuntimeException("Definition rejected: " + definition.getTechnicalStageDefinitionId());
         }
+    }
 
+    @Override
+    public void unregister(String stageExecutorId, String definitionId) {
+        this.definitionStore.removeExecutor(stageExecutorId,definitionId);
     }
 
     @Override
     public TechnicalStageDefinition get(String definitionId) {
-        return this.definitionStore.get(definitionId);
+        return this.definitionStore.getById(definitionId);
     }
 
     @Override

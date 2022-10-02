@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface TechnicalStageDefinitionService {
     void register(String stageExecutorId, TechnicalStageDefinition definition);
+    void unregister(String stageExecutorId, String definitionId);
 
     TechnicalStageDefinition get(String definitionId);
 
