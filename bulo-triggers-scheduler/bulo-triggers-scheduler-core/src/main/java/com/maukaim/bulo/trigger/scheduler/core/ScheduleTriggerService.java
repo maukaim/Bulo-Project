@@ -22,20 +22,19 @@ public class ScheduleTriggerService {
         this.triggerConnector = triggerConnector;
     }
 
-    public ScheduleTriggerConfig setTrigger(ScheduleTriggerConfig triggerConfig) {
+    public void setTrigger(TriggerId triggerId, String cronExpression) {
         Runnable task = () -> this.triggerConnector.requestTrigger(
-                triggerConfig.getTriggerId().getFlowId(),
-                triggerConfig.getTriggerId().getFlowStageIds()
+                triggerId.getFlowId(),
+                triggerId.getFlowStageIds()
         );
 
-        ScheduledFuture<?> scheduledFuture = this.executorService.schedule(task, triggerConfig.getCronExpression());
-        this.scheduledFutureCache.compute(triggerConfig.getTriggerId(), (k, v) -> {
+        ScheduledFuture<?> scheduledFuture = this.executorService.schedule(task, cronExpression);
+        this.scheduledFutureCache.compute(triggerId, (k, v) -> {
             if (v != null) {
                 v.cancel(true);
             }
             return scheduledFuture;
         });
-        return triggerConfig;
     }
 
     public boolean removeTrigger(String flowId, Set<FlowStageId> stageIds) {
