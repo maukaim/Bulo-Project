@@ -18,12 +18,12 @@ import com.maukaim.bulo.flows.serialization.mixins.stage.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MixinsConfig {
+public class FlowMixinsConfig {
 
 
     public static Map<Class<?>, Class<?>> FLOWS_SERIALIZATION_JACKSON_MIXIN = Map.of(
             FlowEvent.class, FlowEventMixIn.class,
-            PutFlowInstruction.class, CreateFlowInstructionMixIn.class,
+            CreateFlowInstruction.class, CreateFlowInstructionMixIn.class,
             RemoveFlowInstruction.class, RemoveFlowInstructionMixIn.class,
             FlowDto.class, FlowDtoMixIn.class,
             OwnerKeyDto.class, OwnerKeyDtoMixIn.class,

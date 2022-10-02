@@ -9,13 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-flows-io-module</artifactId>
+    <artifactId>bulo-flows-data-lifecycle-module</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-io</artifactId>
-            <version>${bulo.commons.version}</version>
+            <artifactId>bulo-flows-io-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-flows-data-module</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

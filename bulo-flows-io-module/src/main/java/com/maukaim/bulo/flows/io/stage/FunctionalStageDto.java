@@ -6,8 +6,8 @@ import com.maukaim.bulo.commons.models.StageType;
 import java.util.List;
 
 public class FunctionalStageDto extends StageDto {
-    public FunctionalStageDto(List<ParameterDto> parameters) {
-        super(StageType.FUNCTIONAL, parameters);
+    public FunctionalStageDto(String stageId, List<ParameterDto> parameters) {
+        super(stageId, StageType.FUNCTIONAL, parameters);
     }
 
     @Override
@@ -15,6 +15,7 @@ public class FunctionalStageDto extends StageDto {
         return "FunctionalStageDto{" +
                 "stageType=" + stageType +
                 ", parameters=" + parameters +
+                ", stageId='" + stageId + '\'' +
                 '}';
     }
 }

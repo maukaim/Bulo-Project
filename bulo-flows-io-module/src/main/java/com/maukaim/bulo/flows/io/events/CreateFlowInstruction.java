@@ -5,11 +5,11 @@ import com.maukaim.bulo.flows.io.flow.FlowDto;
 
 import java.time.Instant;
 
-public class PutFlowInstruction implements ExternalEvent {
+public class CreateFlowInstruction implements ExternalEvent {
     private FlowDto flowDto;
     private Instant instant;
 
-    public PutFlowInstruction(FlowDto flowDto, Instant instant) {
+    public CreateFlowInstruction(FlowDto flowDto, Instant instant) {
         this.flowDto = flowDto;
         this.instant = instant;
     }

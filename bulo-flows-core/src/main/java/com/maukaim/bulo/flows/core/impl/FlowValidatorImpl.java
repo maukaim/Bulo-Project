@@ -45,7 +45,7 @@ public class FlowValidatorImpl implements FlowValidator {
         }
         validateAllAncestorsArePresent(simplifiedIoDependencies);
         for (FlowStage flowStage : flowStages) {
-            String stageId = flowStage.getFlowStageId().getGlobalStageId();
+            String stageId = flowStage.getFlowStageId().getStageId();
             Stage stage = this.stageService.getById(stageId);
             if (stage == null) {
                 throw new FlowValidationException("A Stage Id is not recognized, so we can't validate the Flow: " + stageId);

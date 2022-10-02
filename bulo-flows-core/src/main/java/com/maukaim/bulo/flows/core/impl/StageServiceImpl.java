@@ -12,7 +12,7 @@ public class StageServiceImpl implements StageService {
     }
 
     @Override
-    public Stage getById(String globalStageId) {
-        return this.stageStore.getById(globalStageId);
+    public Stage getById(String stageId) {
+        return this.stageStore.getById(stageId);
     }
 }

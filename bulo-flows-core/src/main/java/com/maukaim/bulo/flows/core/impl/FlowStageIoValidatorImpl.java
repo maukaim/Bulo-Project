@@ -74,11 +74,11 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
     }
 
     private StageDefinition getStageDefinition(InputProvider inputProvider) throws FlowValidationException {
-        if (inputProvider.getFlowStageId() == null || inputProvider.getFlowStageId().getGlobalStageId() == null) {
+        if (inputProvider.getFlowStageId() == null || inputProvider.getFlowStageId().getStageId() == null) {
             throw new FlowValidationException("Input Provider has no existing flowStageId.");
         }
-        String globalStageId = inputProvider.getFlowStageId().getGlobalStageId();
-        Stage stage = this.stageService.getById(globalStageId);
+        String stageId = inputProvider.getFlowStageId().getStageId();
+        Stage stage = this.stageService.getById(stageId);
         if (stage instanceof TechnicalStage) {
             StageDefinition stageDefinition = this.definitionService.getById(((TechnicalStage) stage).getDefinitionId());
             if (stage == null) {

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class FunctionalStageDtoMixIn {
     @JsonCreator
-    public FunctionalStageDtoMixIn(@JsonProperty("parameters") List<ParameterDto> parameters) {
+    public FunctionalStageDtoMixIn(@JsonProperty("stageId") String stageId,
+                                   @JsonProperty("parameters") List<ParameterDto> parameters) {
     }
 }
