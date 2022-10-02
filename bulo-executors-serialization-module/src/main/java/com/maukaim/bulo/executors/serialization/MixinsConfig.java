@@ -1,19 +1,20 @@
 package com.maukaim.bulo.executors.serialization;
 
-import com.maukaim.bulo.executors.io.in.NeedStageRunCancelEvent;
-import com.maukaim.bulo.executors.io.in.NeedStageRunEvent;
+import com.maukaim.bulo.commons.io.instructions.TechnicalStageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.executors.io.in.CancelRunInstruction;
+import com.maukaim.bulo.executors.io.in.RunInstruction;
 import com.maukaim.bulo.executors.io.in.StageUpdateEvent;
 import com.maukaim.bulo.executors.io.in.model.ParameterDto;
 import com.maukaim.bulo.executors.io.in.model.StageRunAncestorDto;
 import com.maukaim.bulo.executors.io.in.model.StageRunDependencyDto;
 import com.maukaim.bulo.executors.io.in.model.TechnicalStageDto;
 import com.maukaim.bulo.executors.io.out.*;
-import com.maukaim.bulo.executors.io.out.model.ParameterDefinitionDto;
-import com.maukaim.bulo.executors.io.out.model.StageInputDefinitionDto;
-import com.maukaim.bulo.executors.io.out.model.StageOutputDefinitionDto;
 import com.maukaim.bulo.executors.io.out.model.StageRunResultDto;
 import com.maukaim.bulo.executors.serialization.mixins.definitions.ParameterDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.StageDefinitionDeclarationEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.definitions.StageDefinitionCreateInstructionMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.definitions.StageInputDefinitionDtoMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.definitions.StageOutputDefinitionDtoMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultDtoMixIn;
@@ -45,14 +46,14 @@ public class MixinsConfig {
             RunFailedStageRunEvent.class, StandardStageRunEventMixIn.class,
             RunSuccessfulStageRunEvent.class, StandardStageRunEventMixIn.class,
             StartRunStageRunEvent.class, StandardStageRunEventMixIn.class,
-            NeedStageRunEvent.class, NeedStageRunEventMixIn.class,
-            NeedStageRunCancelEvent.class, NeedStageRunCancelEventMixIn.class,
+            RunInstruction.class, NeedStageRunEventMixIn.class,
+            CancelRunInstruction.class, NeedStageRunCancelEventMixIn.class,
             StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class,
             StageRunDependencyDto.class, StageRunDependencyDtoMixIn.class
     );
 
     private static Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = Map.of(
-            StageDefinitionDeclarationEvent.class, StageDefinitionDeclarationEventMixIn.class,
+            TechnicalStageDefinitionCreateInstruction.class, StageDefinitionCreateInstructionMixIn.class,
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class

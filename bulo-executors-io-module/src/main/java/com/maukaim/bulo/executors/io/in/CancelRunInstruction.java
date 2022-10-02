@@ -4,11 +4,11 @@ import com.maukaim.bulo.commons.io.ExternalEvent;
 
 import java.time.Instant;
 
-public class NeedStageRunCancelEvent implements ExternalEvent {
+public class CancelRunInstruction implements ExternalEvent {
     private String stageRunId;
     private Instant instant;
 
-    public NeedStageRunCancelEvent(String stageRunId, Instant instant) {
+    public CancelRunInstruction(String stageRunId, Instant instant) {
         this.stageRunId = stageRunId;
         this.instant = instant;
     }

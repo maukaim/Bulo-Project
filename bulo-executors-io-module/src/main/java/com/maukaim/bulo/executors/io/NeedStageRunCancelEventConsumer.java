@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.io;
 
-import com.maukaim.bulo.executors.io.in.NeedStageRunCancelEvent;
+import com.maukaim.bulo.executors.io.in.CancelRunInstruction;
 
 public interface NeedStageRunCancelEventConsumer {
-    void consume(NeedStageRunCancelEvent event);
+    void consume(CancelRunInstruction event);
 }

@@ -9,6 +9,7 @@ import com.maukaim.bulo.executors.data.runs.ExecutionCancelledException;
 import com.maukaim.bulo.runners.core.MissingInputException;
 import com.maukaim.bulo.runners.core.RunnerUtils;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -36,10 +37,16 @@ public class PrintYoloRunner implements StageRunner {
 
         System.out.println("Please let me sleep, just 30s...");
         try {
-            Thread.sleep(30000);
+            Thread.sleep(15000);
+            if(Instant.now().getEpochSecond() % 2 == 0){
+                System.out.println("Will cancel!");
+                throw new ExecutionCancelledException();
+            }
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
             throw new ExecutionCancelledException();
         }
+
         String yolo = (Greetings == null ? "" : Greetings) + " Yolo " + subject;
         yolo = isTrue(isUpperCase) ? yolo.toUpperCase() : yolo;
         System.out.println(yolo);

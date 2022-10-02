@@ -4,18 +4,17 @@ import com.maukaim.bulo.commons.io.ExternalEvent;
 import com.maukaim.bulo.executors.io.in.model.StageRunDependencyDto;
 
 import java.time.Instant;
-import java.util.Map;
 import java.util.Set;
 
-public class NeedStageRunEvent implements ExternalEvent {
-    private String globalStageId;
+public class RunInstruction implements ExternalEvent {
+    private String stageId;
     private String stageRunId;
     private Set<StageRunDependencyDto> dependencies;
     private Instant instant;
 
 
-    public NeedStageRunEvent(String globalStageId, String stageRunId, Set<StageRunDependencyDto> dependencies, Instant instant) {
-        this.globalStageId = globalStageId;
+    public RunInstruction(String stageId, String stageRunId, Set<StageRunDependencyDto> dependencies, Instant instant) {
+        this.stageId = stageId;
         this.stageRunId = stageRunId;
         this.dependencies = dependencies;
         this.instant = instant;
@@ -26,8 +25,8 @@ public class NeedStageRunEvent implements ExternalEvent {
         return instant;
     }
 
-    public String getGlobalStageId() {
-        return globalStageId;
+    public String getStageId() {
+        return stageId;
     }
 
     public String getStageRunId() {
@@ -41,7 +40,7 @@ public class NeedStageRunEvent implements ExternalEvent {
     @Override
     public String toString() {
         return "NeedStageRunEvent{" +
-                "globalStageId='" + globalStageId + '\'' +
+                "stageId='" + stageId + '\'' +
                 ", stageRunId='" + stageRunId + '\'' +
                 ", dependencies=" + dependencies +
                 ", instant=" + instant +

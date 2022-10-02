@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.io;
 
-import com.maukaim.bulo.executors.io.in.NeedStageRunEvent;
+import com.maukaim.bulo.executors.io.in.RunInstruction;
 
 public interface NeedStageRunEventConsumer {
-    void consume(NeedStageRunEvent event);
+    void consume(RunInstruction event);
 }

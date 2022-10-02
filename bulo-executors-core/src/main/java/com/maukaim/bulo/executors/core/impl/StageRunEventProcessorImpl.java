@@ -36,10 +36,10 @@ public class StageRunEventProcessorImpl implements StageRunEventProcessor {
     }
 
     @Override
-    public void onRunRequest(String globalStageId, String stageRunId, Set<StageRunDependency> dependencies) {
+    public void onRunRequest(String stageId, String stageRunId, Set<StageRunDependency> dependencies) {
         this.stageRunResultStore.put(StageRunResult.of(stageRunId, StageRunStatus.ACKNOWLEDGED));
 
-        Stage stage = this.stageStore.getById(globalStageId);
+        Stage stage = this.stageStore.getById(stageId);
         if (stage == null) {
             StageRunResult cancelledStageRun = StageRunResult.of(stageRunId, StageRunStatus.CANCELLED);
             this.stageRunResultStore.put(cancelledStageRun);

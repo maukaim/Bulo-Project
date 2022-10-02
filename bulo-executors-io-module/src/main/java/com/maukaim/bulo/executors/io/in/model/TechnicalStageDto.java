@@ -8,8 +8,8 @@ import java.util.List;
 public class TechnicalStageDto extends StageDto {
     private String definitionId;
 
-    public TechnicalStageDto(List<ParameterDto> parameters, String definitionId) {
-        super(StageType.TECHNICAL, parameters);
+    public TechnicalStageDto(String stageId, List<ParameterDto> parameters, String definitionId) {
+        super(stageId, StageType.TECHNICAL, parameters);
         this.definitionId = definitionId;
     }
 
@@ -23,6 +23,7 @@ public class TechnicalStageDto extends StageDto {
                 "definitionId='" + definitionId + '\'' +
                 ", stageType=" + stageType +
                 ", parameters=" + parameters +
+                ", stageId='" + stageId + '\'' +
                 '}';
     }
 }
