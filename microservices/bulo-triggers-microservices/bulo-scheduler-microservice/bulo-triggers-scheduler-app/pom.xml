@@ -31,6 +31,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>app-commons</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-triggers-scheduler-core</artifactId>
             <version>${triggers.module.version}</version>
         </dependency>

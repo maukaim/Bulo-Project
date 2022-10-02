@@ -26,7 +26,7 @@ public class StageController {
     }
 
     @PostMapping(value = "/getById")
-    public ResponseEntity<Stage> getById(@RequestParam("globalStageId") String stageId) {
+    public ResponseEntity<Stage> getById(@RequestParam("stageId") String stageId) {
         Stage stage = this.stageService.getById(stageId);
         return ResponseEntity.ok(stage);
     }

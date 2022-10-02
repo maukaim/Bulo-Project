@@ -4,7 +4,7 @@ import com.maukaim.bulo.executors.core.StageRunEventProcessor;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunDependencyAdapter;
 import com.maukaim.bulo.executors.data.runs.StageRunDependency;
 import com.maukaim.bulo.executors.io.NeedStageRunEventConsumer;
-import com.maukaim.bulo.executors.io.in.NeedStageRunEvent;
+import com.maukaim.bulo.executors.io.in.RunInstruction;
 import com.maukaim.bulo.executors.io.in.model.StageRunDependencyDto;
 
 import java.util.Set;
@@ -21,10 +21,10 @@ public class NeedStageRunEventConsumerImpl implements NeedStageRunEventConsumer 
     }
 
     @Override
-    public void consume(NeedStageRunEvent event) {
+    public void consume(RunInstruction event) {
         System.out.println("Consume event: " + event);
         Set<StageRunDependency> stageRunDependencies = resolve(event.getDependencies());
-        this.stageRunEventProcessor.onRunRequest(event.getGlobalStageId(),
+        this.stageRunEventProcessor.onRunRequest(event.getStageId(),
                 event.getStageRunId(), stageRunDependencies);
     }
 

@@ -2,13 +2,13 @@ package com.maukaim.bulo.runs.orchestrators.app.web;
 
 import com.maukaim.bulo.runs.orchestrators.app.web.view.FlowRunView;
 import com.maukaim.bulo.runs.orchestrators.app.web.view.FlowRunViewFactory;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.FlowRunStoreException;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStoreException;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.io.FlowRunEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.io.TriggerEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.io.events.FlowRunEvent;
-import com.maukaim.bulo.runs.orchestrators.io.events.BasicTriggerEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.FlowRunInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +45,8 @@ public class FlowRunController {
     }
 
     @PostMapping(value = "/startFlowRun")
-    public void startFlow(@RequestBody BasicTriggerEvent triggerEvent) {
-        new Thread(()-> this.triggerEventConsumer.onTriggerEvent(triggerEvent)).start();
+    public void startFlow(@RequestBody FlowRunInstruction instruction) {
+        new Thread(()-> this.triggerEventConsumer.onFlowRunInstruction(instruction)).start();
     }
 
     @PostMapping(value = "/onUpdate")

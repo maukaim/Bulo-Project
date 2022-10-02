@@ -19,6 +19,7 @@ public class StageAdapterImpl implements StageAdapter {
     @Override
     public Stage adapte(TechnicalStageDto dto) {
         return new Stage(
+                dto.getStageId(),
                 resolve(dto.getParameters()),
                 dto.getDefinitionId()
         );

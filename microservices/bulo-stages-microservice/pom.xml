@@ -18,6 +18,6 @@
 
     <modules>
         <module>bulo-stages-app</module>
-        <module>bulo-stages-data-lifecycle-module</module>
+        <module>bulo-stages-data-lifecycle-ms-module</module>
     </modules>
 </project>

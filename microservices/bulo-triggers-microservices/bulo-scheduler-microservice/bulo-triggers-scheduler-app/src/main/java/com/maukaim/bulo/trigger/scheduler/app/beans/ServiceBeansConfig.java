@@ -23,7 +23,7 @@ public class ServiceBeansConfig {
         ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
         threadPoolTaskScheduler.initialize();
         threadPoolTaskScheduler.setPoolSize(4);
-        threadPoolTaskScheduler.setThreadNamePrefix("ScheduleTriggerService-schedule-pool-thread-d%");
+        threadPoolTaskScheduler.setThreadNamePrefix("ScheduleTriggerService-microservice-pool-thread-d%");
         threadPoolTaskScheduler.setRemoveOnCancelPolicy(true);
         threadPoolTaskScheduler.setErrorHandler(throwable -> {
             System.out.println("While executing task -> " + throwable.getMessage());

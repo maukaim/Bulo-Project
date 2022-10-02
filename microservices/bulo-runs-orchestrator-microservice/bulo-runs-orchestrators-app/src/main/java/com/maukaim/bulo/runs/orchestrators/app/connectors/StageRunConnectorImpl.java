@@ -33,10 +33,10 @@ public class StageRunConnectorImpl implements StageRunConnector {
     }
 
     @Override
-    public boolean sendRun(String globalStageId, String stageRunId, Set<StageRunDependency> stageRunDependencies) {
+    public boolean sendRun(String stageId, String stageRunId, Set<StageRunDependency> stageRunDependencies) {
         Set<StageRunDependencyDto> stageRunDependencyDtos = resolve(stageRunDependencies);
         return this.needStageRunExecutionEventPublisher.publish(
-                new NeedStageRunExecutionEvent(globalStageId, stageRunId, stageRunDependencyDtos, Instant.now())
+                new NeedStageRunExecutionEvent(stageId, stageRunId, stageRunDependencyDtos, Instant.now())
         );
     }
 

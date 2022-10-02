@@ -28,8 +28,8 @@ public class StageController {
     }
 
     @GetMapping(value = "/byId")
-    public ResponseEntity<Stage> getById(@RequestParam("globalStageId") String globalStageId) {
-        Stage stage = this.stageStore.getById(globalStageId);
+    public ResponseEntity<Stage> getById(@RequestParam("stageId") String stageId) {
+        Stage stage = this.stageStore.getById(stageId);
         return ResponseEntity.ok(stage);
     }
 }

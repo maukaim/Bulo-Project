@@ -7,7 +7,7 @@ import com.maukaim.bulo.definitions.data.TechnicalStageDefinitionStore;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
 import com.maukaim.bulo.definitions.io.events.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.definitions.io.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
 
 import java.time.Instant;
 import java.util.*;
@@ -27,7 +27,7 @@ public class TechnicalStageDefinitionStoreImpl implements TechnicalStageDefiniti
 
     @Override
     public TechnicalStageDefinition addDefinition(TechnicalStageDefinition definition) {
-        boolean published = publish(definition);
+        boolean published = publish(definition, DefinitionEventType.UPDATE);
         return published ? definition : saveDefinition(definition);
     }
 
@@ -38,8 +38,8 @@ public class TechnicalStageDefinitionStoreImpl implements TechnicalStageDefiniti
     }
 
     @Override
-    public TechnicalStageDefinition get(String technicalStageDefinitionId) {
-        return null;
+    public TechnicalStageDefinition getById(String technicalStageDefinitionId) {
+        return this.technicalStageDefinitions.get(technicalStageDefinitionId);
     }
 
     @Override
@@ -47,8 +47,37 @@ public class TechnicalStageDefinitionStoreImpl implements TechnicalStageDefiniti
         return this.technicalStageDefinitions.values().stream().toList();
     }
 
+    //TODO: Need to publish le removeExecutor ! Otherwise other registry wont see that the executor is not there anymore.
+    // May need to merge the executor list to the model?
+    @Override
+    public boolean removeExecutor(String executorId, String definitionId) {
+        if (executorsByTechnicalStageDefinitionId.containsKey(definitionId)) {
+            Set<String> remainingExecutors = this.executorsByTechnicalStageDefinitionId.compute(definitionId, (key, val) -> {
+                if (val == null || val.isEmpty() || (val.size() == 1 && val.contains(executorId))) {
+                    return null;
+                }
+                val.remove(executorId);
+                return val;
+            });
+            if(remainingExecutors == null || remainingExecutors.isEmpty()){
+                TechnicalStageDefinition technicalStageDefinition = this.technicalStageDefinitions.get(definitionId);
+                boolean published = publish(technicalStageDefinition, DefinitionEventType.UPDATE);
+                if(!published){
+                    this.technicalStageDefinitions.remove(definitionId);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void remove(String technicalStageId) {
+        this.technicalStageDefinitions.remove(technicalStageId);
+        this.executorsByTechnicalStageDefinitionId.remove(technicalStageId);
+    }
+
     public TechnicalStageDefinition saveDefinition(TechnicalStageDefinition definition) {
-        return  this.technicalStageDefinitions.put(definition.getTechnicalStageDefinitionId(), definition);
+        return this.technicalStageDefinitions.put(definition.getTechnicalStageDefinitionId(), definition);
     }
 
     public Set<String> saveExecutor(String stageExecutorId, String technicalStageId) {
@@ -63,15 +92,9 @@ public class TechnicalStageDefinitionStoreImpl implements TechnicalStageDefiniti
             return executorIds;
         });
     }
-
-    public void remove(String technicalStageId){
-        this.technicalStageDefinitions.remove(technicalStageId);
-        this.executorsByTechnicalStageDefinitionId.remove(technicalStageId);
-    }
-
-    private boolean publish(TechnicalStageDefinition definition){
+    private boolean publish(TechnicalStageDefinition definition, DefinitionEventType eventType) {
         TechnicalStageDefinitionDto dto = this.definitionDtoAdapter.adapte(definition);
-        TechnicalStageDefinitionEvent event = new TechnicalStageDefinitionEvent(dto, DefinitionEventType.UPDATE, Instant.now());
+        TechnicalStageDefinitionEvent event = new TechnicalStageDefinitionEvent(dto, eventType, Instant.now());
         return this.definitionEventPublisher.publish(event);
     }
 }

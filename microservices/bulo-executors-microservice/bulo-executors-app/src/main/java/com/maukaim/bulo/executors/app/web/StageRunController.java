@@ -2,8 +2,8 @@ package com.maukaim.bulo.executors.app.web;
 
 import com.maukaim.bulo.executors.io.NeedStageRunCancelEventConsumer;
 import com.maukaim.bulo.executors.io.NeedStageRunEventConsumer;
-import com.maukaim.bulo.executors.io.in.NeedStageRunCancelEvent;
-import com.maukaim.bulo.executors.io.in.NeedStageRunEvent;
+import com.maukaim.bulo.executors.io.in.CancelRunInstruction;
+import com.maukaim.bulo.executors.io.in.RunInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,15 +25,15 @@ public class StageRunController {
     }
 
     @PostMapping(value = "/needRun")
-    public ResponseEntity<?> needRun(@RequestBody NeedStageRunEvent event) {
-        Thread thread = new Thread(() -> this.needStageRunEventConsumer.consume(event));
+    public ResponseEntity<?> needRun(@RequestBody RunInstruction instruction) {
+        Thread thread = new Thread(() -> this.needStageRunEventConsumer.consume(instruction));
         thread.start();
         return ResponseEntity.ok().build();
     }
 
     @PostMapping(value = "/needCancel")
-    public ResponseEntity<?> needRun(@RequestBody NeedStageRunCancelEvent event) {
-        Thread thread = new Thread(() -> this.needStageRunCancelEventConsumer.consume(event));
+    public ResponseEntity<?> needRun(@RequestBody CancelRunInstruction instruction) {
+        Thread thread = new Thread(() -> this.needStageRunCancelEventConsumer.consume(instruction));
         thread.start();
         return ResponseEntity.ok().build();
     }

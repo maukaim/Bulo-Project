@@ -35,7 +35,7 @@ public class ConsumersProvider {
             case STAGE_RUN_UPDATE -> List.of(
                     new Consumer(Services.ORCHESTRATOR_SERVICE, "api/v1/orchestrator/stageRuns/onStageRunEvent")
             );
-            case DEF_DECLARATION -> List.of(
+            case DEF_CREATE_INSTRUCTION -> List.of(
                     new Consumer(Services.DEFINITIONS_SERVICE, "api/v1/definitions/register")
             );
             case NEED_STAGE_RUN_CANCEL -> List.of(

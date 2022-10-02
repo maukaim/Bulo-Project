@@ -4,7 +4,7 @@ import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
 import com.maukaim.bulo.stages.core.impl.StageServiceImpl;
 import com.maukaim.bulo.stages.core.impl.TechnicalStageDefinitionServiceImpl;
-import com.maukaim.bulo.stages.core.validators.TechnicalStageValidator;
+import com.maukaim.bulo.stages.core.TechnicalStageValidator;
 import com.maukaim.bulo.stages.models.StageStore;
 import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
 import org.springframework.context.annotation.Bean;

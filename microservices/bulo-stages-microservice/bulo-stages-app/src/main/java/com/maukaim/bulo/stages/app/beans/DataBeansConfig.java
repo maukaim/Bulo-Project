@@ -4,9 +4,9 @@ import com.maukaim.bulo.stages.io.StageUpdateEventPublisher;
 import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
 import com.maukaim.bulo.stages.models.definition.ParameterDefinition;
 import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
-import com.maukaim.bulo.stages.persistence.StageStoreImpl;
-import com.maukaim.bulo.stages.persistence.TechnicalStageDefinitionStoreImpl;
-import com.maukaim.bulo.stages.persistence.adapters.StageDtoAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.TechnicalStageDefinitionStoreImpl;
+import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

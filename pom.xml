@@ -11,8 +11,17 @@
 
     <properties>
         <revision>1.0-SNAPSHOT</revision>
+        <triggers.module.version>1.0-SNAPSHOT</triggers.module.version>
+        <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
+        <flows.module.version>1.0-SNAPSHOT</flows.module.version>
+        <orchestrator.module.version>1.0-SNAPSHOT</orchestrator.module.version>
+        <stages.module.version>1.0-SNAPSHOT</stages.module.version>
+        <executors.module.version>1.0-SNAPSHOT</executors.module.version>
+        <definitions.module.version>1.0-SNAPSHOT</definitions.module.version>
+
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <spring.boot.version>2.4.4</spring.boot.version>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
@@ -29,5 +38,6 @@
         <module>bulo-executors-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-users-module</module>
+        <module>app-commons</module>
     </modules>
 </project>

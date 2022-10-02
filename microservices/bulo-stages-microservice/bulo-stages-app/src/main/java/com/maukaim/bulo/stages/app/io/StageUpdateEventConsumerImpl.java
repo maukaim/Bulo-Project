@@ -4,9 +4,9 @@ import com.maukaim.bulo.stages.io.events.StageUpdateEvent;
 import com.maukaim.bulo.stages.io.StageUpdateEventConsumer;
 import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
 import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
-import com.maukaim.bulo.stages.persistence.adapters.StageAdapter;
+import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
 import com.maukaim.bulo.stages.models.stage.Stage;
-import com.maukaim.bulo.stages.persistence.StageStoreImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
 
 public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     private final StageStoreImpl stageStore;

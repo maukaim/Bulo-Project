@@ -2,7 +2,7 @@ package com.maukaim.bulo.definitions.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.definitions.data.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.models.ParameterDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 
 public class ParameterDefinitionDtoAdapterImpl implements ParameterDefinitionDtoAdapter {
     @Override

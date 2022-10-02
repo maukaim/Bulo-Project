@@ -2,7 +2,7 @@ package com.maukaim.bulo.definitions.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.definitions.data.StageInputDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.models.StageInputDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 
 public class StageInputDefinitionDtoAdapterImpl implements StageInputDefinitionDtoAdapter {
     @Override

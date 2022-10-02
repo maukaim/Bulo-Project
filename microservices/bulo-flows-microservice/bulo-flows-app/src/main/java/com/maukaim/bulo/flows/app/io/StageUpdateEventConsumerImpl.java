@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.app.io;
 
 import com.maukaim.bulo.flows.data.StageStore;
-import com.maukaim.bulo.flows.data.lifecycle.adapters.StageAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
 import com.maukaim.bulo.flows.io.StageUpdateEventConsumer;
 import com.maukaim.bulo.flows.io.events.StageUpdateEvent;
@@ -20,13 +20,13 @@ public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     public void onStageUpdate(StageUpdateEvent event) {
         System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
-            case UPDATE -> save(event.getStageId(), event.getStage());
+            case UPDATE -> save(event.getStage());
             case DELETE -> delete(event.getStageId());
         }
     }
 
-    private void save(String stageId, StageDto dto) {
-        Stage stageToSave = this.stageAdapter.adapte(stageId, dto);
+    private void save(StageDto dto) {
+        Stage stageToSave = this.stageAdapter.adapte(dto);
         this.stageStore.put(stageToSave);
     }
 

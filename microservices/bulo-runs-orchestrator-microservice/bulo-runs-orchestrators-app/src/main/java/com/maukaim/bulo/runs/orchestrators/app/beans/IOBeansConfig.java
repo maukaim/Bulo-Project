@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowEventConsumerImpl;
@@ -11,8 +10,9 @@ import com.maukaim.bulo.runs.orchestrators.app.io.publishers.FlowRunEventPublish
 import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunCancellationEventPublisherImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunExecutionEventPublisherImpl;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunEventService;
+import com.maukaim.bulo.runs.orchestrators.core.impl.*;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
+import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.FlowRunStoreImpl;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.flows.FlowAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowRunAdapter;
@@ -39,16 +39,26 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public StageRunEventConsumer stageRunEventConsumer(StageRunEventService stageRunEventService) {
-        return new StageRunEventConsumerImpl(stageRunEventService);
+    public StageRunEventConsumer stageRunEventConsumer(AcknowledgeStageEventProcessor acknowledgeStageEventProcessor,
+                                                       RunCancelledStageEventProcessor runCancelledStageEventProcessor,
+                                                       RunSuccessfulStageEventProcessor runSuccessfulStageEventProcessor,
+                                                       RunFailedStageEventProcessor runFailedStageEventProcessor,
+                                                       StartRunStageEventProcessor startRunStageEventProcessor,
+                                                       StageRunStore stageRunStore) {
+        return new StageRunEventConsumerImpl(acknowledgeStageEventProcessor,
+                runCancelledStageEventProcessor,
+                runSuccessfulStageEventProcessor,
+                runFailedStageEventProcessor,
+                startRunStageEventProcessor,
+                stageRunStore);
     }
 
     @Bean
-    public SystemConnector systemConnector(Jackson2ObjectMapperBuilderCustomizer customizer){
+    public SystemConnector systemConnector(Jackson2ObjectMapperBuilderCustomizer customizer) {
         return new SystemConnector(getRestTemplate(customizer));
     }
 
-    private RestTemplate getRestTemplate(Jackson2ObjectMapperBuilderCustomizer customizer){
+    private RestTemplate getRestTemplate(Jackson2ObjectMapperBuilderCustomizer customizer) {
         Jackson2ObjectMapperBuilder objectMapperBuilder = Jackson2ObjectMapperBuilder.json();
         customizer.customize(objectMapperBuilder);
         ObjectMapper objectMapper = objectMapperBuilder.build();
@@ -58,6 +68,7 @@ public class IOBeansConfig {
         restTemplate.getMessageConverters().add(0, converter);
         return restTemplate;
     }
+
     @Bean
     public FlowRunEventPublisher flowRunEventPublisher(SystemConnector systemConnector) {
         return new FlowRunEventPublisherImpl(systemConnector);

@@ -12,7 +12,7 @@ import com.maukaim.bulo.executors.data.lifecycle.StageStoreImpl;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolver;
 import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolverImpl;
-import com.maukaim.bulo.executors.io.StageDefinitionDeclarationEventPublisher;
+import com.maukaim.bulo.executors.io.StageDefinitionCreateInstructionPublisher;
 import com.maukaim.bulo.executors.io.StageRunEventPublisher;
 import com.maukaim.bulo.executors.io.StageRunResultEventPublisher;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +27,7 @@ public class DataBeansConfig {
     @Bean
     public StageDefinitionStore technicalStageDefinitionStore(StageRunnerRegistry runnerRegistry,
                                                               StageDefinitionDtoAdapter stageDefinitionDtoAdapter,
-                                                              StageDefinitionDeclarationEventPublisher eventPublisher) {
+                                                              StageDefinitionCreateInstructionPublisher eventPublisher) {
         List<StageDefinition> allDefinitions = runnerRegistry.getAllDefinitions();
         StageDefinitionStoreImpl technicalStageDefinitionStore = new StageDefinitionStoreImpl(
                 stageDefinitionDtoAdapter,

@@ -8,6 +8,7 @@ import java.util.List;
 public class FakeDataProvider {
     public static String STAGE_WITH_NO_INPUT_ID = "STAGE_WITH_NO_INPUT";
     public static Stage STAGE_WITH_NO_INPUT = new Stage(
+            STAGE_WITH_NO_INPUT_ID,
             List.of(
                     new Parameter("Bobby",
                             "Name",
@@ -18,6 +19,7 @@ public class FakeDataProvider {
 
     public static String STAGE_WITH_INPUT_ID = "STAGE_WITH_INPUT";
     public static Stage STAGE_WITH_INPUT = new Stage(
+            STAGE_WITH_INPUT_ID,
             List.of(
                     new Parameter("true",
                             "Uppercase",

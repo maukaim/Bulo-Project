@@ -5,7 +5,7 @@ import com.maukaim.bulo.stages.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
 import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
-import com.maukaim.bulo.stages.persistence.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 
 public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStageDefinitionEventConsumer {
     private final TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter;

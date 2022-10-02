@@ -1,17 +1,17 @@
 package com.maukaim.bulo.stages.app.beans;
 
-import com.maukaim.bulo.stages.persistence.adapters.ParameterAdapter;
-import com.maukaim.bulo.stages.persistence.adapters.ParameterDefinitionAdapter;
-import com.maukaim.bulo.stages.persistence.adapters.StageAdapter;
-import com.maukaim.bulo.stages.persistence.adapters.TechnicalStageDefinitionAdapter;
-import com.maukaim.bulo.stages.persistence.adapters.impl.ParameterDefinitionAdapterImpl;
-import com.maukaim.bulo.stages.persistence.adapters.impl.TechnicalStageDefinitionAdapterImpl;
-import com.maukaim.bulo.stages.persistence.adapters.impl.ParameterAdapterImpl;
-import com.maukaim.bulo.stages.persistence.adapters.impl.StageAdapterImpl;
-import com.maukaim.bulo.stages.persistence.adapters.ParameterDataAdapter;
-import com.maukaim.bulo.stages.persistence.adapters.impl.ParameterDataAdapterImpl;
-import com.maukaim.bulo.stages.persistence.adapters.StageDtoAdapter;
-import com.maukaim.bulo.stages.persistence.adapters.impl.StageDtoAdapterImpl;
+import com.maukaim.bulo.stages.data.lifecycle.ParameterAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
+import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.ParameterDefinitionAdapterImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.TechnicalStageDefinitionAdapterImpl;
+import com.maukaim.bulo.stages.data.lifecycle.impl.ParameterAdapterImpl;
+import com.maukaim.bulo.stages.data.lifecycle.impl.StageAdapterImpl;
+import com.maukaim.bulo.stages.data.lifecycle.ParameterDtoAdapter;
+import com.maukaim.bulo.stages.data.lifecycle.impl.ParameterDtoAdapterImpl;
+import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
+import com.maukaim.bulo.stages.data.lifecycle.impl.StageDtoAdapterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,13 +29,13 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public ParameterDataAdapter parameterDataAdapter() {
-        return new ParameterDataAdapterImpl();
+    public ParameterDtoAdapter parameterDataAdapter() {
+        return new ParameterDtoAdapterImpl();
     }
 
     @Bean
-    public StageDtoAdapter stageDataAdapter(ParameterDataAdapter parameterDataAdapter) {
-        return new StageDtoAdapterImpl(parameterDataAdapter);
+    public StageDtoAdapter stageDataAdapter(ParameterDtoAdapter parameterDtoAdapter) {
+        return new StageDtoAdapterImpl(parameterDtoAdapter);
     }
 
     @Bean

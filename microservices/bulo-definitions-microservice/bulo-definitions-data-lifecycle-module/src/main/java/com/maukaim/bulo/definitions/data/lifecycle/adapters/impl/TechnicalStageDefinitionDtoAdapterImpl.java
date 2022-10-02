@@ -8,10 +8,10 @@ import com.maukaim.bulo.definitions.data.lifecycle.adapters.ParameterDefinitionD
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.StageOutputDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.models.ParameterDefinitionDto;
-import com.maukaim.bulo.definitions.io.models.StageInputDefinitionDto;
-import com.maukaim.bulo.definitions.io.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.definitions.io.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
 
 import java.util.List;
 import java.util.Map;

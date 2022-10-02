@@ -32,13 +32,19 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>app-commons</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-ms-connectivity-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-data-lifecycle-module</artifactId>
+            <artifactId>bulo-flows-data-lifecycle-ms-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -52,12 +58,6 @@
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-flows-core</artifactId>
             <version>${flows.module.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-core</artifactId>
-            <version>${bulo.commons.version}</version>
         </dependency>
 
         <dependency>

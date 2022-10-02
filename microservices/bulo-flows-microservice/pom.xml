@@ -17,6 +17,6 @@
 
     <modules>
         <module>bulo-flows-app</module>
-        <module>bulo-flows-data-lifecycle-module</module>
+        <module>bulo-flows-data-lifecycle-ms-module</module>
     </modules>
 </project>

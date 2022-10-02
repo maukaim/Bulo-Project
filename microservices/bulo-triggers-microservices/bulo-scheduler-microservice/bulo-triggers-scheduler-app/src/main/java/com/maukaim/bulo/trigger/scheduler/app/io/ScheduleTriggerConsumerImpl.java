@@ -1,25 +1,19 @@
 package com.maukaim.bulo.trigger.scheduler.app.io;
 
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
-import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerConfigDto;
+import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerAddInstruction;
 import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerConsumer;
 import com.maukaim.bulo.triggers.scheduler.data.ScheduleTriggerConfig;
-import com.maukaim.bulo.triggers.scheduler.data.lifecycle.ScheduleTriggerConfigAdapter;
 
 public class ScheduleTriggerConsumerImpl implements ScheduleTriggerConsumer {
-    private final ScheduleTriggerConfigAdapter configAdapter;
     private final ScheduleTriggerService triggerService;
 
-    public ScheduleTriggerConsumerImpl(ScheduleTriggerConfigAdapter configAdapter,
-                                       ScheduleTriggerService triggerService) {
-        this.configAdapter = configAdapter;
+    public ScheduleTriggerConsumerImpl(ScheduleTriggerService triggerService) {
         this.triggerService = triggerService;
     }
 
     @Override
-    public void consume(ScheduleTriggerConfigDto triggerConfig) {
-        System.out.println("Consume event: " + triggerConfig);
-        ScheduleTriggerConfig config = this.configAdapter.adapte(triggerConfig);
-        this.triggerService.setTrigger(config);
+    public void consume(ScheduleTriggerAddInstruction instruction) {
+        this.triggerService.setTrigger(instruction.getTriggerId(), instruction.getCronExpression());
     }
 }

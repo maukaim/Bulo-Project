@@ -2,11 +2,11 @@ package com.maukaim.bulo.definitions.registry.app.web;
 
 import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionDeclarationEventConsumer;
+import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
-import com.maukaim.bulo.definitions.io.events.TechnicalStageDefinitionDeclarationEvent;
+import com.maukaim.bulo.commons.io.instructions.TechnicalStageDefinitionCreateInstruction;
 import com.maukaim.bulo.definitions.io.events.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.definitions.io.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 @RequestMapping("api/v1/definitions")
 public class DefinitionsController {
     private final TechnicalStageDefinitionService service;
-    private final TechnicalStageDefinitionDeclarationEventConsumer declarationEventConsumer;
+    private final TechnicalStageDefinitionCreateInstructionConsumer declarationEventConsumer;
     private final TechnicalStageDefinitionEventConsumer definitionEventConsumer;
     private final TechnicalStageDefinitionDtoAdapter definitionDtoAdapter;
 
     @Autowired
     public DefinitionsController(TechnicalStageDefinitionService service,
-                                 TechnicalStageDefinitionDeclarationEventConsumer declarationEventConsumer,
+                                 TechnicalStageDefinitionCreateInstructionConsumer declarationEventConsumer,
                                  TechnicalStageDefinitionEventConsumer definitionEventConsumer,
                                  TechnicalStageDefinitionDtoAdapter definitionDtoAdapter) {
         this.service = service;
@@ -36,7 +36,7 @@ public class DefinitionsController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<?> consume(@RequestBody TechnicalStageDefinitionDeclarationEvent event) {
+    public ResponseEntity<?> consume(@RequestBody TechnicalStageDefinitionCreateInstruction event) {
         this.declarationEventConsumer.consume(event);
         return ResponseEntity.ok().build();
     }

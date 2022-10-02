@@ -1,16 +1,7 @@
 package com.maukaim.bulo.ms.connectivity;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maukaim.bulo.stages.io.events.CreateStageEvent;
-import com.maukaim.bulo.stages.io.models.stages.ParameterDto;
-import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.URI;
@@ -18,10 +9,6 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class FakeDataInjector {
     private static final String STAGE_NAME_PROVIDER_ID = "NameProviding";
@@ -110,14 +97,14 @@ public class FakeDataInjector {
                     "flowStages": [
                       {
                         "flowStageId": {
-                          "globalStageId": "%s",
+                          "stageId": "%s",
                           "marker": 0
                         },
                         "ioDependencies": []
                       },
                       {
                         "flowStageId": {
-                          "globalStageId": "%s",
+                          "stageId": "%s",
                           "marker": 0
                         },
                         "ioDependencies": [
@@ -126,7 +113,7 @@ public class FakeDataInjector {
                             "inputProviders": [
                               {
                                 "flowStageId": {
-                                  "globalStageId": "%s",
+                                  "stageId": "%s",
                                   "marker": 0
                                 },
                                 "outputIds": [
@@ -139,7 +126,7 @@ public class FakeDataInjector {
                        },
                        {
                         "flowStageId": {
-                          "globalStageId": "%s",
+                          "stageId": "%s",
                           "marker": 0
                         },
                         "ioDependencies": [
@@ -148,7 +135,7 @@ public class FakeDataInjector {
                             "inputProviders": [
                               {
                                 "flowStageId": {
-                                  "globalStageId": "%s",
+                                  "stageId": "%s",
                                   "marker": 0
                                 },
                                 "outputIds": ["Name"]

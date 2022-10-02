@@ -1,7 +1,9 @@
 package com.maukaim.bulo.flows.app.beans;
 
-import com.maukaim.bulo.flows.data.lifecycle.adapters.*;
-import com.maukaim.bulo.flows.data.lifecycle.adapters.impl.*;
+import com.maukaim.bulo.flows.data.lifecycle.*;
+import com.maukaim.bulo.flows.data.lifecycle.impl.*;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.*;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

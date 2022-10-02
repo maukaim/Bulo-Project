@@ -23,5 +23,5 @@ public enum EventType {
     //From Executors service
     STAGE_RUN_RESULT,
     STAGE_RUN_UPDATE,
-    DEF_DECLARATION
+    DEF_CREATE_INSTRUCTION
 }

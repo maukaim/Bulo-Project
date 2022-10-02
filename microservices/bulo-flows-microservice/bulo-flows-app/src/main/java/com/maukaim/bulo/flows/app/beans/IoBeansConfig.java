@@ -1,15 +1,14 @@
 package com.maukaim.bulo.flows.app.beans;
 
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.flows.app.io.*;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.data.StageStore;
-import com.maukaim.bulo.flows.data.lifecycle.FlowStoreImpl;
-import com.maukaim.bulo.flows.data.lifecycle.adapters.FlowAdapter;
-import com.maukaim.bulo.flows.data.lifecycle.adapters.StageAdapter;
-import com.maukaim.bulo.flows.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
+import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import com.maukaim.bulo.flows.io.*;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;

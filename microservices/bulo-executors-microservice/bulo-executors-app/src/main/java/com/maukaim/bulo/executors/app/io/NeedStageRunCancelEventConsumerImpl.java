@@ -2,7 +2,7 @@ package com.maukaim.bulo.executors.app.io;
 
 import com.maukaim.bulo.executors.core.StageRunEventProcessor;
 import com.maukaim.bulo.executors.io.NeedStageRunCancelEventConsumer;
-import com.maukaim.bulo.executors.io.in.NeedStageRunCancelEvent;
+import com.maukaim.bulo.executors.io.in.CancelRunInstruction;
 
 public class NeedStageRunCancelEventConsumerImpl implements NeedStageRunCancelEventConsumer {
     private final StageRunEventProcessor stageRunEventProcessor;
@@ -12,7 +12,7 @@ public class NeedStageRunCancelEventConsumerImpl implements NeedStageRunCancelEv
     }
 
     @Override
-    public void consume(NeedStageRunCancelEvent event) {
+    public void consume(CancelRunInstruction event) {
         System.out.println("Consume event: " + event);
         this.stageRunEventProcessor.onCancelRequest(event.getStageRunId());
     }

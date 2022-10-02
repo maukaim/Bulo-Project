@@ -1,15 +1,14 @@
 package com.maukaim.bulo.stages.app.beans;
 
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
 import com.maukaim.bulo.stages.io.*;
-import com.maukaim.bulo.stages.persistence.adapters.StageAdapter;
-import com.maukaim.bulo.stages.persistence.StageStoreImpl;
-import com.maukaim.bulo.stages.persistence.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

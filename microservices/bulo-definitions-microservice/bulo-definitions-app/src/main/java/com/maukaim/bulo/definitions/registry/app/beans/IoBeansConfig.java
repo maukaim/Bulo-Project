@@ -1,10 +1,9 @@
 package com.maukaim.bulo.definitions.registry.app.beans;
 
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.definitions.data.lifecycle.TechnicalStageDefinitionStoreImpl;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionDeclarationEventConsumer;
+import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionDeclarationEventConsumerImpl;
@@ -49,8 +48,8 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionDeclarationEventConsumer technicalStageDefinitionDeclarationEventConsumer(TechnicalStageDefinitionService technicalStageDefinitionService,
-                                                                                                             TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter) {
+    public TechnicalStageDefinitionCreateInstructionConsumer technicalStageDefinitionDeclarationEventConsumer(TechnicalStageDefinitionService technicalStageDefinitionService,
+                                                                                                              TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter) {
         return new TechnicalStageDefinitionDeclarationEventConsumerImpl(technicalStageDefinitionService, technicalStageDefinitionAdapter);
     }
 }

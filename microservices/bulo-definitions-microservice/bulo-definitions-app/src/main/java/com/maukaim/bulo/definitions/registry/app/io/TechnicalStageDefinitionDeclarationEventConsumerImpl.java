@@ -2,11 +2,11 @@ package com.maukaim.bulo.definitions.registry.app.io;
 
 import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionDeclarationEventConsumer;
-import com.maukaim.bulo.definitions.io.events.TechnicalStageDefinitionDeclarationEvent;
+import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.commons.io.instructions.TechnicalStageDefinitionCreateInstruction;
 import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionService;
 
-public class TechnicalStageDefinitionDeclarationEventConsumerImpl implements TechnicalStageDefinitionDeclarationEventConsumer {
+public class TechnicalStageDefinitionDeclarationEventConsumerImpl implements TechnicalStageDefinitionCreateInstructionConsumer {
     private final TechnicalStageDefinitionService technicalStageDefinitionService;
     private final TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter;
 
@@ -16,7 +16,7 @@ public class TechnicalStageDefinitionDeclarationEventConsumerImpl implements Tec
     }
 
     @Override
-    public void consume(TechnicalStageDefinitionDeclarationEvent event) {
+    public void consume(TechnicalStageDefinitionCreateInstruction event) {
         System.out.println("Consume event: " + event);
         TechnicalStageDefinition definition = this.technicalStageDefinitionAdapter.adapte(event.getTechnicalStageDefinition());
         this.technicalStageDefinitionService.register(event.getStageExecutorId(), definition);

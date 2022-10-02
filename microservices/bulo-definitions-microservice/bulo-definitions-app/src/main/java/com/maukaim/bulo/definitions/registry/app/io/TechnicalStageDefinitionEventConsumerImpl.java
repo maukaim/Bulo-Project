@@ -5,7 +5,7 @@ import com.maukaim.bulo.definitions.data.lifecycle.TechnicalStageDefinitionStore
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.definitions.io.events.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.definitions.io.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
 
 public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStageDefinitionEventConsumer {
     private final TechnicalStageDefinitionStoreImpl technicalStageDefinitionStore;

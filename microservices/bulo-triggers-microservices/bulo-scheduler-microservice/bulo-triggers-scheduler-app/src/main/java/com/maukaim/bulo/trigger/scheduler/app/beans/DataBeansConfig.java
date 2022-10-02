@@ -8,9 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DataBeansConfig {
-
     @Bean
-    public TriggerConnector triggerConnector(TriggerEventPublisher triggerEventPublisher){
+    public TriggerConnector triggerConnector(TriggerEventPublisher triggerEventPublisher) {
         return new TriggerConnectorImpl(triggerEventPublisher);
     }
 }

@@ -1,12 +1,12 @@
 package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
 
+import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageOutputDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
-import com.maukaim.bulo.executors.io.out.model.StageDefinitionDto;
 
 import java.util.stream.Collectors;
 
@@ -24,22 +24,22 @@ public class StageDefinitionDtoDtoAdapterImpl implements StageDefinitionDtoAdapt
     }
 
     @Override
-    public StageDefinitionDto adapte(StageDefinition definition) {
-        return new StageDefinitionDto(
+    public TechnicalStageDefinitionDto adapte(StageDefinition definition) {
+        return new TechnicalStageDefinitionDto(
                 definition.getTechnicalStageDefinitionId(),
                 definition.getInputsByName()
                         .entrySet()
                         .stream()
                         .collect(Collectors.toMap(
-                                entry-> entry.getKey(),
-                                entry-> this.stageInputDefinitionDtoAdapter.adapte(entry.getValue())
+                                entry -> entry.getKey(),
+                                entry -> this.stageInputDefinitionDtoAdapter.adapte(entry.getValue())
                         )),
                 definition.getOutputsByName()
                         .entrySet()
                         .stream()
                         .collect(Collectors.toMap(
-                                entry-> entry.getKey(),
-                                entry-> this.stageOutputDefinitionDtoAdapter.adapte(entry.getValue())
+                                entry -> entry.getKey(),
+                                entry -> this.stageOutputDefinitionDtoAdapter.adapte(entry.getValue())
                         )),
                 definition.getParameters().stream()
                         .map(this.parameterDefinitionDtoAdapter::adapte)

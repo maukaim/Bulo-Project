@@ -11,4 +11,10 @@
 
     <artifactId>app-standalone</artifactId>
     <packaging>pom</packaging>
+
+
+    <modules>
+        <module>standalone-data-lifecycle-module</module>
+        <module>standalone-app</module>
+    </modules>
 </project>

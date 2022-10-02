@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.app.io;
 
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
-import com.maukaim.bulo.flows.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.io.TechnicalStageDefinitionConsumer;
 import com.maukaim.bulo.flows.io.definition.TechnicalStageDefinitionDto;

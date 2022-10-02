@@ -3,12 +3,12 @@ package com.maukaim.bulo.stages.app.io;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.validators.StageCreateReport;
 import com.maukaim.bulo.stages.io.CreateStageEventConsumer;
-import com.maukaim.bulo.stages.io.events.CreateStageEvent;
+import com.maukaim.bulo.stages.io.events.CreateStageInstruction;
 import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
 import com.maukaim.bulo.stages.io.models.stages.StageDto;
 import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
 import com.maukaim.bulo.stages.models.stage.Stage;
-import com.maukaim.bulo.stages.persistence.adapters.StageAdapter;
+import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
 
 public class CreateStageEventConsumerImpl implements CreateStageEventConsumer {
     private final StageService stageService;
@@ -20,7 +20,7 @@ public class CreateStageEventConsumerImpl implements CreateStageEventConsumer {
     }
 
     @Override
-    public String consume(CreateStageEvent event) {
+    public String consume(CreateStageInstruction event) {
         System.out.println("Consume event: " + event);
         StageDto stageDto = event.getStageDto();
         Stage stage = switch (stageDto.getStageType()) {
