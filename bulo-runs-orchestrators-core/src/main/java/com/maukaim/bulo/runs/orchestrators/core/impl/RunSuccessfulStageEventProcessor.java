@@ -1,24 +1,24 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.commons.models.FlowStageId;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
+import com.maukaim.bulo.runs.orchestrators.core.factories.StageRunFactory;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageAncestor;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
-import com.maukaim.bulo.runs.orchestrators.io.events.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.core.factories.StageRunFactory;
 
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
 
-public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuccessfulStageRunEvent> {
+public class RunSuccessfulStageEventProcessor extends StageEventProcessor {
     private final StageRunService stageRunService;
 
     public RunSuccessfulStageEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
@@ -26,26 +26,21 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuc
         this.stageRunService = stageRunService;
     }
 
-    @Override
-    public Class<RunSuccessfulStageRunEvent> getExpectedStageEventClass() {
-        return RunSuccessfulStageRunEvent.class;
-    }
+    public void process(String stageRunId, Instant instant, String flowRunId) {
+        System.out.println("Successful Run event... " + stageRunId);
 
-    @Override
-    public void process(RunSuccessfulStageRunEvent event, String flowRunId) {
-        System.out.println("Received Successful run Event, will proceed -> " + event);
         this.flowRunService.computeStageRunViewUnderLock(flowRunId, (actualFlowRun) -> {
-            StageRun actualStageRun = actualFlowRun.getStageRunsById().get(event.getStageRunId());
+            StageRun actualStageRun = actualFlowRun.getStageRunsById().get(stageRunId);
             if (actualStageRun == null) {
                 throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
             }
 
             Map<String, StageRun> result = new HashMap<>();
-            result.put(event.getStageRunId(), StageRunFactory.success(actualStageRun, event.getInstant()));
+            result.put(stageRunId, StageRunFactory.success(actualStageRun, instant));
 
             Set<FlowStageId> childrenIds = actualFlowRun.getExecutionGraph().getChildren(actualStageRun.getFlowStageId());
-            if(!actualFlowRun.getFlowRunStatus().isTerminal() && !childrenIds.isEmpty()){
-                    result.putAll(this.getStageRunsToBeRequestedIfAuthorized(actualFlowRun, actualStageRun.getFlowStageId(), childrenIds));
+            if (!actualFlowRun.getFlowRunStatus().isTerminal() && !childrenIds.isEmpty()) {
+                result.putAll(this.getStageRunsToBeRequestedIfAuthorized(actualFlowRun, actualStageRun.getFlowStageId(), childrenIds));
             }
 
             return result;
@@ -59,7 +54,7 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuc
                 .collect(toMap(
                         flowStageId -> flowStageId,
                         flowStageId -> this.getDependencies(flowStageId, flowRun)
-                        ));
+                ));
         return this.stageRunService.getNextStageRun(flowRunId, childrenToStart);
     }
 
@@ -80,7 +75,7 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor<RunSuc
 
     //TODO: tout ca devrait sortir de la class non?
     private Set<StageRunAncestor> getStageRunAncestors(Set<FlowStageAncestor> flowStageAncestors, FlowRun flowRun) {
-        if(flowStageAncestors == null || flowStageAncestors.isEmpty()){
+        if (flowStageAncestors == null || flowStageAncestors.isEmpty()) {
             return Set.of();
         }
 

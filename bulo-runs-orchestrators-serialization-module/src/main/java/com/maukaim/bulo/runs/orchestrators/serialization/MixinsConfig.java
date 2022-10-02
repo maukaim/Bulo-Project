@@ -48,7 +48,7 @@ public class MixinsConfig {
         putAll(STAGE_RUN_EVENTS_MIXINS);
         putAll(FLOW_RUN_MIXINS);
         putAll(FLOW_MIXINS);
-        put(BasicTriggerEvent.class, TriggerEventMixIn.class);
+        put(FlowRunInstruction.class, TriggerEventMixIn.class);
         put(NeedStageRunCancellationEvent.class, NeedStageRunCancellationEventMixIn.class);
         put(NeedStageRunExecutionEvent.class, NeedStageRunExecutionEventMixIn.class);
     }};

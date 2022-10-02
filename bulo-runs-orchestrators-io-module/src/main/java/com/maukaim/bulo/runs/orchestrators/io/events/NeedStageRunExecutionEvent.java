@@ -7,13 +7,13 @@ import java.time.Instant;
 import java.util.Set;
 
 public class NeedStageRunExecutionEvent implements ExternalEvent {
-    private String globalStageId;
+    private String stageId;
     private String stageRunId;
     private Set<StageRunDependencyDto> dependencies;
     private Instant instant;
 
-    public NeedStageRunExecutionEvent(String globalStageId, String stageRunId, Set<StageRunDependencyDto> stageRunDependencies, Instant instant) {
-        this.globalStageId = globalStageId;
+    public NeedStageRunExecutionEvent(String stageId, String stageRunId, Set<StageRunDependencyDto> stageRunDependencies, Instant instant) {
+        this.stageId = stageId;
         this.stageRunId = stageRunId;
         this.dependencies = stageRunDependencies;
         this.instant = instant;
@@ -28,8 +28,8 @@ public class NeedStageRunExecutionEvent implements ExternalEvent {
         return dependencies;
     }
 
-    public String getGlobalStageId() {
-        return globalStageId;
+    public String getStageId() {
+        return stageId;
     }
 
     public String getStageRunId() {
@@ -39,7 +39,7 @@ public class NeedStageRunExecutionEvent implements ExternalEvent {
     @Override
     public String toString() {
         return "NeedStageRunExecutionEvent{" +
-                "globalStageId='" + globalStageId + '\'' +
+                "stageId='" + stageId + '\'' +
                 ", stageRunId='" + stageRunId + '\'' +
                 ", dependencies=" + dependencies +
                 ", instant=" + instant +

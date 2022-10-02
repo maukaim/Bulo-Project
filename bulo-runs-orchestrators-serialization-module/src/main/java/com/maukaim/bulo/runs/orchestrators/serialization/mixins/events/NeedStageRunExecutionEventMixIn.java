@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class NeedStageRunExecutionEventMixIn {
     @JsonCreator
-    public NeedStageRunExecutionEventMixIn(@JsonProperty("globalStageId") String globalStageId,
+    public NeedStageRunExecutionEventMixIn(@JsonProperty("stageId") String stageId,
                                            @JsonProperty("stageRunId") String stageRunId,
                                            @JsonProperty("ioMapping") Map<String, Map<String, Set<String>>> ioMapping,
                                            @JsonProperty("instant") Instant instant) {

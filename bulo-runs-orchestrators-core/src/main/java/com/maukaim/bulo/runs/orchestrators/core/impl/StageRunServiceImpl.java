@@ -41,7 +41,7 @@ public class StageRunServiceImpl implements StageRunService {
     public Map<String, StageRun> startRuns(Collection<StageRun> toBeRequestedStageRuns) {
         Map<String, StageRun> result = new HashMap<>();
         for (StageRun stageRunToBeRequested : toBeRequestedStageRuns) {
-            boolean started = this.stageRunConnector.sendRun(stageRunToBeRequested.getFlowStageId().getGlobalStageId(), stageRunToBeRequested.getStageRunId(), stageRunToBeRequested.getStageRunDependencies());
+            boolean started = this.stageRunConnector.sendRun(stageRunToBeRequested.getFlowStageId().getStageId(), stageRunToBeRequested.getStageRunId(), stageRunToBeRequested.getStageRunDependencies());
             result.put(stageRunToBeRequested.getStageRunId(), started ? StageRunFactory.requested(stageRunToBeRequested) : StageRunFactory.failed(stageRunToBeRequested, Instant.now()));
         }
         return result;

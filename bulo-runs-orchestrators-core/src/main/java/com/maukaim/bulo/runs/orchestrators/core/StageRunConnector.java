@@ -6,5 +6,5 @@ import java.util.Set;
 
 public interface StageRunConnector {
     boolean sendCancel(String stageRunId, String executorId);
-    boolean sendRun(String globalStageId, String stageRunId, Set<StageRunDependency> stageRunDependencies);
+    boolean sendRun(String stageId, String stageRunId, Set<StageRunDependency> stageRunDependencies);
 }

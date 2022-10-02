@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.io;
 
-import com.maukaim.bulo.runs.orchestrators.io.events.BasicTriggerEvent;
+import com.maukaim.bulo.runs.orchestrators.io.events.FlowRunInstruction;
 
 public interface TriggerEventConsumer {
-    String onTriggerEvent(BasicTriggerEvent triggerEvent);
+    String onFlowRunInstruction(FlowRunInstruction triggerEvent);
 }

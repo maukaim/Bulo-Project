@@ -14,20 +14,8 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-runs-orchestrators-io-module</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-runs-orchestrators-data-module</artifactId>
             <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-core</artifactId>
-            <version>${bulo.commons.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -78,7 +80,8 @@ public class FlowRunServiceImpl implements FlowRunService {
     //TODO -> How to make a better lock? maybe here : https://stackoverflow.com/questions/51716527/how-to-lock-on-key-in-a-concurrenthashmap
     @Override
     public synchronized FlowRun computeStageRunViewUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
-        return this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
+        AtomicReference<List<StageRun>> s = new AtomicReference<>();
+        FlowRun flowRunPersisted = this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
             Map<String, StageRun> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
@@ -86,16 +89,21 @@ public class FlowRunServiceImpl implements FlowRunService {
             List<StageRun> tobeRequestedStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStageRunStatus() == StageRunStatus.TO_BE_REQUESTED)
                     .collect(Collectors.toList());
-            if (tobeRequestedStageRuns.isEmpty()) {
-                return newFlowRunValue;
-            } else {
-                Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(tobeRequestedStageRuns);
-                FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(newFlowRunValue, stageRunsAfterRequest);
+            s.set(tobeRequestedStageRuns);
+            return newFlowRunValue;
+        });
+
+        List<StageRun> toBeRequestedRuns = s.get();
+        if(toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()){
+            return this.flowRunStore.compute(flowRunId,(id,flowRun)->{
+                Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
+                FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(flowRunPersisted, stageRunsAfterRequest);
                 flowRunAfterRequested = FlowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
 
                 return flowRunAfterRequested;
-            }
-        });
+            });
+        }
+        return flowRunPersisted;
     }
 
     private FlowRunStatus resolveStatus(FlowRun flowRun) {

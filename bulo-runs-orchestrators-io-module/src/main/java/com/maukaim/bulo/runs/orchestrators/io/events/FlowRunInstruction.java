@@ -6,14 +6,14 @@ import com.maukaim.bulo.commons.models.FlowStageId;
 import java.time.Instant;
 import java.util.Set;
 
-public class BasicTriggerEvent implements TriggerEvent {
+public class FlowRunInstruction implements TriggerEvent {
     private final Instant instant;
     private String flowId;
     private Set<FlowStageId> flowStageIds;
 
-    public BasicTriggerEvent(String flowId,
-                             Set<FlowStageId> flowStageIds,
-                             Instant instant) {
+    public FlowRunInstruction(String flowId,
+                              Set<FlowStageId> flowStageIds,
+                              Instant instant) {
         this.flowId = flowId;
         this.flowStageIds = flowStageIds;
         this.instant = instant;
