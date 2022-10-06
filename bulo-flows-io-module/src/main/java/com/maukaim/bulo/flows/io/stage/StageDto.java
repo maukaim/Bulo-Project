@@ -11,6 +11,7 @@ public abstract class StageDto {
     protected String stageId;
 
     public StageDto(String stageId, StageType stageType, List<ParameterDto> parameters) {
+        this.stageId = stageId;
         this.stageType = stageType;
         this.parameters = parameters;
     }
