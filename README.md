@@ -20,5 +20,5 @@ you can [follow me on Medium](https://medium.com/@JulienElkaim), I will regularl
 <br/>
 <br/>
 <div align="center">
-<img src="assets/flow_example_adobe.gif" width="500"  />
+<img src="assets/flow_example_adobe.gif" width="600"/>
 </div>
