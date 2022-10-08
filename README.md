@@ -1,10 +1,7 @@
-# Bulo-Project (ALPHA version)  
-<div align="center">
-    <img src="./bulo-logo.svg" /><br>
-    <i>Your time is worth to save. </i><br/>
+<div class="box">
+    <img class="logo" src="./bulo_logo.png" width="80" />
+    <h1 class="title">Bulo Project (ALPHA version).</h1>  
 </div>
-
-
 
 ## Project Definition  
 
@@ -19,3 +16,21 @@ As of July 2022: Bulo is not open to contributions yet, as I don't have the time
 
 If you want to get notified on any news related to this project future features,
 you can [follow me on Medium](https://medium.com/@JulienElkaim), I will regularly post new articles about the project ideation and the implementation process!
+
+<style>
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.logo {
+    align-self: center;
+}
+.title{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    align-self: stretch;
+}
+</style>
