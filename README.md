@@ -16,8 +16,9 @@ Thanks to the Bulo Store (Beta version), share and leverage on tools built by th
 As of July 2022: Bulo is not open to contributions yet, as I don't have the time to structure and manage PRs for the moment.
 
 If you want to get notified on any news related to this project future features,
-you can [follow me on Medium](https://medium.com/@JulienElkaim), I will regularly post new articles about the project ideation and the implementation process! 
-
+you can [follow me on Medium](https://medium.com/@JulienElkaim), I will regularly post new articles about the project ideation and the implementation process!
+<br/>
+<br/>
 <div align="center">
-<img src="assets/flow_example.gif" width="800"  />
+<img src="assets/flow_example_adobe.gif" width="500"  />
 </div>
