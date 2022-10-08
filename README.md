@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./bulo_logo.png" width="80" />
+    <img src="./bulo_logo.png" width="100" />
     <h1 class="title" >Bulo Project (ALPHA version)</h1>  
 </div>
 
