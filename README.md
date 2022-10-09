@@ -5,8 +5,8 @@
 
 ## It seems you just found your new automation buddy.
 
-Bulo is a scalable solution to automate tasks at the organization level. The idea behind this project is to provide developers and business teams a unique platform to collaborate and bring value to the organization. 
-No more duplicate work, everything here is built so the community can share solutions and leverage on existing work. From the scale of a team, to the entire Bulo's community.
+Bulo is a scalable solution to automate tasks at the organization level. The idea of this project is to provide developers and business teams a unique platform to collaborate and achieve more, effortlessly. 
+No more duplicate work, everything in Bulo is built so the community can share solutions and leverage on existing work. From the scale of a team, to the entire Bulo's community.
 As scalability is at the core of its design, Bulo can stretch from a simple standalone Desktop App to an entreprise-scale, microservices application.
 <br/>
 <br/>
@@ -27,12 +27,24 @@ In theory, communication is seamlessly performed at the management team level so
 then just search for it on Bulo's store. With it's microservice architecture, Bulo is a scalable solution for your business to support any task that could be automated, and create wonderful tools that will help employees to focus on exciting and high-value, at any time.
 
 Exclusively built in Java to achieve scalability up (microservices) and down (desktop standalone), Bulo aims to help Business and developer to collaborate in an efficient fashion, so will together achieve more with less efforts. 
-With exclusive features as Functional Stages, Flows inter-communications, and integration with multiple languages (Beta roadmap -> Pyhton, Groovy, Java, and more in future versions) Bulo v1 is in the right position to bring your _digital transformation_ at the next level. 
+With exclusive features as Functional Stages, Flows inter-communications, and integration with multiple languages (Beta roadmap -> Python, Groovy, Java, and more in future versions) Bulo v1 is in the right position to bring your _digital transformation_ at the next level.  
+
+## Why do we integrate a Standalone version? 
+
+In the extent of the _open source_ philosophy, we strongly believe that automation should be accessible by everybody. A Standalone application makes it very easy for any non-initiated user to test Bulo and access to all its wonderful features. A computer, an internet connection, and here we go!
+Also, it makes it much easier for contributors to add functionalities as a microservice application is sometimes hard to run on a local machine. Finally, could a small business of 5 afford to maintain  fancy infra that a microservice tool requires? A monolithic app makes more sense here. 
+In order to help the majority, no compromises are maded on the microservice version, but the design and code architecture of Bulo provide us with this uniq possibility to scale down a business application built for performance, and intensive workload.
 
 ## Getting Started in 42 seconds  
 _Java 16 required_. 
 
 Bulo microservices and Standalone versions are not yet deployed in Alpha version. You can build the project and run it from your IDE, For how to run Bulo, please look at the [RUNME.md](RUNME.md) page.
+
+
+## How to contribute? 
+
+Every one here is welcomed ! From helping on the architecture design, building new Stage Runners or helping with documentation. If you are interested feel free to reach out ! julienelk@gmail.com 
+To understand how to make your first contribution to the project, please read [CONTRIBUTE_ME.md](CONTRIBUTE_ME.md)  
 
 ## Follow the project  
 
