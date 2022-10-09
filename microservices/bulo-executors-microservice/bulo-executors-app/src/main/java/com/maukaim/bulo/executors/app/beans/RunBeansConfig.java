@@ -1,11 +1,13 @@
 package com.maukaim.bulo.executors.app.beans;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.executors.core.*;
 import com.maukaim.bulo.executors.core.impl.*;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.executors.data.StageRunResultStore;
 import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.StageStore;
+import com.maukaim.bulo.runners.core.SimpleJsonMarshaller;
 import com.maukaim.bulo.runners.embedded.NameProvider;
 import com.maukaim.bulo.runners.embedded.PrintYoloRunner;
 import com.maukaim.bulo.runners.embedded.SlowPrintYoloRunner;
@@ -21,7 +23,7 @@ public class RunBeansConfig {
 
     @Bean
     public StageRunner yoloRunner() {
-        return new PrintYoloRunner();
+        return new PrintYoloRunner(new SimpleJsonMarshaller(new ObjectMapper()));
     }
 
     @Bean
