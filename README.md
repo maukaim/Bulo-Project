@@ -55,7 +55,5 @@ To understand how to make your first contribution to the project, please read [C
 
 ## Follow the project  
 
-As of July 2022: Bulo is not open to contributions yet, as I don't have the time to structure and manage PRs for the moment.
-
-If you want to get notified on any news related to this project future features,
-you can [follow me on Medium](https://medium.com/@JulienElkaim), I will regularly post new articles about the project ideation and the implementation process!
+If you want to get notified on any news related to Bulo and you think this project is exciting,
+you can [follow us on Medium](https://medium.com/@JulienElkaim), we will regularly post new articles about the project ideation and the implementation process!
