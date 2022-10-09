@@ -34,13 +34,19 @@ With exclusive features as Functional Stages, Flows inter-communications, and in
 In the extent of the _open source_ philosophy, we strongly believe that automation should be accessible by everybody. A Standalone application makes it easy for any non-initiated user to test Bulo and access to all its wonderful features. A computer, an internet connection, and here we go!
 Also, it makes it much easier for contributors to add functionalities as a microservice application is sometimes hard to run on a local machine. Finally, a business of 5 could not maintain a fancy infrastructure to support a microservices tool. For all these reasons, having a standalone version make sense.
 
-And yet, we did not compromise on the performances for the microservices version! The capability of Bulo to shrink down to a monolithic app is thanks to its code architecture, designed from the beginning to separate domain logic and the technical components.
+And yet, we did not compromise on the microservices version' performances at runtime! The capability of Bulo to shrink down to a monolithic app is due to its code base architecture, designed from the beginning to separate domain logic and the technical components.
 
 ## Getting Started in 42 seconds  
 _Java 16 required_. 
 
 Bulo microservices and Standalone versions are not yet deployed in Alpha version. You can build the project and run it from your IDE, For how to run Bulo, please look at the [RUNME.md](RUNME.md) page.
 
+## Roadmap Alpha version - Jan 2023 
+
+Find below the targeted architecture for the Micro-services application.  
+<Targeted Architecture Map>
+More documentation and comparison to the current architecture <here_link>.
+For contributors, you can have a look on cards in [Bulo-Project's Dashboard](https://github.com/orgs/maukaim/projects/3) and pick a task in the backlog.
 
 ## How to contribute? 
 
