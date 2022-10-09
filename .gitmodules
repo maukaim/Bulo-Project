@@ -1,6 +1,6 @@
 [submodule "common-Boys"]
 	path = bulo-commons-module
-	url = git@github.com:maukaim/bulo-commons-module.git
+	url = git@github.com:maukaim/bulo-common-modules.git
 [submodule "bulo-triggers-module"]
 	path = bulo-triggers-module
 	url = git@github.com:maukaim/bulo-triggers-module.git
