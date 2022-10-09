@@ -1,26 +1,27 @@
 package com.maukaim.bulo.runners.embedded;
 
-import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.models.ParameterDefinition;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.data.models.StageInputDefinition;
 import com.maukaim.bulo.executors.data.models.StageOutputDefinition;
 import com.maukaim.bulo.executors.data.runs.ExecutionCancelledException;
-import com.maukaim.bulo.runners.core.MissingInputException;
+import com.maukaim.bulo.runners.core.AbstractStageRunner;
+import com.maukaim.bulo.runners.core.Marshaller;
 import com.maukaim.bulo.runners.core.RunnerUtils;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
-//TODO: Add an ObjectMapper so it is able to translate inputs and Parameters
-
-public class PrintYoloRunner implements StageRunner {
+public class PrintYoloRunner extends AbstractStageRunner {
     private final static String DEF_ID = "PrintYolo";
+
+    public PrintYoloRunner(Marshaller marshaller) {
+        super(marshaller);
+    }
 
     @Override
     public StageDefinition getDefinition() {
-
         return new StageDefinition(
                 DEF_ID,
                 RunnerUtils.toMap(InputsProvider.get()),
@@ -31,14 +32,14 @@ public class PrintYoloRunner implements StageRunner {
 
     @Override
     public Map<String, String> run(Map<String, String> inputs, Map<String, String> parameters) throws ExecutionCancelledException {
-        String subject = getOrThrow(inputs, InputsProvider.SUBJECT_NAME);
-        String isUpperCase = getOrThrow(parameters, ParametersProvider.UPPERCASE_NAME);
-        String Greetings = getOrThrow(parameters, ParametersProvider.GREETINGS_NAME);
+        String subject = getOrThrow(inputs, InputsProvider.SUBJECT_NAME, String.class);
+        String isUpperCase = getOrThrow(parameters, ParametersProvider.UPPERCASE_NAME, String.class);
+        String Greetings = getOrThrow(parameters, ParametersProvider.GREETINGS_NAME, String.class);
 
         System.out.println("Please let me sleep, just 30s...");
         try {
             Thread.sleep(15000);
-            if(Instant.now().getEpochSecond() % 2 == 0){
+            if (Instant.now().getEpochSecond() % 2 == 0) {
                 System.out.println("Will cancel!");
                 throw new ExecutionCancelledException();
             }
@@ -56,14 +57,6 @@ public class PrintYoloRunner implements StageRunner {
 
     private boolean isTrue(String isUpperCase) {
         return isUpperCase != null && "true".toLowerCase().equals(isUpperCase);
-    }
-
-    private <T> T getOrThrow(Map<String, ? extends Object> inputs, String key) {
-        if (inputs.containsKey(key)) {
-            return (T) inputs.get(key);
-        } else {
-            throw new MissingInputException("Following input is missing: " + key);
-        }
     }
 
     private static class InputsProvider {

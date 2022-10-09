@@ -12,14 +12,12 @@ import com.maukaim.bulo.runners.core.RunnerUtils;
 import java.util.List;
 import java.util.Map;
 
-//TODO: Add an ObjectMapper so it is able to translate inputs and Parameters
 
 public class SlowPrintYoloRunner implements StageRunner {
     private final static String DEF_ID = "SlowPrintYolo";
 
     @Override
     public StageDefinition getDefinition() {
-
         return new StageDefinition(
                 DEF_ID,
                 RunnerUtils.toMap(InputsProvider.get()),
