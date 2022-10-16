@@ -27,8 +27,8 @@
 
     <modules>
         <module>domain-modules</module>
-        <module>standalone</module>
-        <module>microservices</module>
+        <module>app-standalone</module>
+        <module>app-microservices</module>
         <module>app-commons</module>
     </modules>
 </project>
