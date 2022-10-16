@@ -20,5 +20,6 @@
         <module>bulo-stages-module</module>
         <module>bulo-runs-orchestrators-module</module>
         <module>bulo-executors-module</module>
+        <module>bulo-definitions-module</module>
     </modules>
 </project>

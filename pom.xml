@@ -30,7 +30,6 @@
         <module>standalone</module>
         <module>microservices</module>
         <module>bulo-commons-module</module>
-        <module>bulo-definitions-module</module>
         <module>app-commons</module>
     </modules>
 </project>
