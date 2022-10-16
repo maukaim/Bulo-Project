@@ -1,6 +1,3 @@
-[submodule "bulo-triggers-module"]
-	path = bulo-triggers-module
-	url = git@github.com:maukaim/bulo-triggers-module.git
 [submodule "bulo-runs-orchestrators-module"]
 	path = bulo-runs-orchestrators-module
 	url = git@github.com:maukaim/bulo-runs-orchestrators-module.git
