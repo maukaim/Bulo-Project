@@ -3,7 +3,6 @@ package com.maukaim.bulo.trigger.scheduler.core;
 
 import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.commons.models.TriggerId;
-import com.maukaim.bulo.triggers.scheduler.data.ScheduleTriggerConfig;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 
 import java.util.Map;

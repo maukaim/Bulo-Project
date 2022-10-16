@@ -4,9 +4,6 @@ import com.maukaim.bulo.ms.connectivity.EventType;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
 import com.maukaim.bulo.triggers.io.events.BasicTriggerEvent;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
 public class TriggerEventPublisherImpl implements TriggerEventPublisher {
     private final SystemConnector systemConnector;

@@ -3,7 +3,6 @@ package com.maukaim.bulo.trigger.scheduler.app.io;
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
 import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerAddInstruction;
 import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerConsumer;
-import com.maukaim.bulo.triggers.scheduler.data.ScheduleTriggerConfig;
 
 public class ScheduleTriggerConsumerImpl implements ScheduleTriggerConsumer {
     private final ScheduleTriggerService triggerService;

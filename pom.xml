@@ -26,18 +26,15 @@
     </properties>
 
     <modules>
-        <module>microservices</module>
+        <module>domain-modules</module>
         <module>standalone</module>
-
+        <module>microservices</module>
         <module>bulo-commons-module</module>
         <module>bulo-runs-orchestrators-module</module>
-        <module>domain-modules</module>
         <module>bulo-stages-module</module>
         <module>bulo-definitions-module</module>
-        <module>bulo-triggers-module</module>
         <module>bulo-executors-module</module>
         <module>bulo-teams-module</module>
-        <module>bulo-users-module</module>
         <module>app-commons</module>
     </modules>
 </project>
