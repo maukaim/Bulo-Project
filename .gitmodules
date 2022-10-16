@@ -7,9 +7,6 @@
 [submodule "bulo-users-module"]
 	path = bulo-users-module
 	url = git@github.com:maukaim/bulo-users-module.git
-[submodule "bulo-teams-module"]
-	path = bulo-teams-module
-	url = git@github.com:maukaim/bulo-teams-module.git
 [submodule "bulo-executors-module"]
 	path = bulo-executors-module
 	url = git@github.com:maukaim/bulo-executors-module.git
