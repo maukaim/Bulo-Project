@@ -29,7 +29,6 @@
         <module>domain-modules</module>
         <module>standalone</module>
         <module>microservices</module>
-        <module>bulo-commons-module</module>
         <module>app-commons</module>
     </modules>
 </project>

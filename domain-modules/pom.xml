@@ -21,5 +21,6 @@
         <module>bulo-runs-orchestrators-module</module>
         <module>bulo-executors-module</module>
         <module>bulo-definitions-module</module>
+        <module>bulo-commons-module</module>
     </modules>
 </project>
