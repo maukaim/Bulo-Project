@@ -1,18 +1,10 @@
 # Getting Started  
-First you need to download and set up the mulit-modules project:
+As simple projects: 
 ```shell
 git clone git@github.com:maukaim/Bulo-Project.git
-cd Bulo-Project
-git submodule init
-git submodule update
-```  
-
-Once done, run a maven install to upload the dependencies and build the required artifacts. From your IDE maven plugin, or from cmd line: 
-```shell
 mvn clean install
-```  
+```   
 
-You are now ready to run the application.
 ## Standalone App (Alpha version)
 
 Simply launch the app from the main method in _standalone/standalone-app/.../BuloStandaloneApplication.java_. 
