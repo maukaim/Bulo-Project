@@ -7,9 +7,6 @@
 [submodule "bulo-runs-orchestrators-module"]
 	path = bulo-runs-orchestrators-module
 	url = git@github.com:maukaim/bulo-runs-orchestrators-module.git
-[submodule "bulo-flows-module"]
-	path = bulo-flows-module
-	url = git@github.com:maukaim/bulo-flows-module.git
 [submodule "bulo-definitions-module"]
 	path = bulo-definitions-module
 	url = git@github.com:maukaim/bulo-definitions-module.git
