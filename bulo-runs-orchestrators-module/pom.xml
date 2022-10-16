@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.maukaim.bulo</groupId>
+    <artifactId>bulo-runs-orchestrators-module</artifactId>
+    <version>${revision}</version>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <revision>1.0-SNAPSHOT</revision>
+        <bulo.trigger.api>1.0-SNAPSHOT</bulo.trigger.api>
+        <bulo.flows.api>1.0-SNAPSHOT</bulo.flows.api>
+        <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
+        <spring.boot.version>2.4.4</spring.boot.version>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <modules>
+        <module>bulo-runs-orchestrators-core</module>
+        <module>bulo-runs-orchestrators-serialization-module</module>
+        <module>bulo-runs-orchestrators-io-module</module>
+        <module>bulo-runs-orchestrators-data-module</module>
+    </modules>
+</project>
