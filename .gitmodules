@@ -10,9 +10,6 @@
 [submodule "bulo-definitions-module"]
 	path = bulo-definitions-module
 	url = git@github.com:maukaim/bulo-definitions-module.git
-[submodule "bulo-stages-module"]
-	path = bulo-stages-module
-	url = git@github.com:maukaim/bulo-stages-module.git
 [submodule "bulo-users-module"]
 	path = bulo-users-module
 	url = git@github.com:maukaim/bulo-users-module.git
