@@ -17,5 +17,6 @@
         <module>bulo-users-module</module>
         <module>bulo-triggers-module</module>
         <module>bulo-teams-module</module>
+        <module>bulo-stages-module</module>
     </modules>
 </project>
