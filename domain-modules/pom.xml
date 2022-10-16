@@ -18,5 +18,6 @@
         <module>bulo-triggers-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-stages-module</module>
+        <module>bulo-runs-orchestrators-module</module>
     </modules>
 </project>
