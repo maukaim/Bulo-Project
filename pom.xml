@@ -31,7 +31,7 @@
 
         <module>bulo-commons-module</module>
         <module>bulo-runs-orchestrators-module</module>
-        <module>domain/bulo-flows-module</module>
+        <module>domain-modules</module>
         <module>bulo-stages-module</module>
         <module>bulo-definitions-module</module>
         <module>bulo-triggers-module</module>
