@@ -14,5 +14,6 @@
 
     <modules>
         <module>bulo-flows-module</module>
+        <module>bulo-users-module</module>
     </modules>
 </project>
