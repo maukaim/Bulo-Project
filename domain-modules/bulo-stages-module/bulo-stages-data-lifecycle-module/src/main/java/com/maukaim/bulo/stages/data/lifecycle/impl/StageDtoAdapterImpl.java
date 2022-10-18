@@ -2,9 +2,11 @@ package com.maukaim.bulo.stages.data.lifecycle.impl;
 
 import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
 import com.maukaim.bulo.stages.io.models.stages.StageDto;
+import com.maukaim.bulo.stages.io.models.stages.StageScopeDto;
 import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
 import com.maukaim.bulo.stages.models.stage.FunctionalStage;
 import com.maukaim.bulo.stages.models.stage.Stage;
+import com.maukaim.bulo.stages.models.stage.StageScope;
 import com.maukaim.bulo.stages.models.stage.TechnicalStage;
 import com.maukaim.bulo.stages.data.lifecycle.ParameterDtoAdapter;
 import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
@@ -42,7 +44,16 @@ public class StageDtoAdapterImpl implements StageDtoAdapter {
                 stage.getParameters().stream()
                         .map(parameterDtoAdapter::adapte)
                         .collect(Collectors.toList()),
-                stage.getDefinitionId()
+                stage.getDefinitionId(),
+                resolve(stage.getStageScope())
         );
+    }
+
+    private StageScopeDto resolve(StageScope stageScope) {
+        return switch (stageScope) {
+            case FUNCTIONAL_STAGE -> StageScopeDto.FUNCTIONAL_STAGE;
+            case FLOW -> StageScopeDto.FLOW;
+            case APP -> StageScopeDto.APP;
+        };
     }
 }
