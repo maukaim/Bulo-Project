@@ -2,7 +2,7 @@ package com.maukaim.bulo.definitions.io.events;
 
 import com.maukaim.bulo.commons.io.DefinitionEventType;
 import com.maukaim.bulo.commons.io.GlobalDefinitionEvent;
-import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
 
 import java.time.Instant;
 

@@ -1,30 +1,36 @@
 package com.maukaim.bulo.definitions.registry.core;
 
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinitionStore;
+import com.maukaim.bulo.definitions.data.functional.FunctionalStageDefinition;
+import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 
 import java.util.List;
 
 public class TechnicalStageDefinitionServiceImpl implements TechnicalStageDefinitionService {
     private final List<TechnicalStageDefinitionValidator> validators;
-    private final TechnicalStageDefinitionStore definitionStore;
+    private final StageDefinitionStore definitionStore;
 
-    public TechnicalStageDefinitionServiceImpl(TechnicalStageDefinitionStore definitionStore,
+    public TechnicalStageDefinitionServiceImpl(StageDefinitionStore definitionStore,
                                                List<TechnicalStageDefinitionValidator> validators) {
         this.definitionStore = definitionStore;
         this.validators = validators;
     }
 
     @Override
+    public void register(FunctionalStageDefinition functionalStageDefinition) {
+        TechnicalStageDefinition existingDefinition = definitionStore.getById(definition.getId());
+    }
+
+    @Override
     public void register(String stageExecutorId, TechnicalStageDefinition definition) {
-        TechnicalStageDefinition existingDefinition = definitionStore.getById(definition.getTechnicalStageDefinitionId());
+        TechnicalStageDefinition existingDefinition = definitionStore.getById(definition.getId());
         if (existingDefinition != null && existingDefinition.equals(definition)) {
-            this.definitionStore.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
+            this.definitionStore.addExecutor(stageExecutorId, definition.getId());
         } else if (this.validators.stream().allMatch(validator -> validator.validate(definition))) {
             this.definitionStore.addDefinition(definition);
-            this.definitionStore.addExecutor(stageExecutorId, definition.getTechnicalStageDefinitionId());
+            this.definitionStore.addExecutor(stageExecutorId, definition.getId());
         } else {
-            throw new RuntimeException("Definition rejected: " + definition.getTechnicalStageDefinitionId());
+            throw new RuntimeException("Definition rejected: " + definition.getId());
         }
     }
 

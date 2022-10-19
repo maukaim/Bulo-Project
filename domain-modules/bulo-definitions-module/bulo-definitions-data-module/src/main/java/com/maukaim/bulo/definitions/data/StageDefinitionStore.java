@@ -1,5 +1,7 @@
 package com.maukaim.bulo.definitions.data;
 
+import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
+
 import java.util.List;
 import java.util.Set;
 

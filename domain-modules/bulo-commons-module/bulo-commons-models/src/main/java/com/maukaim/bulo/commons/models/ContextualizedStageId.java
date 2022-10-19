@@ -3,18 +3,18 @@ package com.maukaim.bulo.commons.models;
 
 import java.util.Objects;
 
-public class FlowStageId {
+public class ContextedStageId {
     private final String stageId;
     private final Integer marker;
 
-    public static FlowStageId of(String stageId){
-        return new FlowStageId(stageId, null);
+    public static ContextedStageId of(String stageId){
+        return new ContextedStageId(stageId, null);
     }
 
-    public static FlowStageId of(String stageId, Integer marker){
-        return new FlowStageId(stageId, marker);
+    public static ContextedStageId of(String stageId, Integer marker){
+        return new ContextedStageId(stageId, marker);
     }
-    protected FlowStageId(String stageId, Integer marker) {
+    protected ContextedStageId(String stageId, Integer marker) {
         this.stageId = stageId;
         this.marker = marker == null ? 0 : marker;
     }
@@ -31,7 +31,7 @@ public class FlowStageId {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FlowStageId that = (FlowStageId) o;
+        ContextedStageId that = (ContextedStageId) o;
         return stageId.equals(that.stageId) && Objects.equals(marker, that.marker);
     }
 

@@ -3,7 +3,7 @@ package com.maukaim.bulo.definitions.data.lifecycle.adapters.impl;
 import com.maukaim.bulo.definitions.data.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.StageInputDefinition;
 import com.maukaim.bulo.definitions.data.StageOutputDefinition;
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.StageInputDefinitionAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.StageOutputDefinitionAdapter;
@@ -11,7 +11,7 @@ import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefini
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
 
 import java.util.List;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class TechnicalStageDefinitionAdapterImpl implements TechnicalStageDefini
     @Override
     public TechnicalStageDefinition adapte(TechnicalStageDefinitionDto dto) {
         return new TechnicalStageDefinition(
-                dto.getTechnicalStageDefinitionId(),
+                dto.getId(),
                 resolveInputs(dto.getInputsByName()),
                 resolveOutputs(dto.getOutputsByName()),
                 resolveParameters(dto.getParameters())

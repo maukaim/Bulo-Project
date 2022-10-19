@@ -2,7 +2,7 @@ package com.maukaim.bulo.definitions.data.lifecycle;
 
 
 import com.maukaim.bulo.commons.io.DefinitionEventType;
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.TechnicalStageDefinitionStore;
 import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
