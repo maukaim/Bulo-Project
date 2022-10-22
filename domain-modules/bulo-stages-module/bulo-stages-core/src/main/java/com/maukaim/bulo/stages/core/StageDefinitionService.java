@@ -4,7 +4,7 @@ import com.maukaim.bulo.stages.models.definition.StageDefinition;
 
 import java.util.List;
 
-public interface TechnicalStageDefinitionService {
+public interface StageDefinitionService {
     StageDefinition put(StageDefinition definition);
 
     StageDefinition remove(String definitionId);

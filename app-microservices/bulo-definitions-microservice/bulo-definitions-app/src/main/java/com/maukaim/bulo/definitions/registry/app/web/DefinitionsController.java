@@ -5,7 +5,7 @@ import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 @RestController
 public class DefinitionsController implements DefinitionController {
     private final StageDefinitionService service;
-    private final TechnicalStageDefinitionCreateInstructionConsumer declarationEventConsumer;
+    private final StageDefinitionCreateInstructionConsumer declarationEventConsumer;
     private final TechnicalStageDefinitionEventConsumer definitionEventConsumer;
     private final StageDefinitionDtoAdapter definitionDtoAdapter;
 
     @Autowired
     public DefinitionsController(StageDefinitionService service,
-                                 TechnicalStageDefinitionCreateInstructionConsumer declarationEventConsumer,
+                                 StageDefinitionCreateInstructionConsumer declarationEventConsumer,
                                  TechnicalStageDefinitionEventConsumer definitionEventConsumer,
                                  StageDefinitionDtoAdapter definitionDtoAdapter) {
         this.service = service;

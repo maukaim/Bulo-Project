@@ -6,10 +6,10 @@ import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 
-public class CreateStageDefinitionInstructionImpl implements TechnicalStageDefinitionCreateInstructionConsumer {
+public class CreateStageDefinitionInstructionImpl implements StageDefinitionCreateInstructionConsumer {
     private final StageDefinitionService stageDefinitionService;
     private final StageDefinitionAdapter definitionAdapter;
 

@@ -21,7 +21,7 @@ public class MainDefinitionStore implements StageDefinitionStore {
 
     @Override
     public Set<String> addExecutor(String stageExecutorId, String stageId) {
-        //TODO: add logic of publish? Shouldn't be done with the AddDefinition? Like the Event should be something having the new TechnicalStageDefinition AND the stageExecutor to be added? to be defined....
+        //TODO: add logic of publish? Shouldn't be done with the AddDefinition? Like the Event should be something having the new StageDefinition AND the stageExecutor to be added? to be defined....
         return this.saveExecutor(stageExecutorId, stageId);
     }
 

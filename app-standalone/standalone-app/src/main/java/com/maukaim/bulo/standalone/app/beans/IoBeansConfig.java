@@ -1,5 +1,17 @@
 package com.maukaim.bulo.standalone.app.beans;
 
+import com.maukaim.bulo.definitions.data.lifecycle.ParameterDefinitionAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.StageInputDefinitionAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.StageOutputDefinitionAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.FunctionalSubStageAdapterImpl;
+import com.maukaim.bulo.definitions.data.lifecycle.impl.ParameterDefinitionAdapterImpl;
+import com.maukaim.bulo.definitions.data.lifecycle.impl.StageDefinitionAdapterImpl;
+import com.maukaim.bulo.definitions.data.lifecycle.impl.StageInputDefinitionAdapterImpl;
+import com.maukaim.bulo.definitions.data.lifecycle.impl.StageOutputDefinitionAdapterImpl;
+import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.lifecycle.*;
 import com.maukaim.bulo.flows.data.lifecycle.impl.*;
@@ -16,10 +28,7 @@ import com.maukaim.bulo.stages.data.lifecycle.impl.StageAdapterImpl;
 import com.maukaim.bulo.stages.data.lifecycle.impl.StageDtoAdapterImpl;
 import com.maukaim.bulo.stages.io.CreateStageEventConsumer;
 import com.maukaim.bulo.stages.io.DeleteStageEventConsumer;
-import com.maukaim.bulo.standalone.app.io.CreateFlowInstructionConsumerImpl;
-import com.maukaim.bulo.standalone.app.io.CreateStageInstructionConsumerImpl;
-import com.maukaim.bulo.standalone.app.io.DeleteFlowInstructionConsumerImpl;
-import com.maukaim.bulo.standalone.app.io.DeleteStageInstructionConsumerImpl;
+import com.maukaim.bulo.standalone.app.io.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -39,28 +48,72 @@ public class IoBeansConfig {
         }
 
         @Bean
+        public StageDefinitionCreateInstructionConsumer stageDefinitionCreateInstructionConsumer(StageDefinitionService stageDefinitionService,
+                                                                                                 StageDefinitionAdapter stageDefinitionAdapter) {
+            return new CreateStageDefinitionInstructionImpl(stageDefinitionService, stageDefinitionAdapter);
+        }
+
+        @Bean
+        public StageDefinitionAdapter stageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter,
+                                                             StageInputDefinitionAdapter stageInputDefinitionAdapter,
+                                                             StageOutputDefinitionAdapter stageOutputDefinitionAdapter,
+                                                             FunctionalSubStageAdapter functionalSubStageAdapter) {
+            return new StageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter, functionalSubStageAdapter);
+        }
+
+        @Bean
+        public ParameterDefinitionAdapter parameterDefinitionAdapter() {
+            return new ParameterDefinitionAdapterImpl();
+        }
+
+        @Bean
+        public StageInputDefinitionAdapter stageInputDefinitionAdapter() {
+            return new StageInputDefinitionAdapterImpl();
+        }
+
+        @Bean
+        public StageOutputDefinitionAdapter stageOutputDefinitionAdapter() {
+            return new StageOutputDefinitionAdapterImpl();
+        }
+
+        @Bean
+        public FunctionalSubStageAdapter functionalSubStageAdapter(com.maukaim.bulo.definitions.data.lifecycle.functional.IoDependencyAdapter ioDependencyAdapter) {
+            return new FunctionalSubStageAdapterImpl(ioDependencyAdapter);
+        }
+
+        @Bean
+        public com.maukaim.bulo.definitions.data.lifecycle.functional.IoDependencyAdapter fsDefinitionIoDependencyAdapter(com.maukaim.bulo.definitions.data.lifecycle.functional.InputProviderAdapter inputProviderAdapter) {
+            return new com.maukaim.bulo.definitions.data.lifecycle.functional.impl.IoDependencyAdapterImpl(inputProviderAdapter);
+        }
+
+        @Bean
+        public com.maukaim.bulo.definitions.data.lifecycle.functional.InputProviderAdapter fsDefinitionInputProviderAdapter() {
+            return new com.maukaim.bulo.definitions.data.lifecycle.functional.impl.InputProviderAdapterImpl();
+        }
+
+        @Bean
         public FlowAdapter flowIoAdapter(OwnerKeyAdapter ownerKeyAdapter,
-                                       FlowStageAdapter flowStageAdapter) {
+                                         FlowStageAdapter flowStageAdapter) {
             return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter);
         }
 
         @Bean
-        public OwnerKeyAdapter ownerKeyIoAdapter(){
+        public OwnerKeyAdapter ownerKeyIoAdapter() {
             return new OwnerKeyAdapterImpl();
         }
 
         @Bean
-        public FlowStageAdapter flowStageIoAdapter(IoDependencyAdapter ioDependencyAdapter){
+        public FlowStageAdapter flowStageIoAdapter(IoDependencyAdapter ioDependencyAdapter) {
             return new FlowStageAdapterImpl(ioDependencyAdapter);
         }
 
         @Bean
-        public IoDependencyAdapter ioDependencyIoAdapter(InputProviderAdapter inputProviderAdapter){
+        public IoDependencyAdapter ioDependencyIoAdapter(InputProviderAdapter inputProviderAdapter) {
             return new IoDependencyAdapterImpl(inputProviderAdapter);
         }
 
         @Bean
-        public InputProviderAdapter inputProviderIoAdapter(){
+        public InputProviderAdapter inputProviderIoAdapter() {
             return new InputProviderAdapterImpl();
         }
     }

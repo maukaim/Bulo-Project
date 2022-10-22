@@ -57,9 +57,9 @@ public class ExecutorModuleBeansConfig {
     }
 
     @Bean
-    public StageRunManager technicalStageRunnerManager(StageRunnerRegistry runnerRegistry,
-                                                       RunExecutor runExecutor,
-                                                       RunOperatorProvider runOperatorProvider) {
+    public StageRunManager stageRunnerManager(StageRunnerRegistry runnerRegistry,
+                                              RunExecutor runExecutor,
+                                              RunOperatorProvider runOperatorProvider) {
         return new StageRunManagerImpl(runnerRegistry, runExecutor, runOperatorProvider);
     }
 

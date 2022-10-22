@@ -2,13 +2,13 @@ package com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl;
 
 
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.ParameterAdapter;
-import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.data.models.stage.FunctionalStage;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
 import com.maukaim.bulo.flows.data.models.stage.TechnicalStage;
 import com.maukaim.bulo.flows.io.stage.FunctionalStageDto;
 import com.maukaim.bulo.flows.io.stage.StageDto;
 import com.maukaim.bulo.flows.io.stage.TechnicalStageDto;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 
 import java.util.stream.Collectors;
 
@@ -31,6 +31,7 @@ public class StageAdapterImpl implements StageAdapter {
     private FunctionalStage adapteFunctionalStage(FunctionalStageDto dto) {
         return new FunctionalStage(
                 dto.getStageId(),
+                dto.getDefinitionId(),
                 dto.getParameters().stream().map(parameterAdapter::adapte).collect(Collectors.toList())
         );
     }

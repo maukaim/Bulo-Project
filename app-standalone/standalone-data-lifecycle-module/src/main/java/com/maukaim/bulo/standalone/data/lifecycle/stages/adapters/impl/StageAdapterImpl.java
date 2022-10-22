@@ -61,6 +61,7 @@ public class StageAdapterImpl implements StageAdapter {
     private com.maukaim.bulo.flows.data.models.stage.FunctionalStage adapteFunctionalStageFlowModule(FunctionalStage stage) {
         return new com.maukaim.bulo.flows.data.models.stage.FunctionalStage(
                 stage.getStageId(),
+                stage.getDefinitionId(),
                 resolveParametersFlowModule(stage.getParameters()));
     }
 

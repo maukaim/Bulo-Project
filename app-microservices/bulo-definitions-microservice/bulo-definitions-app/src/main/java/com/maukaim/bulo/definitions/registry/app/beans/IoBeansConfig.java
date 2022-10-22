@@ -6,11 +6,11 @@ import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.StageAdapter;
 import com.maukaim.bulo.definitions.io.StageUpdateEventConsumer;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
 import com.maukaim.bulo.definitions.registry.app.io.StageUpdateEventConsumerImpl;
-import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionCreateInstructionConsumerImpl;
+import com.maukaim.bulo.definitions.registry.app.io.StageDefinitionCreateInstructionConsumerImpl;
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventConsumerImpl;
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventPublisherImpl;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
@@ -52,9 +52,9 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionCreateInstructionConsumer technicalStageDefinitionDeclarationEventConsumer(StageDefinitionService stageDefinitionService,
-                                                                                                              StageDefinitionAdapter stageDefinitionAdapter) {
-        return new TechnicalStageDefinitionCreateInstructionConsumerImpl(stageDefinitionService, stageDefinitionAdapter);
+    public StageDefinitionCreateInstructionConsumer technicalStageDefinitionDeclarationEventConsumer(StageDefinitionService stageDefinitionService,
+                                                                                                     StageDefinitionAdapter stageDefinitionAdapter) {
+        return new StageDefinitionCreateInstructionConsumerImpl(stageDefinitionService, stageDefinitionAdapter);
     }
 
     @Bean
