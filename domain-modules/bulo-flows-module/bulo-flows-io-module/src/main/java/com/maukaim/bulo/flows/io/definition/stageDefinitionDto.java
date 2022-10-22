@@ -4,23 +4,23 @@ import java.util.List;
 import java.util.Map;
 
 public class stageDefinitionDto {
-    private String technicalStageDefinitionId;
+    private String definitionId;
     private Map<String, StageInputDefinitionDto> inputsByName;
     private Map<String, StageOutputDefinitionDto> outputsByName;
     private List<ParameterDefinitionDto> parameters;
 
-    public stageDefinitionDto(String technicalStageDefinitionId,
+    public stageDefinitionDto(String definitionId,
                               Map<String, StageInputDefinitionDto> inputsByName,
                               Map<String, StageOutputDefinitionDto> outputsByName,
                               List<ParameterDefinitionDto> parameters) {
-        this.technicalStageDefinitionId = technicalStageDefinitionId;
+        this.definitionId = definitionId;
         this.inputsByName = inputsByName;
         this.outputsByName = outputsByName;
         this.parameters = parameters;
     }
 
-    public String getTechnicalStageDefinitionId() {
-        return technicalStageDefinitionId;
+    public String getDefinitionId() {
+        return definitionId;
     }
 
     public Map<String, StageInputDefinitionDto> getInputsByName() {

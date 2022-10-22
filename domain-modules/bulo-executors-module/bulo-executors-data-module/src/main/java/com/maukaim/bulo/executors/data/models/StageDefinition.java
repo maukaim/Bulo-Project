@@ -19,7 +19,7 @@ public class StageDefinition {
         this.parameters = parameters;
     }
 
-    public String getTechnicalStageDefinitionId() {
+    public String getDefinitionId() {
         return technicalStageDefinitionId;
     }
 

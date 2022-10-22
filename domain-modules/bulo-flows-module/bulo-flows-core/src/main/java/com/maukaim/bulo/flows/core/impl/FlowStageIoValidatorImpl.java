@@ -9,7 +9,6 @@ import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageOutputDefinition;
 import com.maukaim.bulo.flows.data.models.flow.InputProvider;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
-import com.maukaim.bulo.flows.data.models.stage.TechnicalStage;
 
 import java.util.Map;
 import java.util.Set;
@@ -79,17 +78,15 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
         }
         String stageId = inputProvider.getFlowStageId().getStageId();
         Stage stage = this.stageService.getById(stageId);
-        if (stage instanceof TechnicalStage) {
-            StageDefinition stageDefinition = this.definitionService.getById(((TechnicalStage) stage).getDefinitionId());
-            if (stage == null) {
-                throw new FlowValidationException("No Definition for TechnicalStage " + stage.getStageId());
-            }
-            return stageDefinition;
-        } else {
-            return null;
+        if (stage == null) {
+            throw new FlowValidationException("No Stage for id " + stageId);
         }
+        StageDefinition stageDefinition = this.definitionService.getById(stage.getDefinitionId());
+        if (stageDefinition == null) {
+            throw new FlowValidationException("No Definition for Stage " + stage.getStageId());
+        }
+        return stageDefinition;
     }
-
 
 //    public void validate(String inputId, StageInputDefinition stageInputDefinition, Map<StageDefinition, Set<String>> inputProviderDefinitions) throws FlowValidationException {
 //        if (inputProviderDefinitions.size() == 0 && stageInputDefinition.isRequired()) {

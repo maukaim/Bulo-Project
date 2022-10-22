@@ -10,7 +10,6 @@ import com.maukaim.bulo.flows.data.models.flow.FlowStage;
 import com.maukaim.bulo.flows.data.models.flow.InputProvider;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
-import com.maukaim.bulo.flows.data.models.stage.TechnicalStage;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -51,9 +50,8 @@ public class FlowValidatorImpl implements FlowValidator {
                 throw new FlowValidationException("A Stage Id is not recognized, so we can't validate the Flow: " + stageId);
             }
 
-            if (stage instanceof TechnicalStage) {
-                technicalStageValidation(flowStage, (TechnicalStage) stage);
-            }
+            stageValidation(flowStage, stage);
+
         }
         return true;
     }
@@ -72,12 +70,12 @@ public class FlowValidatorImpl implements FlowValidator {
         }
     }
 
-    private void technicalStageValidation(FlowStage flowStage, TechnicalStage stage) throws FlowValidationException {
+    private void stageValidation(FlowStage flowStage, Stage stage) throws FlowValidationException {
         String definitionId = stage.getDefinitionId();
         StageDefinition stagDefinition = this.definitionService.getById(definitionId);
         if (stagDefinition == null) {
             throw new FlowValidationException(String.format(
-                    "No definition for technical stage %s so we can't validate the Flow.", stage.getStageId()));
+                    "No definition for stage %s so we can't validate the Flow.", stage.getStageId()));
         }
         this.stageParameterValidator.validate(stage, stagDefinition);
 

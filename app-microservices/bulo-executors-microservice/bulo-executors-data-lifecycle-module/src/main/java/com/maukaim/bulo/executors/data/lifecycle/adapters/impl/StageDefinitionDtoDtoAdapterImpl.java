@@ -26,7 +26,7 @@ public class StageDefinitionDtoDtoAdapterImpl implements StageDefinitionDtoAdapt
     @Override
     public TechnicalStageDefinitionDto adapte(StageDefinition definition) {
         return new TechnicalStageDefinitionDto(
-                definition.getTechnicalStageDefinitionId(),
+                definition.getDefinitionId(),
                 definition.getInputsByName()
                         .entrySet()
                         .stream()

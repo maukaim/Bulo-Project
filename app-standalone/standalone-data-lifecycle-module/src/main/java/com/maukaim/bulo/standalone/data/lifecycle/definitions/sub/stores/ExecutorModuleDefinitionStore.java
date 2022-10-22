@@ -27,8 +27,8 @@ public class ExecutorModuleDefinitionStore implements StageDefinitionStore {
 
     @Override
     public StageDefinition put(StageDefinition stageDefinition) {
-        this.technicalStageDefinitionById.put(stageDefinition.getTechnicalStageDefinitionId(), stageDefinition);
-        StageDefinition definitionStored = this.technicalStageDefinitionById.get(stageDefinition.getTechnicalStageDefinitionId());
+        this.technicalStageDefinitionById.put(stageDefinition.getDefinitionId(), stageDefinition);
+        StageDefinition definitionStored = this.technicalStageDefinitionById.get(stageDefinition.getDefinitionId());
         this.definitionInstructor.create(definitionStored);
         return definitionStored;
     }
@@ -43,7 +43,7 @@ public class ExecutorModuleDefinitionStore implements StageDefinitionStore {
 
     @Override
     public StageDefinition remove(StageDefinition stage) {
-        this.definitionInstructor.remove(stage.getTechnicalStageDefinitionId());
+        this.definitionInstructor.remove(stage.getDefinitionId());
         return stage;
     }
 

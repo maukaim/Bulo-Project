@@ -25,16 +25,16 @@ import java.util.Map;
 public class DataBeansConfig {
 
     @Bean
-    public StageDefinitionStore technicalStageDefinitionStore(StageRunnerRegistry runnerRegistry,
+    public StageDefinitionStore stageDefinitionStore(StageRunnerRegistry runnerRegistry,
                                                               StageDefinitionDtoAdapter stageDefinitionDtoAdapter,
                                                               StageDefinitionCreateInstructionPublisher eventPublisher) {
         List<StageDefinition> allDefinitions = runnerRegistry.getAllDefinitions();
-        StageDefinitionStoreImpl technicalStageDefinitionStore = new StageDefinitionStoreImpl(
+        StageDefinitionStoreImpl stageDefinitionStore = new StageDefinitionStoreImpl(
                 stageDefinitionDtoAdapter,
                 eventPublisher,
                 Map.of());
-        technicalStageDefinitionStore.putAll(allDefinitions);
-        return technicalStageDefinitionStore;
+        stageDefinitionStore.putAll(allDefinitions);
+        return stageDefinitionStore;
     }
 
     @Bean

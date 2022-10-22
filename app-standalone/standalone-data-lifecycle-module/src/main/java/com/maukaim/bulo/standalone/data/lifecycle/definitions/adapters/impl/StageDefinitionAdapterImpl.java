@@ -90,7 +90,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     @Override
     public com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.StageDefinition stageDefinition) {
         return stageDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition(
-                stageDefinition.getTechnicalStageDefinitionId(),
+                stageDefinition.getDefinitionId(),
                 resolveInputsFromExecutorModule(stageDefinition.getInputsByName()),
                 resolveOutputsFromExecutorModule(stageDefinition.getOutputsByName()),
                 resolveParametersFromExecutorModule(stageDefinition.getParameters())

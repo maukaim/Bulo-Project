@@ -33,7 +33,7 @@ public class FlowMixinsConfig {
     );
 
     public static Map<Class<?>, Class<?>> DEFINITIONS_SERIALIZATION_JACKSON_MIXIN = Map.of(
-            TechnicalStageDefinitionEvent.class, StageDefinitionUpdateEventMixIn.class,
+            StageDefinitionEvent.class, StageDefinitionUpdateEventMixIn.class,
             stageDefinitionDto.class, StageDefinitionDtoMixIn.class,
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,

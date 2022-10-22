@@ -4,7 +4,7 @@ package com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageInputDefinitionAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageOutputDefinitionAdapter;
-import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageOutputDefinition;
@@ -15,12 +15,12 @@ import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class TechnicalStageDefinitionAdapterImpl implements TechnicalStageDefinitionAdapter {
+public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     private final ParameterDefinitionAdapter definitionAdapter;
     private final StageInputDefinitionAdapter stageInputDefinitionAdapter;
     private final StageOutputDefinitionAdapter stageOutputDefinitionAdapter;
 
-    public TechnicalStageDefinitionAdapterImpl(ParameterDefinitionAdapter definitionAdapter, StageInputDefinitionAdapter stageInputDefinitionAdapter, StageOutputDefinitionAdapter stageOutputDefinitionAdapter) {
+    public StageDefinitionAdapterImpl(ParameterDefinitionAdapter definitionAdapter, StageInputDefinitionAdapter stageInputDefinitionAdapter, StageOutputDefinitionAdapter stageOutputDefinitionAdapter) {
         this.definitionAdapter = definitionAdapter;
         this.stageInputDefinitionAdapter = stageInputDefinitionAdapter;
         this.stageOutputDefinitionAdapter = stageOutputDefinitionAdapter;
@@ -29,7 +29,7 @@ public class TechnicalStageDefinitionAdapterImpl implements TechnicalStageDefini
     @Override
     public StageDefinition adapte(stageDefinitionDto dto) {
         return new StageDefinition(
-                dto.getTechnicalStageDefinitionId(),
+                dto.getDefinitionId(),
                 resolveInputs(dto.getInputsByName()),
                 resolveOutputs(dto.getOutputsByName()),
                 dto.getParameters().stream().map(definitionAdapter::adapte).collect(Collectors.toList())

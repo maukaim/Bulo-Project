@@ -37,7 +37,7 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public StageDefinitionCreateInstructionPublisher technicalStageDefinitionDeclarationEventPublisher(SystemConnector systemConnector) {
+    public StageDefinitionCreateInstructionPublisher stageDefinitionDeclarationEventPublisher(SystemConnector systemConnector) {
         return new DummyStageDefinitionCreateInstructionPublisher(systemConnector);
     }
 

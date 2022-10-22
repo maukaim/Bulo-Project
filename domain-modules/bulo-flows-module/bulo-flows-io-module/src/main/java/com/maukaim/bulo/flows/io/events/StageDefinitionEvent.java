@@ -6,18 +6,18 @@ import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 
 import java.time.Instant;
 
-public class TechnicalStageDefinitionEvent implements GlobalDefinitionEvent {
+public class StageDefinitionEvent implements GlobalDefinitionEvent {
     private stageDefinitionDto stageDefinitionDto;
     private DefinitionEventType eventType;
     private Instant instant;
 
-    public TechnicalStageDefinitionEvent(stageDefinitionDto stageDefinitionDto, DefinitionEventType eventType, Instant instant) {
+    public StageDefinitionEvent(stageDefinitionDto stageDefinitionDto, DefinitionEventType eventType, Instant instant) {
         this.stageDefinitionDto = stageDefinitionDto;
         this.eventType = eventType;
         this.instant = instant;
     }
 
-    public stageDefinitionDto getTechnicalStageDefinition() {
+    public stageDefinitionDto getStageDefinition() {
         return stageDefinitionDto;
     }
 
