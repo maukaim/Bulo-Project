@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StageParameterValidatorImpl implements StageParameterValidator {
+    //TODO: Ne fait pas sense d'avoir un validateur de parametres ici! Les Stages sont validées par le StageService, et c'est tout !
     @Override
     public void validate(Stage stage, StageDefinition definition) throws FlowValidationException {
         List<Parameter> parameters = stage.getParameters();

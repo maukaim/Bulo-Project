@@ -1,12 +1,12 @@
 package com.maukaim.bulo.stages.core.impl;
 
 import com.maukaim.bulo.stages.core.StageService;
-import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
+import com.maukaim.bulo.stages.core.StageDefinitionService;
 import com.maukaim.bulo.stages.core.validators.StageCreateReport;
-import com.maukaim.bulo.stages.core.TechnicalStageValidator;
+import com.maukaim.bulo.stages.core.StageValidator;
 import com.maukaim.bulo.stages.core.validators.ValidationReport;
 import com.maukaim.bulo.stages.models.StageStore;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.models.stage.FunctionalStage;
 import com.maukaim.bulo.stages.models.stage.Stage;
 import com.maukaim.bulo.stages.models.stage.TechnicalStage;
@@ -17,15 +17,15 @@ import static com.maukaim.bulo.stages.core.validators.StageCreateReport.*;
 
 public class StageServiceImpl implements StageService {
     private final StageStore stageStore;
-    private final TechnicalStageDefinitionService technicalStageDefinitionService;
-    private final TechnicalStageValidator technicalStageValidator;
+    private final StageDefinitionService stageDefinitionService;
+    private final StageValidator stageValidator;
 
     public StageServiceImpl(StageStore stageStore,
-                            TechnicalStageDefinitionService technicalStageDefinitionService,
-                            TechnicalStageValidator technicalStageValidator) {
+                            StageDefinitionService stageDefinitionService,
+                            StageValidator stageValidator) {
         this.stageStore = stageStore;
-        this.technicalStageDefinitionService = technicalStageDefinitionService;
-        this.technicalStageValidator = technicalStageValidator;
+        this.stageDefinitionService = stageDefinitionService;
+        this.stageValidator = stageValidator;
     }
 
     @Override
@@ -67,12 +67,12 @@ public class StageServiceImpl implements StageService {
             return failReport(stage.getStageId(), "No definition identifier provided to create the TechnicalStage. Impossible to validate.");
         }
 
-        TechnicalStageDefinition definition = this.technicalStageDefinitionService.getById(definitionId);
+        StageDefinition definition = this.stageDefinitionService.getById(definitionId);
         if (definition == null) {
             return failReport(stage.getStageId(), String.format("No definition found with identifier %s", definitionId));
         }
 
-        ValidationReport validationReport = technicalStageValidator.validate(stage, definition);
+        ValidationReport validationReport = stageValidator.validate(stage, definition);
         if (validationReport.isValidated()) {
             this.stageStore.put(stage);
             return successReport(stage.getStageId(), DEFAULT_SUCCESS_REPORT);

@@ -24,7 +24,7 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public StageDefinitionDtoAdapter technicalStageDefinitionDtoAdapter(ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
+    public StageDefinitionDtoAdapter stageDefinitionDtoAdapter(ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
                                                                         StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter,
                                                                         StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter) {
         return new StageDefinitionDtoDtoAdapterImpl(

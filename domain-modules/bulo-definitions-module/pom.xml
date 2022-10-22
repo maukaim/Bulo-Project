@@ -24,5 +24,6 @@
         <module>bulo-definitions-io-module</module>
         <module>bulo-definitions-serialization-module</module>
         <module>bulo-definitions-data-module</module>
+        <module>bulo-definitions-data-lifecycle-module</module>
     </modules>
 </project>

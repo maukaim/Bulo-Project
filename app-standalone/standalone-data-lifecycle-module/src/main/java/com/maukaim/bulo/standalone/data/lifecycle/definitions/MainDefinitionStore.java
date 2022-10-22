@@ -1,44 +1,44 @@
 package com.maukaim.bulo.standalone.data.lifecycle.definitions;
 
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinitionStore;
+import com.maukaim.bulo.definitions.data.definition.StageDefinition;
+import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 
 import java.util.*;
 
-public class MainDefinitionStore implements TechnicalStageDefinitionStore {
-    private Map<String, Set<String>> executorsByTechnicalStageDefinitionId;
-    private Map<String, TechnicalStageDefinition> technicalStageDefinitions;
+public class MainDefinitionStore implements StageDefinitionStore {
+    private Map<String, Set<String>> executorsByStageDefinitionId;
+    private Map<String, StageDefinition> stageDefinitions;
 
     public MainDefinitionStore() {
-        this.executorsByTechnicalStageDefinitionId = new HashMap<>();
-        this.technicalStageDefinitions = new HashMap<>();
+        this.executorsByStageDefinitionId = new HashMap<>();
+        this.stageDefinitions = new HashMap<>();
     }
 
     @Override
-    public TechnicalStageDefinition addDefinition(TechnicalStageDefinition definition) {
-        return this.technicalStageDefinitions.put(definition.getTechnicalStageDefinitionId(), definition);
+    public StageDefinition addDefinition(StageDefinition definition) {
+        return this.stageDefinitions.put(definition.getDefinitionId(), definition);
     }
 
     @Override
-    public Set<String> addExecutor(String stageExecutorId, String technicalStageId) {
-        //TODO: add logic of publish? Shouldn't be done with the AddDefinition? Like the Event should be something having the new TechnicalStageDefinition AND the stageExecutor to be added? to be defined....
-        return this.saveExecutor(stageExecutorId, technicalStageId);
+    public Set<String> addExecutor(String stageExecutorId, String stageId) {
+        //TODO: add logic of publish? Shouldn't be done with the AddDefinition? Like the Event should be something having the new StageDefinition AND the stageExecutor to be added? to be defined....
+        return this.saveExecutor(stageExecutorId, stageId);
     }
 
     @Override
-    public TechnicalStageDefinition getById(String technicalStageDefinitionId) {
-        return this.technicalStageDefinitions.get(technicalStageDefinitionId);
+    public StageDefinition getById(String stageId) {
+        return this.stageDefinitions.get(stageId);
     }
 
     @Override
-    public List<TechnicalStageDefinition> getAll() {
-        return this.technicalStageDefinitions.values().stream().toList();
+    public List<StageDefinition> getAll() {
+        return this.stageDefinitions.values().stream().toList();
     }
 
 
-    public Set<String> saveExecutor(String stageExecutorId, String technicalStageId) {
-        this.executorsByTechnicalStageDefinitionId.putIfAbsent(technicalStageId, new HashSet<>());
-        return this.executorsByTechnicalStageDefinitionId.compute(technicalStageId, (id, executorIds) -> {
+    public Set<String> saveExecutor(String stageExecutorId, String stageId) {
+        this.executorsByStageDefinitionId.putIfAbsent(stageId, new HashSet<>());
+        return this.executorsByStageDefinitionId.compute(stageId, (id, executorIds) -> {
             if (executorIds == null) {
                 return new HashSet<>() {{
                     add(stageExecutorId);
@@ -51,8 +51,8 @@ public class MainDefinitionStore implements TechnicalStageDefinitionStore {
 
     @Override
     public boolean removeExecutor(String executorId, String definitionId) {
-        if (executorsByTechnicalStageDefinitionId.containsKey(definitionId)) {
-            Set<String> remainingExecutors = this.executorsByTechnicalStageDefinitionId.compute(definitionId, (key, val) -> {
+        if (executorsByStageDefinitionId.containsKey(definitionId)) {
+            Set<String> remainingExecutors = this.executorsByStageDefinitionId.compute(definitionId, (key, val) -> {
                 if (val == null || val.isEmpty() || (val.size() == 1 && val.contains(executorId))) {
                     return null;
                 }
@@ -60,7 +60,7 @@ public class MainDefinitionStore implements TechnicalStageDefinitionStore {
                 return val;
             });
             if (remainingExecutors == null || remainingExecutors.isEmpty()) {
-                this.technicalStageDefinitions.remove(definitionId);
+                this.stageDefinitions.remove(definitionId);
                 return true;
             }
         }

@@ -18,7 +18,8 @@ public class ConsumersProvider {
             case STAGE_UPDATE -> List.of(
                     new Consumer(Services.STAGES_SERVICE, "api/v1/stages/onUpdateEvent"),
                     new Consumer(Services.FLOWS_SERVICE, "api/v1/flows/stages/createOrUpdate"),
-                    new Consumer(Services.EXECUTORS_SERVICE, "api/v1/executors/stages/onEvent")
+                    new Consumer(Services.EXECUTORS_SERVICE, "api/v1/executors/stages/onEvent"),
+                    new Consumer(Services.DEFINITIONS_SERVICE, "api/v1/stages/onUpdateEvent")
             );
             case FLOW_UPDATE -> List.of(
                     new Consumer(Services.FLOWS_SERVICE, "api/v1/flows/flowUpdate"),

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class StageControllerImpl implements StageController {
@@ -41,6 +42,13 @@ public class StageControllerImpl implements StageController {
     public ResponseEntity<?> create(@RequestBody CreateStageInstruction instruction) {
         String stageId = this.createStageEventConsumer.consume(instruction);
         return ResponseEntity.ok(stageId);
+    }
+
+    @Override
+    public ResponseEntity<?> creates(List<CreateStageInstruction> instructions) {
+        return ResponseEntity.ok(instructions.stream()
+                .map(this.createStageEventConsumer::consume)
+                .collect(Collectors.toList()));
     }
 
     public ResponseEntity<?> remove(@RequestBody DeleteStageInstruction instruction) {

@@ -32,7 +32,8 @@ public class StageDtoAdapterImpl implements StageDtoAdapter {
                 stage.getStageId(),
                 stage.getParameters().stream()
                         .map(parameterDtoAdapter::adapte)
-                        .collect(Collectors.toList())
+                        .collect(Collectors.toList()),
+                stage.getDefinitionId()
         );
     }
 

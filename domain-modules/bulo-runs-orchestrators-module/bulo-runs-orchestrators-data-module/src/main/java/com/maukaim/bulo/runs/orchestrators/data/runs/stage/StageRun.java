@@ -1,13 +1,13 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.time.Instant;
 import java.util.Set;
 
 public class StageRun {
     private final String stageRunId;
-    private final FlowStageId flowStageId;
+    private final ContextualizedStageId contextualizedStageId;
     private final String flowRunId;
     private final StageRunStatus stageRunStatus;
     private final String executorId;
@@ -15,9 +15,9 @@ public class StageRun {
     private final Instant startTime;
     private final Instant endTime;
 
-    public StageRun(String stageRunId, FlowStageId flowStageId, String flowRunId, StageRunStatus stageRunStatus, String executorId, Set<StageRunDependency> stageRunDependencies, Instant startTime, Instant endTime) {
+    public StageRun(String stageRunId, ContextualizedStageId contextualizedStageId, String flowRunId, StageRunStatus stageRunStatus, String executorId, Set<StageRunDependency> stageRunDependencies, Instant startTime, Instant endTime) {
         this.stageRunId = stageRunId;
-        this.flowStageId = flowStageId;
+        this.contextualizedStageId = contextualizedStageId;
         this.flowRunId = flowRunId;
         this.stageRunStatus = stageRunStatus;
         this.executorId = executorId;
@@ -30,8 +30,8 @@ public class StageRun {
         return stageRunId;
     }
 
-    public FlowStageId getFlowStageId() {
-        return flowStageId;
+    public ContextualizedStageId getFlowStageId() {
+        return contextualizedStageId;
     }
 
     public String getFlowRunId() {
@@ -66,7 +66,7 @@ public class StageRun {
     public String toString() {
         return "StageRunView{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", flowStageId=" + flowStageId +
+                ", flowStageId=" + contextualizedStageId +
                 ", flowRunId='" + flowRunId + '\'' +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +

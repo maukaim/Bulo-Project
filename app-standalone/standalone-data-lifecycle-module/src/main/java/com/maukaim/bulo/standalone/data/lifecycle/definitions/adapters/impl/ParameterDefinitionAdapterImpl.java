@@ -5,7 +5,7 @@ import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.Parameter
 
 public class ParameterDefinitionAdapterImpl implements ParameterDefinitionAdapter {
     @Override
-    public ParameterDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.ParameterDefinition parameterDefinition) {
+    public ParameterDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.definition.ParameterDefinition parameterDefinition) {
         return parameterDefinition == null ? null : new ParameterDefinition(
                 parameterDefinition.getName(),
                 parameterDefinition.getValueType(),
@@ -14,7 +14,7 @@ public class ParameterDefinitionAdapterImpl implements ParameterDefinitionAdapte
     }
 
     @Override
-    public com.maukaim.bulo.stages.models.definition.ParameterDefinition adapterStageModule(com.maukaim.bulo.definitions.data.ParameterDefinition parameterDefinition) {
+    public com.maukaim.bulo.stages.models.definition.ParameterDefinition adapterStageModule(com.maukaim.bulo.definitions.data.definition.ParameterDefinition parameterDefinition) {
         return parameterDefinition == null ? null : new com.maukaim.bulo.stages.models.definition.ParameterDefinition(
                 parameterDefinition.getName(),
                 parameterDefinition.getValueType(),
@@ -25,8 +25,8 @@ public class ParameterDefinitionAdapterImpl implements ParameterDefinitionAdapte
     }
 
     @Override
-    public com.maukaim.bulo.definitions.data.ParameterDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.ParameterDefinition parameterDefinition) {
-        return parameterDefinition == null ? null : new com.maukaim.bulo.definitions.data.ParameterDefinition(
+    public com.maukaim.bulo.definitions.data.definition.ParameterDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.ParameterDefinition parameterDefinition) {
+        return parameterDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.ParameterDefinition(
                 parameterDefinition.getName(),
                 parameterDefinition.getValueType(),
                 parameterDefinition.getHint(),

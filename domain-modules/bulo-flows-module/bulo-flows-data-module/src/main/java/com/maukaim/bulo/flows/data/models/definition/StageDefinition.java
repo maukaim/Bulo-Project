@@ -10,9 +10,9 @@ public class StageDefinition {
     private List<ParameterDefinition> parameters;
 
     public StageDefinition(String stageDefinitionId,
-                                       Map<String, StageInputDefinition> inputsByName,
-                                       Map<String, StageOutputDefinition> outputsByName,
-                                       List<ParameterDefinition> parameters) {
+                           Map<String, StageInputDefinition> inputsByName,
+                           Map<String, StageOutputDefinition> outputsByName,
+                           List<ParameterDefinition> parameters) {
         this.stageDefinitionId = stageDefinitionId;
         this.inputsByName = inputsByName;
         this.outputsByName = outputsByName;

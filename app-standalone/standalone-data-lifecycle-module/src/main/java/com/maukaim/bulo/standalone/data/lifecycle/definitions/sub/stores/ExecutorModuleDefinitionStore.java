@@ -12,23 +12,23 @@ import java.util.stream.Collectors;
 
 public class ExecutorModuleDefinitionStore implements StageDefinitionStore {
     private final StageDefinitionInstructor definitionInstructor;
-    private final Map<String, StageDefinition> technicalStageDefinitionById;
+    private final Map<String, StageDefinition> stageDefinitionById;
 
     public ExecutorModuleDefinitionStore(StageDefinitionInstructor definitionInstructor,
                                          Map<String, StageDefinition> initialCache) {
         this.definitionInstructor = definitionInstructor;
-        this.technicalStageDefinitionById = new HashMap<>(initialCache == null ? Map.of() : initialCache);
+        this.stageDefinitionById = new HashMap<>(initialCache == null ? Map.of() : initialCache);
     }
 
     @Override
     public StageDefinition getById(String definitionId) {
-        return this.technicalStageDefinitionById.get(definitionId);
+        return this.stageDefinitionById.get(definitionId);
     }
 
     @Override
     public StageDefinition put(StageDefinition stageDefinition) {
-        this.technicalStageDefinitionById.put(stageDefinition.getTechnicalStageDefinitionId(), stageDefinition);
-        StageDefinition definitionStored = this.technicalStageDefinitionById.get(stageDefinition.getTechnicalStageDefinitionId());
+        this.stageDefinitionById.put(stageDefinition.getDefinitionId(), stageDefinition);
+        StageDefinition definitionStored = this.stageDefinitionById.get(stageDefinition.getDefinitionId());
         this.definitionInstructor.create(definitionStored);
         return definitionStored;
     }
@@ -43,12 +43,12 @@ public class ExecutorModuleDefinitionStore implements StageDefinitionStore {
 
     @Override
     public StageDefinition remove(StageDefinition stage) {
-        this.definitionInstructor.remove(stage.getTechnicalStageDefinitionId());
+        this.definitionInstructor.remove(stage.getDefinitionId());
         return stage;
     }
 
     @Override
     public List<StageDefinition> getAll() {
-        return this.technicalStageDefinitionById.values().stream().toList();
+        return this.stageDefinitionById.values().stream().toList();
     }
 }

@@ -7,11 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RequestMapping("api/v1/stages")
 public interface StageController {
     @PostMapping(value = "/create")
     ResponseEntity<?> create(@RequestBody CreateStageInstruction instruction);
+
+    @PostMapping(value = "/creates")
+    ResponseEntity<?> creates(@RequestBody List<CreateStageInstruction> instructions);
 
     @DeleteMapping(value = "/remove")
     ResponseEntity<?> remove(@RequestBody DeleteStageInstruction instruction);

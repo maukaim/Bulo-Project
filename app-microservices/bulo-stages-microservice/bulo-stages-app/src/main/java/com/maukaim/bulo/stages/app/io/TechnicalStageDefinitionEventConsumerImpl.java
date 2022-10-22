@@ -1,19 +1,19 @@
 package com.maukaim.bulo.stages.app.io;
 
-import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
+import com.maukaim.bulo.stages.core.StageDefinitionService;
 import com.maukaim.bulo.stages.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 
 public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStageDefinitionEventConsumer {
     private final TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter;
-    private final TechnicalStageDefinitionService technicalStageDefinitionService;
+    private final StageDefinitionService stageDefinitionService;
 
-    public TechnicalStageDefinitionEventConsumerImpl(TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter, TechnicalStageDefinitionService technicalStageDefinitionService) {
+    public TechnicalStageDefinitionEventConsumerImpl(TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter, StageDefinitionService stageDefinitionService) {
         this.technicalStageDefinitionAdapter = technicalStageDefinitionAdapter;
-        this.technicalStageDefinitionService = technicalStageDefinitionService;
+        this.stageDefinitionService = stageDefinitionService;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStage
         System.out.println("Consume event : " + event);
         switch (event.getEventType()) {
             case UPDATE -> this.saveDefinition(event.getTechnicalStageDefinition());
-            case DELETE -> this.technicalStageDefinitionService.remove(event.getTechnicalStageDefinition().getId());
+            case DELETE -> this.stageDefinitionService.remove(event.getTechnicalStageDefinition().getDefinitionId());
         };
     }
 
-    private TechnicalStageDefinition saveDefinition(TechnicalStageDefinitionDto dto) {
-        TechnicalStageDefinition technicalStageDefinition = this.technicalStageDefinitionAdapter.adapte(dto);
-        return this.technicalStageDefinitionService.put(technicalStageDefinition);
+    private StageDefinition saveDefinition(StageDefinitionDto dto) {
+        StageDefinition stageDefinition = this.technicalStageDefinitionAdapter.adapte(dto);
+        return this.stageDefinitionService.put(stageDefinition);
     }
 }

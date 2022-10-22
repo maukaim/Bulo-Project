@@ -1,8 +1,8 @@
 package com.maukaim.bulo.stages.ms.data.lifecycle.adapters;
 
-import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 
 public interface TechnicalStageDefinitionAdapter {
-    TechnicalStageDefinition adapte(TechnicalStageDefinitionDto dto);
+    StageDefinition adapte(StageDefinitionDto dto);
 }

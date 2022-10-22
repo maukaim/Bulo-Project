@@ -14,12 +14,21 @@ public class ParameterAdapterImpl implements ParameterAdapter {
     }
 
     @Override
-    public com.maukaim.bulo.executors.data.stages.Parameter adapteExecutorModule(com.maukaim.bulo.stages.models.stage.Parameter parameter) {
+    public com.maukaim.bulo.executors.data.stages.Parameter adapteExecutorModule(Parameter parameter) {
         return parameter == null ? null : new com.maukaim.bulo.executors.data.stages.Parameter(
                 parameter.getValue(),
                 parameter.getName(),
                 parameter.getValueType(),
                 parameter.getAdditionalDetails()
+        );
+    }
+
+    @Override
+    public com.maukaim.bulo.definitions.data.stage.Parameter adapteDefinitionModule(Parameter parameter) {
+        return parameter == null ? null : new com.maukaim.bulo.definitions.data.stage.Parameter(
+                parameter.getValue(),
+                parameter.getName(),
+                parameter.getValueType()
         );
     }
 }

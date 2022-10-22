@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.io.models;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
 
 import java.time.Instant;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class StageRunDto {
     private final String stageRunId;
-    private final FlowStageId flowStageId;
+    private final ContextualizedStageId contextualizedStageId;
     private final String flowRunId;
     private final StageRunStatusDto stageRunStatus;
     private final String executorId;
@@ -16,9 +16,9 @@ public class StageRunDto {
     private final Instant startTime;
     private final Instant endTime;
 
-    public StageRunDto(String stageRunId, FlowStageId flowStageId, String flowRunId, StageRunStatusDto stageRunStatus, String executorId, Set<StageRunDependencyDto> dependencies, Instant startTime, Instant endTime) {
+    public StageRunDto(String stageRunId, ContextualizedStageId contextualizedStageId, String flowRunId, StageRunStatusDto stageRunStatus, String executorId, Set<StageRunDependencyDto> dependencies, Instant startTime, Instant endTime) {
         this.stageRunId = stageRunId;
-        this.flowStageId = flowStageId;
+        this.contextualizedStageId = contextualizedStageId;
         this.flowRunId = flowRunId;
         this.stageRunStatus = stageRunStatus;
         this.executorId = executorId;
@@ -31,8 +31,8 @@ public class StageRunDto {
         return stageRunId;
     }
 
-    public FlowStageId getFlowStageId() {
-        return flowStageId;
+    public ContextualizedStageId getFlowStageId() {
+        return contextualizedStageId;
     }
 
     public String getFlowRunId() {
@@ -63,7 +63,7 @@ public class StageRunDto {
     public String toString() {
         return "StageRunDto{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", flowStageId=" + flowStageId +
+                ", flowStageId=" + contextualizedStageId +
                 ", flowRunId='" + flowRunId + '\'' +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +

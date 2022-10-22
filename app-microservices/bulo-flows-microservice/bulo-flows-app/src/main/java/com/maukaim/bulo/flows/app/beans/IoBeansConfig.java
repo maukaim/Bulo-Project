@@ -8,7 +8,7 @@ import com.maukaim.bulo.flows.data.StageStore;
 import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
-import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.flows.io.*;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
@@ -66,8 +66,8 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionConsumer technicalStageDefinitionConsumer(StageDefinitionStore definitionStore,
-                                                                             TechnicalStageDefinitionAdapter definitionAdapter){
-        return new TechnicalStageDefinitionConsumerImpl(definitionAdapter, definitionStore);
+    public StageDefinitionConsumer stageDefinitionConsumer(StageDefinitionStore definitionStore,
+                                                                    StageDefinitionAdapter definitionAdapter){
+        return new StageDefinitionConsumerImpl(definitionAdapter, definitionStore);
     }
 }

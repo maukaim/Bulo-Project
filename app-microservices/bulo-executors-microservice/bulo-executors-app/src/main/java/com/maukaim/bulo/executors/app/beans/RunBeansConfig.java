@@ -40,7 +40,7 @@ public class RunBeansConfig {
     public StageRunnerRegistry runnerRegistry(List<StageRunner> runners) {
         Map<String, StageRunner> defaultRunnersMap = runners.stream()
                 .collect(Collectors.toMap(
-                        runner -> runner.getDefinition().getTechnicalStageDefinitionId(),
+                        runner -> runner.getDefinition().getDefinitionId(),
                         runner -> runner
                 ));
         return new StageRunnerRegistryImpl(defaultRunnersMap);
@@ -52,7 +52,7 @@ public class RunBeansConfig {
     }
 
     @Bean
-    public StageRunManager technicalStageRunnerManager(StageRunnerRegistry runnerRegistry,
+    public StageRunManager stageRunnerManager(StageRunnerRegistry runnerRegistry,
                                                        RunExecutor runExecutor,
                                                        RunOperatorProvider runOperatorProvider) {
         return new StageRunManagerImpl(runnerRegistry, runExecutor, runOperatorProvider);

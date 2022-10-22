@@ -5,23 +5,23 @@ import java.util.Set;
 
 public class TriggerId {
     private final String flowId;
-    private final Set<FlowStageId> flowStageIds;
+    private final Set<ContextualizedStageId> contextualizedStageIds;
 
-    public static TriggerId of(String flowId, Set<FlowStageId> flowStageIds){
-        return new TriggerId(flowId, flowStageIds);
+    public static TriggerId of(String flowId, Set<ContextualizedStageId> contextualizedStageIds){
+        return new TriggerId(flowId, contextualizedStageIds);
     }
 
-    public TriggerId(String flowId, Set<FlowStageId> flowStageIds) {
+    public TriggerId(String flowId, Set<ContextualizedStageId> contextualizedStageIds) {
         this.flowId = flowId;
-        this.flowStageIds = flowStageIds;
+        this.contextualizedStageIds = contextualizedStageIds;
     }
 
     public String getFlowId() {
         return flowId;
     }
 
-    public Set<FlowStageId> getFlowStageIds() {
-        return flowStageIds;
+    public Set<ContextualizedStageId> getFlowStageIds() {
+        return contextualizedStageIds;
     }
 
     @Override
@@ -29,19 +29,19 @@ public class TriggerId {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TriggerId triggerId = (TriggerId) o;
-        return flowId.equals(triggerId.flowId) && Objects.equals(flowStageIds, triggerId.flowStageIds);
+        return flowId.equals(triggerId.flowId) && Objects.equals(contextualizedStageIds, triggerId.contextualizedStageIds);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flowId, flowStageIds);
+        return Objects.hash(flowId, contextualizedStageIds);
     }
 
     @Override
     public String toString() {
         return "TriggerId{" +
                 "flowId='" + flowId + '\'' +
-                ", stageIds=" + flowStageIds +
+                ", stageIds=" + contextualizedStageIds +
                 '}';
     }
 }

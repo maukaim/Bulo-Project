@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
@@ -38,7 +38,7 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor {
             Map<String, StageRun> result = new HashMap<>();
             result.put(stageRunId, StageRunFactory.success(actualStageRun, instant));
 
-            Set<FlowStageId> childrenIds = actualFlowRun.getExecutionGraph().getChildren(actualStageRun.getFlowStageId());
+            Set<ContextualizedStageId> childrenIds = actualFlowRun.getExecutionGraph().getChildren(actualStageRun.getFlowStageId());
             if (!actualFlowRun.getFlowRunStatus().isTerminal() && !childrenIds.isEmpty()) {
                 result.putAll(this.getStageRunsToBeRequestedIfAuthorized(actualFlowRun, actualStageRun.getFlowStageId(), childrenIds));
             }
@@ -47,9 +47,9 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor {
         });
     }
 
-    private Map<String, StageRun> getStageRunsToBeRequestedIfAuthorized(FlowRun flowRun, FlowStageId currentStageId, Set<FlowStageId> children) {
+    private Map<String, StageRun> getStageRunsToBeRequestedIfAuthorized(FlowRun flowRun, ContextualizedStageId currentStageId, Set<ContextualizedStageId> children) {
         String flowRunId = flowRun.getFlowRunId();
-        Map<FlowStageId, Set<StageRunDependency>> childrenToStart = children.stream()
+        Map<ContextualizedStageId, Set<StageRunDependency>> childrenToStart = children.stream()
                 .filter(childStageId -> flowRun.otherAncestorsAreSuccessful(childStageId, currentStageId))
                 .collect(toMap(
                         flowStageId -> flowStageId,
@@ -59,10 +59,10 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor {
     }
 
     //TODO: tout ca devrait sortir de la class non?
-    private Set<StageRunDependency> getDependencies(FlowStageId flowStageId, FlowRun flowRun) {
+    private Set<StageRunDependency> getDependencies(ContextualizedStageId contextualizedStageId, FlowRun flowRun) {
         Set<StageRunDependency> result = new HashSet<>();
 
-        Set<FlowStageDependency> flowStageDependencies = flowRun.getExecutionGraph().getFlowStageDependencies(flowStageId);
+        Set<FlowStageDependency> flowStageDependencies = flowRun.getExecutionGraph().getFlowStageDependencies(contextualizedStageId);
         for (FlowStageDependency flowStageDependency : flowStageDependencies) {
             String inputId = flowStageDependency.getInputId();
             Set<FlowStageAncestor> flowStageAncestors = flowStageDependency.getAncestors();
@@ -79,7 +79,7 @@ public class RunSuccessfulStageEventProcessor extends StageEventProcessor {
             return Set.of();
         }
 
-        Map<FlowStageId, String> alreadyRanFlowStageIdByStageRunIds = flowRun.getStageRunIds().stream()
+        Map<ContextualizedStageId, String> alreadyRanFlowStageIdByStageRunIds = flowRun.getStageRunIds().stream()
                 .map(this.stageRunService::getById)
                 .filter(Objects::nonNull)
                 .collect(toMap(

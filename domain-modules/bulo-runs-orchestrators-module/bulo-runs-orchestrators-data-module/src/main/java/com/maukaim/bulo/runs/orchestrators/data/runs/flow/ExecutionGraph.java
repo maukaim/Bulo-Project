@@ -1,43 +1,43 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ExecutionGraph {
-    private Set<FlowStageId> root;
-    private Map<FlowStageId, Set<FlowStageDependency>> dependenciesByFlowStageId;
-    private Map<FlowStageId, Set<FlowStageId>> childrenIdsByStageId;
+    private Set<ContextualizedStageId> root;
+    private Map<ContextualizedStageId, Set<FlowStageDependency>> dependenciesByFlowStageId;
+    private Map<ContextualizedStageId, Set<ContextualizedStageId>> childrenIdsByStageId;
 
-    public ExecutionGraph(Map<FlowStageId, Set<FlowStageDependency>> dependencyMap) {
+    public ExecutionGraph(Map<ContextualizedStageId, Set<FlowStageDependency>> dependencyMap) {
         setUp(dependencyMap);
     }
 
-    private void setUp(Map<FlowStageId, Set<FlowStageDependency>> dependencyMap) {
+    private void setUp(Map<ContextualizedStageId, Set<FlowStageDependency>> dependencyMap) {
         this.root = new HashSet<>();
         this.dependenciesByFlowStageId = new HashMap<>();
         this.childrenIdsByStageId = new HashMap<>();
 
-        for (Map.Entry<FlowStageId, Set<FlowStageDependency>> dependencyEntry : dependencyMap.entrySet()) {
-            FlowStageId flowStageId = dependencyEntry.getKey();
+        for (Map.Entry<ContextualizedStageId, Set<FlowStageDependency>> dependencyEntry : dependencyMap.entrySet()) {
+            ContextualizedStageId contextualizedStageId = dependencyEntry.getKey();
             Set<FlowStageDependency> stageRunDependencies = dependencyEntry.getValue();
             if (stageRunDependencies == null || stageRunDependencies.isEmpty()) {
-                this.root.add(flowStageId);
+                this.root.add(contextualizedStageId);
             } else {
-                this.dependenciesByFlowStageId.put(flowStageId, stageRunDependencies);
+                this.dependenciesByFlowStageId.put(contextualizedStageId, stageRunDependencies);
                 stageRunDependencies.stream()
                         .map(stageRunDependency -> stageRunDependency.getAncestors())
                         .filter(Objects::nonNull)
                         .flatMap(Collection::stream)
                         .forEach(ancestor -> {
-                            FlowStageId ancestorId = ancestor.getFlowStageId();
+                            ContextualizedStageId ancestorId = ancestor.getFlowStageId();
                             this.childrenIdsByStageId.compute(ancestorId, (key, val) -> {
                                 if (val == null) {
                                     val = new HashSet<>();
                                 }
-                                val.add(flowStageId);
+                                val.add(contextualizedStageId);
                                 return val;
                             });
                         });
@@ -45,11 +45,11 @@ public class ExecutionGraph {
         }
     }
 
-    public Set<FlowStageDependency> getFlowStageDependencies(FlowStageId flowStageId){
-        return this.dependenciesByFlowStageId.getOrDefault(flowStageId, Set.of());
+    public Set<FlowStageDependency> getFlowStageDependencies(ContextualizedStageId contextualizedStageId){
+        return this.dependenciesByFlowStageId.getOrDefault(contextualizedStageId, Set.of());
     }
 
-    public Map<FlowStageId, Set<FlowStageDependency>> toDependencyMap() {
+    public Map<ContextualizedStageId, Set<FlowStageDependency>> toDependencyMap() {
         return Stream.concat(
                         this.getRootsIds().stream()
                                 .map(f -> Map.entry(f, Set.<FlowStageDependency>of())),
@@ -58,15 +58,15 @@ public class ExecutionGraph {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public Set<FlowStageId> getRootsIds() {
+    public Set<ContextualizedStageId> getRootsIds() {
         return Set.copyOf(this.root);
     }
 
-    public Set<FlowStageId> getChildren(FlowStageId stageId) {
+    public Set<ContextualizedStageId> getChildren(ContextualizedStageId stageId) {
         return Set.copyOf(this.childrenIdsByStageId.getOrDefault(stageId, Set.of()));
     }
 
-    public Set<FlowStageId> getAncestors(FlowStageId stageId) {
+    public Set<ContextualizedStageId> getAncestors(ContextualizedStageId stageId) {
         if (this.dependenciesByFlowStageId.containsKey(stageId)) {
             return this.dependenciesByFlowStageId.get(stageId).stream()
                     .map(inputDependency -> inputDependency.getAncestors())

@@ -27,11 +27,49 @@ public class StageAdapterImpl implements StageAdapter {
     }
 
     @Override
-    public com.maukaim.bulo.executors.data.stages.Stage adapteExecutorModule(com.maukaim.bulo.stages.models.stage.Stage stage) {
+    public com.maukaim.bulo.executors.data.stages.Stage adapteExecutorModule(Stage stage) {
         return stage == null ? null : switch (stage.getStageType()){
             case TECHNICAL -> adapteTechnicalStageExecutorModule((TechnicalStage)stage);
-            case FUNCTIONAL -> throw new UnsupportedDataMethodException("Functional stage not supported by Executor module.");
+            case FUNCTIONAL -> throw new UnsupportedDataMethodException("Functional stage not yet supported by Executor module.");
         };
+    }
+
+    @Override
+    public com.maukaim.bulo.definitions.data.stage.Stage adapteDefinitionModule(Stage stage) {
+        return stage == null ? null : switch (stage.getStageType()){
+            case TECHNICAL -> adapteTechnicalStageDefinitionModule((TechnicalStage)stage);
+            case FUNCTIONAL -> adapteFunctionalStageDefinitionModule((FunctionalStage)stage);
+        };
+    }
+
+    private com.maukaim.bulo.definitions.data.stage.FunctionalStage adapteFunctionalStageDefinitionModule(FunctionalStage stage) {
+        return new com.maukaim.bulo.definitions.data.stage.FunctionalStage(
+                stage.getStageId(),
+                resolveParametersDefinitionModule(stage.getParameters()),
+                stage.getDefinitionId()
+        );
+    }
+
+    private com.maukaim.bulo.definitions.data.stage.TechnicalStage adapteTechnicalStageDefinitionModule(TechnicalStage stage) {
+        return new com.maukaim.bulo.definitions.data.stage.TechnicalStage(
+                stage.getStageId(),
+                resolveParametersDefinitionModule(stage.getParameters()),
+                stage.getDefinitionId()
+        );
+    }
+
+    private com.maukaim.bulo.flows.data.models.stage.FunctionalStage adapteFunctionalStageFlowModule(FunctionalStage stage) {
+        return new com.maukaim.bulo.flows.data.models.stage.FunctionalStage(
+                stage.getStageId(),
+                stage.getDefinitionId(),
+                resolveParametersFlowModule(stage.getParameters()));
+    }
+
+    private com.maukaim.bulo.flows.data.models.stage.TechnicalStage adapteTechnicalStageFlowModule(TechnicalStage stage) {
+        return new com.maukaim.bulo.flows.data.models.stage.TechnicalStage(
+                stage.getStageId(),
+                resolveParametersFlowModule(stage.getParameters()),
+                stage.getDefinitionId());
     }
 
     private com.maukaim.bulo.executors.data.stages.Stage adapteTechnicalStageExecutorModule(TechnicalStage stage) {
@@ -42,23 +80,16 @@ public class StageAdapterImpl implements StageAdapter {
         );
     }
 
+    private List<com.maukaim.bulo.definitions.data.stage.Parameter> resolveParametersDefinitionModule(List<Parameter> parameters) {
+        return parameters == null ? List.of() : parameters.stream()
+                .map(parameterAdapter::adapteDefinitionModule)
+                .collect(Collectors.toList());
+    }
+
     private List<com.maukaim.bulo.executors.data.stages.Parameter> resolveParametersExecutorModule(List<Parameter> parameters) {
         return parameters == null ? List.of() : parameters.stream()
                 .map(parameterAdapter::adapteExecutorModule)
                 .collect(Collectors.toList());
-    }
-
-    private com.maukaim.bulo.flows.data.models.stage.Stage adapteFunctionalStageFlowModule(FunctionalStage stage) {
-        return new com.maukaim.bulo.flows.data.models.stage.FunctionalStage(
-                stage.getStageId(),
-                resolveParametersFlowModule(stage.getParameters()));
-    }
-
-    private com.maukaim.bulo.flows.data.models.stage.Stage adapteTechnicalStageFlowModule(TechnicalStage stage) {
-        return new com.maukaim.bulo.flows.data.models.stage.TechnicalStage(
-                stage.getStageId(),
-                resolveParametersFlowModule(stage.getParameters()),
-                stage.getDefinitionId());
     }
 
     private List<com.maukaim.bulo.flows.data.models.stage.Parameter> resolveParametersFlowModule(List<Parameter> parameters) {

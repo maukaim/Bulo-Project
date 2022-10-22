@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.factories;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 import com.maukaim.bulo.runs.orchestrators.data.flow.FlowStage;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
@@ -34,7 +34,7 @@ public class FlowRunFactory {
                 FlowRunStatus.NEW);
     }
 
-    private static Map<FlowStageId, Set<FlowStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {
+    private static Map<ContextualizedStageId, Set<FlowStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {
         return flowStages == null ? Map.of() : flowStages.stream()
                 .collect(Collectors.toMap(
                         FlowStage::getFlowStageId,

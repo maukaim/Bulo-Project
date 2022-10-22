@@ -9,11 +9,13 @@ public abstract class Stage {
     protected String stageId;
     protected StageType stageType;
     protected List<Parameter> parameters;
+    protected String definitionId;
 
-    public Stage(String stageId, StageType stageType, List<Parameter> parameters) {
+    public Stage(String stageId, String definitionId, StageType stageType, List<Parameter> parameters) {
         this.stageId = stageId;
         this.stageType = stageType;
         this.parameters = parameters;
+        this.definitionId = definitionId;
     }
 
     public String getStageId() {
@@ -26,5 +28,9 @@ public abstract class Stage {
 
     public List<Parameter> getParameters() {
         return parameters;
+    }
+
+    public String getDefinitionId() {
+        return definitionId;
     }
 }

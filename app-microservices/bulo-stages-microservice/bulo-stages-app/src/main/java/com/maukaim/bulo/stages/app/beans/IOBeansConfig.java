@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
-import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
+import com.maukaim.bulo.stages.core.StageDefinitionService;
 import com.maukaim.bulo.stages.io.*;
 import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
@@ -59,7 +59,7 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionEventConsumer technicalStageDefinitionEventConsumer(TechnicalStageDefinitionService definitionService,
+    public TechnicalStageDefinitionEventConsumer technicalStageDefinitionEventConsumer(StageDefinitionService definitionService,
                                                                                        TechnicalStageDefinitionAdapter definitionAdapter){
         return new TechnicalStageDefinitionEventConsumerImpl(definitionAdapter,definitionService);
     }

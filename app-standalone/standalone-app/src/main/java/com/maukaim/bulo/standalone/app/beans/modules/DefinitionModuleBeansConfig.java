@@ -1,12 +1,12 @@
 package com.maukaim.bulo.standalone.app.beans.modules;
 
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinitionStore;
-import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionService;
-import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionServiceImpl;
+import com.maukaim.bulo.definitions.data.StageDefinitionStore;
+import com.maukaim.bulo.definitions.data.StageStore;
+import com.maukaim.bulo.definitions.registry.core.FunctionalStageDefinitionValidator;
+import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
+import com.maukaim.bulo.definitions.registry.core.StageDefinitionServiceImpl;
 import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionValidator;
-import com.maukaim.bulo.definitions.registry.core.validators.InputsTSDValidator;
-import com.maukaim.bulo.definitions.registry.core.validators.OutputsTSDValidator;
-import com.maukaim.bulo.definitions.registry.core.validators.ParametersTSDValidator;
+import com.maukaim.bulo.definitions.registry.core.validators.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,18 +15,30 @@ import java.util.List;
 @Configuration
 public class DefinitionModuleBeansConfig {
     @Bean
-    public TechnicalStageDefinitionService stageDefinitionService(TechnicalStageDefinitionStore definitionStore,
-                                                                  List<TechnicalStageDefinitionValidator> validators
+    public StageDefinitionService stageDefinitionService(StageDefinitionStore definitionStore,
+                                                         List<TechnicalStageDefinitionValidator> validators,
+                                                         List<FunctionalStageDefinitionValidator> functionalValidators
     ) {
-        return new TechnicalStageDefinitionServiceImpl(definitionStore, validators);
+        return new StageDefinitionServiceImpl(definitionStore, validators, functionalValidators);
     }
 
     @Bean
-    public List<TechnicalStageDefinitionValidator> validators() {
+    public List<TechnicalStageDefinitionValidator> technicalValidators() {
         return List.of(
                 new InputsTSDValidator(),
                 new ParametersTSDValidator(),
                 new OutputsTSDValidator()
+        );
+    }
+
+    @Bean
+    public List<FunctionalStageDefinitionValidator> functionalValidators(StageDefinitionStore stageDefinitionStore,
+                                                                         StageStore stageStore) {
+        return List.of(
+                new InputsFSDValidator(stageDefinitionStore, stageStore),
+                new ParametersFSDValidator(),
+                new OutputsFSDValidator(stageStore, stageDefinitionStore),
+                new FsStagesFSDValidator(stageStore)
         );
     }
 }

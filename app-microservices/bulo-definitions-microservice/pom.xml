@@ -18,6 +18,6 @@
 
     <modules>
         <module>bulo-definitions-app</module>
-        <module>bulo-definitions-data-lifecycle-module</module>
+        <module>bulo-definitions-data-lifecycle-ms-module</module>
     </modules>
 </project>

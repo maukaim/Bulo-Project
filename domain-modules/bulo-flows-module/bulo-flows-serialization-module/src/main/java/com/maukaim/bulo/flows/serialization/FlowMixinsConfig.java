@@ -4,7 +4,7 @@ package com.maukaim.bulo.flows.serialization;
 import com.maukaim.bulo.flows.io.definition.ParameterDefinitionDto;
 import com.maukaim.bulo.flows.io.definition.StageInputDefinitionDto;
 import com.maukaim.bulo.flows.io.definition.StageOutputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 import com.maukaim.bulo.flows.io.events.*;
 import com.maukaim.bulo.flows.io.flow.*;
 import com.maukaim.bulo.flows.io.stage.FunctionalStageDto;
@@ -33,8 +33,8 @@ public class FlowMixinsConfig {
     );
 
     public static Map<Class<?>, Class<?>> DEFINITIONS_SERIALIZATION_JACKSON_MIXIN = Map.of(
-            TechnicalStageDefinitionEvent.class, TechnicalStageDefinitionUpdateEventMixIn.class,
-            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDtoMixIn.class,
+            StageDefinitionEvent.class, StageDefinitionUpdateEventMixIn.class,
+            stageDefinitionDto.class, StageDefinitionDtoMixIn.class,
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class

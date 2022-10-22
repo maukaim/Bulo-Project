@@ -73,10 +73,10 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionAdapter stageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter,
-                                                                  StageInputDefinitionAdapter stageInputDefinitionAdapter,
-                                                                  StageOutputDefinitionAdapter stageOutputDefinitionAdapter) {
-        return new TechnicalStageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter);
+    public StageDefinitionAdapter stageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter,
+                                                         StageInputDefinitionAdapter stageInputDefinitionAdapter,
+                                                         StageOutputDefinitionAdapter stageOutputDefinitionAdapter) {
+        return new StageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter);
     }
 
     @Bean

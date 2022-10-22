@@ -45,7 +45,7 @@ public class ExecutorModuleBeansConfig {
     public StageRunnerRegistry runnerRegistry(List<StageRunner> runners) {
         Map<String, StageRunner> defaultRunnersMap = runners.stream()
                 .collect(Collectors.toMap(
-                        runner -> runner.getDefinition().getTechnicalStageDefinitionId(),
+                        runner -> runner.getDefinition().getDefinitionId(),
                         runner -> runner
                 ));
         return new StageRunnerRegistryImpl(defaultRunnersMap);
@@ -57,9 +57,9 @@ public class ExecutorModuleBeansConfig {
     }
 
     @Bean
-    public StageRunManager technicalStageRunnerManager(StageRunnerRegistry runnerRegistry,
-                                                       RunExecutor runExecutor,
-                                                       RunOperatorProvider runOperatorProvider) {
+    public StageRunManager stageRunnerManager(StageRunnerRegistry runnerRegistry,
+                                              RunExecutor runExecutor,
+                                              RunOperatorProvider runOperatorProvider) {
         return new StageRunManagerImpl(runnerRegistry, runExecutor, runOperatorProvider);
     }
 

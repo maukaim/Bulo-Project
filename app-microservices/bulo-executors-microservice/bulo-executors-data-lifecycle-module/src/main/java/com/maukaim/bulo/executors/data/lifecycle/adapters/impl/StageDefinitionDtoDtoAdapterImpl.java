@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
 
-import com.maukaim.bulo.commons.io.instructions.models.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
@@ -26,7 +26,7 @@ public class StageDefinitionDtoDtoAdapterImpl implements StageDefinitionDtoAdapt
     @Override
     public TechnicalStageDefinitionDto adapte(StageDefinition definition) {
         return new TechnicalStageDefinitionDto(
-                definition.getTechnicalStageDefinitionId(),
+                definition.getDefinitionId(),
                 definition.getInputsByName()
                         .entrySet()
                         .stream()

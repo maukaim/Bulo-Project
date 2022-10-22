@@ -40,7 +40,8 @@ public class StageAdapterImpl implements StageAdapter {
     public FunctionalStage adapte(String stageId, FunctionalStageDto dto) {
         return new FunctionalStage(
                 UUID.randomUUID().toString(),
-                dto.getParameters().stream().map(parameterAdapter::adapte).collect(Collectors.toList())
+                dto.getParameters().stream().map(parameterAdapter::adapte).collect(Collectors.toList()),
+                dto.getDefinitionId()
         );
     }
 }

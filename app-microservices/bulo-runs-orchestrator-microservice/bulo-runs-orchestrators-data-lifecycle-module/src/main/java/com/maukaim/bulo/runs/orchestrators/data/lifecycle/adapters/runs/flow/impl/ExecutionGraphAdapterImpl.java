@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.impl;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.ExecutionGraphAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
@@ -31,7 +31,7 @@ public class ExecutionGraphAdapterImpl implements ExecutionGraphAdapter {
                 .collect(Collectors.toSet());
     }
 
-    private Map<FlowStageId, Set<FlowStageDependency>> resolveFlowRunStages(Set<FlowRunStageDto> flowRunStages) {
+    private Map<ContextualizedStageId, Set<FlowStageDependency>> resolveFlowRunStages(Set<FlowRunStageDto> flowRunStages) {
         return flowRunStages == null ? Map.of() : flowRunStages.stream()
                 .collect(Collectors.toMap(
                         FlowRunStageDto::getFlowStageId,
