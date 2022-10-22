@@ -1,47 +1,28 @@
-package com.maukaim.bulo.commons.io.instructions.models;
+package com.maukaim.bulo.commons.io.instructions.models.technical;
+
+import com.maukaim.bulo.commons.io.instructions.models.*;
 
 import java.util.List;
 import java.util.Map;
 
-public class TechnicalStageDefinitionDto {
-    private String technicalStageDefinitionId;
-    private Map<String, StageInputDefinitionDto> inputsByName;
-    private Map<String, StageOutputDefinitionDto> outputsByName;
-    private List<ParameterDefinitionDto> parameters;
+public class TechnicalStageDefinitionDto extends StageDefinitionDto {
 
-    public TechnicalStageDefinitionDto(String technicalStageDefinitionId,
+    public TechnicalStageDefinitionDto(String id,
                                        Map<String, StageInputDefinitionDto> inputsByName,
                                        Map<String, StageOutputDefinitionDto> outputsByName,
                                        List<ParameterDefinitionDto> parameters) {
-        this.technicalStageDefinitionId = technicalStageDefinitionId;
-        this.inputsByName = inputsByName;
-        this.outputsByName = outputsByName;
-        this.parameters = parameters;
-    }
+        super(id,inputsByName,outputsByName,parameters, StageDefinitionTypeDto.TECHNICAL);
 
-    public String getTechnicalStageDefinitionId() {
-        return technicalStageDefinitionId;
-    }
-
-    public Map<String, StageInputDefinitionDto> getInputsByName() {
-        return inputsByName;
-    }
-
-    public Map<String, StageOutputDefinitionDto> getOutputsByName() {
-        return outputsByName;
-    }
-
-    public List<ParameterDefinitionDto> getParameters() {
-        return parameters;
     }
 
     @Override
     public String toString() {
         return "TechnicalStageDefinitionDto{" +
-                "technicalStageDefinitionId='" + technicalStageDefinitionId + '\'' +
+                "id='" + id + '\'' +
                 ", inputsByName=" + inputsByName +
                 ", outputsByName=" + outputsByName +
                 ", parameters=" + parameters +
+                ", stageDefinitionType=" + stageDefinitionType +
                 '}';
     }
 }

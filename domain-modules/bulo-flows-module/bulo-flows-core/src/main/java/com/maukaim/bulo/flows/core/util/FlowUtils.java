@@ -1,6 +1,6 @@
 package com.maukaim.bulo.flows.core.util;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 import com.maukaim.bulo.flows.data.models.flow.FlowStage;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class FlowUtils {
 
-    public static Set<FlowStageId> getAllFlowStageIds(Flow flow) {
+    public static Set<ContextualizedStageId> getAllFlowStageIds(Flow flow) {
         if (flow == null || flow.getFlowStages() == null) {
             return Set.of();
         }

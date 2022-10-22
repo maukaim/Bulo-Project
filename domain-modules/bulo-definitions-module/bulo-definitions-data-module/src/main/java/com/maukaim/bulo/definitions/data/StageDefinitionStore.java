@@ -1,18 +1,18 @@
 package com.maukaim.bulo.definitions.data;
 
-import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 
 import java.util.List;
 import java.util.Set;
 
-public interface TechnicalStageDefinitionStore {
-    TechnicalStageDefinition addDefinition(TechnicalStageDefinition definition);
+public interface StageDefinitionStore {
+    StageDefinition addDefinition(StageDefinition definition);
 
-    Set<String> addExecutor(String stageExecutorId, String technicalStageDefinitionId);
+    Set<String> addExecutor(String stageExecutorId, String id);
 
-    TechnicalStageDefinition getById(String technicalStageDefinitionId);
+    StageDefinition getById(String id);
 
-    List<TechnicalStageDefinition> getAll();
+    List<StageDefinition> getAll();
 
-    boolean removeExecutor(String executorId, String definitionId);
+    boolean removeExecutor(String executorId, String id);
 }

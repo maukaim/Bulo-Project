@@ -2,7 +2,7 @@ package com.maukaim.bulo.triggers.io.events;
 
 
 import com.maukaim.bulo.commons.io.TriggerEvent;
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.time.Instant;
 import java.util.Set;
@@ -10,13 +10,13 @@ import java.util.Set;
 public class BasicTriggerEvent implements TriggerEvent {
     private final Instant instant;
     private String flowId;
-    private Set<FlowStageId> flowStageIds;
+    private Set<ContextualizedStageId> contextualizedStageIds;
 
     public BasicTriggerEvent(String flowId,
-                             Set<FlowStageId> flowStageIds,
+                             Set<ContextualizedStageId> contextualizedStageIds,
                              Instant instant) {
         this.flowId = flowId;
-        this.flowStageIds = flowStageIds;
+        this.contextualizedStageIds = contextualizedStageIds;
         this.instant = instant;
     }
 
@@ -30,8 +30,8 @@ public class BasicTriggerEvent implements TriggerEvent {
     }
 
     @Override
-    public Set<FlowStageId> getFlowStageIds() {
-        return flowStageIds;
+    public Set<ContextualizedStageId> getFlowStageIds() {
+        return contextualizedStageIds;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class BasicTriggerEvent implements TriggerEvent {
         return "BasicTriggerEvent{" +
                 "instant=" + instant +
                 ", flowId='" + flowId + '\'' +
-                ", flowStageIds=" + flowStageIds +
+                ", flowStageIds=" + contextualizedStageIds +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.registry.app.io;
 
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
-import com.maukaim.bulo.definitions.io.events.TechnicalStageDefinitionEvent;
+import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import com.maukaim.bulo.ms.connectivity.EventType;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 
@@ -13,7 +13,7 @@ public class TechnicalStageDefinitionEventPublisherImpl implements TechnicalStag
     }
 
     @Override
-    public boolean publish(TechnicalStageDefinitionEvent event) {
+    public boolean publish(StageDefinitionEvent event) {
         System.out.println("Publish event : " + event);
         return this.systemConnector.sendToConsumers(EventType.DEF_UPDATE, event);
     }

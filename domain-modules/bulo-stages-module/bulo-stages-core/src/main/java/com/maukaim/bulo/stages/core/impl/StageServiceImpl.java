@@ -6,7 +6,7 @@ import com.maukaim.bulo.stages.core.validators.StageCreateReport;
 import com.maukaim.bulo.stages.core.TechnicalStageValidator;
 import com.maukaim.bulo.stages.core.validators.ValidationReport;
 import com.maukaim.bulo.stages.models.StageStore;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.models.stage.FunctionalStage;
 import com.maukaim.bulo.stages.models.stage.Stage;
 import com.maukaim.bulo.stages.models.stage.TechnicalStage;
@@ -67,7 +67,7 @@ public class StageServiceImpl implements StageService {
             return failReport(stage.getStageId(), "No definition identifier provided to create the TechnicalStage. Impossible to validate.");
         }
 
-        TechnicalStageDefinition definition = this.technicalStageDefinitionService.getById(definitionId);
+        StageDefinition definition = this.technicalStageDefinitionService.getById(definitionId);
         if (definition == null) {
             return failReport(stage.getStageId(), String.format("No definition found with identifier %s", definitionId));
         }

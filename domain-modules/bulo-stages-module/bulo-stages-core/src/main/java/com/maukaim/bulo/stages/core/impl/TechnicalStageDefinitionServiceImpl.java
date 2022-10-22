@@ -1,36 +1,36 @@
 package com.maukaim.bulo.stages.core.impl;
 
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
-import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.StageDefinitionStore;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 
 import java.util.List;
 
 public class TechnicalStageDefinitionServiceImpl implements TechnicalStageDefinitionService {
-    private final TechnicalStageDefinitionStore technicalStageDefinitionStore;
+    private final StageDefinitionStore stageDefinitionStore;
 
-    public TechnicalStageDefinitionServiceImpl(TechnicalStageDefinitionStore technicalStageDefinitionStore) {
-        this.technicalStageDefinitionStore = technicalStageDefinitionStore;
+    public TechnicalStageDefinitionServiceImpl(StageDefinitionStore stageDefinitionStore) {
+        this.stageDefinitionStore = stageDefinitionStore;
     }
 
     @Override
-    public TechnicalStageDefinition put(TechnicalStageDefinition definition) {
-        return this.technicalStageDefinitionStore.put(definition);
+    public StageDefinition put(StageDefinition definition) {
+        return this.stageDefinitionStore.put(definition);
     }
 
     @Override
-    public TechnicalStageDefinition remove(String definitionId) {
-        TechnicalStageDefinition technicalStageDefinition = this.technicalStageDefinitionStore.getById(definitionId);
-        return technicalStageDefinition == null ? null : this.technicalStageDefinitionStore.remove(technicalStageDefinition);
+    public StageDefinition remove(String definitionId) {
+        StageDefinition stageDefinition = this.stageDefinitionStore.getById(definitionId);
+        return stageDefinition == null ? null : this.stageDefinitionStore.remove(stageDefinition);
     }
 
     @Override
-    public TechnicalStageDefinition getById(String definitionId) {
-        return this.technicalStageDefinitionStore.getById(definitionId);
+    public StageDefinition getById(String definitionId) {
+        return this.stageDefinitionStore.getById(definitionId);
     }
 
     @Override
-    public List<TechnicalStageDefinition> getAll() {
-        return this.technicalStageDefinitionStore.getAll();
+    public List<StageDefinition> getAll() {
+        return this.stageDefinitionStore.getAll();
     }
 }

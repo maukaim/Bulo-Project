@@ -1,21 +1,21 @@
 package com.maukaim.bulo.flows.io.flow;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.util.Objects;
 import java.util.Set;
 
 public class InputProviderDto {
-    private FlowStageId flowStageId;
+    private ContextualizedStageId contextualizedStageId;
     private Set<String> outputIds;
 
-    public InputProviderDto(FlowStageId flowStageId, Set<String> outputIds) {
-        this.flowStageId = flowStageId;
+    public InputProviderDto(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
+        this.contextualizedStageId = contextualizedStageId;
         this.outputIds = outputIds;
     }
 
-    public FlowStageId getFlowStageId() {
-        return flowStageId;
+    public ContextualizedStageId getFlowStageId() {
+        return contextualizedStageId;
     }
 
     public Set<String> getOutputIds() {
@@ -25,7 +25,7 @@ public class InputProviderDto {
     @Override
     public String toString() {
         return "InputProviderDto{" +
-                "flowStageId=" + flowStageId +
+                "flowStageId=" + contextualizedStageId +
                 ", outputIds=" + outputIds +
                 '}';
     }
@@ -35,11 +35,11 @@ public class InputProviderDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InputProviderDto that = (InputProviderDto) o;
-        return Objects.equals(flowStageId, that.flowStageId);
+        return Objects.equals(contextualizedStageId, that.contextualizedStageId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flowStageId);
+        return Objects.hash(contextualizedStageId);
     }
 }

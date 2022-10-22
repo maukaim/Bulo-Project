@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.web.view;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 
@@ -12,11 +12,11 @@ public class FlowRunView {
     private final String runId;
     private final String flowId;
     private final FlowRunStatus status;
-    private final Map<FlowStageId, List<StageRun>> stageRunsByStageId;
+    private final Map<ContextualizedStageId, List<StageRun>> stageRunsByStageId;
     private final Instant startTime;
     private final Instant endTime;
 
-    public FlowRunView(String runId, String flowId, FlowRunStatus status, Map<FlowStageId, List<StageRun>> stageRunsByStageId, Instant startTime, Instant endTime) {
+    public FlowRunView(String runId, String flowId, FlowRunStatus status, Map<ContextualizedStageId, List<StageRun>> stageRunsByStageId, Instant startTime, Instant endTime) {
         this.runId = runId;
         this.flowId = flowId;
         this.status = status;
@@ -37,7 +37,7 @@ public class FlowRunView {
         return status;
     }
 
-    public Map<FlowStageId, List<StageRun>> getStageRunsByStageId() {
+    public Map<ContextualizedStageId, List<StageRun>> getStageRunsByStageId() {
         return stageRunsByStageId;
     }
 

@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.serialization.mixins.events;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.time.Instant;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
 public class TriggerEventMixIn {
     @JsonCreator
     public TriggerEventMixIn(@JsonProperty("flowId") String flowId,
-                             @JsonProperty("flowStageIds") Set<FlowStageId> flowStageIds,
+                             @JsonProperty("flowStageIds") Set<ContextualizedStageId> contextualizedStageIds,
                              @JsonProperty("instant") Instant instant) {
     }
 }

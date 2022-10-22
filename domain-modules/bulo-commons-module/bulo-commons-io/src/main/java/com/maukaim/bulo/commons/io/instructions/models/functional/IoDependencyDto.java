@@ -1,12 +1,12 @@
-package com.maukaim.bulo.definitions.data.functional;
+package com.maukaim.bulo.commons.io.instructions.models.functional;
 
 import java.util.Set;
 
-public class IoDependency {
+public class IoDependencyDto {
     private final String inputId;
-    private final Set<InputProvider> inputProviders;
+    private final Set<InputProviderDto> inputProviders;
 
-    public IoDependency(String inputId, Set<InputProvider> inputProviders) {
+    public IoDependencyDto(String inputId, Set<InputProviderDto> inputProviders) {
         this.inputId = inputId;
         this.inputProviders = inputProviders;
     }
@@ -15,7 +15,7 @@ public class IoDependency {
         return inputId;
     }
 
-    public Set<InputProvider> getInputProviders() {
+    public Set<InputProviderDto> getInputProviders() {
         return inputProviders;
     }
 

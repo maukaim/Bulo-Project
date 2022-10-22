@@ -1,6 +1,6 @@
 package com.maukaim.bulo.triggers.scheduler.data.lifecycle;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
 import com.maukaim.bulo.triggers.io.events.BasicTriggerEvent;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
@@ -16,9 +16,9 @@ public class TriggerConnectorImpl implements TriggerConnector {
     }
 
     @Override
-    public void requestTrigger(String flowId, Set<FlowStageId> flowStageIds) {
+    public void requestTrigger(String flowId, Set<ContextualizedStageId> contextualizedStageIds) {
         this.triggerEventPublisher.publish(new BasicTriggerEvent(
-                flowId, flowStageIds, Instant.now()
+                flowId, contextualizedStageIds, Instant.now()
         ));
     }
 }

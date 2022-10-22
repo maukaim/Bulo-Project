@@ -1,24 +1,23 @@
 package com.maukaim.bulo.standalone.data.lifecycle.definitions.sub.stores;
 
-import com.maukaim.bulo.definitions.data.TechnicalStageDefinition;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.standalone.data.lifecycle.UnsupportedDataMethodException;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.MainDefinitionStore;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageDefinitionAdapter;
 
 public class FlowModuleDefinitionStore implements StageDefinitionStore {
     private final MainDefinitionStore mainDefinitionStore;
-    private final TechnicalStageDefinitionAdapter definitionAdapter;
+    private final StageDefinitionAdapter definitionAdapter;
 
-    public FlowModuleDefinitionStore(MainDefinitionStore mainDefinitionStore, TechnicalStageDefinitionAdapter definitionAdapter) {
+    public FlowModuleDefinitionStore(MainDefinitionStore mainDefinitionStore, StageDefinitionAdapter definitionAdapter) {
         this.mainDefinitionStore = mainDefinitionStore;
         this.definitionAdapter = definitionAdapter;
     }
 
     @Override
     public StageDefinition getById(String definitionId) {
-        TechnicalStageDefinition definition = this.mainDefinitionStore.getById(definitionId);
+        com.maukaim.bulo.definitions.data.definition.StageDefinition definition = this.mainDefinitionStore.getById(definitionId);
         return this.definitionAdapter.adapteFlowModule(definition);
     }
 

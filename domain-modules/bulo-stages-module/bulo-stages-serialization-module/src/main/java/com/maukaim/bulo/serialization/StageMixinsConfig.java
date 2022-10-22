@@ -7,7 +7,7 @@ import com.maukaim.bulo.stages.io.events.DeleteStageInstruction;
 import com.maukaim.bulo.stages.io.events.StageUpdateEvent;
 import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
 import com.maukaim.bulo.stages.io.models.definitions.ParameterDefinitionDto;
-import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
 import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
 import com.maukaim.bulo.stages.io.models.stages.ParameterDto;
 import com.maukaim.bulo.stages.io.models.stages.StageDto;
@@ -26,7 +26,7 @@ public class StageMixinsConfig {
             FunctionalStageDto.class, FunctionalStageDtoMixin.class,
             ParameterDto.class, ParameterDtoMixin.class,
             TechnicalStageDto.class, TechnicalStageDtoMixin.class,
-            TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDtoMixin.class,
+            StageDefinitionDto.class, TechnicalStageDefinitionDtoMixin.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixin.class,
             StageDto.class, StageDtoMixin.class
     );

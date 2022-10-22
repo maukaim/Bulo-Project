@@ -83,6 +83,25 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-definitions-io-module</artifactId>
+            <version>${definitions.module.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-definitions-serialization-module</artifactId>
+            <version>${definitions.module.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-definitions-data-lifecycle-module</artifactId>
+            <version>${definitions.module.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-core</artifactId>
             <version>${stages.module.version}</version>
         </dependency>

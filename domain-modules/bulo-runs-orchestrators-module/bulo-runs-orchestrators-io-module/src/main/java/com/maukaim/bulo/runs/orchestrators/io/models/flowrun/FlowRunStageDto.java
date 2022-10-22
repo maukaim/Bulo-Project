@@ -1,21 +1,21 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.flowrun;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.util.Objects;
 import java.util.Set;
 
 public class FlowRunStageDto {
-    private final FlowStageId flowStageId;
+    private final ContextualizedStageId contextualizedStageId;
     private final Set<FlowStageDependencyDto> flowStageDependencies;
 
-    public FlowRunStageDto(FlowStageId flowStageId, Set<FlowStageDependencyDto> flowStageDependencies) {
-        this.flowStageId = flowStageId;
+    public FlowRunStageDto(ContextualizedStageId contextualizedStageId, Set<FlowStageDependencyDto> flowStageDependencies) {
+        this.contextualizedStageId = contextualizedStageId;
         this.flowStageDependencies = flowStageDependencies;
     }
 
-    public FlowStageId getFlowStageId() {
-        return flowStageId;
+    public ContextualizedStageId getFlowStageId() {
+        return contextualizedStageId;
     }
 
     public Set<FlowStageDependencyDto> getFlowStageDependencies() {
@@ -27,18 +27,18 @@ public class FlowRunStageDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FlowRunStageDto that = (FlowRunStageDto) o;
-        return flowStageId.equals(that.flowStageId);
+        return contextualizedStageId.equals(that.contextualizedStageId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flowStageId);
+        return Objects.hash(contextualizedStageId);
     }
 
     @Override
     public String toString() {
         return "FlowRunStageDto{" +
-                "flowStageId=" + flowStageId +
+                "flowStageId=" + contextualizedStageId +
                 ", flowStageDependencies=" + flowStageDependencies +
                 '}';
     }

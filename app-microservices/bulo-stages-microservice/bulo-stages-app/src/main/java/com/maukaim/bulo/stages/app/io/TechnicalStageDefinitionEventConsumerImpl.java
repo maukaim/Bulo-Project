@@ -3,8 +3,8 @@ package com.maukaim.bulo.stages.app.io;
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
 import com.maukaim.bulo.stages.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 
 public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStageDefinitionEventConsumer {
@@ -25,8 +25,8 @@ public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStage
         };
     }
 
-    private TechnicalStageDefinition saveDefinition(TechnicalStageDefinitionDto dto) {
-        TechnicalStageDefinition technicalStageDefinition = this.technicalStageDefinitionAdapter.adapte(dto);
-        return this.technicalStageDefinitionService.put(technicalStageDefinition);
+    private StageDefinition saveDefinition(StageDefinitionDto dto) {
+        StageDefinition stageDefinition = this.technicalStageDefinitionAdapter.adapte(dto);
+        return this.technicalStageDefinitionService.put(stageDefinition);
     }
 }

@@ -1,16 +1,17 @@
 package com.maukaim.bulo.definitions.registry.core;
 
-import com.maukaim.bulo.definitions.data.functional.FunctionalStageDefinition;
-import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.definition.StageDefinition;
+import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
+import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
 
 import java.util.List;
 
-public interface TechnicalStageDefinitionService {
+public interface StageDefinitionService {
     void register(FunctionalStageDefinition functionalStageDefinition);
     void register(String stageExecutorId, TechnicalStageDefinition definition);
     void unregister(String stageExecutorId, String definitionId);
 
-    com.maukaim.bulo.definitions.data.StageDefinition get(String definitionId);
+    StageDefinition get(String definitionId);
 
-    List<com.maukaim.bulo.definitions.data.StageDefinition> getAll();
+    List<StageDefinition> getAll();
 }

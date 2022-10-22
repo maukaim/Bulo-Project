@@ -1,8 +1,8 @@
 package com.maukaim.bulo.definitions.io;
 
 
-import com.maukaim.bulo.commons.io.instructions.TechnicalStageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
 
 public interface TechnicalStageDefinitionCreateInstructionConsumer {
-    void consume(TechnicalStageDefinitionCreateInstruction event);
+    void consume(StageDefinitionCreateInstruction event);
 }

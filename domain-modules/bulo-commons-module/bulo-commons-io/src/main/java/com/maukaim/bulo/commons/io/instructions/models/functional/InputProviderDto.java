@@ -1,20 +1,20 @@
-package com.maukaim.bulo.definitions.data.functional;
+package com.maukaim.bulo.commons.io.instructions.models.functional;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.util.Set;
 
-public class InputProvider {
-    private final FlowStageId flowStageId;
+public class InputProviderDto {
+    private final ContextualizedStageId contextualizedStageId;
     private final Set<String> outputIds;
 
-    public InputProvider(FlowStageId flowStageId, Set<String> outputIds) {
-        this.flowStageId = flowStageId;
+    public InputProviderDto(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
+        this.contextualizedStageId = contextualizedStageId;
         this.outputIds = outputIds;
     }
 
-    public FlowStageId getFlowStageId() {
-        return flowStageId;
+    public ContextualizedStageId getFsStageId() {
+        return contextualizedStageId;
     }
 
     public Set<String> getOutputIds() {
@@ -24,7 +24,7 @@ public class InputProvider {
     @Override
     public String toString() {
         return "InputProvider{" +
-                "flowStageId=" + flowStageId +
+                "flowStageId=" + contextualizedStageId +
                 ", outputIds=" + outputIds +
                 '}';
     }

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
@@ -24,11 +24,11 @@ public class StageRunServiceImpl implements StageRunService {
         this.stageRunStore = stageRunStore;
     }
 
-    public Map<String,StageRun> getNextStageRun(String flowRunId, Map<FlowStageId, Set<StageRunDependency>> flowStageToRunByDependencies){
+    public Map<String,StageRun> getNextStageRun(String flowRunId, Map<ContextualizedStageId, Set<StageRunDependency>> flowStageToRunByDependencies){
         Map<String, StageRun> result = new HashMap<>();
-        for (FlowStageId flowStageId : flowStageToRunByDependencies.keySet()) {
-            Set<StageRunDependency> stageRunDependencies = flowStageToRunByDependencies.get(flowStageId);
-            StageRun newRunView = StageRunFactory.toBeRequested(flowRunId, flowStageId, stageRunDependencies);
+        for (ContextualizedStageId contextualizedStageId : flowStageToRunByDependencies.keySet()) {
+            Set<StageRunDependency> stageRunDependencies = flowStageToRunByDependencies.get(contextualizedStageId);
+            StageRun newRunView = StageRunFactory.toBeRequested(flowRunId, contextualizedStageId, stageRunDependencies);
             this.stageRunStore.put(newRunView.getStageRunId(), newRunView);
             result.put(newRunView.getStageRunId(), newRunView);
         }

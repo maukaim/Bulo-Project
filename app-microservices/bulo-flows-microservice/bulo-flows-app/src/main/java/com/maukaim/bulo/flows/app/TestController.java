@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.app;
 
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,6 @@ public class TestController {
 
     @GetMapping(value = "/salutations")
     public ResponseEntity<String> echoHello(@RequestParam String name) {
-        return ResponseEntity.ok("Si tu etais une StageId " + FlowStageId.of(name,1));
+        return ResponseEntity.ok("Si tu etais une StageId " + ContextualizedStageId.of(name,1));
     }
 }

@@ -2,23 +2,23 @@ package com.maukaim.bulo.flows.io.events;
 
 import com.maukaim.bulo.commons.io.DefinitionEventType;
 import com.maukaim.bulo.commons.io.GlobalDefinitionEvent;
-import com.maukaim.bulo.flows.io.definition.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 
 import java.time.Instant;
 
 public class TechnicalStageDefinitionEvent implements GlobalDefinitionEvent {
-    private TechnicalStageDefinitionDto technicalStageDefinitionDto;
+    private stageDefinitionDto stageDefinitionDto;
     private DefinitionEventType eventType;
     private Instant instant;
 
-    public TechnicalStageDefinitionEvent(TechnicalStageDefinitionDto technicalStageDefinitionDto, DefinitionEventType eventType, Instant instant) {
-        this.technicalStageDefinitionDto = technicalStageDefinitionDto;
+    public TechnicalStageDefinitionEvent(stageDefinitionDto stageDefinitionDto, DefinitionEventType eventType, Instant instant) {
+        this.stageDefinitionDto = stageDefinitionDto;
         this.eventType = eventType;
         this.instant = instant;
     }
 
-    public TechnicalStageDefinitionDto getTechnicalStageDefinition() {
-        return technicalStageDefinitionDto;
+    public stageDefinitionDto getTechnicalStageDefinition() {
+        return stageDefinitionDto;
     }
 
     @Override

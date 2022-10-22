@@ -1,11 +1,11 @@
 package com.maukaim.bulo.stages.app.beans;
 
 import com.maukaim.bulo.stages.io.StageUpdateEventPublisher;
-import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
+import com.maukaim.bulo.stages.models.StageDefinitionStore;
 import com.maukaim.bulo.stages.models.definition.ParameterDefinition;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
-import com.maukaim.bulo.stages.ms.data.lifecycle.TechnicalStageDefinitionStoreImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,10 +26,10 @@ public class DataBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionStore technicalStageDefinitionStore() {
-        return new TechnicalStageDefinitionStoreImpl(new HashMap<>(
+    public StageDefinitionStore technicalStageDefinitionStore() {
+        return new StageDefinitionStoreImpl(new HashMap<>(
                 Map.of("DEFINITION_1",
-                        new TechnicalStageDefinition("DEFINITION_1",
+                        new StageDefinition("DEFINITION_1",
                                 List.of(
                                         new ParameterDefinition(
                                                 "Param", "java.lang.String",

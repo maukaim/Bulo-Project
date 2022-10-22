@@ -1,15 +1,19 @@
 package com.maukaim.bulo.definitions.registry.app.beans;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maukaim.bulo.definitions.data.lifecycle.TechnicalStageDefinitionStoreImpl;
-import com.maukaim.bulo.definitions.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.definitions.data.StageStore;
+import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.StageAdapter;
+import com.maukaim.bulo.definitions.io.StageUpdateEventConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
-import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionDeclarationEventConsumerImpl;
+import com.maukaim.bulo.definitions.registry.app.io.StageUpdateEventConsumerImpl;
+import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionCreateInstructionConsumerImpl;
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventConsumerImpl;
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventPublisherImpl;
-import com.maukaim.bulo.definitions.registry.core.TechnicalStageDefinitionService;
+import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.ms.connectivity.SystemConnector;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -42,14 +46,19 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionEventConsumer technicalStageDefinitionConsumer(TechnicalStageDefinitionStoreImpl technicalStageDefinitionStore,
-                                                                                  TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter) {
-        return new TechnicalStageDefinitionEventConsumerImpl(technicalStageDefinitionStore, technicalStageDefinitionAdapter);
+    public TechnicalStageDefinitionEventConsumer technicalStageDefinitionConsumer(StageDefinitionStoreImpl technicalStageDefinitionStore,
+                                                                                  StageDefinitionAdapter stageDefinitionAdapter) {
+        return new TechnicalStageDefinitionEventConsumerImpl(technicalStageDefinitionStore, stageDefinitionAdapter);
     }
 
     @Bean
-    public TechnicalStageDefinitionCreateInstructionConsumer technicalStageDefinitionDeclarationEventConsumer(TechnicalStageDefinitionService technicalStageDefinitionService,
-                                                                                                              TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter) {
-        return new TechnicalStageDefinitionDeclarationEventConsumerImpl(technicalStageDefinitionService, technicalStageDefinitionAdapter);
+    public TechnicalStageDefinitionCreateInstructionConsumer technicalStageDefinitionDeclarationEventConsumer(StageDefinitionService stageDefinitionService,
+                                                                                                              StageDefinitionAdapter stageDefinitionAdapter) {
+        return new TechnicalStageDefinitionCreateInstructionConsumerImpl(stageDefinitionService, stageDefinitionAdapter);
+    }
+
+    @Bean
+    public StageUpdateEventConsumer stageUpdateEventConsumer(StageStore stageStore, StageAdapter stageAdapter){
+        return new StageUpdateEventConsumerImpl(stageStore, stageAdapter);
     }
 }

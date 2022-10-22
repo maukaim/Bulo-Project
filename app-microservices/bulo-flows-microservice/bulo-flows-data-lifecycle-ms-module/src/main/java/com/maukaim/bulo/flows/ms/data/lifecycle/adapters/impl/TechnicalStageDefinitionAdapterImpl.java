@@ -10,7 +10,7 @@ import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageOutputDefinition;
 import com.maukaim.bulo.flows.io.definition.StageInputDefinitionDto;
 import com.maukaim.bulo.flows.io.definition.StageOutputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -27,7 +27,7 @@ public class TechnicalStageDefinitionAdapterImpl implements TechnicalStageDefini
     }
 
     @Override
-    public StageDefinition adapte(TechnicalStageDefinitionDto dto) {
+    public StageDefinition adapte(stageDefinitionDto dto) {
         return new StageDefinition(
                 dto.getTechnicalStageDefinitionId(),
                 resolveInputs(dto.getInputsByName()),

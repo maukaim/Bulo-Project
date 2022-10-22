@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl;
 
-import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 
@@ -15,8 +15,8 @@ public class TechnicalStageDefinitionAdapterImpl implements TechnicalStageDefini
     }
 
     @Override
-    public TechnicalStageDefinition adapte(TechnicalStageDefinitionDto dto) {
-        return new TechnicalStageDefinition(
+    public StageDefinition adapte(StageDefinitionDto dto) {
+        return new StageDefinition(
                 dto.getId(),
                 dto.getParameters().stream().map(definitionAdapter::adapte).collect(Collectors.toList())
         );

@@ -2,22 +2,22 @@ package com.maukaim.bulo.stages.io.events;
 
 import com.maukaim.bulo.commons.io.DefinitionEventType;
 import com.maukaim.bulo.commons.io.GlobalDefinitionEvent;
-import com.maukaim.bulo.stages.io.models.definitions.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
 
 import java.time.Instant;
 
 public class TechnicalStageDefinitionEvent implements GlobalDefinitionEvent {
-    private TechnicalStageDefinitionDto technicalStageDefinition;
+    private StageDefinitionDto technicalStageDefinition;
     private DefinitionEventType eventType;
     private Instant instant;
 
-    public TechnicalStageDefinitionEvent(TechnicalStageDefinitionDto technicalStageDefinition, DefinitionEventType eventType, Instant instant) {
+    public TechnicalStageDefinitionEvent(StageDefinitionDto technicalStageDefinition, DefinitionEventType eventType, Instant instant) {
         this.technicalStageDefinition = technicalStageDefinition;
         this.eventType = eventType;
         this.instant = instant;
     }
 
-    public TechnicalStageDefinitionDto getTechnicalStageDefinition() {
+    public StageDefinitionDto getTechnicalStageDefinition() {
         return technicalStageDefinition;
     }
 

@@ -4,7 +4,7 @@ import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.io.TechnicalStageDefinitionConsumer;
-import com.maukaim.bulo.flows.io.definition.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 import com.maukaim.bulo.flows.io.events.TechnicalStageDefinitionEvent;
 
 public class TechnicalStageDefinitionConsumerImpl implements TechnicalStageDefinitionConsumer {
@@ -25,13 +25,13 @@ public class TechnicalStageDefinitionConsumerImpl implements TechnicalStageDefin
         }
     }
 
-    private void delete(TechnicalStageDefinitionDto technicalStageDefinition) {
+    private void delete(stageDefinitionDto technicalStageDefinition) {
         if(technicalStageDefinition != null && technicalStageDefinition.getTechnicalStageDefinitionId() != null){
             this.stageDefinitionStore.remove(technicalStageDefinition.getTechnicalStageDefinitionId());
         }
     }
 
-    private void save(TechnicalStageDefinitionDto technicalStageDefinition) {
+    private void save(stageDefinitionDto technicalStageDefinition) {
         StageDefinition definitionToSave = this.definitionAdapter.adapte(technicalStageDefinition);
         this.stageDefinitionStore.put(definitionToSave);
     }

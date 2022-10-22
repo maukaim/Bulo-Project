@@ -2,7 +2,7 @@ package com.maukaim.bulo.stages.core.validators;
 
 import com.maukaim.bulo.stages.core.TechnicalStageValidator;
 import com.maukaim.bulo.stages.models.definition.ParameterDefinition;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.models.stage.Parameter;
 import com.maukaim.bulo.stages.models.stage.TechnicalStage;
 
@@ -16,7 +16,7 @@ import static com.maukaim.bulo.stages.core.validators.ValidationReport.DEFAULT_S
 
 public class TechnicalStageValidatorImpl implements TechnicalStageValidator {
     @Override
-    public ValidationReport validate(TechnicalStage actualStage, TechnicalStageDefinition definition) {
+    public ValidationReport validate(TechnicalStage actualStage, StageDefinition definition) {
         List<String> failReasons = new ArrayList<>();
         try {
             List<Parameter> parameters = actualStage.getParameters();

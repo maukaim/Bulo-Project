@@ -7,7 +7,7 @@ import com.maukaim.bulo.stages.core.impl.StageServiceImpl;
 import com.maukaim.bulo.stages.core.impl.TechnicalStageDefinitionServiceImpl;
 import com.maukaim.bulo.stages.core.validators.TechnicalStageValidatorImpl;
 import com.maukaim.bulo.stages.models.StageStore;
-import com.maukaim.bulo.stages.models.TechnicalStageDefinitionStore;
+import com.maukaim.bulo.stages.models.StageDefinitionStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,7 +22,7 @@ public class StageModuleBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionService definitionService(TechnicalStageDefinitionStore definitionStore) {
+    public TechnicalStageDefinitionService definitionService(StageDefinitionStore definitionStore) {
         return new TechnicalStageDefinitionServiceImpl(definitionStore);
     }
 

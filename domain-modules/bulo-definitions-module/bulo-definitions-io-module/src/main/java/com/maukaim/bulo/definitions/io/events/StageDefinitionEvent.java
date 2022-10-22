@@ -2,23 +2,23 @@ package com.maukaim.bulo.definitions.io.events;
 
 import com.maukaim.bulo.commons.io.DefinitionEventType;
 import com.maukaim.bulo.commons.io.GlobalDefinitionEvent;
-import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 
 import java.time.Instant;
 
-public class TechnicalStageDefinitionEvent implements GlobalDefinitionEvent {
-    private TechnicalStageDefinitionDto technicalStageDefinition;
+public class StageDefinitionEvent implements GlobalDefinitionEvent {
+    private StageDefinitionDto stageDefinition;
     private DefinitionEventType eventType;
     private Instant instant;
 
-    public TechnicalStageDefinitionEvent(TechnicalStageDefinitionDto technicalStageDefinition, DefinitionEventType eventType, Instant instant) {
-        this.technicalStageDefinition = technicalStageDefinition;
+    public StageDefinitionEvent(StageDefinitionDto stageDefinition, DefinitionEventType eventType, Instant instant) {
+        this.stageDefinition = stageDefinition;
         this.eventType = eventType;
         this.instant = instant;
     }
 
-    public TechnicalStageDefinitionDto getTechnicalStageDefinition() {
-        return technicalStageDefinition;
+    public StageDefinitionDto getStageDefinition() {
+        return stageDefinition;
     }
 
     @Override
@@ -33,8 +33,8 @@ public class TechnicalStageDefinitionEvent implements GlobalDefinitionEvent {
 
     @Override
     public String toString() {
-        return "TechnicalStageDefinitionEvent{" +
-                "technicalStageDefinition=" + technicalStageDefinition +
+        return "StageDefinitionEvent{" +
+                "stageDefinition=" + stageDefinition +
                 ", eventType=" + eventType +
                 ", instant=" + instant +
                 '}';

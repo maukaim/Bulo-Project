@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.core.impl;
 
 import com.maukaim.bulo.commons.models.AcyclicValidator;
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.flows.core.*;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
@@ -37,7 +37,7 @@ public class FlowValidatorImpl implements FlowValidator {
             throw new FlowValidationException("Dependency Graph can't be null or empty");
         }
 
-        Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies = simplifiedIoDependencies(flowStages);
+        Map<ContextualizedStageId, Set<ContextualizedStageId>> simplifiedIoDependencies = simplifiedIoDependencies(flowStages);
         try {
             new AcyclicValidator<>(simplifiedIoDependencies).validate();
         } catch (Throwable t) {
@@ -58,10 +58,10 @@ public class FlowValidatorImpl implements FlowValidator {
         return true;
     }
 
-    private void validateAllAncestorsArePresent(Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies) throws FlowValidationException {
-        for (Map.Entry<FlowStageId, Set<FlowStageId>> entry : simplifiedIoDependencies.entrySet()) {
-            Set<FlowStageId> ancestors = entry.getValue();
-            for (FlowStageId ancestorId : ancestors) {
+    private void validateAllAncestorsArePresent(Map<ContextualizedStageId, Set<ContextualizedStageId>> simplifiedIoDependencies) throws FlowValidationException {
+        for (Map.Entry<ContextualizedStageId, Set<ContextualizedStageId>> entry : simplifiedIoDependencies.entrySet()) {
+            Set<ContextualizedStageId> ancestors = entry.getValue();
+            for (ContextualizedStageId ancestorId : ancestors) {
                 if(!simplifiedIoDependencies.containsKey(ancestorId)){
                     throw new FlowValidationException(String.format(
                             "%s marked as ancestor of %s but not present itself in the Flow.",
@@ -92,7 +92,7 @@ public class FlowValidatorImpl implements FlowValidator {
         }
     }
 
-    private Map<FlowStageId, Set<FlowStageId>> simplifiedIoDependencies(Set<FlowStage> flowStages) {
+    private Map<ContextualizedStageId, Set<ContextualizedStageId>> simplifiedIoDependencies(Set<FlowStage> flowStages) {
         return flowStages.stream().collect(Collectors.toMap(
                 FlowStage::getFlowStageId,
                 flowStage -> flowStage.getIoDependencies().stream()

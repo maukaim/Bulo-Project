@@ -4,7 +4,7 @@ package com.maukaim.bulo.stages.app.web;
 import com.maukaim.bulo.stages.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
 import com.maukaim.bulo.stages.core.TechnicalStageDefinitionService;
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +22,13 @@ public class TechnicalStageDefinitionsController {
     }
 
     @PostMapping(value = "/onEvent")
-    public ResponseEntity<TechnicalStageDefinition> onEvent(@RequestBody TechnicalStageDefinitionEvent event) {
+    public ResponseEntity<StageDefinition> onEvent(@RequestBody TechnicalStageDefinitionEvent event) {
         this.definitionEventConsumer.consume(event);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity<Collection<TechnicalStageDefinition>> getAll() {
+    public ResponseEntity<Collection<StageDefinition>> getAll() {
         return ResponseEntity.ok(this.service.getAll());
     }
 }

@@ -1,30 +1,30 @@
-package com.maukaim.bulo.definitions.data.functional;
+package com.maukaim.bulo.commons.io.instructions.models.functional;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.util.Set;
 
-public class FsStage {
-    private final FlowStageId flowStageId;
-    private final Set<IoDependency> ioDependencies;
+public class FsStageDto {
+    private final ContextualizedStageId contextualizedStageId;
+    private final Set<IoDependencyDto> ioDependencies;
 
-    public FsStage(FlowStageId flowStageId, Set<IoDependency> ioDependencies) {
-        this.flowStageId = flowStageId;
+    public FsStageDto(ContextualizedStageId contextualizedStageId, Set<IoDependencyDto> ioDependencies) {
+        this.contextualizedStageId = contextualizedStageId;
         this.ioDependencies = ioDependencies;
     }
 
-    public FlowStageId getFlowStageId() {
-        return flowStageId;
+    public ContextualizedStageId getFsStageId() {
+        return contextualizedStageId;
     }
 
-    public Set<IoDependency> getIoDependencies() {
+    public Set<IoDependencyDto> getIoDependencies() {
         return ioDependencies;
     }
 
     @Override
     public String toString() {
         return "FsStage{" +
-                "flowStageId=" + flowStageId +
+                "flowStageId=" + contextualizedStageId +
                 ", ioDependencies=" + ioDependencies +
                 '}';
     }

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.standalone.app.connectivity;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 
@@ -14,7 +14,7 @@ public class TriggerConnectorImpl implements TriggerConnector {
     }
 
     @Override
-    public void requestTrigger(String flowId, Set<FlowStageId> flowStageIds) {
-        this.flowRunService.startRun(flowId, flowStageIds);
+    public void requestTrigger(String flowId, Set<ContextualizedStageId> contextualizedStageIds) {
+        this.flowRunService.startRun(flowId, contextualizedStageIds);
     }
 }

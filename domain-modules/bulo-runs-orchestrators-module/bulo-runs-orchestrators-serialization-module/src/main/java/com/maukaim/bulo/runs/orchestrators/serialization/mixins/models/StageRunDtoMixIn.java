@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.serialization.mixins.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.io.models.StageRunStatusDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
 
@@ -12,7 +12,7 @@ import java.util.Set;
 public class StageRunDtoMixIn {
     @JsonCreator
     public StageRunDtoMixIn(@JsonProperty("stageRunId") String stageRunId,
-                            @JsonProperty("flowStageId") FlowStageId flowStageId,
+                            @JsonProperty("flowStageId") ContextualizedStageId contextualizedStageId,
                             @JsonProperty("flowRunId") String flowRunId,
                             @JsonProperty("stageRunStatus") StageRunStatusDto stageRunStatus,
                             @JsonProperty("executorId") String executorId,

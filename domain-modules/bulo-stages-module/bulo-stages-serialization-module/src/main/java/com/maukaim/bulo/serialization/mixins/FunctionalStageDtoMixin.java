@@ -10,6 +10,7 @@ public class FunctionalStageDtoMixin {
     @JsonCreator
     public FunctionalStageDtoMixin(
             @JsonProperty("stageId") String stageId,
-            @JsonProperty("parameters") List<ParameterDto> parameters) {
+            @JsonProperty("parameters") List<ParameterDto> parameters,
+            @JsonProperty("definitionId") String definitionId) {
     }
 }

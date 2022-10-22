@@ -1,15 +1,15 @@
 package com.maukaim.bulo.stages.core;
 
-import com.maukaim.bulo.stages.models.definition.TechnicalStageDefinition;
+import com.maukaim.bulo.stages.models.definition.StageDefinition;
 
 import java.util.List;
 
 public interface TechnicalStageDefinitionService {
-    TechnicalStageDefinition put(TechnicalStageDefinition definition);
+    StageDefinition put(StageDefinition definition);
 
-    TechnicalStageDefinition remove(String definitionId);
+    StageDefinition remove(String definitionId);
 
-    TechnicalStageDefinition getById(String definitionId);
+    StageDefinition getById(String definitionId);
 
-    List<TechnicalStageDefinition> getAll();
+    List<StageDefinition> getAll();
 }

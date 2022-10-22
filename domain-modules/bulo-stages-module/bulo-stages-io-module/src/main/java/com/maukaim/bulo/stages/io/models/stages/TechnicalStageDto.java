@@ -6,14 +6,9 @@ import com.maukaim.bulo.commons.models.StageType;
 import java.util.List;
 
 public class TechnicalStageDto extends StageDto {
-    private String definitionId;
 
     public TechnicalStageDto(String stageId, List<ParameterDto> parameters, String definitionId) {
-        super(stageId, StageType.TECHNICAL, parameters);
-        this.definitionId = definitionId;
-    }
-    public String getDefinitionId() {
-        return definitionId;
+        super(stageId, definitionId, StageType.TECHNICAL, parameters);
     }
 
     @Override

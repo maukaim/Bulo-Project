@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.data.lifecycle;
 
-import com.maukaim.bulo.commons.io.instructions.TechnicalStageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
@@ -58,7 +58,7 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
     }
 
     private void publish(StageDefinition definitionStored) {
-        this.publisher.publish(new TechnicalStageDefinitionCreateInstruction(
+        this.publisher.publish(new StageDefinitionCreateInstruction(
                 DUMMY_EXECUTOR_ID, this.stageDefinitionDtoAdapter.adapte(definitionStored),
                 Instant.now())
         );

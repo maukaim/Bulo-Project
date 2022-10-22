@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.app.web.view;
 
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.core.utils.TimeHelper;
-import com.maukaim.bulo.commons.models.FlowStageId;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class FlowRunViewFactory {
 
     public static FlowRunView build(FlowRun run) {
-        Map<FlowStageId, List<StageRun>> runningStages = run.getInFlightStageRuns().stream()
+        Map<ContextualizedStageId, List<StageRun>> runningStages = run.getInFlightStageRuns().stream()
                 .collect(Collectors.groupingBy(StageRun::getFlowStageId));
 
         Instant startTime = null;

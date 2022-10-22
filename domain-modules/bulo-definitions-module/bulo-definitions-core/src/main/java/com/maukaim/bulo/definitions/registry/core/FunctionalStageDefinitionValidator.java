@@ -1,8 +1,8 @@
 package com.maukaim.bulo.definitions.registry.core;
 
 
-import com.maukaim.bulo.definitions.data.technical.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 
-public interface TechnicalStageDefinitionValidator {
-    boolean validate(TechnicalStageDefinition definition);
+public interface FunctionalStageDefinitionValidator {
+    boolean validate(FunctionalStageDefinition definition);
 }

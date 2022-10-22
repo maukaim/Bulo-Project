@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TechnicalStageDefinitionDtoMixin {
     @JsonCreator
-    public TechnicalStageDefinitionDtoMixin(@JsonProperty("technicalStageDefinitionId") String technicalStageDefinitionId,
+    public TechnicalStageDefinitionDtoMixin(@JsonProperty("definitionId") String definitionId,
                                             @JsonProperty("parameters") List<ParameterDefinitionDto> parameters) {
     }
 }

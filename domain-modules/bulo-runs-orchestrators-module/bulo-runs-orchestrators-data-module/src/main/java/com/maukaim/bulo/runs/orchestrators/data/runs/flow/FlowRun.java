@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
-import com.maukaim.bulo.commons.models.FlowStageId;
+import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunStatus;
 
@@ -49,7 +49,7 @@ public class FlowRun {
     public Set<String> getStageRunIds(){
         return this.stageRunViewByIds.keySet();
     }
-    private boolean stageIsSuccessfullyTerminated(FlowStageId stageId) {
+    private boolean stageIsSuccessfullyTerminated(ContextualizedStageId stageId) {
         Optional<StageRun> stageRunView = this.stageRunViewByIds.values().stream()
                 .filter(stageRun -> stageId.equals(stageRun.getFlowStageId()))
                 .findFirst();
@@ -70,7 +70,7 @@ public class FlowRun {
                 .collect(Collectors.toUnmodifiableSet());
     }
 
-    public boolean otherAncestorsAreSuccessful(FlowStageId stageId, FlowStageId ancestorExcludedId) {
+    public boolean otherAncestorsAreSuccessful(ContextualizedStageId stageId, ContextualizedStageId ancestorExcludedId) {
         return this.executionGraph.getAncestors(stageId).stream()
                 .filter(ancestor -> !ancestorExcludedId.equals(ancestor))
                 .allMatch(this::stageIsSuccessfullyTerminated);
