@@ -17,7 +17,7 @@ public class TechnicalStageDefinitionAdapterImpl implements TechnicalStageDefini
     @Override
     public StageDefinition adapte(StageDefinitionDto dto) {
         return new StageDefinition(
-                dto.getId(),
+                dto.getDefinitionId(),
                 dto.getParameters().stream().map(definitionAdapter::adapte).collect(Collectors.toList())
         );
     }

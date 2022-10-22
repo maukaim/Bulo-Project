@@ -27,10 +27,10 @@ import com.maukaim.bulo.definitions.registry.serialization.mixins.stage.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MixinsConfig {
+public class DefinitionMixinsConfig {
 
     private static Map<Class<?>,Class<?>> COMMON_DEFINITIONS_MIXINS = Map.of(
-            StageDefinitionCreateInstruction.class, StageDefinitionInstructionEventMixIn.class,
+            StageDefinitionCreateInstruction.class, StageDefinitionCreateInstructionMixIn.class,
             StageDefinitionEvent.class, StageDefinitionEventMixIn.class,
 
             StageDefinitionDto.class, StageDefinitionDtoMixIn.class,

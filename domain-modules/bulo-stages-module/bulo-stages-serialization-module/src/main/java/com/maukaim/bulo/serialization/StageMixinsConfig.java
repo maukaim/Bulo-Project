@@ -19,7 +19,7 @@ import java.util.Map;
 public class StageMixinsConfig {
 
     public static Map<Class<?>, Class<?>> STAGES_SERVICE_JACKSON_MIXIN = Map.of(
-            CreateStageInstruction.class, CreateStageEventMixin.class,
+            CreateStageInstruction.class, CreateStageInstructionMixin.class,
             TechnicalStageDefinitionEvent.class, TechnicalStageDefinitionEventMixin.class,
             StageUpdateEvent.class, StageUpdateEventMixin.class,
             DeleteStageInstruction.class, DeleteStageEventMixin.class,

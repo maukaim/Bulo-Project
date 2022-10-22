@@ -19,7 +19,7 @@ public class CreateStageInstruction implements ExternalEvent {
         return instant;
     }
 
-    public StageDto getStageDto() {
+    public StageDto getStage() {
         return stageDto;
     }
 }

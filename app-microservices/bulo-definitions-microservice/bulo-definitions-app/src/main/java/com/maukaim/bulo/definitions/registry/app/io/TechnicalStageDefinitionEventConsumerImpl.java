@@ -21,7 +21,7 @@ public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStage
         System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
             case UPDATE -> this.save(event.getStageDefinition());
-            case DELETE -> this.remove(event.getStageDefinition().getId());
+            case DELETE -> this.remove(event.getStageDefinition().getDefinitionId());
         }
     }
 

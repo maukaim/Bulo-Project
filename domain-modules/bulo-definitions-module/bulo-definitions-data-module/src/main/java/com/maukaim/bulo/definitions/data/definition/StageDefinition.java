@@ -21,7 +21,7 @@ public abstract class StageDefinition {
         this.stageDefinitionType = stageDefinitionType;
     }
 
-    public String getId() {
+    public String getDefinitionId() {
         return id;
     }
 

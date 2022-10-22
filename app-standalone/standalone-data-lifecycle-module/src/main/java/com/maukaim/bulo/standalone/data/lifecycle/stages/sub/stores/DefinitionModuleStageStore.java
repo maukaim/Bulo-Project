@@ -20,7 +20,7 @@ public class DefinitionModuleStageStore implements StageStore {
 
     @Override
     public boolean contains(String stageId) {
-        return false;
+        return this.mainStageStore.getById(stageId) != null;
     }
 
     @Override

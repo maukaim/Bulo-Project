@@ -21,12 +21,12 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
 
     @Override
     public StageDefinition put(StageDefinition stageDefinition) {
-        return this.technicalStageDefinitionById.put(stageDefinition.getId(), stageDefinition);
+        return this.technicalStageDefinitionById.put(stageDefinition.getDefinitionId(), stageDefinition);
     }
 
     @Override
     public StageDefinition remove(StageDefinition stageDefinition) {
-        return this.technicalStageDefinitionById.remove(stageDefinition.getId());
+        return this.technicalStageDefinitionById.remove(stageDefinition.getDefinitionId());
     }
 
     @Override

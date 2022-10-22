@@ -51,7 +51,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
 
     private TechnicalStageDefinition adapte(TechnicalStageDefinitionDto dto){
         return new TechnicalStageDefinition(
-                dto.getId(),
+                dto.getDefinitionId(),
                 resolveInputs(dto.getInputsByName()),
                 resolveOutputs(dto.getOutputsByName()),
                 resolveParameters(dto.getParameters())
@@ -60,7 +60,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
 
     private FunctionalStageDefinition adapte (FunctionalStageDefinitionDto dto){
         return new FunctionalStageDefinition(
-                dto.getId(),
+                dto.getDefinitionId(),
                 resolveInputs(dto.getInputsByName()),
                 resolveOutputs(dto.getOutputsByName()),
                 resolveParameters(dto.getParameters()),

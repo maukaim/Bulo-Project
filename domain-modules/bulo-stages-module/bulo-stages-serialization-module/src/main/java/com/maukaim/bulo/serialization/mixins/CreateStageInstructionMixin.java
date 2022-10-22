@@ -6,10 +6,10 @@ import com.maukaim.bulo.stages.io.models.stages.StageDto;
 
 import java.time.Instant;
 
-public class CreateStageEventMixin {
+public class CreateStageInstructionMixin {
     @JsonCreator
-    public CreateStageEventMixin(
-            @JsonProperty("stageData") StageDto stageDto,
+    public CreateStageInstructionMixin(
+            @JsonProperty("stage") StageDto stageDto,
             @JsonProperty("instant") Instant instant) {
     }
 }

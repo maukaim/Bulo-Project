@@ -77,7 +77,7 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
     }
 
     public StageDefinition saveDefinition(StageDefinition definition) {
-        return this.stageDefinitions.put(definition.getId(), definition);
+        return this.stageDefinitions.put(definition.getDefinitionId(), definition);
     }
 
     public Set<String> saveExecutor(String stageExecutorId, String definitionId) {

@@ -32,7 +32,8 @@ public class StageDefinitionDtoAdapterImpl implements StageDefinitionDtoAdapter 
 
     public StageDefinitionDtoAdapterImpl(ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
                                          StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter,
-                                         StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter, FunctionalSubStageDtoAdapter functionalSubStageDtoAdapter) {
+                                         StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter,
+                                         FunctionalSubStageDtoAdapter functionalSubStageDtoAdapter) {
         this.parameterDefinitionDtoAdapter = parameterDefinitionDtoAdapter;
         this.stageInputDefinitionDtoAdapter = stageInputDefinitionDtoAdapter;
         this.stageOutputDefinitionDtoAdapter = stageOutputDefinitionDtoAdapter;
@@ -50,7 +51,7 @@ public class StageDefinitionDtoAdapterImpl implements StageDefinitionDtoAdapter 
 
     private TechnicalStageDefinitionDto adapte(TechnicalStageDefinition definition){
         return new TechnicalStageDefinitionDto(
-                definition.getId(),
+                definition.getDefinitionId(),
                 resolveInputs(definition.getInputsByName()),
                 resolveOutputs(definition.getOutputsByName()),
                 resolveParameters(definition.getParameters())
@@ -59,7 +60,7 @@ public class StageDefinitionDtoAdapterImpl implements StageDefinitionDtoAdapter 
 
     private FunctionalStageDefinitionDto adapte(FunctionalStageDefinition definition) {
         return new FunctionalStageDefinitionDto(
-                definition.getId(),
+                definition.getDefinitionId(),
                 resolveInputs(definition.getInputsByName()),
                 resolveOutputs(definition.getOutputsByName()),
                 resolveParameters(definition.getParameters()),

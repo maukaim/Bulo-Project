@@ -14,7 +14,7 @@ public class StageDefinition implements StageDefinitionInterface {
     }
 
     @Override
-    public String getId() {
+    public String getDefinitionId() {
         return id;
     }
 

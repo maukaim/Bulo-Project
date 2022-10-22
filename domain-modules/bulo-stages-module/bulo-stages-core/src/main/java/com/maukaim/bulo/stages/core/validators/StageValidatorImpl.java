@@ -34,7 +34,7 @@ public class StageValidatorImpl implements StageValidator {
             }
         } catch (Exception unExpected) {
             failReasons.add(String.format("Unexpected error occurred during validation process of this stage, on behalf of definition %s",
-                    definition.getId()
+                    definition.getDefinitionId()
             ));
         }
         return failReasons.isEmpty() ? DEFAULT_SUCCESS_REPORT : ValidationReport.no(failReasons);

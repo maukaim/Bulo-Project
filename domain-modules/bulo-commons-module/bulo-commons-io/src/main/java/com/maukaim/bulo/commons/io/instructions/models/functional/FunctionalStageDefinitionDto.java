@@ -26,7 +26,7 @@ public class FunctionalStageDefinitionDto extends StageDefinitionDto {
     public String toString() {
         return "FunctionalStageDefinitionDto{" +
                 "functionalSubStages=" + functionalSubStages +
-                ", id='" + id + '\'' +
+                ", id='" + definitionId + '\'' +
                 ", inputsByName=" + inputsByName +
                 ", outputsByName=" + outputsByName +
                 ", parameters=" + parameters +

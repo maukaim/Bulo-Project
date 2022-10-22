@@ -21,12 +21,12 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
 
     @Override
     public void register(FunctionalStageDefinition definition) {
-        StageDefinition existingDefinition = definitionStore.getById(definition.getId());
+        StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition == null) {
             if(this.functionalValidators.stream().allMatch(validator -> validator.validate(definition))){
                 this.definitionStore.addDefinition(definition);
             }else{
-                throw new RuntimeException("Definition rejected: "+ definition.getId());
+                throw new RuntimeException("Definition rejected: "+ definition.getDefinitionId());
             }
         }else{
             throw new RuntimeException("Definition already exist : " + existingDefinition);
@@ -35,14 +35,14 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
 
     @Override
     public void register(String stageExecutorId, TechnicalStageDefinition definition) {
-        StageDefinition existingDefinition = definitionStore.getById(definition.getId());
+        StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition != null && existingDefinition.equals(definition)) {
-            this.definitionStore.addExecutor(stageExecutorId, definition.getId());
+            this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
         } else if (this.technicalValidators.stream().allMatch(validator -> validator.validate(definition))) {
             this.definitionStore.addDefinition(definition);
-            this.definitionStore.addExecutor(stageExecutorId, definition.getId());
+            this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
         } else {
-            throw new RuntimeException("Definition rejected: " + definition.getId());
+            throw new RuntimeException("Definition rejected: " + definition.getDefinitionId());
         }
     }
 

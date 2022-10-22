@@ -16,7 +16,7 @@ public class MainDefinitionStore implements StageDefinitionStore {
 
     @Override
     public StageDefinition addDefinition(StageDefinition definition) {
-        return this.stageDefinitions.put(definition.getId(), definition);
+        return this.stageDefinitions.put(definition.getDefinitionId(), definition);
     }
 
     @Override

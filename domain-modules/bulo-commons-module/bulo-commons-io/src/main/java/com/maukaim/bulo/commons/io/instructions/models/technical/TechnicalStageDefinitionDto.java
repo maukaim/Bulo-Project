@@ -18,7 +18,7 @@ public class TechnicalStageDefinitionDto extends StageDefinitionDto {
     @Override
     public String toString() {
         return "TechnicalStageDefinitionDto{" +
-                "id='" + id + '\'' +
+                "id='" + definitionId + '\'' +
                 ", inputsByName=" + inputsByName +
                 ", outputsByName=" + outputsByName +
                 ", parameters=" + parameters +

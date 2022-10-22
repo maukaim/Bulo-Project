@@ -11,7 +11,7 @@ public class StageDefinitionDto {
         this.parameters = parameters;
     }
 
-    public String getId() {
+    public String getDefinitionId() {
         return technicalStageDefinitionId;
     }
 

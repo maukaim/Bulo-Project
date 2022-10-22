@@ -37,7 +37,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
 
     private com.maukaim.bulo.stages.models.definition.StageDefinition adapteStageModule(com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition definition) {
         return new com.maukaim.bulo.stages.models.definition.StageDefinition(
-                definition.getId(),
+                definition.getDefinitionId(),
                 resolveParameterStageModule(definition.getParameters())
         );
     }
@@ -58,7 +58,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
 
     private StageDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition definition) {
         return new StageDefinition(
-                definition.getId(),
+                definition.getDefinitionId(),
                 resolveInputFlowModule(definition.getInputsByName()),
                 resolveOutputFlowModule(definition.getOutputsByName()),
                 resolveParameterFlowModule(definition.getParameters())
