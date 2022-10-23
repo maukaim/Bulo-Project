@@ -1,31 +1,39 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.flowrun;
 
 import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.RunContextTypeDto;
 
 import java.util.Map;
 
-public class FlowRunDto {
+public class FlowRunDto implements OrchestrableContextDto<String> {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraphDto executionGraph;
     private final Map<String, StageRunDto> stageRunByIds;
-    private final FlowRunStatusDto flowRunStatus;
+    private final OrchestrableContextStatusDto orchestrableContextStatus;
 
-    public FlowRunDto(String flowRunId, String flowId, ExecutionGraphDto executionGraph, Map<String, StageRunDto> stageRunByIds, FlowRunStatusDto flowRunStatus) {
+    public FlowRunDto(String flowRunId, String flowId, ExecutionGraphDto executionGraph, Map<String, StageRunDto> stageRunByIds, OrchestrableContextStatusDto flowRunStatus) {
         this.flowRunId = flowRunId;
         this.flowId = flowId;
         this.executionGraph = executionGraph;
         this.stageRunByIds = stageRunByIds;
-        this.flowRunStatus = flowRunStatus;
+        this.orchestrableContextStatus = flowRunStatus;
     }
 
-    public String getFlowRunId() {
+    @Override
+    public RunContextTypeDto getContextType() {
+        return RunContextTypeDto.FLOW_RUN;
+    }
+
+    @Override
+    public String getContextId() {
         return flowRunId;
     }
 
     public String getFlowId() {
         return flowId;
     }
+
 
     public ExecutionGraphDto getExecutionGraph() {
         return executionGraph;
@@ -35,8 +43,8 @@ public class FlowRunDto {
         return stageRunByIds;
     }
 
-    public FlowRunStatusDto getFlowRunStatus() {
-        return flowRunStatus;
+    public OrchestrableContextStatusDto getOrchestrableContextStatus() {
+        return orchestrableContextStatus;
     }
 
     @Override
@@ -46,7 +54,7 @@ public class FlowRunDto {
                 ", flowId='" + flowId + '\'' +
                 ", executionGraph=" + executionGraph +
                 ", stageRunViewByIds=" + stageRunByIds +
-                ", flowRunStatus=" + flowRunStatus +
+                ", flowRunStatus=" + orchestrableContextStatus +
                 '}';
     }
 }

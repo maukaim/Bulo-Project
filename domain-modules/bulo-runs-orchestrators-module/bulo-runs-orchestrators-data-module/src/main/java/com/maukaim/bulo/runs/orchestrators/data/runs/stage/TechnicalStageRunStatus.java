@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 
 import java.util.Set;
 
-public enum StageRunStatus {
+public enum TechnicalStageRunStatus implements RunStatus{
     TO_BE_REQUESTED("Stage run to be requested soon."),
     REQUESTED("Stage run requested."),
     ACKNOWLEDGED("Stage Run acknowledged by a StageExecutor. In Process to be run."),
@@ -14,15 +14,29 @@ public enum StageRunStatus {
 
     private final String description;
 
-    StageRunStatus(String description) {
+    TechnicalStageRunStatus(String description) {
         this.description = description;
     }
 
+    private static Set<TechnicalStageRunStatus> TERMINAL_STATES = Set.of(CANCELLED, FAILED, SUCCESS);
+    private static Set<TechnicalStageRunStatus> PROBLEM_STATES = Set.of(CANCELLED, FAILED);
+
+    @Override
     public boolean isTerminal() {
-        return Set.of(CANCELLED, FAILED, SUCCESS).contains(this);
+        return TERMINAL_STATES.contains(this);
     }
 
-    public StageRunStatus resolveComparedTo(StageRunStatus other){
+    @Override
+    public boolean isSuccess() {
+        return SUCCESS.equals(this);
+    }
+
+    @Override
+    public boolean isProblem() {
+        return PROBLEM_STATES.contains(this);
+    }
+
+    public TechnicalStageRunStatus resolveComparedTo(TechnicalStageRunStatus other){
         return other != null && other.isTerminal() ? other : this;
     }
 

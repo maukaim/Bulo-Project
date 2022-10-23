@@ -1,6 +1,7 @@
 package com.maukaim.bulo.standalone.data.lifecycle.runs;
 
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.Context;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 
 import java.util.HashMap;
@@ -14,8 +15,8 @@ public class MainStageRunStore implements StageRunStore {
     }
 
     @Override
-    public void put(String stageRunId, StageRun stageRun) {
-        this.mappedStageRunId.put(stageRunId, stageRun);
+    public void put(String stageRunId, StageRun technicalStageRun) {
+        this.mappedStageRunId.put(stageRunId, technicalStageRun);
     }
 
     @Override
@@ -24,8 +25,8 @@ public class MainStageRunStore implements StageRunStore {
     }
 
     @Override
-    public String getFlowRunId(String stageRunId) {
-        StageRun stageRun = this.mappedStageRunId.get(stageRunId);
-        return stageRun == null ? null : stageRun.getFlowRunId();
+    public Context<?> getContext(String stageRunId) {
+        StageRun technicalStageRun = this.mappedStageRunId.get(stageRunId);
+        return technicalStageRun == null ? null : technicalStageRun.getContext();
     }
 }

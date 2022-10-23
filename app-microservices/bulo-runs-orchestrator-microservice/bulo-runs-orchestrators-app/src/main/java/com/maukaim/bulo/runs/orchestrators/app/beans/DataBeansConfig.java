@@ -91,8 +91,9 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public StageRunDtoAdapter stageRunDtoAdapter(StageRunDependencyDtoAdapter stageRunDependencyDtoAdapter) {
-            return new StageRunDtoAdapterImpl(stageRunDependencyDtoAdapter);
+        public StageRunDtoAdapter stageRunDtoAdapter(StageRunDependencyDtoAdapter stageRunDependencyDtoAdapter,
+                                                     ExecutionGraphDtoAdapter executionGraphDtoAdapter) {
+            return new StageRunDtoAdapterImpl(stageRunDependencyDtoAdapter, executionGraphDtoAdapter);
         }
 
         @Bean
@@ -106,8 +107,9 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public StageRunAdapter stageRunAdapter(StageRunDependencyAdapter stageRunDependencyAdapter) {
-            return new StageRunAdapterImpl(stageRunDependencyAdapter);
+        public StageRunAdapter stageRunAdapter(StageRunDependencyAdapter stageRunDependencyAdapter,
+                                               ExecutionGraphAdapter executionGraphAdapter) {
+            return new StageRunAdapterImpl(executionGraphAdapter, stageRunDependencyAdapter);
         }
 
         @Bean

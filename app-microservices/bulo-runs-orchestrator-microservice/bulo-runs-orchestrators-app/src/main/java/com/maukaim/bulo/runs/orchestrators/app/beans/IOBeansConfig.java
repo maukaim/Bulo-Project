@@ -39,11 +39,11 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public StageRunEventConsumer stageRunEventConsumer(AcknowledgeStageEventProcessor acknowledgeStageEventProcessor,
-                                                       RunCancelledStageEventProcessor runCancelledStageEventProcessor,
-                                                       RunSuccessfulStageEventProcessor runSuccessfulStageEventProcessor,
-                                                       RunFailedStageEventProcessor runFailedStageEventProcessor,
-                                                       StartRunStageEventProcessor startRunStageEventProcessor,
+    public StageRunEventConsumer stageRunEventConsumer(AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor,
+                                                       RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor,
+                                                       RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor,
+                                                       RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor,
+                                                       StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor,
                                                        StageRunStore stageRunStore) {
         return new StageRunEventConsumerImpl(acknowledgeStageEventProcessor,
                 runCancelledStageEventProcessor,

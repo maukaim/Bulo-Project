@@ -1,22 +1,22 @@
 package com.maukaim.bulo.runs.orchestrators.app.web.view;
 
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
-public class FlowRunView {
-    private final String runId;
+public class OrchestrableContextView<ID> {
+    private final ID runId;
     private final String flowId;
-    private final FlowRunStatus status;
-    private final Map<ContextualizedStageId, List<StageRun>> stageRunsByStageId;
+    private final OrchestrableContextStatus status;
+    private final Map<ContextualizedStageId, List<TechnicalStageRun>> stageRunsByStageId;
     private final Instant startTime;
     private final Instant endTime;
 
-    public FlowRunView(String runId, String flowId, FlowRunStatus status, Map<ContextualizedStageId, List<StageRun>> stageRunsByStageId, Instant startTime, Instant endTime) {
+    public OrchestrableContextView(ID runId, String flowId, OrchestrableContextStatus status, Map<ContextualizedStageId, List<TechnicalStageRun>> stageRunsByStageId, Instant startTime, Instant endTime) {
         this.runId = runId;
         this.flowId = flowId;
         this.status = status;
@@ -25,7 +25,7 @@ public class FlowRunView {
         this.endTime = endTime;
     }
 
-    public String getRunId() {
+    public ID getRunId() {
         return runId;
     }
 
@@ -33,11 +33,11 @@ public class FlowRunView {
         return flowId;
     }
 
-    public FlowRunStatus getStatus() {
+    public OrchestrableContextStatus getStatus() {
         return status;
     }
 
-    public Map<ContextualizedStageId, List<StageRun>> getStageRunsByStageId() {
+    public Map<ContextualizedStageId, List<TechnicalStageRun>> getStageRunsByStageId() {
         return stageRunsByStageId;
     }
 

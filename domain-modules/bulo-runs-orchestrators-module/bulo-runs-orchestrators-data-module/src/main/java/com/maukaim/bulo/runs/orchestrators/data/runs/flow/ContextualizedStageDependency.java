@@ -4,11 +4,11 @@ package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 import java.util.Objects;
 import java.util.Set;
 
-public class FlowStageDependency {
+public class ContextualizedStageDependency {
     private final String inputId;
     private final Set<FlowStageAncestor> flowStageAncestors;
 
-    public FlowStageDependency(String inputId, Set<FlowStageAncestor> flowStageAncestors) {
+    public ContextualizedStageDependency(String inputId, Set<FlowStageAncestor> flowStageAncestors) {
         this.inputId = inputId;
         this.flowStageAncestors = flowStageAncestors;
     }
@@ -34,7 +34,7 @@ public class FlowStageDependency {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FlowStageDependency that = (FlowStageDependency) o;
+        ContextualizedStageDependency that = (ContextualizedStageDependency) o;
         return inputId.equals(that.getInputId());
     }
 

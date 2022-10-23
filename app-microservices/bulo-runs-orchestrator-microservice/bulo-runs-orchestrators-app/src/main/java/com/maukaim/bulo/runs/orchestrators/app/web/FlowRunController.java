@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.app.web;
 
-import com.maukaim.bulo.runs.orchestrators.app.web.view.FlowRunView;
-import com.maukaim.bulo.runs.orchestrators.app.web.view.FlowRunViewFactory;
+import com.maukaim.bulo.runs.orchestrators.app.web.view.OrchestrableContextView;
+import com.maukaim.bulo.runs.orchestrators.app.web.view.OrchestrableContextViewFactory;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStoreException;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
@@ -35,12 +35,12 @@ public class FlowRunController {
     }
 
     @GetMapping(value = "/getById")
-    public ResponseEntity<FlowRunView> getById(@RequestParam String runId) {
+    public ResponseEntity<OrchestrableContextView> getById(@RequestParam String runId) {
         FlowRun flowRun = this.flowRunService.getById(runId);
         if (flowRun == null) {
             throw new FlowRunStoreException("No FlowRun with ID " + runId);
         } else {
-            return ResponseEntity.ok(FlowRunViewFactory.build(flowRun));
+            return ResponseEntity.ok(OrchestrableContextViewFactory.build(flowRun));
         }
     }
 

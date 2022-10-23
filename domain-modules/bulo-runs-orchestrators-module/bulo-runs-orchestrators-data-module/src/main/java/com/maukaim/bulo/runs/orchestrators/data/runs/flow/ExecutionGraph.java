@@ -8,21 +8,21 @@ import java.util.stream.Stream;
 
 public class ExecutionGraph {
     private Set<ContextualizedStageId> root;
-    private Map<ContextualizedStageId, Set<FlowStageDependency>> dependenciesByFlowStageId;
+    private Map<ContextualizedStageId, Set<ContextualizedStageDependency>> dependenciesByFlowStageId;
     private Map<ContextualizedStageId, Set<ContextualizedStageId>> childrenIdsByStageId;
 
-    public ExecutionGraph(Map<ContextualizedStageId, Set<FlowStageDependency>> dependencyMap) {
+    public ExecutionGraph(Map<ContextualizedStageId, Set<ContextualizedStageDependency>> dependencyMap) {
         setUp(dependencyMap);
     }
 
-    private void setUp(Map<ContextualizedStageId, Set<FlowStageDependency>> dependencyMap) {
+    private void setUp(Map<ContextualizedStageId, Set<ContextualizedStageDependency>> dependencyMap) {
         this.root = new HashSet<>();
         this.dependenciesByFlowStageId = new HashMap<>();
         this.childrenIdsByStageId = new HashMap<>();
 
-        for (Map.Entry<ContextualizedStageId, Set<FlowStageDependency>> dependencyEntry : dependencyMap.entrySet()) {
+        for (Map.Entry<ContextualizedStageId, Set<ContextualizedStageDependency>> dependencyEntry : dependencyMap.entrySet()) {
             ContextualizedStageId contextualizedStageId = dependencyEntry.getKey();
-            Set<FlowStageDependency> stageRunDependencies = dependencyEntry.getValue();
+            Set<ContextualizedStageDependency> stageRunDependencies = dependencyEntry.getValue();
             if (stageRunDependencies == null || stageRunDependencies.isEmpty()) {
                 this.root.add(contextualizedStageId);
             } else {
@@ -45,14 +45,14 @@ public class ExecutionGraph {
         }
     }
 
-    public Set<FlowStageDependency> getFlowStageDependencies(ContextualizedStageId contextualizedStageId){
+    public Set<ContextualizedStageDependency> getFlowStageDependencies(ContextualizedStageId contextualizedStageId) {
         return this.dependenciesByFlowStageId.getOrDefault(contextualizedStageId, Set.of());
     }
 
-    public Map<ContextualizedStageId, Set<FlowStageDependency>> toDependencyMap() {
+    public Map<ContextualizedStageId, Set<ContextualizedStageDependency>> toDependencyMap() {
         return Stream.concat(
                         this.getRootsIds().stream()
-                                .map(f -> Map.entry(f, Set.<FlowStageDependency>of())),
+                                .map(f -> Map.entry(f, Set.<ContextualizedStageDependency>of())),
                         this.dependenciesByFlowStageId.entrySet().stream()
                 )
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));

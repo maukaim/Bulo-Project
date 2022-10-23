@@ -7,6 +7,7 @@ import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.*;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,14 +17,14 @@ import java.util.stream.Collectors;
 
 public class FlowRunFactory {
 
-    public static FlowRun updateState(FlowRun flowRun, FlowRunStatus newStatus) {
-        return new FlowRun(flowRun.getFlowRunId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), flowRun.getStageRunsById(), newStatus);
+    public static FlowRun updateState(FlowRun flowRun, OrchestrableContextStatus newStatus) {
+        return new FlowRun(flowRun.getContextId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), flowRun.getStageRunsById(), newStatus);
     }
 
     public static FlowRun updateStageRunView(FlowRun flowRun, Map<String, StageRun> mapOfViewToBeUpdated) {
         HashMap<String, StageRun> newStageRunViewMap = new HashMap<>(flowRun.getStageRunsById());
         newStageRunViewMap.putAll(mapOfViewToBeUpdated);
-        return new FlowRun(flowRun.getFlowRunId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), Map.copyOf(newStageRunViewMap), flowRun.getFlowRunStatus());
+        return new FlowRun(flowRun.getContextId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), Map.copyOf(newStageRunViewMap), flowRun.getStatus());
     }
 
     public static FlowRun create(Flow flow) {
@@ -31,10 +32,10 @@ public class FlowRunFactory {
                 flow.getFlowId(),
                 new ExecutionGraph(resolveFlowStages(flow.getFlowStages())),
                 new HashMap<>(),
-                FlowRunStatus.NEW);
+                OrchestrableContextStatus.NEW);
     }
 
-    private static Map<ContextualizedStageId, Set<FlowStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {
+    private static Map<ContextualizedStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {
         return flowStages == null ? Map.of() : flowStages.stream()
                 .collect(Collectors.toMap(
                         FlowStage::getFlowStageId,
@@ -42,14 +43,14 @@ public class FlowRunFactory {
                 ));
     }
 
-    private static Set<FlowStageDependency> resolveInputDependencies(Set<InputDependency> inputDependencies) {
+    private static Set<ContextualizedStageDependency> resolveInputDependencies(Set<InputDependency> inputDependencies) {
         return inputDependencies == null ? Set.of() : inputDependencies.stream()
                 .map(FlowRunFactory::resolveInputDependency)
                 .collect(Collectors.toSet());
     }
 
-    private static FlowStageDependency resolveInputDependency(InputDependency inputDependency) {
-        return inputDependency == null ? null : new FlowStageDependency(
+    private static ContextualizedStageDependency resolveInputDependency(InputDependency inputDependency) {
+        return inputDependency == null ? null : new ContextualizedStageDependency(
                 inputDependency.getInputId(),
                 resolveInputProviders(inputDependency.getInputProviders())
         );

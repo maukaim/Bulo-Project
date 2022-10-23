@@ -19,6 +19,6 @@ public class TriggerEventConsumerImpl implements TriggerEventConsumer {
         System.out.println("Consume event: " + triggerEvent);
         Set<ContextualizedStageId> contextualizedStageIds = triggerEvent.getFlowStageIds();
         FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getFlowId(), contextualizedStageIds);
-        return flowRun != null? flowRun.getFlowRunId() : null;
+        return flowRun != null? flowRun.getContextId() : null;
     }
 }

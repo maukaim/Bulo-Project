@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.im
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageAncestorAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageAncestor;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageAncestorDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageDependencyDto;
 
@@ -18,8 +18,8 @@ public class FlowStageDependencyAdapterImpl implements FlowStageDependencyAdapte
     }
 
     @Override
-    public FlowStageDependency adapte(FlowStageDependencyDto dto) {
-        return dto == null ? null : new FlowStageDependency(
+    public ContextualizedStageDependency adapte(FlowStageDependencyDto dto) {
+        return dto == null ? null : new ContextualizedStageDependency(
                 dto.getInputId(),
                 resolve(dto.getAncestors())
         );

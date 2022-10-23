@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.im
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageAncestorDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageAncestor;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageAncestorDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageDependencyDto;
 
@@ -18,10 +18,10 @@ public class FlowStageDependencyDtoAdapterImpl implements FlowStageDependencyDto
     }
 
     @Override
-    public FlowStageDependencyDto adapte(FlowStageDependency flowStageDependency) {
-        return flowStageDependency == null ? null : new FlowStageDependencyDto(
-                flowStageDependency.getInputId(),
-                resolve(flowStageDependency.getAncestors())
+    public FlowStageDependencyDto adapte(ContextualizedStageDependency contextualizedStageDependency) {
+        return contextualizedStageDependency == null ? null : new FlowStageDependencyDto(
+                contextualizedStageDependency.getInputId(),
+                resolve(contextualizedStageDependency.getAncestors())
         );
     }
 

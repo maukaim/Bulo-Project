@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.serialization;
 
 import com.maukaim.bulo.runs.orchestrators.io.events.*;
-import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.TechnicalStageRunDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flow.*;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.*;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunAncestorDto;
@@ -21,7 +21,7 @@ public class MixinsConfig {
             FlowRunStageDto.class, FlowRunStageDtoMixIn.class,
             FlowStageAncestorDto.class, FlowStageAncestorDtoMixIn.class,
             FlowStageDependencyDto.class, FlowStageDependencyDtoMixIn.class,
-            StageRunDto.class, StageRunDtoMixIn.class,
+            TechnicalStageRunDto.class, StageRunDtoMixIn.class,
             StageRunDependencyDto.class, StageRunDependencyDtoMixIn.class,
             StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class
     );
