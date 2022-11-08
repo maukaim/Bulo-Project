@@ -43,7 +43,7 @@ Bulo microservices and Standalone versions are not yet deployed in Alpha version
 
 ## Roadmap Alpha version - Jan 2023 
 
-Find below the targeted architecture for End of Alpha version development. Only Bulo Backend would be included, Gateways and UI are here to understand in which context Bulo will  be used.  
+Find below the targeted architecture for End of Alpha version development. Only Bulo Backend would be included, Gateways and UI are here to understand in which runContext Bulo will  be used.  
 More documentation (and current architecture) [here](ALPHA_VERSION_roadmap.md). For contributors, you can have a look on cards in [Bulo-Project's Dashboard](https://github.com/orgs/maukaim/projects/3) and pick one in the backlog.
  
 <img src="assets/bulo_alpha_target_architecture.png" width="800"/>

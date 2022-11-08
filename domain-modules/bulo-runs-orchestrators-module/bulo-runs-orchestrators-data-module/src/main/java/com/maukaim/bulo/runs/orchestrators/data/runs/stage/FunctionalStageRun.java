@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.commons.models.StageType;
 import com.maukaim.bulo.runs.orchestrators.data.RunContextType;
-import com.maukaim.bulo.runs.orchestrators.data.OrchestrableContext;
+import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
 
@@ -11,12 +11,12 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Set;
 
-public class FunctionalStageRun extends OrchestrableContext<String> implements StageRun<OrchestrableContextStatus> {
+public class FunctionalStageRun extends OrchestrableRunContext<String> implements StageRun<OrchestrableContextStatus> {
     private final String stageRunId;
     private final ContextualizedStageId contextualizedStageId;
-    private final Context<?> context;
+    private final RunContext<?> runContext;
     private final OrchestrableContextStatus status;
-    private final Set<StageRunDependency> stageRunDependencies;
+    private final Set<RunDependency> stageRunDependencies;
     private final Instant startTime;
     private final Instant endTime;
 
@@ -25,16 +25,16 @@ public class FunctionalStageRun extends OrchestrableContext<String> implements S
 
     public FunctionalStageRun(String stageRunId,
                               ContextualizedStageId contextualizedStageId,
-                              Context<?> context,
+                              RunContext<?> runContext,
                               OrchestrableContextStatus status,
-                              Set<StageRunDependency> stageRunDependencies,
+                              Set<RunDependency> stageRunDependencies,
                               Instant startTime,
                               Instant endTime,
                               ExecutionGraph executionGraph,
                               Map<String, StageRun> stageRunViewByIds) {
         this.stageRunId = stageRunId;
         this.contextualizedStageId = contextualizedStageId;
-        this.context = context;
+        this.runContext = runContext;
         this.status = status;
         this.stageRunDependencies = stageRunDependencies;
         this.startTime = startTime;
@@ -79,8 +79,8 @@ public class FunctionalStageRun extends OrchestrableContext<String> implements S
     }
 
     @Override
-    public Context<?> getContext() {
-        return context;
+    public RunContext<?> getContext() {
+        return runContext;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class FunctionalStageRun extends OrchestrableContext<String> implements S
 
 
     @Override
-    public Set<StageRunDependency> getStageRunDependencies() {
+    public Set<RunDependency> getStageRunDependencies() {
         return stageRunDependencies;
     }
 
@@ -102,5 +102,25 @@ public class FunctionalStageRun extends OrchestrableContext<String> implements S
     @Override
     public Instant getStartTime() {
         return startTime;
+    }
+
+    @Override
+    public RunContext<String> toRunContext() {
+        return new FunctionalStageRunContext(getContextId(), getStageRunDependencies());
+    }
+
+    @Override
+    public String toString() {
+        return "FunctionalStageRun{" +
+                "stageRunId='" + stageRunId + '\'' +
+                ", contextualizedStageId=" + contextualizedStageId +
+                ", runContext=" + runContext +
+                ", status=" + status +
+                ", stageRunDependencies=" + stageRunDependencies +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", executionGraph=" + executionGraph +
+                ", stageRunViewByIds=" + stageRunViewByIds +
+                '}';
     }
 }

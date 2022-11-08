@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class FlowRunDtoMixIn {
     @JsonCreator
-    public FlowRunDtoMixIn(@JsonProperty("flowRunId") String flowRunId,
+    public FlowRunDtoMixIn(@JsonProperty("contextId") String contextId,
                            @JsonProperty("flowId") String flowId,
                            @JsonProperty("executionGraph") ExecutionGraphDto executionGraph,
                            @JsonProperty("stageRunByIds") Map<String, TechnicalStageRunDto> stageRunByIds,

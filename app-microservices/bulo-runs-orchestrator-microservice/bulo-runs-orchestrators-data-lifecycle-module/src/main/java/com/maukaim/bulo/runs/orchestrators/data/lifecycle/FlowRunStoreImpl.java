@@ -38,7 +38,7 @@ public class FlowRunStoreImpl implements FlowRunStore {
     }
 
     @Override
-    public FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer){
+    public synchronized FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer){
         return this.flowRunById.compute(flowRunId, valueComputer);
     }
 

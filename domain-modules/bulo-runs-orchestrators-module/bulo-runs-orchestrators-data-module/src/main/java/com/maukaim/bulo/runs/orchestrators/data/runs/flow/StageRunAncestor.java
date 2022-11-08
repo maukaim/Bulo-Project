@@ -1,15 +1,15 @@
-package com.maukaim.bulo.runs.orchestrators.io.models.flowrun;
+package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
 
 import java.util.Objects;
 import java.util.Set;
 
-public class FlowStageAncestorDto {
+public class StageRunAncestor {
     private ContextualizedStageId contextualizedStageId;
     private Set<String> outputIds;
 
-    public FlowStageAncestorDto(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
+    public StageRunAncestor(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
         this.contextualizedStageId = contextualizedStageId;
         this.outputIds = outputIds;
     }
@@ -26,7 +26,7 @@ public class FlowStageAncestorDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FlowStageAncestorDto that = (FlowStageAncestorDto) o;
+        StageRunAncestor that = (StageRunAncestor) o;
         return contextualizedStageId.equals(that.contextualizedStageId);
     }
 
@@ -37,7 +37,7 @@ public class FlowStageAncestorDto {
 
     @Override
     public String toString() {
-        return "FlowStageAncestorDto{" +
+        return "InputProvider{" +
                 "flowStageId=" + contextualizedStageId +
                 ", outputIds=" + outputIds +
                 '}';

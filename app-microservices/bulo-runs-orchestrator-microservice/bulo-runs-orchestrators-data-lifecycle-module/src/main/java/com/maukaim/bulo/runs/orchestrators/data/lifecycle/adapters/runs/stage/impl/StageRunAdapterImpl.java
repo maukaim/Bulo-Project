@@ -89,15 +89,17 @@ public class StageRunAdapterImpl implements StageRunAdapter {
                 ));
     }
 
-    private Context<?> resolve(ContextDto context) {
+    private RunContext<?> resolve(ContextDto context) {
         return switch (context.getContextType()) {
-            case FLOW_RUN -> new FlowContext(((FlowContextDto) context).getContextId());
+            case FLOW_RUN -> new FlowRunContext(((FlowContextDto) context).getContextId());
             case FUNCTIONAL_STAGE_RUN ->
-                    new FunctionalStageContext(((FunctionalStageContextDto) context).getContextId());
+                    new FunctionalStageRunContext(
+                            ((FunctionalStageContextDto) context).getContextId(),
+                            resolve(context.getStageRunDependencies()));
         };
     }
 
-    private Set<StageRunDependency> resolve(Set<StageRunDependencyDto> dependencies) {
+    private Set<RunDependency> resolve(Set<StageRunDependencyDto> dependencies) {
         return dependencies == null ? null : dependencies.stream()
                 .map(this.stageRunDependencyAdapter::adapte)
                 .collect(Collectors.toSet());

@@ -3,6 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.data;
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 
 import java.util.Collection;
@@ -11,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class OrchestrableContext<KEY> {
+public abstract class OrchestrableRunContext<KEY> {
     abstract public RunContextType getContextType();
 
     abstract public KEY getContextId();
@@ -22,6 +23,9 @@ public abstract class OrchestrableContext<KEY> {
 
     //TODO: StageRun should not be there, it should be in StageRunService, here only StageRunIds !!
     abstract public Map<String, StageRun> getStageRunsById();
+
+    abstract public RunContext<KEY> toRunContext();
+
 
     public Set<StageRun> getInFlightStageRuns() {
         return this.getStageRunsById().values().stream()
@@ -53,4 +57,5 @@ public abstract class OrchestrableContext<KEY> {
     public Collection<StageRun> getAllStageRuns() {
         return getStageRunsById().values();
     }
+
 }

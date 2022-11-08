@@ -36,6 +36,11 @@ public enum TechnicalStageRunStatus implements RunStatus{
         return PROBLEM_STATES.contains(this);
     }
 
+    @Override
+    public boolean isRunNeeded() {
+        return this == TO_BE_REQUESTED;
+    }
+
     public TechnicalStageRunStatus resolveComparedTo(TechnicalStageRunStatus other){
         return other != null && other.isTerminal() ? other : this;
     }

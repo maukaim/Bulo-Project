@@ -1,12 +1,14 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
 import com.maukaim.bulo.runs.orchestrators.data.RunContextType;
-import com.maukaim.bulo.runs.orchestrators.data.OrchestrableContext;
+import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 
 import java.util.Map;
 
-public class FlowRun extends OrchestrableContext<String> {
+public class FlowRun extends OrchestrableRunContext<String> {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraph executionGraph;
@@ -52,6 +54,11 @@ public class FlowRun extends OrchestrableContext<String> {
     @Override
     public OrchestrableContextStatus getStatus() {
         return orchestrableContextStatus;
+    }
+
+    @Override
+    public RunContext<String> toRunContext() {
+        return new FlowRunContext(getContextId());
     }
 
     @Override

@@ -36,4 +36,9 @@ public enum OrchestrableContextStatus implements RunStatus {
     public boolean isProblem(){
         return PROBLEM_STATES.contains(this);
     }
+
+    @Override
+    public boolean isRunNeeded() {
+        return this == NEW;
+    }
 }

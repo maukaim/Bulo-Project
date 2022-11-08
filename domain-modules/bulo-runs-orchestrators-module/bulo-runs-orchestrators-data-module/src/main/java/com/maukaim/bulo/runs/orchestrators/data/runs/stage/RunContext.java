@@ -2,13 +2,18 @@ package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 
 import com.maukaim.bulo.runs.orchestrators.data.RunContextType;
 
-public abstract class Context<ID> {
+import java.util.Set;
+
+public abstract class RunContext<ID> {
     protected final RunContextType runContextType;
     protected final ID contextId;
+    protected final Set<RunDependency> stageRunDependencies;
 
-    protected Context(RunContextType runContextType, ID contextId) {
+    protected RunContext(RunContextType runContextType, ID contextId,
+                         Set<RunDependency> stageRunDependencies) {
         this.runContextType = runContextType;
         this.contextId = contextId;
+        this.stageRunDependencies = stageRunDependencies;
     }
 
     public RunContextType getContextType() {
@@ -27,6 +32,10 @@ public abstract class Context<ID> {
     @Override
     public boolean equals(Object obj) {
         return getContextId().equals(obj);
+    }
+
+    public Set<RunDependency> getStageRunDependencies() {
+        return stageRunDependencies;
     }
 
     @Override

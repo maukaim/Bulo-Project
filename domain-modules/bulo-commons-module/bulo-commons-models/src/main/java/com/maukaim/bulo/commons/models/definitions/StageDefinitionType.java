@@ -1,4 +1,4 @@
-package com.maukaim.bulo.definitions.data.definition;
+package com.maukaim.bulo.commons.models.definitions;
 
 public enum StageDefinitionType {
     FUNCTIONAL,

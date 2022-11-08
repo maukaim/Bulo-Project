@@ -26,6 +26,9 @@ public class ExecutionGraph {
             if (stageRunDependencies == null || stageRunDependencies.isEmpty()) {
                 this.root.add(contextualizedStageId);
             } else {
+                if(hasOnlyDependenciesWithNoProviders(stageRunDependencies)){
+                    this.root.add(contextualizedStageId);
+                }
                 this.dependenciesByFlowStageId.put(contextualizedStageId, stageRunDependencies);
                 stageRunDependencies.stream()
                         .map(stageRunDependency -> stageRunDependency.getAncestors())
@@ -43,6 +46,14 @@ public class ExecutionGraph {
                         });
             }
         }
+    }
+
+    private boolean hasOnlyDependenciesWithNoProviders(Set<ContextualizedStageDependency> stageRunDependencies) {
+        return !stageRunDependencies.isEmpty() && stageRunDependencies.stream().allMatch(runDependency-> {
+            Set<StageRunAncestor> ancestors = runDependency.getAncestors();
+            return ancestors == null || ancestors.isEmpty();
+        });
+
     }
 
     public Set<ContextualizedStageDependency> getFlowStageDependencies(ContextualizedStageId contextualizedStageId) {

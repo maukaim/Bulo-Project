@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.utils;
 
-import com.maukaim.bulo.runs.orchestrators.data.OrchestrableContext;
+import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
@@ -10,12 +10,12 @@ import java.util.Map;
 
 public class OrchestrableContextStatusResolver {
 
-    public static OrchestrableContextStatus resolveStatus(OrchestrableContext<?> orchestrableContext) {
-        OrchestrableContextStatus actualStatus = orchestrableContext.getStatus();
+    public static OrchestrableContextStatus resolveStatus(OrchestrableRunContext<?> orchestrableRunContext) {
+        OrchestrableContextStatus actualStatus = orchestrableRunContext.getStatus();
         if (actualStatus.isTerminal()) {
             return actualStatus;
         } else {
-            Map<String, StageRun> stageRunViewByStageId = orchestrableContext.getStageRunsById();
+            Map<String, StageRun> stageRunViewByStageId = orchestrableRunContext.getStageRunsById();
             boolean anyCancelled = false;
             boolean anyFailed = false;
             boolean anyRunning = false;
@@ -48,7 +48,7 @@ public class OrchestrableContextStatusResolver {
             if (anyFailed) return OrchestrableContextStatus.FAILED;
             else if (anyCancelled) return OrchestrableContextStatus.CANCELLED;
             else if (anyRunning) return OrchestrableContextStatus.RUNNING;
-            else if (orchestrableContext.allRunsAreTerminated()) return OrchestrableContextStatus.SUCCESS;
+            else if (orchestrableRunContext.allRunsAreTerminated()) return OrchestrableContextStatus.SUCCESS;
             else if (OrchestrableContextStatus.NEW.equals(actualStatus) && (anyInProcessToStart)) return OrchestrableContextStatus.PENDING_START;
             else if (anySuccessful) return OrchestrableContextStatus.RUNNING;
             else return actualStatus;

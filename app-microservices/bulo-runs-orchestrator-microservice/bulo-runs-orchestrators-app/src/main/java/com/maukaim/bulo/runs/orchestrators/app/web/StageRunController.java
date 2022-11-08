@@ -5,7 +5,7 @@ import com.maukaim.bulo.runs.orchestrators.app.web.view.OrchestrableContextView;
 import com.maukaim.bulo.runs.orchestrators.app.web.view.OrchestrableContextViewFactory;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
-import com.maukaim.bulo.runs.orchestrators.data.OrchestrableContext;
+import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.*;
 import com.maukaim.bulo.runs.orchestrators.io.StageRunEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.io.events.*;
@@ -71,11 +71,11 @@ public class StageRunController {
         return ResponseEntity.ok(getLatestView(stageRun.getContext()));
     }
 
-    private OrchestrableContextView getLatestView(Context context) {
-        OrchestrableContext<?> orchestrableContext = switch (context.getContextType()){
-            case FLOW_RUN -> this.flowRunService.getById(((FlowContext)context).getContextId());
-            case FUNCTIONAL_STAGE_RUN -> (FunctionalStageRun)this.stageRunService.getById(((FunctionalStageContext)context).getContextId());
+    private OrchestrableContextView getLatestView(RunContext runContext) {
+        OrchestrableRunContext<?> orchestrableRunContext = switch (runContext.getContextType()){
+            case FLOW_RUN -> this.flowRunService.getById(((FlowRunContext) runContext).getContextId());
+            case FUNCTIONAL_STAGE_RUN -> (FunctionalStageRun)this.stageRunService.getById(((FunctionalStageRunContext) runContext).getContextId());
         };
-        return OrchestrableContextViewFactory.build(orchestrableContext);
+        return OrchestrableContextViewFactory.build(orchestrableRunContext);
     }
 }

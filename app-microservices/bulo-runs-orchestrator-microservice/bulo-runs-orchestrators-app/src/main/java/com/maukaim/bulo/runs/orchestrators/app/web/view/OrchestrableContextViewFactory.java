@@ -2,10 +2,9 @@ package com.maukaim.bulo.runs.orchestrators.app.web.view;
 
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.core.utils.TimeHelper;
-import com.maukaim.bulo.runs.orchestrators.data.OrchestrableContext;
+import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 
 import java.time.Instant;
 import java.util.List;
@@ -14,14 +13,14 @@ import java.util.stream.Collectors;
 
 public class OrchestrableContextViewFactory {
 
-    public static OrchestrableContextView build(OrchestrableContext<?> orchestrableContext) {
-        Map<ContextualizedStageId, List<StageRun>> runningStages = orchestrableContext.getInFlightStageRuns().stream()
+    public static OrchestrableContextView build(OrchestrableRunContext<?> orchestrableRunContext) {
+        Map<ContextualizedStageId, List<StageRun>> runningStages = orchestrableRunContext.getInFlightStageRuns().stream()
                 .collect(Collectors.groupingBy( stageRun -> stageRun.getContextualizedStageId()));
 
         Instant startTime = null;
         Instant endTime = null;
-        boolean shouldSetEndTime = orchestrableContext.getStatus().isTerminal();
-        for (StageRun stageRun : orchestrableContext.getAllStageRuns()) {
+        boolean shouldSetEndTime = orchestrableRunContext.getStatus().isTerminal();
+        for (StageRun stageRun : orchestrableRunContext.getAllStageRuns()) {
             Instant stageStartTime = stageRun.getStartTime();
             if (TimeHelper.isBefore(stageStartTime, startTime)) {
                 startTime = stageStartTime;
@@ -35,17 +34,17 @@ public class OrchestrableContextViewFactory {
             }
         }
 
-        return new OrchestrableContextView(orchestrableContext.getContextId(),
-                resolveFlowId(orchestrableContext),
-                orchestrableContext.getStatus(),
+        return new OrchestrableContextView(orchestrableRunContext.getContextId(),
+                resolveFlowId(orchestrableRunContext),
+                orchestrableRunContext.getStatus(),
                 runningStages,
                 startTime,
                 endTime);
     }
 
-    private static String resolveFlowId(OrchestrableContext<?> orchestrableContext) {
-        if(orchestrableContext instanceof FlowRun) {
-            return ((FlowRun) orchestrableContext).getFlowId();
+    private static String resolveFlowId(OrchestrableRunContext<?> orchestrableRunContext) {
+        if(orchestrableRunContext instanceof FlowRun) {
+            return ((FlowRun) orchestrableRunContext).getFlowId();
         }
         return null;
     }

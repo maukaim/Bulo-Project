@@ -15,11 +15,11 @@ public interface StageRun<STATUS extends RunStatus> {
     ContextualizedStageId getContextualizedStageId();
 
 
-    Context<?> getContext();
+    RunContext<?> getContext();
 
     STATUS getStatus();
 
-    Set<StageRunDependency> getStageRunDependencies();
+    Set<RunDependency> getStageRunDependencies();
 
     default boolean isTerminated(){
         return getStatus() != null && this.getStatus().isTerminal();

@@ -9,21 +9,21 @@ import java.util.Set;
 public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     private final String stageRunId;
     private final ContextualizedStageId contextualizedStageId;
-    private final Context<?> context;
+    private final RunContext<?> runContext;
     private final TechnicalStageRunStatus stageRunStatus;
     private final String executorId;
-    private final Set<StageRunDependency> stageRunDependencies;
+    private final Set<RunDependency> stageRunDependencies;
     private final Instant startTime;
     private final Instant endTime;
 
     public TechnicalStageRun(String stageRunId,
                              ContextualizedStageId contextualizedStageId,
-                             Context<?> context,
+                             RunContext<?> runContext,
                              TechnicalStageRunStatus stageRunStatus,
-                             String executorId, Set<StageRunDependency> stageRunDependencies, Instant startTime, Instant endTime) {
+                             String executorId, Set<RunDependency> stageRunDependencies, Instant startTime, Instant endTime) {
         this.stageRunId = stageRunId;
         this.contextualizedStageId = contextualizedStageId;
-        this.context = context;
+        this.runContext = runContext;
         this.stageRunStatus = stageRunStatus;
         this.executorId = executorId;
         this.stageRunDependencies = stageRunDependencies;
@@ -47,8 +47,8 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     }
 
     @Override
-    public Context<?> getContext() {
-        return context;
+    public RunContext<?> getContext() {
+        return runContext;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     }
 
     @Override
-    public Set<StageRunDependency> getStageRunDependencies() {
+    public Set<RunDependency> getStageRunDependencies() {
         return stageRunDependencies;
     }
 
@@ -81,7 +81,7 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
         return "TechnicalStageRun{" +
                 "stageRunId='" + stageRunId + '\'' +
                 ", contextualizedStageId=" + contextualizedStageId +
-                ", context=" + context +
+                ", context=" + runContext +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +
                 ", stageRunDependencies=" + stageRunDependencies +

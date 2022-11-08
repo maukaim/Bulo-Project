@@ -3,9 +3,9 @@ package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 import com.maukaim.bulo.commons.io.IStageRunEvent;
 import com.maukaim.bulo.runs.orchestrators.core.impl.*;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.Context;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowContext;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRunContext;
 import com.maukaim.bulo.runs.orchestrators.io.StageRunEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.io.events.*;
 
@@ -98,15 +98,15 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
         );
     }
 
-    private void processUnderContext(String stageRunId, Consumer<FlowContext> onFlowContext, Consumer<FunctionalStageContext> onFunctionalStageContext) {
-        Context<?> context = getContext(stageRunId);
-        switch (context.getContextType()) {
-            case FLOW_RUN -> onFlowContext.accept((FlowContext) context);
-            case FUNCTIONAL_STAGE_RUN -> onFunctionalStageContext.accept((FunctionalStageContext) context);
+    private void processUnderContext(String stageRunId, Consumer<FlowRunContext> onFlowContext, Consumer<FunctionalStageRunContext> onFunctionalStageContext) {
+        RunContext<?> runContext = getContext(stageRunId);
+        switch (runContext.getContextType()) {
+            case FLOW_RUN -> onFlowContext.accept((FlowRunContext) runContext);
+            case FUNCTIONAL_STAGE_RUN -> onFunctionalStageContext.accept((FunctionalStageRunContext) runContext);
         }
     }
 
-    private Context<?> getContext(String stageRunId) {
+    private RunContext<?> getContext(String stageRunId) {
         return this.stageRunStore.getContext(stageRunId);
     }
 }

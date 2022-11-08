@@ -53,13 +53,13 @@ public class FlowRunServiceImpl implements FlowRunService {
 
         FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunStore.add(newRunNonPersisted);
-        Map<String, StageRun> stageRunsToRequest = this.stageRunService.getNextStageRuns(new FlowContext(newRunPersisted.getContextId()), resolve(flowStagesToRunId));
+        Map<String, StageRun> stageRunsToRequest = this.stageRunService.getNextStageRuns(newRunPersisted.toRunContext(), resolveLocalRunDependenciesForRoots(flowStagesToRunId));
         return this.computeStageRunUpdateUnderLock(newRunPersisted.getContextId(), (previous) -> stageRunsToRequest);
     }
 
-    private Map<ContextualizedStageId, Set<StageRunDependency>> resolve(Set<ContextualizedStageId> contextualizedStageIds) {
+    private Map<ContextualizedStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextualizedStageId> contextualizedStageIds) {
         return contextualizedStageIds == null ? Map.of() : contextualizedStageIds.stream()
-                .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of()));
+                .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of())); // No inputs for roots in FlowRUn
     }
 
     private Flow getExistingFlow(String flowId) {
@@ -79,22 +79,20 @@ public class FlowRunServiceImpl implements FlowRunService {
 
     @Override
     public synchronized FlowRun computeStageRunUpdateUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
-        AtomicReference<List<TechnicalStageRun>> s = new AtomicReference<>();
+        AtomicReference<List<StageRun>> toBeRequestedReference = new AtomicReference<>();
         FlowRun flowRunPersisted = this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
             Map<String, StageRun> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
 
-            List<TechnicalStageRun> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
-                    .filter(stageRun ->  stageRun instanceof TechnicalStageRun)
-                    .map(TechnicalStageRun.class::cast)
-                    .filter(stageRun -> stageRun.getStatus() == TechnicalStageRunStatus.TO_BE_REQUESTED)
+            List<StageRun> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
+                    .filter(stageRun -> stageRun.getStatus().isRunNeeded())
                     .collect(Collectors.toList());
-            s.set(tobeRequestedTechnicalStageRuns);
+            toBeRequestedReference.set(tobeRequestedTechnicalStageRuns);
             return newFlowRunValue;
         });
 
-        List<TechnicalStageRun> toBeRequestedRuns = s.get();
+        List<StageRun> toBeRequestedRuns = toBeRequestedReference.get();
         if(toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()){
             return this.flowRunStore.compute(flowRunId,(id,flowRun)->{
                 Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);

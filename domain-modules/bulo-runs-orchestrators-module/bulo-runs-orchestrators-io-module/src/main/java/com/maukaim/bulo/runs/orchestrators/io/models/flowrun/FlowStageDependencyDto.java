@@ -6,9 +6,9 @@ import java.util.Set;
 
 public class FlowStageDependencyDto {
     private final String inputId;
-    private final Set<FlowStageAncestorDto> ancestors;
+    private final Set<StageRunAncestorDto> ancestors;
 
-    public FlowStageDependencyDto(String inputId, Set<FlowStageAncestorDto> ancestors) {
+    public FlowStageDependencyDto(String inputId, Set<StageRunAncestorDto> ancestors) {
         this.inputId = inputId;
         this.ancestors = ancestors;
     }
@@ -18,7 +18,7 @@ public class FlowStageDependencyDto {
         return inputId;
     }
 
-    public Set<FlowStageAncestorDto> getAncestors() {
+    public Set<StageRunAncestorDto> getAncestors() {
         return ancestors;
     }
 

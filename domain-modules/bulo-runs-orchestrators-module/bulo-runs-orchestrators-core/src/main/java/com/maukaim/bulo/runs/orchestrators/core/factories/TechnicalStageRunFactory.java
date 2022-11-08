@@ -2,8 +2,8 @@ package com.maukaim.bulo.runs.orchestrators.core.factories;
 
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.core.utils.TimeHelper;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.Context;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRunStatus;
 
@@ -13,8 +13,8 @@ import java.util.UUID;
 
 public class TechnicalStageRunFactory {
 
-    public static TechnicalStageRun toBeRequested(Context<?> context, ContextualizedStageId stageId, Set<StageRunDependency> stageRunDependencies) {
-        return new TechnicalStageRun(UUID.randomUUID().toString(), stageId, context, TechnicalStageRunStatus.TO_BE_REQUESTED, null, stageRunDependencies, null, null);
+    public static TechnicalStageRun toBeRequested(RunContext<?> runContext, ContextualizedStageId stageId, Set<RunDependency> stageRunDependencies) {
+        return new TechnicalStageRun(UUID.randomUUID().toString(), stageId, runContext, TechnicalStageRunStatus.TO_BE_REQUESTED, null, stageRunDependencies, null, null);
     }
 
     public static TechnicalStageRun requested(TechnicalStageRun previousView) {

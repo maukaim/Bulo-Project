@@ -7,7 +7,6 @@ import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.*;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,13 +55,13 @@ public class FlowRunFactory {
         );
     }
 
-    private static Set<FlowStageAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
+    private static Set<StageRunAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
         return inputProviders == null ? Set.of() : inputProviders.stream()
                 .map(FlowRunFactory::resolveInputProvider)
                 .collect(Collectors.toSet());
     }
 
-    private static FlowStageAncestor resolveInputProvider(InputProvider inputProvider) {
-        return inputProvider == null ? null : new FlowStageAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
+    private static StageRunAncestor resolveInputProvider(InputProvider inputProvider) {
+        return inputProvider == null ? null : new StageRunAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
     }
 }

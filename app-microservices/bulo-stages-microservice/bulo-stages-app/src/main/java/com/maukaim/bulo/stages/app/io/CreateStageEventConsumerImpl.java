@@ -29,8 +29,6 @@ public class CreateStageEventConsumerImpl implements CreateStageEventConsumer {
         };
         StageCreateReport stageCreateReport = this.stageService.addStage(stage);
         System.out.println(stageCreateReport);
-        //TODO: Need to be passed to the caller, report made for the event producer. This event is intendeed to come from REST call.
-        // Concept of sync and async consumers? first its signature is public O consume(I event) and second is public void consume(I event).
         return stageCreateReport.getStageId();
     }
 }

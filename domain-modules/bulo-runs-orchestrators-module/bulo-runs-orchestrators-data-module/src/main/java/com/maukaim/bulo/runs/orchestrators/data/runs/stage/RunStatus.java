@@ -4,4 +4,5 @@ public interface RunStatus {
     boolean isTerminal();
     boolean isSuccess();
     boolean isProblem();
+    boolean isRunNeeded();
 }

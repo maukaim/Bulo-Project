@@ -19,7 +19,8 @@ public class ConsumersProvider {
                     new Consumer(Services.STAGES_SERVICE, "api/v1/stages/onUpdateEvent"),
                     new Consumer(Services.FLOWS_SERVICE, "api/v1/flows/stages/createOrUpdate"),
                     new Consumer(Services.EXECUTORS_SERVICE, "api/v1/executors/stages/onEvent"),
-                    new Consumer(Services.DEFINITIONS_SERVICE, "api/v1/stages/onUpdateEvent")
+                    new Consumer(Services.DEFINITIONS_SERVICE, "api/v1/stages/onUpdateEvent"),
+                    new Consumer(Services.ORCHESTRATOR_SERVICE, "api/v1/orchestrator/stages/onUpdate")
             );
             case FLOW_UPDATE -> List.of(
                     new Consumer(Services.FLOWS_SERVICE, "api/v1/flows/flowUpdate"),
@@ -28,7 +29,9 @@ public class ConsumersProvider {
             case DEF_UPDATE -> List.of(
                     new Consumer(Services.DEFINITIONS_SERVICE, "api/v1/definitions/onUpdateEvent"),
                     new Consumer(Services.STAGES_SERVICE, "api/v1/definitions/onEvent"),
-                    new Consumer(Services.FLOWS_SERVICE, "api/v1/flows/definitions/onUpdate")
+                    new Consumer(Services.FLOWS_SERVICE, "api/v1/flows/definitions/onUpdate"),
+                    new Consumer(Services.ORCHESTRATOR_SERVICE, "api/v1/orchestrator/definitions/onUpdate")
+
             );
             case STAGE_RUN_RESULT -> List.of(
                     new Consumer(Services.EXECUTORS_SERVICE, "api/v1/executors/results/onResultEvent")
