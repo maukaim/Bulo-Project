@@ -13,7 +13,8 @@
 - [ ] Add Unit tests. _Jan 16 Feb 5 (3 weeks)_
 - [ ] Add e2e tests. _Feb 6 Feb 12 (1 week)_
 
-**_Checkpoint: 14 weeks, 3 months._** Ready to share?
+**_Checkpoint: 14 weeks, 3 months._** _Ready to share at this point?_
+
 - [ ] Database persistency. _Feb 13 Feb 26 (2 weeks)_
 - [ ] Logging System. _Feb 27 - Mar 12 (2 weeks)_
 - [ ] Kafka. _Mar 13 - Mar 26 (2 weeks)_
