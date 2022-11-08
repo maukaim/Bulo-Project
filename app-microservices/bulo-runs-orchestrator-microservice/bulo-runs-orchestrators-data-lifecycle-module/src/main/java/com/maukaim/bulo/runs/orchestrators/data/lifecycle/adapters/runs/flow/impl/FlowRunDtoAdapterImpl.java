@@ -4,13 +4,14 @@ import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.Exe
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowRunDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.StageRunDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.ExecutionGraphDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunStatusDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.OrchestrableContextStatusDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.TechnicalStageRunDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,11 +29,11 @@ public class FlowRunDtoAdapterImpl implements FlowRunDtoAdapter {
     @Override
     public FlowRunDto adapte(FlowRun flowRun) {
         return new FlowRunDto(
-                flowRun.getFlowRunId(),
+                flowRun.getContextId(),
                 flowRun.getFlowId(),
                 resolve(flowRun.getExecutionGraph()),
                 resolve(flowRun.getStageRunsById()),
-                resolve(flowRun.getFlowRunStatus())
+                resolve(flowRun.getStatus())
 
         );
     }
@@ -41,15 +42,15 @@ public class FlowRunDtoAdapterImpl implements FlowRunDtoAdapter {
         return this.executionGraphDtoAdapter.adapte(executionGraph);
     }
 
-    private FlowRunStatusDto resolve(FlowRunStatus flowRunStatus) {
-        return switch (flowRunStatus){
-            case NEW -> FlowRunStatusDto.NEW;
-            case PENDING_START -> FlowRunStatusDto.PENDING_START;
-            case RUNNING -> FlowRunStatusDto.RUNNING;
-            case PAUSED -> FlowRunStatusDto.PAUSED;
-            case CANCELLED -> FlowRunStatusDto.CANCELLED;
-            case FAILED -> FlowRunStatusDto.FAILED;
-            case SUCCESS -> FlowRunStatusDto.SUCCESS;
+    private OrchestrableContextStatusDto resolve(OrchestrableContextStatus orchestrableContextStatus) {
+        return switch (orchestrableContextStatus){
+            case NEW -> OrchestrableContextStatusDto.NEW;
+            case PENDING_START -> OrchestrableContextStatusDto.PENDING_START;
+            case RUNNING -> OrchestrableContextStatusDto.RUNNING;
+            case PAUSED -> OrchestrableContextStatusDto.PAUSED;
+            case CANCELLED -> OrchestrableContextStatusDto.CANCELLED;
+            case FAILED -> OrchestrableContextStatusDto.FAILED;
+            case SUCCESS -> OrchestrableContextStatusDto.SUCCESS;
         };
     }
 

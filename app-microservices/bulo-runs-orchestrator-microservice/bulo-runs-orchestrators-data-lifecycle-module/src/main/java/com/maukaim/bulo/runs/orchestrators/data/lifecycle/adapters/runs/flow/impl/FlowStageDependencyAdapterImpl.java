@@ -1,33 +1,33 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.impl;
 
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageAncestorAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.StageRunAncestorAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyAdapter;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageAncestor;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageDependency;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageAncestorDto;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.StageRunAncestor;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
+import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.StageRunAncestorDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FlowStageDependencyAdapterImpl implements FlowStageDependencyAdapter {
-    private final FlowStageAncestorAdapter flowStageAncestorAdapter;
+    private final StageRunAncestorAdapter stageRunAncestorAdapter;
 
-    public FlowStageDependencyAdapterImpl(FlowStageAncestorAdapter flowStageAncestorAdapter) {
-        this.flowStageAncestorAdapter = flowStageAncestorAdapter;
+    public FlowStageDependencyAdapterImpl(StageRunAncestorAdapter stageRunAncestorAdapter) {
+        this.stageRunAncestorAdapter = stageRunAncestorAdapter;
     }
 
     @Override
-    public FlowStageDependency adapte(FlowStageDependencyDto dto) {
-        return dto == null ? null : new FlowStageDependency(
+    public ContextualizedStageDependency adapte(FlowStageDependencyDto dto) {
+        return dto == null ? null : new ContextualizedStageDependency(
                 dto.getInputId(),
                 resolve(dto.getAncestors())
         );
     }
 
-    private Set<FlowStageAncestor> resolve(Set<FlowStageAncestorDto> flowStageAncestorDtos) {
-        return flowStageAncestorDtos == null ? Set.of() : flowStageAncestorDtos.stream()
-                .map(this.flowStageAncestorAdapter::adapte)
+    private Set<StageRunAncestor> resolve(Set<StageRunAncestorDto> stageRunAncestorDtos) {
+        return stageRunAncestorDtos == null ? Set.of() : stageRunAncestorDtos.stream()
+                .map(this.stageRunAncestorAdapter::adapte)
                 .collect(Collectors.toSet());
     }
 }

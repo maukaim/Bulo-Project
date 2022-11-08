@@ -1,15 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
-import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
-import com.maukaim.bulo.runs.orchestrators.core.FlowService;
-import com.maukaim.bulo.runs.orchestrators.core.impl.FlowRunServiceImpl;
-import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
-import com.maukaim.bulo.runs.orchestrators.core.impl.FlowServiceImpl;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
-import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
-import com.maukaim.bulo.runs.orchestrators.core.impl.StageRunServiceImpl;
-import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
+import com.maukaim.bulo.runs.orchestrators.core.*;
+import com.maukaim.bulo.runs.orchestrators.core.impl.*;
+import com.maukaim.bulo.runs.orchestrators.data.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,7 +23,20 @@ public class ServiceBeansConfig {
 
     @Bean
     public StageRunService stageRunService(StageRunStore stageRunStore,
-                                           StageRunConnector stageRunConnector){
-        return new StageRunServiceImpl(stageRunConnector, stageRunStore);
+                                           StageRunConnector stageRunConnector,
+                                           FunctionalStageService functionalStageService,
+                                           FunctionalStageDefinitionService functionalStageDefinitionService){
+        return new StageRunServiceImpl(stageRunConnector, stageRunStore, 4,
+                functionalStageService, functionalStageDefinitionService);
+    }
+
+    @Bean
+    public FunctionalStageService functionalStageService(FunctionalStageStore functionalStageStore){
+        return new FunctionalStageServiceImpl(functionalStageStore);
+    }
+
+    @Bean
+    public FunctionalStageDefinitionService functionalStageDefinitionService(FunctionalStageDefinitionStore functionalStageDefinitionStore){
+        return new FunctionalStageDefinitionServiceImpl(functionalStageDefinitionStore);
     }
 }

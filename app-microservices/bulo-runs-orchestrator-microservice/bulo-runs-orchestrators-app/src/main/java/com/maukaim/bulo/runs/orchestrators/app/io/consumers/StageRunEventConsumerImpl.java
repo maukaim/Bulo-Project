@@ -3,23 +3,29 @@ package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 import com.maukaim.bulo.commons.io.IStageRunEvent;
 import com.maukaim.bulo.runs.orchestrators.core.impl.*;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRunContext;
 import com.maukaim.bulo.runs.orchestrators.io.StageRunEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.io.events.*;
 
+import java.util.function.Consumer;
+
 public class StageRunEventConsumerImpl implements StageRunEventConsumer {
-    private final AcknowledgeStageEventProcessor acknowledgeStageEventProcessor;
-    private final RunCancelledStageEventProcessor runCancelledStageEventProcessor;
-    private final RunSuccessfulStageEventProcessor runSuccessfulStageEventProcessor;
-    private final RunFailedStageEventProcessor runFailedStageEventProcessor;
-    private final StartRunStageEventProcessor startRunStageEventProcessor;
+    private final AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor;
+    private final RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor;
+    private final RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor;
+    private final RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor;
+    private final StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor;
     private final StageRunStore stageRunStore;
 
 
-    public StageRunEventConsumerImpl(AcknowledgeStageEventProcessor acknowledgeStageEventProcessor,
-                                     RunCancelledStageEventProcessor runCancelledStageEventProcessor,
-                                     RunSuccessfulStageEventProcessor runSuccessfulStageEventProcessor,
-                                     RunFailedStageEventProcessor runFailedStageEventProcessor,
-                                     StartRunStageEventProcessor startRunStageEventProcessor, StageRunStore stageRunStore) {
+    public StageRunEventConsumerImpl(AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor,
+                                     RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor,
+                                     RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor,
+                                     RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor,
+                                     StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor,
+                                     StageRunStore stageRunStore) {
         this.acknowledgeStageEventProcessor = acknowledgeStageEventProcessor;
         this.runCancelledStageEventProcessor = runCancelledStageEventProcessor;
         this.runSuccessfulStageEventProcessor = runSuccessfulStageEventProcessor;
@@ -37,36 +43,70 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
             case RUN_CANCELLED -> this.onCancelled((RunCancelledStageRunEvent) event);
             case RUN_FAILED -> this.onFailed((RunFailedStageRunEvent) event);
             case RUN_SUCCESSFUL -> this.onSuccessful((RunSuccessfulStageRunEvent) event);
-            default -> throw new IllegalArgumentException("Subtype of StageEvent not supported: " + event.getClass().getSimpleName());
+            default ->
+                    throw new IllegalArgumentException("Subtype of StageEvent not supported: " + event.getClass().getSimpleName());
         }
     }
 
-    private void onAcknowledged(AcknowledgeRequestStageRunEvent event){
+    private void onAcknowledged(AcknowledgeRequestStageRunEvent event) {
         String stageRunId = event.getStageRunId();
-        this.acknowledgeStageEventProcessor.process(stageRunId, event.getExecutorId(), getFlowRunId(stageRunId));
+        processUnderContext(stageRunId,
+                flowContext ->
+                        acknowledgeStageEventProcessor.process(stageRunId, event.getExecutorId(), flowContext),
+                functionalStageContext ->
+                        acknowledgeStageEventProcessor.process(stageRunId, event.getExecutorId(), functionalStageContext)
+        );
     }
 
-    private void onStarted(StartRunStageRunEvent event){
+    private void onStarted(StartRunStageRunEvent event) {
         String stageRunId = event.getStageRunId();
-        this.startRunStageEventProcessor.process(stageRunId, event.getInstant(), getFlowRunId(stageRunId));
+        processUnderContext(stageRunId,
+                flowContext ->
+                        startRunStageEventProcessor.process(stageRunId, event.getInstant(), flowContext),
+                functionalStageContext ->
+                        startRunStageEventProcessor.process(stageRunId, event.getInstant(), functionalStageContext)
+        );
     }
 
-    private void onCancelled(RunCancelledStageRunEvent event){
+    private void onCancelled(RunCancelledStageRunEvent event) {
         String stageRunId = event.getStageRunId();
-        this.runCancelledStageEventProcessor.process(stageRunId, event.getInstant(), getFlowRunId(stageRunId));
+        processUnderContext(stageRunId,
+                flowContext ->
+                        runCancelledStageEventProcessor.process(stageRunId, event.getInstant(), flowContext),
+                functionalStageContext ->
+                        runCancelledStageEventProcessor.process(stageRunId, event.getInstant(), functionalStageContext)
+        );
     }
 
-    private void onFailed(RunFailedStageRunEvent event){
+    private void onFailed(RunFailedStageRunEvent event) {
         String stageRunId = event.getStageRunId();
-        this.runFailedStageEventProcessor.process(stageRunId, event.getInstant(), getFlowRunId(stageRunId));
+        processUnderContext(stageRunId,
+                flowContext ->
+                        runFailedStageEventProcessor.process(stageRunId, event.getInstant(), flowContext),
+                functionalStageContext ->
+                        runFailedStageEventProcessor.process(stageRunId, event.getInstant(), functionalStageContext)
+        );
     }
 
-    private void onSuccessful(RunSuccessfulStageRunEvent event){
+    private void onSuccessful(RunSuccessfulStageRunEvent event) {
         String stageRunId = event.getStageRunId();
-        this.runSuccessfulStageEventProcessor.process(stageRunId, event.getInstant(), getFlowRunId(stageRunId));
+        processUnderContext(stageRunId,
+                flowContext ->
+                        runSuccessfulStageEventProcessor.process(stageRunId, event.getInstant(), flowContext),
+                functionalStageContext ->
+                        runSuccessfulStageEventProcessor.process(stageRunId, event.getInstant(), functionalStageContext)
+        );
     }
 
-    private String getFlowRunId(String stageRunId){
-        return this.stageRunStore.getFlowRunId(stageRunId);
+    private void processUnderContext(String stageRunId, Consumer<FlowRunContext> onFlowContext, Consumer<FunctionalStageRunContext> onFunctionalStageContext) {
+        RunContext<?> runContext = getContext(stageRunId);
+        switch (runContext.getContextType()) {
+            case FLOW_RUN -> onFlowContext.accept((FlowRunContext) runContext);
+            case FUNCTIONAL_STAGE_RUN -> onFunctionalStageContext.accept((FunctionalStageRunContext) runContext);
+        }
+    }
+
+    private RunContext<?> getContext(String stageRunId) {
+        return this.stageRunStore.getContext(stageRunId);
     }
 }

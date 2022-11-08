@@ -2,6 +2,7 @@ package com.maukaim.bulo.standalone.data.lifecycle.runs.adapters.impl;
 
 import com.maukaim.bulo.executors.data.runs.StageRunAncestor;
 import com.maukaim.bulo.executors.data.runs.StageRunDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
 import com.maukaim.bulo.standalone.data.lifecycle.runs.adapters.StageRunAncestorAdapter;
 import com.maukaim.bulo.standalone.data.lifecycle.runs.adapters.StageRunDependencyAdapter;
 
@@ -16,10 +17,10 @@ public class StageRunDependencyAdapterImpl implements StageRunDependencyAdapter 
     }
 
     @Override
-    public StageRunDependency adapte(com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency stageRunDependency) {
-        return stageRunDependency == null ? null : new StageRunDependency(
-                stageRunDependency.getInputId(),
-                resolveAncestors(stageRunDependency.getAncestors())
+    public StageRunDependency adapte(RunDependency runDependency) {
+        return runDependency == null ? null : new StageRunDependency(
+                runDependency.getInputId(),
+                resolveAncestors(runDependency.getAncestors())
         );
     }
 

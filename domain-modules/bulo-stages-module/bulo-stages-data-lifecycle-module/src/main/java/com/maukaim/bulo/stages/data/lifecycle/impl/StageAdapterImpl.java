@@ -39,7 +39,7 @@ public class StageAdapterImpl implements StageAdapter {
     @Override
     public FunctionalStage adapte(String stageId, FunctionalStageDto dto) {
         return new FunctionalStage(
-                UUID.randomUUID().toString(),
+                stageId,
                 dto.getParameters().stream().map(parameterAdapter::adapte).collect(Collectors.toList()),
                 dto.getDefinitionId()
         );

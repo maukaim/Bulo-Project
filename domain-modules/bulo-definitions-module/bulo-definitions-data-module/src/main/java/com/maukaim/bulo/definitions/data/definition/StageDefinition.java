@@ -1,5 +1,7 @@
 package com.maukaim.bulo.definitions.data.definition;
 
+import com.maukaim.bulo.commons.models.definitions.StageDefinitionType;
+
 import java.util.List;
 import java.util.Map;
 

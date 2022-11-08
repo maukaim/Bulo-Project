@@ -23,20 +23,20 @@ public class MainFlowRunStore implements FlowRunStore {
 
     @Override
     public FlowRun put(FlowRun flowRun) {
-        FlowRun newVersion = this.flowRunById.compute(flowRun.getFlowRunId(), (id, previous) -> flowRun);
+        FlowRun newVersion = this.flowRunById.compute(flowRun.getContextId(), (id, previous) -> flowRun);
         return newVersion;
     }
 
     @Override
-    public FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer) {
+    public synchronized FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer) {
         return this.flowRunById.compute(flowRunId, valueComputer);
     }
 
     @Override
     public FlowRun add(FlowRun flowRun) {
-        FlowRun persistedValue = this.flowRunById.compute(flowRun.getFlowRunId(), (id, existingValue) -> {
+        FlowRun persistedValue = this.flowRunById.compute(flowRun.getContextId(), (id, existingValue) -> {
             if (existingValue != null) {
-                throw new FlowRunStoreException("Cache already has a FlowRun with id: " + flowRun.getFlowRunId());
+                throw new FlowRunStoreException("Cache already has a FlowRun with id: " + flowRun.getContextId());
             }
             return flowRun;
         });

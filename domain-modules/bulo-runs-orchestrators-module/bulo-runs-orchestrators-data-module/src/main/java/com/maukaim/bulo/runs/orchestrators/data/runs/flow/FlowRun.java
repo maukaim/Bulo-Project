@@ -1,35 +1,44 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.runs.orchestrators.data.RunContextType;
+import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunStatus;
 
-import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-public class FlowRun {
+public class FlowRun extends OrchestrableRunContext<String> {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraph executionGraph;
     private final Map<String, StageRun> stageRunViewByIds;
-    private final FlowRunStatus flowRunStatus;
+    private final OrchestrableContextStatus orchestrableContextStatus;
 
-    public FlowRun(String flowRunId, String flowId, ExecutionGraph executionGraph, Map<String, StageRun> stageRunViewByIds, FlowRunStatus flowRunStatus) {
+    public FlowRun(String flowRunId,
+                   String flowId,
+                   ExecutionGraph executionGraph,
+                   Map<String, StageRun> stageRunViewByIds,
+                   OrchestrableContextStatus orchestrableContextStatus) {
         this.flowRunId = flowRunId;
         this.flowId = flowId;
         this.stageRunViewByIds = Map.copyOf(stageRunViewByIds);
-        this.flowRunStatus = flowRunStatus;
+        this.orchestrableContextStatus = orchestrableContextStatus;
         this.executionGraph = executionGraph;
     }
 
+    @Override
     public ExecutionGraph getExecutionGraph() {
         return this.executionGraph;
     }
 
-    public String getFlowRunId() {
+    @Override
+    public RunContextType getContextType() {
+        return RunContextType.FLOW_RUN;
+    }
+
+    @Override
+    public String getContextId() {
         return flowRunId;
     }
 
@@ -37,43 +46,19 @@ public class FlowRun {
         return flowId;
     }
 
-    //TODO: StageRun should not be there, it should be in StageRunService, here only StageRunIds !!
+    @Override
     public Map<String, StageRun> getStageRunsById() {
         return stageRunViewByIds;
     }
 
-    public FlowRunStatus getFlowRunStatus() {
-        return flowRunStatus;
+    @Override
+    public OrchestrableContextStatus getStatus() {
+        return orchestrableContextStatus;
     }
 
-    public Set<String> getStageRunIds(){
-        return this.stageRunViewByIds.keySet();
-    }
-    private boolean stageIsSuccessfullyTerminated(ContextualizedStageId stageId) {
-        Optional<StageRun> stageRunView = this.stageRunViewByIds.values().stream()
-                .filter(stageRun -> stageId.equals(stageRun.getFlowStageId()))
-                .findFirst();
-        return stageRunView.isPresent() && StageRunStatus.SUCCESS.equals(stageRunView.get().getStageRunStatus());
-    }
-
-    public boolean allRunsAreTerminated() {
-        return this.stageRunViewByIds.values().stream().allMatch(StageRun::isTerminated);
-    }
-
-    public Collection<StageRun> getAllStageRuns() {
-        return this.getStageRunsById().values();
-    }
-
-    public Set<StageRun> getInFlightStageRuns() {
-        return this.getStageRunsById().values().stream()
-                .filter(stageRunView -> !stageRunView.isTerminated())
-                .collect(Collectors.toUnmodifiableSet());
-    }
-
-    public boolean otherAncestorsAreSuccessful(ContextualizedStageId stageId, ContextualizedStageId ancestorExcludedId) {
-        return this.executionGraph.getAncestors(stageId).stream()
-                .filter(ancestor -> !ancestorExcludedId.equals(ancestor))
-                .allMatch(this::stageIsSuccessfullyTerminated);
+    @Override
+    public RunContext<String> toRunContext() {
+        return new FlowRunContext(getContextId());
     }
 
     @Override
@@ -83,7 +68,7 @@ public class FlowRun {
                 ", flowId='" + flowId + '\'' +
                 ", executionGraph=" + executionGraph +
                 ", resultByStageIds=" + stageRunViewByIds +
-                ", flowRunStatus=" + flowRunStatus +
+                ", flowRunStatus=" + orchestrableContextStatus +
                 '}';
     }
 }

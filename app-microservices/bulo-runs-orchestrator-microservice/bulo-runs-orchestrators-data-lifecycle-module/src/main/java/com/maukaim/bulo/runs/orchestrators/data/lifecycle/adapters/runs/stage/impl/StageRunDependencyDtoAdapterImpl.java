@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.i
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.StageRunAncestorDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.StageRunDependencyDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunAncestorDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
 
@@ -18,7 +18,7 @@ public class StageRunDependencyDtoAdapterImpl implements StageRunDependencyDtoAd
     }
 
     @Override
-    public StageRunDependencyDto adapte(StageRunDependency dependency) {
+    public StageRunDependencyDto adapte(RunDependency dependency) {
         return new StageRunDependencyDto(
                 dependency.getInputId(),
                 resolve(dependency.getAncestors())

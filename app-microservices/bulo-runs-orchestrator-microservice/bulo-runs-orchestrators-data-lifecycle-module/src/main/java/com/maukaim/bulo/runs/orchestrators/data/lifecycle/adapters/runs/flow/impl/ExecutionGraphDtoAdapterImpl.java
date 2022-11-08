@@ -4,7 +4,7 @@ import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.ExecutionGraphDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowStageDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.ExecutionGraphDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunStageDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageDependencyDto;
@@ -25,13 +25,13 @@ public class ExecutionGraphDtoAdapterImpl implements ExecutionGraphDtoAdapter {
         return new ExecutionGraphDto(executionGraph == null ? Set.of() : resolveFlowRunStages(executionGraph.toDependencyMap()));
     }
 
-    private Set<FlowRunStageDto> resolveFlowRunStages(Map<ContextualizedStageId, Set<FlowStageDependency>> dependencyMap) {
+    private Set<FlowRunStageDto> resolveFlowRunStages(Map<ContextualizedStageId, Set<ContextualizedStageDependency>> dependencyMap) {
         return dependencyMap == null ? Set.of() : dependencyMap.entrySet().stream()
                 .map(entry -> new FlowRunStageDto(entry.getKey(), resolve(entry.getValue())))
                 .collect(Collectors.toSet());
     }
 
-    private Set<FlowStageDependencyDto> resolve(Set<FlowStageDependency> stageRunDependencies) {
+    private Set<FlowStageDependencyDto> resolve(Set<ContextualizedStageDependency> stageRunDependencies) {
         return stageRunDependencies == null ? Set.of() : stageRunDependencies.stream()
                 .map(this.stageRunDependencyAdapter::adapte)
                 .collect(Collectors.toSet());

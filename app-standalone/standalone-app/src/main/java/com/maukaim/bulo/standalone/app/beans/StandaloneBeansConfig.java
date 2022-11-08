@@ -4,23 +4,22 @@ import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.executors.core.StageRunnerRegistry;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
+import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
+import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
 import com.maukaim.bulo.stages.models.StageDefinitionStore;
 import com.maukaim.bulo.standalone.app.connectivity.StageDefinitionInstructorImpl;
 import com.maukaim.bulo.standalone.data.lifecycle.StageDefinitionInstructor;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.MainDefinitionStore;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.ParameterDefinitionAdapter;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageInputDefinitionAdapter;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageOutputDefinitionAdapter;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageDefinitionAdapter;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.impl.ParameterDefinitionAdapterImpl;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.impl.StageInputDefinitionAdapterImpl;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.impl.StageOutputDefinitionAdapterImpl;
-import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.impl.StageDefinitionAdapterImpl;
+import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.*;
+import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.impl.*;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.sub.stores.ExecutorModuleDefinitionStore;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.sub.stores.FlowModuleDefinitionStore;
+import com.maukaim.bulo.standalone.data.lifecycle.definitions.sub.stores.OrchestratorModuleFunctionalStageDefinitionStore;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.sub.stores.StageModuleDefinitionStore;
 import com.maukaim.bulo.standalone.data.lifecycle.flows.MainFlowStore;
+import com.maukaim.bulo.standalone.data.lifecycle.flows.adapters.InputProviderAdapter;
 import com.maukaim.bulo.standalone.data.lifecycle.flows.adapters.*;
+import com.maukaim.bulo.standalone.data.lifecycle.flows.adapters.impl.InputProviderAdapterImpl;
 import com.maukaim.bulo.standalone.data.lifecycle.flows.adapters.impl.*;
 import com.maukaim.bulo.standalone.data.lifecycle.flows.sub.stores.OrchestratorModuleFlowStore;
 import com.maukaim.bulo.standalone.data.lifecycle.runs.MainFlowRunStore;
@@ -38,6 +37,7 @@ import com.maukaim.bulo.standalone.data.lifecycle.stages.adapters.impl.StageAdap
 import com.maukaim.bulo.standalone.data.lifecycle.stages.sub.stores.DefinitionModuleStageStore;
 import com.maukaim.bulo.standalone.data.lifecycle.stages.sub.stores.ExecutorModuleStageStore;
 import com.maukaim.bulo.standalone.data.lifecycle.stages.sub.stores.FlowModuleStageStore;
+import com.maukaim.bulo.standalone.data.lifecycle.stages.sub.stores.OrchestratorModuleFunctionalStageStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -54,6 +54,11 @@ public class StandaloneBeansConfig {
         }
 
         @Bean
+        public FunctionalStageStore orchestratorModuleStageStore(MainStageStore mainStageStore) {
+            return new OrchestratorModuleFunctionalStageStore(mainStageStore);
+        }
+
+        @Bean
         public com.maukaim.bulo.executors.data.StageStore executorModuleStageStore(MainStageStore mainStageStore,
                                                                                    StageAdapter stageAdapter) {
             return new ExecutorModuleStageStore(mainStageStore, stageAdapter);
@@ -67,7 +72,7 @@ public class StandaloneBeansConfig {
 
         @Bean
         public com.maukaim.bulo.definitions.data.StageStore definitionModuleStageStore(MainStageStore mainStageStore,
-                                                                           StageAdapter stageAdapter) {
+                                                                                       StageAdapter stageAdapter) {
             return new DefinitionModuleStageStore(mainStageStore, stageAdapter);
         }
 
@@ -152,6 +157,12 @@ public class StandaloneBeansConfig {
         }
 
         @Bean
+        public FunctionalStageDefinitionStore functionalStageDefinitionStore(MainDefinitionStore mainDefinitionStore,
+                                                                             StageDefinitionAdapter stageDefinitionAdapter) {
+            return new OrchestratorModuleFunctionalStageDefinitionStore(mainDefinitionStore, stageDefinitionAdapter);
+        }
+
+        @Bean
         public StageDefinitionInstructor definitionInstructor(StageDefinitionService stageDefinitionService,
                                                               StageDefinitionAdapter definitionAdapter) {
             return new StageDefinitionInstructorImpl(stageDefinitionService, definitionAdapter);
@@ -160,8 +171,9 @@ public class StandaloneBeansConfig {
         @Bean
         public StageDefinitionAdapter definitionAdapter(StageInputDefinitionAdapter inputDefinitionAdapter,
                                                         StageOutputDefinitionAdapter outputDefinitionAdapter,
-                                                        ParameterDefinitionAdapter parameterDefinitionAdapter) {
-            return new StageDefinitionAdapterImpl(inputDefinitionAdapter, outputDefinitionAdapter, parameterDefinitionAdapter);
+                                                        ParameterDefinitionAdapter parameterDefinitionAdapter,
+                                                        FsStageAdapter fsStageAdapter) {
+            return new StageDefinitionAdapterImpl(inputDefinitionAdapter, outputDefinitionAdapter, parameterDefinitionAdapter, fsStageAdapter);
         }
 
         @Bean
@@ -177,6 +189,21 @@ public class StandaloneBeansConfig {
         @Bean
         public ParameterDefinitionAdapter parameterDefinitionAdapter() {
             return new ParameterDefinitionAdapterImpl();
+        }
+
+        @Bean
+        public FsStageAdapter fsStageAdapter(IoDependencyAdapter ioDependencyAdapter) {
+            return new FsStageAdapterImpl(ioDependencyAdapter);
+        }
+
+        @Bean
+        public IoDependencyAdapter definitionIoDependencyAdapter(com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.InputProviderAdapter inputProviderAdapter) {
+            return new IoDependencyAdapterImpl(inputProviderAdapter);
+        }
+
+        @Bean
+        public com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.InputProviderAdapter definitionInputProviderAdapter() {
+            return new com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.impl.InputProviderAdapterImpl();
         }
     }
 

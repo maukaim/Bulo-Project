@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class FunctionalStageDefinitionDtoMixIn {
     @JsonCreator
-    public FunctionalStageDefinitionDtoMixIn(@JsonProperty("definitionId") String technicalStageDefinitionId,
+    public FunctionalStageDefinitionDtoMixIn(@JsonProperty("definitionId") String definitionId,
                                              @JsonProperty("inputsByName") Map<String, StageInputDefinitionDto> inputsByName,
                                              @JsonProperty("outputsByName") Map<String, StageOutputDefinitionDto> outputsByName,
                                              @JsonProperty("parameters") List<ParameterDefinitionDto> parameters,

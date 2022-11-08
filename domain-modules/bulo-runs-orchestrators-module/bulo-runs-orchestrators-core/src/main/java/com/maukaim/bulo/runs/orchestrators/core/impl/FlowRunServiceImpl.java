@@ -10,10 +10,7 @@ import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStatus;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunDependency;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunStatus;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.*;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +19,8 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver.resolveStatus;
 
 public class FlowRunServiceImpl implements FlowRunService {
 
@@ -54,13 +53,13 @@ public class FlowRunServiceImpl implements FlowRunService {
 
         FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunStore.add(newRunNonPersisted);
-        Map<String, StageRun> stageRunsToRequest = this.stageRunService.getNextStageRun(newRunPersisted.getFlowRunId(), resolve(flowStagesToRunId));
-        return this.computeStageRunViewUnderLock(newRunPersisted.getFlowRunId(), (previous) -> stageRunsToRequest);
+        Map<String, StageRun> stageRunsToRequest = this.stageRunService.getNextStageRuns(newRunPersisted.toRunContext(), resolveLocalRunDependenciesForRoots(flowStagesToRunId));
+        return this.computeStageRunUpdateUnderLock(newRunPersisted.getContextId(), (previous) -> stageRunsToRequest);
     }
 
-    private Map<ContextualizedStageId, Set<StageRunDependency>> resolve(Set<ContextualizedStageId> contextualizedStageIds) {
+    private Map<ContextualizedStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextualizedStageId> contextualizedStageIds) {
         return contextualizedStageIds == null ? Map.of() : contextualizedStageIds.stream()
-                .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of()));
+                .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of())); // No inputs for roots in FlowRUn
     }
 
     private Flow getExistingFlow(String flowId) {
@@ -77,22 +76,23 @@ public class FlowRunServiceImpl implements FlowRunService {
     }
 
     //TODO -> How to make a better lock? maybe here : https://stackoverflow.com/questions/51716527/how-to-lock-on-key-in-a-concurrenthashmap
+
     @Override
-    public synchronized FlowRun computeStageRunViewUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
-        AtomicReference<List<StageRun>> s = new AtomicReference<>();
+    public synchronized FlowRun computeStageRunUpdateUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
+        AtomicReference<List<StageRun>> toBeRequestedReference = new AtomicReference<>();
         FlowRun flowRunPersisted = this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
             Map<String, StageRun> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
 
-            List<StageRun> tobeRequestedStageRuns = stageRunViewToUpdate.values().stream()
-                    .filter(stageRun -> stageRun.getStageRunStatus() == StageRunStatus.TO_BE_REQUESTED)
+            List<StageRun> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
+                    .filter(stageRun -> stageRun.getStatus().isRunNeeded())
                     .collect(Collectors.toList());
-            s.set(tobeRequestedStageRuns);
+            toBeRequestedReference.set(tobeRequestedTechnicalStageRuns);
             return newFlowRunValue;
         });
 
-        List<StageRun> toBeRequestedRuns = s.get();
+        List<StageRun> toBeRequestedRuns = toBeRequestedReference.get();
         if(toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()){
             return this.flowRunStore.compute(flowRunId,(id,flowRun)->{
                 Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
@@ -103,36 +103,5 @@ public class FlowRunServiceImpl implements FlowRunService {
             });
         }
         return flowRunPersisted;
-    }
-
-    private FlowRunStatus resolveStatus(FlowRun flowRun) {
-        FlowRunStatus actualStatus = flowRun.getFlowRunStatus();
-        if (actualStatus.isTerminal()) {
-            return actualStatus;
-        } else {
-            Map<String, StageRun> stageRunViewByStageId = flowRun.getStageRunsById();
-            boolean anyCancelled = false;
-            boolean anyFailed = false;
-            boolean anyRunning = false;
-            boolean anyAcknowledged = false;
-            boolean anySuccessful = false;
-            for (Map.Entry<String, StageRun> stageRunViewById : stageRunViewByStageId.entrySet()) {
-                switch (stageRunViewById.getValue().getStageRunStatus()) {
-                    case RUNNING -> anyRunning = true;
-                    case CANCELLED -> anyCancelled = true;
-                    case FAILED -> anyFailed = true;
-                    case ACKNOWLEDGED -> anyAcknowledged = true;
-                    case SUCCESS -> anySuccessful = true;
-                }
-            }
-
-            if (anyFailed) return FlowRunStatus.FAILED;
-            else if (anyCancelled) return FlowRunStatus.CANCELLED;
-            else if (anyRunning) return FlowRunStatus.RUNNING;
-            else if (flowRun.allRunsAreTerminated()) return FlowRunStatus.SUCCESS;
-            else if (FlowRunStatus.NEW.equals(actualStatus) && (anyAcknowledged)) return FlowRunStatus.PENDING_START;
-            else if (anySuccessful) return FlowRunStatus.RUNNING;
-            else return actualStatus;
-        }
     }
 }

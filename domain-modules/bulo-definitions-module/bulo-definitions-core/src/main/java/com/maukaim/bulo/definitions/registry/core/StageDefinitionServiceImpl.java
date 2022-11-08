@@ -1,11 +1,12 @@
 package com.maukaim.bulo.definitions.registry.core;
 
+import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
-import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 
 import java.util.List;
+import java.util.UUID;
 
 public class StageDefinitionServiceImpl implements StageDefinitionService {
     private final List<TechnicalStageDefinitionValidator> technicalValidators;
@@ -23,14 +24,24 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     public void register(FunctionalStageDefinition definition) {
         StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition == null) {
-            if(this.functionalValidators.stream().allMatch(validator -> validator.validate(definition))){
-                this.definitionStore.addDefinition(definition);
-            }else{
-                throw new RuntimeException("Definition rejected: "+ definition.getDefinitionId());
+            if (this.functionalValidators.stream().allMatch(validator -> validator.validate(definition))) {
+                this.definitionStore.addDefinition(attachUUID(definition));
+            } else {
+                throw new RuntimeException("Definition rejected: " + definition.getDefinitionId());
             }
-        }else{
+        } else {
             throw new RuntimeException("Definition already exist : " + existingDefinition);
         }
+    }
+
+    private StageDefinition attachUUID(FunctionalStageDefinition definition) {
+        return new FunctionalStageDefinition(
+                UUID.randomUUID().toString(),
+                definition.getInputsByName(),
+                definition.getOutputsByName(),
+                definition.getParameters(),
+                definition.getFunctionalSubStages()
+        );
     }
 
     @Override
@@ -48,7 +59,7 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
 
     @Override
     public void unregister(String stageExecutorId, String definitionId) {
-        this.definitionStore.removeExecutor(stageExecutorId,definitionId);
+        this.definitionStore.removeExecutor(stageExecutorId, definitionId);
     }
 
     @Override
