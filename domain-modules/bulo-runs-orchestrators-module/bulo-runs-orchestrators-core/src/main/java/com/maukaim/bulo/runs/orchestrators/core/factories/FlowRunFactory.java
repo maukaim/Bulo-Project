@@ -55,13 +55,13 @@ public class FlowRunFactory {
         );
     }
 
-    private static Set<StageRunAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
+    private static Set<ContextStageAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
         return inputProviders == null ? Set.of() : inputProviders.stream()
                 .map(FlowRunFactory::resolveInputProvider)
                 .collect(Collectors.toSet());
     }
 
-    private static StageRunAncestor resolveInputProvider(InputProvider inputProvider) {
-        return inputProvider == null ? null : new StageRunAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
+    private static ContextStageAncestor resolveInputProvider(InputProvider inputProvider) {
+        return inputProvider == null ? null : new ContextStageAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
     }
 }

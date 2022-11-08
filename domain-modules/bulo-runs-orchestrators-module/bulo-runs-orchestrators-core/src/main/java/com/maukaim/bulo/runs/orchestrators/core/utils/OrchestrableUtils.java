@@ -3,9 +3,10 @@ package com.maukaim.bulo.runs.orchestrators.core.utils;
 import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.StageRunAncestor;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextStageAncestor;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -24,17 +25,17 @@ public class OrchestrableUtils {
         Set<ContextualizedStageDependency> flowStageDependencies = orchestrableRunContext.getExecutionGraph().getFlowStageDependencies(contextualizedStageId);
         for (ContextualizedStageDependency contextualizedStageDependency : flowStageDependencies) {
             String inputId = contextualizedStageDependency.getInputId();
-            Set<StageRunAncestor> flowStageAncestors = contextualizedStageDependency.getAncestors();
-            Set<com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor> stageRunAncestors = getStageRunAncestors(flowStageAncestors, previousRuns);
+            Set<ContextStageAncestor> flowStageAncestors = contextualizedStageDependency.getAncestors();
+            Set<StageRunAncestor> stageRunAncestors = getStageRunAncestors(flowStageAncestors, previousRuns);
             result.add(new RunDependency(inputId, stageRunAncestors));
         }
 
         return result;
     }
 
-    private static Set<com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor> getStageRunAncestors(Set<StageRunAncestor> stageRunAncestors,
+    private static Set<StageRunAncestor> getStageRunAncestors(Set<ContextStageAncestor> contextStageAncestors,
                                                                                                                   Set<StageRun> previousRuns) {
-        if (stageRunAncestors == null || stageRunAncestors.isEmpty()) {
+        if (contextStageAncestors == null || contextStageAncestors.isEmpty()) {
             return Set.of();
         }
 
@@ -43,8 +44,8 @@ public class OrchestrableUtils {
                         stageRun -> stageRun.getContextualizedStageId(),
                         stageRun -> stageRun.getStageRunId()
                 ));
-        return stageRunAncestors.stream()
-                .map(flowStageAncestor -> new com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor(
+        return contextStageAncestors.stream()
+                .map(flowStageAncestor -> new StageRunAncestor(
                         alreadyRanFlowStageIdByStageRunIds.get(flowStageAncestor.getFlowStageId()),
                         flowStageAncestor.getOutputIds()))
                 .collect(Collectors.toSet());

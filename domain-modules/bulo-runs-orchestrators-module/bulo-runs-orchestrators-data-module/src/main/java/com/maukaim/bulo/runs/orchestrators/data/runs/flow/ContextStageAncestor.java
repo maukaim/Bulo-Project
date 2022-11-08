@@ -5,11 +5,11 @@ import com.maukaim.bulo.commons.models.ContextualizedStageId;
 import java.util.Objects;
 import java.util.Set;
 
-public class StageRunAncestor {
+public class ContextStageAncestor {
     private ContextualizedStageId contextualizedStageId;
     private Set<String> outputIds;
 
-    public StageRunAncestor(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
+    public ContextStageAncestor(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
         this.contextualizedStageId = contextualizedStageId;
         this.outputIds = outputIds;
     }
@@ -26,7 +26,7 @@ public class StageRunAncestor {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StageRunAncestor that = (StageRunAncestor) o;
+        ContextStageAncestor that = (ContextStageAncestor) o;
         return contextualizedStageId.equals(that.contextualizedStageId);
     }
 

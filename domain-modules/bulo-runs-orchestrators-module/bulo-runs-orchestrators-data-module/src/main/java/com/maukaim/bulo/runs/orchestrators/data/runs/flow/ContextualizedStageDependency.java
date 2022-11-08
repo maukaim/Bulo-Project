@@ -6,11 +6,11 @@ import java.util.Set;
 
 public class ContextualizedStageDependency {
     private final String inputId;
-    private final Set<StageRunAncestor> stageRunAncestors;
+    private final Set<ContextStageAncestor> contextStageAncestors;
 
-    public ContextualizedStageDependency(String inputId, Set<StageRunAncestor> stageRunAncestors) {
+    public ContextualizedStageDependency(String inputId, Set<ContextStageAncestor> contextStageAncestors) {
         this.inputId = inputId;
-        this.stageRunAncestors = stageRunAncestors;
+        this.contextStageAncestors = contextStageAncestors;
     }
 
 
@@ -18,15 +18,15 @@ public class ContextualizedStageDependency {
         return inputId;
     }
 
-    public Set<StageRunAncestor> getAncestors() {
-        return stageRunAncestors;
+    public Set<ContextStageAncestor> getAncestors() {
+        return contextStageAncestors;
     }
 
     @Override
     public String toString() {
         return "StageRunDependency{" +
                 "inputId='" + inputId + '\'' +
-                ", ancestors=" + stageRunAncestors +
+                ", ancestors=" + contextStageAncestors +
                 '}';
     }
 

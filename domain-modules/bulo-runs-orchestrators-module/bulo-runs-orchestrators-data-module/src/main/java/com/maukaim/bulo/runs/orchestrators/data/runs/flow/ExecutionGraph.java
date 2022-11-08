@@ -50,7 +50,7 @@ public class ExecutionGraph {
 
     private boolean hasOnlyDependenciesWithNoProviders(Set<ContextualizedStageDependency> stageRunDependencies) {
         return !stageRunDependencies.isEmpty() && stageRunDependencies.stream().allMatch(runDependency-> {
-            Set<StageRunAncestor> ancestors = runDependency.getAncestors();
+            Set<ContextStageAncestor> ancestors = runDependency.getAncestors();
             return ancestors == null || ancestors.isEmpty();
         });
 

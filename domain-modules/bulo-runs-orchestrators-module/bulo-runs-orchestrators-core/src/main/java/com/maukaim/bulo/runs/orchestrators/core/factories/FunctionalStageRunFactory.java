@@ -7,7 +7,7 @@ import com.maukaim.bulo.runs.orchestrators.data.definition.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.data.definition.IoDependency;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.StageRunAncestor;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextStageAncestor;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRun;
@@ -87,13 +87,13 @@ public class FunctionalStageRunFactory {
         );
     }
 
-    private static Set<StageRunAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
+    private static Set<ContextStageAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
         return inputProviders == null ? Set.of() : inputProviders.stream()
                 .map(FunctionalStageRunFactory::resolveInputProvider)
                 .collect(Collectors.toSet());
     }
 
-    private static StageRunAncestor resolveInputProvider(InputProvider inputProvider) {
-        return inputProvider == null ? null : new StageRunAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
+    private static ContextStageAncestor resolveInputProvider(InputProvider inputProvider) {
+        return inputProvider == null ? null : new ContextStageAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
     }
 }
