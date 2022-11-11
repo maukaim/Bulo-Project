@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.factories;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FsStage;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
 import com.maukaim.bulo.runs.orchestrators.data.definition.InputProvider;
@@ -27,10 +27,11 @@ public class FunctionalStageRunFactory {
                 stageRun.getContextId(),
                 stageRun.getContextualizedStageId(),
                 stageRun.getContext(),
-                stageRun.getStatus(),
+                newStatus,
                 stageRun.getStageRunDependencies(),
                 stageRun.getStartTime(),
                 stageRun.getEndTime(),
+                stageRun.getOutputProviders(),
                 stageRun.getExecutionGraph(),
                 stageRun.getStageRunsById());
     }
@@ -45,6 +46,7 @@ public class FunctionalStageRunFactory {
                 stageRun.getStageRunDependencies(),
                 stageRun.getStartTime(),
                 stageRun.getEndTime(),
+                stageRun.getOutputProviders(),
                 stageRun.getExecutionGraph(),
                 Map.copyOf(newStageRunViewMap)
         );
@@ -52,21 +54,22 @@ public class FunctionalStageRunFactory {
 
     public static FunctionalStageRun create(FunctionalStageDefinition definition,
                                             RunContext<?> runContext,
-                                            ContextualizedStageId contextualizedStageId,
+                                            ContextStageId contextStageId,
                                             Set<RunDependency> stageRunDependencies) {
         return new FunctionalStageRun(
                 UUID.randomUUID().toString(),
-                contextualizedStageId,
+                contextStageId,
                 runContext,
                 OrchestrableContextStatus.NEW,
                 stageRunDependencies,
                 null,
                 null,
+                Set.copyOf(definition.getOutputProviders()),
                 new ExecutionGraph(resolveFlowStages(definition.getFunctionalSubStages())),
                 new HashMap<>());
     }
 
-    private static Map<ContextualizedStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FsStage> fsStages) {
+    private static Map<ContextStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FsStage> fsStages) {
         return fsStages == null ? Map.of() : fsStages.stream()
                 .collect(Collectors.toMap(
                         FsStage::getContextualizedId,

@@ -1,20 +1,20 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.definition;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.Set;
 
 public class InputProviderDto {
-    private final ContextualizedStageId contextualizedStageId;
+    private final ContextStageId contextStageId;
     private final Set<String> outputIds;
 
-    public InputProviderDto(ContextualizedStageId contextualizedStageId, Set<String> outputIds) {
-        this.contextualizedStageId = contextualizedStageId;
+    public InputProviderDto(ContextStageId contextStageId, Set<String> outputIds) {
+        this.contextStageId = contextStageId;
         this.outputIds = outputIds;
     }
 
-    public ContextualizedStageId getFsStageId() {
-        return contextualizedStageId;
+    public ContextStageId getFsStageId() {
+        return contextStageId;
     }
 
     public Set<String> getOutputIds() {
@@ -24,7 +24,7 @@ public class InputProviderDto {
     @Override
     public String toString() {
         return "InputProviderDto{" +
-                "contextualizedStageId=" + contextualizedStageId +
+                "contextualizedStageId=" + contextStageId +
                 ", outputIds=" + outputIds +
                 '}';
     }

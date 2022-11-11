@@ -10,7 +10,7 @@ public class StageRunAncestorDtoAdapterImpl implements StageRunAncestorDtoAdapte
     @Override
     public StageRunAncestorDto adapte(ContextStageAncestor contextStageAncestor) {
         return contextStageAncestor == null ? null : new StageRunAncestorDto(
-                contextStageAncestor.getFlowStageId(),
+                contextStageAncestor.getContextStageId(),
                 resolve(contextStageAncestor.getOutputIds())
         );
     }

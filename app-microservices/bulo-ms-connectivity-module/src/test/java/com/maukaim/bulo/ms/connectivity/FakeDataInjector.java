@@ -96,14 +96,14 @@ public class FakeDataInjector {
                     "flowId": "%s",
                     "flowStages": [
                       {
-                        "contextualizedStageId": {
+                        "contextStageId": {
                           "stageId": "%s",
                           "marker": 0
                         },
                         "ioDependencies": []
                       },
                       {
-                        "contextualizedStageId": {
+                        "contextStageId": {
                           "stageId": "%s",
                           "marker": 0
                         },
@@ -112,7 +112,7 @@ public class FakeDataInjector {
                             "inputId": "Yolo Subject",
                             "inputProviders": [
                               {
-                                "contextualizedStageId": {
+                                "contextStageId": {
                                   "stageId": "%s",
                                   "marker": 0
                                 },
@@ -125,7 +125,7 @@ public class FakeDataInjector {
                          ]
                        },
                        {
-                        "contextualizedStageId": {
+                        "contextStageId": {
                           "stageId": "%s",
                           "marker": 0
                         },
@@ -134,7 +134,7 @@ public class FakeDataInjector {
                             "inputId": "Yolo Subject",
                             "inputProviders": [
                               {
-                                "contextualizedStageId": {
+                                "contextStageId": {
                                   "stageId": "%s",
                                   "marker": 0
                                 },
@@ -167,7 +167,7 @@ public class FakeDataInjector {
         send(triggerFlowRun.toUrl(), String.format("""
                 {
                   "flowId": "%s",
-                  "contextualizedStageIds":[]
+                  "contextStageIds":[]
                 }
                 """, FLOW_ID));
 

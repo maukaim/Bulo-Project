@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.FlowService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
@@ -37,10 +37,10 @@ public class FlowRunServiceImpl implements FlowRunService {
     }
 
     @Override
-    public FlowRun startRun(String flowId, Set<ContextualizedStageId> rootStageIds) {
+    public FlowRun startRun(String flowId, Set<ContextStageId> rootStageIds) {
         Flow flow = this.getExistingFlow(flowId);
-        Set<ContextualizedStageId> rootIds = FlowUtils.getRootIds(flow);
-        Set<ContextualizedStageId> flowStagesToRunId;
+        Set<ContextStageId> rootIds = FlowUtils.getRootIds(flow);
+        Set<ContextStageId> flowStagesToRunId;
         if (rootStageIds == null || rootStageIds.isEmpty()) {
             flowStagesToRunId = rootIds;
         } else if (rootIds.containsAll(rootStageIds)) {
@@ -57,8 +57,8 @@ public class FlowRunServiceImpl implements FlowRunService {
         return this.computeStageRunUpdateUnderLock(newRunPersisted.getContextId(), (previous) -> stageRunsToRequest);
     }
 
-    private Map<ContextualizedStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextualizedStageId> contextualizedStageIds) {
-        return contextualizedStageIds == null ? Map.of() : contextualizedStageIds.stream()
+    private Map<ContextStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextStageId> contextStageIds) {
+        return contextStageIds == null ? Map.of() : contextStageIds.stream()
                 .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of())); // No inputs for roots in FlowRUn
     }
 

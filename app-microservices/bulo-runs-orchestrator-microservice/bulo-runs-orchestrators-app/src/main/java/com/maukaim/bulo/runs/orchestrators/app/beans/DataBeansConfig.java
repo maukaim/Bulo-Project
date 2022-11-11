@@ -2,19 +2,18 @@ package com.maukaim.bulo.runs.orchestrators.app.beans;
 
 import com.maukaim.bulo.runs.orchestrators.app.connectors.StageRunConnectorImpl;
 import com.maukaim.bulo.runs.orchestrators.app.data.FakeContextProvider;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.*;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.FunctionalSubStageAdapter;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.IoDependencyAdapter;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.StageDefinitionAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.*;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.impl.FunctionalSubStageAdapterImpl;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.impl.IoDependencyAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.impl.OutputProviderAdapterImpl;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.impl.StageDefinitionAdapterImpl;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.flows.*;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.flows.InputProviderAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.flows.impl.*;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.*;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.StageRunAncestorAdapter;
@@ -27,14 +26,9 @@ import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.im
 import com.maukaim.bulo.runs.orchestrators.io.FlowRunEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.io.NeedStageRunCancellationEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.io.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.io.StageRunEventConsumer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.Map;
 
 @Configuration
@@ -109,8 +103,14 @@ public class DataBeansConfig {
 
         @Bean
         public StageRunDtoAdapter stageRunDtoAdapter(StageRunDependencyDtoAdapter stageRunDependencyDtoAdapter,
-                                                     ExecutionGraphDtoAdapter executionGraphDtoAdapter) {
-            return new StageRunDtoAdapterImpl(stageRunDependencyDtoAdapter, executionGraphDtoAdapter);
+                                                     ExecutionGraphDtoAdapter executionGraphDtoAdapter,
+                                                     OutputProviderDtoAdapter outputProviderDtoAdapter) {
+            return new StageRunDtoAdapterImpl(stageRunDependencyDtoAdapter, executionGraphDtoAdapter, outputProviderDtoAdapter);
+        }
+
+        @Bean
+        public OutputProviderDtoAdapter outputProviderDtoAdapter(){
+            return new OutputProviderDtoAdapterImpl();
         }
 
         @Bean
@@ -125,8 +125,9 @@ public class DataBeansConfig {
 
         @Bean
         public StageRunAdapter stageRunAdapter(StageRunDependencyAdapter stageRunDependencyAdapter,
-                                               ExecutionGraphAdapter executionGraphAdapter) {
-            return new StageRunAdapterImpl(executionGraphAdapter, stageRunDependencyAdapter);
+                                               ExecutionGraphAdapter executionGraphAdapter,
+                                               OutputProviderAdapter outputProviderAdapter) {
+            return new StageRunAdapterImpl(executionGraphAdapter, stageRunDependencyAdapter, outputProviderAdapter);
         }
 
         @Bean
@@ -214,8 +215,14 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public StageDefinitionAdapter stageDefinitionAdapter(FunctionalSubStageAdapter functionalSubStageAdapter){
-            return new StageDefinitionAdapterImpl(functionalSubStageAdapter);
+        public StageDefinitionAdapter stageDefinitionAdapter(FunctionalSubStageAdapter functionalSubStageAdapter,
+                                                             OutputProviderAdapter outputProviderAdapter){
+            return new StageDefinitionAdapterImpl(functionalSubStageAdapter, outputProviderAdapter);
+        }
+
+        @Bean
+        public OutputProviderAdapter outputProviderAdapter(){
+            return new OutputProviderAdapterImpl();
         }
 
         @Bean

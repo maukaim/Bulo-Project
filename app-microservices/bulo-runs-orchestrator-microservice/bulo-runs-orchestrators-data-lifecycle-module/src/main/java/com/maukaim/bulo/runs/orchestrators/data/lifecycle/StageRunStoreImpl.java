@@ -15,7 +15,8 @@ public class StageRunStoreImpl implements StageRunStore {
 
     @Override
     public void put(String stageRunId, StageRun technicalStageRun) {
-        this.mappedStageRunId.put(stageRunId, technicalStageRun); //TODO: Doit etre fait de maniere a pouvoir les partager entre instances de orchestrator !
+        this.mappedStageRunId.put(stageRunId, technicalStageRun);
+        //TODO: Doit etre fait de maniere a pouvoir les partager entre instances de orchestrator !
     }
 
     @Override

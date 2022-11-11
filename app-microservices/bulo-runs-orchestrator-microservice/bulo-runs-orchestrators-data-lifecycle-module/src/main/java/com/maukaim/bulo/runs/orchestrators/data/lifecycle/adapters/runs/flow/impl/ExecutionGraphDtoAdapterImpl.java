@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.impl;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.ExecutionGraphDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
@@ -25,7 +25,7 @@ public class ExecutionGraphDtoAdapterImpl implements ExecutionGraphDtoAdapter {
         return new ExecutionGraphDto(executionGraph == null ? Set.of() : resolveFlowRunStages(executionGraph.toDependencyMap()));
     }
 
-    private Set<FlowRunStageDto> resolveFlowRunStages(Map<ContextualizedStageId, Set<ContextualizedStageDependency>> dependencyMap) {
+    private Set<FlowRunStageDto> resolveFlowRunStages(Map<ContextStageId, Set<ContextualizedStageDependency>> dependencyMap) {
         return dependencyMap == null ? Set.of() : dependencyMap.entrySet().stream()
                 .map(entry -> new FlowRunStageDto(entry.getKey(), resolve(entry.getValue())))
                 .collect(Collectors.toSet());

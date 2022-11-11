@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.data;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
@@ -33,13 +33,13 @@ public abstract class OrchestrableRunContext<KEY> {
                 .collect(Collectors.toUnmodifiableSet());
     }
 
-    public boolean otherAncestorsAreSuccessful(ContextualizedStageId stageId, ContextualizedStageId ancestorExcludedId) {
+    public boolean otherAncestorsAreSuccessful(ContextStageId stageId, ContextStageId ancestorExcludedId) {
         return this.getExecutionGraph().getAncestors(stageId).stream()
                 .filter(ancestor -> !ancestorExcludedId.equals(ancestor))
                 .allMatch(this::stageIsSuccessfullyTerminated);
     }
 
-    private boolean stageIsSuccessfullyTerminated(ContextualizedStageId stageId) {
+    private boolean stageIsSuccessfullyTerminated(ContextStageId stageId) {
         Optional<StageRun> stageRunView = this.getStageRunsById().values().stream()
                 .filter(stageRun -> stageId.equals(stageRun.getContextualizedStageId()))
                 .findFirst();
@@ -57,5 +57,23 @@ public abstract class OrchestrableRunContext<KEY> {
     public Collection<StageRun> getAllStageRuns() {
         return getStageRunsById().values();
     }
+
+    public Map<ContextStageId, StageRun> getLeavesRuns(){
+        if(!getStatus().isSuccess()){
+            throw new RuntimeException("Impossible to get Leave Runs if status not terminal.");
+        }
+
+        Map<ContextStageId, StageRun> stageRunsByContextStageId = this.getAllStageRuns().stream().collect(Collectors.toMap(
+                stageRun -> stageRun.getContextualizedStageId(),
+                stageRun -> stageRun
+        ));
+
+        return this.getExecutionGraph().getLeavesIds().stream()
+                .collect(Collectors.toMap(
+                        leaveId -> leaveId,
+                        leaveId -> stageRunsByContextStageId.get(leaveId)
+                ));
+
+    };
 
 }

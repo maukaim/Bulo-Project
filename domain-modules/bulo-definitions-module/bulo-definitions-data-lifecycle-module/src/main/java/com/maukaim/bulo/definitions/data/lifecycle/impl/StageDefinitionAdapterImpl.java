@@ -3,12 +3,14 @@ package com.maukaim.bulo.definitions.data.lifecycle.impl;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.functional.FsStageDto;
 import com.maukaim.bulo.commons.io.instructions.models.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
 import com.maukaim.bulo.definitions.data.definition.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageInputDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageOutputDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FsStage;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
+import com.maukaim.bulo.definitions.data.definition.functional.OutputProvider;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageAdapter;
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.ParameterDefinitionAdapter;
@@ -19,6 +21,7 @@ import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.OutputProviderAdapter;
 
 import java.util.List;
 import java.util.Map;
@@ -30,15 +33,18 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     private final StageInputDefinitionAdapter stageInputDefinitionAdapter;
     private final StageOutputDefinitionAdapter stageOutputDefinitionAdapter;
     private final FunctionalSubStageAdapter functionalSubStageAdapter;
+    private final OutputProviderAdapter outputProviderAdapter;
 
     public StageDefinitionAdapterImpl(ParameterDefinitionAdapter parameterDefinitionAdapter,
                                       StageInputDefinitionAdapter stageInputDefinitionAdapter,
                                       StageOutputDefinitionAdapter stageOutputDefinitionAdapter,
-                                      FunctionalSubStageAdapter functionalSubStageAdapter) {
+                                      FunctionalSubStageAdapter functionalSubStageAdapter,
+                                      OutputProviderAdapter outputProviderAdapter) {
         this.parameterDefinitionAdapter = parameterDefinitionAdapter;
         this.stageInputDefinitionAdapter = stageInputDefinitionAdapter;
         this.stageOutputDefinitionAdapter = stageOutputDefinitionAdapter;
         this.functionalSubStageAdapter = functionalSubStageAdapter;
+        this.outputProviderAdapter = outputProviderAdapter;
     }
 
     @Override
@@ -64,8 +70,14 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
                 resolveInputs(dto.getInputsByName()),
                 resolveOutputs(dto.getOutputsByName()),
                 resolveParameters(dto.getParameters()),
-                resolveFunctionalSubStage(dto.getFunctionalSubStages())
-        );
+                resolveFunctionalSubStage(dto.getFunctionalSubStages()),
+                resolveOutputProviders(dto.getOutputProviders()));
+    }
+
+    private Set<OutputProvider> resolveOutputProviders(Set<OutputProviderDto> outputProviders) {
+        return outputProviders == null ? Set.of() : outputProviders.stream()
+                .map(this.outputProviderAdapter::adapte)
+                .collect(Collectors.toSet());
     }
 
     private Set<FsStage> resolveFunctionalSubStage(Set<FsStageDto> functionalSubStages) {

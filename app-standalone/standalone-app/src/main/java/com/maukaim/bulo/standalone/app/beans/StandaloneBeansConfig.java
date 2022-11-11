@@ -172,8 +172,14 @@ public class StandaloneBeansConfig {
         public StageDefinitionAdapter definitionAdapter(StageInputDefinitionAdapter inputDefinitionAdapter,
                                                         StageOutputDefinitionAdapter outputDefinitionAdapter,
                                                         ParameterDefinitionAdapter parameterDefinitionAdapter,
-                                                        FsStageAdapter fsStageAdapter) {
-            return new StageDefinitionAdapterImpl(inputDefinitionAdapter, outputDefinitionAdapter, parameterDefinitionAdapter, fsStageAdapter);
+                                                        FsStageAdapter fsStageAdapter,
+                                                        OutputProviderAdapter outputProviderAdapter) {
+            return new StageDefinitionAdapterImpl(inputDefinitionAdapter, outputDefinitionAdapter, parameterDefinitionAdapter, fsStageAdapter, outputProviderAdapter);
+        }
+
+        @Bean
+        public OutputProviderAdapter outputProviderAdapter(){
+            return new OutputProviderAdapterImpl();
         }
 
         @Bean

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.io.TriggerEventConsumer;
@@ -17,8 +17,8 @@ public class TriggerEventConsumerImpl implements TriggerEventConsumer {
     @Override
     public String onFlowRunInstruction(FlowRunInstruction triggerEvent) {
         System.out.println("Consume event: " + triggerEvent);
-        Set<ContextualizedStageId> contextualizedStageIds = triggerEvent.getFlowStageIds();
-        FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getFlowId(), contextualizedStageIds);
+        Set<ContextStageId> contextStageIds = triggerEvent.getFlowStageIds();
+        FlowRun flowRun = this.flowRunService.startRun(triggerEvent.getFlowId(), contextStageIds);
         return flowRun != null? flowRun.getContextId() : null;
     }
 }

@@ -1,14 +1,19 @@
 package com.maukaim.bulo.definitions.registry.core.validators;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.StageStore;
+import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageOutputDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FsStage;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
+import com.maukaim.bulo.definitions.data.definition.functional.OutputProvider;
+import com.maukaim.bulo.definitions.data.stage.Stage;
 import com.maukaim.bulo.definitions.registry.core.FunctionalStageDefinitionValidator;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
@@ -25,69 +30,97 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
     @Override
     public boolean validate(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();
-        List<FsStage> leaves = determineLeaves(functionalSubStages);
-        Map<String, StageOutputDefinition> outputsByName = definition.getOutputsByName();
-        validateFunctionalStageOutputs(leaves, outputsByName);
+        Set<OutputProvider> outputProviders = definition.getOutputProviders();
+
+        Map<String, StageOutputDefinition> expectedStageOutputs = validateOutputProviders(outputProviders, functionalSubStages);
+        Map<String, StageOutputDefinition> actualOutputs = definition.getOutputsByName();
+        validateStageOutputs(expectedStageOutputs, actualOutputs);
         return true;
     }
 
-    private void validateFunctionalStageOutputs(List<FsStage> leaves, Map<String, StageOutputDefinition> fsOutputsByName) {
-        Map<String, StageOutputDefinition> possibleOutputs = computePossibleOutputs(leaves);
-        fsOutputsByName.forEach((key,val)->{
-            StageOutputDefinition stageOutputDefinition = possibleOutputs.get(key);
-            if(stageOutputDefinition == null){
-                throw new RuntimeException("No sub stage output declare an output named " + key);
-            }else if(areDifferent(stageOutputDefinition, val)){
-                throw new RuntimeException("Sub stages provide output named "+ key + " but designed it differently:" + stageOutputDefinition);
+    private void validateStageOutputs(Map<String, StageOutputDefinition> expected, Map<String, StageOutputDefinition> actual) {
+        if (actual.size() != expected.size()) {
+            throw new RuntimeException("Actually declared " + actual.size() + " outputs, but expected:" + expected.size());
+        }
+
+        for (String outputId : actual.keySet()) {
+            StageOutputDefinition expectedStageOutputDefinition = expected.get(outputId);
+            if (expectedStageOutputDefinition == null) {
+                throw new RuntimeException("Output declared but not expected: " + outputId);
             }
-        });
+            if (areDifferent(expectedStageOutputDefinition, actual.get(outputId))) {
+                throw new RuntimeException("Declared output named " + outputId + " but designed it differently than the expected:" + expectedStageOutputDefinition);
+            }
+        }
     }
 
-    private Map<String, StageOutputDefinition> computePossibleOutputs(List<FsStage> leaves) {
+    private Map<String, StageOutputDefinition> validateOutputProviders(Set<OutputProvider> outputProviders, Set<FsStage> functionalSubStages) {
+        Map<ContextStageId, FsStage> fsStageMap = functionalSubStages.stream()
+                .collect(Collectors.toMap(
+                        fsStage -> fsStage.getContextualizedId(),
+                        fsStage -> fsStage
+                ));
         Map<String, StageOutputDefinition> result = new HashMap<>();
-        leaves.stream()
-                .map(leaf -> this.stageStore.getById(leaf.getContextualizedId().getStageId()))
-                .peek(subStage -> {
-                    if (subStage == null) {
-                        throw new RuntimeException("Impossible to validate Functional Stage, one stage leaf does not exist.");
-                    }
-                })
-                .map(subStage -> this.stageDefinitionStore.getById(subStage.getDefinitionId()))
-                .map(subStageDefinition -> subStageDefinition.getOutputsByName())
-                .flatMap(outputsByName -> outputsByName.entrySet().stream())
-                .forEach(outputEntry -> result.compute(outputEntry.getKey(), (key, val) -> {
-                            if (val == null) {
-                                return outputEntry.getValue();
-                            } else if (areDifferent(outputEntry.getValue(), val)) {
-                                throw new RuntimeException("Conflict in Outputs. Same name, but not same value: " + key);
-                            } else if (!val.isCanBeMultiple()) {
-                                return new StageOutputDefinition(true, val.getTypeId());
-                            }
-                            return val;
-                        }));
+        for (OutputProvider outputProvider : outputProviders) {
+            ContextStageId contextStageId = outputProvider.getContextStageId();
+            FsStage fsStage = fsStageMap.get(contextStageId);
+            if (fsStage == null) {
+                throw new RuntimeException("Following output provider is not an existing substage " + contextStageId);
+            }
+            Stage stage = this.stageStore.getById(contextStageId.getStageId());
+            if (stage == null) {
+                throw new RuntimeException("No existing stage found for id " + contextStageId.getStageId());
+            }
+
+            StageDefinition definition = this.stageDefinitionStore.getById(stage.getDefinitionId());
+            if (definition == null) {
+                throw new RuntimeException(String.format("For stage %s, did not found definition %s",
+                        stage.getStageId(),
+                        stage.getDefinitionId())
+                );
+            }
+            Map<String, StageOutputDefinition> actualOutputsMap = definition.getOutputsByName();
+            Map<String, StageOutputDefinition> subOutputResult = new HashMap<>();
+            for (String outputId : outputProvider.getOutputIds()) {
+                StageOutputDefinition stageOutputDefinition = actualOutputsMap.get(outputId);
+                if (stageOutputDefinition == null) {
+                    throw new RuntimeException(String.format("Output %s not found as an output of definition %s. Existing outputs are: %s ",
+                            outputId,
+                            definition.getDefinitionId(),
+                            actualOutputsMap));
+                }
+                subOutputResult.put(outputId, stageOutputDefinition);
+            }
+
+            for (String outputId : subOutputResult.keySet()) {
+                StageOutputDefinition alreadyExistingOutputDefinition = result.get(outputId);
+                if (alreadyExistingOutputDefinition == null) {
+                    result.put(outputId, subOutputResult.get(outputId));
+                } else if (!hasSameType(alreadyExistingOutputDefinition, subOutputResult.get(outputId))) {
+                    throw new RuntimeException(String.format("Same outputId but not same object type. %s and %s.",
+                            alreadyExistingOutputDefinition));
+                } else {
+                    result.put(outputId, new StageOutputDefinition(true, alreadyExistingOutputDefinition.getTypeId()));
+                }
+            }
+        }
         return result;
     }
 
     private boolean areDifferent(StageOutputDefinition newVal, StageOutputDefinition oldVal) {
         return newVal.isCanBeMultiple() != oldVal.isCanBeMultiple() ||
-                !newVal.getTypeId().equalsIgnoreCase(oldVal.getTypeId());
+                !hasSameType(newVal, oldVal);
     }
 
-    private List<FsStage> determineLeaves(Set<FsStage> functionalSubStages) {
-        List<FsStage> leaves = new ArrayList<>(functionalSubStages);
-        Set<ContextualizedStageId> notLeaveIds = new HashSet<>();
-
-        for (FsStage functionalSubStage : functionalSubStages) {
-            functionalSubStage.getIoDependencies().stream()
-                    .map(ioDependency -> ioDependency.getInputProviders())
-                    .filter(Objects::nonNull)
-                    .flatMap(Collection::stream)
-                    .map(inputProvider -> inputProvider.getFlowStageId())
-                    .forEach(notLeaveIds::add);
-        }
-
-        return leaves.stream()
-                .filter(fsStage -> !notLeaveIds.contains(fsStage.getContextualizedId()))
-                .collect(Collectors.toList());
+    private boolean hasSameType(StageOutputDefinition first, StageOutputDefinition second) {
+        return first.getTypeId().equalsIgnoreCase(second.getTypeId());
     }
 }
+
+/**
+ * Now need 1) to propagate the OutputProviders to dto
+ * 2) test creation in def service
+ * 3) to propagate to Orchestrator service dto
+ * 4) to propagate to Orchestrator service model
+ * 5) use it in OrchestrableUtils to provide a FSRun dependent with real run and real results.
+ */

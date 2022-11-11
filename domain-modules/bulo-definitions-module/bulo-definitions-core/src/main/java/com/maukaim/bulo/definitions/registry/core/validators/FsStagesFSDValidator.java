@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.registry.core.validators;
 
 import com.maukaim.bulo.commons.models.AcyclicValidator;
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.definitions.data.StageStore;
 import com.maukaim.bulo.definitions.data.definition.functional.FsStage;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
@@ -28,7 +28,7 @@ public class FsStagesFSDValidator implements FunctionalStageDefinitionValidator 
             throw new RuntimeException("SubStages can't be null. It would mean the FunctionalStage does nothing.");
         }
         validateAllSubStageExist(functionalSubStages);
-        Map<ContextualizedStageId, Set<ContextualizedStageId>> simplifiedIoDependencies = simplifiedIoDependencies(functionalSubStages);
+        Map<ContextStageId, Set<ContextStageId>> simplifiedIoDependencies = simplifiedIoDependencies(functionalSubStages);
         new AcyclicValidator<>(simplifiedIoDependencies).validate();
 
         return true;
@@ -36,7 +36,7 @@ public class FsStagesFSDValidator implements FunctionalStageDefinitionValidator 
 
     private void validateAllSubStageExist(Set<FsStage> functionalSubStages) {
         for (FsStage functionalSubStage : functionalSubStages) {
-            ContextualizedStageId contextualizedId = functionalSubStage.getContextualizedId();
+            ContextStageId contextualizedId = functionalSubStage.getContextualizedId();
             String stageId = contextualizedId.getStageId();
             if(!this.stageStore.contains(stageId)){
                 throw new RuntimeException("Stage with following Id not known: " + stageId);
@@ -44,7 +44,7 @@ public class FsStagesFSDValidator implements FunctionalStageDefinitionValidator 
         }
     }
 
-    private Map<ContextualizedStageId, Set<ContextualizedStageId>> simplifiedIoDependencies(Set<FsStage> flowStages) {
+    private Map<ContextStageId, Set<ContextStageId>> simplifiedIoDependencies(Set<FsStage> flowStages) {
         return flowStages.stream().collect(Collectors.toMap(
                 FsStage::getContextualizedId,
                 flowStage -> flowStage.getIoDependencies().stream()

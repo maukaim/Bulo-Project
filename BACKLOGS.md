@@ -6,7 +6,9 @@
 - [X] Functional Stage system.
 - [X] Inputs transparency FS.
 - [X] Bug, DefinitionService fail to consume FuncStage.
-- [ ] Output transparency FS (Should link results of substages as its own result so we indicate the right sources) _Nov 8 - Nov 13 (1 week)_
+- [X] Output transparency FS (Should link results of substages as its own result so we indicate the right sources) _Nov 8 - Nov 13 (1 week)_
+- [ ] Fail path
+- [ ] Multiple outputs/inputs
 - [ ] Context variables (Shared for all Stages of a context). _Nov 14 - Nov 27 (2 weeks)_
 - [ ] Plugin system to add Java Technical Stages. _Nov 28 - Dec 18 (3 weeks)_
 - [ ] Support TechnicalStage in Python. _Dec 19 Jan 15 (4 weeks)_

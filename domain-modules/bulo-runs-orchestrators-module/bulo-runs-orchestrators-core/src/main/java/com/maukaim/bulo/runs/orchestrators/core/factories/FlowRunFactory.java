@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.factories;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 import com.maukaim.bulo.runs.orchestrators.data.flow.FlowStage;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
@@ -17,7 +17,13 @@ import java.util.stream.Collectors;
 public class FlowRunFactory {
 
     public static FlowRun updateState(FlowRun flowRun, OrchestrableContextStatus newStatus) {
-        return new FlowRun(flowRun.getContextId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), flowRun.getStageRunsById(), newStatus);
+        return new FlowRun(
+                flowRun.getContextId(),
+                flowRun.getFlowId(),
+                flowRun.getExecutionGraph(),
+                flowRun.getStageRunsById(),
+                newStatus
+        );
     }
 
     public static FlowRun updateStageRunView(FlowRun flowRun, Map<String, StageRun> mapOfViewToBeUpdated) {
@@ -34,7 +40,7 @@ public class FlowRunFactory {
                 OrchestrableContextStatus.NEW);
     }
 
-    private static Map<ContextualizedStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {
+    private static Map<ContextStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {
         return flowStages == null ? Map.of() : flowStages.stream()
                 .collect(Collectors.toMap(
                         FlowStage::getFlowStageId,
