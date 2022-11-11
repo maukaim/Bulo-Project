@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.TechnicalStageRunEventProcessor;
@@ -43,7 +43,7 @@ public class RunSuccessfulTechnicalStageRunEventProcessor extends TechnicalStage
         );
         result.putAll(currentRunResult);
 
-        Set<ContextualizedStageId> childrenIds = orchestrableRunContext.getExecutionGraph().getChildren(actualRun.getContextualizedStageId());
+        Set<ContextStageId> childrenIds = orchestrableRunContext.getExecutionGraph().getChildren(actualRun.getContextualizedStageId());
         if (!orchestrableRunContext.getStatus().isTerminal() && !childrenIds.isEmpty()) {
             result.putAll(this.getStageRunsToBeRequestedIfAuthorized(orchestrableRunContext, actualRun.getContextualizedStageId(), childrenIds));
         }
@@ -52,11 +52,11 @@ public class RunSuccessfulTechnicalStageRunEventProcessor extends TechnicalStage
     }
 
 
-    private Map<String, StageRun> getStageRunsToBeRequestedIfAuthorized(OrchestrableRunContext<?> orchestrableRunContext, ContextualizedStageId currentStageId, Set<ContextualizedStageId> children) {
+    private Map<String, StageRun> getStageRunsToBeRequestedIfAuthorized(OrchestrableRunContext<?> orchestrableRunContext, ContextStageId currentStageId, Set<ContextStageId> children) {
         Set<StageRun> previousStageRuns = orchestrableRunContext.getStageRunIds().stream()
                 .map(this.stageRunService::getById)
                 .collect(Collectors.toSet());
-        Map<ContextualizedStageId, Set<RunDependency>> childrenToStart = children.stream()
+        Map<ContextStageId, Set<RunDependency>> childrenToStart = children.stream()
                 .filter(childStageId -> orchestrableRunContext.otherAncestorsAreSuccessful(childStageId, currentStageId))
                 .collect(toMap(
                         flowStageId -> flowStageId,

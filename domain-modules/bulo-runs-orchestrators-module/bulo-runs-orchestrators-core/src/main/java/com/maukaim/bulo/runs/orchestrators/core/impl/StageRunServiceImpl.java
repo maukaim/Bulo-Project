@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FunctionalStageDefinitionService;
 import com.maukaim.bulo.runs.orchestrators.core.FunctionalStageService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
@@ -42,19 +42,19 @@ public class StageRunServiceImpl implements StageRunService {
         this.functionalStageDefinitionService = functionalStageDefinitionService;
     }
 
-    public Map<String, StageRun> getNextStageRuns(RunContext<?> runContext, Map<ContextualizedStageId, Set<RunDependency>> stageToRunByDependencies) {
+    public Map<String, StageRun> getNextStageRuns(RunContext<?> runContext, Map<ContextStageId, Set<RunDependency>> stageToRunByDependencies) {
         Map<String, StageRun> result = new HashMap<>();
-        for (ContextualizedStageId contextualizedStageId : stageToRunByDependencies.keySet()) {
-            Set<RunDependency> naiveRunDependencies = stageToRunByDependencies.get(contextualizedStageId);
+        for (ContextStageId contextStageId : stageToRunByDependencies.keySet()) {
+            Set<RunDependency> naiveRunDependencies = stageToRunByDependencies.get(contextStageId);
             Set<RunDependency> runDependencies = resolveRunDependenciesWithContext(runContext, naiveRunDependencies);
             StageRun newRun;
-            String definitionId = functionalStageService.getDefinitionId(contextualizedStageId.getStageId());
+            String definitionId = functionalStageService.getDefinitionId(contextStageId.getStageId());
             if (definitionId == null) { // OK ! Next step, c'est de resoudre les RunDependency en fonction de celles du context si besoin!
-                newRun = TechnicalStageRunFactory.toBeRequested(runContext, contextualizedStageId, runDependencies);
+                newRun = TechnicalStageRunFactory.toBeRequested(runContext, contextStageId, runDependencies);
             } else {
                 FunctionalStageDefinition definition = functionalStageDefinitionService.getById(definitionId);
-                newRun = FunctionalStageRunFactory.create(definition, runContext, contextualizedStageId, runDependencies);
-                System.out.println(String.format("For FS %s, stageDependencies are %s", contextualizedStageId.getStageId(), runDependencies));
+                newRun = FunctionalStageRunFactory.create(definition, runContext, contextStageId, runDependencies);
+                System.out.println(String.format("For FS %s, stageDependencies are %s", contextStageId.getStageId(), runDependencies));
             }
             this.stageRunStore.put(newRun.getStageRunId(), newRun);
             result.put(newRun.getStageRunId(), newRun);
@@ -121,9 +121,9 @@ public class StageRunServiceImpl implements StageRunService {
         return Map.of();
     }
 
-    private Map<ContextualizedStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextualizedStageId> contextualizedStageIds,
-                                                                                               OrchestrableRunContext<?> orchestrableRunContext) {
-        return contextualizedStageIds == null ? Map.of() : contextualizedStageIds.stream()
+    private Map<ContextStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextStageId> contextStageIds,
+                                                                                        OrchestrableRunContext<?> orchestrableRunContext) {
+        return contextStageIds == null ? Map.of() : contextStageIds.stream()
                 .collect(Collectors
                         .toMap(
                                 contextualizedStageId -> contextualizedStageId,

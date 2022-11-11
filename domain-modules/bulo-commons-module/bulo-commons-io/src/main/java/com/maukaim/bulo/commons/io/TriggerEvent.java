@@ -1,11 +1,11 @@
 package com.maukaim.bulo.commons.io;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.Set;
 
 public interface TriggerEvent extends ExternalEvent {
     String getFlowId();
 
-    Set<ContextualizedStageId> getFlowStageIds();
+    Set<ContextStageId> getFlowStageIds();
 }

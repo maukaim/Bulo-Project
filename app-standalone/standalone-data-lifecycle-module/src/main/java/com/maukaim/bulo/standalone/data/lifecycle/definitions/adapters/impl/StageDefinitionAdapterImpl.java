@@ -6,6 +6,7 @@ import com.maukaim.bulo.definitions.data.definition.StageOutputDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FsStage;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
+import com.maukaim.bulo.runs.orchestrators.data.definition.OutputProvider;
 import com.maukaim.bulo.standalone.data.lifecycle.UnsupportedDataMethodException;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.*;
 
@@ -20,12 +21,18 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     private final StageOutputDefinitionAdapter outputDefinitionAdapter;
     private final ParameterDefinitionAdapter parameterDefinitionAdapter;
     private final FsStageAdapter fsStageAdapter;
+    private final OutputProviderAdapter outputProviderAdapter;
 
-    public StageDefinitionAdapterImpl(StageInputDefinitionAdapter inputDefinitionAdapter, StageOutputDefinitionAdapter outputDefinitionAdapter, ParameterDefinitionAdapter parameterDefinitionAdapter, FsStageAdapter fsStageAdapter) {
+    public StageDefinitionAdapterImpl(StageInputDefinitionAdapter inputDefinitionAdapter,
+                                      StageOutputDefinitionAdapter outputDefinitionAdapter,
+                                      ParameterDefinitionAdapter parameterDefinitionAdapter,
+                                      FsStageAdapter fsStageAdapter,
+                                      OutputProviderAdapter outputProviderAdapter) {
         this.inputDefinitionAdapter = inputDefinitionAdapter;
         this.outputDefinitionAdapter = outputDefinitionAdapter;
         this.parameterDefinitionAdapter = parameterDefinitionAdapter;
         this.fsStageAdapter = fsStageAdapter;
+        this.outputProviderAdapter = outputProviderAdapter;
     }
 
     @Override
@@ -92,7 +99,14 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     @Override
     public FunctionalStageDefinition adapteOrchestratorModule(com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition definition) {
         return new FunctionalStageDefinition(definition.getDefinitionId(),
-                resolveFsStageOrchestratorModule(definition.getFunctionalSubStages()));
+                resolveFsStageOrchestratorModule(definition.getFunctionalSubStages()),
+                resolveOutputProviders(definition.getOutputProviders()));
+    }
+
+    private Set<OutputProvider> resolveOutputProviders(Set<com.maukaim.bulo.definitions.data.definition.functional.OutputProvider> outputProviders) {
+        return outputProviders == null ? Set.of() : outputProviders.stream()
+                .map(this.outputProviderAdapter::adapteOrchestratorModule)
+                .collect(Collectors.toSet());
     }
 
     private Set<FsStage> resolveFsStageOrchestratorModule(Set<com.maukaim.bulo.definitions.data.definition.functional.FsStage> functionalSubStages) {

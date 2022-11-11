@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.core.factories;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.utils.TimeHelper;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class TechnicalStageRunFactory {
 
-    public static TechnicalStageRun toBeRequested(RunContext<?> runContext, ContextualizedStageId stageId, Set<RunDependency> stageRunDependencies) {
+    public static TechnicalStageRun toBeRequested(RunContext<?> runContext, ContextStageId stageId, Set<RunDependency> stageRunDependencies) {
         return new TechnicalStageRun(UUID.randomUUID().toString(), stageId, runContext, TechnicalStageRunStatus.TO_BE_REQUESTED, null, stageRunDependencies, null, null);
     }
 

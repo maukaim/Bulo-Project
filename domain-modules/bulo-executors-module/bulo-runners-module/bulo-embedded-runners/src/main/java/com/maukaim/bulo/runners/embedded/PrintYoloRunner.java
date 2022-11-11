@@ -36,17 +36,7 @@ public class PrintYoloRunner extends AbstractStageRunner {
         String isUpperCase = getOrThrow(parameters, ParametersProvider.UPPERCASE_NAME, String.class);
         String Greetings = getOrThrow(parameters, ParametersProvider.GREETINGS_NAME, String.class);
 
-        System.out.println("Please let me sleep, just 30s...");
-        try {
-            Thread.sleep(15000);
-            if (Instant.now().getEpochSecond() % 2 == 0) {
-                System.out.println("Will cancel!");
-                throw new ExecutionCancelledException();
-            }
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            throw new ExecutionCancelledException();
-        }
+        System.out.println("No sleep for brave people..!");
 
         String yolo = (Greetings == null ? "" : Greetings) + " Yolo " + subject;
         yolo = isTrue(isUpperCase) ? yolo.toUpperCase() : yolo;

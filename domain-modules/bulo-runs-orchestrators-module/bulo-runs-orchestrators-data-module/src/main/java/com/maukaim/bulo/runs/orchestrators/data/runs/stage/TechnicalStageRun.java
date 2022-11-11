@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.StageType;
 
 import java.time.Instant;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     private final String stageRunId;
-    private final ContextualizedStageId contextualizedStageId;
+    private final ContextStageId contextStageId;
     private final RunContext<?> runContext;
     private final TechnicalStageRunStatus stageRunStatus;
     private final String executorId;
@@ -17,12 +17,12 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     private final Instant endTime;
 
     public TechnicalStageRun(String stageRunId,
-                             ContextualizedStageId contextualizedStageId,
+                             ContextStageId contextStageId,
                              RunContext<?> runContext,
                              TechnicalStageRunStatus stageRunStatus,
                              String executorId, Set<RunDependency> stageRunDependencies, Instant startTime, Instant endTime) {
         this.stageRunId = stageRunId;
-        this.contextualizedStageId = contextualizedStageId;
+        this.contextStageId = contextStageId;
         this.runContext = runContext;
         this.stageRunStatus = stageRunStatus;
         this.executorId = executorId;
@@ -42,8 +42,8 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     }
 
     @Override
-    public ContextualizedStageId getContextualizedStageId() {
-        return contextualizedStageId;
+    public ContextStageId getContextualizedStageId() {
+        return contextStageId;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     public String toString() {
         return "TechnicalStageRun{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", contextualizedStageId=" + contextualizedStageId +
+                ", contextualizedStageId=" + contextStageId +
                 ", context=" + runContext +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +

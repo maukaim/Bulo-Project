@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.io.models;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.StageType;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.ContextDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     protected final String stageRunId;
-    protected final ContextualizedStageId contextualizedStageId;
+    protected final ContextStageId contextStageId;
     protected final ContextDto<?> context;
     protected final StageRunStatusDto stageRunStatus;
     protected final String executorId;
@@ -19,7 +19,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     protected final Instant endTime;
 
     public TechnicalStageRunDto(String stageRunId,
-                                ContextualizedStageId contextualizedStageId,
+                                ContextStageId contextStageId,
                                 ContextDto<?> context,
                                 StageRunStatusDto stageRunStatus,
                                 String executorId,
@@ -27,7 +27,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
                                 Instant startTime,
                                 Instant endTime) {
         this.stageRunId = stageRunId;
-        this.contextualizedStageId = contextualizedStageId;
+        this.contextStageId = contextStageId;
         this.context = context;
         this.stageRunStatus = stageRunStatus;
         this.executorId = executorId;
@@ -47,8 +47,8 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     }
 
     @Override
-    public ContextualizedStageId getContextualizedStageId() {
-        return contextualizedStageId;
+    public ContextStageId getContextualizedStageId() {
+        return contextStageId;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     public String toString() {
         return "TechnicalStageRunDto{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", contextualizedStageId=" + contextualizedStageId +
+                ", contextualizedStageId=" + contextStageId +
                 ", context=" + context +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +

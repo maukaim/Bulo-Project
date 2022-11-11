@@ -40,8 +40,8 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
                 definition.getInputsByName(),
                 definition.getOutputsByName(),
                 definition.getParameters(),
-                definition.getFunctionalSubStages()
-        );
+                definition.getFunctionalSubStages(),
+                definition.getOutputProviders());
     }
 
     @Override

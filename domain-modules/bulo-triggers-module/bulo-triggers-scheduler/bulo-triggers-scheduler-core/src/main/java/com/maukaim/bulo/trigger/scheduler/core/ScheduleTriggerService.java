@@ -1,7 +1,7 @@
 package com.maukaim.bulo.trigger.scheduler.core;
 
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 
@@ -36,7 +36,7 @@ public class ScheduleTriggerService {
         });
     }
 
-    public boolean removeTrigger(String flowId, Set<ContextualizedStageId> stageIds) {
+    public boolean removeTrigger(String flowId, Set<ContextStageId> stageIds) {
         TriggerId key = TriggerId.of(flowId, stageIds);
         if (this.scheduledFutureCache.containsKey(key)) {
             ScheduledFuture<?> removedItem = this.scheduledFutureCache.remove(key);

@@ -1,6 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.serialization;
 
+import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
 import com.maukaim.bulo.runs.orchestrators.io.events.*;
+import com.maukaim.bulo.runs.orchestrators.io.models.FunctionalStageRunDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.TechnicalStageRunDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.definition.FsStageDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.definition.IoDependencyDto;
@@ -13,6 +15,7 @@ import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.*;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.*;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.FsStageDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.IoDependencyDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.OutputProviderDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.StageDefinitionDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.stage.StageDtoMixIn;
 
@@ -28,7 +31,8 @@ public class MixinsConfig {
             FlowRunStageDto.class, FlowRunStageDtoMixIn.class,
             StageRunAncestorDto.class, FlowStageAncestorDtoMixIn.class,
             FlowStageDependencyDto.class, FlowStageDependencyDtoMixIn.class,
-            TechnicalStageRunDto.class, StageRunDtoMixIn.class,
+            TechnicalStageRunDto.class, TechnicalStageRunDtoMixIn.class,
+            FunctionalStageRunDto.class, FunctionalStageRunDtoMixIn.class,
             StageRunDependencyDto.class, StageRunDependencyDtoMixIn.class,
             com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class
     );
@@ -63,7 +67,8 @@ public class MixinsConfig {
             FsStageDto.class, FsStageDtoMixIn.class,
             IoDependencyDto.class, IoDependencyDtoMixIn.class,
             com.maukaim.bulo.runs.orchestrators.io.models.definition.InputProviderDto.class,
-            com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.InputProviderDtoMixIn.class
+            com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.InputProviderDtoMixIn.class,
+            OutputProviderDto.class, OutputProviderDtoMixIn.class
     );
 
 

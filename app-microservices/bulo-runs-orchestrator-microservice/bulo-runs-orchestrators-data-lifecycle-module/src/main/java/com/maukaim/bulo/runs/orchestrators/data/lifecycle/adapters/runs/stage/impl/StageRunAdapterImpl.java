@@ -1,5 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.impl;
 
+import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.runs.orchestrators.data.definition.OutputProvider;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions.OutputProviderAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.ExecutionGraphAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.StageRunAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.StageRunDependencyAdapter;
@@ -24,10 +27,14 @@ import java.util.stream.Collectors;
 public class StageRunAdapterImpl implements StageRunAdapter {
     private final ExecutionGraphAdapter executionGraphAdapter;
     private final StageRunDependencyAdapter stageRunDependencyAdapter;
+    private final OutputProviderAdapter outputProviderAdapter;
 
-    public StageRunAdapterImpl(ExecutionGraphAdapter executionGraphAdapter, StageRunDependencyAdapter stageRunDependencyAdapter) {
+    public StageRunAdapterImpl(ExecutionGraphAdapter executionGraphAdapter,
+                               StageRunDependencyAdapter stageRunDependencyAdapter,
+                               OutputProviderAdapter outputProviderAdapter) {
         this.executionGraphAdapter = executionGraphAdapter;
         this.stageRunDependencyAdapter = stageRunDependencyAdapter;
+        this.outputProviderAdapter = outputProviderAdapter;
     }
 
     @Override
@@ -60,9 +67,16 @@ public class StageRunAdapterImpl implements StageRunAdapter {
                 resolve(dto.getDependencies()),
                 dto.getStartTime(),
                 dto.getEndTime(),
+                resolveOutputProviders(dto.getOutputProviders()),
                 resolve(dto.getExecutionGraph()),
                 resolve(dto.getStageRunByIds())
         );
+    }
+
+    private Set<OutputProvider> resolveOutputProviders(Set<OutputProviderDto> outputProviderDtos){
+        return outputProviderDtos == null ? Set.of() : outputProviderDtos.stream()
+                .map(this.outputProviderAdapter::adapte)
+                .collect(Collectors.toSet());
     }
 
     private ExecutionGraph resolve(ExecutionGraphDto dto) {

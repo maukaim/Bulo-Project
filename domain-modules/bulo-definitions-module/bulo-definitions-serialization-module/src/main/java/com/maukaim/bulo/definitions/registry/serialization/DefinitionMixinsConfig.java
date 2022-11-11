@@ -5,10 +5,7 @@ import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.FsStageDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.FunctionalStageDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.InputProviderDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.IoDependencyDto;
+import com.maukaim.bulo.commons.io.instructions.models.functional.*;
 import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import com.maukaim.bulo.definitions.io.events.StageUpdateEvent;
@@ -17,10 +14,7 @@ import com.maukaim.bulo.definitions.io.stage.ParameterDto;
 import com.maukaim.bulo.definitions.io.stage.StageDto;
 import com.maukaim.bulo.definitions.io.stage.TechnicalStageDto;
 import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.*;
-import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.functional.FsStageDtoMixIn;
-import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.functional.FunctionalStageDefinitionDtoMixIn;
-import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.functional.InputProviderDtoMixIn;
-import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.functional.IoDependencyDtoMixIn;
+import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.functional.*;
 import com.maukaim.bulo.definitions.registry.serialization.mixins.definition.technical.TechnicalStageDefinitionDtoMixIn;
 import com.maukaim.bulo.definitions.registry.serialization.mixins.stage.*;
 
@@ -49,7 +43,8 @@ public class DefinitionMixinsConfig {
 
             FsStageDto.class, FsStageDtoMixIn.class,
             InputProviderDto.class, InputProviderDtoMixIn.class,
-            IoDependencyDto.class, IoDependencyDtoMixIn.class
+            IoDependencyDto.class, IoDependencyDtoMixIn.class,
+            OutputProviderDto.class, OutputProviderDtoMixIn.class
     );
 
     private static Map<Class<?>, Class<?>> STAGES_MIXINS = Map.of(

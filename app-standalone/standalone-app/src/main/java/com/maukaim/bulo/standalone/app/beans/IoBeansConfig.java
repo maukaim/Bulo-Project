@@ -3,8 +3,12 @@ package com.maukaim.bulo.standalone.app.beans;
 import com.maukaim.bulo.definitions.data.lifecycle.*;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageDtoAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.OutputProviderAdapter;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.OutputProviderDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.FunctionalSubStageAdapterImpl;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.FunctionalSubStageDtoAdapterImpl;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.OutputProviderAdapterImpl;
+import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.OutputProviderDtoAdapterImpl;
 import com.maukaim.bulo.definitions.data.lifecycle.impl.*;
 import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
@@ -116,8 +120,14 @@ public class IoBeansConfig {
         public StageDefinitionAdapter stageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter,
                                                              StageInputDefinitionAdapter stageInputDefinitionAdapter,
                                                              StageOutputDefinitionAdapter stageOutputDefinitionAdapter,
-                                                             FunctionalSubStageAdapter functionalSubStageAdapter) {
-            return new StageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter, functionalSubStageAdapter);
+                                                             FunctionalSubStageAdapter functionalSubStageAdapter,
+                                                             OutputProviderAdapter outputProviderAdapter) {
+            return new StageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter, functionalSubStageAdapter, outputProviderAdapter);
+        }
+
+        @Bean
+        public OutputProviderAdapter outputProviderAdapter(){
+            return new OutputProviderAdapterImpl();
         }
 
         @Bean
@@ -154,8 +164,14 @@ public class IoBeansConfig {
         public StageDefinitionDtoAdapter stageDefinitionDtoAdapter(ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
                                                                    StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter,
                                                                    StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter,
-                                                                   FunctionalSubStageDtoAdapter functionalSubStageDtoAdapter) {
-            return new StageDefinitionDtoAdapterImpl(parameterDefinitionDtoAdapter, stageInputDefinitionDtoAdapter, stageOutputDefinitionDtoAdapter, functionalSubStageDtoAdapter);
+                                                                   FunctionalSubStageDtoAdapter functionalSubStageDtoAdapter,
+                                                                   OutputProviderDtoAdapter outputProviderDtoAdapter) {
+            return new StageDefinitionDtoAdapterImpl(parameterDefinitionDtoAdapter, stageInputDefinitionDtoAdapter, stageOutputDefinitionDtoAdapter, functionalSubStageDtoAdapter, outputProviderDtoAdapter);
+        }
+
+        @Bean
+        public OutputProviderDtoAdapter outputProviderDtoAdapter(){
+            return new OutputProviderDtoAdapterImpl();
         }
 
         @Bean

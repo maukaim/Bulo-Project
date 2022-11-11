@@ -18,8 +18,14 @@ public class AdapterBeansConfig {
     public StageDefinitionAdapter technicalStageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter,
                                                                   StageInputDefinitionAdapter stageInputDefinitionAdapter,
                                                                   StageOutputDefinitionAdapter stageOutputDefinitionAdapter,
-                                                                  FunctionalSubStageAdapter functionalSubStageAdapter){
-        return new StageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter, functionalSubStageAdapter);
+                                                                  FunctionalSubStageAdapter functionalSubStageAdapter,
+                                                                  OutputProviderAdapter outputProviderAdapter){
+        return new StageDefinitionAdapterImpl(parameterDefinitionAdapter, stageInputDefinitionAdapter, stageOutputDefinitionAdapter, functionalSubStageAdapter, outputProviderAdapter);
+    }
+
+    @Bean
+    public OutputProviderAdapter outputProviderAdapter(){
+        return new OutputProviderAdapterImpl();
     }
 
     @Bean
@@ -56,8 +62,14 @@ public class AdapterBeansConfig {
     public StageDefinitionDtoAdapter technicalStageDefinitionDtoAdapter(ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter,
                                                                         StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter,
                                                                         StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter,
-                                                                        FunctionalSubStageDtoAdapter functionalSubStageDtoAdapter){
-        return new StageDefinitionDtoAdapterImpl(parameterDefinitionDtoAdapter,stageInputDefinitionDtoAdapter,stageOutputDefinitionDtoAdapter, functionalSubStageDtoAdapter);
+                                                                        FunctionalSubStageDtoAdapter functionalSubStageDtoAdapter,
+                                                                        OutputProviderDtoAdapter outputProviderDtoAdapter){
+        return new StageDefinitionDtoAdapterImpl(parameterDefinitionDtoAdapter,stageInputDefinitionDtoAdapter,stageOutputDefinitionDtoAdapter, functionalSubStageDtoAdapter, outputProviderDtoAdapter);
+    }
+
+    @Bean
+    public OutputProviderDtoAdapter outputProviderDtoAdapter(){
+        return new OutputProviderDtoAdapterImpl();
     }
 
     @Bean

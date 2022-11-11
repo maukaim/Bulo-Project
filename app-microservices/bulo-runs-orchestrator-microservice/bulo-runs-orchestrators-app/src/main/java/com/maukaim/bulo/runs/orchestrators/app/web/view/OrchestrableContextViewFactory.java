@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.web.view;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.utils.TimeHelper;
 import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class OrchestrableContextViewFactory {
 
     public static OrchestrableContextView build(OrchestrableRunContext<?> orchestrableRunContext) {
-        Map<ContextualizedStageId, List<StageRun>> runningStages = orchestrableRunContext.getInFlightStageRuns().stream()
+        Map<ContextStageId, List<StageRun>> runningStages = orchestrableRunContext.getInFlightStageRuns().stream()
                 .collect(Collectors.groupingBy( stageRun -> stageRun.getContextualizedStageId()));
 
         Instant startTime = null;

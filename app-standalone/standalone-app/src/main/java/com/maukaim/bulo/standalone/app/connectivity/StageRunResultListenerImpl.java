@@ -10,7 +10,6 @@ import com.maukaim.bulo.standalone.data.lifecycle.StageRunResultListener;
 import java.time.Instant;
 import java.util.function.Consumer;
 
-//TODO: Seems a duplicate of StageRunEventConsumerImpl, just the dispatch by eventType is made before arriving here... useless?
 public class StageRunResultListenerImpl implements StageRunResultListener {
     private final AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor;
     private final RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor;

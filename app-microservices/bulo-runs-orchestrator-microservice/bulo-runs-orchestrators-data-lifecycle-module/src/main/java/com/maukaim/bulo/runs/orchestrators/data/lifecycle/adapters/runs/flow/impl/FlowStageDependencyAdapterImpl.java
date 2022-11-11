@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.im
 
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.StageRunAncestorAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowStageDependencyAdapter;
-import com.maukaim.bulo.runs.orchestrators.data.runs.flow.StageRunAncestor;
+import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextStageAncestor;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.StageRunAncestorDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageDependencyDto;
@@ -25,7 +25,7 @@ public class FlowStageDependencyAdapterImpl implements FlowStageDependencyAdapte
         );
     }
 
-    private Set<StageRunAncestor> resolve(Set<StageRunAncestorDto> stageRunAncestorDtos) {
+    private Set<ContextStageAncestor> resolve(Set<StageRunAncestorDto> stageRunAncestorDtos) {
         return stageRunAncestorDtos == null ? Set.of() : stageRunAncestorDtos.stream()
                 .map(this.stageRunAncestorAdapter::adapte)
                 .collect(Collectors.toSet());

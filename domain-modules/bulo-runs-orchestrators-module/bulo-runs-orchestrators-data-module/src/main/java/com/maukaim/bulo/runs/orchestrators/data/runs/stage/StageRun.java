@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 
-import com.maukaim.bulo.commons.models.ContextualizedStageId;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.StageType;
 
 import java.time.Instant;
@@ -12,7 +12,7 @@ public interface StageRun<STATUS extends RunStatus> {
 
     String getStageRunId();
 
-    ContextualizedStageId getContextualizedStageId();
+    ContextStageId getContextualizedStageId();
 
 
     RunContext<?> getContext();
