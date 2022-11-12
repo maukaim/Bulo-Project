@@ -48,7 +48,7 @@ public class StageRunAdapterImpl implements StageRunAdapter {
     private TechnicalStageRun resolve(TechnicalStageRunDto dto) {
         return new TechnicalStageRun(
                 dto.getStageRunId(),
-                dto.getContextualizedStageId(),
+                dto.getContextStageId(),
                 resolve(dto.getContext()),
                 resolve(dto.getStatus()),
                 dto.getExecutorId(),
@@ -61,7 +61,7 @@ public class StageRunAdapterImpl implements StageRunAdapter {
     private FunctionalStageRun resolve(FunctionalStageRunDto dto) {
         return new FunctionalStageRun(
                 dto.getStageRunId(),
-                dto.getContextualizedStageId(),
+                dto.getContextStageId(),
                 resolve(dto.getContext()),
                 resolve(dto.getStatus()),
                 resolve(dto.getDependencies()),

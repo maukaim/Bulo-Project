@@ -12,8 +12,7 @@ public interface StageRun<STATUS extends RunStatus> {
 
     String getStageRunId();
 
-    ContextStageId getContextualizedStageId();
-
+    ContextStageId getContextStageId();
 
     RunContext<?> getContext();
 

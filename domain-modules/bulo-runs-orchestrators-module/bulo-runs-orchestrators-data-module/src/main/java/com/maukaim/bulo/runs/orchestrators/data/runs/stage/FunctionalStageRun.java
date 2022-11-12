@@ -82,7 +82,7 @@ public class FunctionalStageRun extends OrchestrableRunContext<String> implement
     }
 
     @Override
-    public ContextStageId getContextualizedStageId() {
+    public ContextStageId getContextStageId() {
         return contextStageId;
     }
 
@@ -121,7 +121,7 @@ public class FunctionalStageRun extends OrchestrableRunContext<String> implement
     public String toString() {
         return "FunctionalStageRun{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", contextualizedStageId=" + contextStageId +
+                ", contextStageId=" + contextStageId +
                 ", runContext=" + runContext +
                 ", status=" + status +
                 ", stageRunDependencies=" + stageRunDependencies +

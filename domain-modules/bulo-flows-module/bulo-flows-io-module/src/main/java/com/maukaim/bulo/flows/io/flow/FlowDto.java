@@ -8,15 +8,18 @@ public class FlowDto implements FlowInterface{
     private String flowId;
     private final Set<OwnerKeyDto> ownerKeys;
     private final Set<FlowStageDto> flowStages;
+    private final Set<FailureAlternativeRoutesDto> failureAlternativeRoutes;
     private final boolean allowParallelRun;
 
     public FlowDto(String flowId,
                    Set<OwnerKeyDto> ownerKeys,
                    Set<FlowStageDto> flowStages,
+                   Set<FailureAlternativeRoutesDto> failureAlternativeRoutes,
                    boolean allowParallelRun) {
         this.flowId = flowId;
         this.ownerKeys = ownerKeys;
         this.flowStages = flowStages;
+        this.failureAlternativeRoutes = failureAlternativeRoutes;
         this.allowParallelRun = allowParallelRun;
     }
 
@@ -36,6 +39,10 @@ public class FlowDto implements FlowInterface{
         return flowStages;
     }
 
+    public Set<FailureAlternativeRoutesDto> getFailureAlternativeRoutes() {
+        return failureAlternativeRoutes;
+    }
+
     public boolean isParallelRunAllowed() {
         return allowParallelRun;
     }
@@ -46,6 +53,7 @@ public class FlowDto implements FlowInterface{
                 "flowId='" + flowId + '\'' +
                 ", ownerKeys=" + ownerKeys +
                 ", flowStages=" + flowStages +
+                ", failureAlternativeRoutes=" + failureAlternativeRoutes +
                 ", allowParallelRun=" + allowParallelRun +
                 '}';
     }

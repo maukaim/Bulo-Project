@@ -47,7 +47,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     }
 
     @Override
-    public ContextStageId getContextualizedStageId() {
+    public ContextStageId getContextStageId() {
         return contextStageId;
     }
 
@@ -84,7 +84,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     public String toString() {
         return "TechnicalStageRunDto{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", contextualizedStageId=" + contextStageId +
+                ", contextStageId=" + contextStageId +
                 ", context=" + context +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +

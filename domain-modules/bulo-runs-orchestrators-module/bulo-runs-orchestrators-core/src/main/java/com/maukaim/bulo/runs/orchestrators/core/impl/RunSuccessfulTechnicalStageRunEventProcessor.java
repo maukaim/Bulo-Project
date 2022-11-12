@@ -43,9 +43,10 @@ public class RunSuccessfulTechnicalStageRunEventProcessor extends TechnicalStage
         );
         result.putAll(currentRunResult);
 
-        Set<ContextStageId> childrenIds = orchestrableRunContext.getExecutionGraph().getChildren(actualRun.getContextualizedStageId());
+        Set<ContextStageId> childrenIds = orchestrableRunContext.getExecutionGraph().getChildren(actualRun.getContextStageId());
+
         if (!orchestrableRunContext.getStatus().isTerminal() && !childrenIds.isEmpty()) {
-            result.putAll(this.getStageRunsToBeRequestedIfAuthorized(orchestrableRunContext, actualRun.getContextualizedStageId(), childrenIds));
+            result.putAll(this.getStageRunsToBeRequestedIfAuthorized(orchestrableRunContext, actualRun.getContextStageId(), childrenIds));
         }
 
         return result;

@@ -49,8 +49,14 @@ public class IoBeansConfig {
 
         @Bean
         public FlowAdapter flowIoAdapter(OwnerKeyAdapter ownerKeyAdapter,
-                                         FlowStageAdapter flowStageAdapter) {
-            return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter);
+                                         FlowStageAdapter flowStageAdapter,
+                                         FailureAlternativeRouteAdapter failureAlternativeRouteAdapter) {
+            return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter, failureAlternativeRouteAdapter);
+        }
+
+        @Bean
+        public FailureAlternativeRouteAdapter failureAlternativeRouteAdapter(){
+            return new FailureAlternativeRouteAdapterImpl();
         }
 
         @Bean

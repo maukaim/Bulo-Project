@@ -25,7 +25,7 @@ public class FunctionalStageRunFactory {
     public static FunctionalStageRun updateState(FunctionalStageRun stageRun, OrchestrableContextStatus newStatus) {
         return new FunctionalStageRun(
                 stageRun.getContextId(),
-                stageRun.getContextualizedStageId(),
+                stageRun.getContextStageId(),
                 stageRun.getContext(),
                 newStatus,
                 stageRun.getStageRunDependencies(),
@@ -40,7 +40,7 @@ public class FunctionalStageRunFactory {
         HashMap<String, StageRun> newStageRunViewMap = new HashMap<>(stageRun.getStageRunsById());
         newStageRunViewMap.putAll(mapOfViewToBeUpdated);
         return new FunctionalStageRun(stageRun.getContextId(),
-                stageRun.getContextualizedStageId(),
+                stageRun.getContextStageId(),
                 stageRun.getContext(),
                 stageRun.getStatus(),
                 stageRun.getStageRunDependencies(),

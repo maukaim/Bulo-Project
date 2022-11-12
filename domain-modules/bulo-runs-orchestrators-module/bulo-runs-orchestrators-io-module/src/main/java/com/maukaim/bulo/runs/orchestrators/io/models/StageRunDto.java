@@ -10,12 +10,19 @@ import java.util.Set;
 
 public interface StageRunDto<STATUS> {
     StageType getStageType();
+
     String getStageRunId();
-    ContextStageId getContextualizedStageId();
+
+    ContextStageId getContextStageId();
+
     ContextDto getContext();
+
     STATUS getStatus();
+
     Set<StageRunDependencyDto> getDependencies();
+
     Instant getStartTime();
+
     Instant getEndTime();
 
 }

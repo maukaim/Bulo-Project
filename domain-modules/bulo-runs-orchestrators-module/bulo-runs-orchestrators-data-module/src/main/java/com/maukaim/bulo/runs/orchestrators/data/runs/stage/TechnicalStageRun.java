@@ -42,7 +42,7 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     }
 
     @Override
-    public ContextStageId getContextualizedStageId() {
+    public ContextStageId getContextStageId() {
         return contextStageId;
     }
 
@@ -80,7 +80,7 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
     public String toString() {
         return "TechnicalStageRun{" +
                 "stageRunId='" + stageRunId + '\'' +
-                ", contextualizedStageId=" + contextStageId +
+                ", contextStageId=" + contextStageId +
                 ", context=" + runContext +
                 ", stageRunStatus=" + stageRunStatus +
                 ", executorId='" + executorId + '\'' +

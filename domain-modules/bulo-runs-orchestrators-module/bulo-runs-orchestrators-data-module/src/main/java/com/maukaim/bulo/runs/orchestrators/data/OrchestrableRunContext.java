@@ -41,7 +41,7 @@ public abstract class OrchestrableRunContext<KEY> {
 
     private boolean stageIsSuccessfullyTerminated(ContextStageId stageId) {
         Optional<StageRun> stageRunView = this.getStageRunsById().values().stream()
-                .filter(stageRun -> stageId.equals(stageRun.getContextualizedStageId()))
+                .filter(stageRun -> stageId.equals(stageRun.getContextStageId()))
                 .findFirst();
         return stageRunView.isPresent() && stageRunView.get().getStatus().isSuccess();
     }
@@ -64,7 +64,7 @@ public abstract class OrchestrableRunContext<KEY> {
         }
 
         Map<ContextStageId, StageRun> stageRunsByContextStageId = this.getAllStageRuns().stream().collect(Collectors.toMap(
-                stageRun -> stageRun.getContextualizedStageId(),
+                stageRun -> stageRun.getContextStageId(),
                 stageRun -> stageRun
         ));
 

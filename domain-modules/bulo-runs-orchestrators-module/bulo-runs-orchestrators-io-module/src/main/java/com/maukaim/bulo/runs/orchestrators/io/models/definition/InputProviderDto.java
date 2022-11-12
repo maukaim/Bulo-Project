@@ -24,7 +24,7 @@ public class InputProviderDto {
     @Override
     public String toString() {
         return "InputProviderDto{" +
-                "contextualizedStageId=" + contextStageId +
+                "contextStageId=" + contextStageId +
                 ", outputIds=" + outputIds +
                 '}';
     }

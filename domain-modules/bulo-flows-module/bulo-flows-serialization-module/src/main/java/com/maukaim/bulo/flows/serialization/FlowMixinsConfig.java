@@ -29,7 +29,8 @@ public class FlowMixinsConfig {
             OwnerKeyDto.class, OwnerKeyDtoMixIn.class,
             FlowStageDto.class, FlowStageDtoMixIn.class,
             IoDependencyDto.class, IoDependencyDtoMixIn.class,
-            InputProviderDto.class, InputProviderDtoMixIn.class
+            InputProviderDto.class, InputProviderDtoMixIn.class,
+            FailureAlternativeRoutesDto.class, FailureAlternativeRouteDtoMixIn.class
     );
 
     public static Map<Class<?>, Class<?>> DEFINITIONS_SERIALIZATION_JACKSON_MIXIN = Map.of(
@@ -54,3 +55,15 @@ public class FlowMixinsConfig {
     }};
 
 }
+
+/**
+ * Next:
+ * Consume Flow in Orchestrator with failureAlternativeRoutes
+ * Add this in OrchestrableContext, so FlowRun can use it.
+ * in FlowRunServiceImpl, quand des stages sont failed,
+ * avant de changer le status du FlowRun en FAILED, check si une alternative exist.
+ * Si une existe, en faire une nextStage, donc l'ajouter, et egalement ignorer la failed stage dans le calcul
+ * du status.
+ * Penser a checker/changer comment on verifie qu'un flow est bien SUCCESS.
+ * Penser a checker/changer que un FlowRun n'espere que 1 StageRun par ContextStage.
+ */

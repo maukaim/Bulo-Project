@@ -15,7 +15,7 @@ public class OrchestrableContextViewFactory {
 
     public static OrchestrableContextView build(OrchestrableRunContext<?> orchestrableRunContext) {
         Map<ContextStageId, List<StageRun>> runningStages = orchestrableRunContext.getInFlightStageRuns().stream()
-                .collect(Collectors.groupingBy( stageRun -> stageRun.getContextualizedStageId()));
+                .collect(Collectors.groupingBy( stageRun -> stageRun.getContextStageId()));
 
         Instant startTime = null;
         Instant endTime = null;

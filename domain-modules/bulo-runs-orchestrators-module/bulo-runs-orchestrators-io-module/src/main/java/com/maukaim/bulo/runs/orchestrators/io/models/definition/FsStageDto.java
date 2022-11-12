@@ -24,7 +24,7 @@ public class FsStageDto {
     @Override
     public String toString() {
         return "FsStageDto{" +
-                "contextualizedStageId=" + contextStageId +
+                "contextStageId=" + contextStageId +
                 ", ioDependencies=" + ioDependencies +
                 '}';
     }

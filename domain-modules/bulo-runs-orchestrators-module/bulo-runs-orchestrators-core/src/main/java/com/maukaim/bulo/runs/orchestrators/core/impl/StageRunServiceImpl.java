@@ -126,16 +126,16 @@ public class StageRunServiceImpl implements StageRunService {
         return contextStageIds == null ? Map.of() : contextStageIds.stream()
                 .collect(Collectors
                         .toMap(
-                                contextualizedStageId -> contextualizedStageId,
-                                contextualizedStageId -> orchestrableRunContext.getExecutionGraph()
-                                        .getFlowStageDependencies(contextualizedStageId).stream()
+                                contextStageId -> contextStageId,
+                                contextStageId -> orchestrableRunContext.getExecutionGraph()
+                                        .getFlowStageDependencies(contextStageId).stream()
                                         .map(stageDependency -> new RunDependency(stageDependency.getInputId(), Set.of()))
                                         .collect(Collectors.toSet())
                         ));
     }
 
     private Map<String, StageRun> startTechnicalStage(TechnicalStageRun stageRun) {
-        boolean started = this.stageRunConnector.requestRun(stageRun.getContextualizedStageId().getStageId(), stageRun.getStageRunId(), stageRun.getStageRunDependencies());
+        boolean started = this.stageRunConnector.requestRun(stageRun.getContextStageId().getStageId(), stageRun.getStageRunId(), stageRun.getStageRunDependencies());
         return Map.of(stageRun.getStageRunId(), started ?
                 TechnicalStageRunFactory.requested(stageRun) :
                 TechnicalStageRunFactory.failed(stageRun, Instant.now()));

@@ -2,6 +2,7 @@ package com.maukaim.bulo.flows.app.beans;
 
 import com.maukaim.bulo.flows.data.lifecycle.*;
 import com.maukaim.bulo.flows.data.lifecycle.impl.*;
+import com.maukaim.bulo.flows.io.flow.FailureAlternativeRoutesDto;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.*;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.*;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +13,14 @@ public class AdapterBeansConfig {
 
     @Bean
     public FlowDtoAdapter flowDtoAdapter(OwnerKeyDtoAdapter ownerKeyDtoAdapter,
-                                         FlowStageDtoAdapter flowStageDtoAdapter) {
-        return new FlowDtoAdapterImpl(ownerKeyDtoAdapter, flowStageDtoAdapter);
+                                         FlowStageDtoAdapter flowStageDtoAdapter,
+                                         FailureAlternativeRouteDtoAdapter failureAlternativeRouteDtoAdapter) {
+        return new FlowDtoAdapterImpl(ownerKeyDtoAdapter, flowStageDtoAdapter, failureAlternativeRouteDtoAdapter);
+    }
+
+    @Bean
+    public FailureAlternativeRouteDtoAdapter failureAlternativeRouteDtoAdapter(){
+        return new FailureAlternativeRouteDtoAdapterImpl();
     }
 
     @Bean
@@ -38,8 +45,14 @@ public class AdapterBeansConfig {
 
     @Bean
     public FlowAdapter flowAdapter(OwnerKeyAdapter ownerKeyAdapter,
-                                   FlowStageAdapter flowStageAdapter) {
-        return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter);
+                                   FlowStageAdapter flowStageAdapter,
+                                   FailureAlternativeRouteAdapter failureAlternativeRouteAdapter) {
+        return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter, failureAlternativeRouteAdapter);
+    }
+
+    @Bean
+    public FailureAlternativeRouteAdapter failureAlternativeRouteAdapter(){
+        return new FailureAlternativeRouteAdapterImpl();
     }
 
     @Bean

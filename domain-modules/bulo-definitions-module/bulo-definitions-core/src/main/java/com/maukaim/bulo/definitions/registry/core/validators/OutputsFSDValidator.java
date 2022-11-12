@@ -11,9 +11,7 @@ import com.maukaim.bulo.definitions.data.definition.functional.OutputProvider;
 import com.maukaim.bulo.definitions.data.stage.Stage;
 import com.maukaim.bulo.definitions.registry.core.FunctionalStageDefinitionValidator;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
