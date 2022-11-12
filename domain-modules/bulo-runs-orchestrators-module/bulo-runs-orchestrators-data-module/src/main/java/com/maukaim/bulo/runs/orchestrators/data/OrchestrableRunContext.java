@@ -57,23 +57,4 @@ public abstract class OrchestrableRunContext<KEY> {
     public Collection<StageRun> getAllStageRuns() {
         return getStageRunsById().values();
     }
-
-    public Map<ContextStageId, StageRun> getLeavesRuns(){
-        if(!getStatus().isSuccess()){
-            throw new RuntimeException("Impossible to get Leave Runs if status not terminal.");
-        }
-
-        Map<ContextStageId, StageRun> stageRunsByContextStageId = this.getAllStageRuns().stream().collect(Collectors.toMap(
-                stageRun -> stageRun.getContextStageId(),
-                stageRun -> stageRun
-        ));
-
-        return this.getExecutionGraph().getLeavesIds().stream()
-                .collect(Collectors.toMap(
-                        leaveId -> leaveId,
-                        leaveId -> stageRunsByContextStageId.get(leaveId)
-                ));
-
-    };
-
 }

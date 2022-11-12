@@ -88,10 +88,4 @@ public class ExecutionGraph {
             return Set.of();
         }
     }
-
-    public Set<ContextStageId> getLeavesIds() {
-        return dependenciesByFlowStageId.keySet().stream()
-                .filter(contextStageId -> !this.childrenIdsByStageId.containsKey(contextStageId))
-                .collect(Collectors.toSet());
-    }
 }
