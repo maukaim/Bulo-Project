@@ -183,6 +183,7 @@ public class StageRunServiceImpl implements StageRunService {
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
                     .collect(Collectors.toList());
             toBeRequestedReference.set(tobeRequestedTechnicalStageRuns);
+            System.out.println(String.format("FuncStageRun %s is now in status is %s.", newStageRun.getContextId(), newStageRun.getStatus()));
             return newStageRun;
         });
 
@@ -214,6 +215,7 @@ public class StageRunServiceImpl implements StageRunService {
                 Map<String, StageRun> stageRunsAfterRequest = this.startRuns(toBeRequestedRuns);
                 FunctionalStageRun stageRunAfterRequested = FunctionalStageRunFactory.updateStageRunView(stageRunPersisted, stageRunsAfterRequest);
                 stageRunAfterRequested = FunctionalStageRunFactory.updateState(stageRunAfterRequested, resolveStatus(stageRunAfterRequested));
+                System.out.println(String.format("FuncStageRun %s is now in status is %s.", stageRunAfterRequested.getContextId(), stageRunAfterRequested.getStatus()));
 
                 return stageRunAfterRequested;
             });

@@ -89,6 +89,8 @@ public class FlowRunServiceImpl implements FlowRunService {
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
                     .collect(Collectors.toList());
             toBeRequestedReference.set(tobeRequestedTechnicalStageRuns);
+            System.out.println(String.format("FlowRun %s is now in status is %s.", newFlowRunValue.getContextId(), newFlowRunValue.getStatus()));
+
             return newFlowRunValue;
         });
 
@@ -98,6 +100,7 @@ public class FlowRunServiceImpl implements FlowRunService {
                 Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
                 FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(flowRunPersisted, stageRunsAfterRequest);
                 flowRunAfterRequested = FlowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
+                System.out.println(String.format("FlowRun %s is now in status is %s.", flowRunAfterRequested.getContextId(), flowRunAfterRequested.getStatus()));
 
                 return flowRunAfterRequested;
             });
