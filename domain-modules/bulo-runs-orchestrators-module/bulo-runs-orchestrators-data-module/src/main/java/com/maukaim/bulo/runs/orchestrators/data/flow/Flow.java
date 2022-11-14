@@ -9,15 +9,19 @@ public class Flow implements FlowInterface {
     private final Set<OwnerKey> ownerKeys;
     private final Set<FlowStage> flowStages;
     private final boolean allowParallelRun;
+    private final Set<FailureAlternativeRoute> failureAlternativeRoutes;
+
 
     public Flow(String flowId,
                 Set<OwnerKey> ownerKeys,
                 Set<FlowStage> flowStages,
-                boolean allowParallelRun) {
+                boolean allowParallelRun,
+                Set<FailureAlternativeRoute> failureAlternativeRoutes) {
         this.flowId = flowId;
         this.allowParallelRun = allowParallelRun;
         this.ownerKeys = ownerKeys;
         this.flowStages = flowStages;
+        this.failureAlternativeRoutes = failureAlternativeRoutes;
     }
 
     public Set<OwnerKey> getOwnerKeys() {
@@ -36,6 +40,10 @@ public class Flow implements FlowInterface {
         return allowParallelRun;
     }
 
+    public Set<FailureAlternativeRoute> getFailureAlternativeRoutes() {
+        return failureAlternativeRoutes;
+    }
+
     @Override
     public String toString() {
         return "Flow{" +
@@ -43,6 +51,7 @@ public class Flow implements FlowInterface {
                 ", ownerKeys=" + ownerKeys +
                 ", flowStages=" + flowStages +
                 ", allowParallelRun=" + allowParallelRun +
+                ", failureAlternativeRoutes=" + failureAlternativeRoutes +
                 '}';
     }
 }

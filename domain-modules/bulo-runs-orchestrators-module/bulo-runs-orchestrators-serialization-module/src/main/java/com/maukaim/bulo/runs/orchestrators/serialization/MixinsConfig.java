@@ -52,7 +52,8 @@ public class MixinsConfig {
             OwnerKeyDto.class, OwnerKeyDtoMixIn.class,
             FlowStageDto.class, FlowStageDtoMixIn.class,
             InputDependencyDto.class, InputDependencyDtoMixIn.class,
-            InputProviderDto.class, InputProviderDtoMixIn.class
+            InputProviderDto.class, InputProviderDtoMixIn.class,
+            FailureAlternativeRoutesDto.class, FailureAlternativeRouteDtoMixIn.class
     );
 
     public static Map<Class<?>,Class<?>> STAGE_MIXINS = Map.of(

@@ -103,8 +103,14 @@ public class StandaloneBeansConfig {
 
         @Bean
         public FlowAdapter flowAdapter(OwnerKeyAdapter ownerKeyAdapter,
-                                       FlowStageAdapter flowStageAdapter) {
-            return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter);
+                                       FlowStageAdapter flowStageAdapter,
+                                       FailureAlternativeRouteAdapter failureAlternativeRouteAdapter) {
+            return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter, failureAlternativeRouteAdapter);
+        }
+
+        @Bean
+        public FailureAlternativeRouteAdapter failureAlternativeRouteAdapter(){
+            return new FailureAlternativeRouteAdapterImpl();
         }
 
         @Bean

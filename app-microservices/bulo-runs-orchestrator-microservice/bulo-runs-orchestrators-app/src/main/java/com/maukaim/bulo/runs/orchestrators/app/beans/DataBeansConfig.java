@@ -43,8 +43,15 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public FlowAdapter flowAdapter(OwnerKeyAdapter ownerKeyAdapter, FlowStageAdapter flowStageAdapter) {
-            return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter);
+        public FlowAdapter flowAdapter(OwnerKeyAdapter ownerKeyAdapter,
+                                       FlowStageAdapter flowStageAdapter,
+                                       FailureAlternativeRouteAdapter failureAlternativeRouteAdapter) {
+            return new FlowAdapterImpl(ownerKeyAdapter, flowStageAdapter, failureAlternativeRouteAdapter);
+        }
+
+        @Bean
+        public FailureAlternativeRouteAdapter failureAlternativeRouteAdapter(){
+            return new FailureAlternativeRouteAdapterImpl();
         }
 
         @Bean
@@ -68,8 +75,15 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public FlowDtoAdapter flowDtoAdapter(FlowStageDtoAdapter flowStageDtoAdapter, OwnerKeyDtoAdapter ownerKeyDtoAdapter) {
-            return new FlowDtoAdapterImpl(flowStageDtoAdapter, ownerKeyDtoAdapter);
+        public FlowDtoAdapter flowDtoAdapter(FlowStageDtoAdapter flowStageDtoAdapter,
+                                             OwnerKeyDtoAdapter ownerKeyDtoAdapter,
+                                             FailureAlternativeRouteDtoAdapter failureAlternativeRouteDtoAdapter) {
+            return new FlowDtoAdapterImpl(flowStageDtoAdapter, ownerKeyDtoAdapter, failureAlternativeRouteDtoAdapter);
+        }
+
+        @Bean
+        public FailureAlternativeRouteDtoAdapter failureAlternativeRouteDtoAdapter(){
+            return new FailureAlternativeRouteDtoAdapterImpl();
         }
 
         @Bean
