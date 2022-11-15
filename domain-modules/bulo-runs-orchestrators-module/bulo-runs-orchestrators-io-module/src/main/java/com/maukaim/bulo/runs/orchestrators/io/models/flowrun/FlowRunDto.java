@@ -9,15 +9,26 @@ public class FlowRunDto implements OrchestrableContextDto<String> {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraphDto executionGraph;
+    private final FailureGraphDto failureGraph;
     private final Map<String, StageRunDto> stageRunByIds;
     private final OrchestrableContextStatusDto orchestrableContextStatus;
 
-    public FlowRunDto(String flowRunId, String flowId, ExecutionGraphDto executionGraph, Map<String, StageRunDto> stageRunByIds, OrchestrableContextStatusDto flowRunStatus) {
+    public FlowRunDto(String flowRunId,
+                      String flowId,
+                      ExecutionGraphDto executionGraph,
+                      FailureGraphDto failureGraph,
+                      Map<String, StageRunDto> stageRunByIds,
+                      OrchestrableContextStatusDto flowRunStatus) {
         this.flowRunId = flowRunId;
         this.flowId = flowId;
         this.executionGraph = executionGraph;
+        this.failureGraph = failureGraph;
         this.stageRunByIds = stageRunByIds;
         this.orchestrableContextStatus = flowRunStatus;
+    }
+
+    public FailureGraphDto getFailureGraph() {
+        return failureGraph;
     }
 
     @Override
@@ -53,8 +64,9 @@ public class FlowRunDto implements OrchestrableContextDto<String> {
                 "flowRunId='" + flowRunId + '\'' +
                 ", flowId='" + flowId + '\'' +
                 ", executionGraph=" + executionGraph +
-                ", stageRunViewByIds=" + stageRunByIds +
-                ", flowRunStatus=" + orchestrableContextStatus +
+                ", failureGraph=" + failureGraph +
+                ", stageRunByIds=" + stageRunByIds +
+                ", orchestrableContextStatus=" + orchestrableContextStatus +
                 '}';
     }
 }

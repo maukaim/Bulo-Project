@@ -172,8 +172,14 @@ public class DataBeansConfig {
 
         @Bean
         public FlowRunAdapter flowRunAdapter(StageRunAdapter stageRunAdapter,
-                                             ExecutionGraphAdapter executionGraphAdapter) {
-            return new FlowRunAdapterImpl(stageRunAdapter, executionGraphAdapter);
+                                             ExecutionGraphAdapter executionGraphAdapter,
+                                             FailureGraphAdapter failureGraphAdapter) {
+            return new FlowRunAdapterImpl(stageRunAdapter, executionGraphAdapter, failureGraphAdapter);
+        }
+
+        @Bean
+        public FailureGraphAdapter failureGraphAdapter(){
+            return new FailureGraphAdapterImpl();
         }
 
         @Bean
@@ -193,8 +199,14 @@ public class DataBeansConfig {
 
         @Bean
         public FlowRunDtoAdapter flowRunDtoAdapter(StageRunDtoAdapter stageRunDtoAdapter,
-                                                   ExecutionGraphDtoAdapter executionGraphDtoAdapter) {
-            return new FlowRunDtoAdapterImpl(stageRunDtoAdapter, executionGraphDtoAdapter);
+                                                   ExecutionGraphDtoAdapter executionGraphDtoAdapter,
+                                                   FailureGraphDtoAdapter failureGraphDtoAdapter) {
+            return new FlowRunDtoAdapterImpl(stageRunDtoAdapter, executionGraphDtoAdapter, failureGraphDtoAdapter);
+        }
+
+        @Bean
+        public FailureGraphDtoAdapter failureGraphDtoAdapter(){
+            return new FailureGraphDtoAdapterImpl();
         }
 
         @Bean

@@ -12,16 +12,19 @@ public class FlowRun extends OrchestrableRunContext<String> {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraph executionGraph;
+    private final FailureGraph failureGraph;
     private final Map<String, StageRun> stageRunViewByIds;
     private final OrchestrableContextStatus orchestrableContextStatus;
 
     public FlowRun(String flowRunId,
                    String flowId,
                    ExecutionGraph executionGraph,
+                   FailureGraph failureGraph,
                    Map<String, StageRun> stageRunViewByIds,
                    OrchestrableContextStatus orchestrableContextStatus) {
         this.flowRunId = flowRunId;
         this.flowId = flowId;
+        this.failureGraph = failureGraph;
         this.stageRunViewByIds = Map.copyOf(stageRunViewByIds);
         this.orchestrableContextStatus = orchestrableContextStatus;
         this.executionGraph = executionGraph;
@@ -30,6 +33,10 @@ public class FlowRun extends OrchestrableRunContext<String> {
     @Override
     public ExecutionGraph getExecutionGraph() {
         return this.executionGraph;
+    }
+
+    public FailureGraph getFailureGraph() {
+        return failureGraph;
     }
 
     @Override
@@ -67,8 +74,9 @@ public class FlowRun extends OrchestrableRunContext<String> {
                 "flowRunId='" + flowRunId + '\'' +
                 ", flowId='" + flowId + '\'' +
                 ", executionGraph=" + executionGraph +
-                ", resultByStageIds=" + stageRunViewByIds +
-                ", flowRunStatus=" + orchestrableContextStatus +
+                ", failureGraph=" + failureGraph +
+                ", stageRunViewByIds=" + stageRunViewByIds +
+                ", orchestrableContextStatus=" + orchestrableContextStatus +
                 '}';
     }
 }

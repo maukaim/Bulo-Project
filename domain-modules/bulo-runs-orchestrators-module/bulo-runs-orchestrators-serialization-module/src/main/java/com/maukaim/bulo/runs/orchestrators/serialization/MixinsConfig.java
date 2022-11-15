@@ -17,6 +17,7 @@ import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definitio
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.IoDependencyDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.OutputProviderDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.StageDefinitionDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.stage.FailedRunAlternativeRouteDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.stage.StageDtoMixIn;
 
 import java.util.HashMap;
@@ -33,8 +34,11 @@ public class MixinsConfig {
             FlowStageDependencyDto.class, FlowStageDependencyDtoMixIn.class,
             TechnicalStageRunDto.class, TechnicalStageRunDtoMixIn.class,
             FunctionalStageRunDto.class, FunctionalStageRunDtoMixIn.class,
-            StageRunDependencyDto.class, StageRunDependencyDtoMixIn.class,
-            com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class
+            StageRunDependencyDto.class, StageRunDependencyDtoMixIn.class);
+
+    public static Map<Class<?>, Class<?>> ORCHESTRABLE_CONTEXT_MIXINS = Map.of(
+            FailureGraphDto.class, FailureGraphDtoMixIn.class,
+            FailedRunAlternativeRouteDto.class, FailedRunAlternativeRouteDtoMixIn.class
     );
 
     public static Map<Class<?>, Class<?>> STAGE_RUN_EVENTS_MIXINS = Map.of(
@@ -43,8 +47,9 @@ public class MixinsConfig {
             RunFailedStageRunEvent.class, StandardStageRunEventMixin.class,
             RunSuccessfulStageRunEvent.class, StandardStageRunEventMixin.class,
             StartRunStageRunEvent.class, StandardStageRunEventMixin.class,
-            BasicStageRunEvent.class, BasicStageRunEventMixIn.class
-    );
+            BasicStageRunEvent.class, BasicStageRunEventMixIn.class,
+            com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class
+            );
 
     public static Map<Class<?>,Class<?>> FLOW_MIXINS = Map.of(
             FlowEvent.class, FlowEventMixIn.class,
@@ -75,6 +80,7 @@ public class MixinsConfig {
 
     public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
         putAll(STAGE_RUN_EVENTS_MIXINS);
+        putAll(ORCHESTRABLE_CONTEXT_MIXINS);
         putAll(FLOW_RUN_MIXINS);
         putAll(FLOW_MIXINS);
         putAll(STAGE_MIXINS);

@@ -1,10 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.core.factories;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
-import com.maukaim.bulo.runs.orchestrators.data.flow.FlowStage;
-import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
-import com.maukaim.bulo.runs.orchestrators.data.flow.InputProvider;
+import com.maukaim.bulo.runs.orchestrators.data.flow.*;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.*;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 
@@ -21,6 +18,7 @@ public class FlowRunFactory {
                 flowRun.getContextId(),
                 flowRun.getFlowId(),
                 flowRun.getExecutionGraph(),
+                flowRun.getFailureGraph(),
                 flowRun.getStageRunsById(),
                 newStatus
         );
@@ -29,15 +27,24 @@ public class FlowRunFactory {
     public static FlowRun updateStageRunView(FlowRun flowRun, Map<String, StageRun> mapOfViewToBeUpdated) {
         HashMap<String, StageRun> newStageRunViewMap = new HashMap<>(flowRun.getStageRunsById());
         newStageRunViewMap.putAll(mapOfViewToBeUpdated);
-        return new FlowRun(flowRun.getContextId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), Map.copyOf(newStageRunViewMap), flowRun.getStatus());
+        return new FlowRun(flowRun.getContextId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), flowRun.getFailureGraph(), Map.copyOf(newStageRunViewMap), flowRun.getStatus());
     }
 
     public static FlowRun create(Flow flow) {
         return new FlowRun(UUID.randomUUID().toString(),
                 flow.getFlowId(),
                 new ExecutionGraph(resolveFlowStages(flow.getFlowStages())),
+                new FailureGraph(resolveFailureAlternativeRoutes(flow.getFailureAlternativeRoutes())),
                 new HashMap<>(),
                 OrchestrableContextStatus.NEW);
+    }
+
+    private static Map<ContextStageId, FailedRunRoute> resolveFailureAlternativeRoutes(Set<FailureAlternativeRoute> failureAlternativeRoutes) {
+        return failureAlternativeRoutes.stream()
+                .collect(Collectors.toMap(
+                        far -> far.getFrom(),
+                        far -> new FailedRunRoute(far.getTo(), far.getMaxUsage())
+                ));
     }
 
     private static Map<ContextStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FlowStage> flowStages) {

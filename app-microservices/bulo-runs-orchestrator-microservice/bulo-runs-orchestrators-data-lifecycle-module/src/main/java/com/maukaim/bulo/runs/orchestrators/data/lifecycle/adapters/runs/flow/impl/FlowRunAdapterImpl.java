@@ -1,6 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.impl;
 
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.ExecutionGraphAdapter;
+import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FailureGraphAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.flow.FlowRunAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.runs.stage.StageRunAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
@@ -16,11 +17,14 @@ import java.util.stream.Collectors;
 public class FlowRunAdapterImpl implements FlowRunAdapter {
     private final StageRunAdapter stageRunAdapter;
     private final ExecutionGraphAdapter executionGraphAdapter;
+    private final FailureGraphAdapter failureGraphAdapter;
 
     public FlowRunAdapterImpl(StageRunAdapter stageRunAdapter,
-                              ExecutionGraphAdapter executionGraphAdapter) {
+                              ExecutionGraphAdapter executionGraphAdapter,
+                              FailureGraphAdapter failureGraphAdapter) {
         this.stageRunAdapter = stageRunAdapter;
         this.executionGraphAdapter = executionGraphAdapter;
+        this.failureGraphAdapter = failureGraphAdapter;
     }
 
     @Override
@@ -29,6 +33,7 @@ public class FlowRunAdapterImpl implements FlowRunAdapter {
                 dto.getContextId(),
                 dto.getFlowId(),
                 this.executionGraphAdapter.adapte(dto.getExecutionGraph()),
+                this.failureGraphAdapter.adapte(dto.getFailureGraph()),
                 resolve(dto.getStageRunByIds()),
                 resolve(dto.getOrchestrableContextStatus())
         );
