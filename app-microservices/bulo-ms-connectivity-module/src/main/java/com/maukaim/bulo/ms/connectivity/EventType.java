@@ -19,6 +19,7 @@ public enum EventType {
 
     //From Definitions service
     DEF_UPDATE,
+    EXECUTOR_UPDATE,
 
     //From Executors service
     STAGE_RUN_RESULT,

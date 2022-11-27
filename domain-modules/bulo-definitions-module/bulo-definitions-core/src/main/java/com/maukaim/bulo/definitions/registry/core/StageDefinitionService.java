@@ -11,7 +11,5 @@ public interface StageDefinitionService {
     void register(String stageExecutorId, TechnicalStageDefinition definition);
     void unregister(String stageExecutorId, String definitionId);
 
-    StageDefinition get(String definitionId);
-
     List<StageDefinition> getAll();
 }
