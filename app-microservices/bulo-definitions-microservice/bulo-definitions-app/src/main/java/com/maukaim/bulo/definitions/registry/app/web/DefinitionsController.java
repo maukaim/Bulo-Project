@@ -9,6 +9,7 @@ import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDe
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,12 @@ public class DefinitionsController implements DefinitionController {
 
     @PostMapping(value = "/onUpdateEvent")
     public ResponseEntity<?> onUpdateEvent(@RequestBody StageDefinitionEvent event) {
+        this.definitionEventConsumer.consume(event);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/onExecutorUpdateEvent")
+    public ResponseEntity<?> onExecutorUpdateEvent(@RequestBody ExecutorUpdateEvent event) {
         this.definitionEventConsumer.consume(event);
         return ResponseEntity.ok().build();
     }

@@ -3,14 +3,17 @@ package com.maukaim.bulo.definitions.ms.data.lifecycle;
 
 import com.maukaim.bulo.commons.io.DefinitionEventType;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
-import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
+import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
+import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 
 import java.time.Instant;
 import java.util.*;
+
+import static com.maukaim.bulo.commons.io.DefinitionEventType.UPDATE;
 
 public class StageDefinitionStoreImpl implements StageDefinitionStore {
     private Map<String, Set<String>> executorsByStageDefinitionId;
@@ -27,14 +30,16 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
 
     @Override
     public StageDefinition addDefinition(StageDefinition definition) {
-        boolean published = publish(definition, DefinitionEventType.UPDATE);
+        boolean published = publish(definition, UPDATE);
         return published ? definition : saveDefinition(definition);
     }
 
     @Override
-    public Set<String> addExecutor(String stageExecutorId, String technicalStageId) {
-        //TODO: add logic of publish? Shouldn't be done with the AddDefinition? Like the Event should be something having the new TechnicalStageDefinition AND the stageExecutor to be added? to be defined....
-        return this.saveExecutor(stageExecutorId, technicalStageId);
+    public void addExecutor(String stageExecutorId, String technicalStageId) {
+        boolean published = this.definitionEventPublisher.publish(new ExecutorUpdateEvent(stageExecutorId, technicalStageId, UPDATE, Instant.now()));
+        if (!published) {
+            this.saveExecutor(stageExecutorId, technicalStageId);
+        }
     }
 
     @Override
@@ -47,8 +52,6 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
         return this.stageDefinitions.values().stream().toList();
     }
 
-    //TODO: Need to publish le removeExecutor ! Otherwise other registry wont see that the executor is not there anymore.
-    // May need to merge the executor list to the model?
     @Override
     public boolean removeExecutor(String executorId, String definitionId) {
         if (executorsByStageDefinitionId.containsKey(definitionId)) {
@@ -59,10 +62,10 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
                 val.remove(executorId);
                 return val;
             });
-            if(remainingExecutors == null || remainingExecutors.isEmpty()){
+            if (remainingExecutors == null || remainingExecutors.isEmpty()) {
                 StageDefinition stageDefinition = this.stageDefinitions.get(definitionId);
-                boolean published = publish(stageDefinition, DefinitionEventType.UPDATE);
-                if(!published){
+                boolean published = publish(stageDefinition, UPDATE);
+                if (!published) {
                     this.stageDefinitions.remove(definitionId);
                 }
                 return true;
@@ -81,7 +84,6 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
     }
 
     public Set<String> saveExecutor(String stageExecutorId, String definitionId) {
-        this.executorsByStageDefinitionId.putIfAbsent(definitionId, new HashSet<>());
         return this.executorsByStageDefinitionId.compute(definitionId, (id, executorIds) -> {
             if (executorIds == null) {
                 return new HashSet<>() {{
@@ -92,6 +94,7 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
             return executorIds;
         });
     }
+
     private boolean publish(StageDefinition definition, DefinitionEventType eventType) {
         StageDefinitionDto dto = this.definitionDtoAdapter.adapte(definition);
         StageDefinitionEvent event = new StageDefinitionEvent(dto, eventType, Instant.now());

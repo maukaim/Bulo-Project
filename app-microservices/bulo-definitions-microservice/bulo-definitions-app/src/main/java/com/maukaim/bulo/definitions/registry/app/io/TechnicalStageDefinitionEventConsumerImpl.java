@@ -3,9 +3,10 @@ package com.maukaim.bulo.definitions.registry.app.io;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
-import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
 
 public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStageDefinitionEventConsumer {
     private final StageDefinitionStoreImpl technicalStageDefinitionStore;
@@ -22,6 +23,21 @@ public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStage
         switch (event.getEventType()) {
             case UPDATE -> this.save(event.getStageDefinition());
             case DELETE -> this.remove(event.getStageDefinition().getDefinitionId());
+        }
+    }
+
+    @Override
+    public void consume(ExecutorUpdateEvent event) {
+        System.out.println("Consume event: " + event);
+        switch (event.getEventType()) {
+            case UPDATE -> this.technicalStageDefinitionStore.saveExecutor(
+                    event.getExecutorId(),
+                    event.getDefinitionId()
+            );
+            case DELETE -> this.technicalStageDefinitionStore.removeExecutor(
+                    event.getExecutorId(),
+                    event.getDefinitionId()
+            );
         }
     }
 

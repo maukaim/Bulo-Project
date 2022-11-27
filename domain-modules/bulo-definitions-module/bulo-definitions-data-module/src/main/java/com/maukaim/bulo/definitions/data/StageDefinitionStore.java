@@ -8,7 +8,7 @@ import java.util.Set;
 public interface StageDefinitionStore {
     StageDefinition addDefinition(StageDefinition definition);
 
-    Set<String> addExecutor(String stageExecutorId, String id);
+    void addExecutor(String stageExecutorId, String id);
 
     StageDefinition getById(String id);
 

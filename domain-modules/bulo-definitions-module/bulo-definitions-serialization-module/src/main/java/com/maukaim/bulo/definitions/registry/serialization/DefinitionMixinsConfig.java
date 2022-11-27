@@ -7,6 +7,7 @@ import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.functional.*;
 import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import com.maukaim.bulo.definitions.io.events.StageUpdateEvent;
 import com.maukaim.bulo.definitions.io.stage.FunctionalStageDto;
@@ -26,6 +27,7 @@ public class DefinitionMixinsConfig {
     private static Map<Class<?>,Class<?>> COMMON_DEFINITIONS_MIXINS = Map.of(
             StageDefinitionCreateInstruction.class, StageDefinitionCreateInstructionMixIn.class,
             StageDefinitionEvent.class, StageDefinitionEventMixIn.class,
+            ExecutorUpdateEvent.class, ExecutorUpdateEventMixIn.class,
 
             StageDefinitionDto.class, StageDefinitionDtoMixIn.class,
 

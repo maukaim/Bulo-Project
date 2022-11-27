@@ -63,11 +63,6 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     }
 
     @Override
-    public StageDefinition get(String definitionId) {
-        return this.definitionStore.getById(definitionId);
-    }
-
-    @Override
     public List<StageDefinition> getAll() {
         return this.definitionStore.getAll();
     }
