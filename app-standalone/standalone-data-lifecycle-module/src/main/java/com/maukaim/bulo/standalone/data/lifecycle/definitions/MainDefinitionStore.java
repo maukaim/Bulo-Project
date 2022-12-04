@@ -20,8 +20,8 @@ public class MainDefinitionStore implements StageDefinitionStore {
     }
 
     @Override
-    public Set<String> addExecutor(String stageExecutorId, String stageId) {
-        return this.saveExecutor(stageExecutorId, stageId);
+    public void addExecutor(String stageExecutorId, String stageId) {
+        this.saveExecutor(stageExecutorId, stageId);
     }
 
     @Override

@@ -30,5 +30,6 @@
         <module>app-standalone</module>
         <module>app-microservices</module>
         <module>app-commons</module>
+        <module>app-modules</module>
     </modules>
 </project>
