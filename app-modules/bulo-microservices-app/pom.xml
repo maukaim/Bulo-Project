@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>app-modules</artifactId>
+        <groupId>com.maukaim.bulo</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>bulo-microservices-app</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
+        <spring.boot.version>2.4.4</spring.boot.version>
+    </properties>
+
+    <modules>
+        <module>bulo-flows-microservice</module>
+        <module>bulo-stages-microservice</module>
+        <module>bulo-runs-orchestrator-microservice</module>
+        <module>bulo-definitions-microservice</module>
+        <module>bulo-executors-microservice</module>
+        <module>bulo-triggers-microservices</module>
+        <module>bulo-ms-connectivity-module</module>
+    </modules>
+</project>

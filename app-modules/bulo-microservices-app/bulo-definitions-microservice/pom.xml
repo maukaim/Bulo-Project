@@ -3,19 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bulo-project</artifactId>
+        <artifactId>bulo-microservices-app</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>app-modules</artifactId>
+    <artifactId>bulo-definitions-microservice</artifactId>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>bulo-microservices-app</module>
-        <module>bulo-standalone-app</module>
-        <module>bulo-common-app-modules</module>
-    </modules>
+    <properties>
+        <definitions.module.version>1.0-SNAPSHOT</definitions.module.version>
+    </properties>
 
+    <modules>
+        <module>bulo-definitions-app</module>
+        <module>bulo-definitions-data-lifecycle-ms-module</module>
+    </modules>
 </project>
