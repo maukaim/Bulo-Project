@@ -24,6 +24,6 @@
         <module>bulo-definitions-microservice</module>
         <module>bulo-executors-microservice</module>
         <module>bulo-triggers-microservices</module>
-        <module>bulo-ms-connectivity-module</module>
+        <module>technical-modules</module>
     </modules>
 </project>
