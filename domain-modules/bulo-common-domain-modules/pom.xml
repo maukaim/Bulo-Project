@@ -23,6 +23,7 @@
         <module>bulo-commons-io</module>
         <module>bulo-commons-models</module>
         <module>bulo-commons-serialization</module>
+        <module>bulo-api-data-types</module>
     </modules>
 
     <build>
