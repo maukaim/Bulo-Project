@@ -1,5 +1,9 @@
 package com.maukaim.bulo.flows.app.beans;
 
+import com.maukaim.bulo.common.data.lifecycle.IoTypeAdapter;
+import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
+import com.maukaim.bulo.common.data.lifecycle.impl.IoTypeAdapterImpl;
+import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeAdapterImpl;
 import com.maukaim.bulo.flows.data.lifecycle.*;
 import com.maukaim.bulo.flows.data.lifecycle.impl.*;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.*;
@@ -22,7 +26,7 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public FlowStageDtoAdapter flowStageDtoAdapter(IoDependencyDtoAdapter ioDependencyDtoAdapter){
+    public FlowStageDtoAdapter flowStageDtoAdapter(IoDependencyDtoAdapter ioDependencyDtoAdapter) {
         return new FlowStageDtoAdapterImpl(ioDependencyDtoAdapter);
     }
 
@@ -48,7 +52,7 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public FlowStageAdapter flowStageAdapter(IoDependencyAdapter ioDependencyAdapter){
+    public FlowStageAdapter flowStageAdapter(IoDependencyAdapter ioDependencyAdapter) {
         return new FlowStageAdapterImpl(ioDependencyAdapter);
     }
 
@@ -80,17 +84,27 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public ParameterDefinitionAdapter parameterDefinitionAdapter() {
-        return new ParameterDefinitionAdapterImpl();
+    public ParameterDefinitionAdapter parameterDefinitionAdapter(ParameterTypeAdapter parameterTypeAdapter) {
+        return new ParameterDefinitionAdapterImpl(parameterTypeAdapter);
     }
 
     @Bean
-    public StageInputDefinitionAdapter stageInputDefinitionAdapter() {
-        return new StageInputDefinitionAdapterImpl();
+    public ParameterTypeAdapter parameterTypeAdapter() {
+        return new ParameterTypeAdapterImpl();
     }
 
     @Bean
-    public StageOutputDefinitionAdapter stageOutputDefinitionAdapter() {
-        return new StageOutputDefinitionAdapterImpl();
+    public StageInputDefinitionAdapter stageInputDefinitionAdapter(IoTypeAdapter ioTypeAdapter) {
+        return new StageInputDefinitionAdapterImpl(ioTypeAdapter);
+    }
+
+    @Bean
+    public StageOutputDefinitionAdapter stageOutputDefinitionAdapter(IoTypeAdapter ioTypeAdapter) {
+        return new StageOutputDefinitionAdapterImpl(ioTypeAdapter);
+    }
+
+    @Bean
+    public IoTypeAdapter ioTypeAdapter(){
+        return new IoTypeAdapterImpl();
     }
 }

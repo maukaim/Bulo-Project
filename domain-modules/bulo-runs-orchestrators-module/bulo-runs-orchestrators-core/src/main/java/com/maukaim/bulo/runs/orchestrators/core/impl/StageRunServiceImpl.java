@@ -49,7 +49,7 @@ public class StageRunServiceImpl implements StageRunService {
             Set<RunDependency> runDependencies = resolveRunDependenciesWithContext(runContext, naiveRunDependencies);
             StageRun newRun;
             String definitionId = functionalStageService.getDefinitionId(contextStageId.getStageId());
-            if (definitionId == null) { // OK ! Next step, c'est de resoudre les RunDependency en fonction de celles du context si besoin!
+            if (definitionId == null) {
                 newRun = TechnicalStageRunFactory.toBeRequested(runContext, contextStageId, runDependencies);
             } else {
                 FunctionalStageDefinition definition = functionalStageDefinitionService.getById(definitionId);

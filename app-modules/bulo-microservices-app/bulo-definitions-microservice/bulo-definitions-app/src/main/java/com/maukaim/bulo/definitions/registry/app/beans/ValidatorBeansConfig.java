@@ -13,8 +13,8 @@ import java.util.List;
 public class ValidatorBeansConfig {
 
     @Bean
-    public ParametersTSDValidator parametersTSDValidator(){
-        return new ParametersTSDValidator();
+    public ParameterDefinitionTSDValidator parametersTSDValidator(){
+        return new ParameterDefinitionTSDValidator();
     }
 
     @Bean
@@ -31,7 +31,7 @@ public class ValidatorBeansConfig {
     public List<FunctionalStageDefinitionValidator> functionalStageValidators(StageDefinitionStore stageDefinitionStore,
                                                                               StageStore stageStore){
         return List.of(
-                new ParametersFSDValidator(),
+                new ParameterDefinitionsFSDValidator(),
                 new InputsFSDValidator(stageDefinitionStore,stageStore),
                 new OutputsFSDValidator(stageStore, stageDefinitionStore),
                 new FsStagesFSDValidator(stageStore)

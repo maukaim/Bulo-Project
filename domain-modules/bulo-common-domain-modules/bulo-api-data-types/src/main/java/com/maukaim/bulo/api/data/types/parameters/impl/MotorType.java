@@ -1,12 +1,11 @@
 package com.maukaim.bulo.api.data.types.parameters.impl;
 
 
+import com.maukaim.bulo.api.data.types.natives.NumberType;
 import com.maukaim.bulo.api.data.types.parameters.BuloParameterType;
 import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 
 import java.util.Map;
-
-import static com.maukaim.bulo.api.data.types.NativeType.*;
 
 public class MotorType extends BuloParameterType {
 
@@ -20,7 +19,7 @@ public class MotorType extends BuloParameterType {
 
     private static BuloParameterType get(boolean isRequired) {
         return BuloParameterType.of(Map.of(
-                "vitesseMax", NUMBER
+                "vitesseMax", NumberType.required()
         ), isRequired);
     }
 

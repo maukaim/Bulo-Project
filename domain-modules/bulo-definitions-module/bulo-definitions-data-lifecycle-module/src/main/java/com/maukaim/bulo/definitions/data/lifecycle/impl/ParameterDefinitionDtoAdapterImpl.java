@@ -1,18 +1,30 @@
 package com.maukaim.bulo.definitions.data.lifecycle.impl;
 
+import com.maukaim.bulo.api.data.types.parameters.ParameterType;
+import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;
+import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.ParameterDefinitionDtoAdapter;
-import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 
 public class ParameterDefinitionDtoAdapterImpl implements ParameterDefinitionDtoAdapter {
+    private final ParameterTypeDtoAdapter parameterTypeDtoAdapter;
+
+    public ParameterDefinitionDtoAdapterImpl(ParameterTypeDtoAdapter parameterTypeDtoAdapter) {
+        this.parameterTypeDtoAdapter = parameterTypeDtoAdapter;
+    }
+
     @Override
     public ParameterDefinitionDto adapte(ParameterDefinition parameterDefinition) {
         return new ParameterDefinitionDto(
                 parameterDefinition.getName(),
-                parameterDefinition.getValueType(),
+                resolve(parameterDefinition.getParameterType()),
                 parameterDefinition.getHint(),
-                parameterDefinition.getDescription(),
-                parameterDefinition.isRequired()
+                parameterDefinition.getDescription()
         );
+    }
+
+    private ParameterTypeDto resolve(ParameterType parameterType) {
+        return this.parameterTypeDtoAdapter.adapte(parameterType);
     }
 }

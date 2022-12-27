@@ -9,6 +9,7 @@ import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.runners.core.SimpleJsonMarshaller;
 import com.maukaim.bulo.runners.embedded.NameProvider;
+import com.maukaim.bulo.runners.embedded.NameProvider2;
 import com.maukaim.bulo.runners.embedded.PrintYoloRunner;
 import com.maukaim.bulo.runners.embedded.SlowPrintYoloRunner;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +30,11 @@ public class RunBeansConfig {
     @Bean
     public StageRunner nameProviding() {
         return new NameProvider();
+    }
+
+    @Bean
+    public StageRunner nameProvider2(){
+        return new NameProvider2();
     }
 
     @Bean

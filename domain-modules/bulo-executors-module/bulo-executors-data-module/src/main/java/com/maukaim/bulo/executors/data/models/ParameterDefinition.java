@@ -1,29 +1,19 @@
 package com.maukaim.bulo.executors.data.models;
 
+import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinition implements ParameterDefinitionInterface {
     private String name;
-    private String valueType;
+    private ParameterType parameterType;
     private String hint;
     private String description;
-    private Boolean required;
 
-    public static ParameterDefinition fromJavaClass(String name,
-                                                    Class<?> valueClass,
-                                                    String hint,
-                                                    String description,
-                                                    Boolean required){
-        return new ParameterDefinition(name, valueClass.getCanonicalName(), hint, description, required);
-
-    };
-
-    public ParameterDefinition(String name, String valueType, String hint, String description, boolean required) {
+    public ParameterDefinition(String name, ParameterType parameterType, String hint, String description) {
         this.name = name;
-        this.valueType = valueType;
+        this.parameterType = parameterType;
         this.hint = hint;
         this.description = description;
-        this.required = required;
     }
 
     @Override
@@ -31,8 +21,8 @@ public class ParameterDefinition implements ParameterDefinitionInterface {
         return name;
     }
 
-    public String getValueType() {
-        return valueType;
+    public ParameterType getParameterType() {
+        return parameterType;
     }
 
     public String getHint() {
@@ -44,17 +34,16 @@ public class ParameterDefinition implements ParameterDefinitionInterface {
     }
 
     public boolean isRequired() {
-        return required;
+        return getParameterType().isRequired();
     }
 
     @Override
     public String toString() {
         return "Parameters{" +
                 "key='" + name + '\'' +
-                ", valueType=" + valueType +
+                ", parameterType=" + parameterType +
                 ", hint='" + hint + '\'' +
                 ", description='" + description + '\'' +
-                ", required=" + required +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.maukaim.bulo.stages.core.validators;
 
+import com.maukaim.bulo.common.utils.ParameterTypeComparator;
 import com.maukaim.bulo.stages.core.StageValidator;
 import com.maukaim.bulo.stages.models.definition.ParameterDefinition;
 import com.maukaim.bulo.stages.models.definition.StageDefinition;
@@ -50,11 +51,11 @@ public class StageValidatorImpl implements StageValidator {
 
         List<String> failReasons = new ArrayList<>();
 
-        if (!parameterDefinition.getValueType().equals(matchedParameter.getValueType())) {
-            failReasons.add(String.format("Specified type for parameter %s should be %s but stage specified the following type: %s",
+        if (!ParameterTypeComparator.isValueValid(matchedParameter.getValue(), parameterDefinition.getParameterType())) {
+            failReasons.add(String.format("Specified type for parameter %s does not match value. Type was %s and raw value : %s",
                     expectedName,
-                    parameterDefinition.getValueType(),
-                    matchedParameter.getValueType()
+                    parameterDefinition.getParameterType(),
+                    matchedParameter.getValue()
             ));
         }
 

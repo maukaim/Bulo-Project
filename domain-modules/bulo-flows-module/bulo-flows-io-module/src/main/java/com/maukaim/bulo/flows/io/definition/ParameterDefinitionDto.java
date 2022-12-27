@@ -1,16 +1,15 @@
 package com.maukaim.bulo.flows.io.definition;
 
+import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinitionDto implements ParameterDefinitionInterface {
     private String name;
-    private String valueType;
-    private Boolean required;
+    private ParameterTypeDto parameterType;
 
-    public ParameterDefinitionDto(String name, String valueType, boolean required) {
+    public ParameterDefinitionDto(String name, ParameterTypeDto parameterType) {
         this.name = name;
-        this.valueType = valueType;
-        this.required = required;
+        this.parameterType = parameterType;
     }
 
     @Override
@@ -18,20 +17,15 @@ public class ParameterDefinitionDto implements ParameterDefinitionInterface {
         return name;
     }
 
-    public String getValueType() {
-        return valueType;
-    }
-
-    public boolean isRequired() {
-        return required;
+    public ParameterTypeDto getParameterType() {
+        return parameterType;
     }
 
     @Override
     public String toString() {
         return "ParameterDefinitionDto{" +
                 "name='" + name + '\'' +
-                ", valueType='" + valueType + '\'' +
-                ", required=" + required +
+                ", parameterType=" + parameterType + '\'' +
                 '}';
     }
 }

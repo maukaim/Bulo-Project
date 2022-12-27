@@ -3,12 +3,10 @@ package com.maukaim.bulo.definitions.io.stage;
 public class ParameterDto {
     private String value;
     private String name;
-    private String valueType;
 
-    public ParameterDto(String value, String name, String valueType) {
+    public ParameterDto(String value, String name) {
         this.value = value;
         this.name = name;
-        this.valueType = valueType;
     }
 
     public String getValue() {
@@ -17,9 +15,5 @@ public class ParameterDto {
 
     public String getName() {
         return name;
-    }
-
-    public String getValueType() {
-        return valueType;
     }
 }

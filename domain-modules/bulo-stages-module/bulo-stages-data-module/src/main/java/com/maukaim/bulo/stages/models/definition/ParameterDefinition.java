@@ -1,22 +1,21 @@
 package com.maukaim.bulo.stages.models.definition;
 
+import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 import java.util.Objects;
 
 public class ParameterDefinition implements ParameterDefinitionInterface {
     private String name;
-    private String valueType;
+    private ParameterType parameterType;
     private String hint;
     private String description;
-    private Boolean required;
 
-    public ParameterDefinition(String name, String valueType, String hint, String description, boolean required) {
+    public ParameterDefinition(String name, ParameterType parameterType, String hint, String description) {
         this.name = name;
-        this.valueType = valueType;
+        this.parameterType = parameterType;
         this.hint = hint;
         this.description = description;
-        this.required = required;
     }
 
     @Override
@@ -24,8 +23,8 @@ public class ParameterDefinition implements ParameterDefinitionInterface {
         return name;
     }
 
-    public String getValueType() {
-        return valueType;
+    public ParameterType getParameterType() {
+        return parameterType;
     }
 
     public String getHint() {
@@ -37,18 +36,16 @@ public class ParameterDefinition implements ParameterDefinitionInterface {
     }
 
     public boolean isRequired() {
-        return required;
+        return getParameterType().isRequired();
     }
-
 
     @Override
     public String toString() {
         return "ParameterDefinition{" +
                 "name='" + name + '\'' +
-                ", valueType='" + valueType + '\'' +
+                ", parameterType=" + parameterType +
                 ", hint='" + hint + '\'' +
                 ", description='" + description + '\'' +
-                ", required=" + required +
                 '}';
     }
 
@@ -57,11 +54,11 @@ public class ParameterDefinition implements ParameterDefinitionInterface {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParameterDefinition that = (ParameterDefinition) o;
-        return Objects.equals(name, that.name) && Objects.equals(valueType, that.valueType) && Objects.equals(hint, that.hint) && Objects.equals(description, that.description) && Objects.equals(required, that.required);
+        return Objects.equals(name, that.name) && Objects.equals(parameterType, that.parameterType) && Objects.equals(hint, that.hint) && Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, valueType, hint, description, required);
+        return Objects.hash(name, parameterType, hint, description);
     }
 }

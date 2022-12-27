@@ -1,20 +1,17 @@
 package com.maukaim.bulo.executors.data.models;
 
+import com.maukaim.bulo.api.data.types.DataTypeCategory;
+import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.commons.models.definitions.OutputDefinition;
 
 public class StageOutputDefinition implements OutputDefinition {
     private String name;
-    private Boolean canBeMultiple;
-    private String typeId;
+    private IoType ioType;
 
-    public static StageOutputDefinition fromJava(String name, boolean canBeMultiple, Class<?> classType){
-        return new StageOutputDefinition(name, canBeMultiple, classType.getCanonicalName());
-    }
 
-    public StageOutputDefinition(String name, Boolean canBeMultiple, String typeId) {
+    public StageOutputDefinition(String name, IoType ioType) {
         this.name = name;
-        this.canBeMultiple = canBeMultiple;
-        this.typeId = typeId;
+        this.ioType = ioType;
     }
 
     public String getName() {
@@ -22,21 +19,20 @@ public class StageOutputDefinition implements OutputDefinition {
     }
 
     @Override
-    public boolean isCanBeMultiple() {
-        return canBeMultiple;
+    public boolean canBeMultiple() {
+        return DataTypeCategory.ARRAY.equals(this.getType().getDataTypeCategory());
     }
 
     @Override
-    public String getTypeId() {
-        return typeId;
+    public IoType getType() {
+        return ioType;
     }
 
     @Override
     public String toString() {
-        return "TechnicalStageOutputDefinition{" +
+        return "StageOutputDefinition{" +
                 "name='" + name + '\'' +
-                ", canBeMultiple=" + canBeMultiple +
-                ", typeId='" + typeId + '\'' +
+                ", ioType=" + ioType +
                 '}';
     }
 }

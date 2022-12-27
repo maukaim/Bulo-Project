@@ -1,5 +1,7 @@
 package com.maukaim.bulo.runners.embedded;
 
+import com.maukaim.bulo.api.data.types.natives.BooleanType;
+import com.maukaim.bulo.api.data.types.natives.StringType;
 import com.maukaim.bulo.executors.data.models.ParameterDefinition;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
 import com.maukaim.bulo.executors.data.models.StageInputDefinition;
@@ -9,7 +11,6 @@ import com.maukaim.bulo.runners.core.AbstractStageRunner;
 import com.maukaim.bulo.runners.core.Marshaller;
 import com.maukaim.bulo.runners.core.RunnerUtils;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -51,45 +52,40 @@ public class PrintYoloRunner extends AbstractStageRunner {
 
     private static class InputsProvider {
         private final static String SUBJECT_NAME = "Yolo Subject";
-        private final static Class<String> SUBJECT_TYPE = String.class;
 
         public static StageInputDefinition[] get() {
             return new StageInputDefinition[]{
-                    StageInputDefinition.fromJava(SUBJECT_NAME, false, true, SUBJECT_TYPE)
+                    new StageInputDefinition(SUBJECT_NAME,
+                            StringType.required())
             };
         }
     }
 
     private static class OutputsProvider {
         private final static String RESULT_NAME = "Yolo Result";
-        private final static Class<String> RESULT_TYPE = String.class;
 
         public static StageOutputDefinition[] get() {
             return new StageOutputDefinition[]{
-                    StageOutputDefinition.fromJava(RESULT_NAME, false, RESULT_TYPE)
+                    new StageOutputDefinition(RESULT_NAME, StringType.required())
             };
         }
     }
 
     private static class ParametersProvider {
         private final static String UPPERCASE_NAME = "Uppercase";
-        private final static Class<Boolean> UPPERCASE_TYPE = Boolean.class;
-
         private final static String GREETINGS_NAME = "Greetings";
-        private final static Class<String> GREETINGS_TYPE = String.class;
 
         public static ParameterDefinition[] get() {
             return new ParameterDefinition[]{
-                    ParameterDefinition.fromJavaClass(UPPERCASE_NAME,
-                            UPPERCASE_TYPE,
+                    new ParameterDefinition(UPPERCASE_NAME,
+                            BooleanType.required(),
                             "true or false",
-                            "Determines if the print should be uppercase or not.",
-                            true),
-                    ParameterDefinition.fromJavaClass(GREETINGS_NAME,
-                            GREETINGS_TYPE,
+                            "Determines if the print should be uppercase or not."
+                    ),
+                    new ParameterDefinition(GREETINGS_NAME,
+                            StringType.required(),
                             "Hello, Ni hao, Bonjour, ...",
-                            "Add greetings before Yolo result.",
-                            true)
+                            "Add greetings before Yolo result.")
             };
         }
     }

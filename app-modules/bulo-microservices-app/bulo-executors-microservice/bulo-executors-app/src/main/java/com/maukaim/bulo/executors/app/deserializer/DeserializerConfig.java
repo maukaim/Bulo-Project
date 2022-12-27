@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilde
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.maukaim.bulo.commons.serialization.CommonMixinsConfig.COMMON_DESERIALIZERS;
+
 @Configuration
 public class DeserializerConfig {
 
@@ -13,7 +15,8 @@ public class DeserializerConfig {
     public Jackson2ObjectMapperBuilderCustomizer customizer() {
         return jacksonObjectMapperBuilder -> {
             jacksonObjectMapperBuilder.autoDetectGettersSetters(false);
-            jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.deserializersByType(COMMON_DESERIALIZERS);
+            jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);
             jacksonObjectMapperBuilder.mixIns(MixinsConfig.EXECUTORS_SERVICE_JACKSON_MIXIN);
         };
     }

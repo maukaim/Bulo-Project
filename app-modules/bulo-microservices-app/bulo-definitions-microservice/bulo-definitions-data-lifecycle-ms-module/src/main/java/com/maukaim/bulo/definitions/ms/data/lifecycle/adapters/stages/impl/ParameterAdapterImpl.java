@@ -10,8 +10,7 @@ public class ParameterAdapterImpl implements ParameterAdapter {
     public Parameter adapte(ParameterDto dto) {
         return new Parameter(
                 dto.getValue(),
-                dto.getName(),
-                dto.getValueType()
+                dto.getName()
         );
     }
 }

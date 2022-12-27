@@ -17,6 +17,12 @@
             <artifactId>bulo-definitions-data-module</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-common-utils</artifactId>
+            <version>${bulo.commons.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

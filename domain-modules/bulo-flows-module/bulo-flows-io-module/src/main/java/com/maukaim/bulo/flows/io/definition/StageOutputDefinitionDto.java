@@ -1,23 +1,22 @@
 package com.maukaim.bulo.flows.io.definition;
 
-import com.maukaim.bulo.commons.models.definitions.OutputDefinition;
+import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
 
-public class StageOutputDefinitionDto implements OutputDefinition {
-    private Boolean canBeMultiple;
-    private String typeId;
+public class StageOutputDefinitionDto {
+    private IoTypeDto ioType;
 
-    public StageOutputDefinitionDto(Boolean canBeMultiple, String typeId) {
-        this.canBeMultiple = canBeMultiple;
-        this.typeId = typeId;
+    public StageOutputDefinitionDto(IoTypeDto ioType) {
+        this.ioType = ioType;
+    }
+
+    public IoTypeDto getIoType() {
+        return ioType;
     }
 
     @Override
-    public boolean isCanBeMultiple() {
-        return canBeMultiple;
-    }
-
-    @Override
-    public String getTypeId() {
-        return typeId;
+    public String toString() {
+        return "StageOutputDefinitionDto{" +
+                "ioType=" + ioType +
+                '}';
     }
 }

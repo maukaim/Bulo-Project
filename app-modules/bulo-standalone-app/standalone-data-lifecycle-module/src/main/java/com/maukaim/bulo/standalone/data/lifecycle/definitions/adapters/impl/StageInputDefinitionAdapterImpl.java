@@ -6,19 +6,11 @@ import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageInpu
 public class StageInputDefinitionAdapterImpl implements StageInputDefinitionAdapter {
     @Override
     public StageInputDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.definition.StageInputDefinition inputDefinition) {
-        return inputDefinition == null ? null : new StageInputDefinition(
-                inputDefinition.isCanBeMultiple(),
-                inputDefinition.isRequired(),
-                inputDefinition.getTypeId()
-        );
+        return inputDefinition == null ? null : new StageInputDefinition(inputDefinition.getType());
     }
 
     @Override
     public com.maukaim.bulo.definitions.data.definition.StageInputDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.StageInputDefinition inputDefinition) {
-        return inputDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.StageInputDefinition(
-                inputDefinition.isCanBeMultiple(),
-                inputDefinition.isRequired(),
-                inputDefinition.getTypeId()
-        ) ;
+        return inputDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.StageInputDefinition(inputDefinition.getType());
     }
 }

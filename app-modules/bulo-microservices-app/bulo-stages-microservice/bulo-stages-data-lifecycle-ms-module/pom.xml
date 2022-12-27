@@ -29,5 +29,11 @@
             <artifactId>bulo-stages-io-module</artifactId>
             <version>${stages.module.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-common-data-lifecycle</artifactId>
+            <version>${bulo.commons.version}</version>
+        </dependency>
     </dependencies>
 </project>

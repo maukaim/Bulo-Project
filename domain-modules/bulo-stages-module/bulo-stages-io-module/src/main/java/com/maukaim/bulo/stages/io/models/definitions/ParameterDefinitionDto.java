@@ -1,20 +1,19 @@
 package com.maukaim.bulo.stages.io.models.definitions;
 
+import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinitionDto implements ParameterDefinitionInterface {
     private String name;
-    private String valueType;
+    private ParameterTypeDto parameterType;
     private String hint;
     private String description;
-    private Boolean required;
 
-    public ParameterDefinitionDto(String name, String valueType, String hint, String description, boolean required) {
+    public ParameterDefinitionDto(String name, ParameterTypeDto parameterType, String hint, String description) {
         this.name = name;
-        this.valueType = valueType;
+        this.parameterType = parameterType;
         this.hint = hint;
         this.description = description;
-        this.required = required;
     }
 
     @Override
@@ -22,8 +21,8 @@ public class ParameterDefinitionDto implements ParameterDefinitionInterface {
         return name;
     }
 
-    public String getValueType() {
-        return valueType;
+    public ParameterTypeDto getParameterType() {
+        return parameterType;
     }
 
     public String getHint() {
@@ -34,18 +33,13 @@ public class ParameterDefinitionDto implements ParameterDefinitionInterface {
         return description;
     }
 
-    public boolean isRequired() {
-        return required;
-    }
-
     @Override
     public String toString() {
         return "ParameterDefinitionDto{" +
                 "name='" + name + '\'' +
-                ", valueType='" + valueType + '\'' +
+                ", parameterType='" + parameterType + '\'' +
                 ", hint='" + hint + '\'' +
                 ", description='" + description + '\'' +
-                ", required=" + required +
                 '}';
     }
 }

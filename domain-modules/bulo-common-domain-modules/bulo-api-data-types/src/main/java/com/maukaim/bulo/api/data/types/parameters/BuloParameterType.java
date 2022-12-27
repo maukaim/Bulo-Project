@@ -13,7 +13,7 @@ public class BuloParameterType implements BuloType<ParameterType>, ParameterType
         return new BuloParameterType(fields, isRequired);
     }
 
-    protected BuloParameterType(Map<String, ParameterType> fields, boolean isRequired) {
+    public BuloParameterType(Map<String, ParameterType> fields, boolean isRequired) {
         this.fields = Map.copyOf(fields);
         this.isRequired = isRequired;
     }
@@ -26,5 +26,14 @@ public class BuloParameterType implements BuloType<ParameterType>, ParameterType
     @Override
     public boolean isRequired() {
         return isRequired;
+    }
+
+    @Override
+    public String toString() {
+        return "BuloParameterType{" +
+                "dataTypeCategory=" + getDataTypeCategory() +
+                ", fields=" + fields +
+                ", isRequired=" + isRequired +
+                '}';
     }
 }

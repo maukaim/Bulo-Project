@@ -26,7 +26,7 @@ public class DefinitionModuleBeansConfig {
     public List<TechnicalStageDefinitionValidator> technicalValidators() {
         return List.of(
                 new InputsTSDValidator(),
-                new ParametersTSDValidator(),
+                new ParameterDefinitionTSDValidator(),
                 new OutputsTSDValidator()
         );
     }
@@ -36,7 +36,7 @@ public class DefinitionModuleBeansConfig {
                                                                          StageStore stageStore) {
         return List.of(
                 new InputsFSDValidator(stageDefinitionStore, stageStore),
-                new ParametersFSDValidator(),
+                new ParameterDefinitionsFSDValidator(),
                 new OutputsFSDValidator(stageStore, stageDefinitionStore),
                 new FsStagesFSDValidator(stageStore)
         );

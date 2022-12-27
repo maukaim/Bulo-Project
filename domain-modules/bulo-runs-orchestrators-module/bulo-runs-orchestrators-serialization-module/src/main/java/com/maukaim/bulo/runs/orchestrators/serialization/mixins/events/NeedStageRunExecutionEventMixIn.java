@@ -11,6 +11,7 @@ public class NeedStageRunExecutionEventMixIn {
     @JsonCreator
     public NeedStageRunExecutionEventMixIn(@JsonProperty("stageId") String stageId,
                                            @JsonProperty("stageRunId") String stageRunId,
+//TODO: What this? Is it useful? Probably not.
                                            @JsonProperty("ioMapping") Map<String, Map<String, Set<String>>> ioMapping,
                                            @JsonProperty("instant") Instant instant) {
     }

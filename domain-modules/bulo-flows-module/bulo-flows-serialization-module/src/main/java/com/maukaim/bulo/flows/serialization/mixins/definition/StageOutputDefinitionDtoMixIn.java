@@ -2,10 +2,10 @@ package com.maukaim.bulo.flows.serialization.mixins.definition;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
 
 public class StageOutputDefinitionDtoMixIn {
     @JsonCreator
-    public StageOutputDefinitionDtoMixIn(@JsonProperty("canBeMultiple") Boolean acceptMultiple,
-                                         @JsonProperty("typeId") String typeId) {
+    public StageOutputDefinitionDtoMixIn(@JsonProperty("ioType") IoTypeDto ioType) {
     }
 }

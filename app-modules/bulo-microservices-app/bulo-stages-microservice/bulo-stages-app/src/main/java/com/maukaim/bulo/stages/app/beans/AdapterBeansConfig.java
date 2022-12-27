@@ -3,8 +3,10 @@ package com.maukaim.bulo.stages.app.beans;
 import com.maukaim.bulo.stages.data.lifecycle.ParameterAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.ParameterDefinitionAdapterImpl;
+import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeAdapterImpl;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.TechnicalStageDefinitionAdapterImpl;
 import com.maukaim.bulo.stages.data.lifecycle.impl.ParameterAdapterImpl;
 import com.maukaim.bulo.stages.data.lifecycle.impl.StageAdapterImpl;
@@ -39,8 +41,13 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public ParameterDefinitionAdapter parameterDefinitionAdapter() {
-        return new ParameterDefinitionAdapterImpl();
+    public ParameterDefinitionAdapter parameterDefinitionAdapter(ParameterTypeAdapter parameterTypeAdapter) {
+        return new ParameterDefinitionAdapterImpl(parameterTypeAdapter);
+    }
+
+    @Bean
+    public ParameterTypeAdapter parameterTypeAdapter(){
+        return new ParameterTypeAdapterImpl();
     }
 
     @Bean

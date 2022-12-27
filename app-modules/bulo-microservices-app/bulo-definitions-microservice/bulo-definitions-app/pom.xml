@@ -20,6 +20,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.maukaim.bulo</groupId>
+                <artifactId>bulo-commons-serialization</artifactId>
+                <version>${bulo.commons.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

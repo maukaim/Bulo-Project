@@ -12,7 +12,6 @@ public class FakeDataProvider {
             List.of(
                     new Parameter("Bobby",
                             "Name",
-                            String.class.getName(),
                             "Not important details.")
             ),
             "NameProviding");
@@ -23,11 +22,9 @@ public class FakeDataProvider {
             List.of(
                     new Parameter("true",
                             "Uppercase",
-                            Boolean.class.getName(),
                             "Not important details."),
                     new Parameter("Hola Senior",
                             "Greetings",
-                            String.class.getName(),
                             "Not important details.")
             ),
             "PrintYolo");

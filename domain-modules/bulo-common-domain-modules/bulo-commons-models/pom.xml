@@ -12,6 +12,13 @@
 
     <artifactId>bulo-commons-models</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-api-data-types</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
     <build>
         <pluginManagement>
             <plugins>

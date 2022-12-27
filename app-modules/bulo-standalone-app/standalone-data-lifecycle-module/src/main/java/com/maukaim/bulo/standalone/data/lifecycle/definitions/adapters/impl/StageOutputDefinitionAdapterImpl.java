@@ -6,17 +6,11 @@ import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageOutp
 public class StageOutputDefinitionAdapterImpl implements StageOutputDefinitionAdapter {
     @Override
     public StageOutputDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.definition.StageOutputDefinition outputDefinition) {
-        return outputDefinition == null ? null : new StageOutputDefinition(
-                outputDefinition.isCanBeMultiple(),
-                outputDefinition.getTypeId()
-        );
+        return outputDefinition == null ? null : new StageOutputDefinition(outputDefinition.getType());
     }
 
     @Override
     public com.maukaim.bulo.definitions.data.definition.StageOutputDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.StageOutputDefinition outputDefinition) {
-        return outputDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.StageOutputDefinition(
-                outputDefinition.isCanBeMultiple(),
-                outputDefinition.getTypeId()
-        );
+        return outputDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.StageOutputDefinition(outputDefinition.getType());
     }
 }

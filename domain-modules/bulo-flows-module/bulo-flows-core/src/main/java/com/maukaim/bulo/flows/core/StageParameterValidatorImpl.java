@@ -1,5 +1,7 @@
 package com.maukaim.bulo.flows.core;
 
+import com.maukaim.bulo.api.data.types.parameters.ParameterType;
+import com.maukaim.bulo.common.utils.ParameterTypeComparator;
 import com.maukaim.bulo.flows.data.models.definition.ParameterDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.stage.Parameter;
@@ -12,6 +14,7 @@ import java.util.stream.Collectors;
 
 public class StageParameterValidatorImpl implements StageParameterValidator {
     //TODO: Ne fait pas sense d'avoir un validateur de parametres ici! Les Stages sont validées par le StageService, et c'est tout !
+    // Ce validator ne devrait etre utile que quand on provide un ContextParameter a une stage, pour check si le ContextParameter match le type expected de la stage.
     @Override
     public void validate(Stage stage, StageDefinition definition) throws FlowValidationException {
         List<Parameter> parameters = stage.getParameters();
@@ -26,11 +29,15 @@ public class StageParameterValidatorImpl implements StageParameterValidator {
                 throw new FlowValidationException(String.format("Parameter %s expected in Stage %s but not provided.", name, stage.getStageId()));
             }
             Parameter parameter = parameterByNames.get(name);
-            if(!parameterDefinition.getValueType().equalsIgnoreCase(parameter.getValueType())){
-                throw new FlowValidationException(String.format("In stage %s, parameter %s expected type is %s, but provided %s.",
-                        stage.getStageId(), name, parameterDefinition.getValueType(), parameter.getValueType()));
+            if(!isTypeValid(parameter, parameterDefinition.getParameterType())){
+                throw new FlowValidationException(String.format("In stage %s, parameter %s's value does not match declared type %s. Value is: %s",
+                        stage.getStageId(), name, parameterDefinition.getParameterType(), parameter.getValue()));
             }
         }
+    }
+
+    private boolean isTypeValid(Parameter parameter, ParameterType parameterType) {
+        return ParameterTypeComparator.isValueValid(parameter.getValue(), parameterType);
     }
 
     private boolean parametersMissingButExpected(Collection<Parameter> parameters, Collection<ParameterDefinition> parameterDefinitions){

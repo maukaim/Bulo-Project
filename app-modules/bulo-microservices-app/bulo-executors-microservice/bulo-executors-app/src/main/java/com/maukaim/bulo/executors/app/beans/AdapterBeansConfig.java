@@ -1,5 +1,9 @@
 package com.maukaim.bulo.executors.app.beans;
 
+import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
+import com.maukaim.bulo.common.data.lifecycle.impl.IoTypeDtoAdapterImpl;
+import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;
+import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeDtoAdapterImpl;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.*;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.impl.*;
 import org.springframework.context.annotation.Bean;
@@ -9,18 +13,28 @@ import org.springframework.context.annotation.Configuration;
 public class AdapterBeansConfig {
 
     @Bean
-    public ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter() {
-        return new ParameterDefinitionDtoAdapterImpl();
+    public ParameterDefinitionDtoAdapter parameterDefinitionDtoAdapter(ParameterTypeDtoAdapter parameterTypeDtoAdapter) {
+        return new ParameterDefinitionDtoAdapterImpl(parameterTypeDtoAdapter);
     }
 
     @Bean
-    public StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter() {
-        return new StageInputDefinitionDtoAdapterImpl();
+    public ParameterTypeDtoAdapter parameterTypeDtoAdapter(){
+        return new ParameterTypeDtoAdapterImpl();
     }
 
     @Bean
-    public StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter() {
-        return new StageOutputDefinitionDtoAdapterImpl();
+    public StageInputDefinitionDtoAdapter stageInputDefinitionDtoAdapter(IoTypeDtoAdapter ioTypeDtoAdapter) {
+        return new StageInputDefinitionDtoAdapterImpl(ioTypeDtoAdapter);
+    }
+
+    @Bean
+    public StageOutputDefinitionDtoAdapter stageOutputDefinitionDtoAdapter(IoTypeDtoAdapter ioTypeDtoAdapter) {
+        return new StageOutputDefinitionDtoAdapterImpl(ioTypeDtoAdapter);
+    }
+
+    @Bean
+    public IoTypeDtoAdapter ioTypeDtoAdapter(){
+        return new IoTypeDtoAdapterImpl();
     }
 
     @Bean
