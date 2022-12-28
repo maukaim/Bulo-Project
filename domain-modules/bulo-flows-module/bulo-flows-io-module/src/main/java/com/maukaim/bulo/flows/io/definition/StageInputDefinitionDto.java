@@ -1,32 +1,22 @@
 package com.maukaim.bulo.flows.io.definition;
 
-import com.maukaim.bulo.commons.models.definitions.InputDefinition;
+import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
 
-public class StageInputDefinitionDto implements InputDefinition {
-    private Boolean canBeMultiple;
-    private Boolean required;
-    private String typeId;
+public class StageInputDefinitionDto {
+    private IoTypeDto ioType;
 
-    public StageInputDefinitionDto(Boolean acceptMultiple,
-                                   Boolean required,
-                                   String typeId) {
-        this.canBeMultiple = acceptMultiple;
-        this.required = required;
-        this.typeId = typeId;
+    public StageInputDefinitionDto(IoTypeDto ioType) {
+        this.ioType = ioType;
+    }
+
+    public IoTypeDto getIoType() {
+        return ioType;
     }
 
     @Override
-    public boolean isCanBeMultiple() {
-        return canBeMultiple;
-    }
-
-    @Override
-    public String getTypeId() {
-        return typeId;
-    }
-
-    @Override
-    public Boolean isRequired() {
-        return required;
+    public String toString() {
+        return "StageInputDefinitionDto{" +
+                "ioType=" + ioType +
+                '}';
     }
 }

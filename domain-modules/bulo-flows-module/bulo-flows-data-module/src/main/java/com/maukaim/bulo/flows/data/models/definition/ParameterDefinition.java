@@ -1,16 +1,15 @@
 package com.maukaim.bulo.flows.data.models.definition;
 
+import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinition implements ParameterDefinitionInterface {
     private String name;
-    private String valueType;
-    private Boolean required;
+    private ParameterType parameterType;
 
-    public ParameterDefinition(String name, String valueType, boolean required) {
+    public ParameterDefinition(String name, ParameterType parameterType) {
         this.name = name;
-        this.valueType = valueType;
-        this.required = required;
+        this.parameterType = parameterType;
     }
 
     @Override
@@ -18,20 +17,19 @@ public class ParameterDefinition implements ParameterDefinitionInterface {
         return name;
     }
 
-    public String getValueType() {
-        return valueType;
+    public ParameterType getParameterType() {
+        return parameterType;
     }
 
     public boolean isRequired() {
-        return required;
+        return parameterType.isRequired();
     }
 
     @Override
     public String toString() {
         return "ParameterDefinition{" +
                 "name='" + name + '\'' +
-                ", valueType='" + valueType + '\'' +
-                ", required=" + required +
+                ", parameterType=" + parameterType +
                 '}';
     }
 }

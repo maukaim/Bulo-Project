@@ -24,7 +24,7 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     public void register(FunctionalStageDefinition definition) {
         StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition == null) {
-            if (this.functionalValidators.stream().allMatch(validator -> validator.validate(definition))) {
+            if (this.functionalValidators.stream().allMatch(validator -> validator.isValid(definition))) {
                 this.definitionStore.addDefinition(attachUUID(definition));
             } else {
                 throw new RuntimeException("Definition rejected: " + definition.getDefinitionId());

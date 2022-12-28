@@ -1,5 +1,6 @@
 package com.maukaim.bulo.runners.embedded;
 
+import com.maukaim.bulo.api.data.types.natives.StringType;
 import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.models.ParameterDefinition;
 import com.maukaim.bulo.executors.data.models.StageDefinition;
@@ -50,26 +51,23 @@ public class NameProvider implements StageRunner {
 
     private static class OutputsProvider {
         private final static String RESULT_NAME = "Name";
-        private final static Class<String> RESULT_TYPE = String.class;
 
         public static StageOutputDefinition[] get() {
             return new StageOutputDefinition[]{
-                    StageOutputDefinition.fromJava(RESULT_NAME, false, RESULT_TYPE)
+                    new StageOutputDefinition(RESULT_NAME, StringType.required())
             };
         }
     }
 
     private static class ParametersProvider {
         private final static String PARAM_NAME = "Name";
-        private final static Class<String> PARAM_TYPE = String.class;
 
         public static ParameterDefinition[] get() {
             return new ParameterDefinition[]{
-                    ParameterDefinition.fromJavaClass(PARAM_NAME,
-                            PARAM_TYPE,
+                    new ParameterDefinition(PARAM_NAME,
+                            StringType.required(),
                             "George, Fitzgerald, ...",
-                            "Name to output.",
-                            true)
+                            "Name to output.")
             };
         }
     }

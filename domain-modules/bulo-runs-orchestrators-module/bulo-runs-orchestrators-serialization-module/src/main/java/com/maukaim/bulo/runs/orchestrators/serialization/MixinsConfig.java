@@ -39,10 +39,10 @@ public class MixinsConfig {
 
     public static Map<Class<?>, Class<?>> STAGE_RUN_EVENTS_MIXINS = Map.of(
             AcknowledgeRequestStageRunEvent.class, AcknowledgeRequestStageRunEventMixIn.class,
-            RunCancelledStageRunEvent.class, StandardStageRunEventMixin.class,
-            RunFailedStageRunEvent.class, StandardStageRunEventMixin.class,
-            RunSuccessfulStageRunEvent.class, StandardStageRunEventMixin.class,
-            StartRunStageRunEvent.class, StandardStageRunEventMixin.class,
+            RunCancelledStageRunEvent.class, StandardStageRunEventMixIn.class,
+            RunFailedStageRunEvent.class, StandardStageRunEventMixIn.class,
+            RunSuccessfulStageRunEvent.class, StandardStageRunEventMixIn.class,
+            StartRunStageRunEvent.class, StandardStageRunEventMixIn.class,
             BasicStageRunEvent.class, BasicStageRunEventMixIn.class
     );
 

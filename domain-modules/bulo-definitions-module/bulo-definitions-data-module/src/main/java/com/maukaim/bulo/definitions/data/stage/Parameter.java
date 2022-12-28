@@ -5,10 +5,9 @@ public class Parameter {
     private String name;
     private String valueType;
 
-    public Parameter(String value, String name, String valueType) {
+    public Parameter(String value, String name) {
         this.value = value;
         this.name = name;
-        this.valueType = valueType;
     }
 
     public String getValue() {
@@ -19,16 +18,11 @@ public class Parameter {
         return name;
     }
 
-    public String getValueType() {
-        return valueType;
-    }
-
     @Override
     public String toString() {
         return "Parameter{" +
                 "value='" + value + '\'' +
                 ", name='" + name + '\'' +
-                ", valueType='" + valueType + '\'' +
                 '}';
     }
 }

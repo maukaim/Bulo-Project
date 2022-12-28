@@ -1,25 +1,17 @@
 package com.maukaim.bulo.executors.data.models;
 
+import com.maukaim.bulo.api.data.types.DataTypeCategory;
+import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.commons.models.definitions.InputDefinition;
 
 public class StageInputDefinition implements InputDefinition {
     private String name;
-    private Boolean canBeMultiple;
-    private Boolean required;
-    private String typeId;
-
-    public static StageInputDefinition fromJava(String name, boolean canBeMultiple, boolean required, Class<?> classType){
-        return new StageInputDefinition(name, canBeMultiple, required, classType.getCanonicalName());
-    }
+    private IoType type;
 
     public StageInputDefinition(String name,
-                                Boolean acceptMultiple,
-                                Boolean required,
-                                String typeId) {
+                                IoType type) {
         this.name = name;
-        this.canBeMultiple = acceptMultiple;
-        this.required = required;
-        this.typeId = typeId;
+        this.type = type;
     }
 
     public String getName() {
@@ -27,27 +19,25 @@ public class StageInputDefinition implements InputDefinition {
     }
 
     @Override
-    public boolean isCanBeMultiple() {
-        return canBeMultiple;
+    public boolean canBeMultiple() {
+        return DataTypeCategory.ARRAY.equals(this.getType().getDataTypeCategory());
     }
 
     @Override
-    public String getTypeId() {
-        return typeId;
+    public IoType getType() {
+        return type;
     }
 
     @Override
     public Boolean isRequired() {
-        return required;
+        return type.isRequired();
     }
 
     @Override
     public String toString() {
         return "StageInputDefinition{" +
                 "name='" + name + '\'' +
-                ", canBeMultiple=" + canBeMultiple +
-                ", required=" + required +
-                ", typeId='" + typeId + '\'' +
+                ", type=" + type +
                 '}';
     }
 }

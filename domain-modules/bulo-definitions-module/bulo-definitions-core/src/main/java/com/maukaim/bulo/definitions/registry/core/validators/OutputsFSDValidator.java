@@ -1,5 +1,6 @@
 package com.maukaim.bulo.definitions.registry.core.validators;
 
+import com.maukaim.bulo.common.utils.IoTypeComparator;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.StageStore;
@@ -11,7 +12,7 @@ import com.maukaim.bulo.definitions.data.definition.functional.OutputProvider;
 import com.maukaim.bulo.definitions.data.stage.Stage;
 import com.maukaim.bulo.definitions.registry.core.FunctionalStageDefinitionValidator;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,99 +29,90 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
 
 
     @Override
-    public boolean validate(FunctionalStageDefinition definition) {
+    public boolean isValid(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();
-        Set<OutputProvider> outputProviders = definition.getOutputProviders();
-
-        Map<String, StageOutputDefinition> expectedStageOutputs = validateOutputProviders(outputProviders, functionalSubStages);
+        Set<OutputProvider> outputProviders = definition.getOutputProviders(); //Les leaves Id avec les outputs qu'ils donnent
+        Map<String, List<StageDefinition>> leavesDefinitionsByOutputId = validateOutputProviders(outputProviders, functionalSubStages);
         Map<String, StageOutputDefinition> actualOutputs = definition.getOutputsByName();
-        validateStageOutputs(expectedStageOutputs, actualOutputs);
+
+        validateStageOutputs(leavesDefinitionsByOutputId, actualOutputs);
         return true;
     }
 
-    private void validateStageOutputs(Map<String, StageOutputDefinition> expected, Map<String, StageOutputDefinition> actual) {
-        if (actual.size() != expected.size()) {
-            throw new RuntimeException("Actually declared " + actual.size() + " outputs, but expected:" + expected.size());
+    private void validateStageOutputs(Map<String, List<StageDefinition>> leavesDefinitionsByOutputId, Map<String, StageOutputDefinition> actualOutputs) {
+        if (actualOutputs.size() != leavesDefinitionsByOutputId.size()) {
+            throw new RuntimeException("Actually declared " + actualOutputs.size() + " outputs, but expected:" + leavesDefinitionsByOutputId.size());
         }
 
-        for (String outputId : actual.keySet()) {
-            StageOutputDefinition expectedStageOutputDefinition = expected.get(outputId);
-            if (expectedStageOutputDefinition == null) {
-                throw new RuntimeException("Output declared but not expected: " + outputId);
+        for (String outputId : actualOutputs.keySet()) {
+            List<StageDefinition> leavesDefinitions = leavesDefinitionsByOutputId.get(outputId);
+            if (leavesDefinitions == null) {
+                throw new RuntimeException("Output declared by functional stage but no providers. Output ID is: " + outputId);
             }
-            if (areDifferent(expectedStageOutputDefinition, actual.get(outputId))) {
-                throw new RuntimeException("Declared output named " + outputId + " but designed it differently than the expected:" + expectedStageOutputDefinition);
+
+            if (isOutputValid(outputId, actualOutputs.get(outputId), leavesDefinitions)) {
+                throw new RuntimeException("Declared output named " + outputId + " but does not match expected type regarding the declared providers:" + leavesDefinitions);
             }
         }
     }
 
-    private Map<String, StageOutputDefinition> validateOutputProviders(Set<OutputProvider> outputProviders, Set<FsStage> functionalSubStages) {
+    private boolean isOutputValid(String outputId, StageOutputDefinition fsOutputDefinition, List<StageDefinition> leavesDefinitions) {
+        if (!fsOutputDefinition.isAlwaysPresent()) {
+            return leavesDefinitions.stream()
+                    .allMatch(leaveDef -> areDifferent(fsOutputDefinition,
+                            leaveDef.getOutputsByName().get(outputId),
+                            true));
+        } else {
+            long nbLeavesWithAlwaysPresentOutput = leavesDefinitions.stream()
+                    .filter(leaveDefinition -> leaveDefinition.getOutputsByName().get(outputId).isAlwaysPresent())
+                    .count();
+
+            if (nbLeavesWithAlwaysPresentOutput == 0) {
+                throw new RuntimeException(String.format(
+                        "Functional Stage declares output %s as always present, but no output provider could guaranty it.",
+                        outputId));
+            }
+
+            return leavesDefinitions.stream()
+                    .allMatch(leaveDef -> areDifferent(fsOutputDefinition,
+                            leaveDef.getOutputsByName().get(outputId),
+                            false));
+        }
+    }
+
+    private Map<String, List<StageDefinition>> validateOutputProviders(Set<OutputProvider> outputProviders, Set<FsStage> functionalSubStages) {
         Map<ContextStageId, FsStage> fsStageMap = functionalSubStages.stream()
                 .collect(Collectors.toMap(
                         fsStage -> fsStage.getContextualizedId(),
                         fsStage -> fsStage
                 ));
-        Map<String, StageOutputDefinition> result = new HashMap<>();
-        for (OutputProvider outputProvider : outputProviders) {
-            ContextStageId contextStageId = outputProvider.getContextStageId();
-            FsStage fsStage = fsStageMap.get(contextStageId);
-            if (fsStage == null) {
-                throw new RuntimeException("Following output provider is not an existing substage " + contextStageId);
-            }
-            Stage stage = this.stageStore.getById(contextStageId.getStageId());
-            if (stage == null) {
-                throw new RuntimeException("No existing stage found for id " + contextStageId.getStageId());
-            }
 
-            StageDefinition definition = this.stageDefinitionStore.getById(stage.getDefinitionId());
-            if (definition == null) {
-                throw new RuntimeException(String.format("For stage %s, did not found definition %s",
-                        stage.getStageId(),
-                        stage.getDefinitionId())
-                );
-            }
-            Map<String, StageOutputDefinition> actualOutputsMap = definition.getOutputsByName();
-            Map<String, StageOutputDefinition> subOutputResult = new HashMap<>();
-            for (String outputId : outputProvider.getOutputIds()) {
-                StageOutputDefinition stageOutputDefinition = actualOutputsMap.get(outputId);
-                if (stageOutputDefinition == null) {
-                    throw new RuntimeException(String.format("Output %s not found as an output of definition %s. Existing outputs are: %s ",
-                            outputId,
-                            definition.getDefinitionId(),
-                            actualOutputsMap));
-                }
-                subOutputResult.put(outputId, stageOutputDefinition);
-            }
+        return outputProviders.stream()
+                .flatMap(outputProvider -> {
+                    ContextStageId contextStageId = outputProvider.getContextStageId();
+                    FsStage fsStage = fsStageMap.get(contextStageId);
+                    if (fsStage == null) {
+                        throw new RuntimeException("Following output provider is not an existing substage " + contextStageId);
+                    }
+                    Stage stage = this.stageStore.getById(contextStageId.getStageId());
+                    if (stage == null) {
+                        throw new RuntimeException("Stage referenced as outputProvider, but does not exist.");
+                    }
+                    StageDefinition stageDefinition = this.stageDefinitionStore.getById(stage.getDefinitionId());
+                    if (stageDefinition == null) {
+                        throw new RuntimeException("Stage declares definition" + stage.getDefinitionId() + ", but it does not exist.");
+                    }
 
-            for (String outputId : subOutputResult.keySet()) {
-                StageOutputDefinition alreadyExistingOutputDefinition = result.get(outputId);
-                if (alreadyExistingOutputDefinition == null) {
-                    result.put(outputId, subOutputResult.get(outputId));
-                } else if (!hasSameType(alreadyExistingOutputDefinition, subOutputResult.get(outputId))) {
-                    throw new RuntimeException(String.format("Same outputId but not same object type. %s and %s.",
-                            alreadyExistingOutputDefinition));
-                } else {
-                    result.put(outputId, new StageOutputDefinition(true, alreadyExistingOutputDefinition.getTypeId()));
-                }
-            }
-        }
-        return result;
+                    Set<String> transferredOutputsIds = outputProvider.getOutputIds();
+                    return stageDefinition.getOutputsByName().entrySet().stream()
+                            .filter(entry -> transferredOutputsIds.contains(entry.getKey()))
+                            .map(entry -> Map.entry(entry.getKey(), stageDefinition));
+                })
+                .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
     }
 
-    private boolean areDifferent(StageOutputDefinition newVal, StageOutputDefinition oldVal) {
-        return newVal.isCanBeMultiple() != oldVal.isCanBeMultiple() ||
-                !hasSameType(newVal, oldVal);
-    }
-
-    private boolean hasSameType(StageOutputDefinition first, StageOutputDefinition second) {
-        return first.getTypeId().equalsIgnoreCase(second.getTypeId());
+    private boolean areDifferent(StageOutputDefinition newVal, StageOutputDefinition oldVal, boolean skipIsEqualCheck) {
+        return newVal.canBeMultiple() != oldVal.canBeMultiple() ||
+                !IoTypeComparator.areEquals(newVal.getType(), oldVal.getType(), skipIsEqualCheck);
     }
 }
-
-/**
- * Now need 1) to propagate the OutputProviders to dto
- * 2) test creation in def service
- * 3) to propagate to Orchestrator service dto
- * 4) to propagate to Orchestrator service model
- * 5) use it in OrchestrableUtils to provide a FSRun dependent with real run and real results.
- */

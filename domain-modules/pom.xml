@@ -15,12 +15,12 @@
     <modules>
         <module>bulo-flows-module</module>
         <module>bulo-users-module</module>
+        <module>bulo-common-domain-modules</module>
         <module>bulo-triggers-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-stages-module</module>
         <module>bulo-runs-orchestrators-module</module>
         <module>bulo-executors-module</module>
         <module>bulo-definitions-module</module>
-        <module>bulo-commons-module</module>
     </modules>
 </project>

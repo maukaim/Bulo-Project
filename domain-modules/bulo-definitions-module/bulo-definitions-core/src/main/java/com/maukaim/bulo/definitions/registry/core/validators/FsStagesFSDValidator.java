@@ -22,7 +22,7 @@ public class FsStagesFSDValidator implements FunctionalStageDefinitionValidator 
     }
 
     @Override
-    public boolean validate(FunctionalStageDefinition definition) {
+    public boolean isValid(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();
         if(functionalSubStages == null){
             throw new RuntimeException("SubStages can't be null. It would mean the FunctionalStage does nothing.");

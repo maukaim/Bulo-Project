@@ -1,5 +1,6 @@
 package com.maukaim.bulo.flows.core.impl;
 
+import com.maukaim.bulo.common.utils.IoTypeComparator;
 import com.maukaim.bulo.flows.core.DefinitionService;
 import com.maukaim.bulo.flows.core.FlowStageIoValidator;
 import com.maukaim.bulo.flows.core.FlowValidationException;
@@ -10,8 +11,7 @@ import com.maukaim.bulo.flows.data.models.definition.StageOutputDefinition;
 import com.maukaim.bulo.flows.data.models.flow.InputProvider;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
     private final DefinitionService definitionService;
@@ -27,30 +27,63 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
         if ((inputProviders == null || inputProviders.size() == 0) && stageInputDefinition.isRequired()) {
             throw new FlowValidationException("Problem, we expect this input to get at least 1 provider: " + inputId);
         }
-        if (!stageInputDefinition.isCanBeMultiple()) {
+        if (!stageInputDefinition.canBeMultiple()) {
             if (inputProviders.size() == 1) {
                 InputProvider inputProvider = inputProviders.iterator().next();
                 if (inputProvider.getOutputIds().size() == 1) {
                     String outputId = inputProvider.getOutputIds().iterator().next();
                     StageDefinition inputProviderDefinition = getStageDefinition(inputProvider);
-                    checkOutput(outputId, inputProviderDefinition, stageInputDefinition, false);
+                    checkSingleOutputProvided(outputId, inputProviderDefinition, stageInputDefinition, false);
                 } else {
                     throw new FlowValidationException("Too much outputIds. Expected 1, got " + inputProvider.getOutputIds().size());
                 }
-            }else{
+            } else {
                 throw new FlowValidationException(String.format("Input with name %s expect only one element, but got multiples providers.", inputId));
+            }
+        } else {
+            checkInputProviders(inputProviders, stageInputDefinition, true);
+        }
+    }
+
+    private void checkInputProviders(Set<InputProvider> inputProviders, StageInputDefinition stageInputDefinition, boolean isMultipleOutputAllowed) throws FlowValidationException {
+        if (stageInputDefinition.isRequired()) {
+            List<StageOutputDefinition> stageOutputDefinitions = new ArrayList<>();
+            for (InputProvider inputProvider : inputProviders) {
+                StageDefinition stageDefinition = getStageDefinition(inputProvider);
+
+                Map<String, StageOutputDefinition> outputsByName = stageDefinition.getOutputsByName();
+                List<StageOutputDefinition> defs = inputProvider.getOutputIds().stream()
+                        .map(outputId -> outputsByName.get(outputId))
+                        .toList();
+                stageOutputDefinitions.addAll(defs);
+            }
+
+            if (!stageOutputDefinitions.stream().anyMatch(StageOutputDefinition::isAlwaysPresent)) {
+                throw new RuntimeException("No input provider guaranty there will ALWAYS be a data");
+            }else{
+                for (StageOutputDefinition stageOutputDefinition : stageOutputDefinitions) {
+                    checkOutputDefinitionAgainstInputDefinition(stageOutputDefinition, stageInputDefinition, isMultipleOutputAllowed, true);
+                }
             }
         } else {
             for (InputProvider inputProvider : inputProviders) {
                 StageDefinition inputProviderDefinition = getStageDefinition(inputProvider);
                 for (String outputId : inputProvider.getOutputIds()) {
-                    checkOutput(outputId, inputProviderDefinition, stageInputDefinition, true);
+                    checkOutput(outputId, inputProviderDefinition, stageInputDefinition, true, true);
                 }
             }
         }
     }
 
-    private void checkOutput(String outputId, StageDefinition inputProviderDefinition, StageInputDefinition stageInputDefinition, boolean isMultipleOutputAllowed) throws FlowValidationException {
+    private void checkSingleOutputProvided(String outputId, StageDefinition inputProviderDefinition, StageInputDefinition stageInputDefinition, boolean isMultipleOutputAllowed) throws FlowValidationException {
+        if (stageInputDefinition.isRequired()) {
+            checkOutput(outputId, inputProviderDefinition, stageInputDefinition, isMultipleOutputAllowed, false);
+        } else {
+            checkOutput(outputId, inputProviderDefinition, stageInputDefinition, isMultipleOutputAllowed, true);
+        }
+    }
+
+    private void checkOutput(String outputId, StageDefinition inputProviderDefinition, StageInputDefinition stageInputDefinition, boolean isMultipleOutputAllowed, boolean skipIsRequiredCheck) throws FlowValidationException {
         if (inputProviderDefinition != null) {
             Map<String, StageOutputDefinition> outputsByName = inputProviderDefinition.getOutputsByName();
             StageOutputDefinition stageOutputDefinition = outputsByName.get(outputId);
@@ -58,17 +91,17 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
                 throw new FlowValidationException(String.format("Output %s expected in definition %s. But not found.",
                         outputId, inputProviderDefinition.getStageDefinitionId()));
             }
-            checkOutputDefinitionAgainstInputDefinition(stageOutputDefinition, stageInputDefinition, isMultipleOutputAllowed);
+            checkOutputDefinitionAgainstInputDefinition(stageOutputDefinition, stageInputDefinition, isMultipleOutputAllowed, skipIsRequiredCheck);
         }
     }
 
-    private void checkOutputDefinitionAgainstInputDefinition(StageOutputDefinition stageOutputDefinition, StageInputDefinition stageInputDefinition, boolean multipleOutputAllowed) throws FlowValidationException {
-        if (stageOutputDefinition.isCanBeMultiple() && !multipleOutputAllowed) {
+    private void checkOutputDefinitionAgainstInputDefinition(StageOutputDefinition stageOutputDefinition, StageInputDefinition stageInputDefinition, boolean multipleOutputAllowed, boolean skipIsRequiredCheck) throws FlowValidationException {
+        if (stageOutputDefinition.canBeMultiple() && !multipleOutputAllowed) {
             throw new FlowValidationException("Input Provider potentially provide a collection. Not allowed here.");
         }
-        if (!stageOutputDefinition.getTypeId().equalsIgnoreCase(stageInputDefinition.getTypeId())) {
+        if (!IoTypeComparator.areEquals(stageOutputDefinition.getType(), stageInputDefinition.getType(), skipIsRequiredCheck)) {
             throw new FlowValidationException(String.format("Output of ancestor is type %s but input expected should be type %s",
-                    stageOutputDefinition.getTypeId(), stageInputDefinition.getTypeId()));
+                    stageOutputDefinition.getType(), stageInputDefinition.getType()));
         }
     }
 
@@ -87,45 +120,4 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
         }
         return stageDefinition;
     }
-
-//    public void validate(String inputId, StageInputDefinition stageInputDefinition, Map<StageDefinition, Set<String>> inputProviderDefinitions) throws FlowValidationException {
-//        if (inputProviderDefinitions.size() == 0 && stageInputDefinition.isRequired()) {
-//            throw new FlowValidationException("Problem, we expect this input to get at least 1 provider: " + inputId);
-//        }
-//
-//        if (!stageInputDefinition.canBeMultiple()) {
-//            Set<StageDefinition> providers = inputProviderDefinitions.keySet();
-//            if (providers.size() == 1 ) {
-//                StageDefinition providerDefinition = providers.iterator().next();
-//                Set<String> providerOutputNames = providerDefinition.getOutputsByName().keySet();
-//                if ((providerOutputNames.size() == 1)) {
-//                    String outputName = providerOutputNames.iterator().next();
-//                    StageOutputDefinition providerOutputDefinition = providerDefinition.getOutputsByName().get(outputName);
-//                    if(!providerOutputDefinition.canBeMultiple()) {
-//                        return;
-//                    }
-//                }
-//            }
-//
-//            throw new FlowValidationException(String.format("Input with name %s expect only one element, but got multiples from provider(s)", inputId));
-//        } else {
-//            for (Map.Entry<StageDefinition, Set<String>> providerEntry : inputProviderDefinitions.entrySet()) {
-//                Map<String,StageOutputDefinition> outputDefinitionsByName = providerEntry.getKey().getOutputsByName();
-//
-//                for (String usedOutputName : providerEntry.getValue()) {
-//                    StageOutputDefinition outputDefinition = outputDefinitionsByName.get(usedOutputName);
-//                    if(outputDefinition == null){
-//                        throw new FlowValidationException(String.format(
-//                                "Provider does not have output named %s to be provided to input %s. We can't validate.",
-//                                usedOutputName, inputId));
-//                    }
-//
-//                    if(!outputDefinition.getIOTypeId().equalsIgnoreCase(stageInputDefinition.getIOTypeId())){
-//                        throw new FlowValidationException(String.format("For provider definition %s on input %s, type validation failed. Provided %s but this input expect type %s",
-//                                providerEntry.getKey().getStageDefinitionId(), inputId, outputDefinition.getIOTypeId(), stageInputDefinition.getIOTypeId()));
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
