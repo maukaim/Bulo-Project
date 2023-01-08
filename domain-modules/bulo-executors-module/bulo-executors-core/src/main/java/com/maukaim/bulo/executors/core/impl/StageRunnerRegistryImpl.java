@@ -1,8 +1,8 @@
 package com.maukaim.bulo.executors.core.impl;
 
 import com.maukaim.bulo.executors.core.StageRunnerRegistry;
-import com.maukaim.bulo.executors.data.StageRunner;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.StageRunner;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 
 import java.util.HashMap;
 import java.util.List;

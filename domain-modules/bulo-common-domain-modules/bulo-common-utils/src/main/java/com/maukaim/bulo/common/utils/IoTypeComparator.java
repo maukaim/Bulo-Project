@@ -1,6 +1,5 @@
 package com.maukaim.bulo.common.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.api.data.types.DataType;
 import com.maukaim.bulo.api.data.types.io.ArrayIoType;
 import com.maukaim.bulo.api.data.types.io.BuloIoType;

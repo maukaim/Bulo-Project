@@ -1,34 +1,42 @@
 package com.maukaim.bulo.api.data.types.parameters.impl;
 
-import com.maukaim.bulo.api.data.types.parameters.BuloField;
-import com.maukaim.bulo.api.data.types.parameters.BuloFieldOverride;
-import com.maukaim.bulo.api.data.types.parameters.BuloParameter;
+import com.maukaim.bulo.api.data.types.annotations.BuloDescriptor;
+import com.maukaim.bulo.api.data.types.annotations.BuloField;
+import com.maukaim.bulo.api.data.types.annotations.BuloFieldOverride;
 
+/**
+ * Requirements:
+ * Should have at least 1 @BuloDescriptor
+ */
 public class Voiture {
     private Motor motor;
     private String brand;
     private Boolean isUsable;
 
-    @BuloParameter
+    @BuloDescriptor
     public Voiture(
-            @BuloField(isRequired = false, fields = {
-                    @BuloFieldOverride(name = "vitesseMax", isRequired = false)
-            })
+            @BuloField(value = "motor",
+                    isRequired = false,
+                    fields = {@BuloFieldOverride(name = "vitesseMax", isRequired = false)
+                    })
             Motor motor,
+            @BuloField("motor2")
             Motor motor2,
-            @BuloField(isRequired = false) String brand,
-            Boolean isUsable) {
+            @BuloField(value = "brand", isRequired = false)
+            String brand,
+            @BuloField("usable")
+            Boolean usable) {
         this.motor = motor;
         this.brand = brand;
-        this.isUsable = isUsable;
+        this.isUsable = usable;
     }
 
-    public class Motor {
-        private Integer vitesseMax;
-
-        @BuloParameter
-        public Motor( Integer vitesseMax) {
-            this.vitesseMax = vitesseMax;
-        }
+    @Override
+    public String toString() {
+        return "Voiture{" +
+                "motor=" + motor +
+                ", brand='" + brand + '\'' +
+                ", isUsable=" + isUsable +
+                '}';
     }
 }

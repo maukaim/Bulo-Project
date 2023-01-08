@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.core.impl;
 
 import com.maukaim.bulo.executors.core.*;
-import com.maukaim.bulo.executors.data.StageRunner;
+import com.maukaim.bulo.runners.api.StageRunner;
 
 import java.util.HashMap;
 import java.util.Map;

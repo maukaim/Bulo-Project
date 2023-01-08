@@ -5,7 +5,7 @@ import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
 import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;
-import com.maukaim.bulo.executors.data.models.ParameterDefinition;
+import com.maukaim.bulo.runners.api.models.ParameterDefinition;
 
 public class ParameterDefinitionDtoAdapterImpl implements ParameterDefinitionDtoAdapter {
     private final ParameterTypeDtoAdapter parameterTypeDtoAdapter;

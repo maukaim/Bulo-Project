@@ -5,7 +5,7 @@ import com.maukaim.bulo.executors.core.StageRunnerRegistry;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunResultDtoAdapter;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.executors.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.executors.data.lifecycle.StageRunResultStoreImpl;
 import com.maukaim.bulo.executors.data.lifecycle.StageStoreImpl;

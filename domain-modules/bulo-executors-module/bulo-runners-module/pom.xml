@@ -12,7 +12,8 @@
     <artifactId>bulo-runners-module</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>bulo-runners-core</module>
         <module>bulo-embedded-runners</module>
+        <module>bulo-runners-api</module>
+        <module>bulo-runners-plugin-starter</module>
     </modules>
 </project>

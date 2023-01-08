@@ -2,6 +2,7 @@ package com.maukaim.bulo.standalone.app.connectivity;
 
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.standalone.data.lifecycle.StageDefinitionInstructor;
 import com.maukaim.bulo.standalone.data.lifecycle.definitions.adapters.StageDefinitionAdapter;
 
@@ -17,7 +18,7 @@ public class StageDefinitionInstructorImpl implements StageDefinitionInstructor 
     }
 
     @Override
-    public void create(com.maukaim.bulo.executors.data.models.StageDefinition definition) {
+    public void create(StageDefinition definition) {
         TechnicalStageDefinition technicalStageDefinition = this.definitionAdapter.adapteFromExecutorModule(definition);
         this.definitionService.register(EXECUTOR_ID, technicalStageDefinition);
     }

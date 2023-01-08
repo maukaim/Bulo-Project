@@ -1,6 +1,6 @@
 <div align="center">
-    <img src="assets/bulo-logo.png" width="100" />
-    <h1 class="title" >Bulo Project (ALPHA version)</h1>  
+    <img src="assets/bulo-logo.svg" width="100" />
+    <h1 class="title" style="margin-top:0px" >Bulo Project (ALPHA version)</h1>  
 </div>
 
 ## Seems you found your new automation buddy.

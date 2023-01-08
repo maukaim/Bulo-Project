@@ -6,7 +6,7 @@ import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDto
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageOutputDefinitionDtoAdapter;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 
 import java.util.stream.Collectors;
 

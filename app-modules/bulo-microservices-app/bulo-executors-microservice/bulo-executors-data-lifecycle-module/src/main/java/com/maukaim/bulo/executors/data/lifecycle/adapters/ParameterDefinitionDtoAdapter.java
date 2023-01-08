@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.data.lifecycle.adapters;
 
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
-import com.maukaim.bulo.executors.data.models.ParameterDefinition;
+import com.maukaim.bulo.runners.api.models.ParameterDefinition;
 
 public interface ParameterDefinitionDtoAdapter {
     ParameterDefinitionDto adapte(ParameterDefinition parameterDefinition);

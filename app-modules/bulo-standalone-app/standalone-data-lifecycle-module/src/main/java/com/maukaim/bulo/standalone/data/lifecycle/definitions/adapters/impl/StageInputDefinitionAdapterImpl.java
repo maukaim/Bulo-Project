@@ -10,7 +10,7 @@ public class StageInputDefinitionAdapterImpl implements StageInputDefinitionAdap
     }
 
     @Override
-    public com.maukaim.bulo.definitions.data.definition.StageInputDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.StageInputDefinition inputDefinition) {
+    public com.maukaim.bulo.definitions.data.definition.StageInputDefinition adapteFromExecutorModule(com.maukaim.bulo.runners.api.models.StageInputDefinition inputDefinition) {
         return inputDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.StageInputDefinition(inputDefinition.getType());
     }
 }

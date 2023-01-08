@@ -2,7 +2,7 @@ package com.maukaim.bulo.standalone.app.beans;
 
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.executors.core.StageRunnerRegistry;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;

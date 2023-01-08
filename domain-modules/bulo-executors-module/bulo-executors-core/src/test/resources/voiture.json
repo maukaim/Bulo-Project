@@ -1,0 +1,8 @@
+{
+  "motor": {
+    "vitesseMax": 4
+  },
+  "brand": "Toyota",
+  "usable": true,
+  "crac": false
+}

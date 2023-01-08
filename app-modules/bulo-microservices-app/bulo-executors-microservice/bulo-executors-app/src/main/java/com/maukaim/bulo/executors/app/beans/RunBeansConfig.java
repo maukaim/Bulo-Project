@@ -1,13 +1,18 @@
 package com.maukaim.bulo.executors.app.beans;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.executors.core.*;
 import com.maukaim.bulo.executors.core.impl.*;
+import com.maukaim.bulo.executors.core.marshalling.MarshallerProvider;
+import com.maukaim.bulo.executors.core.marshalling.jackson.mapper.ObjectMapperProvider;
+import com.maukaim.bulo.executors.core.marshalling.BuloMarshallerProvider;
+import com.maukaim.bulo.executors.core.marshalling.jackson.mapper.impl.BuloObjectMapperProvider;
+import com.maukaim.bulo.executors.core.marshalling.jackson.resolver.impl.BuloJacksonMarshallingResolver;
+import com.maukaim.bulo.executors.core.marshalling.jackson.resolver.JacksonMarshallingResolver;
+import com.maukaim.bulo.executors.core.marshalling.jackson.generator.impl.BuloDescriptorMixInGeneratorStrategy;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.executors.data.StageRunResultStore;
-import com.maukaim.bulo.executors.data.StageRunner;
 import com.maukaim.bulo.executors.data.StageStore;
-import com.maukaim.bulo.runners.core.SimpleJsonMarshaller;
+import com.maukaim.bulo.runners.api.StageRunner;
 import com.maukaim.bulo.runners.embedded.NameProvider;
 import com.maukaim.bulo.runners.embedded.NameProvider2;
 import com.maukaim.bulo.runners.embedded.PrintYoloRunner;
@@ -24,7 +29,7 @@ public class RunBeansConfig {
 
     @Bean
     public StageRunner yoloRunner() {
-        return new PrintYoloRunner(new SimpleJsonMarshaller(new ObjectMapper()));
+        return new PrintYoloRunner();
     }
 
     @Bean
@@ -33,7 +38,7 @@ public class RunBeansConfig {
     }
 
     @Bean
-    public StageRunner nameProvider2(){
+    public StageRunner nameProvider2() {
         return new NameProvider2();
     }
 
@@ -59,14 +64,36 @@ public class RunBeansConfig {
 
     @Bean
     public StageRunManager stageRunnerManager(StageRunnerRegistry runnerRegistry,
-                                                       RunExecutor runExecutor,
-                                                       RunOperatorProvider runOperatorProvider) {
+                                              RunExecutor runExecutor,
+                                              RunOperatorProvider runOperatorProvider) {
         return new StageRunManagerImpl(runnerRegistry, runExecutor, runOperatorProvider);
     }
 
     @Bean
-    public RunOperatorProvider runOperatorProvider(StageRunResultStore stageRunResultStore){
-        return new RunOperatorProviderImpl(stageRunResultStore);
+    public RunOperatorProvider runOperatorProvider(StageRunResultStore stageRunResultStore,
+                                                   MarshallerProvider marshallerProvider) {
+        return new BuloRunOperatorProvider(stageRunResultStore, marshallerProvider);
+    }
+
+    @Bean
+    public MarshallerProvider marshallerProvider(ObjectMapperProvider mapperProvider,
+                                                 JacksonMarshallingResolver marshallingResolver) {
+        return new BuloMarshallerProvider(mapperProvider, marshallingResolver, marshallingResolver);
+    }
+
+    @Bean
+    public ObjectMapperProvider objectMapperProvider() {
+        return new BuloObjectMapperProvider();
+    }
+
+    @Bean
+    public JacksonMarshallingResolver marshallingResolver(BuloDescriptorMixInGeneratorStrategy mixInGeneratorStrategy) {
+        return new BuloJacksonMarshallingResolver(mixInGeneratorStrategy);
+    }
+
+    @Bean
+    public BuloDescriptorMixInGeneratorStrategy buloDescriptorMixInGeneratorStrategy() {
+        return new BuloDescriptorMixInGeneratorStrategy();
     }
 
     @Bean

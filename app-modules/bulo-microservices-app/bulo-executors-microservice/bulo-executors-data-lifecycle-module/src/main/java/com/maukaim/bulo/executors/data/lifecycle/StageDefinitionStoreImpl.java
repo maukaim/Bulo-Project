@@ -2,7 +2,7 @@ package com.maukaim.bulo.executors.data.lifecycle;
 
 import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.io.StageDefinitionCreateInstructionPublisher;
 
@@ -50,11 +50,6 @@ public class StageDefinitionStoreImpl implements StageDefinitionStore {
     @Override
     public StageDefinition remove(StageDefinition definition) {
         return this.technicalStageDefinitionById.remove(definition.getDefinitionId());
-    }
-
-    @Override
-    public List<StageDefinition> getAll() {
-        return this.technicalStageDefinitionById.values().stream().toList();
     }
 
     private void publish(StageDefinition definitionStored) {

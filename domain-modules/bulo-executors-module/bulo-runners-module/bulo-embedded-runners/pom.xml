@@ -14,9 +14,14 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-runners-core</artifactId>
+            <artifactId>bulo-executors-data-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-runners-api</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>
-
 </project>

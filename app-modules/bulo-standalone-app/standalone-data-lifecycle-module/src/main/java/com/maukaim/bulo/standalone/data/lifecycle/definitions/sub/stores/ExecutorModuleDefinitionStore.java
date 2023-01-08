@@ -1,7 +1,7 @@
 package com.maukaim.bulo.standalone.data.lifecycle.definitions.sub.stores;
 
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.standalone.data.lifecycle.StageDefinitionInstructor;
 
 import java.util.Collection;
@@ -45,10 +45,5 @@ public class ExecutorModuleDefinitionStore implements StageDefinitionStore {
     public StageDefinition remove(StageDefinition stage) {
         this.definitionInstructor.remove(stage.getDefinitionId());
         return stage;
-    }
-
-    @Override
-    public List<StageDefinition> getAll() {
-        return this.stageDefinitionById.values().stream().toList();
     }
 }

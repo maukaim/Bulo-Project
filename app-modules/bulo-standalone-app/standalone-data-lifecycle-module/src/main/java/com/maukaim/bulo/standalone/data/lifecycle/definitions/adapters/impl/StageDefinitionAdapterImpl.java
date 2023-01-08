@@ -117,7 +117,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
 
 
     @Override
-    public com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.StageDefinition stageDefinition) {
+    public com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition adapteFromExecutorModule(com.maukaim.bulo.runners.api.models.StageDefinition stageDefinition) {
         return stageDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition(
                 stageDefinition.getDefinitionId(),
                 resolveInputsFromExecutorModule(stageDefinition.getInputsByName()),
@@ -126,13 +126,13 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
         );
     }
 
-    private List<ParameterDefinition> resolveParametersFromExecutorModule(List<com.maukaim.bulo.executors.data.models.ParameterDefinition> parameters) {
+    private List<ParameterDefinition> resolveParametersFromExecutorModule(List<com.maukaim.bulo.runners.api.models.ParameterDefinition> parameters) {
         return parameters == null ? List.of() : parameters.stream()
                 .map(this.parameterDefinitionAdapter::adapteFromExecutorModule)
                 .collect(Collectors.toList());
     }
 
-    private Map<String, StageOutputDefinition> resolveOutputsFromExecutorModule(Map<String, com.maukaim.bulo.executors.data.models.StageOutputDefinition> outputsByName) {
+    private Map<String, StageOutputDefinition> resolveOutputsFromExecutorModule(Map<String, com.maukaim.bulo.runners.api.models.StageOutputDefinition> outputsByName) {
         return outputsByName == null ? new HashMap<>() : outputsByName.entrySet().stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey(),
@@ -140,7 +140,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
                 ));
     }
 
-    private Map<String, StageInputDefinition> resolveInputsFromExecutorModule(Map<String, com.maukaim.bulo.executors.data.models.StageInputDefinition> inputsByName) {
+    private Map<String, StageInputDefinition> resolveInputsFromExecutorModule(Map<String, com.maukaim.bulo.runners.api.models.StageInputDefinition> inputsByName) {
         return inputsByName == null ? new HashMap<>() : inputsByName.entrySet().stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey(),

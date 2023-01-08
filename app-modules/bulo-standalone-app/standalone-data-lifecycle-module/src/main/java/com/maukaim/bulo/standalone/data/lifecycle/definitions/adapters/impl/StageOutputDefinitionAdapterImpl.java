@@ -10,7 +10,7 @@ public class StageOutputDefinitionAdapterImpl implements StageOutputDefinitionAd
     }
 
     @Override
-    public com.maukaim.bulo.definitions.data.definition.StageOutputDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.StageOutputDefinition outputDefinition) {
+    public com.maukaim.bulo.definitions.data.definition.StageOutputDefinition adapteFromExecutorModule(com.maukaim.bulo.runners.api.models.StageOutputDefinition outputDefinition) {
         return outputDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.StageOutputDefinition(outputDefinition.getType());
     }
 }

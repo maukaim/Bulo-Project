@@ -16,5 +16,11 @@
             <artifactId>bulo-commons-models</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>bulo-runners-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

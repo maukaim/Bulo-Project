@@ -2,24 +2,20 @@ package com.maukaim.bulo.runners.embedded;
 
 import com.maukaim.bulo.api.data.types.natives.BooleanType;
 import com.maukaim.bulo.api.data.types.natives.StringType;
-import com.maukaim.bulo.executors.data.models.ParameterDefinition;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
-import com.maukaim.bulo.executors.data.models.StageInputDefinition;
-import com.maukaim.bulo.executors.data.models.StageOutputDefinition;
-import com.maukaim.bulo.executors.data.runs.ExecutionCancelledException;
-import com.maukaim.bulo.runners.core.AbstractStageRunner;
-import com.maukaim.bulo.runners.core.Marshaller;
-import com.maukaim.bulo.runners.core.RunnerUtils;
+import com.maukaim.bulo.runners.api.StageRunner;
+import com.maukaim.bulo.runners.api.StageRunnerContext;
+import com.maukaim.bulo.runners.api.models.ParameterDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageInputDefinition;
+import com.maukaim.bulo.runners.api.models.StageOutputDefinition;
+import com.maukaim.bulo.runners.api.ExecutionCancelledException;
+import com.maukaim.bulo.runners.api.RunnerUtils;
 
 import java.util.List;
 import java.util.Map;
 
-public class PrintYoloRunner extends AbstractStageRunner {
+public class PrintYoloRunner implements StageRunner {
     private final static String DEF_ID = "PrintYolo";
-
-    public PrintYoloRunner(Marshaller marshaller) {
-        super(marshaller);
-    }
 
     @Override
     public StageDefinition getDefinition() {
@@ -32,10 +28,11 @@ public class PrintYoloRunner extends AbstractStageRunner {
     }
 
     @Override
-    public Map<String, String> run(Map<String, String> inputs, Map<String, String> parameters) throws ExecutionCancelledException {
-        String subject = getOrThrow(inputs, InputsProvider.SUBJECT_NAME, String.class);
-        String isUpperCase = getOrThrow(parameters, ParametersProvider.UPPERCASE_NAME, String.class);
-        String Greetings = getOrThrow(parameters, ParametersProvider.GREETINGS_NAME, String.class);
+    public Map<String, String> run(StageRunnerContext ctx)throws ExecutionCancelledException {
+
+        String subject = ctx.getRawInput(InputsProvider.SUBJECT_NAME);
+        String isUpperCase = ctx.getRawParameter(ParametersProvider.UPPERCASE_NAME);
+        String Greetings = ctx.getRawParameter(ParametersProvider.GREETINGS_NAME);
 
         System.out.println("No sleep for brave people..!");
 

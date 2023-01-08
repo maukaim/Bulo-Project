@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.data;
 
-import com.maukaim.bulo.executors.data.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
 
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +11,4 @@ public interface StageDefinitionStore {
     List<StageDefinition> putAll(Collection<StageDefinition> stageDefinitions);
 
     StageDefinition remove(StageDefinition stage);
-
-    List<StageDefinition> getAll();
 }

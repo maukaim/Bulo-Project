@@ -1,13 +1,13 @@
 package com.maukaim.bulo.runners.embedded;
 
 import com.maukaim.bulo.api.data.types.natives.StringType;
-import com.maukaim.bulo.executors.data.StageRunner;
-import com.maukaim.bulo.executors.data.models.ParameterDefinition;
-import com.maukaim.bulo.executors.data.models.StageDefinition;
-import com.maukaim.bulo.executors.data.models.StageOutputDefinition;
-import com.maukaim.bulo.executors.data.runs.ExecutionCancelledException;
-import com.maukaim.bulo.runners.core.MissingInputException;
-import com.maukaim.bulo.runners.core.RunnerUtils;
+import com.maukaim.bulo.runners.api.StageRunner;
+import com.maukaim.bulo.runners.api.StageRunnerContext;
+import com.maukaim.bulo.runners.api.models.ParameterDefinition;
+import com.maukaim.bulo.runners.api.models.StageDefinition;
+import com.maukaim.bulo.runners.api.models.StageOutputDefinition;
+import com.maukaim.bulo.runners.api.ExecutionCancelledException;
+import com.maukaim.bulo.runners.api.RunnerUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -29,8 +29,8 @@ public class NameProvider implements StageRunner {
     }
 
     @Override
-    public Map<String, String> run(Map<String, String> inputs, Map<String, String> parameters) throws ExecutionCancelledException {
-        String name = getOrThrow(parameters, ParametersProvider.PARAM_NAME);
+    public Map<String, String> run(StageRunnerContext ctx) throws ExecutionCancelledException {
+        String name = ctx.getRawParameter(ParametersProvider.PARAM_NAME);
         System.out.println("Will return name -> " + name);
         try {
             Thread.sleep(4000);
@@ -39,14 +39,6 @@ public class NameProvider implements StageRunner {
         }
 
         return Map.of(OutputsProvider.RESULT_NAME, name);
-    }
-
-    private <T> T getOrThrow(Map<String, ? extends Object> inputs, String key) {
-        if (inputs.containsKey(key)) {
-            return (T) inputs.get(key);
-        } else {
-            throw new MissingInputException("Following input is missing: " + key);
-        }
     }
 
     private static class OutputsProvider {

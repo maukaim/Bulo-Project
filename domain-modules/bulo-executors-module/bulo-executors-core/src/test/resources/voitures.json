@@ -1,0 +1,24 @@
+[
+  {
+    "motor": {
+      "vitesseMax": 5
+    },
+    "brand": "Porsche",
+    "usable": false,
+    "crac": false
+  },
+  {
+    "motor": {
+      "vitesseMax": 4
+    },
+    "brand": "Toyota",
+    "usable": true
+  },
+  {
+    "motor": {
+      "vitesseMax": 4
+    },
+    "brand": "Toyota",
+    "usable": true
+  }
+]

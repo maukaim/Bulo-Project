@@ -23,7 +23,7 @@ public class ParameterDefinitionAdapterImpl implements ParameterDefinitionAdapte
     }
 
     @Override
-    public com.maukaim.bulo.definitions.data.definition.ParameterDefinition adapteFromExecutorModule(com.maukaim.bulo.executors.data.models.ParameterDefinition parameterDefinition) {
+    public com.maukaim.bulo.definitions.data.definition.ParameterDefinition adapteFromExecutorModule(com.maukaim.bulo.runners.api.models.ParameterDefinition parameterDefinition) {
         return parameterDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.ParameterDefinition(
                 parameterDefinition.getName(),
                 parameterDefinition.getParameterType(),
