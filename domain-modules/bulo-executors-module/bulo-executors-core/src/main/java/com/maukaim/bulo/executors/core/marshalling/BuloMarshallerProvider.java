@@ -3,7 +3,7 @@ package com.maukaim.bulo.executors.core.marshalling;
 import com.maukaim.bulo.executors.core.marshalling.jackson.mapper.ObjectMapperProvider;
 import com.maukaim.bulo.executors.core.marshalling.jackson.resolver.JacksonDeserializationResolver;
 import com.maukaim.bulo.executors.core.marshalling.jackson.resolver.JacksonSerializationResolver;
-import com.maukaim.bulo.runners.api.Marshaller;
+import com.maukaim.bulo.runners.api.RunnerMarshaller;
 
 public class BuloMarshallerProvider implements MarshallerProvider {
     private final ObjectMapperProvider mapperProvider;
@@ -19,7 +19,7 @@ public class BuloMarshallerProvider implements MarshallerProvider {
     }
 
     @Override
-    public Marshaller get() {
-        return new BuloMarshaller(mapperProvider.get(), serializationResolver, deserializationResolver);
+    public RunnerMarshaller get() {
+        return new BuloRunnerMarshaller(mapperProvider.get(), serializationResolver, deserializationResolver);
     }
 }

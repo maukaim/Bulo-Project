@@ -26,5 +26,6 @@
         <module>bulo-common-utils</module>
         <module>bulo-common-data-lifecycle</module>
         <module>bulo-api-data-types</module>
+        <module>bulo-marshalling-module</module>
     </modules>
 </project>

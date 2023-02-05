@@ -3,17 +3,18 @@ package com.maukaim.bulo.executors.core.marshalling.jackson;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.maukaim.bulo.api.data.types.Any;
 import com.maukaim.bulo.api.data.types.any.*;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -28,17 +29,18 @@ public class AnyTypeDeserializer extends JsonDeserializer<Any<?>> {
 
     private Any<?> resolveAny(JsonNode jsonNode) {
         return switch (jsonNode.getNodeType()) {
-            case ARRAY -> new AnyArray(getList(((ArrayNode)jsonNode)));
+            case ARRAY -> new AnyArray(getList(((ArrayNode) jsonNode)));
             case BOOLEAN -> new AnyBoolean(jsonNode.booleanValue());
             case NUMBER -> new AnyNumber(jsonNode.numberValue());
-            case OBJECT -> getObject((ObjectNode)jsonNode);
+            case OBJECT -> getObject((ObjectNode) jsonNode);
             case STRING -> new AnyString(jsonNode.textValue());
-            case POJO, MISSING, NULL, BINARY -> throw new RuntimeException("Should never see it during deserialization process.");
+            case POJO, MISSING, NULL, BINARY ->
+                    throw new RuntimeException("Should never see it during deserialization process.");
         };
     }
 
     private AnyObject getObject(ObjectNode objectNode) {
-        Spliterator<Map.Entry<String,JsonNode>>
+        Spliterator<Map.Entry<String, JsonNode>>
                 spliterator = Spliterators
                 .spliteratorUnknownSize(objectNode.fields(), 0);
 
@@ -51,7 +53,7 @@ public class AnyTypeDeserializer extends JsonDeserializer<Any<?>> {
     }
 
     private List<? extends Any<?>> getList(ArrayNode arrayNode) {
-        return StreamSupport.stream(arrayNode.spliterator(),false)
+        return StreamSupport.stream(arrayNode.spliterator(), false)
                 .map(item -> resolveAny(item))
                 .collect(Collectors.toList());
     }

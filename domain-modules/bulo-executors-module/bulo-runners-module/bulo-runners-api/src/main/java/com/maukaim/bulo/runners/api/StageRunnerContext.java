@@ -8,9 +8,9 @@ import java.util.Map;
 public class StageRunnerContext {
     private final Map<String, String> inputs;
     private final Map<String, String> parameters;
-    private final Marshaller marshaller;
+    private final RunnerMarshaller marshaller;
 
-    public StageRunnerContext(Map<String, String> inputs, Map<String, String> parameters, Marshaller marshaller) {
+    public StageRunnerContext(Map<String, String> inputs, Map<String, String> parameters, RunnerMarshaller marshaller) {
         this.inputs = inputs;
         this.parameters = parameters;
         this.marshaller = marshaller;

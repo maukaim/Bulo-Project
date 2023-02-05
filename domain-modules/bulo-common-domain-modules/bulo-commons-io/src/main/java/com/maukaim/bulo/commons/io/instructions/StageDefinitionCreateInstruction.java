@@ -26,12 +26,12 @@ public class StageDefinitionCreateInstruction implements ExternalEvent {
 
     @Override
     public Instant getInstant() {
-        return null;
+        return instant;
     }
 
     @Override
     public String toString() {
-        return "TechnicalStageDefinitionDeclarationEvent{" +
+        return "StageDefinitionCreateInstruction{" +
                 "stageExecutorId='" + stageExecutorId + '\'' +
                 ", stageDefinition=" + stageDefinition +
                 ", instant=" + instant +

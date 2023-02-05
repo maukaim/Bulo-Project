@@ -1,0 +1,75 @@
+{
+  "license": "MIT",
+  "services": {
+    "STANDALONE": {
+      "port": 10020,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    },
+    "BULO_MS_DEFINITIONS_SERVICE": {
+      "port": 10016,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    },
+    "BULO_MS_EXECUTORS_SERVICE": {
+      "port": 10018,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    },
+    "BULO_MS_FLOWS_SERVICE": {
+      "port": 10015,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    },
+    "BULO_MS_ORCHESTRATOR_SERVICE": {
+      "port": 10014,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    },
+    "BULO_MS_STAGES_SERVICE": {
+      "port": 10017,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    },
+    "BULO_MS_TRIGGER_SCHEDULER_SERVICE": {
+      "port": 10013,
+      "dns": {
+        "dev": [
+          "localhost"
+        ],
+        "uat": [],
+        "prod": []
+      }
+    }
+  }
+}

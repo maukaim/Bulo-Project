@@ -16,7 +16,6 @@
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-definitions-io-module</artifactId>
             <version>${revision}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>

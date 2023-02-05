@@ -1,0 +1,46 @@
+package com.maukaim.bulo.stages.app.beans;
+
+import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.stages.app.io.*;
+import com.maukaim.bulo.stages.core.StageService;
+import com.maukaim.bulo.stages.core.StageDefinitionService;
+import com.maukaim.bulo.stages.io.*;
+import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class IOBeansConfig {
+
+    @Bean
+    public StageUpdateEventConsumer stageUpdateEventConsumer(StageStoreImpl stageStore,
+                                                             StageAdapter stageAdapter) {
+        return new StageUpdateEventConsumerImpl(stageStore, stageAdapter);
+    }
+
+    @Bean
+    public StageUpdateEventPublisher stageUpdateEventPublisher(SystemConnector systemConnector) {
+        return new StageUpdateEventPublisherImpl(systemConnector);
+    }
+
+    @Bean
+    public CreateStageEventConsumer createStageEventConsumer(StageService stageService,
+                                                             StageAdapter stageAdapter
+                                                             ){
+        return new CreateStageEventConsumerImpl(stageService, stageAdapter);
+    }
+
+    @Bean
+    public DeleteStageEventConsumer deleteStageEventConsumer(StageService stageService){
+        return new DeleteStageEventConsumerImpl(stageService);
+    }
+
+    @Bean
+    public TechnicalStageDefinitionEventConsumer technicalStageDefinitionEventConsumer(StageDefinitionService definitionService,
+                                                                                       TechnicalStageDefinitionAdapter definitionAdapter){
+        return new StageDefinitionEventConsumerImpl(definitionAdapter,definitionService);
+    }
+
+}

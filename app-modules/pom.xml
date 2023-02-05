@@ -13,9 +13,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>bulo-microservices-app</module>
-        <module>bulo-standalone-app</module>
-        <module>bulo-common-app-modules</module>
+        <module>microservices</module>
+        <module>standalone</module>
+        <module>app-shared-modules</module>
     </modules>
 
 </project>

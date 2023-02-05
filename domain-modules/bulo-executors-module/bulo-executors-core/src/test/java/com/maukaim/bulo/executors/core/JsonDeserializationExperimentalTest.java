@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.api.data.types.Any;
 import com.maukaim.bulo.api.data.types.any.AnyObject;
 import com.maukaim.bulo.executors.core.marshalling.jackson.mapper.ObjectMapperProvider;
-import com.maukaim.bulo.executors.core.marshalling.BuloMarshaller;
+import com.maukaim.bulo.executors.core.marshalling.BuloRunnerMarshaller;
 import com.maukaim.bulo.executors.core.marshalling.jackson.mapper.impl.BuloObjectMapperProvider;
 import com.maukaim.bulo.executors.core.marshalling.jackson.resolver.impl.BuloJacksonMarshallingResolver;
 import com.maukaim.bulo.executors.core.marshalling.jackson.resolver.JacksonMarshallingResolver;
 import com.maukaim.bulo.executors.core.marshalling.jackson.generator.impl.BuloDescriptorMixInGeneratorStrategy;
 import com.maukaim.bulo.executors.core.model.Voiture;
-import com.maukaim.bulo.runners.api.Marshaller;
+import com.maukaim.bulo.runners.api.RunnerMarshaller;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -35,7 +35,7 @@ public class JsonDeserializationExperimentalTest {
     @Test
     void testMarshaller() {
         String json = getResourceFileText("voiture.json");
-        Marshaller buloMarshaller = buildMarshaller();
+        RunnerMarshaller buloMarshaller = buildMarshaller();
         Any<?> asGenericType = buloMarshaller.unmarshallAsGenericType(json);
         System.out.println(asGenericType);
         if (asGenericType instanceof AnyObject) {
@@ -62,8 +62,8 @@ public class JsonDeserializationExperimentalTest {
         return mapperProvider.get();
     }
 
-    private Marshaller buildMarshaller() {
-        return new BuloMarshaller(buildMapper(), marshallingResolver, marshallingResolver);
+    private RunnerMarshaller buildMarshaller() {
+        return new BuloRunnerMarshaller(buildMapper(), marshallingResolver, marshallingResolver);
     }
 
     private String getResourceFileText(String name) {

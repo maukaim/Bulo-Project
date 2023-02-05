@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.maukaim.bulo.ms.shared.spring.servers.autoconfig.SystemConnectorConfig,\
+com.maukaim.bulo.ms.shared.spring.servers.autoconfig.CommonObjectMapperConfig,\
+com.maukaim.bulo.ms.shared.spring.servers.autoconfig.ApplicationMarshallerConfig

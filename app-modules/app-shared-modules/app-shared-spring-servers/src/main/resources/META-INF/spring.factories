@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.maukaim.bulo.app.shared.spring.servers.SystemAwareConfig

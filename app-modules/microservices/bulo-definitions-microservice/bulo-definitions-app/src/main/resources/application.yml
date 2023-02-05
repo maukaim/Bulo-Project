@@ -1,0 +1,6 @@
+maukaim:
+  swagger:
+    title: Definitions Registry Micro-Service
+    description: Service to register and communicate items definitions across the system.
+    version: ALPHA
+    enabled: true

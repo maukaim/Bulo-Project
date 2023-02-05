@@ -36,3 +36,4 @@ build/
 
 ### Bulo - Project ###
 /test-data/
+*.log
