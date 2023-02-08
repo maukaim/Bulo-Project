@@ -56,7 +56,7 @@ Prioritized items (as of Feb 2023):
 - [ ] Add Jenkins to start CI/CD pipeline.
 - [ ] Add AWS integration.
 - [ ] Add Dockers to universalize development.
-- [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service)
+- [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service, see [details here.](Architecture_refacto_project.md))
 - [ ] Add Plugin System for Java runners (Copy what exists in my other project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
 - [ ] Pluggable Logging system (Wrapper API on logback)
 

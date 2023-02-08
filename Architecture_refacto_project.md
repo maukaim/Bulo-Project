@@ -1,4 +1,4 @@
-## Re Architecture - March 2023  
+## Re-Architecture project - March 2023  
 ________________
 The current architecture has 2 central components : 1) Orchestrator service and 2) Executors    
 
@@ -21,4 +21,4 @@ The FlowRun service would still be responsible for a Flow execution, and make it
 The StageRun will inherit from the ExecutionEngine, responsible to compute next StageRun based on the FlowRun received.  
 Then, it will resolve which Executor to contact and perform an execution request (Stream style).
 
-The Executors will update the calling StageRun service to provide mid-step updates.  
+The Executors will update the calling StageRun service to provide mid-step updates.
