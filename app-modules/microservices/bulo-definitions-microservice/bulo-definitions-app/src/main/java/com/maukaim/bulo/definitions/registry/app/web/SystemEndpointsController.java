@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.registry.app.web;
 
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
-import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.definitions.io.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.io.StageUpdateEventConsumer;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
@@ -19,16 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemEndpointsController {
 
     @RestController
-    class ServiceDefinitionCreateEndpoint implements IDefinitionCreateServiceEndpoint<StageDefinitionCreateInstruction> {
-        private final StageDefinitionCreateInstructionConsumer declarationEventConsumer;
+    class ServiceDefinitionCreateEndpoint implements IDefinitionCreateServiceEndpoint<CreateStageDefinitionInstruction> {
+        private final CreateStageDefinitionConsumer declarationEventConsumer;
 
         @Autowired
-        ServiceDefinitionCreateEndpoint(StageDefinitionCreateInstructionConsumer declarationEventConsumer) {
+        ServiceDefinitionCreateEndpoint(CreateStageDefinitionConsumer declarationEventConsumer) {
             this.declarationEventConsumer = declarationEventConsumer;
         }
 
         @Override
-        public void consume(@RequestBody StageDefinitionCreateInstruction event) {
+        public void consume(@RequestBody CreateStageDefinitionInstruction event) {
             this.declarationEventConsumer.consume(event);
         }
     }

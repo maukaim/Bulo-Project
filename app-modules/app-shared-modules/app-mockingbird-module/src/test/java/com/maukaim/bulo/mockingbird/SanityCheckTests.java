@@ -2,14 +2,19 @@ package com.maukaim.bulo.mockingbird;
 
 import com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
+import com.maukaim.bulo.commons.io.data.types.natives.impl.StringTypeDto;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.mockingbird.builders.StageDtoBuilder;
 import com.maukaim.bulo.mockingbird.connect.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
-public class NormalFlowCreationTest {
+import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.*;
+
+public class SanityCheckTests {
     private User user;
 
     private final ApplicationMode applicationMode = ApplicationMode.microservices;
@@ -25,7 +30,7 @@ public class NormalFlowCreationTest {
     }
 
     @Test
-    void sanityCheckCustomIOType(){
+    void sanityCheckCustomIOType() {
         String stageId = user.createStage(
                 StageDtoBuilder.aTechnicalStage()
                         .withDefinitionId("NameProviding2")
@@ -55,9 +60,33 @@ public class NormalFlowCreationTest {
         );
         System.out.println(stageIds);
 
+        ContextStageId nameProviderContextId = ContextStageId.of(stageIds.get(0), 0);
+        ContextStageId printerContextId1 = ContextStageId.of(stageIds.get(1), 0);
+        ContextStageId printerContextId2 = ContextStageId.of(stageIds.get(1), 1);
+
         //2 - Create a Functional Stage Definition
+        String functionalStageDefinitionId = user.createFunctionalDefinition(
+                aDefinition()
+                        .withInput("Yolo Subject", StringTypeDto.required())
+                        .withOutput("Yolo Result", StringTypeDto.required())
+                        .withParameters(/*empty params*/)
+                        .withFsStages(
+                                fsStage(nameProviderContextId, Set.of()),
+                                fsStage(printerContextId2, Set.of(ioDependency("Yolo Subject", Set.of()))),
+                                fsStage(printerContextId1, Set.of(ioDependency("Yolo Subject", Set.of(inputProvider(nameProviderContextId, "Name")))))
+                        )
+                        .withOutputProviders(outputProvider(printerContextId2, "Yolo Result"))
+                        .build());
+
+        System.out.println(functionalStageDefinitionId);
 
         //3 - Create a Functional Stage
+        String functionalStageId = user.createStage(
+                StageDtoBuilder.aFunctionalStage()
+                        .withDefinitionId(functionalStageDefinitionId)
+                        .withEmptyParameter()
+                        .build()
+        );
 
         //4 - Create a Flow
 

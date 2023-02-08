@@ -1,8 +1,8 @@
 package com.maukaim.bulo.executors.io;
 
 
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
 
 public interface StageDefinitionCreateInstructionPublisher {
-    boolean publish(StageDefinitionCreateInstruction event);
+    boolean publish(CreateStageDefinitionInstruction event);
 }

@@ -3,7 +3,7 @@ package com.maukaim.bulo.app.commons.endpoints.controller;
 import com.maukaim.bulo.app.commons.endpoints.ForClientEventType;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEndpointExpectedIn;
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ import static com.maukaim.bulo.app.commons.endpoints.ClientEventType.STAGE_DEFIN
 public interface DefinitionClientEndpoint {
     @ForClientEventType(STAGE_DEFINITION_CREATE_INSTRUCTION)
     @PostMapping(value = "/register")
-    ResponseEntity<?> consume(@RequestBody StageDefinitionCreateInstruction event);
+    ResponseEntity<?> consume(@RequestBody CreateStageDefinitionInstruction event);
 
     @ForClientEventType(DEFINITION_GET_ALL)
     @GetMapping(value = "/getAll")

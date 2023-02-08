@@ -5,12 +5,12 @@ import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 
 import java.time.Instant;
 
-public class StageDefinitionCreateInstruction implements ExternalEvent {
+public class CreateStageDefinitionInstruction implements ExternalEvent {
     private String stageExecutorId;
     private StageDefinitionDto stageDefinition;
     private Instant instant;
 
-    public StageDefinitionCreateInstruction(String stageExecutorId, StageDefinitionDto stageDefinition, Instant instant) {
+    public CreateStageDefinitionInstruction(String stageExecutorId, StageDefinitionDto stageDefinition, Instant instant) {
         this.stageExecutorId = stageExecutorId;
         this.stageDefinition = stageDefinition;
         this.instant = instant;

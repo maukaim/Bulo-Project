@@ -5,6 +5,14 @@ import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
 
 public class StringTypeDto extends NativeTypeDto {
 
+    public static StringTypeDto required(){
+        return new StringTypeDto(true);
+    }
+
+    public static StringTypeDto notRequired(){
+        return new StringTypeDto(false);
+    }
+
     public StringTypeDto(boolean required) {
         super(required);
     }

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.serialization;
 
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
@@ -53,7 +53,7 @@ public class MixinsConfig {
     );
 
     private static Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = Map.of(
-            StageDefinitionCreateInstruction.class, StageDefinitionCreateInstructionMixIn.class,
+            CreateStageDefinitionInstruction.class, StageDefinitionCreateInstructionMixIn.class,
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class

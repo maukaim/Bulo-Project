@@ -1,6 +1,6 @@
 package com.maukaim.bulo.definitions.registry.serialization;
 
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class DefinitionMixinsConfig {
 
     private static Map<Class<?>,Class<?>> COMMON_DEFINITIONS_MIXINS = Map.of(
-            StageDefinitionCreateInstruction.class, StageDefinitionCreateInstructionMixIn.class,
+            CreateStageDefinitionInstruction.class, StageDefinitionCreateInstructionMixIn.class,
             StageDefinitionEvent.class, StageDefinitionEventMixIn.class,
             ExecutorUpdateEvent.class, ExecutorUpdateEventMixIn.class,
 

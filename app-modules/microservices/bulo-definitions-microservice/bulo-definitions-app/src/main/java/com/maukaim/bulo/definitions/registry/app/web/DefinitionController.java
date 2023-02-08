@@ -1,11 +1,11 @@
 package com.maukaim.bulo.definitions.registry.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.DefinitionClientEndpoint;
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.StageDefinitionCreateInstructionConsumer;
+import com.maukaim.bulo.definitions.io.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +18,12 @@ import java.util.stream.Collectors;
 @RestController
 public class DefinitionController implements DefinitionClientEndpoint {
     private final StageDefinitionService service;
-    private final StageDefinitionCreateInstructionConsumer declarationEventConsumer;
+    private final CreateStageDefinitionConsumer declarationEventConsumer;
     private final StageDefinitionDtoAdapter definitionDtoAdapter;
 
     @Autowired
     public DefinitionController(StageDefinitionService service,
-                                StageDefinitionCreateInstructionConsumer declarationEventConsumer,
+                                CreateStageDefinitionConsumer declarationEventConsumer,
                                 StageDefinitionDtoAdapter definitionDtoAdapter) {
         this.service = service;
         this.declarationEventConsumer = declarationEventConsumer;
@@ -31,9 +31,9 @@ public class DefinitionController implements DefinitionClientEndpoint {
     }
 
     @Override
-    public ResponseEntity<?> consume(@RequestBody StageDefinitionCreateInstruction event) {
-        this.declarationEventConsumer.consume(event);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> consume(@RequestBody CreateStageDefinitionInstruction event) {
+        String definitionId = this.declarationEventConsumer.consume(event);
+        return ResponseEntity.ok(definitionId);
     }
 
     @Override

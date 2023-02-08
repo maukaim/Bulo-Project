@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.app.io;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.commons.io.instructions.StageDefinitionCreateInstruction;
+import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.executors.io.StageDefinitionCreateInstructionPublisher;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 
@@ -13,7 +13,7 @@ public class DummyStageDefinitionCreateInstructionPublisher implements StageDefi
     }
 
     @Override
-    public boolean publish(StageDefinitionCreateInstruction event) {
+    public boolean publish(CreateStageDefinitionInstruction event) {
         System.out.println("Publish event : " + event);
         return !this.systemConnector.sendExternal(event, ServiceEventType.DEF_CREATE_INSTRUCTION)
                 .isEmpty();

@@ -4,9 +4,12 @@ import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
+import com.maukaim.bulo.definitions.registry.core.report.StageDefinitionCreateReport;
 
 import java.util.List;
 import java.util.UUID;
+
+import static com.maukaim.bulo.definitions.registry.core.report.StageDefinitionCreateReport.DEFAULT_SUCCESS_REPORT;
 
 public class StageDefinitionServiceImpl implements StageDefinitionService {
     private final List<TechnicalStageDefinitionValidator> technicalValidators;
@@ -21,16 +24,17 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     }
 
     @Override
-    public void register(FunctionalStageDefinition definition) {
+    public StageDefinitionCreateReport register(FunctionalStageDefinition definition) {
         StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition == null) {
             if (this.functionalValidators.stream().allMatch(validator -> validator.isValid(definition))) {
-                this.definitionStore.addDefinition(attachUUID(definition));
+                StageDefinition stageDefinition = this.definitionStore.addDefinition(attachUUID(definition));
+                return StageDefinitionCreateReport.successReport(stageDefinition.getDefinitionId(), DEFAULT_SUCCESS_REPORT);
             } else {
-                throw new RuntimeException("Definition rejected: " + definition.getDefinitionId());
+                return StageDefinitionCreateReport.failReport(null, "Definition rejected, did not pass ALL validators");
             }
         } else {
-            throw new RuntimeException("Definition already exist : " + existingDefinition);
+            return StageDefinitionCreateReport.failReport(null, "Definition already exist.");
         }
     }
 
@@ -45,15 +49,17 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     }
 
     @Override
-    public void register(String stageExecutorId, TechnicalStageDefinition definition) {
+    public StageDefinitionCreateReport register(String stageExecutorId, TechnicalStageDefinition definition) {
         StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition != null && existingDefinition.equals(definition)) {
             this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
+            return StageDefinitionCreateReport.successReport(existingDefinition.getDefinitionId(), "Already exist. just registered executorId.");
         } else if (this.technicalValidators.stream().allMatch(validator -> validator.validate(definition))) {
-            this.definitionStore.addDefinition(definition);
+            StageDefinition stageDefinition = this.definitionStore.addDefinition(definition);
             this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
+            return StageDefinitionCreateReport.successReport(stageDefinition.getDefinitionId(), DEFAULT_SUCCESS_REPORT);
         } else {
-            throw new RuntimeException("Definition rejected: " + definition.getDefinitionId());
+            return StageDefinitionCreateReport.failReport(definition.getDefinitionId(), "Definition rejected, did not pass ALL validators");
         }
     }
 
