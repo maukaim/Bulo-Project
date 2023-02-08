@@ -44,9 +44,21 @@ Bulo microservices and Standalone versions are not yet deployed in Alpha version
 ## Roadmap Alpha version - Jan 2023 
 
 Find below the targeted architecture for End of Alpha version development. Only Bulo Backend would be included, Gateways and UI are here to understand in which runContext Bulo will  be used.  
-More documentation (and current architecture) [here](ALPHA_VERSION_roadmap.md). For contributors, you can have a look on cards in [Bulo-Project's Dashboard](https://github.com/orgs/maukaim/projects/3) and pick one in the backlog.
+More documentation (and current architecture) [here](ALPHA_VERSION_roadmap.md). 
+For contributors, you can have a look on cards in [Bulo-Project's Dashboard](https://github.com/orgs/maukaim/projects/3) and pick one in the backlog.
  
 <img src="assets/bulo_alpha_target_architecture.png" width="800"/>
+
+Prioritized items (as of Feb 2023):
+- [X] Add Mockingbird module (integration tests)
+- [ ] Add Kafka integration
+- [ ] Refactor, standardize modules coding style.
+- [ ] Add Jenkins to start CI/CD pipeline.
+- [ ] Add AWS integration.
+- [ ] Add Dockers to universalize development.
+- [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service)
+- [ ] Add Plugin System for Java runners (Copy what exists in my other project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
+- [ ] Pluggable Logging system (Wrapper API on logback)
 
 ## How to contribute? 
 
