@@ -23,11 +23,12 @@ public class FlowServiceImpl implements FlowService {
     }
 
     @Override
-    public Flow put(Flow flow) {
+    public String create(Flow flow) {
         try {
             this.flowValidator.validate(flow);
-            String flowId = flow.getFlowId() == null ? UUID.randomUUID().toString() : flow.getFlowId();
-            return this.flowStore.put(flowId, flow);
+            Flow flowToStore = attachUUID(flow);
+            this.flowStore.put(flowToStore);
+            return flowToStore.getFlowId();
         } catch (FlowValidationException e) {
             throw new RuntimeException("Flow validation failed, won't register flow Id " + flow.getFlowId(), e);
         }
@@ -37,5 +38,14 @@ public class FlowServiceImpl implements FlowService {
     public Flow archive(String flowId) {
         Flow flow = this.flowStore.getById(flowId);
         return flow == null ? null : this.flowStore.remove(flow);
+    }
+
+    private Flow attachUUID(Flow flow) {
+        return new Flow(
+                flow.getFlowId() == null ? UUID.randomUUID().toString() : flow.getFlowId(),
+                flow.getOwnerKeys(),
+                flow.getFlowStages(),
+                flow.isParallelRunAllowed()
+        );
     }
 }

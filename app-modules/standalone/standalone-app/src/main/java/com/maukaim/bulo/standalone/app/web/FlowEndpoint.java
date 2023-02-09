@@ -5,6 +5,7 @@ import com.maukaim.bulo.flows.io.CreateFlowInstructionConsumer;
 import com.maukaim.bulo.flows.io.RemoveFlowInstructionConsumer;
 import com.maukaim.bulo.flows.io.events.CreateFlowInstruction;
 import com.maukaim.bulo.flows.io.events.RemoveFlowInstruction;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,9 +20,9 @@ public class FlowEndpoint implements FlowClientEndpoint {
     }
 
     @Override
-    public void onCreate(CreateFlowInstruction instruction) {
-        this.createFlowInstructionConsumer.onCreateOrUpdate(instruction);
-
+    public ResponseEntity<?> onCreate(CreateFlowInstruction instruction) {
+        String flowDefinitionId = this.createFlowInstructionConsumer.onCreateOrUpdate(instruction);
+        return ResponseEntity.ok(flowDefinitionId);
     }
 
     @Override

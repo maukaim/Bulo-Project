@@ -4,6 +4,6 @@ import com.maukaim.bulo.flows.data.models.flow.Flow;
 
 public interface FlowService {
     Flow getFlow(String flowId);
-    Flow put(Flow flow);
+    String create(Flow flow);
     Flow archive(String flowId);
 }

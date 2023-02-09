@@ -11,12 +11,12 @@ import static com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment.d
 
 public class TestManager {
 
-    public static Application getUatUIApp(ApplicationMode appMode) {
+    public static Application getUatApp(ApplicationMode appMode) {
         RestSystemEventConnector<ClientEventType> connector = SystemConnectorProvider.get(dev, appMode);
         return new Application(connector, MarshallerProvider.get());
     }
 
-    public static Application getDevUIApp(ApplicationMode appMode) {
+    public static Application getDevApp(ApplicationMode appMode) {
         RestSystemEventConnector<ClientEventType> connector = SystemConnectorProvider.get(dev, appMode);
         return new Application(connector, MarshallerProvider.get());
     }

@@ -19,7 +19,7 @@ public class MainFlowStore implements FlowStore {
     }
 
     @Override
-    public Flow put(String flowId, Flow flow) {
+    public Flow put(Flow flow) {
         System.out.println("Saving flow: " + flow);
         this.flowById.put(flow.getFlowId(), flow);
         return flow;

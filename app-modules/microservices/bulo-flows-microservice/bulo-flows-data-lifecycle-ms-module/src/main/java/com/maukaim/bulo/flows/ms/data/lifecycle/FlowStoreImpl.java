@@ -31,9 +31,9 @@ public class FlowStoreImpl implements FlowStore {
     }
 
     @Override
-    public Flow put(String flowId, Flow flow) {
+    public Flow put(Flow flow) {
         FlowDto dto = this.flowDtoAdapter.adapte(flow);
-        dto.setFlowId(flowId);
+        dto.setFlowId(flow.getFlowId());
         return this.publishUpdateOrSave(flow, dto);
     }
 
@@ -51,13 +51,13 @@ public class FlowStoreImpl implements FlowStore {
         return published ? flow : this.delete(flow.getFlowId());
     }
 
-    public Flow save(Flow flow){
+    public Flow save(Flow flow) {
         System.out.println("Saving flow: " + flow);
         this.flowById.put(flow.getFlowId(), flow);
         return flow;
     }
 
-    public Flow delete(String flowId){
+    public Flow delete(String flowId) {
         return this.flowById.remove(flowId);
     }
 }

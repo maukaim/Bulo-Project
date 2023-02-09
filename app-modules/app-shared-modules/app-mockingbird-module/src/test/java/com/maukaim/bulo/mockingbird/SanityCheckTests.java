@@ -4,6 +4,9 @@ import com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.commons.io.data.types.natives.impl.StringTypeDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
+import com.maukaim.bulo.flows.io.flow.OwnerKeyTypeDto;
+import com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder;
+import com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder;
 import com.maukaim.bulo.mockingbird.builders.StageDtoBuilder;
 import com.maukaim.bulo.mockingbird.connect.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,6 +15,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Set;
 
+import static com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder.inputProvider;
+import static com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder.ioDependency;
 import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.*;
 
 public class SanityCheckTests {
@@ -23,8 +28,8 @@ public class SanityCheckTests {
     @BeforeEach
     void init() {
         user = switch (applicationEnv) {
-            case dev -> new User(TestManager.getDevUIApp(applicationMode));
-            case uat -> new User(TestManager.getUatUIApp(applicationMode));
+            case dev -> new User(TestManager.getDevApp(applicationMode));
+            case uat -> new User(TestManager.getUatApp(applicationMode));
             case prod -> throw new UnsupportedOperationException("Don't use mockingbird with PROD environement");
         };
     }
@@ -72,8 +77,8 @@ public class SanityCheckTests {
                         .withParameters(/*empty params*/)
                         .withFsStages(
                                 fsStage(nameProviderContextId, Set.of()),
-                                fsStage(printerContextId2, Set.of(ioDependency("Yolo Subject", Set.of()))),
-                                fsStage(printerContextId1, Set.of(ioDependency("Yolo Subject", Set.of(inputProvider(nameProviderContextId, "Name")))))
+                                fsStage(printerContextId2, Set.of(FunctionalDefinitionBuilder.ioDependency("Yolo Subject", Set.of()))),
+                                fsStage(printerContextId1, Set.of(FunctionalDefinitionBuilder.ioDependency("Yolo Subject", Set.of(FunctionalDefinitionBuilder.inputProvider(nameProviderContextId, "Name")))))
                         )
                         .withOutputProviders(outputProvider(printerContextId2, "Yolo Result"))
                         .build());
@@ -89,7 +94,32 @@ public class SanityCheckTests {
         );
 
         //4 - Create a Flow
+        ContextStageId flowNameProviderContextId = ContextStageId.of(stageIds.get(0), 0);
+        ContextStageId flowPrinterContextId1 = ContextStageId.of(stageIds.get(1), 0);
+        ContextStageId flowPrinterContextId2 = ContextStageId.of(stageIds.get(1), 1);
+        ContextStageId functionalNameProviderContextId = ContextStageId.of(functionalStageId, 4);
 
+        String flowId = user.createFlow(FlowDtoBuilder.aFlow()
+                .withFlowId("Babar")
+                .withOwnerKey(user.getUserName(), OwnerKeyTypeDto.USER)
+                .withFlowStage(flowNameProviderContextId)
+                .withFlowStage(flowPrinterContextId1,
+                        ioDependency("Yolo Subject",
+                                inputProvider(flowNameProviderContextId, "Name")
+                        ))
+                .withFlowStage(flowPrinterContextId2,
+                        ioDependency("Yolo Subject",
+                                inputProvider(functionalNameProviderContextId, "Yolo Result")
+                        ))
+                .withFlowStage(functionalNameProviderContextId,
+                        ioDependency("Yolo Subject",
+                                inputProvider(flowNameProviderContextId, "Name")
+                        ))
+                .withAllowParallelRun(true)
+                .build());
+
+        System.out.println(flowId);
         //5 - Trigger a FlowRun
+
     }
 }
