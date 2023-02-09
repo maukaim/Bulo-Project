@@ -55,9 +55,9 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
             this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
             return StageDefinitionCreateReport.successReport(existingDefinition.getDefinitionId(), "Already exist. just registered executorId.");
         } else if (this.technicalValidators.stream().allMatch(validator -> validator.validate(definition))) {
-            StageDefinition stageDefinition = this.definitionStore.addDefinition(definition);
+            this.definitionStore.addDefinition(definition);
             this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
-            return StageDefinitionCreateReport.successReport(stageDefinition.getDefinitionId(), DEFAULT_SUCCESS_REPORT);
+            return StageDefinitionCreateReport.successReport(definition.getDefinitionId(), DEFAULT_SUCCESS_REPORT);
         } else {
             return StageDefinitionCreateReport.failReport(definition.getDefinitionId(), "Definition rejected, did not pass ALL validators");
         }

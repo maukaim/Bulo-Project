@@ -39,7 +39,8 @@ And yet, we did not compromise on the microservices version' performances at run
 ## Getting Started in 42 seconds  
 _Java 16 required_. 
 
-Bulo microservices and Standalone versions are not yet deployed in Alpha version. You can build the project and run it from your IDE, For how to run Bulo, please look at the [RUNME.md](RUNME.md) page.
+Bulo microservices and Standalone versions are not yet deployed in Alpha version. 
+You can build the project and run it from your IDE, For how to run Bulo, please look at the [RUNME.md](RUNME.md) page.
 
 ## Roadmap Alpha version - Jan 2023 
 
