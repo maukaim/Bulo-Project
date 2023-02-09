@@ -11,11 +11,6 @@
 
     <artifactId>app-shared-system-communication-core</artifactId>
 
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>

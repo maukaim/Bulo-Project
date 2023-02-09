@@ -11,11 +11,6 @@
 
     <artifactId>bulo-triggers-scheduler-data-module</artifactId>
 
-    <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>

@@ -13,8 +13,6 @@
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
         <spring.boot.version>2.4.4</spring.boot.version>
         <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
     </properties>
