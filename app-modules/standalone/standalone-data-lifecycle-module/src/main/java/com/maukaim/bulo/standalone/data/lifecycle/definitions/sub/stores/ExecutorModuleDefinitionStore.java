@@ -35,7 +35,7 @@ public class ExecutorModuleDefinitionStore implements StageDefinitionStore {
 
     @Override
     public List<StageDefinition> putAll(Collection<StageDefinition> stageDefinitions) {
-        System.out.println("Save definition -> " + stageDefinitions);
+        System.out.println("Save definitions (" + stageDefinitions.size() + ") -> " + stageDefinitions);
         return stageDefinitions == null ? null : stageDefinitions.stream()
                 .map(this::put)
                 .collect(Collectors.toList());

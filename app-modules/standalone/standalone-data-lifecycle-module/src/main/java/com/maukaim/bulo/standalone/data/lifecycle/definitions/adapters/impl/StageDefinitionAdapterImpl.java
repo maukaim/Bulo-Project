@@ -60,13 +60,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
 
     @Override
     public StageDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.definition.StageDefinition definition) {
-        return definition == null ? null : switch (definition.getStageDefinitionType()) {
-            case FUNCTIONAL -> throw new UnsupportedDataMethodException("Not yet supported by FlowModule");
-            case TECHNICAL -> adapteFlowModule((com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition) definition);
-        };
-    }
-    private StageDefinition adapteFlowModule(com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition definition) {
-        return new StageDefinition(
+        return definition == null ? null : new StageDefinition(
                 definition.getDefinitionId(),
                 resolveInputFlowModule(definition.getInputsByName()),
                 resolveOutputFlowModule(definition.getOutputsByName()),

@@ -20,12 +20,16 @@ public class Application {
         return marshaller.unmarshallAsList(result, clazz);
     }
 
-    protected <RT> RT send(Object body, ClientEventType type, Class<RT> clazz) {
+    protected <RT> RT sendAndGet(Object body, ClientEventType type, Class<RT> clazz) {
         String result = sendAndGetRaw(body, type);
         if (!String.class.isAssignableFrom(clazz)) {
             return marshaller.unmarshall(result, clazz);
         }
         return (RT) result;
+    }
+
+    protected void sendAndForget(Object body, ClientEventType type) {
+        sendAndGetRaw(body, type);
     }
 
     protected String sendAndGetRaw(Object body, ClientEventType type) {

@@ -16,11 +16,9 @@ public class OrchestratorModuleFunctionalStageStore implements FunctionalStageSt
     @Override
     public String getDefinitionId(String id) {
         Stage stage = this.mainStageStore.getById(id);
-        if(stage.getStageType() == StageType.FUNCTIONAL){
-            return stage.getDefinitionId();
-        }else{
-            throw new UnsupportedDataMethodException("The retrieve stage is not FUNCTIONAL -> " + stage);
-        }
+        return (stage != null && stage.getStageType() == StageType.FUNCTIONAL) ?
+                stage.getDefinitionId() :
+                null;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.commons.io.data.types.natives.impl.StringTypeDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
+import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.flows.io.flow.OwnerKeyTypeDto;
 import com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder;
 import com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder;
@@ -22,7 +23,7 @@ import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.
 public class SanityCheckTests {
     private User user;
 
-    private final ApplicationMode applicationMode = ApplicationMode.microservices;
+    private final ApplicationMode applicationMode = ApplicationMode.standalone;
     private final ApplicationEnvironment applicationEnv = ApplicationEnvironment.dev;
 
     @BeforeEach
@@ -63,7 +64,6 @@ public class SanityCheckTests {
                         .withParameter("Greetings", "Hola, buenos dias ", "Espagnol style...")
                         .build()
         );
-        System.out.println(stageIds);
 
         ContextStageId nameProviderContextId = ContextStageId.of(stageIds.get(0), 0);
         ContextStageId printerContextId1 = ContextStageId.of(stageIds.get(1), 0);
@@ -82,8 +82,6 @@ public class SanityCheckTests {
                         )
                         .withOutputProviders(outputProvider(printerContextId2, "Yolo Result"))
                         .build());
-
-        System.out.println(functionalStageDefinitionId);
 
         //3 - Create a Functional Stage
         String functionalStageId = user.createStage(
@@ -118,8 +116,7 @@ public class SanityCheckTests {
                 .withAllowParallelRun(true)
                 .build());
 
-        System.out.println(flowId);
         //5 - Trigger a FlowRun
-
+        user.triggerFlowRun(TriggerId.of(flowId, Set.of()));
     }
 }

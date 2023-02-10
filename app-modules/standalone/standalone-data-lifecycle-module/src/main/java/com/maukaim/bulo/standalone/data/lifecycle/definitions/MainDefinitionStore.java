@@ -1,7 +1,7 @@
 package com.maukaim.bulo.standalone.data.lifecycle.definitions;
 
-import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
+import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 
 import java.util.*;
 
@@ -16,7 +16,8 @@ public class MainDefinitionStore implements StageDefinitionStore {
 
     @Override
     public StageDefinition addDefinition(StageDefinition definition) {
-        return this.stageDefinitions.put(definition.getDefinitionId(), definition);
+        this.stageDefinitions.put(definition.getDefinitionId(), definition);
+        return definition;
     }
 
     @Override
