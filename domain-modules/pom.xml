@@ -15,7 +15,7 @@
     <modules>
         <module>bulo-flows-module</module>
         <module>bulo-users-module</module>
-        <module>bulo-common-domain-modules</module>
+        <module>domain-shared-modules</module>
         <module>bulo-triggers-module</module>
         <module>bulo-teams-module</module>
         <module>bulo-stages-module</module>

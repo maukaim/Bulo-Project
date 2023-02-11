@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bulo-common-domain-modules</artifactId>
+        <artifactId>domain-shared-modules</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
@@ -28,6 +28,7 @@
 <!--            TODO: Should be provided, see at applications level how to solve that.-->
 <!--            <scope>provided</scope>-->
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>

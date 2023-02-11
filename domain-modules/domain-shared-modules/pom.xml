@@ -3,21 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>domain-modules</artifactId>
+        <groupId>com.maukaim.bulo</groupId>
+        <version>${revision}</version>
+    </parent>
 
-    <artifactId>bulo-common-domain-modules</artifactId>
-    <groupId>com.maukaim.bulo</groupId>
+    <artifactId>domain-shared-modules</artifactId>
     <packaging>pom</packaging>
 
-    <version>${revision}</version>
-
-    <properties>
-        <revision>1.0.0-SNAPSHOT</revision>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring.boot.version>2.4.4</spring.boot.version>
-    </properties>
-
     <modules>
-        <module>bulo-swagger-starter</module>
         <module>bulo-commons-io</module>
         <module>bulo-commons-models</module>
         <module>bulo-commons-serialization</module>

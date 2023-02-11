@@ -19,6 +19,7 @@
         <module>app-shared-spring-servers</module>
         <module>app-shared-system-communication-core</module>
         <module>app-shared-system-communication-api</module>
+        <module>bulo-swagger-starter</module>
     </modules>
 
 </project>

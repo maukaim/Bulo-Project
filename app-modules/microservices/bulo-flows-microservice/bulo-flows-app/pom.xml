@@ -47,6 +47,7 @@
             <artifactId>app-shared-system-communication-core</artifactId>
             <version>${revision}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>ms-shared-spring-servers-starter</artifactId>
@@ -76,11 +77,13 @@
             <artifactId>bulo-swagger-starter</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-serialization</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

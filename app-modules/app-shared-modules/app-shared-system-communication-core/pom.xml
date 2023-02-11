@@ -17,11 +17,13 @@
             <artifactId>app-shared-system-communication-api</artifactId>
             <version>${revision}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-io</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>app-shared-servers</artifactId>

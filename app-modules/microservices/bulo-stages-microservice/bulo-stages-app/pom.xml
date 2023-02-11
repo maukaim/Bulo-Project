@@ -40,6 +40,7 @@
             <artifactId>app-shared-system-communication-core</artifactId>
             <version>${revision}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>ms-shared-spring-servers-starter</artifactId>
@@ -75,6 +76,7 @@
             <artifactId>bulo-swagger-starter</artifactId>
             <version>${bulo.commons.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>app-client-endpoints</artifactId>

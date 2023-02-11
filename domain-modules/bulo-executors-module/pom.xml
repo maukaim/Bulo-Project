@@ -3,19 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>domain-modules</artifactId>
+        <groupId>com.maukaim.bulo</groupId>
+        <version>${revision}</version>
+    </parent>
 
-    <groupId>com.maukaim.bulo</groupId>
     <artifactId>bulo-executors-module</artifactId>
-    <version>${revision}</version>
     <packaging>pom</packaging>
-
-    <properties>
-        <revision>1.0.0-SNAPSHOT</revision>
-        <bulo.commons.version>1.0.0-SNAPSHOT</bulo.commons.version>
-        <spring.boot.version>2.4.4</spring.boot.version>
-        <bulo.api.version>1.0.0-SNAPSHOT</bulo.api.version>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
 
     <modules>
         <module>bulo-executors-core</module>

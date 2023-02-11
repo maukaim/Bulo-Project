@@ -17,6 +17,7 @@
             <artifactId>bulo-triggers-io-module</artifactId>
             <version>${revision}</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>

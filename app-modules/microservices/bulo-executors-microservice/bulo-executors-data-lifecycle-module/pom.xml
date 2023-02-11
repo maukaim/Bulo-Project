@@ -17,6 +17,7 @@
             <artifactId>bulo-executors-data-module</artifactId>
             <version>${executors.module.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-executors-io-module</artifactId>
