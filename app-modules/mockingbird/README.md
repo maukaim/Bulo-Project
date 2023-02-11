@@ -7,4 +7,4 @@ to create component test for the cross-services features.
 ### Get Started
 __________
 Please go in test/ folder to find runnable elements. You have to start services manually, 
-see [the RUNME instructions.](../../RUNME.md)
+see [the RUNME instructions.](../../docs/RUNME.md)

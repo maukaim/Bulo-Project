@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/bulo-logo.svg" width="100" />
+    <img src="docs/assets/bulo-logo.svg" width="100" alt="Bulo logo" />
     <h1 class="title" style="margin-top:0px" >Bulo Project (ALPHA version)</h1>  
 </div>
 
@@ -11,7 +11,7 @@ As scalability is at the core of its design, Bulo can stretch from a simple stan
 <br/>
 <br/>
 <div align="center">
-<img src="assets/flow_example_adobe.gif" width="600"/>
+<img src="docs/assets/flow_example_adobe.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
 </div>  
 <br/>
 Thanks to the Bulo Store (Beta version), share and leverage on tools built by the community members, and automate your life is just a few clicks away!
@@ -40,15 +40,15 @@ And yet, we did not compromise on the microservices version' performances at run
 _Java 16 required_. 
 
 Bulo microservices and Standalone versions are not yet deployed in Alpha version. 
-You can build the project and run it from your IDE, For how to run Bulo, please look at the [RUNME.md](RUNME.md) page.
+You can build the project and run it from your IDE, For how to run Bulo, please look at the [RUNME.md](docs/RUNME.md) page.
 
 ## Roadmap Alpha version - Jan 2023 
 
 Find below the targeted architecture for End of Alpha version development. Only Bulo Backend would be included, Gateways and UI are here to understand in which runContext Bulo will  be used.  
-More documentation (and current architecture) [here](ALPHA_VERSION_roadmap.md). 
+More documentation (and current architecture) [here](docs/ALPHA_VERSION_roadmap.md). 
 For contributors, you can have a look on cards in [Bulo-Project's Dashboard](https://github.com/orgs/maukaim/projects/3) and pick one in the backlog.
  
-<img src="assets/bulo_alpha_target_architecture.png" width="800"/>
+<img src="docs/assets/bulo_alpha_target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>
 
 Prioritized items (as of Feb 2023):
 - [X] Add Mockingbird module (integration tests)
@@ -57,14 +57,14 @@ Prioritized items (as of Feb 2023):
 - [ ] Add Jenkins to start CI/CD pipeline.
 - [ ] Add AWS integration.
 - [ ] Add Dockers to universalize development.
-- [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service, see [details here.](Architecture_refacto_project.md))
+- [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service, see [details here.](docs/Architecture_refacto_project.md))
 - [ ] Add Plugin System for Java runners (Copy what exists in my other project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
 - [ ] Pluggable Logging system (Wrapper API on logback)
 
 ## How to contribute? 
 
 Every one is welcomed ! From helping on the architecture design, building new Stage Runners or helping with documentation. If you are interested feel free to reach out ! julienelk@gmail.com 
-To understand how to make your first contribution to the project, please read [CONTRIBUTE_ME.md](CONTRIBUTE_ME.md)  
+To understand how to make your first contribution to the project, please read [CONTRIBUTE_ME.md](docs/CONTRIBUTE_ME.md)  
 
 ## Follow the project  
 
