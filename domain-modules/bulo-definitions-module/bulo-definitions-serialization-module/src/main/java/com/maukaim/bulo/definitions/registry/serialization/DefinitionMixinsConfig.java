@@ -39,7 +39,6 @@ public class DefinitionMixinsConfig {
             TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDtoMixIn.class
     );
 
-
     private static Map<Class<?>, Class<?>> FUNCTIONAL_DEFINITIONS_MIXINS = Map.of(
             FunctionalStageDefinitionDto.class, FunctionalStageDefinitionDtoMixIn.class,
 

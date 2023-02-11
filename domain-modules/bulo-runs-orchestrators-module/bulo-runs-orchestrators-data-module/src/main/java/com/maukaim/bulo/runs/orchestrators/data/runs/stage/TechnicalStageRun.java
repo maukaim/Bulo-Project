@@ -75,7 +75,6 @@ public class TechnicalStageRun implements StageRun<TechnicalStageRunStatus> {
         return startTime;
     }
 
-
     @Override
     public String toString() {
         return "TechnicalStageRun{" +

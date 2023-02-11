@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.stagerun;
 
-
 import java.util.Set;
 
 public class FunctionalStageContextDto extends ContextDto<String> {

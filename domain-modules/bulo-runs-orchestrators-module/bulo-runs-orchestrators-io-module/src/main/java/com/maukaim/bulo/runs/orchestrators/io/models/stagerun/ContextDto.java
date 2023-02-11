@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.stagerun;
 
-
 import java.util.Set;
 
 public abstract class ContextDto<ID> {

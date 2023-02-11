@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
-
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +11,6 @@ public class ContextualizedStageDependency {
         this.inputId = inputId;
         this.contextStageAncestors = contextStageAncestors;
     }
-
 
     public String getInputId() {
         return inputId;

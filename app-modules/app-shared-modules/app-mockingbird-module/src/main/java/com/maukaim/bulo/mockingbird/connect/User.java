@@ -38,7 +38,6 @@ public class User {
         return app.sendAndGet(new CreateStageDefinitionInstruction(null, dto, Instant.EPOCH),
                 ClientEventType.STAGE_DEFINITION_CREATE_INSTRUCTION,
                 String.class);
-
     }
 
     public String createFlow(FlowDto dto) {

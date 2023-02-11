@@ -1,6 +1,5 @@
 package com.maukaim.bulo.commons.io.data.types;
 
-
 import com.maukaim.bulo.api.data.types.DataTypeCategory;
 
 import java.util.Map;

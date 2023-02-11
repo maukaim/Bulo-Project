@@ -1,6 +1,5 @@
 package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
-
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunAncestorAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunDependencyAdapter;
 import com.maukaim.bulo.executors.data.runs.StageRunAncestor;

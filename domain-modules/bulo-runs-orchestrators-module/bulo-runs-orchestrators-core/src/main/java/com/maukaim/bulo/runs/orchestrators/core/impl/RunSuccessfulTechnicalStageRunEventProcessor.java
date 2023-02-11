@@ -33,7 +33,6 @@ public class RunSuccessfulTechnicalStageRunEventProcessor extends TechnicalStage
         flowRunService.computeStageRunUpdateUnderLock(context.getContextId(), (actualFlowRun) -> commonProcess(actualFlowRun, stageRunId, instant));
     }
 
-
     private Map<String, StageRun> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
         StageRun<?> actualRun = getActualRun(orchestrableRunContext, stageRunId);
         Map<String, StageRun> result = new HashMap<>();
@@ -50,7 +49,6 @@ public class RunSuccessfulTechnicalStageRunEventProcessor extends TechnicalStage
 
         return result;
     }
-
 
     private Map<String, StageRun> getStageRunsToBeRequestedIfAuthorized(OrchestrableRunContext<?> orchestrableRunContext, ContextStageId currentStageId, Set<ContextStageId> children) {
         Set<StageRun> previousStageRuns = orchestrableRunContext.getStageRunIds().stream()

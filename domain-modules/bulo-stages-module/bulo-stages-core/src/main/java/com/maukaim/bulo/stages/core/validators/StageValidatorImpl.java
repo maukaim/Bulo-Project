@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 import static com.maukaim.bulo.stages.core.validators.ValidationReport.DEFAULT_SUCCESS_REPORT;
 
-
 public class StageValidatorImpl implements StageValidator {
     @Override
     public ValidationReport validate(Stage actualStage, StageDefinition definition) {

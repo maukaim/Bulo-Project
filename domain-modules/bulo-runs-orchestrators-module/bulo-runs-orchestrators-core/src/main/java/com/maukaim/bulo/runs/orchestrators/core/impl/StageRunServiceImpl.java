@@ -146,7 +146,6 @@ public class StageRunServiceImpl implements StageRunService {
         return this.stageRunStore.getById(stageRunId);
     }
 
-
     @Override
     public void requestCancel(String stageRunId, String executorId) {
         StageRun stageRun = this.getById(stageRunId);

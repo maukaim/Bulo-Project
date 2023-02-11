@@ -10,7 +10,6 @@ public class FunctionalStageDefinitionDto extends StageDefinitionDto {
     private final Set<FsStageDto> functionalSubStages;
     private final Set<OutputProviderDto> outputProviders;
 
-
     public FunctionalStageDefinitionDto(String id,
                                         Map<String, StageInputDefinitionDto> inputsByName,
                                         Map<String, StageOutputDefinitionDto> outputsByName,

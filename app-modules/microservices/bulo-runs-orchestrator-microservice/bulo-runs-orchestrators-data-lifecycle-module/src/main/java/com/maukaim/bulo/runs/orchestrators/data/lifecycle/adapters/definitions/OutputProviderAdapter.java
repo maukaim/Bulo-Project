@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.data.lifecycle.adapters.definitions;
 
-
 import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
 import com.maukaim.bulo.runs.orchestrators.data.definition.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.data.definition.OutputProvider;

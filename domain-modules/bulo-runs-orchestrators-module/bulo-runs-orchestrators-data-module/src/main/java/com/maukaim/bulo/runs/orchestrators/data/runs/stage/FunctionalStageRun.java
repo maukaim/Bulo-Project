@@ -96,7 +96,6 @@ public class FunctionalStageRun extends OrchestrableRunContext<String> implement
         return status;
     }
 
-
     @Override
     public Set<RunDependency> getStageRunDependencies() {
         return stageRunDependencies;

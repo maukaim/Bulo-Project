@@ -31,7 +31,6 @@ public abstract class BasicStageRunEvent implements IStageRunEvent {
         return instant;
     }
 
-
     @Override
     public String toString() {
         return getClass().getSimpleName() + "{" +

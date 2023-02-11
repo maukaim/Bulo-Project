@@ -1,6 +1,5 @@
 package com.maukaim.bulo.commons.swagger.config.springfox;
 
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;

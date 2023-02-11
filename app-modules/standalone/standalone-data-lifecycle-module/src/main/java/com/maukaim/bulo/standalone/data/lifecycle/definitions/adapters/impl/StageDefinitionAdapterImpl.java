@@ -109,7 +109,6 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
                 .collect(Collectors.toSet());
     }
 
-
     @Override
     public com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition adapteFromExecutorModule(com.maukaim.bulo.runners.api.models.StageDefinition stageDefinition) {
         return stageDefinition == null ? null : new com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition(

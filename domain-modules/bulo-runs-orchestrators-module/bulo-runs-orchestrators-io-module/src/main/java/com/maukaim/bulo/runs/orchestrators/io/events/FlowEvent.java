@@ -19,7 +19,6 @@ public class FlowEvent implements ExternalEvent {
         this.instant = instant;
     }
 
-
     public FlowDto getFlow() {
         return flow;
     }

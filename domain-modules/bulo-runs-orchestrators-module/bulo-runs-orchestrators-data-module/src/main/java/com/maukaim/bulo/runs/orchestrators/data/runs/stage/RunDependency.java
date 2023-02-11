@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.data.runs.stage;
 
-
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +11,6 @@ public class RunDependency {
         this.inputId = inputId;
         this.flowStageAncestors = flowStageAncestors;
     }
-
 
     public String getInputId() {
         return inputId;

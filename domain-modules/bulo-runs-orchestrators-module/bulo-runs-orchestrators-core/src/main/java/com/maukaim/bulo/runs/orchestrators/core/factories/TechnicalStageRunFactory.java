@@ -21,7 +21,6 @@ public class TechnicalStageRunFactory {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.REQUESTED, null, previousView.getStageRunDependencies(), Instant.now(), previousView.getEndTime());
     }
 
-
     public static TechnicalStageRun acknowledged(TechnicalStageRun previousView, String executorId) {
         return new TechnicalStageRun(previousView.getStageRunId(),
                 previousView.getContextualizedStageId(),
@@ -32,7 +31,6 @@ public class TechnicalStageRunFactory {
                 previousView.getStartTime(),
                 previousView.getEndTime());
     }
-
 
     public static TechnicalStageRun launched(TechnicalStageRun previousView, Instant startTime) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.RUNNING.resolveComparedTo(previousView.getStatus()), previousView.getExecutorId(),

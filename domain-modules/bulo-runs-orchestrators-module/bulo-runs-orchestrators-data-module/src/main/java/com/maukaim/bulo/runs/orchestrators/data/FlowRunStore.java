@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.data;
 
-
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 
 import java.util.function.BiFunction;

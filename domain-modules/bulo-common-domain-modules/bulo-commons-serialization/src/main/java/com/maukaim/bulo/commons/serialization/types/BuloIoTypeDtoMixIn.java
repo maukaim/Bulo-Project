@@ -1,6 +1,5 @@
 package com.maukaim.bulo.commons.serialization.types;
 
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.commons.io.data.types.IoTypeDto;

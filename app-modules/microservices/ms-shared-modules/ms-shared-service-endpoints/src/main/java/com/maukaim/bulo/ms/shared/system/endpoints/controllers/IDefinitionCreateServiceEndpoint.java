@@ -1,6 +1,5 @@
 package com.maukaim.bulo.ms.shared.system.endpoints.controllers;
 
-
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.ms.shared.system.endpoints.ForServiceEventType;

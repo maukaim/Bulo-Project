@@ -27,7 +27,6 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
         this.stageDefinitionStore = stageDefinitionStore;
     }
 
-
     @Override
     public boolean isValid(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();

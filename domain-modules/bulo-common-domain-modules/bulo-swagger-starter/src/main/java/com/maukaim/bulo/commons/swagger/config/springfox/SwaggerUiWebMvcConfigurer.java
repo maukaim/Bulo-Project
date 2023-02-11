@@ -1,6 +1,5 @@
 package com.maukaim.bulo.commons.swagger.config.springfox;
 
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

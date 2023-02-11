@@ -34,7 +34,6 @@ public class FlowRunDto implements OrchestrableContextDto<String> {
         return flowId;
     }
 
-
     public ExecutionGraphDto getExecutionGraph() {
         return executionGraph;
     }

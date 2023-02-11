@@ -1,6 +1,5 @@
 package com.maukaim.bulo.commons.swagger.config.springfox;
 
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.config.ResourceHandlerRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;

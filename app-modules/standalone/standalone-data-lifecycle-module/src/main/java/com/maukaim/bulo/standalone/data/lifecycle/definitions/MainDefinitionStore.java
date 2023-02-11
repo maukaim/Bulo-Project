@@ -35,7 +35,6 @@ public class MainDefinitionStore implements StageDefinitionStore {
         return this.stageDefinitions.values().stream().toList();
     }
 
-
     public Set<String> saveExecutor(String stageExecutorId, String stageId) {
         this.executorsByStageDefinitionId.putIfAbsent(stageId, new HashSet<>());
         return this.executorsByStageDefinitionId.compute(stageId, (id, executorIds) -> {

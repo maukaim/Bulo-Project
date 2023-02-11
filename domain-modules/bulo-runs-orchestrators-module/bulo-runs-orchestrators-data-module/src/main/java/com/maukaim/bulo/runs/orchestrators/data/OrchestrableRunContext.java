@@ -26,7 +26,6 @@ public abstract class OrchestrableRunContext<KEY> {
 
     abstract public RunContext<KEY> toRunContext();
 
-
     public Set<StageRun> getInFlightStageRuns() {
         return this.getStageRunsById().values().stream()
                 .filter(stageRunView -> !stageRunView.isTerminated())

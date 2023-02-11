@@ -6,7 +6,6 @@ import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.Set;
 
-
 public class OutputProviderDtoMixIn {
     @JsonCreator
     public OutputProviderDtoMixIn(@JsonProperty("contextStageId") ContextStageId contextStageId,

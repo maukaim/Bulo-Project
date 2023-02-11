@@ -82,7 +82,6 @@ public class MaukaimSwaggerProperties {
         SEAMLESS, L1, L2, L3, L4
     }
 
-
     public enum SupportedGrantType {
         IMPLICIT,
         CLIENT_CREDENTIALS,

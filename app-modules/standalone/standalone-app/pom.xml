@@ -105,7 +105,6 @@
             <version>${definitions.module.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-core</artifactId>

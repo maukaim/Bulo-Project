@@ -12,7 +12,6 @@ public class InputDependencyDto {
         this.inputProviders = inputProviders;
     }
 
-
     public String getInputId() {
         return inputId;
     }

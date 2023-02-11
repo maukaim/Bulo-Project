@@ -14,7 +14,6 @@ public interface StageRun<STATUS extends RunStatus> {
 
     ContextStageId getContextualizedStageId();
 
-
     RunContext<?> getContext();
 
     STATUS getStatus();

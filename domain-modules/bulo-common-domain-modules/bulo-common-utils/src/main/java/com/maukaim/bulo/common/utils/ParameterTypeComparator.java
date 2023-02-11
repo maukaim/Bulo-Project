@@ -61,7 +61,6 @@ public class ParameterTypeComparator {
                 .allMatch(jsonNode -> isValueValid(jsonNode, parameterType.getContentType()));
     }
 
-
     private static boolean isValueValid(JsonNode value, BuloParameterType parameterType) {
         if (!parameterType.isRequired() && (value == null || value.isNull() || value.isEmpty())) {
             return true;

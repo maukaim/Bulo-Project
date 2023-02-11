@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runners.api;
 
-
 import com.maukaim.bulo.runners.api.models.StageInputDefinition;
 import com.maukaim.bulo.runners.api.models.StageOutputDefinition;
 

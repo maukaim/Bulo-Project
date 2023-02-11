@@ -10,7 +10,6 @@ mvn clean install
 Simply launch the app from the main method in _standalone/standalone-app/.../BuloStandaloneApplication.java_. 
 An uber-jar will be available in the Beta version so the app could run from anywhere.
 
-
 ## Microservices App (Alpha version) 
 
 As simple as the Standalone version, you just need to run the Main class for each microservice.

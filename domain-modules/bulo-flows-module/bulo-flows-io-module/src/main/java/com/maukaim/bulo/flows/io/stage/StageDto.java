@@ -1,6 +1,5 @@
 package com.maukaim.bulo.flows.io.stage;
 
-
 import com.maukaim.bulo.commons.models.StageType;
 
 import java.util.List;

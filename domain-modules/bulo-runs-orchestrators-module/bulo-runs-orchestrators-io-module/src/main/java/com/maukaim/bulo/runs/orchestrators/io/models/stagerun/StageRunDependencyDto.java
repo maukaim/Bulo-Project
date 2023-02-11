@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.stagerun;
 
-
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +11,6 @@ public class StageRunDependencyDto {
         this.inputId = inputId;
         this.ancestors = ancestors;
     }
-
 
     public String getInputId() {
         return inputId;

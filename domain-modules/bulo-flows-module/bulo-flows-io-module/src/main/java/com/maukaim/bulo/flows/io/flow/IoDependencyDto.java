@@ -12,7 +12,6 @@ public class IoDependencyDto {
         this.inputProviders = inputProviders;
     }
 
-
     public String getInputId() {
         return inputId;
     }

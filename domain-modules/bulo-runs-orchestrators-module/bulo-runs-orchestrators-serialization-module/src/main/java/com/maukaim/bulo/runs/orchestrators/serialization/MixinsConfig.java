@@ -71,7 +71,6 @@ public class MixinsConfig {
             OutputProviderDto.class, OutputProviderDtoMixIn.class
     );
 
-
     public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
         putAll(STAGE_RUN_EVENTS_MIXINS);
         putAll(FLOW_RUN_MIXINS);

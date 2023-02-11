@@ -12,7 +12,6 @@ public abstract class TechnicalStageRunEventProcessor {
     protected final FlowRunService flowRunService;
     protected final StageRunService stageRunService;
 
-
     public TechnicalStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
         this.flowRunService = flowRunService;
         this.stageRunService = stageRunService;

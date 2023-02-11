@@ -102,7 +102,6 @@ public class FunctionalStageRunDto implements StageRunDto<OrchestrableContextSta
         return status;
     }
 
-
     @Override
     public Set<StageRunDependencyDto> getDependencies() {
         return dependencies;

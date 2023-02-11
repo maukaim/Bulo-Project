@@ -7,7 +7,6 @@ import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.Set;
 
-
 public class FsStageDtoMixIn {
     @JsonCreator
     public FsStageDtoMixIn(@JsonProperty("fsStageId") ContextStageId contextStageId,

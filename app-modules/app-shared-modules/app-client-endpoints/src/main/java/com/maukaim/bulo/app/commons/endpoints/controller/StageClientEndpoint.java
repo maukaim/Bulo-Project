@@ -29,7 +29,6 @@ public interface StageClientEndpoint {
     @DeleteMapping(value = "/remove")
     ResponseEntity<?> remove(@RequestBody DeleteStageInstruction instruction);
 
-
     @ForClientEventType(STAGE_GET_ALL)
     @GetMapping(value = "/getAll")
     ResponseEntity<Collection<StageDto>> getAll();

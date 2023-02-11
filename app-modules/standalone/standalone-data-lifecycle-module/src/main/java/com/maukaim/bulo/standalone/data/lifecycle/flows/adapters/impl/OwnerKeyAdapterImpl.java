@@ -1,6 +1,5 @@
 package com.maukaim.bulo.standalone.data.lifecycle.flows.adapters.impl;
 
-
 import com.maukaim.bulo.flows.data.models.flow.OwnerKey;
 import com.maukaim.bulo.runs.orchestrators.data.flow.OwnerKeyType;
 import com.maukaim.bulo.standalone.data.lifecycle.flows.adapters.OwnerKeyAdapter;

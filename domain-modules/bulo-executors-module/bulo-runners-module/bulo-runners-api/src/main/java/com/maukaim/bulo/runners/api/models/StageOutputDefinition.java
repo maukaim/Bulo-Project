@@ -7,7 +7,6 @@ public class StageOutputDefinition {
     private String name;
     private IoType ioType;
 
-
     public StageOutputDefinition(String name, IoType ioType) {
         this.name = name;
         this.ioType = ioType;

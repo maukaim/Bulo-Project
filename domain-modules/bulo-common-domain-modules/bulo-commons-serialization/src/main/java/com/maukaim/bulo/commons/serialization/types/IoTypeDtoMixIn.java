@@ -6,7 +6,6 @@ import com.maukaim.bulo.commons.io.data.types.ArrayIoTypeDto;
 import com.maukaim.bulo.commons.io.data.types.BuloIoTypeDto;
 import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
 
-
 @JsonTypeInfo(
         property = "dataTypeCategory",
         use = JsonTypeInfo.Id.NAME,

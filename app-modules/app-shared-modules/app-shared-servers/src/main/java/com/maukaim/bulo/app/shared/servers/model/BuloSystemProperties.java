@@ -9,7 +9,6 @@ public class BuloSystemProperties {
     private final String license;
     private final Map<ServiceName, WebServerProperties> servicesMap;
 
-
     public BuloSystemProperties(@JsonProperty("services") Map<ServiceName, WebServerProperties> servicesMap,
                                 @JsonProperty("license") String license) {
 

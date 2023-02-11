@@ -1,6 +1,5 @@
 package com.maukaim.bulo.stages.app.web;
 
-
 import com.maukaim.bulo.app.commons.endpoints.controller.StageClientEndpoint;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.io.CreateStageEventConsumer;
