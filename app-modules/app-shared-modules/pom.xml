@@ -17,7 +17,6 @@
         <module>app-client-endpoints</module>
         <module>app-shared-servers</module>
         <module>app-shared-spring-servers</module>
-        <module>app-mockingbird-module</module>
         <module>app-shared-system-communication-core</module>
         <module>app-shared-system-communication-api</module>
     </modules>
