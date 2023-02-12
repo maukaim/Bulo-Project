@@ -16,7 +16,7 @@ public class OrchestrableUtils {
 
     public static Set<RunDependency> getRunDependencies(ContextStageId contextStageId,
                                                         OrchestrableRunContext<?> orchestrableRunContext,
-                                                        Set<StageRun> previousRuns) {
+                                                        Set<StageRun<?>> previousRuns) {
         Set<RunDependency> result = new HashSet<>();
 
         Set<ContextualizedStageDependency> contextStageDependencies = orchestrableRunContext.getExecutionGraph().getFlowStageDependencies(contextStageId);
@@ -31,19 +31,19 @@ public class OrchestrableUtils {
     }
 
     private static Set<StageRunAncestor> getStageRunAncestors(Set<ContextStageAncestor> contextStageAncestors,
-                                                              Set<StageRun> previousRuns) {
+                                                              Set<StageRun<?>> previousRuns) {
         if (contextStageAncestors == null || contextStageAncestors.isEmpty()) {
             return Set.of();
         }
 
-        Map<ContextStageId, StageRun> alreadyRanFlowStageIdByStageRunIds = previousRuns.stream()
+        Map<ContextStageId, StageRun<?>> alreadyRanFlowStageIdByStageRunIds = previousRuns.stream()
                 .collect(toMap(
                         stageRun -> stageRun.getContextualizedStageId(),
                         stageRun -> stageRun
                 ));
         return contextStageAncestors.stream()
                 .map(contextStageAncestor -> {
-                    StageRun actualAncestorRun = alreadyRanFlowStageIdByStageRunIds.get(contextStageAncestor.getContextStageId());
+                    StageRun<?>  actualAncestorRun = alreadyRanFlowStageIdByStageRunIds.get(contextStageAncestor.getContextStageId());
                     if(actualAncestorRun instanceof TechnicalStageRun){
                         return List.of(new StageRunAncestor(
                                 actualAncestorRun.getStageRunId(),
@@ -61,20 +61,20 @@ public class OrchestrableUtils {
 
     private static List<StageRunAncestor> getAncestors(Set<String> functionalStageExpectedOutputs, FunctionalStageRun functionalStageRun) {
 
-        Map<ContextStageId, StageRun> runMap = functionalStageRun.getAllStageRuns().stream()
+        Map<ContextStageId, StageRun<?>> runMap = functionalStageRun.getAllStageRuns().stream()
                 .collect(toMap(
-                        stageRun -> stageRun.getContextualizedStageId(),
+                        StageRun::getContextualizedStageId,
                         stageRun -> stageRun
                 ));
 
         List<StageRunAncestor> stageRunAncestors = new ArrayList<>();
         for (OutputProvider outputProvider : functionalStageRun.getOutputProviders()) {
-            StageRun stageRun = runMap.get(outputProvider.getContextStageId());
+            StageRun<?>  stageRun = runMap.get(outputProvider.getContextStageId());
             if(stageRun == null){
                 throw new RuntimeException("No Run available for contextStageId" + outputProvider.getContextStageId());
             }
             Set<String> providedOutputs = outputProvider.getOutputIds().stream()
-                    .filter(outputId -> functionalStageExpectedOutputs.contains(outputId))
+                    .filter(functionalStageExpectedOutputs::contains)
                     .collect(Collectors.toSet());
             if(!providedOutputs.isEmpty()){
                 stageRunAncestors.add(new StageRunAncestor(stageRun.getStageRunId(), providedOutputs));

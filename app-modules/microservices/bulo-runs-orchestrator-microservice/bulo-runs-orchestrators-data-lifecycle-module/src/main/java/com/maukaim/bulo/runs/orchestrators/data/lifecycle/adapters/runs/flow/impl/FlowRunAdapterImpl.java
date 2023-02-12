@@ -46,7 +46,7 @@ public class FlowRunAdapterImpl implements FlowRunAdapter {
         };
     }
 
-    private Map<String, StageRun> resolve(Map<String, StageRunDto> stageRunDtoByIds) {
+    private Map<String, StageRun<?>> resolve(Map<String, StageRunDto<?>> stageRunDtoByIds) {
         return stageRunDtoByIds.entrySet().stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey(),

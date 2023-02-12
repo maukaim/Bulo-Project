@@ -9,6 +9,7 @@ import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunDependencyAdap
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunResultAdapter;
 import com.maukaim.bulo.executors.io.*;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,17 +17,17 @@ import org.springframework.context.annotation.Configuration;
 public class IoBeansConfig {
 
     @Bean
-    public StageDefinitionCreateInstructionPublisher stageDefinitionDeclarationEventPublisher(SystemConnector systemConnector) {
+    public StageDefinitionCreateInstructionPublisher stageDefinitionDeclarationEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new DummyStageDefinitionCreateInstructionPublisher(systemConnector);
     }
 
     @Bean
-    public StageRunEventPublisher stageRunEventPublisher(SystemConnector systemConnector) {
+    public StageRunEventPublisher stageRunEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new DummyStageRunEventPublisher(systemConnector);
     }
 
     @Bean
-    public StageRunResultEventPublisher stageRunResultEventPublisher(SystemConnector systemConnector) {
+    public StageRunResultEventPublisher stageRunResultEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new StageRunResultEventPublisherImpl(systemConnector);
     }
 

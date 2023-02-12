@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 
 public class OrchestrableContextViewFactory {
 
-    public static OrchestrableContextView build(OrchestrableRunContext<?> orchestrableRunContext) {
-        Map<ContextStageId, List<StageRun>> runningStages = orchestrableRunContext.getInFlightStageRuns().stream()
-                .collect(Collectors.groupingBy( stageRun -> stageRun.getContextualizedStageId()));
+    public static OrchestrableContextView<?> build(OrchestrableRunContext<?> orchestrableRunContext) {
+        Map<ContextStageId, List<StageRun<?>>> runningStages = orchestrableRunContext.getInFlightStageRuns().stream()
+                .collect(Collectors.groupingBy(StageRun::getContextualizedStageId));
 
         Instant startTime = null;
         Instant endTime = null;
         boolean shouldSetEndTime = orchestrableRunContext.getStatus().isTerminal();
-        for (StageRun stageRun : orchestrableRunContext.getAllStageRuns()) {
+        for (StageRun<?> stageRun : orchestrableRunContext.getAllStageRuns()) {
             Instant stageStartTime = stageRun.getStartTime();
             if (TimeHelper.isBefore(stageStartTime, startTime)) {
                 startTime = stageStartTime;
@@ -34,7 +34,7 @@ public class OrchestrableContextViewFactory {
             }
         }
 
-        return new OrchestrableContextView(orchestrableRunContext.getContextId(),
+        return new OrchestrableContextView<>(orchestrableRunContext.getContextId(),
                 resolveFlowId(orchestrableRunContext),
                 orchestrableRunContext.getStatus(),
                 runningStages,

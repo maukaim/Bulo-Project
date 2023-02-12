@@ -27,7 +27,7 @@ public class FlowRunController {
     }
 
     @GetMapping(value = "/getById")
-    public ResponseEntity<OrchestrableContextView> getById(@RequestParam String runId) {
+    public ResponseEntity<OrchestrableContextView<?>> getById(@RequestParam String runId) {
         FlowRun flowRun = this.flowRunService.getById(runId);
         if (flowRun == null) {
             throw new FlowRunStoreException("No FlowRun with ID " + runId);

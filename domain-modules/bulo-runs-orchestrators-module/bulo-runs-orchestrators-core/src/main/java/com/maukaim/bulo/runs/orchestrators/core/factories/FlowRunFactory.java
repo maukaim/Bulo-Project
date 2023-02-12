@@ -26,8 +26,8 @@ public class FlowRunFactory {
         );
     }
 
-    public static FlowRun updateStageRunView(FlowRun flowRun, Map<String, StageRun> mapOfViewToBeUpdated) {
-        HashMap<String, StageRun> newStageRunViewMap = new HashMap<>(flowRun.getStageRunsById());
+    public static FlowRun updateStageRunView(FlowRun flowRun, Map<String, StageRun<?>> mapOfViewToBeUpdated) {
+        HashMap<String, StageRun<?>> newStageRunViewMap = new HashMap<>(flowRun.getStageRunsById());
         newStageRunViewMap.putAll(mapOfViewToBeUpdated);
         return new FlowRun(flowRun.getContextId(), flowRun.getFlowId(), flowRun.getExecutionGraph(), Map.copyOf(newStageRunViewMap), flowRun.getStatus());
     }

@@ -53,7 +53,7 @@ public class FlowRunServiceImpl implements FlowRunService {
 
         FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunStore.add(newRunNonPersisted);
-        Map<String, StageRun> stageRunsToRequest = this.stageRunService.getNextStageRuns(newRunPersisted.toRunContext(), resolveLocalRunDependenciesForRoots(flowStagesToRunId));
+        Map<String, StageRun<?>> stageRunsToRequest = this.stageRunService.getNextStageRuns(newRunPersisted.toRunContext(), resolveLocalRunDependenciesForRoots(flowStagesToRunId));
         return this.computeStageRunUpdateUnderLock(newRunPersisted.getContextId(), (previous) -> stageRunsToRequest);
     }
 
@@ -78,24 +78,24 @@ public class FlowRunServiceImpl implements FlowRunService {
     //TODO -> How to make a better lock? maybe here : https://stackoverflow.com/questions/51716527/how-to-lock-on-key-in-a-concurrenthashmap
 
     @Override
-    public synchronized FlowRun computeStageRunUpdateUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun>> stageRunViewComputer) {
-        AtomicReference<List<StageRun>> toBeRequestedReference = new AtomicReference<>();
+    public synchronized FlowRun computeStageRunUpdateUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun<?>>> stageRunViewComputer) {
+        AtomicReference<List<StageRun<?>>> toBeRequestedReference = new AtomicReference<>();
         FlowRun flowRunPersisted = this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
-            Map<String, StageRun> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
+            Map<String, StageRun<?>> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
 
-            List<StageRun> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
+            List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
                     .collect(Collectors.toList());
             toBeRequestedReference.set(tobeRequestedTechnicalStageRuns);
             return newFlowRunValue;
         });
 
-        List<StageRun> toBeRequestedRuns = toBeRequestedReference.get();
+        List<StageRun<?>> toBeRequestedRuns = toBeRequestedReference.get();
         if(toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()){
             return this.flowRunStore.compute(flowRunId,(id,flowRun)->{
-                Map<String, StageRun> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
+                Map<String, StageRun<?>> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
                 FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(flowRunPersisted, stageRunsAfterRequest);
                 flowRunAfterRequested = FlowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
 

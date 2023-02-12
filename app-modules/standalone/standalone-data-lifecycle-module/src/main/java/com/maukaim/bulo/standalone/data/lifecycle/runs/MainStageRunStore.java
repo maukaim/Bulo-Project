@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
 public class MainStageRunStore implements StageRunStore {
-    private final Map<String, StageRun> mappedStageRunId;
+    private final Map<String, StageRun<?>> mappedStageRunId;
 
     public MainStageRunStore(Map<String, StageRun<?>> initialCache) {
         this.mappedStageRunId = new ConcurrentHashMap<>(initialCache);

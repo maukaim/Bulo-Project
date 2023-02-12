@@ -11,22 +11,22 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
 public class StageRunStoreImpl implements StageRunStore {
-    private Map<String, StageRun> mappedStageRunId = new ConcurrentHashMap<>();
+    private Map<String, StageRun<?>> mappedStageRunId = new ConcurrentHashMap<>();
 
     @Override
-    public void put(String stageRunId, StageRun technicalStageRun) {
+    public void put(String stageRunId, StageRun<?>  technicalStageRun) {
         this.mappedStageRunId.put(stageRunId, technicalStageRun);
         //TODO: Doit etre fait de maniere a pouvoir les partager entre instances de orchestrator !
     }
 
     @Override
-    public StageRun getById(String stageRunId) {
+    public StageRun<?>  getById(String stageRunId) {
         return this.mappedStageRunId.get(stageRunId);
     }
 
     @Override
     public RunContext<?> getContext(String stageRunId) {
-        StageRun technicalStageRun = this.mappedStageRunId.get(stageRunId);
+        StageRun<?>  technicalStageRun = this.mappedStageRunId.get(stageRunId);
         return technicalStageRun == null ? null : technicalStageRun.getContext();
     }
 

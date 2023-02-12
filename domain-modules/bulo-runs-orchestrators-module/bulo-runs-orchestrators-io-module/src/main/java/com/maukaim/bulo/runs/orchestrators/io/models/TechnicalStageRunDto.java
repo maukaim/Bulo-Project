@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.io.models;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.StageType;
-import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.ContextDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.RunContextDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
 
 import java.time.Instant;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     protected final String stageRunId;
     protected final ContextStageId contextStageId;
-    protected final ContextDto<?> context;
+    protected final RunContextDto<?> context;
     protected final StageRunStatusDto stageRunStatus;
     protected final String executorId;
     protected final Set<StageRunDependencyDto> dependencies;
@@ -20,7 +20,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
 
     public TechnicalStageRunDto(String stageRunId,
                                 ContextStageId contextStageId,
-                                ContextDto<?> context,
+                                RunContextDto<?> context,
                                 StageRunStatusDto stageRunStatus,
                                 String executorId,
                                 Set<StageRunDependencyDto> dependencies,
@@ -52,7 +52,7 @@ public class TechnicalStageRunDto implements StageRunDto<StageRunStatusDto> {
     }
 
     @Override
-    public ContextDto getContext() {
+    public RunContextDto<?> getContext() {
         return context;
     }
 

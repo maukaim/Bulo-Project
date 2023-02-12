@@ -31,10 +31,10 @@ public class StartRunTechnicalStageRunEventProcessor extends TechnicalStageRunEv
         flowRunService.computeStageRunUpdateUnderLock(context.getContextId(), (actualFlowRun) -> commonProcess(actualFlowRun, stageRunId, instant));
     }
 
-    private Map<String, StageRun> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
+    private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
         StageRun<?> actualRun = getActualRun(orchestrableRunContext, stageRunId);
         AtomicReference<String> executorIdReference = new AtomicReference<>();
-        Map<String, StageRun> currentRunResult = splitProcess(actualRun,
+        Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.RUNNING)),
                 technicalStageRun -> {
                     executorIdReference.set(technicalStageRun.getExecutorId());

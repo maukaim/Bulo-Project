@@ -30,24 +30,24 @@ public class RunFailedTechnicalStageRunEventProcessor extends TechnicalStageRunE
         flowRunService.computeStageRunUpdateUnderLock(context.getContextId(), (actualFlowRun) -> commonProcess(actualFlowRun, stageRunId, instant));
     }
 
-    private Map<String, StageRun> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
-        Map<String, StageRun> result = new HashMap<>();
+    private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
+        Map<String, StageRun<?>> result = new HashMap<>();
         StageRun<?> actualRun = getActualRun(orchestrableRunContext, stageRunId);
-        Map<String, StageRun> currentRunResult = splitProcess(actualRun,
+        Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.FAILED)),
                 technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.failed(technicalStageRun, instant)));
         result.putAll(currentRunResult);
 
-        Map<String, StageRun> toBeCancelledStages = cancelOtherStages(stageRunId, orchestrableRunContext.getInFlightStageRuns());
+        Map<String, StageRun<?>> toBeCancelledStages = cancelOtherStages(stageRunId, orchestrableRunContext.getInFlightStageRuns());
         result.putAll(toBeCancelledStages);
 
         return result;
     }
 
-    private Map<String, StageRun> cancelOtherStages(String currentStageRunId, Set<StageRun> inFlightStageRuns) {
-        Map<String, StageRun> result = new HashMap<>();
-        for (StageRun stageRun : inFlightStageRuns) {
-            Map<String, StageRun> subResult = splitProcess(stageRun,
+    private Map<String, StageRun<?>> cancelOtherStages(String currentStageRunId, Set<StageRun<?>> inFlightStageRuns) {
+        Map<String, StageRun<?>> result = new HashMap<>();
+        for (StageRun<?> stageRun : inFlightStageRuns) {
+            Map<String, StageRun<?>> subResult = splitProcess(stageRun,
                     functionalStageRun -> {
                         this.stageRunService.requestCancel(functionalStageRun.getStageRunId(), null);
                         return Map.of();

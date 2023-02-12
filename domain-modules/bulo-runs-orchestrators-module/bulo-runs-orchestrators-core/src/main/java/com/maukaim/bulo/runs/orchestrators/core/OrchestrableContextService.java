@@ -7,5 +7,5 @@ import java.util.Map;
 import java.util.function.Function;
 
 public interface OrchestrableContextService<CONTEXT extends OrchestrableRunContext<ID>, ID> {
-    CONTEXT computeStageRunUpdateUnderLock(ID contextId, Function<CONTEXT, Map<String, StageRun>> contextUpdator);
+    CONTEXT computeStageRunUpdateUnderLock(ID contextId, Function<CONTEXT, Map<String, StageRun<?>>> contextUpdator);
 }

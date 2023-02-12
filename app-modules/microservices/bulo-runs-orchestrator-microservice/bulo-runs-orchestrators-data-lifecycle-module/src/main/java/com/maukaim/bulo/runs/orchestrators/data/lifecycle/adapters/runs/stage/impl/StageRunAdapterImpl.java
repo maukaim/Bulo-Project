@@ -15,9 +15,9 @@ import com.maukaim.bulo.runs.orchestrators.io.models.StageRunStatusDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.TechnicalStageRunDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.ExecutionGraphDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.OrchestrableContextStatusDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.ContextDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.FlowContextDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.FunctionalStageContextDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.RunContextDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.FlowRunContextDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.FunctionalStageRunContextDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
 
 import java.util.Map;
@@ -38,7 +38,7 @@ public class StageRunAdapterImpl implements StageRunAdapter {
     }
 
     @Override
-    public StageRun adapte(StageRunDto dto) {
+    public StageRun<?> adapte(StageRunDto<?> dto) {
         return switch (dto.getStageType()) {
             case TECHNICAL -> resolve((FunctionalStageRunDto) dto);
             case FUNCTIONAL -> resolve((TechnicalStageRunDto) dto);
@@ -95,20 +95,20 @@ public class StageRunAdapterImpl implements StageRunAdapter {
         };
     }
 
-    private Map<String, StageRun> resolve(Map<String, StageRunDto> stageRunDtoByIds) {
+    private Map<String, StageRun<?>> resolve(Map<String, StageRunDto<?>> stageRunDtoByIds) {
         return stageRunDtoByIds.entrySet().stream()
                 .collect(Collectors.toMap(
-                        entry -> entry.getKey(),
+                        Map.Entry::getKey,
                         entry -> this.adapte(entry.getValue())
                 ));
     }
 
-    private RunContext<?> resolve(ContextDto context) {
+    private RunContext<?> resolve(RunContextDto<?> context) {
         return switch (context.getContextType()) {
-            case FLOW_RUN -> new FlowRunContext(((FlowContextDto) context).getContextId());
+            case FLOW_RUN -> new FlowRunContext(((FlowRunContextDto) context).getContextId());
             case FUNCTIONAL_STAGE_RUN ->
                     new FunctionalStageRunContext(
-                            ((FunctionalStageContextDto) context).getContextId(),
+                            ((FunctionalStageRunContextDto) context).getContextId(),
                             resolve(context.getStageRunDependencies()));
         };
     }

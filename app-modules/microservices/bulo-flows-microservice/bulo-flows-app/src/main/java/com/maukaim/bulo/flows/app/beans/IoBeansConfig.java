@@ -10,6 +10,7 @@ import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.flows.io.*;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class IoBeansConfig {
 
     @Bean
-    public FlowEventPublisher flowEventPublisher(SystemConnector systemConnector) {
+    public FlowEventPublisher flowEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new FlowEventPublisherImpl(systemConnector);
     }
 

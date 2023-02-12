@@ -25,7 +25,7 @@ public class Application {
         if (!String.class.isAssignableFrom(clazz)) {
             return marshaller.unmarshall(result, clazz);
         }
-        return (RT) result;
+        return clazz.cast(result);
     }
 
     protected void sendAndForget(Object body, ClientEventType type) {

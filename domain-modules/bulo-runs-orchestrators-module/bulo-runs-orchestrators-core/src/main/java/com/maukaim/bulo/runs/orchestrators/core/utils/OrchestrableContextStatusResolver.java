@@ -15,14 +15,14 @@ public class OrchestrableContextStatusResolver {
         if (actualStatus.isTerminal()) {
             return actualStatus;
         } else {
-            Map<String, StageRun> stageRunViewByStageId = orchestrableRunContext.getStageRunsById();
+            Map<String, StageRun<?>> stageRunViewByStageId = orchestrableRunContext.getStageRunsById();
             boolean anyCancelled = false;
             boolean anyFailed = false;
             boolean anyRunning = false;
             boolean anyInProcessToStart = false;
             boolean anySuccessful = false;
-            for (Map.Entry<String, StageRun> stageRunViewById : stageRunViewByStageId.entrySet()) {
-                StageRun stageRun = stageRunViewById.getValue();
+            for (Map.Entry<String, StageRun<?>> stageRunViewById : stageRunViewByStageId.entrySet()) {
+                StageRun<?>  stageRun = stageRunViewById.getValue();
                 switch (stageRun.getStageType()){
                     case TECHNICAL -> {
                         switch (((TechnicalStageRun) stageRun).getStatus()) {

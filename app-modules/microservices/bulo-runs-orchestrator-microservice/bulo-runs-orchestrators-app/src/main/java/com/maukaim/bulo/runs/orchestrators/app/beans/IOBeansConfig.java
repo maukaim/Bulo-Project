@@ -1,6 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.*;
 import com.maukaim.bulo.runs.orchestrators.app.io.publishers.FlowRunEventPublisherImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunCancellationEventPublisherImpl;
@@ -49,7 +50,7 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector systemConnector) {
+    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new FlowRunEventPublisherImpl(systemConnector);
     }
 
@@ -60,12 +61,12 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector systemConnector) {
+    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new NeedStageRunExecutionEventPublisherImpl(systemConnector);
     }
 
     @Bean
-    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector systemConnector) {
+    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new NeedStageRunCancellationEventPublisherImpl(systemConnector);
     }
 

@@ -22,11 +22,11 @@ public abstract class OrchestrableRunContext<KEY> {
     abstract public ExecutionGraph getExecutionGraph();
 
     //TODO: StageRun should not be there, it should be in StageRunService, here only StageRunIds !!
-    abstract public Map<String, StageRun> getStageRunsById();
+    abstract public Map<String, StageRun<?>> getStageRunsById();
 
     abstract public RunContext<KEY> toRunContext();
 
-    public Set<StageRun> getInFlightStageRuns() {
+    public Set<StageRun<?>> getInFlightStageRuns() {
         return this.getStageRunsById().values().stream()
                 .filter(stageRunView -> !stageRunView.isTerminated())
                 .collect(Collectors.toUnmodifiableSet());
@@ -39,7 +39,7 @@ public abstract class OrchestrableRunContext<KEY> {
     }
 
     private boolean stageIsSuccessfullyTerminated(ContextStageId stageId) {
-        Optional<StageRun> stageRunView = this.getStageRunsById().values().stream()
+        Optional<StageRun<?>> stageRunView = this.getStageRunsById().values().stream()
                 .filter(stageRun -> stageId.equals(stageRun.getContextualizedStageId()))
                 .findFirst();
         return stageRunView.isPresent() && stageRunView.get().getStatus().isSuccess();
@@ -53,26 +53,8 @@ public abstract class OrchestrableRunContext<KEY> {
         return getStageRunsById().keySet();
     }
 
-    public Collection<StageRun> getAllStageRuns() {
+    public Collection<StageRun<?>> getAllStageRuns() {
         return getStageRunsById().values();
     }
-
-    public Map<ContextStageId, StageRun> getLeavesRuns(){
-        if(!getStatus().isSuccess()){
-            throw new RuntimeException("Impossible to get Leave Runs if status not terminal.");
-        }
-
-        Map<ContextStageId, StageRun> stageRunsByContextStageId = this.getAllStageRuns().stream().collect(Collectors.toMap(
-                stageRun -> stageRun.getContextualizedStageId(),
-                stageRun -> stageRun
-        ));
-
-        return this.getExecutionGraph().getLeavesIds().stream()
-                .collect(Collectors.toMap(
-                        leaveId -> leaveId,
-                        leaveId -> stageRunsByContextStageId.get(leaveId)
-                ));
-
-    };
 
 }

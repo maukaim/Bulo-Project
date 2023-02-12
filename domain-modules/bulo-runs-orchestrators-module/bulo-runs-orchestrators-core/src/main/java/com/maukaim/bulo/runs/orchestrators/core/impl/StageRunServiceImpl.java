@@ -42,12 +42,12 @@ public class StageRunServiceImpl implements StageRunService {
         this.functionalStageDefinitionService = functionalStageDefinitionService;
     }
 
-    public Map<String, StageRun> getNextStageRuns(RunContext<?> runContext, Map<ContextStageId, Set<RunDependency>> stageToRunByDependencies) {
-        Map<String, StageRun> result = new HashMap<>();
+    public Map<String, StageRun<?>> getNextStageRuns(RunContext<?> runContext, Map<ContextStageId, Set<RunDependency>> stageToRunByDependencies) {
+        Map<String, StageRun<?>> result = new HashMap<>();
         for (ContextStageId contextStageId : stageToRunByDependencies.keySet()) {
             Set<RunDependency> naiveRunDependencies = stageToRunByDependencies.get(contextStageId);
             Set<RunDependency> runDependencies = resolveRunDependenciesWithContext(runContext, naiveRunDependencies);
-            StageRun newRun;
+            StageRun<?>  newRun;
             String definitionId = functionalStageService.getDefinitionId(contextStageId.getStageId());
             if (definitionId == null) {
                 newRun = TechnicalStageRunFactory.toBeRequested(runContext, contextStageId, runDependencies);
@@ -84,10 +84,10 @@ public class StageRunServiceImpl implements StageRunService {
     }
 
     @Override
-    public Map<String, StageRun> startRuns(Collection<StageRun> toBeRequestedStageRun) {
-        Map<String, StageRun> result = new HashMap<>();
-        for (StageRun stageRunToBeRequested : toBeRequestedStageRun) {
-            Map<String, StageRun> started;
+    public Map<String, StageRun<?>> startRuns(Collection<StageRun<?>> toBeRequestedStageRun) {
+        Map<String, StageRun<?>> result = new HashMap<>();
+        for (StageRun<?> stageRunToBeRequested : toBeRequestedStageRun) {
+            Map<String, StageRun<?>> started;
             if (stageRunToBeRequested instanceof TechnicalStageRun) {
                 started = startTechnicalStage((TechnicalStageRun) stageRunToBeRequested);
             } else if (stageRunToBeRequested instanceof FunctionalStageRun) {
@@ -101,11 +101,11 @@ public class StageRunServiceImpl implements StageRunService {
         return result;
     }
 
-    private Map<String, StageRun> startFunctionalStage(FunctionalStageRun functionalStageRun) {
+    private Map<String, StageRun<?>> startFunctionalStage(FunctionalStageRun functionalStageRun) {
         try {
             executorService.execute(() -> {
                 try {
-                    Map<String, StageRun> stageRunsToRequest = this.getNextStageRuns(
+                    Map<String, StageRun<?>> stageRunsToRequest = this.getNextStageRuns(
                             functionalStageRun.toRunContext(),
                             resolveLocalRunDependenciesForRoots(functionalStageRun.getExecutionGraph().getRootsIds(), functionalStageRun));
                     this.computeStageRunUpdateUnderLock(functionalStageRun.getContextId(), (previous) -> stageRunsToRequest);
@@ -134,7 +134,7 @@ public class StageRunServiceImpl implements StageRunService {
                         ));
     }
 
-    private Map<String, StageRun> startTechnicalStage(TechnicalStageRun stageRun) {
+    private Map<String, StageRun<?>> startTechnicalStage(TechnicalStageRun stageRun) {
         boolean started = this.stageRunConnector.requestRun(stageRun.getContextualizedStageId().getStageId(), stageRun.getStageRunId(), stageRun.getStageRunDependencies());
         return Map.of(stageRun.getStageRunId(), started ?
                 TechnicalStageRunFactory.requested(stageRun) :
@@ -142,20 +142,20 @@ public class StageRunServiceImpl implements StageRunService {
     }
 
     @Override
-    public StageRun getById(String stageRunId) {
+    public StageRun<?> getById(String stageRunId) {
         return this.stageRunStore.getById(stageRunId);
     }
 
     @Override
     public void requestCancel(String stageRunId, String executorId) {
-        StageRun stageRun = this.getById(stageRunId);
+        StageRun<?> stageRun = this.getById(stageRunId);
         if (stageRun instanceof TechnicalStageRun) {
             boolean requested = this.stageRunConnector.requestCancel(stageRunId, executorId);
             if (!requested) {
-                System.out.println(String.format("LogTemp:::WARN Cancel request to executor %s did not succeed", executorId));
+                System.out.printf("LogTemp:::WARN Cancel request to executor %s did not succeed%n", executorId);
             }
         } else if (stageRun instanceof FunctionalStageRun) {
-            for (StageRun inFlightStageRun : ((FunctionalStageRun) stageRun).getInFlightStageRuns()) {
+            for (StageRun<?> inFlightStageRun : ((FunctionalStageRun) stageRun).getInFlightStageRuns()) {
                 if (inFlightStageRun instanceof TechnicalStageRun) {
                     this.requestCancel(inFlightStageRun.getStageRunId(), ((TechnicalStageRun) inFlightStageRun).getExecutorId());
                 } else {
@@ -168,24 +168,24 @@ public class StageRunServiceImpl implements StageRunService {
     }
 
     @Override
-    public FunctionalStageRun computeStageRunUpdateUnderLock(String contextId, Function<FunctionalStageRun, Map<String, StageRun>> contextUpdator) {
-        AtomicReference<List<StageRun>> toBeRequestedReference = new AtomicReference<>();
+    public FunctionalStageRun computeStageRunUpdateUnderLock(String contextId, Function<FunctionalStageRun, Map<String, StageRun<?>>> contextUpdator) {
+        AtomicReference<List<StageRun<?>>> toBeRequestedReference = new AtomicReference<>();
         AtomicReference<OrchestrableContextStatus> previousStatus = new AtomicReference<>();
         FunctionalStageRun stageRunPersisted = this.stageRunStore.compute(contextId, (id, functionalStageRun) -> {
             previousStatus.set(functionalStageRun.getStatus());
 
-            Map<String, StageRun> stageRunViewToUpdate = contextUpdator.apply(functionalStageRun);
+            Map<String, StageRun<?>> stageRunViewToUpdate = contextUpdator.apply(functionalStageRun);
             FunctionalStageRun newStageRun = FunctionalStageRunFactory.updateStageRunView(functionalStageRun, stageRunViewToUpdate);
             newStageRun = FunctionalStageRunFactory.updateState(newStageRun, resolveStatus(newStageRun));
 
-            List<StageRun> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
+            List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
                     .collect(Collectors.toList());
             toBeRequestedReference.set(tobeRequestedTechnicalStageRuns);
             return newStageRun;
         });
 
-        List<StageRun> toBeRequestedRuns = toBeRequestedReference.get();
+        List<StageRun<?>> toBeRequestedRuns = toBeRequestedReference.get();
         FunctionalStageRun finalStageRun = requestAndResolve(contextId, stageRunPersisted, toBeRequestedRuns);
         propagateIfNewStatus(finalStageRun, previousStatus.get()); //ICI propagate dans les processors
         return finalStageRun;
@@ -207,10 +207,10 @@ public class StageRunServiceImpl implements StageRunService {
         }
     }
 
-    private FunctionalStageRun requestAndResolve(String contextId, FunctionalStageRun stageRunPersisted, List<StageRun> toBeRequestedRuns) {
+    private FunctionalStageRun requestAndResolve(String contextId, FunctionalStageRun stageRunPersisted, List<StageRun<?>> toBeRequestedRuns) {
         if (toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()) {
             return this.stageRunStore.compute(contextId, (id, flowRun) -> {
-                Map<String, StageRun> stageRunsAfterRequest = this.startRuns(toBeRequestedRuns);
+                Map<String, StageRun<?>> stageRunsAfterRequest = this.startRuns(toBeRequestedRuns);
                 FunctionalStageRun stageRunAfterRequested = FunctionalStageRunFactory.updateStageRunView(stageRunPersisted, stageRunsAfterRequest);
                 stageRunAfterRequested = FunctionalStageRunFactory.updateState(stageRunAfterRequested, resolveStatus(stageRunAfterRequested));
 

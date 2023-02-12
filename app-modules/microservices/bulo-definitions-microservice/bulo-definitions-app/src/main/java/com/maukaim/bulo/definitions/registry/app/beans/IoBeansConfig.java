@@ -14,13 +14,14 @@ import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEven
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventPublisherImpl;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class IoBeansConfig {
     @Bean
-    public TechnicalStageDefinitionEventPublisher technicalStageDefinitionPublisher(SystemConnector systemConnector) {
+    public TechnicalStageDefinitionEventPublisher technicalStageDefinitionPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new TechnicalStageDefinitionEventPublisherImpl(systemConnector);
     }
 

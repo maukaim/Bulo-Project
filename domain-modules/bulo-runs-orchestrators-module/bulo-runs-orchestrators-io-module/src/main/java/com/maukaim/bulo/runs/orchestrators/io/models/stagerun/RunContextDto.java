@@ -2,12 +2,12 @@ package com.maukaim.bulo.runs.orchestrators.io.models.stagerun;
 
 import java.util.Set;
 
-public abstract class ContextDto<ID> {
+public abstract class RunContextDto<ID> {
     protected final RunContextTypeDto contextType;
     protected final ID contextId;
     protected final Set<StageRunDependencyDto> stageRunDependencies;
 
-    protected ContextDto(RunContextTypeDto contextType, ID contextId, Set<StageRunDependencyDto> stageRunDependencies) {
+    protected RunContextDto(RunContextTypeDto contextType, ID contextId, Set<StageRunDependencyDto> stageRunDependencies) {
         this.contextType = contextType;
         this.contextId = contextId;
         this.stageRunDependencies = stageRunDependencies;

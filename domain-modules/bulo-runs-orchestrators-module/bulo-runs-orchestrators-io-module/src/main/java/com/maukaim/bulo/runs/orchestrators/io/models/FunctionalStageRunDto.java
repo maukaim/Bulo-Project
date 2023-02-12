@@ -6,7 +6,7 @@ import com.maukaim.bulo.commons.models.StageType;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.ExecutionGraphDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.OrchestrableContextDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.OrchestrableContextStatusDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.ContextDto;
+import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.RunContextDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.RunContextTypeDto;
 import com.maukaim.bulo.runs.orchestrators.io.models.stagerun.StageRunDependencyDto;
 
@@ -17,25 +17,25 @@ import java.util.Set;
 public class FunctionalStageRunDto implements StageRunDto<OrchestrableContextStatusDto>, OrchestrableContextDto<String> {
     private final String stageRunId;
     private final ContextStageId contextStageId;
-    private final ContextDto<?> context;
+    private final RunContextDto<?> context;
     private final OrchestrableContextStatusDto status;
     private final Set<StageRunDependencyDto> dependencies;
     private final Instant startTime;
     private final Instant endTime;
     private final Set<OutputProviderDto> outputProviders;
     private final ExecutionGraphDto executionGraph;
-    private final Map<String, StageRunDto> stageRunByIds;
+    private final Map<String, StageRunDto<?>> stageRunByIds;
 
     public FunctionalStageRunDto(String stageRunId,
                                  ContextStageId contextStageId,
-                                 ContextDto<?> context,
+                                 RunContextDto<?> context,
                                  OrchestrableContextStatusDto status,
                                  Set<StageRunDependencyDto> dependencies,
                                  Instant startTime,
                                  Instant endTime,
                                  Set<OutputProviderDto> outputProviders,
                                  ExecutionGraphDto executionGraph,
-                                 Map<String, StageRunDto> stageRunByIds) {
+                                 Map<String, StageRunDto<?>> stageRunByIds) {
         this.stageRunId = stageRunId;
         this.contextStageId = contextStageId;
         this.context = context;
@@ -64,7 +64,7 @@ public class FunctionalStageRunDto implements StageRunDto<OrchestrableContextSta
     }
 
     @Override
-    public Map<String, StageRunDto> getStageRunByIds() {
+    public Map<String, StageRunDto<?>> getStageRunByIds() {
         return stageRunByIds;
     }
 
@@ -93,7 +93,7 @@ public class FunctionalStageRunDto implements StageRunDto<OrchestrableContextSta
     }
 
     @Override
-    public ContextDto getContext() {
+    public RunContextDto<?> getContext() {
         return context;
     }
 

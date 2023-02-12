@@ -23,7 +23,7 @@ public class FunctionalStageRun extends OrchestrableRunContext<String> implement
     private final Set<OutputProvider> outputProviders;
 
     private final ExecutionGraph executionGraph;
-    private final Map<String, StageRun> stageRunViewByIds;
+    private final Map<String, StageRun<?>> stageRunViewByIds;
 
     public FunctionalStageRun(String stageRunId,
                               ContextStageId contextStageId,
@@ -34,7 +34,7 @@ public class FunctionalStageRun extends OrchestrableRunContext<String> implement
                               Instant endTime,
                               Set<OutputProvider> outputProviders,
                               ExecutionGraph executionGraph,
-                              Map<String, StageRun> stageRunViewByIds) {
+                              Map<String, StageRun<?>> stageRunViewByIds) {
         this.stageRunId = stageRunId;
         this.contextStageId = contextStageId;
         this.runContext = runContext;
@@ -67,7 +67,7 @@ public class FunctionalStageRun extends OrchestrableRunContext<String> implement
     }
 
     @Override
-    public Map<String, StageRun> getStageRunsById() {
+    public Map<String, StageRun<?>> getStageRunsById() {
         return stageRunViewByIds;
     }
 

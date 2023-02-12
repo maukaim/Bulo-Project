@@ -28,8 +28,8 @@ public class AcknowledgeTechnicalStageRunEventProcessor extends TechnicalStageRu
         flowRunService.computeStageRunUpdateUnderLock(context.getContextId(), (actualFunctionalStageRun) -> commonProcess(actualFunctionalStageRun, stageRunId, executorId));
     }
 
-    private Map<String, StageRun> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, String executorId) {
-        StageRun stageRun = getActualRun(orchestrableRunContext, stageRunId);
+    private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, String executorId) {
+        StageRun<?> stageRun = getActualRun(orchestrableRunContext, stageRunId);
         if (orchestrableRunContext.getStatus().isProblem() && !stageRun.getStatus().isTerminal()) {
             this.stageRunService.requestCancel(stageRun.getStageRunId(), executorId);
         }

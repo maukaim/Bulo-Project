@@ -6,9 +6,9 @@ import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
 import com.maukaim.bulo.triggers.io.events.BasicTriggerEvent;
 
 public class TriggerEventPublisherImpl implements TriggerEventPublisher {
-    private final SystemConnector systemConnector;
+    private final SystemConnector<ServiceEventType> systemConnector;
 
-    public TriggerEventPublisherImpl(SystemConnector systemConnector){
+    public TriggerEventPublisherImpl(SystemConnector<ServiceEventType> systemConnector){
         this.systemConnector = systemConnector;
     }
 

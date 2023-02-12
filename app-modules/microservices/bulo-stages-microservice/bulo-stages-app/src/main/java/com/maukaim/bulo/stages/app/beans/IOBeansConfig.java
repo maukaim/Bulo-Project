@@ -1,6 +1,7 @@
 package com.maukaim.bulo.stages.app.beans;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.StageDefinitionService;
@@ -21,7 +22,7 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public StageUpdateEventPublisher stageUpdateEventPublisher(SystemConnector systemConnector) {
+    public StageUpdateEventPublisher stageUpdateEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
         return new StageUpdateEventPublisherImpl(systemConnector);
     }
 

@@ -36,8 +36,8 @@ public class FunctionalStageRunFactory {
                 stageRun.getStageRunsById());
     }
 
-    public static FunctionalStageRun updateStageRunView(FunctionalStageRun stageRun, Map<String, StageRun> mapOfViewToBeUpdated) {
-        HashMap<String, StageRun> newStageRunViewMap = new HashMap<>(stageRun.getStageRunsById());
+    public static FunctionalStageRun updateStageRunView(FunctionalStageRun stageRun, Map<String, StageRun<?>> mapOfViewToBeUpdated) {
+        HashMap<String, StageRun<?>> newStageRunViewMap = new HashMap<>(stageRun.getStageRunsById());
         newStageRunViewMap.putAll(mapOfViewToBeUpdated);
         return new FunctionalStageRun(stageRun.getContextId(),
                 stageRun.getContextualizedStageId(),

@@ -12,13 +12,13 @@ public class FlowRun extends OrchestrableRunContext<String> {
     private final String flowRunId;
     private final String flowId;
     private final ExecutionGraph executionGraph;
-    private final Map<String, StageRun> stageRunViewByIds;
+    private final Map<String, StageRun<?>> stageRunViewByIds;
     private final OrchestrableContextStatus orchestrableContextStatus;
 
     public FlowRun(String flowRunId,
                    String flowId,
                    ExecutionGraph executionGraph,
-                   Map<String, StageRun> stageRunViewByIds,
+                   Map<String, StageRun<?>> stageRunViewByIds,
                    OrchestrableContextStatus orchestrableContextStatus) {
         this.flowRunId = flowRunId;
         this.flowId = flowId;
@@ -47,7 +47,7 @@ public class FlowRun extends OrchestrableRunContext<String> {
     }
 
     @Override
-    public Map<String, StageRun> getStageRunsById() {
+    public Map<String, StageRun<?>> getStageRunsById() {
         return stageRunViewByIds;
     }
 

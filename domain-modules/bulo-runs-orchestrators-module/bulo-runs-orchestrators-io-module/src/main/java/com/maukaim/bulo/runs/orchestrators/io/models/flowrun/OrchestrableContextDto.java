@@ -13,7 +13,7 @@ public interface OrchestrableContextDto<KEY> {
 
     ExecutionGraphDto getExecutionGraph();
 
-    Map<String, StageRunDto> getStageRunByIds();
+    Map<String, StageRunDto<?>> getStageRunByIds();
 
     OrchestrableContextStatusDto getOrchestrableContextStatus();
 

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.PropertyName;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
 import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
-import com.fasterxml.jackson.databind.util.ClassUtil;
 import com.maukaim.bulo.api.data.types.annotations.BuloDescriptor;
 import com.maukaim.bulo.api.data.types.annotations.BuloField;
 
+import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,11 +25,11 @@ public class BuloJacksonAnnotationIntrospector extends JacksonAnnotationIntrospe
 
     @Override
     public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
-        Map<String, String> overrides = Stream.of(ClassUtil.getDeclaredFields(enumType))
+        Map<String, String> overrides = Stream.of(enumType.getDeclaredFields())
                 .filter(it -> !it.isEnumConstant())
                 .filter(it -> it.getAnnotation(BuloField.class) != null)
                 .collect(Collectors.toMap(
-                        it -> it.getName(),
+                        Field::getName,
                         it -> it.getAnnotation(BuloField.class).value()
                 ));
 

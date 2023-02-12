@@ -43,12 +43,6 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>ms-shared-spring-servers-starter</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-core</artifactId>
             <version>${revision}</version>
         </dependency>

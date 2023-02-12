@@ -53,10 +53,10 @@ public class FlowRunDtoAdapterImpl implements FlowRunDtoAdapter {
         };
     }
 
-    private Map<String, StageRunDto> resolve(Map<String, StageRun> stageRunsById) {
+    private Map<String, StageRunDto<?>> resolve(Map<String, StageRun<?>> stageRunsById) {
         return stageRunsById.entrySet().stream()
                 .collect(Collectors.toMap(
-                        entry-> entry.getKey(),
+                        Map.Entry::getKey,
                         entry -> this.stageRunDtoAdapter.adapte(entry.getValue())
                 ));
     }
