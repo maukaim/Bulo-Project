@@ -3,22 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>app-modules</artifactId>
+        <artifactId>microservices</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservices</artifactId>
+    <artifactId>definitions-microservice</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>flows-microservice</module>
-        <module>stages-microservice</module>
-        <module>runs-orchestrator-microservice</module>
-        <module>definitions-microservice</module>
-        <module>executors-microservice</module>
-        <module>triggers-microservices</module>
-        <module>ms-shared-modules</module>
+        <module>definitions-app</module>
+        <module>definitions-data-lifecycle-ms-module</module>
     </modules>
 </project>
