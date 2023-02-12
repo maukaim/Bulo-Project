@@ -9,7 +9,7 @@ import com.maukaim.bulo.mockingbird.connect.Application;
 
 import static com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment.dev;
 
-public class TestManager {
+public class TestUtil {
 
     public static Application getUatApp(ApplicationMode appMode) {
         RestSystemEventConnector<ClientEventType> connector = SystemConnectorProvider.get(dev, appMode);

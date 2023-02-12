@@ -29,8 +29,8 @@ public class SanityCheckTests {
     @BeforeEach
     void init() {
         user = switch (applicationEnv) {
-            case dev -> new User(TestManager.getDevApp(applicationMode));
-            case uat -> new User(TestManager.getUatApp(applicationMode));
+            case dev -> new User(TestUtil.getDevApp(applicationMode));
+            case uat -> new User(TestUtil.getUatApp(applicationMode));
             case prod -> throw new UnsupportedOperationException("Don't use mockingbird with PROD environement");
         };
     }
