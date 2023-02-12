@@ -12,10 +12,6 @@
     <artifactId>bulo-definitions-microservice</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <definitions.module.version>1.0.0-SNAPSHOT</definitions.module.version>
-    </properties>
-
     <modules>
         <module>bulo-definitions-app</module>
         <module>bulo-definitions-data-lifecycle-ms-module</module>

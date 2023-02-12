@@ -12,10 +12,6 @@
     <artifactId>bulo-runs-orchestrator-microservice</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <orchestrator.module.version>1.0.0-SNAPSHOT</orchestrator.module.version>
-    </properties>
-
     <modules>
         <module>bulo-runs-orchestrators-app</module>
         <module>bulo-runs-orchestrators-data-lifecycle-module</module>

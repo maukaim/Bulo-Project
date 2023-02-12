@@ -12,10 +12,6 @@
     <artifactId>bulo-triggers-microservices</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <triggers.module.version>1.0.0-SNAPSHOT</triggers.module.version>
-    </properties>
-
     <modules>
         <module>bulo-scheduler-microservice</module>
     </modules>

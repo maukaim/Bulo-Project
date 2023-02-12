@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-models</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
@@ -44,19 +44,19 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-triggers-scheduler-io-module</artifactId>
-            <version>${triggers.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-io-module</artifactId>
-            <version>${stages.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-flows-io-module</artifactId>
-            <version>${flows.module.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

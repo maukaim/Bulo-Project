@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-marshalling-module</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>

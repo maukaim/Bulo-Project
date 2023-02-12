@@ -15,25 +15,25 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-data-module</artifactId>
-            <version>${stages.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-data-lifecycle-module</artifactId>
-            <version>${stages.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-io-module</artifactId>
-            <version>${stages.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-common-data-lifecycle</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

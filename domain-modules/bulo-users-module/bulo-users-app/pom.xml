@@ -44,13 +44,13 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-serialization</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-swagger-starter</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

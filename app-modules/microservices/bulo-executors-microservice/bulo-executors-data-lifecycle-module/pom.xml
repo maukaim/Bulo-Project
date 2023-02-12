@@ -15,19 +15,19 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-executors-data-module</artifactId>
-            <version>${executors.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-executors-io-module</artifactId>
-            <version>${executors.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-common-data-lifecycle</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

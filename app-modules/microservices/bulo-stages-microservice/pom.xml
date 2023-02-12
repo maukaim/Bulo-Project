@@ -12,10 +12,6 @@
     <artifactId>bulo-stages-microservice</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <stages.module.version>1.0.0-SNAPSHOT</stages.module.version>
-    </properties>
-
     <modules>
         <module>bulo-stages-app</module>
         <module>bulo-stages-data-lifecycle-ms-module</module>

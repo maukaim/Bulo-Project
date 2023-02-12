@@ -15,13 +15,13 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-triggers-scheduler-data-module</artifactId>
-            <version>${triggers.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-triggers-scheduler-io-module</artifactId>
-            <version>${triggers.module.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

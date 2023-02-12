@@ -15,13 +15,13 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-runs-orchestrators-data-module</artifactId>
-            <version>${orchestrator.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-runs-orchestrators-io-module</artifactId>
-            <version>${orchestrator.module.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

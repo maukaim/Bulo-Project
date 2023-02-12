@@ -11,10 +11,6 @@
     <artifactId>bulo-flows-microservice</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <flows.module.version>1.0.0-SNAPSHOT</flows.module.version>
-    </properties>
-
     <modules>
         <module>bulo-flows-app</module>
         <module>bulo-flows-data-lifecycle-ms-module</module>

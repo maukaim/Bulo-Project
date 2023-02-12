@@ -15,37 +15,37 @@
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-flows-data-module</artifactId>
-            <version>${flows.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-runs-orchestrators-data-module</artifactId>
-            <version>${orchestrator.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-stages-data-module</artifactId>
-            <version>${stages.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-executors-data-module</artifactId>
-            <version>${executors.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-definitions-data-module</artifactId>
-            <version>${definitions.module.version}</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>bulo-commons-io</artifactId>
-            <version>${bulo.commons.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 
