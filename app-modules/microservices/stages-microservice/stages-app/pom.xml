@@ -61,7 +61,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 

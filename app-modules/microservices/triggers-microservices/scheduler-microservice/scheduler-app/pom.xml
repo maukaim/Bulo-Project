@@ -43,7 +43,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-scheduler-core</artifactId>
+            <artifactId>triggers-scheduler-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -61,13 +61,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-scheduler-cron-spring-engine</artifactId>
+            <artifactId>triggers-scheduler-cron-spring-engine</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-scheduler-serialization-module</artifactId>
+            <artifactId>triggers-scheduler-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -79,13 +79,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-serialization-module</artifactId>
+            <artifactId>triggers-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

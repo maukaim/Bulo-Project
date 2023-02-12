@@ -13,14 +13,14 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>bulo-flows-module</module>
-        <module>bulo-users-module</module>
+        <module>flows-module</module>
+        <module>users-module</module>
         <module>domain-shared-modules</module>
-        <module>bulo-triggers-module</module>
-        <module>bulo-teams-module</module>
-        <module>bulo-stages-module</module>
-        <module>bulo-runs-orchestrators-module</module>
-        <module>bulo-executors-module</module>
-        <module>bulo-definitions-module</module>
+        <module>triggers-module</module>
+        <module>teams-module</module>
+        <module>stages-module</module>
+        <module>runs-orchestrators-module</module>
+        <module>executors-module</module>
+        <module>definitions-module</module>
     </modules>
 </project>

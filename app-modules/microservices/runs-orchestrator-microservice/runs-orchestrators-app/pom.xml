@@ -55,7 +55,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-runs-orchestrators-core</artifactId>
+            <artifactId>runs-orchestrators-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -67,13 +67,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-runs-orchestrators-serialization-module</artifactId>
+            <artifactId>runs-orchestrators-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 

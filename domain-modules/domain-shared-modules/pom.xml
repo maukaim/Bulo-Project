@@ -13,12 +13,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>bulo-commons-io</module>
-        <module>bulo-commons-models</module>
-        <module>bulo-commons-serialization</module>
-        <module>bulo-common-utils</module>
-        <module>bulo-common-data-lifecycle</module>
-        <module>bulo-api-data-types</module>
-        <module>bulo-marshalling-module</module>
+        <module>commons-io</module>
+        <module>commons-models</module>
+        <module>commons-serialization</module>
+        <module>common-utils</module>
+        <module>common-data-lifecycle</module>
+        <module>api-data-types</module>
+        <module>marshalling-module</module>
     </modules>
 </project>

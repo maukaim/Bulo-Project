@@ -14,25 +14,25 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-data-module</artifactId>
+            <artifactId>flows-data-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-io-module</artifactId>
+            <artifactId>flows-io-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-data-lifecycle-module</artifactId>
+            <artifactId>flows-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-common-data-lifecycle</artifactId>
+            <artifactId>common-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

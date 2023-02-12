@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-data-lifecycle-module</artifactId>
+            <artifactId>definitions-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

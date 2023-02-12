@@ -62,13 +62,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-serialization-module</artifactId>
+            <artifactId>flows-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-core</artifactId>
+            <artifactId>flows-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -80,7 +80,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 

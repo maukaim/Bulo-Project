@@ -31,7 +31,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-executors-core</artifactId>
+            <artifactId>executors-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-executors-serialization-module</artifactId>
+            <artifactId>executors-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -61,13 +61,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-embedded-runners</artifactId>
+            <artifactId>runners-embedded</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 

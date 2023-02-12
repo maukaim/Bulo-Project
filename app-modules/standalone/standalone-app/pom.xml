@@ -37,67 +37,67 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-runs-orchestrators-core</artifactId>
+            <artifactId>runs-orchestrators-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-core</artifactId>
+            <artifactId>flows-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-io-module</artifactId>
+            <artifactId>flows-io-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-serialization-module</artifactId>
+            <artifactId>flows-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-flows-data-lifecycle-module</artifactId>
+            <artifactId>flows-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-executors-core</artifactId>
+            <artifactId>executors-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-embedded-runners</artifactId>
+            <artifactId>runners-embedded</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-core</artifactId>
+            <artifactId>definitions-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-io-module</artifactId>
+            <artifactId>definitions-io-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-serialization-module</artifactId>
+            <artifactId>definitions-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-data-lifecycle-module</artifactId>
+            <artifactId>definitions-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -127,25 +127,25 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-scheduler-core</artifactId>
+            <artifactId>triggers-scheduler-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-scheduler-cron-spring-engine</artifactId>
+            <artifactId>triggers-scheduler-cron-spring-engine</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-serialization-module</artifactId>
+            <artifactId>triggers-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-triggers-scheduler-serialization-module</artifactId>
+            <artifactId>triggers-scheduler-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -157,7 +157,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 

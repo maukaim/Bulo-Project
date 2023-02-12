@@ -23,7 +23,7 @@
 
             <dependency>
                 <groupId>com.maukaim.bulo</groupId>
-                <artifactId>bulo-commons-serialization</artifactId>
+                <artifactId>commons-serialization</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>
@@ -55,13 +55,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-core</artifactId>
+            <artifactId>definitions-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-definitions-serialization-module</artifactId>
+            <artifactId>definitions-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -73,7 +73,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-commons-serialization</artifactId>
+            <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>
 
