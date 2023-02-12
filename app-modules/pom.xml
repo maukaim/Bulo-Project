@@ -16,7 +16,7 @@
         <module>microservices</module>
         <module>standalone</module>
         <module>app-shared-modules</module>
-        <module>mockingbird</module>
+        <module>mockingbird-integration</module>
     </modules>
 
 </project>
