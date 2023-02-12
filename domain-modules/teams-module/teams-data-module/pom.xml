@@ -9,5 +9,5 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-teams-data-module</artifactId>
+    <artifactId>teams-data-module</artifactId>
 </project>

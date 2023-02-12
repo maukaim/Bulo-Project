@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-stages-app</artifactId>
+    <artifactId>stages-app</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -31,7 +31,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>ms-shared-spring-servers-starter</artifactId>
+            <artifactId>spring-servers-starter</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -43,19 +43,19 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-core</artifactId>
+            <artifactId>stages-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-serialization-module</artifactId>
+            <artifactId>stages-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-data-lifecycle-ms-module</artifactId>
+            <artifactId>stages-data-lifecycle-ms-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-teams-core</artifactId>
+    <artifactId>teams-core</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-teams-data-module</artifactId>
+            <artifactId>teams-data-module</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

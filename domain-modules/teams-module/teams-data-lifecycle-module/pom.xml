@@ -9,18 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-teams-data-lifecycle-module</artifactId>
+    <artifactId>teams-data-lifecycle-module</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-teams-data-module</artifactId>
+            <artifactId>teams-data-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-teams-io-module</artifactId>
+            <artifactId>teams-io-module</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

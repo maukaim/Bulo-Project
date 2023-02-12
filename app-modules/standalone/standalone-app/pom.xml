@@ -103,25 +103,25 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-core</artifactId>
+            <artifactId>stages-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-io-module</artifactId>
+            <artifactId>stages-io-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-serialization-module</artifactId>
+            <artifactId>stages-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-data-lifecycle-module</artifactId>
+            <artifactId>stages-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

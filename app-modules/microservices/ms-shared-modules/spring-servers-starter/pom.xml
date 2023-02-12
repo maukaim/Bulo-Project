@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ms-shared-spring-servers-starter</artifactId>
+    <artifactId>spring-servers-starter</artifactId>
 
     <dependencies>
         <dependency>
@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>ms-shared-service-endpoints</artifactId>
+            <artifactId>service-endpoints</artifactId>
             <version>${revision}</version>
         </dependency>
 

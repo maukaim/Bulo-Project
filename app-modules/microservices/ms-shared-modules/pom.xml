@@ -13,8 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ms-shared-spring-servers-starter</module>
-        <module>ms-shared-service-endpoints</module>
+        <module>spring-servers-starter</module>
+        <module>service-endpoints</module>
     </modules>
 
 </project>

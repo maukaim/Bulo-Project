@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-teams-app</artifactId>
+    <artifactId>teams-app</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -31,19 +31,19 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-teams-core</artifactId>
+            <artifactId>teams-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-teams-data-lifecycle-module</artifactId>
+            <artifactId>teams-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-teams-serialization-module</artifactId>
+            <artifactId>teams-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

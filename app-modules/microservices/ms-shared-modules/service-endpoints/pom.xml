@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ms-shared-service-endpoints</artifactId>
+    <artifactId>service-endpoints</artifactId>
     <description>Waiting for Kafka, this will help microservices to communicate with each other.</description>
 
     <dependencyManagement>

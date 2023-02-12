@@ -9,5 +9,5 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-users-data-module</artifactId>
+    <artifactId>users-data-module</artifactId>
 </project>

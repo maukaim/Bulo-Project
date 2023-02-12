@@ -56,7 +56,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-stages-serialization-module</artifactId>
+            <artifactId>stages-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

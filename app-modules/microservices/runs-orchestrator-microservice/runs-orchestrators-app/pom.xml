@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-runs-orchestrators-app</artifactId>
+    <artifactId>runs-orchestrators-app</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -37,7 +37,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>ms-shared-service-endpoints</artifactId>
+            <artifactId>service-endpoints</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>ms-shared-spring-servers-starter</artifactId>
+            <artifactId>spring-servers-starter</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -61,7 +61,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-runs-orchestrators-data-lifecycle-module</artifactId>
+            <artifactId>runs-orchestrators-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
 

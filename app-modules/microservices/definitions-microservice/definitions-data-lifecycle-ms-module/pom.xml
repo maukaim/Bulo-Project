@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bulo-definitions-data-lifecycle-ms-module</artifactId>
+    <artifactId>definitions-data-lifecycle-ms-module</artifactId>
 
     <dependencies>
         <dependency>
