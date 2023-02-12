@@ -18,7 +18,7 @@ public abstract class TechnicalStageRunEventProcessor {
     }
 
     protected StageRun<?> getActualRun(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId){
-        StageRun<?>  actual = orchestrableRunContext.getStageRunsById().get(stageRunId);
+        StageRun<?> actual = orchestrableRunContext.getStageRunsById().get(stageRunId);
         if (actual == null) {
             throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
         }
@@ -32,6 +32,6 @@ public abstract class TechnicalStageRunEventProcessor {
         else if (stageRun instanceof TechnicalStageRun)
             return technicalStageRunConsumer.apply((TechnicalStageRun) stageRun);
         else
-            throw new UnsupportedOperationException("Does not support the following StageRun<?>  class: " + stageRun.getClass().getName());
+            throw new UnsupportedOperationException("Does not support the following StageRun<?> class: " + stageRun.getClass().getName());
     }
 }

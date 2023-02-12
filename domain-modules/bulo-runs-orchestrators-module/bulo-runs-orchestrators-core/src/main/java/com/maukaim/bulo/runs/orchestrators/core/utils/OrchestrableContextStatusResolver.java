@@ -22,7 +22,7 @@ public class OrchestrableContextStatusResolver {
             boolean anyInProcessToStart = false;
             boolean anySuccessful = false;
             for (Map.Entry<String, StageRun<?>> stageRunViewById : stageRunViewByStageId.entrySet()) {
-                StageRun<?>  stageRun = stageRunViewById.getValue();
+                StageRun<?> stageRun = stageRunViewById.getValue();
                 switch (stageRun.getStageType()){
                     case TECHNICAL -> {
                         switch (((TechnicalStageRun) stageRun).getStatus()) {

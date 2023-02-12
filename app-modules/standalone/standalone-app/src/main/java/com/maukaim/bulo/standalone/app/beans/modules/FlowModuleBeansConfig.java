@@ -27,28 +27,28 @@ public class FlowModuleBeansConfig {
     }
 
     @Bean
-    public StageParameterValidator stageParameterValidator(){
-        return  new StageParameterValidatorImpl();
+    public StageParameterValidator stageParameterValidator() {
+        return new StageParameterValidatorImpl();
     }
 
     @Bean
     public FlowStageIoValidator flowStageIoValidator(DefinitionService definitionService,
-                                                     StageService stageService){
+                                                     StageService stageService) {
         return new FlowStageIoValidatorImpl(definitionService, stageService);
     }
 
     @Bean
-    public StageInputValidator stageInputValidator(){
+    public StageInputValidator stageInputValidator() {
         return new StageInputValidatorImpl();
     }
 
     @Bean
-    public DefinitionService definitionServicFlowModule(StageDefinitionStore stageDefinitionStore){
+    public DefinitionService definitionServicFlowModule(StageDefinitionStore stageDefinitionStore) {
         return new DefinitionServiceImpl(stageDefinitionStore);
     }
 
     @Bean
-    public StageService stageServiceFlowModule(StageStore stageStore){
+    public StageService stageServiceFlowModule(StageStore stageStore) {
         return new StageServiceImpl(stageStore);
     }
 }

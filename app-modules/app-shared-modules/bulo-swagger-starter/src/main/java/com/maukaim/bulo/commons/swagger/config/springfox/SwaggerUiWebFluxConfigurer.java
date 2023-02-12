@@ -13,7 +13,7 @@ public class SwaggerUiWebFluxConfigurer implements WebFluxConfigurer {
     }
 
     @Override
-    public  void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         String baseUrl = StringUtils.trimTrailingCharacter(this.baseUrl, '/');
         registry.
                 addResourceHandler(baseUrl + "/swagger-ui/**")

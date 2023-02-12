@@ -35,7 +35,7 @@ public class RunCancelledTechnicalStageRunEventProcessor extends TechnicalStageR
 
     private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
         Map<String, StageRun<?>> result = new HashMap<>();
-        StageRun<?>  actualView = getActualRun(orchestrableRunContext, stageRunId);
+        StageRun<?> actualView = getActualRun(orchestrableRunContext, stageRunId);
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualView,
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED)),
                 technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.cancelled(technicalStageRun, instant))

@@ -47,7 +47,7 @@ public class StageRunServiceImpl implements StageRunService {
         for (ContextStageId contextStageId : stageToRunByDependencies.keySet()) {
             Set<RunDependency> naiveRunDependencies = stageToRunByDependencies.get(contextStageId);
             Set<RunDependency> runDependencies = resolveRunDependenciesWithContext(runContext, naiveRunDependencies);
-            StageRun<?>  newRun;
+            StageRun<?> newRun;
             String definitionId = functionalStageService.getDefinitionId(contextStageId.getStageId());
             if (definitionId == null) {
                 newRun = TechnicalStageRunFactory.toBeRequested(runContext, contextStageId, runDependencies);

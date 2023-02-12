@@ -23,7 +23,7 @@ public class FlowModuleDefinitionStore implements StageDefinitionStore {
 
     @Override
     public StageDefinition put(StageDefinition stageDefinition) {
-        throw  UnsupportedDataMethodException.isSubStore();
+        throw UnsupportedDataMethodException.isSubStore();
     }
 
     @Override
