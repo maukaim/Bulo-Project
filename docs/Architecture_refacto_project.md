@@ -2,7 +2,7 @@
 ________________
 The current architecture has 2 central components : 1) Orchestrator service and 2) Executors    
 
-<img src="assets/bulo_current_architecture.png" width="800"/>  
+<img src="assets/architecture/current_architecture.png" width="800"/>  
 
 It does not completely fill the theoretical definition of an **event based** system definition.
 Event should be considered as facts or notifications. It should not look like a RPC like system.

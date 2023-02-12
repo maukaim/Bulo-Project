@@ -6,11 +6,11 @@ ___
 
 **As of 1st October 2022,** current project state is as following:  
 
-<img src="assets/bulo_current_architecture.png" width="800"/>  
+<img src="assets/architecture/current_architecture.png" width="800"/>  
 
 **The targeted architecture**, at the end of the Alpha version will be:  
 
-<img src="assets/bulo_alpha_target_architecture.png" width="800"/>  
+<img src="assets/architecture/target_architecture.png" width="800"/>  
 
 ### Objectives
 ___  

@@ -1,6 +1,6 @@
 <div align="center">
     <img src="docs/assets/bulo-logo.svg" width="100" alt="Bulo logo" />
-    <h1 class="title" style="margin-top:0px" >Bulo Project (ALPHA version)</h1>  
+    <h1 class="title" style="margin-top:0" >Bulo Project (ALPHA version)</h1>  
 </div>
 
 ## Seems you found your new automation buddy.
@@ -11,7 +11,7 @@ As scalability is at the core of its design, Bulo can stretch from a simple stan
 <br/>
 <br/>
 <div align="center">
-<img src="docs/assets/flow_example_adobe.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
+<img src="docs/assets/flow_example_twitter.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
 </div>  
 <br/>
 Thanks to the Bulo Store (Beta version), share and leverage on tools built by the community members, and automate your life is just a few clicks away!
@@ -45,10 +45,10 @@ You can build the project and run it from your IDE, For how to run Bulo, please 
 ## Roadmap Alpha version - Jan 2023 
 
 Find below the targeted architecture for End of Alpha version development. Only Bulo Backend would be included, Gateways and UI are here to understand in which runContext Bulo will  be used.  
-More documentation (and current architecture) [here](docs/ALPHA_VERSION_roadmap.md). 
+More documentation (and current architecture) [here](docs/roadmap-alpha.md). 
 For contributors, you can have a look on cards in [Bulo-Project's Dashboard](https://github.com/orgs/maukaim/projects/3) and pick one in the backlog.
  
-<img src="docs/assets/bulo_alpha_target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>
+<img src="docs/assets/architecture/target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>
 
 Prioritized items (as of Feb 2023):
 - [X] Add Mockingbird module (integration tests)
@@ -64,7 +64,7 @@ Prioritized items (as of Feb 2023):
 ## How to contribute? 
 
 Every one is welcomed ! From helping on the architecture design, building new Stage Runners or helping with documentation. If you are interested feel free to reach out ! julienelk@gmail.com 
-To understand how to make your first contribution to the project, please read [CONTRIBUTE_ME.md](docs/CONTRIBUTE_ME.md)  
+To understand how to make your first contribution to the project, please read [CONTRIBUTE_ME.md](docs/CONTRIBUTEME.md)  
 
 ## Follow the project  
 
