@@ -1,6 +1,6 @@
 package com.maukaim.bulo.ms.shared.spring.servers;
 
-import com.maukaim.bulo.app.shared.servers.SystemContext;
+import com.maukaim.bulo.shared.server.core.SystemContext;
 import com.maukaim.bulo.app.shared.spring.servers.AbstractSpringEndpointConsumerResolver;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;

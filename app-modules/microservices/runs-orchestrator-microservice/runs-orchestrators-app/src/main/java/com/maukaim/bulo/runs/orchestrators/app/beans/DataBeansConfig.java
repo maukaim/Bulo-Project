@@ -6,28 +6,68 @@ import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
-import com.maukaim.bulo.runs.orchestrators.data.lifecycle.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.InputProviderAdapter;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.FunctionalSubStageAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.IoDependencyAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.InputProviderAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.OutputProviderAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.StageDefinitionAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.StageRunAncestorAdapter;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.StageRunAncestorDtoAdapter;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.*;
 import com.maukaim.bulo.runs.orchestrators.io.FlowRunEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.io.NeedStageRunCancellationEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.io.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.StageRunAncestorAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.StageRunAncestorDtoAdapterImpl;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.*;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.*;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FunctionalStageDefinitionStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FunctionalStageStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.FunctionalSubStageAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.InputProviderAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.IoDependencyAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.OutputProviderAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.StageDefinitionAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.FunctionalSubStageAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.InputProviderAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.IoDependencyAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.OutputProviderAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl.StageDefinitionAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowStageAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowStageDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputDependencyAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputDependencyDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputProviderDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.OwnerKeyAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.OwnerKeyDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.FlowAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.FlowDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.FlowStageAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.FlowStageDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.InputDependencyAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.InputDependencyDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.InputProviderDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.OwnerKeyAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl.OwnerKeyDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.ExecutionGraphAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.ExecutionGraphDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowRunAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowRunDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowStageDependencyAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowStageDependencyDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.ExecutionGraphAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.ExecutionGraphDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.FlowRunAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.FlowRunDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.FlowStageDependencyAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.FlowStageDependencyDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.OutputProviderDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunAncestorAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunAncestorDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDependencyAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDependencyDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDtoAdapter;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.OutputProviderDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.StageRunAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.StageRunAncestorAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.StageRunAncestorDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.StageRunDependencyAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.StageRunDependencyDtoAdapterImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.impl.StageRunDtoAdapterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -111,7 +151,7 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public OutputProviderDtoAdapter outputProviderDtoAdapter(){
+        public OutputProviderDtoAdapter outputProviderDtoAdapter() {
             return new OutputProviderDtoAdapterImpl();
         }
 
@@ -144,8 +184,8 @@ public class DataBeansConfig {
 
         @Bean
         public StageRunConnectorImpl stageRunConnector(NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher,
-                                                   NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher,
-                                                   StageRunDependencyDtoAdapter stageRunDependencyDtoAdapter) {
+                                                       NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher,
+                                                       StageRunDependencyDtoAdapter stageRunDependencyDtoAdapter) {
             return new StageRunConnectorImpl(needStageRunExecutionEventPublisher, needStageRunCancellationEventPublisher, stageRunDependencyDtoAdapter);
         }
     }
@@ -170,13 +210,13 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public FlowStageDependencyAdapter flowStageDependencyAdapter(StageRunAncestorAdapter stageRunAncestorAdapter) {
+        public FlowStageDependencyAdapter flowStageDependencyAdapter(com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.StageRunAncestorAdapter stageRunAncestorAdapter) {
             return new FlowStageDependencyAdapterImpl(stageRunAncestorAdapter);
         }
 
         @Bean
-        public StageRunAncestorAdapter ancestorAdapter() {
-            return new StageRunAncestorAdapterImpl();
+        public com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.StageRunAncestorAdapter ancestorAdapter() {
+            return new com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.StageRunAncestorAdapterImpl();
         }
 
         @Bean
@@ -191,54 +231,54 @@ public class DataBeansConfig {
         }
 
         @Bean
-        public FlowStageDependencyDtoAdapter flowStageDependencyDtoAdapter(StageRunAncestorDtoAdapter stageRunAncestorDtoAdapter) {
+        public FlowStageDependencyDtoAdapter flowStageDependencyDtoAdapter(com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.StageRunAncestorDtoAdapter stageRunAncestorDtoAdapter) {
             return new FlowStageDependencyDtoAdapterImpl(stageRunAncestorDtoAdapter);
         }
 
         @Bean
-        public StageRunAncestorDtoAdapter ancestorDtoAdapter() {
-            return new StageRunAncestorDtoAdapterImpl();
+        public com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.StageRunAncestorDtoAdapter ancestorDtoAdapter() {
+            return new com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.impl.StageRunAncestorDtoAdapterImpl();
         }
     }
 
     @Configuration
     public static class StageDataBeansConfig {
         @Bean
-        public FunctionalStageStore functionalStageStore(){
+        public FunctionalStageStore functionalStageStore() {
             return new FunctionalStageStoreImpl(Map.of());
         }
     }
 
     @Configuration
-    public static class DefinitionDataBeansConfig{
+    public static class DefinitionDataBeansConfig {
         @Bean
-        public FunctionalStageDefinitionStore functionalStageDefinitionStore(){
+        public FunctionalStageDefinitionStore functionalStageDefinitionStore() {
             return new FunctionalStageDefinitionStoreImpl(Map.of());
         }
 
         @Bean
         public StageDefinitionAdapter stageDefinitionAdapter(FunctionalSubStageAdapter functionalSubStageAdapter,
-                                                             OutputProviderAdapter outputProviderAdapter){
+                                                             OutputProviderAdapter outputProviderAdapter) {
             return new StageDefinitionAdapterImpl(functionalSubStageAdapter, outputProviderAdapter);
         }
 
         @Bean
-        public OutputProviderAdapter outputProviderAdapter(){
+        public OutputProviderAdapter outputProviderAdapter() {
             return new OutputProviderAdapterImpl();
         }
 
         @Bean
-        public FunctionalSubStageAdapter functionalSubStageAdapter(IoDependencyAdapter ioDependencyAdapter){
+        public FunctionalSubStageAdapter functionalSubStageAdapter(IoDependencyAdapter ioDependencyAdapter) {
             return new FunctionalSubStageAdapterImpl(ioDependencyAdapter);
         }
 
         @Bean
-        public IoDependencyAdapter ioDependencyAdapter(InputProviderAdapter inputProviderAdapter){
+        public IoDependencyAdapter ioDependencyAdapter(InputProviderAdapter inputProviderAdapter) {
             return new IoDependencyAdapterImpl(inputProviderAdapter);
         }
 
         @Bean
-        public InputProviderAdapter fsInputProviderAdapter(){
+        public InputProviderAdapter fsInputProviderAdapter() {
             return new InputProviderAdapterImpl();
         }
     }

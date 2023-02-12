@@ -7,7 +7,7 @@ import com.maukaim.bulo.mockingbird.marshaller.MarshallerProvider;
 import com.maukaim.bulo.mockingbird.connect.SystemConnectorProvider;
 import com.maukaim.bulo.mockingbird.connect.Application;
 
-import static com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment.dev;
+import static com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment.dev;
 
 public class TestUtil {
 

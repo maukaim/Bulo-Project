@@ -1,9 +1,9 @@
 package com.maukaim.bulo.mockingbird.connect;
 
 import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
-import com.maukaim.bulo.app.shared.servers.ServerUtils;
-import com.maukaim.bulo.app.shared.servers.SystemContext;
-import com.maukaim.bulo.app.shared.servers.model.ApplicationEnvironment;
+import com.maukaim.bulo.shared.server.core.ServerUtils;
+import com.maukaim.bulo.shared.server.core.SystemContext;
+import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.app.shared.system.communication.core.rest.RestSystemEventConnector;
 import com.maukaim.bulo.marshalling.Marshaller;

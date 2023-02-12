@@ -14,12 +14,12 @@
 
 
     <modules>
-        <module>app-client-endpoints</module>
-        <module>app-shared-servers</module>
-        <module>app-shared-spring-servers</module>
-        <module>app-shared-system-communication-core</module>
-        <module>app-shared-system-communication-api</module>
-        <module>bulo-swagger-starter</module>
+        <module>client-endpoints</module>
+        <module>server-core</module>
+        <module>spring-server-core</module>
+        <module>system-communication-core</module>
+        <module>system-communication-api</module>
+        <module>swagger-starter</module>
     </modules>
 
 </project>

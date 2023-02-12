@@ -31,13 +31,13 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>app-client-endpoints</artifactId>
+            <artifactId>client-endpoints</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>app-shared-spring-servers</artifactId>
+            <artifactId>spring-server-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>app-shared-system-communication-core</artifactId>
+            <artifactId>system-communication-core</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -91,7 +91,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-swagger-starter</artifactId>
+            <artifactId>swagger-starter</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

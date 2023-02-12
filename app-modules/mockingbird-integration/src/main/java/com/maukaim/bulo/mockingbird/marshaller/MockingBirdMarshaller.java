@@ -1,9 +1,8 @@
 package com.maukaim.bulo.mockingbird.marshaller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maukaim.bulo.app.shared.servers.DefaultApplicationMarshaller;
+import com.maukaim.bulo.shared.server.core.DefaultApplicationMarshaller;
 
 import java.util.List;
 

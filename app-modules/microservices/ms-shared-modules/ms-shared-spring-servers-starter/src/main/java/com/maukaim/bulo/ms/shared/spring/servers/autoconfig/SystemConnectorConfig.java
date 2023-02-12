@@ -1,6 +1,6 @@
 package com.maukaim.bulo.ms.shared.spring.servers.autoconfig;
 
-import com.maukaim.bulo.app.shared.servers.SystemContext;
+import com.maukaim.bulo.shared.server.core.SystemContext;
 import com.maukaim.bulo.app.shared.spring.servers.SystemAwareConfig;
 import com.maukaim.bulo.marshalling.Marshaller;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;

@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>bulo-swagger-starter</artifactId>
+            <artifactId>swagger-starter</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

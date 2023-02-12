@@ -1,7 +1,7 @@
 package com.maukaim.bulo.ms.shared.spring.servers.autoconfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maukaim.bulo.app.shared.servers.DefaultApplicationMarshaller;
+import com.maukaim.bulo.shared.server.core.DefaultApplicationMarshaller;
 import com.maukaim.bulo.marshalling.Marshaller;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
