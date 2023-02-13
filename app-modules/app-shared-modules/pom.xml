@@ -12,7 +12,6 @@
     <artifactId>app-shared-modules</artifactId>
     <packaging>pom</packaging>
 
-
     <modules>
         <module>client-endpoints</module>
         <module>server-core</module>
@@ -21,6 +20,7 @@
         <module>system-communication-api</module>
         <module>swagger-starter</module>
         <module>io-modules</module>
+        <module>data-lifecycle-modules</module>
     </modules>
 
 </project>
