@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>api-data-types</artifactId>
+            <artifactId>data-types</artifactId>
             <version>${revision}</version>
         </dependency>
 

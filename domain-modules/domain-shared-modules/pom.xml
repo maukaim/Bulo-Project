@@ -18,7 +18,7 @@
         <module>commons-serialization</module>
         <module>common-utils</module>
         <module>common-data-lifecycle</module>
-        <module>api-data-types</module>
+        <module>data-types</module>
         <module>marshalling-module</module>
     </modules>
 </project>
