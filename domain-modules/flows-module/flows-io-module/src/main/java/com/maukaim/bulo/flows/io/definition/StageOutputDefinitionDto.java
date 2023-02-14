@@ -1,6 +1,6 @@
 package com.maukaim.bulo.flows.io.definition;
 
-import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
 
 public class StageOutputDefinitionDto {
     private IoTypeDto ioType;

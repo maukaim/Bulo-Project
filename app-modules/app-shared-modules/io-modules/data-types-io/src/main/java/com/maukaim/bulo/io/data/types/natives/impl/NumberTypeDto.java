@@ -1,22 +1,22 @@
-package com.maukaim.bulo.commons.io.data.types.natives.impl;
+package com.maukaim.bulo.io.data.types.natives.impl;
 
 import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
-import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
 
-public class BooleanTypeDto extends NativeTypeDto {
+public class NumberTypeDto extends NativeTypeDto {
 
-    public BooleanTypeDto(boolean required) {
+    public NumberTypeDto(boolean required) {
         super(required);
     }
 
     @Override
     public NativeTypeCategory getNativeTypeCategory() {
-        return NativeTypeCategory.BOOLEAN;
+        return NativeTypeCategory.NUMBER;
     }
 
     @Override
     public String toString() {
-        return "BooleanTypeDto{" +
+        return "NumberTypeDto{" +
                 "nativeTypeCategory=" + getNativeTypeCategory() +
                 ", dataTypeCategory=" + getDataTypeCategory() +
                 ", required=" + required +

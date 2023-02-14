@@ -1,9 +1,9 @@
-package com.maukaim.bulo.commons.io.data.types.natives;
+package com.maukaim.bulo.io.data.types.natives;
 
 import com.maukaim.bulo.api.data.types.DataTypeCategory;
 import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
-import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 
 public abstract class NativeTypeDto implements ParameterTypeDto, IoTypeDto {
     protected boolean required;

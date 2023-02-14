@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.api.data.types.parameters.ParameterType;
-import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterDefinitionDtoAdapter;
 import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;

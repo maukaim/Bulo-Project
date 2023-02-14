@@ -1,6 +1,6 @@
 package com.maukaim.bulo.stages.io.models.definitions;
 
-import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinitionDto implements ParameterDefinitionInterface {

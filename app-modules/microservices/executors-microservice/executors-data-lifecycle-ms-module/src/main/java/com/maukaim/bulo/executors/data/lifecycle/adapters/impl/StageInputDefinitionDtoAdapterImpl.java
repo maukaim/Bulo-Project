@@ -2,7 +2,7 @@ package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
-import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageInputDefinitionDtoAdapter;
 import com.maukaim.bulo.runners.api.models.StageInputDefinition;

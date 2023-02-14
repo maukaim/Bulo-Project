@@ -1,7 +1,7 @@
 package com.maukaim.bulo.mockingbird.builders;
 
-import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;

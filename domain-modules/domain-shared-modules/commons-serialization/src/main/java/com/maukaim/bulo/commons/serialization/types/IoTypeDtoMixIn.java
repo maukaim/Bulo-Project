@@ -2,9 +2,9 @@ package com.maukaim.bulo.commons.serialization.types;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.maukaim.bulo.commons.io.data.types.ArrayIoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.BuloIoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
+import com.maukaim.bulo.io.data.types.ArrayIoTypeDto;
+import com.maukaim.bulo.io.data.types.BuloIoTypeDto;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
 
 @JsonTypeInfo(
         property = "dataTypeCategory",

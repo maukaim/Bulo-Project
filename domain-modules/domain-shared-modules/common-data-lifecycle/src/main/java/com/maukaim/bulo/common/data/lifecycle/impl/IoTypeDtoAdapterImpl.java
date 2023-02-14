@@ -5,12 +5,12 @@ import com.maukaim.bulo.api.data.types.io.ArrayIoType;
 import com.maukaim.bulo.api.data.types.io.BuloIoType;
 import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
-import com.maukaim.bulo.commons.io.data.types.ArrayIoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.BuloIoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.BooleanTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.NumberTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.StringTypeDto;
+import com.maukaim.bulo.io.data.types.ArrayIoTypeDto;
+import com.maukaim.bulo.io.data.types.BuloIoTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.BooleanTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.NumberTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;

@@ -1,8 +1,13 @@
 package com.maukaim.bulo.commons.serialization;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.maukaim.bulo.commons.io.data.types.*;
-import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
+import com.maukaim.bulo.io.data.types.ArrayIoTypeDto;
+import com.maukaim.bulo.io.data.types.ArrayParameterTypeDto;
+import com.maukaim.bulo.io.data.types.BuloIoTypeDto;
+import com.maukaim.bulo.io.data.types.BuloParameterTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.serialization.types.*;
 

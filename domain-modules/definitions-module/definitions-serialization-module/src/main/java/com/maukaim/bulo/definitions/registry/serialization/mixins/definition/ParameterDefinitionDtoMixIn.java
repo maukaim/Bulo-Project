@@ -2,7 +2,7 @@ package com.maukaim.bulo.definitions.registry.serialization.mixins.definition;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.commons.io.data.types.ParameterTypeDto;
+import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 
 public class ParameterDefinitionDtoMixIn {
 

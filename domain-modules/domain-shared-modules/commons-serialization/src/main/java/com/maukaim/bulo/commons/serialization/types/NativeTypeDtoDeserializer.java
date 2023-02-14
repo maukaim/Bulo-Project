@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
-import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.BooleanTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.NumberTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.StringTypeDto;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.BooleanTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.NumberTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 
 import java.io.IOException;
 

@@ -7,10 +7,10 @@ import com.maukaim.bulo.api.data.types.natives.BooleanType;
 import com.maukaim.bulo.api.data.types.natives.NumberType;
 import com.maukaim.bulo.api.data.types.natives.StringType;
 import com.maukaim.bulo.common.data.lifecycle.IoTypeAdapter;
-import com.maukaim.bulo.commons.io.data.types.ArrayIoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.BuloIoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.IoTypeDto;
-import com.maukaim.bulo.commons.io.data.types.natives.NativeTypeDto;
+import com.maukaim.bulo.io.data.types.ArrayIoTypeDto;
+import com.maukaim.bulo.io.data.types.BuloIoTypeDto;
+import com.maukaim.bulo.io.data.types.IoTypeDto;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;

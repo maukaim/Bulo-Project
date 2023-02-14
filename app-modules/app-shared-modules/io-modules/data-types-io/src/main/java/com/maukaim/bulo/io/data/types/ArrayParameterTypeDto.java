@@ -1,14 +1,12 @@
-package com.maukaim.bulo.commons.io.data.types;
+package com.maukaim.bulo.io.data.types;
 
 import com.maukaim.bulo.api.data.types.DataTypeCategory;
 
-import static com.maukaim.bulo.api.data.types.DataTypeCategory.ARRAY;
-
-public class ArrayIoTypeDto implements IoTypeDto{
-    private IoTypeDto contentType;
+public class ArrayParameterTypeDto implements ParameterTypeDto {
+    private ParameterTypeDto contentType;
     private Boolean required;
 
-    public ArrayIoTypeDto(IoTypeDto contentType, boolean required) {
+    public ArrayParameterTypeDto(ParameterTypeDto contentType, boolean required) {
         this.required = required;
         this.contentType = contentType;
     }
@@ -18,16 +16,16 @@ public class ArrayIoTypeDto implements IoTypeDto{
     }
 
     public DataTypeCategory getDataTypeCategory() {
-        return ARRAY;
+        return DataTypeCategory.ARRAY;
     }
 
-    public IoTypeDto getContentType() {
+    public ParameterTypeDto getContentType() {
         return contentType;
     }
 
     @Override
     public String toString() {
-        return "ArrayIoTypeDto{" +
+        return "ArrayParameterTypeDto{" +
                 "contentType=" + contentType +
                 ", dataTypeCategory=" + getDataTypeCategory() +
                 ", required=" + required +

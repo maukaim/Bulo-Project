@@ -2,7 +2,7 @@ package com.maukaim.bulo.mockingbird;
 
 import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
-import com.maukaim.bulo.commons.io.data.types.natives.impl.StringTypeDto;
+import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.flows.io.flow.OwnerKeyTypeDto;
