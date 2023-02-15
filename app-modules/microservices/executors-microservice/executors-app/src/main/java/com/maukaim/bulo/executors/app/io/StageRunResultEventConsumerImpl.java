@@ -3,8 +3,8 @@ package com.maukaim.bulo.executors.app.io;
 import com.maukaim.bulo.executors.data.lifecycle.StageRunResultStoreImpl;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunResultAdapter;
 import com.maukaim.bulo.executors.data.result.StageRunResult;
-import com.maukaim.bulo.executors.io.StageRunResultEventConsumer;
-import com.maukaim.bulo.executors.io.out.StageRunResultEvent;
+import com.maukaim.bulo.io.executors.StageRunResultEventConsumer;
+import com.maukaim.bulo.io.executors.out.StageRunResultEvent;
 
 public class StageRunResultEventConsumerImpl implements StageRunResultEventConsumer {
     private final StageRunResultStoreImpl stageRunResultStore;

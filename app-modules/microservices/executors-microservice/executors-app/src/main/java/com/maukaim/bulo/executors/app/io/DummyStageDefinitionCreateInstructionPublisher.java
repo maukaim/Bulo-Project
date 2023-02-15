@@ -2,7 +2,7 @@ package com.maukaim.bulo.executors.app.io;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
 import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.executors.io.StageDefinitionCreateInstructionPublisher;
+import com.maukaim.bulo.io.executors.StageDefinitionCreateInstructionPublisher;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 
 public class DummyStageDefinitionCreateInstructionPublisher implements StageDefinitionCreateInstructionPublisher {

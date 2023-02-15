@@ -16,6 +16,7 @@
         <module>io-shared</module>
         <module>definitions-io-modules</module>
         <module>stages-io-modules</module>
+        <module>executors-io-modules</module>
     </modules>
 
 </project>

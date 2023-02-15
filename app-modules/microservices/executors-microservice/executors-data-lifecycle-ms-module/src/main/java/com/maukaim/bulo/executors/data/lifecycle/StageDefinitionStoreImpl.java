@@ -4,7 +4,7 @@ import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinition
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.executors.io.StageDefinitionCreateInstructionPublisher;
+import com.maukaim.bulo.io.executors.StageDefinitionCreateInstructionPublisher;
 
 import java.time.Instant;
 import java.util.Collection;

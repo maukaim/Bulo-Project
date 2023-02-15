@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 
-import com.maukaim.bulo.commons.io.IStageRunEvent;
+import com.maukaim.bulo.io.executors.shared.IStageRunEvent;
 import com.maukaim.bulo.runs.orchestrators.core.impl.*;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;

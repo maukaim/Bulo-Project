@@ -2,8 +2,6 @@ package com.maukaim.bulo.executors.app.web;
 
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.executors.data.stages.Stage;
-import com.maukaim.bulo.executors.io.StageUpdateEventConsumer;
-import com.maukaim.bulo.executors.io.in.StageUpdateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

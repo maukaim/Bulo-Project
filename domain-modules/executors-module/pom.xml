@@ -14,7 +14,6 @@
 
     <modules>
         <module>executors-core</module>
-        <module>executors-io-module</module>
         <module>executors-serialization-module</module>
         <module>executors-data-module</module>
         <module>runners-module</module>

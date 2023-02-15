@@ -3,9 +3,9 @@ package com.maukaim.bulo.executors.app.io;
 import com.maukaim.bulo.executors.core.StageRunEventProcessor;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunDependencyAdapter;
 import com.maukaim.bulo.executors.data.runs.StageRunDependency;
-import com.maukaim.bulo.executors.io.NeedStageRunEventConsumer;
-import com.maukaim.bulo.executors.io.in.RunInstruction;
-import com.maukaim.bulo.executors.io.in.model.StageRunDependencyDto;
+import com.maukaim.bulo.io.executors.NeedStageRunEventConsumer;
+import com.maukaim.bulo.io.executors.in.RunInstruction;
+import com.maukaim.bulo.io.executors.in.model.StageRunDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

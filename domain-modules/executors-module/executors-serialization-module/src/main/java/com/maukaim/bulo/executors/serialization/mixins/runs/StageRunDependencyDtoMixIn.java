@@ -2,7 +2,7 @@ package com.maukaim.bulo.executors.serialization.mixins.runs;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.executors.io.in.model.StageRunAncestorDto;
+import com.maukaim.bulo.io.executors.in.model.StageRunAncestorDto;
 
 import java.util.Set;
 

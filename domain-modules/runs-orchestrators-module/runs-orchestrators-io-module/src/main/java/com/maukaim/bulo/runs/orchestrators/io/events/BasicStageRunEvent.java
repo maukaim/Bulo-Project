@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.io.events;
 
-import com.maukaim.bulo.commons.io.IStageRunEvent;
-import com.maukaim.bulo.commons.io.StageRunEventType;
+import com.maukaim.bulo.io.executors.shared.IStageRunEvent;
+import com.maukaim.bulo.io.executors.shared.StageRunEventType;
 
 import java.time.Instant;
 
