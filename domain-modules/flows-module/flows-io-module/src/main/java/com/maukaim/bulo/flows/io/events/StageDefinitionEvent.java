@@ -1,12 +1,11 @@
 package com.maukaim.bulo.flows.io.events;
 
-import com.maukaim.bulo.io.definitions.shared.DefinitionEventType;
-import com.maukaim.bulo.commons.io.GlobalDefinitionEvent;
 import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.DefinitionEventType;
 
 import java.time.Instant;
 
-public class StageDefinitionEvent implements GlobalDefinitionEvent {
+public class StageDefinitionEvent {
     private stageDefinitionDto stageDefinitionDto;
     private DefinitionEventType eventType;
     private Instant instant;
@@ -21,12 +20,10 @@ public class StageDefinitionEvent implements GlobalDefinitionEvent {
         return stageDefinitionDto;
     }
 
-    @Override
     public DefinitionEventType getEventType() {
         return eventType;
     }
 
-    @Override
     public Instant getInstant() {
         return instant;
     }
