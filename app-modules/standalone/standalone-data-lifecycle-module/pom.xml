@@ -41,12 +41,6 @@
             <artifactId>definitions-data-module</artifactId>
             <version>${revision}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${revision}</version>
-        </dependency>
     </dependencies>
 
 </project>

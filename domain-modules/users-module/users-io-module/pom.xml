@@ -11,12 +11,4 @@
 
     <artifactId>users-io-module</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${revision}</version>
-        </dependency>
-    </dependencies>
-
 </project>

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-io</artifactId>
+            <artifactId>commons-models</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

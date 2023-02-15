@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-io</artifactId>
+            <artifactId>data-types-io</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

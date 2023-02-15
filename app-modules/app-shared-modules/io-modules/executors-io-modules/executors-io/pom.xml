@@ -14,13 +14,25 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-io</artifactId>
+            <artifactId>executors-io-shared</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-io-shared</artifactId>
+            <artifactId>stages-io-shared</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>commons-models</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-shared</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

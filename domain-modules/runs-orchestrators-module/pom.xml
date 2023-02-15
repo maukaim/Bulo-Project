@@ -15,7 +15,6 @@
     <modules>
         <module>runs-orchestrators-core</module>
         <module>runs-orchestrators-serialization-module</module>
-        <module>runs-orchestrators-io-module</module>
         <module>runs-orchestrators-data-module</module>
     </modules>
 </project>

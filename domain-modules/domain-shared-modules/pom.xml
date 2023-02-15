@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>commons-io</module>
         <module>commons-models</module>
         <module>commons-serialization</module>
         <module>common-utils</module>
