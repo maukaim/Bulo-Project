@@ -1,6 +1,6 @@
 package com.maukaim.bulo.flows.io.events;
 
-import com.maukaim.bulo.commons.io.ExternalEvent;
+import com.maukaim.bulo.io.shared.ExternalEvent;
 import com.maukaim.bulo.flows.io.flow.FlowDto;
 import com.maukaim.bulo.flows.io.flow.FlowEventType;
 

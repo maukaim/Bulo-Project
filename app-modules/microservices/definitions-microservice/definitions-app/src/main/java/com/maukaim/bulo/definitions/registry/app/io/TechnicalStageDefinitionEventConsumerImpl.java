@@ -1,6 +1,6 @@
 package com.maukaim.bulo.definitions.registry.app.io;
 
-import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
 import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;

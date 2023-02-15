@@ -1,12 +1,16 @@
 package com.maukaim.bulo.definitions.registry.serialization;
 
-import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.*;
-import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.InputProviderDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.IoDependencyDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.technical.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
 import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import com.maukaim.bulo.definitions.io.events.StageUpdateEvent;

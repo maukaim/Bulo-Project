@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.io.in;
 
-import com.maukaim.bulo.commons.io.ExternalEvent;
+import com.maukaim.bulo.io.shared.ExternalEvent;
 
 import java.time.Instant;
 

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.flows.io.events;
 
-import com.maukaim.bulo.commons.io.DefinitionEventType;
+import com.maukaim.bulo.io.definitions.shared.DefinitionEventType;
 import com.maukaim.bulo.commons.io.GlobalDefinitionEvent;
 import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
 

@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-io-module</artifactId>
+            <artifactId>stages-io</artifactId>
             <version>${revision}</version>
         </dependency>
 

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.stages.ms.data.lifecycle;
 
-import com.maukaim.bulo.commons.io.StageUpdateEventType;
+import com.maukaim.bulo.io.stages.shared.StageUpdateEventType;
 import com.maukaim.bulo.stages.io.events.StageUpdateEvent;
 import com.maukaim.bulo.stages.io.StageUpdateEventPublisher;
 import com.maukaim.bulo.stages.io.models.stages.StageDto;

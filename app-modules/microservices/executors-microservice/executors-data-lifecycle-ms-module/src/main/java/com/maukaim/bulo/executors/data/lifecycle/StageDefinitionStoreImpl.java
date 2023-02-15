@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.data.lifecycle;
 
-import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.executors.data.StageDefinitionStore;
 import com.maukaim.bulo.runners.api.models.StageDefinition;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;

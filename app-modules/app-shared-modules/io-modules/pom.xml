@@ -13,6 +13,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>data-types-io</module>
+        <module>io-shared</module>
+        <module>definitions-io-modules</module>
+        <module>stages-io-modules</module>
     </modules>
 
 </project>

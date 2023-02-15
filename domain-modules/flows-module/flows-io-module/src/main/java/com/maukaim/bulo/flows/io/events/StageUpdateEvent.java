@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.io.events;
 
-import com.maukaim.bulo.commons.io.ExternalEvent;
-import com.maukaim.bulo.commons.io.StageUpdateEventType;
+import com.maukaim.bulo.io.shared.ExternalEvent;
+import com.maukaim.bulo.io.stages.shared.StageUpdateEventType;
 import com.maukaim.bulo.flows.io.stage.StageDto;
 
 import java.time.Instant;

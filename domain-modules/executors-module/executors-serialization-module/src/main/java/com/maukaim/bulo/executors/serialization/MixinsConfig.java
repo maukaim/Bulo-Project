@@ -1,9 +1,9 @@
 package com.maukaim.bulo.executors.serialization;
 
-import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageOutputDefinitionDto;
 import com.maukaim.bulo.executors.io.in.CancelRunInstruction;
 import com.maukaim.bulo.executors.io.in.RunInstruction;
 import com.maukaim.bulo.executors.io.in.StageUpdateEvent;

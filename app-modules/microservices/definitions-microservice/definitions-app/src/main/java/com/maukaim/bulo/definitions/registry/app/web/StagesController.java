@@ -2,7 +2,6 @@ package com.maukaim.bulo.definitions.registry.app.web;
 
 import com.maukaim.bulo.definitions.data.StageStore;
 import com.maukaim.bulo.definitions.data.stage.Stage;
-import com.maukaim.bulo.definitions.io.events.StageUpdateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

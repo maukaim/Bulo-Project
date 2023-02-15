@@ -1,8 +1,8 @@
 package com.maukaim.bulo.definitions.ms.data.lifecycle;
 
 
-import com.maukaim.bulo.commons.io.DefinitionEventType;
-import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.DefinitionEventType;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
@@ -13,7 +13,7 @@ import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
 import java.time.Instant;
 import java.util.*;
 
-import static com.maukaim.bulo.commons.io.DefinitionEventType.UPDATE;
+import static com.maukaim.bulo.io.definitions.shared.DefinitionEventType.UPDATE;
 
 public class StageDefinitionStoreImpl implements StageDefinitionStore {
     private Map<String, Set<String>> executorsByStageDefinitionId;

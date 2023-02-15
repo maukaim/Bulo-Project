@@ -14,7 +14,6 @@
 
     <modules>
         <module>definitions-core</module>
-        <module>definitions-io-module</module>
         <module>definitions-serialization-module</module>
         <module>definitions-data-module</module>
         <module>definitions-data-lifecycle-module</module>

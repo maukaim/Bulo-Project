@@ -1,8 +1,8 @@
 package com.maukaim.bulo.mockingbird.connect;
 
 import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
-import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.commons.io.instructions.models.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.FunctionalStageDefinitionDto;
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.flows.io.events.CreateFlowInstruction;
 import com.maukaim.bulo.flows.io.flow.FlowDto;

@@ -1,8 +1,9 @@
 package com.maukaim.bulo.definitions.data.lifecycle.impl;
 
-import com.maukaim.bulo.commons.io.instructions.models.functional.FsStageDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.FunctionalStageDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.OutputProviderDto;
 import com.maukaim.bulo.definitions.data.definition.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageInputDefinition;
@@ -15,12 +16,11 @@ import com.maukaim.bulo.definitions.data.lifecycle.ParameterDefinitionDtoAdapter
 import com.maukaim.bulo.definitions.data.lifecycle.StageInputDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.StageOutputDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.commons.io.instructions.models.ParameterDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageInputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.commons.io.instructions.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.technical.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageDtoAdapter;
-import com.maukaim.bulo.definitions.data.lifecycle.functional.OutputProviderAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.OutputProviderDtoAdapter;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public class StageDefinitionDtoAdapterImpl implements StageDefinitionDtoAdapter 
     }
 
     @Override
-    public com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto adapte(StageDefinition definition) {
+    public StageDefinitionDto adapte(StageDefinition definition) {
         return switch (definition.getStageDefinitionType()){
             case FUNCTIONAL -> adapte((FunctionalStageDefinition)definition);
             case TECHNICAL -> adapte((TechnicalStageDefinition)definition);

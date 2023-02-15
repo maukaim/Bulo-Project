@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.data.lifecycle.functional.impl;
 
-import com.maukaim.bulo.commons.io.instructions.models.functional.InputProviderDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.IoDependencyDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.InputProviderDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.IoDependencyDto;
 import com.maukaim.bulo.definitions.data.definition.functional.InputProvider;
 import com.maukaim.bulo.definitions.data.definition.functional.IoDependency;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.InputProviderDtoAdapter;

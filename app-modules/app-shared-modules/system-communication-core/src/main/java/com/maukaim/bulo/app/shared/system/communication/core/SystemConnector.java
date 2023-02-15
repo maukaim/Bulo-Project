@@ -1,7 +1,6 @@
 package com.maukaim.bulo.app.shared.system.communication.core;
 
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEventType;
-import com.maukaim.bulo.commons.io.ExternalEvent;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-io-module</artifactId>
+            <artifactId>definitions-io</artifactId>
             <version>${revision}</version>
         </dependency>
 

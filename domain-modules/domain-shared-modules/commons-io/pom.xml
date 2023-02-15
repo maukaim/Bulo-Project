@@ -23,6 +23,22 @@
             <artifactId>data-types-io</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>io-shared</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-shared</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>stages-io-shared</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 
     <build>

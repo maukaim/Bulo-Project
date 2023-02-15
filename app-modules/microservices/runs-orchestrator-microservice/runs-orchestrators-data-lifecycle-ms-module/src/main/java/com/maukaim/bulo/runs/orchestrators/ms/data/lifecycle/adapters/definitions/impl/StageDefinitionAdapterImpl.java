@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl;
 
-import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.OutputProviderDto;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FsStage;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
 import com.maukaim.bulo.runs.orchestrators.data.definition.OutputProvider;

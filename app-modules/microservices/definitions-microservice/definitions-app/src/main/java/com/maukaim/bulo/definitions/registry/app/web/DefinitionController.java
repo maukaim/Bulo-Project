@@ -1,8 +1,8 @@
 package com.maukaim.bulo.definitions.registry.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.DefinitionClientEndpoint;
-import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.io.CreateStageDefinitionConsumer;

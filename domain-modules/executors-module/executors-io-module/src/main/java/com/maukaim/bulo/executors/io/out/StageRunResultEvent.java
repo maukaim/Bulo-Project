@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.io.out;
 
-import com.maukaim.bulo.commons.io.ExternalEvent;
+import com.maukaim.bulo.io.shared.ExternalEvent;
 import com.maukaim.bulo.executors.io.out.model.StageRunResultDto;
 
 import java.time.Instant;

@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.io.in;
 
-import com.maukaim.bulo.commons.io.ExternalEvent;
-import com.maukaim.bulo.commons.io.StageUpdateEventType;
+import com.maukaim.bulo.io.shared.ExternalEvent;
+import com.maukaim.bulo.io.stages.shared.StageUpdateEventType;
 import com.maukaim.bulo.executors.io.in.model.StageDto;
 import com.maukaim.bulo.executors.io.in.model.TechnicalStageDto;
 

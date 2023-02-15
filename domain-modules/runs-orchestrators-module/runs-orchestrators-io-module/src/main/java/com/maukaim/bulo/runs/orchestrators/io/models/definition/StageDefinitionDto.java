@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.io.models.definition;
 
-import com.maukaim.bulo.commons.io.instructions.models.StageDefinitionTypeDto;
-import com.maukaim.bulo.commons.io.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionTypeDto;
+import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.OutputProviderDto;
 
 import java.util.Set;
 

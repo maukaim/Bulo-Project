@@ -14,7 +14,6 @@
 
     <modules>
         <module>stages-core</module>
-        <module>stages-io-module</module>
         <module>stages-serialization-module</module>
         <module>stages-data-module</module>
         <module>stages-data-lifecycle-module</module>

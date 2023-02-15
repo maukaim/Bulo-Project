@@ -1,6 +1,6 @@
 package com.maukaim.bulo.definitions.registry.app.io;
 
-import com.maukaim.bulo.commons.io.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
