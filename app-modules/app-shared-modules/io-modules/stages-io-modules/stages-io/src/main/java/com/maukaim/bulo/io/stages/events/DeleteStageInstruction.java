@@ -1,4 +1,4 @@
-package com.maukaim.bulo.stages.io.events;
+package com.maukaim.bulo.io.stages.events;
 
 import com.maukaim.bulo.io.shared.ExternalEvent;
 

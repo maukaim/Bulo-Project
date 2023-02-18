@@ -2,10 +2,10 @@ package com.maukaim.bulo.stages.app.web;
 
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageUpdateServiceEndpoint;
-import com.maukaim.bulo.stages.io.StageUpdateEventConsumer;
-import com.maukaim.bulo.stages.io.TechnicalStageDefinitionEventConsumer;
-import com.maukaim.bulo.stages.io.events.StageUpdateEvent;
-import com.maukaim.bulo.stages.io.events.TechnicalStageDefinitionEvent;
+import com.maukaim.bulo.io.stages.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.stages.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.io.stages.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.events.TechnicalStageDefinitionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

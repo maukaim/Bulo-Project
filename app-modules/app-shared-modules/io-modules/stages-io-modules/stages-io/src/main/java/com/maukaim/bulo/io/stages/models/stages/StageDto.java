@@ -1,4 +1,4 @@
-package com.maukaim.bulo.stages.io.models.stages;
+package com.maukaim.bulo.io.stages.models.stages;
 
 
 import com.maukaim.bulo.commons.models.StageType;

@@ -1,4 +1,4 @@
-package com.maukaim.bulo.stages.io.models.stages;
+package com.maukaim.bulo.io.stages.models.stages;
 
 public class ParameterDto {
     private String value;

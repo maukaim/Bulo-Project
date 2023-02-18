@@ -3,11 +3,11 @@ package com.maukaim.bulo.standalone.app.io;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.validators.StageCreateReport;
 import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
-import com.maukaim.bulo.stages.io.CreateStageEventConsumer;
-import com.maukaim.bulo.stages.io.events.CreateStageInstruction;
-import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
-import com.maukaim.bulo.stages.io.models.stages.StageDto;
-import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
+import com.maukaim.bulo.io.stages.CreateStageEventConsumer;
+import com.maukaim.bulo.io.stages.events.CreateStageInstruction;
+import com.maukaim.bulo.io.stages.models.stages.FunctionalStageDto;
+import com.maukaim.bulo.io.stages.models.stages.StageDto;
+import com.maukaim.bulo.io.stages.models.stages.TechnicalStageDto;
 import com.maukaim.bulo.stages.models.stage.Stage;
 
 public class CreateStageInstructionConsumerImpl implements CreateStageEventConsumer {

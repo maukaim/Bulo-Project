@@ -3,9 +3,9 @@ package com.maukaim.bulo.app.commons.endpoints.controller;
 import com.maukaim.bulo.app.commons.endpoints.ForClientEventType;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEndpointExpectedIn;
-import com.maukaim.bulo.stages.io.events.CreateStageInstruction;
-import com.maukaim.bulo.stages.io.events.DeleteStageInstruction;
-import com.maukaim.bulo.stages.io.models.stages.StageDto;
+import com.maukaim.bulo.io.stages.events.CreateStageInstruction;
+import com.maukaim.bulo.io.stages.events.DeleteStageInstruction;
+import com.maukaim.bulo.io.stages.models.stages.StageDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

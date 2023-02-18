@@ -1,4 +1,4 @@
-package com.maukaim.bulo.stages.io.models.definitions;
+package com.maukaim.bulo.io.stages.models.definitions;
 
 import java.util.List;
 

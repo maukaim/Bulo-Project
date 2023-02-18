@@ -6,8 +6,8 @@ import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.Fun
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.io.flows.events.CreateFlowInstruction;
 import com.maukaim.bulo.io.flows.flow.FlowDto;
-import com.maukaim.bulo.stages.io.events.CreateStageInstruction;
-import com.maukaim.bulo.stages.io.models.stages.StageDto;
+import com.maukaim.bulo.io.stages.events.CreateStageInstruction;
+import com.maukaim.bulo.io.stages.models.stages.StageDto;
 
 import java.time.Instant;
 import java.util.Arrays;

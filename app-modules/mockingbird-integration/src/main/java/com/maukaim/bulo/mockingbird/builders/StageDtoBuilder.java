@@ -1,9 +1,9 @@
 package com.maukaim.bulo.mockingbird.builders;
 import com.maukaim.bulo.commons.models.StageType;
-import com.maukaim.bulo.stages.io.models.stages.FunctionalStageDto;
-import com.maukaim.bulo.stages.io.models.stages.ParameterDto;
-import com.maukaim.bulo.stages.io.models.stages.StageDto;
-import com.maukaim.bulo.stages.io.models.stages.TechnicalStageDto;
+import com.maukaim.bulo.io.stages.models.stages.FunctionalStageDto;
+import com.maukaim.bulo.io.stages.models.stages.ParameterDto;
+import com.maukaim.bulo.io.stages.models.stages.StageDto;
+import com.maukaim.bulo.io.stages.models.stages.TechnicalStageDto;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl;
 
-import com.maukaim.bulo.stages.io.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.io.stages.models.definitions.StageDefinitionDto;
 import com.maukaim.bulo.stages.models.definition.StageDefinition;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
