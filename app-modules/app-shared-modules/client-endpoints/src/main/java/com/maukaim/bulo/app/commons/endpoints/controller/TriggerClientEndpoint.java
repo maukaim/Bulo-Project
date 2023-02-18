@@ -4,7 +4,7 @@ import com.maukaim.bulo.app.commons.endpoints.ForClientEventType;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEndpointExpectedIn;
 import com.maukaim.bulo.commons.models.TriggerId;
-import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerAddInstruction;
+import com.maukaim.bulo.io.scheduler.client.CreateScheduleTriggerInstruction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +22,7 @@ public interface TriggerClientEndpoint {
 
     @ForClientEventType(TRIGGER_ADD_SCHEDULED)
     @PostMapping(value = "/add")
-    ResponseEntity<?> addSchedule(@RequestBody ScheduleTriggerAddInstruction scheduleTriggerAddInstruction);
+    ResponseEntity<?> addSchedule(@RequestBody CreateScheduleTriggerInstruction createScheduleTriggerInstruction);
 
     @ForClientEventType(TRIGGER_MANUAL_ONETIME)
     @PostMapping(value = "/oneTimeTrigger")

@@ -2,11 +2,11 @@ package com.maukaim.bulo.runs.orchestrators.serialization.mixins.events;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.maukaim.bulo.io.runs.orchestrators.events.AcknowledgeRequestStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.StartRunStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.AcknowledgeRequestStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunCancelledStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunFailedStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.StartRunStageRunEvent;
 
 @JsonTypeInfo(
         property = "eventType",

@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runs-orchestrators-io-module</artifactId>
+            <artifactId>runs-orchestrators-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

@@ -9,16 +9,16 @@ import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.*;
-import com.maukaim.bulo.io.runs.orchestrators.models.FunctionalStageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.StageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.TechnicalStageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.StageRunStatusDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.ExecutionGraphDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.OrchestrableContextStatusDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.RunContextDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.FlowRunContextDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.FunctionalStageRunContextDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.StageRunDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.FunctionalStageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.StageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.TechnicalStageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.StageRunStatusDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.ExecutionGraphDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.OrchestrableContextStatusDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.RunContextDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.FlowRunContextDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.FunctionalStageRunContextDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
 
 import java.util.Map;
 import java.util.Set;

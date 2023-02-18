@@ -3,8 +3,8 @@ package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 import com.maukaim.bulo.runs.orchestrators.core.FunctionalStageDefinitionService;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.StageDefinitionAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.DefinitionUpdateEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.events.DefinitionUpdateEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.DefinitionUpdateEventConsumer;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
 
 public class DefinitionUpdateEventConsumerImpl implements DefinitionUpdateEventConsumer {
     private final StageDefinitionAdapter stageDefinitionAdapter;

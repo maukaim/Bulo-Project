@@ -14,12 +14,12 @@
     <modules>
         <module>data-types-io</module>
         <module>io-shared</module>
-        <module>definitions-io-modules</module>
-        <module>stages-io-modules</module>
-        <module>executors-io-modules</module>
-        <module>runs-orchestrators-io-modules</module>
-        <module>flows-io-modules</module>
-        <module>triggers-io-modules</module>
+        <module>definitions-io</module>
+        <module>stages-io</module>
+        <module>executors-io</module>
+        <module>runs-orchestrators-io</module>
+        <module>flows-io</module>
+        <module>triggers-io</module>
     </modules>
 
 </project>

@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
-import com.maukaim.bulo.io.runs.orchestrators.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.events.StageUpdateEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.StageUpdateEvent;
 
 public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     private final FunctionalStageStore functionalStageStore;

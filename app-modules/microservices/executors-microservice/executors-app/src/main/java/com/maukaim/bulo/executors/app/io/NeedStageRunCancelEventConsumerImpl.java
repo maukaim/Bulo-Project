@@ -1,8 +1,8 @@
 package com.maukaim.bulo.executors.app.io;
 
 import com.maukaim.bulo.executors.core.StageRunEventProcessor;
-import com.maukaim.bulo.io.executors.NeedStageRunCancelEventConsumer;
-import com.maukaim.bulo.io.executors.in.CancelRunInstruction;
+import com.maukaim.bulo.io.executors.system.NeedStageRunCancelEventConsumer;
+import com.maukaim.bulo.io.executors.system.in.CancelRunInstruction;
 
 public class NeedStageRunCancelEventConsumerImpl implements NeedStageRunCancelEventConsumer {
     private final StageRunEventProcessor stageRunEventProcessor;

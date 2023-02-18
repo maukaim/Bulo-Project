@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.io.definitions.client.models.StageDefinitionTypeDto;
 import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.definition.FsStageDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.FsStageDto;
 
 import java.util.Set;
 

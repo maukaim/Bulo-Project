@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-io-basics</artifactId>
+            <artifactId>triggers-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

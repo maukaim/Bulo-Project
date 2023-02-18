@@ -1,8 +1,8 @@
 package com.maukaim.bulo.trigger.scheduler.app.io;
 
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
-import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerAddInstruction;
-import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerConsumer;
+import com.maukaim.bulo.io.scheduler.client.CreateScheduleTriggerInstruction;
+import com.maukaim.bulo.io.scheduler.client.ScheduleTriggerConsumer;
 
 public class ScheduleTriggerConsumerImpl implements ScheduleTriggerConsumer {
     private final ScheduleTriggerService triggerService;
@@ -12,7 +12,7 @@ public class ScheduleTriggerConsumerImpl implements ScheduleTriggerConsumer {
     }
 
     @Override
-    public void consume(ScheduleTriggerAddInstruction instruction) {
+    public void consume(CreateScheduleTriggerInstruction instruction) {
         this.triggerService.setTrigger(instruction.getTriggerId(), instruction.getCronExpression());
     }
 }

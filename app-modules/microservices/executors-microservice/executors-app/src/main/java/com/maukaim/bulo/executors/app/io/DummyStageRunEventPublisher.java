@@ -1,8 +1,8 @@
 package com.maukaim.bulo.executors.app.io;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.io.executors.StageRunEventPublisher;
-import com.maukaim.bulo.io.executors.out.StageRunEvent;
+import com.maukaim.bulo.io.executors.system.StageRunEventPublisher;
+import com.maukaim.bulo.io.executors.system.out.StageRunEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 
 public class DummyStageRunEventPublisher implements StageRunEventPublisher {

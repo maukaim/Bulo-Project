@@ -4,8 +4,8 @@ import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunAncestorAdapte
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunDependencyAdapter;
 import com.maukaim.bulo.executors.data.runs.StageRunAncestor;
 import com.maukaim.bulo.executors.data.runs.StageRunDependency;
-import com.maukaim.bulo.io.executors.in.model.StageRunAncestorDto;
-import com.maukaim.bulo.io.executors.in.model.StageRunDependencyDto;
+import com.maukaim.bulo.io.executors.system.in.model.StageRunAncestorDto;
+import com.maukaim.bulo.io.executors.system.in.model.StageRunDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

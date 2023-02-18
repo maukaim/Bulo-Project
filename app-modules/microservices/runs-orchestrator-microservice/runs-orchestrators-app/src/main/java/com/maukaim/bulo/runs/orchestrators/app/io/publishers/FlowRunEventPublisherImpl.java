@@ -2,8 +2,8 @@ package com.maukaim.bulo.runs.orchestrators.app.io.publishers;
 
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.io.runs.orchestrators.FlowRunEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.FlowRunEventPublisher;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 
 public class FlowRunEventPublisherImpl implements FlowRunEventPublisher {
     private final SystemConnector<ServiceEventType> systemConnector;

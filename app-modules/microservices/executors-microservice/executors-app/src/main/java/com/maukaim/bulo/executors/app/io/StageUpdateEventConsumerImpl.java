@@ -4,10 +4,10 @@ import com.maukaim.bulo.commons.models.StageType;
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.executors.data.stages.Stage;
-import com.maukaim.bulo.io.executors.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.executors.in.StageUpdateEvent;
-import com.maukaim.bulo.io.executors.in.model.StageDto;
-import com.maukaim.bulo.io.executors.in.model.TechnicalStageDto;
+import com.maukaim.bulo.io.executors.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.executors.system.in.StageUpdateEvent;
+import com.maukaim.bulo.io.executors.system.in.model.StageDto;
+import com.maukaim.bulo.io.executors.system.in.model.TechnicalStageDto;
 
 public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     private final StageStore stageStore;

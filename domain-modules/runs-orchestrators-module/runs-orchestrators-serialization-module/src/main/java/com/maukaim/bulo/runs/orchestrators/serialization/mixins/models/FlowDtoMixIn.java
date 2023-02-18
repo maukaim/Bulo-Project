@@ -2,8 +2,8 @@ package com.maukaim.bulo.runs.orchestrators.serialization.mixins.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.runs.orchestrators.models.flow.FlowStageDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.flow.OwnerKeyDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.FlowStageDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.OwnerKeyDto;
 
 import java.util.Set;
 

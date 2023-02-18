@@ -1,19 +1,19 @@
 package com.maukaim.bulo.runs.orchestrators.app.connectors;
 
-import com.maukaim.bulo.io.runs.orchestrators.events.AcknowledgeRequestStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.NeedStageRunCancellationEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.NeedStageRunExecutionEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.StartRunStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.AcknowledgeRequestStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunCancellationEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutionEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunCancelledStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunFailedStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.StartRunStageRunEvent;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDependencyDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
-import com.maukaim.bulo.io.runs.orchestrators.NeedStageRunCancellationEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.StageRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.StageRunDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.NeedStageRunCancellationEventPublisher;
+import com.maukaim.bulo.io.runs.orchestrators.system.NeedStageRunExecutionEventPublisher;
+import com.maukaim.bulo.io.runs.orchestrators.system.StageRunEventConsumer;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
 
 import java.time.Instant;
 import java.util.Set;

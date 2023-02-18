@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.io.runs.orchestrators.models.StageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.ExecutionGraphDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.OrchestrableContextStatusDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.RunContextDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.StageRunDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.StageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.ExecutionGraphDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.OrchestrableContextStatusDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.RunContextDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
 
 import java.time.Instant;
 import java.util.Map;

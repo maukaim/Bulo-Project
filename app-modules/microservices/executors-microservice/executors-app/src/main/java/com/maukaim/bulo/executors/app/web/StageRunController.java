@@ -1,7 +1,7 @@
 package com.maukaim.bulo.executors.app.web;
 
-import com.maukaim.bulo.io.executors.NeedStageRunCancelEventConsumer;
-import com.maukaim.bulo.io.executors.in.CancelRunInstruction;
+import com.maukaim.bulo.io.executors.system.NeedStageRunCancelEventConsumer;
+import com.maukaim.bulo.io.executors.system.in.CancelRunInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

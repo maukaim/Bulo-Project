@@ -1,12 +1,12 @@
 package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 
-import com.maukaim.bulo.io.runs.orchestrators.StageRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.events.AcknowledgeRequestStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.BasicStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.StartRunStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.StageRunEventConsumer;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.AcknowledgeRequestStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.BasicStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunCancelledStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunFailedStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.StartRunStageRunEvent;
 import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeTechnicalStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledTechnicalStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedTechnicalStageRunEventProcessor;

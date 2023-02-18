@@ -3,8 +3,8 @@ package com.maukaim.bulo.trigger.scheduler.app.web;
 import com.maukaim.bulo.app.commons.endpoints.controller.TriggerClientEndpoint;
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
-import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerAddInstruction;
-import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerConsumer;
+import com.maukaim.bulo.io.scheduler.client.CreateScheduleTriggerInstruction;
+import com.maukaim.bulo.io.scheduler.client.ScheduleTriggerConsumer;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +31,8 @@ public class TriggerController implements TriggerClientEndpoint {
     }
 
     @Override
-    public ResponseEntity<?> addSchedule(@RequestBody ScheduleTriggerAddInstruction scheduleTriggerAddInstruction) {
-        this.scheduleTriggerConsumer.consume(scheduleTriggerAddInstruction);
+    public ResponseEntity<?> addSchedule(@RequestBody CreateScheduleTriggerInstruction createScheduleTriggerInstruction) {
+        this.scheduleTriggerConsumer.consume(createScheduleTriggerInstruction);
         return ResponseEntity.ok().build();
     }
 

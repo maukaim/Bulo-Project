@@ -4,8 +4,8 @@ import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDependencyDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRunAncestor;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.StageRunAncestorDto;
-import com.maukaim.bulo.io.runs.orchestrators.models.stagerun.StageRunDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunAncestorDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

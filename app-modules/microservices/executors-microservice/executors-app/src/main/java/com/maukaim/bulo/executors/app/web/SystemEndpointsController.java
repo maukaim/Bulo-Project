@@ -1,13 +1,13 @@
 package com.maukaim.bulo.executors.app.web;
 
-import com.maukaim.bulo.io.executors.NeedStageRunCancelEventConsumer;
-import com.maukaim.bulo.io.executors.NeedStageRunEventConsumer;
-import com.maukaim.bulo.io.executors.StageRunResultEventConsumer;
-import com.maukaim.bulo.io.executors.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.executors.in.CancelRunInstruction;
-import com.maukaim.bulo.io.executors.in.RunInstruction;
-import com.maukaim.bulo.io.executors.in.StageUpdateEvent;
-import com.maukaim.bulo.io.executors.out.StageRunResultEvent;
+import com.maukaim.bulo.io.executors.system.NeedStageRunCancelEventConsumer;
+import com.maukaim.bulo.io.executors.system.NeedStageRunEventConsumer;
+import com.maukaim.bulo.io.executors.system.StageRunResultEventConsumer;
+import com.maukaim.bulo.io.executors.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.executors.system.in.CancelRunInstruction;
+import com.maukaim.bulo.io.executors.system.in.RunInstruction;
+import com.maukaim.bulo.io.executors.system.in.StageUpdateEvent;
+import com.maukaim.bulo.io.executors.system.out.StageRunResultEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunCancellationServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunRequiredServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunResultServiceEndpoint;

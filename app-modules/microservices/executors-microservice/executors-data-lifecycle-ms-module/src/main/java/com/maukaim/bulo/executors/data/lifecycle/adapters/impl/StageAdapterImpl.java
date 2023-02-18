@@ -4,8 +4,8 @@ import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.executors.data.stages.Parameter;
 import com.maukaim.bulo.executors.data.stages.Stage;
-import com.maukaim.bulo.io.executors.in.model.ParameterDto;
-import com.maukaim.bulo.io.executors.in.model.TechnicalStageDto;
+import com.maukaim.bulo.io.executors.system.in.model.ParameterDto;
+import com.maukaim.bulo.io.executors.system.in.model.TechnicalStageDto;
 
 import java.util.List;
 
