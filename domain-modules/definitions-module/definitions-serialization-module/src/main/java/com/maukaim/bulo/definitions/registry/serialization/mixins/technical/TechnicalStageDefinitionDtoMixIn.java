@@ -1,4 +1,4 @@
-package com.maukaim.bulo.definitions.registry.serialization.mixins.definition.technical;
+package com.maukaim.bulo.definitions.registry.serialization.mixins.technical;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

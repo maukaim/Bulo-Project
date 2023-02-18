@@ -1,14 +1,14 @@
-package com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.impl;
+package com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.impl;
 
 
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.ParameterAdapter;
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.StageAdapter;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.ParameterAdapter;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.definitions.data.stage.FunctionalStage;
 import com.maukaim.bulo.definitions.data.stage.Stage;
 import com.maukaim.bulo.definitions.data.stage.TechnicalStage;
-import com.maukaim.bulo.io.definitions.system.stage.FunctionalStageDto;
-import com.maukaim.bulo.io.definitions.system.stage.StageDto;
-import com.maukaim.bulo.io.definitions.system.stage.TechnicalStageDto;
+import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
+import com.maukaim.bulo.io.stages.client.model.StageDto;
+import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
 
 import java.util.stream.Collectors;
 

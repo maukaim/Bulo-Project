@@ -67,6 +67,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>stages-serialization-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>definitions-data-lifecycle-ms-module</artifactId>
             <version>${revision}</version>
         </dependency>

@@ -17,5 +17,10 @@
             <artifactId>definitions-data-lifecycle-module</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>stages-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

@@ -12,10 +12,10 @@ import com.maukaim.bulo.definitions.data.lifecycle.*;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.*;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.*;
 import com.maukaim.bulo.definitions.data.lifecycle.impl.*;
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.ParameterAdapter;
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.StageAdapter;
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.impl.ParameterAdapterImpl;
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.impl.StageAdapterImpl;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.ParameterAdapter;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.StageAdapter;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.impl.ParameterAdapterImpl;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.impl.StageAdapterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

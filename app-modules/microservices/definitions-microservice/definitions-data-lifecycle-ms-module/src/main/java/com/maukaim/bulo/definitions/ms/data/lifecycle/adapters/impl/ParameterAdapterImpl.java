@@ -1,9 +1,9 @@
-package com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.impl;
+package com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.impl;
 
 
-import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.ParameterAdapter;
+import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.ParameterAdapter;
 import com.maukaim.bulo.definitions.data.stage.Parameter;
-import com.maukaim.bulo.io.definitions.system.stage.ParameterDto;
+import com.maukaim.bulo.io.stages.client.model.ParameterDto;
 
 public class ParameterAdapterImpl implements ParameterAdapter {
     @Override
