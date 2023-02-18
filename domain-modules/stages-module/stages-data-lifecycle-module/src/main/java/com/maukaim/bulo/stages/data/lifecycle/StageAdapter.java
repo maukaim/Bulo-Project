@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.data.lifecycle;
 
-import com.maukaim.bulo.io.stages.models.stages.FunctionalStageDto;
-import com.maukaim.bulo.io.stages.models.stages.TechnicalStageDto;
+import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
+import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
 import com.maukaim.bulo.stages.models.stage.FunctionalStage;
 import com.maukaim.bulo.stages.models.stage.TechnicalStage;
 

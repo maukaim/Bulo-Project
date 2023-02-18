@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-io</artifactId>
+            <artifactId>stages-io-system</artifactId>
             <version>${revision}</version>
             <scope>provided</scope>
         </dependency>

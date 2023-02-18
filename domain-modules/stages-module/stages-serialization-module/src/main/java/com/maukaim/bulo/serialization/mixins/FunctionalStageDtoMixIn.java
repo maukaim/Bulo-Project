@@ -2,7 +2,7 @@ package com.maukaim.bulo.serialization.mixins;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.stages.models.stages.ParameterDto;
+import com.maukaim.bulo.io.stages.client.model.ParameterDto;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.maukaim.bulo.standalone.app.io;
 
 import com.maukaim.bulo.stages.core.StageService;
-import com.maukaim.bulo.io.stages.DeleteStageEventConsumer;
-import com.maukaim.bulo.io.stages.events.DeleteStageInstruction;
+import com.maukaim.bulo.io.stages.client.DeleteStageEventConsumer;
+import com.maukaim.bulo.io.stages.client.DeleteStageInstruction;
 import com.maukaim.bulo.stages.models.stage.Stage;
 
 public class DeleteStageInstructionConsumerImpl implements DeleteStageEventConsumer {

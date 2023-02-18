@@ -1,9 +1,9 @@
 package com.maukaim.bulo.stages.ms.data.lifecycle;
 
-import com.maukaim.bulo.io.stages.events.StageUpdateEvent;
-import com.maukaim.bulo.io.stages.StageUpdateEventPublisher;
-import com.maukaim.bulo.io.stages.models.stages.StageDto;
-import com.maukaim.bulo.io.stages.models.stages.StageUpdateEventType;
+import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEventPublisher;
+import com.maukaim.bulo.io.stages.client.model.StageDto;
+import com.maukaim.bulo.io.stages.system.models.stages.StageUpdateEventType;
 import com.maukaim.bulo.stages.models.StageStore;
 import com.maukaim.bulo.stages.models.stage.Stage;
 import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;

@@ -2,16 +2,16 @@ package com.maukaim.bulo.serialization;
 
 
 
-import com.maukaim.bulo.io.stages.events.CreateStageInstruction;
-import com.maukaim.bulo.io.stages.events.DeleteStageInstruction;
-import com.maukaim.bulo.io.stages.events.StageUpdateEvent;
-import com.maukaim.bulo.io.stages.events.TechnicalStageDefinitionEvent;
-import com.maukaim.bulo.io.stages.models.definitions.ParameterDefinitionDto;
-import com.maukaim.bulo.io.stages.models.definitions.StageDefinitionDto;
-import com.maukaim.bulo.io.stages.models.stages.FunctionalStageDto;
-import com.maukaim.bulo.io.stages.models.stages.ParameterDto;
-import com.maukaim.bulo.io.stages.models.stages.StageDto;
-import com.maukaim.bulo.io.stages.models.stages.TechnicalStageDto;
+import com.maukaim.bulo.io.stages.client.CreateStageInstruction;
+import com.maukaim.bulo.io.stages.client.DeleteStageInstruction;
+import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.system.events.TechnicalStageDefinitionEvent;
+import com.maukaim.bulo.io.stages.system.models.definitions.ParameterDefinitionDto;
+import com.maukaim.bulo.io.stages.system.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
+import com.maukaim.bulo.io.stages.client.model.ParameterDto;
+import com.maukaim.bulo.io.stages.client.model.StageDto;
+import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
 import com.maukaim.bulo.serialization.mixins.*;
 
 import java.util.Map;

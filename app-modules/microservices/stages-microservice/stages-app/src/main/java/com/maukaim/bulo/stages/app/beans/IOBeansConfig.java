@@ -1,11 +1,11 @@
 package com.maukaim.bulo.stages.app.beans;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.io.stages.CreateStageEventConsumer;
-import com.maukaim.bulo.io.stages.DeleteStageEventConsumer;
-import com.maukaim.bulo.io.stages.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.stages.StageUpdateEventPublisher;
-import com.maukaim.bulo.io.stages.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.io.stages.client.CreateStageEventConsumer;
+import com.maukaim.bulo.io.stages.client.DeleteStageEventConsumer;
+import com.maukaim.bulo.io.stages.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.stages.system.StageUpdateEventPublisher;
+import com.maukaim.bulo.io.stages.system.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;

@@ -2,8 +2,8 @@ package com.maukaim.bulo.serialization.mixins;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.stages.models.definitions.DefinitionEventType;
-import com.maukaim.bulo.io.stages.models.definitions.StageDefinitionDto;
+import com.maukaim.bulo.io.stages.system.models.definitions.DefinitionEventType;
+import com.maukaim.bulo.io.stages.system.models.definitions.StageDefinitionDto;
 
 import java.time.Instant;
 
