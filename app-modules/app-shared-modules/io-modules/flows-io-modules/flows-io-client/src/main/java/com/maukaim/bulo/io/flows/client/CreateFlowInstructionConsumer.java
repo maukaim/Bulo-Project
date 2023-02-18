@@ -1,6 +1,6 @@
-package com.maukaim.bulo.io.flows.system;
+package com.maukaim.bulo.io.flows.client;
 
-import com.maukaim.bulo.io.flows.system.events.CreateFlowInstruction;
+import com.maukaim.bulo.io.flows.client.CreateFlowInstruction;
 
 public interface CreateFlowInstructionConsumer {
     String onCreateOrUpdate(CreateFlowInstruction instruction);

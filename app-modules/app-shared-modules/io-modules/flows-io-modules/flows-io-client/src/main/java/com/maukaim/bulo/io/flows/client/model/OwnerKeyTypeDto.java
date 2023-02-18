@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.flows.system.flow;
+package com.maukaim.bulo.io.flows.client.model;
 
 public enum OwnerKeyTypeDto {
     USER,

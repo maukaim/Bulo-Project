@@ -4,8 +4,8 @@ import com.maukaim.bulo.flows.data.lifecycle.FlowStageAdapter;
 import com.maukaim.bulo.flows.data.lifecycle.IoDependencyAdapter;
 import com.maukaim.bulo.flows.data.models.flow.FlowStage;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
-import com.maukaim.bulo.io.flows.system.flow.FlowStageDto;
-import com.maukaim.bulo.io.flows.system.flow.IoDependencyDto;
+import com.maukaim.bulo.io.flows.client.model.FlowStageDto;
+import com.maukaim.bulo.io.flows.client.model.IoDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

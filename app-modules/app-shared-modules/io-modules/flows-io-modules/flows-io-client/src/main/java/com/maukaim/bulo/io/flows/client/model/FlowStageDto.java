@@ -1,32 +1,32 @@
-package com.maukaim.bulo.io.flows.system.flow;
+package com.maukaim.bulo.io.flows.client.model;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.Objects;
 import java.util.Set;
 
-public class InputProviderDto {
-    private ContextStageId contextStageId;
-    private Set<String> outputIds;
+public class FlowStageDto {
+    private final ContextStageId contextStageId;
+    private final Set<IoDependencyDto> ioDependencies;
 
-    public InputProviderDto(ContextStageId contextStageId, Set<String> outputIds) {
+    public FlowStageDto(ContextStageId contextStageId, Set<IoDependencyDto> ioDependencies) {
         this.contextStageId = contextStageId;
-        this.outputIds = outputIds;
+        this.ioDependencies = ioDependencies;
     }
 
     public ContextStageId getFlowStageId() {
         return contextStageId;
     }
 
-    public Set<String> getOutputIds() {
-        return outputIds;
+    public Set<IoDependencyDto> getIoDependencies() {
+        return ioDependencies;
     }
 
     @Override
     public String toString() {
-        return "InputProviderDto{" +
+        return "FlowStageDto{" +
                 "flowStageId=" + contextStageId +
-                ", outputIds=" + outputIds +
+                ", ioDependencies=" + ioDependencies +
                 '}';
     }
 
@@ -34,8 +34,8 @@ public class InputProviderDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InputProviderDto that = (InputProviderDto) o;
-        return Objects.equals(contextStageId, that.contextStageId);
+        FlowStageDto that = (FlowStageDto) o;
+        return contextStageId.equals(that.contextStageId);
     }
 
     @Override

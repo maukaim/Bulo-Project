@@ -4,8 +4,8 @@ import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
 import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.io.definitions.client.models.functional.FunctionalStageDefinitionDto;
 import com.maukaim.bulo.commons.models.TriggerId;
-import com.maukaim.bulo.io.flows.system.events.CreateFlowInstruction;
-import com.maukaim.bulo.io.flows.system.flow.FlowDto;
+import com.maukaim.bulo.io.flows.client.CreateFlowInstruction;
+import com.maukaim.bulo.io.flows.client.model.FlowDto;
 import com.maukaim.bulo.io.stages.events.CreateStageInstruction;
 import com.maukaim.bulo.io.stages.models.stages.StageDto;
 

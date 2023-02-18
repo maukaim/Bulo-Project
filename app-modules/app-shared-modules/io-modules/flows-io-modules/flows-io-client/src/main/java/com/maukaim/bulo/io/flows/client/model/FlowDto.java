@@ -1,10 +1,8 @@
-package com.maukaim.bulo.io.flows.system.flow;
-
-import com.maukaim.bulo.commons.models.FlowInterface;
+package com.maukaim.bulo.io.flows.client.model;
 
 import java.util.Set;
 
-public class FlowDto implements FlowInterface{
+public class FlowDto {
     private String flowId;
     private final Set<OwnerKeyDto> ownerKeys;
     private final Set<FlowStageDto> flowStages;
@@ -20,7 +18,7 @@ public class FlowDto implements FlowInterface{
         this.allowParallelRun = allowParallelRun;
     }
 
-    public void setFlowId(String flowId){
+    public void setFlowId(String flowId) {
         this.flowId = flowId;
     }
 

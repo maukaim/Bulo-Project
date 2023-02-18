@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.flows.system.flow;
+package com.maukaim.bulo.io.flows.client.model;
 
 import java.util.Objects;
 import java.util.Set;

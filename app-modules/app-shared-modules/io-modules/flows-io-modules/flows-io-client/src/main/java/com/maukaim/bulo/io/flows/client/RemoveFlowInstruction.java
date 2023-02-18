@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.flows.system.events;
+package com.maukaim.bulo.io.flows.client;
 
 import com.maukaim.bulo.io.shared.ExternalEvent;
 

@@ -2,7 +2,7 @@ package com.maukaim.bulo.flows.serialization.mixins.flow;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.flows.system.flow.InputProviderDto;
+import com.maukaim.bulo.io.flows.client.model.InputProviderDto;
 
 import java.util.Set;
 

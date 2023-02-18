@@ -14,5 +14,6 @@
 
     <modules>
         <module>flows-io-system</module>
+        <module>flows-io-client</module>
     </modules>
 </project>

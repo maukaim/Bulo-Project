@@ -1,8 +1,8 @@
 package com.maukaim.bulo.flows.app.io;
 
 import com.maukaim.bulo.flows.core.FlowService;
-import com.maukaim.bulo.io.flows.system.RemoveFlowInstructionConsumer;
-import com.maukaim.bulo.io.flows.system.events.RemoveFlowInstruction;
+import com.maukaim.bulo.io.flows.client.RemoveFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.client.RemoveFlowInstruction;
 
 public class RemoveFlowInstructionConsumerImpl implements RemoveFlowInstructionConsumer {
     private final FlowService flowService;

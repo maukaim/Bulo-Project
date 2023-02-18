@@ -5,7 +5,7 @@ import com.maukaim.bulo.flows.data.lifecycle.FlowDtoAdapter;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 import com.maukaim.bulo.io.flows.system.FlowEventPublisher;
 import com.maukaim.bulo.io.flows.system.events.FlowEvent;
-import com.maukaim.bulo.io.flows.system.flow.FlowDto;
+import com.maukaim.bulo.io.flows.client.model.FlowDto;
 import com.maukaim.bulo.io.flows.system.flow.FlowEventType;
 
 import java.time.Instant;
