@@ -7,9 +7,9 @@ import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageOutputDefinition;
-import com.maukaim.bulo.io.flows.system.definition.StageInputDefinitionDto;
-import com.maukaim.bulo.io.flows.system.definition.StageOutputDefinitionDto;
-import com.maukaim.bulo.io.flows.system.definition.stageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageOutputDefinitionDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,7 +26,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     }
 
     @Override
-    public StageDefinition adapte(stageDefinitionDto dto) {
+    public StageDefinition adapte(StageDefinitionDto dto) {
         return new StageDefinition(
                 dto.getDefinitionId(),
                 resolveInputs(dto.getInputsByName()),

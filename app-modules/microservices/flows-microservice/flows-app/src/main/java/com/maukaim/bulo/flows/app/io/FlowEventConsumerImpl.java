@@ -3,8 +3,8 @@ package com.maukaim.bulo.flows.app.io;
 import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
-import com.maukaim.bulo.io.flows.system.FlowEventConsumer;
-import com.maukaim.bulo.io.flows.system.events.FlowEvent;
+import com.maukaim.bulo.flows.ms.data.lifecycle.FlowEventConsumer;
+import com.maukaim.bulo.io.flows.system.FlowEvent;
 import com.maukaim.bulo.io.flows.client.model.FlowDto;
 
 public class FlowEventConsumerImpl implements FlowEventConsumer {

@@ -1,11 +1,11 @@
 package com.maukaim.bulo.flows.app.web;
 
-import com.maukaim.bulo.io.flows.system.FlowEventConsumer;
-import com.maukaim.bulo.io.flows.system.StageDefinitionConsumer;
-import com.maukaim.bulo.io.flows.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.flows.system.events.FlowEvent;
-import com.maukaim.bulo.io.flows.system.events.StageDefinitionEvent;
-import com.maukaim.bulo.io.flows.system.events.StageUpdateEvent;
+import com.maukaim.bulo.flows.ms.data.lifecycle.FlowEventConsumer;
+import com.maukaim.bulo.flows.ms.data.lifecycle.StageDefinitionConsumer;
+import com.maukaim.bulo.flows.ms.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
+import com.maukaim.bulo.io.flows.system.FlowEvent;
+import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IFlowUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageUpdateServiceEndpoint;

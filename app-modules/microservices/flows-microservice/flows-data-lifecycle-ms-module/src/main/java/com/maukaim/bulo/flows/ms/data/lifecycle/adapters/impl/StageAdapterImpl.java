@@ -4,10 +4,10 @@ import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.ParameterAdapter;
 import com.maukaim.bulo.flows.data.models.stage.FunctionalStage;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
 import com.maukaim.bulo.flows.data.models.stage.TechnicalStage;
-import com.maukaim.bulo.io.flows.system.stage.FunctionalStageDto;
-import com.maukaim.bulo.io.flows.system.stage.StageDto;
-import com.maukaim.bulo.io.flows.system.stage.TechnicalStageDto;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
+import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
+import com.maukaim.bulo.io.stages.client.model.StageDto;
+import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
 
 import java.util.stream.Collectors;
 

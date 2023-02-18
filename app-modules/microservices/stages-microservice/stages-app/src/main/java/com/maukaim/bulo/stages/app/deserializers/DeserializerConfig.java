@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.app.deserializers;
 
 import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
-import com.maukaim.bulo.serialization.StageMixinsConfig;
+import com.maukaim.bulo.serialization.stage.StageMixinsConfig;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

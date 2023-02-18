@@ -1,35 +1,27 @@
 package com.maukaim.bulo.flows.serialization;
 
 
-import com.maukaim.bulo.io.flows.system.definition.ParameterDefinitionDto;
-import com.maukaim.bulo.io.flows.system.definition.StageInputDefinitionDto;
-import com.maukaim.bulo.io.flows.system.definition.StageOutputDefinitionDto;
-import com.maukaim.bulo.io.flows.system.definition.stageDefinitionDto;
+import com.maukaim.bulo.flows.serialization.mixins.CreateFlowInstructionMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.FlowDtoMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.FlowEventMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.FlowStageDtoMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.InputProviderDtoMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.IoDependencyDtoMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.OwnerKeyDtoMixIn;
+import com.maukaim.bulo.flows.serialization.mixins.RemoveFlowInstructionMixIn;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstruction;
-import com.maukaim.bulo.io.flows.system.events.FlowEvent;
 import com.maukaim.bulo.io.flows.client.RemoveFlowInstruction;
-import com.maukaim.bulo.io.flows.system.events.StageDefinitionEvent;
-import com.maukaim.bulo.io.flows.system.events.StageUpdateEvent;
 import com.maukaim.bulo.io.flows.client.model.FlowDto;
 import com.maukaim.bulo.io.flows.client.model.FlowStageDto;
 import com.maukaim.bulo.io.flows.client.model.InputProviderDto;
 import com.maukaim.bulo.io.flows.client.model.IoDependencyDto;
 import com.maukaim.bulo.io.flows.client.model.OwnerKeyDto;
-import com.maukaim.bulo.io.flows.system.stage.FunctionalStageDto;
-import com.maukaim.bulo.io.flows.system.stage.ParameterDto;
-import com.maukaim.bulo.io.flows.system.stage.StageDto;
-import com.maukaim.bulo.io.flows.system.stage.TechnicalStageDto;
-import com.maukaim.bulo.flows.serialization.mixins.definition.*;
-import com.maukaim.bulo.flows.serialization.mixins.flow.*;
-import com.maukaim.bulo.flows.serialization.mixins.stage.*;
+import com.maukaim.bulo.io.flows.system.FlowEvent;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class FlowMixinsConfig {
-
-
-    public static Map<Class<?>, Class<?>> FLOWS_SERIALIZATION_JACKSON_MIXIN = Map.of(
+    public static Map<Class<?>, Class<?>> SERIALIZATION_JACKSON_MIXIN = Map.of(
             FlowEvent.class, FlowEventMixIn.class,
             CreateFlowInstruction.class, CreateFlowInstructionMixIn.class,
             RemoveFlowInstruction.class, RemoveFlowInstructionMixIn.class,
@@ -39,26 +31,4 @@ public class FlowMixinsConfig {
             IoDependencyDto.class, IoDependencyDtoMixIn.class,
             InputProviderDto.class, InputProviderDtoMixIn.class
     );
-
-    public static Map<Class<?>, Class<?>> DEFINITIONS_SERIALIZATION_JACKSON_MIXIN = Map.of(
-            StageDefinitionEvent.class, StageDefinitionUpdateEventMixIn.class,
-            stageDefinitionDto.class, StageDefinitionDtoMixIn.class,
-            StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
-            StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
-            ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class
-    );
-
-    public static Map<Class<?>, Class<?>> STAGES_SERIALIZATION_JACKSON_MIXIN = Map.of(
-            StageUpdateEvent.class, StageUpdateEventMixIn.class,
-            StageDto.class, StageDtoMixIn.class,
-            TechnicalStageDto.class, TechnicalStageDtoMixIn.class,
-            FunctionalStageDto.class, FunctionalStageDtoMixIn.class,
-            ParameterDto.class, ParameterDtoMixIn.class
-    );
-    public static Map<Class<?>, Class<?>> SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
-        putAll(FLOWS_SERIALIZATION_JACKSON_MIXIN);
-        putAll(DEFINITIONS_SERIALIZATION_JACKSON_MIXIN);
-        putAll(STAGES_SERIALIZATION_JACKSON_MIXIN);
-    }};
-
 }

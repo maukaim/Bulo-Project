@@ -5,7 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
 import com.maukaim.bulo.definitions.registry.serialization.DefinitionMixinsConfig;
 import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
-import com.maukaim.bulo.serialization.StageMixinsConfig;
+import com.maukaim.bulo.serialization.stage.StageMixinsConfig;
 import com.maukaim.bulo.trigger.scheduler.serialization.SchedulerMixinsConfig;
 import com.maukaim.bulo.triggers.serialization.TriggersMixinsConfig;
 

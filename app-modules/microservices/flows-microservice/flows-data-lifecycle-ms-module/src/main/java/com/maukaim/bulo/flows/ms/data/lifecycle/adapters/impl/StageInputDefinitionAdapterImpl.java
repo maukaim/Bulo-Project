@@ -4,8 +4,8 @@ import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.common.data.lifecycle.IoTypeAdapter;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
-import com.maukaim.bulo.io.flows.system.definition.StageInputDefinitionDto;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageInputDefinitionAdapter;
+import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
 
 public class StageInputDefinitionAdapterImpl implements StageInputDefinitionAdapter {
     private final IoTypeAdapter ioTypeAdapter;

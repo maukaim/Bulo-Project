@@ -23,7 +23,7 @@ import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.
 public class SanityCheckTests {
     private User user;
 
-    private final ApplicationMode applicationMode = ApplicationMode.microservices;
+    private final ApplicationMode applicationMode = ApplicationMode.standalone;
     private final ApplicationEnvironment applicationEnv = ApplicationEnvironment.dev;
 
     @BeforeEach
