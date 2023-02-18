@@ -5,7 +5,7 @@ import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 import com.maukaim.bulo.definitions.data.definition.technical.TechnicalStageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
-import com.maukaim.bulo.io.definitions.system.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.definitions.registry.core.report.StageDefinitionCreateReport;
 

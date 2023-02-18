@@ -5,7 +5,7 @@ import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.io.definitions.system.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

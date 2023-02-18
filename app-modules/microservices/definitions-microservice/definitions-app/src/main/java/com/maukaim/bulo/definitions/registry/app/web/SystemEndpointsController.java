@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.registry.app.web;
 
 import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.io.definitions.system.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.io.definitions.system.StageUpdateEventConsumer;
 import com.maukaim.bulo.io.definitions.system.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.io.definitions.system.events.ExecutorUpdateEvent;
