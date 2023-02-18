@@ -1,9 +1,9 @@
 package com.maukaim.bulo.io.executors.in;
 
 import com.maukaim.bulo.io.executors.in.model.StageDto;
+import com.maukaim.bulo.io.executors.in.model.StageUpdateEventType;
 import com.maukaim.bulo.io.executors.in.model.TechnicalStageDto;
 import com.maukaim.bulo.io.shared.ExternalEvent;
-import com.maukaim.bulo.io.stages.shared.StageUpdateEventType;
 
 import java.time.Instant;
 

@@ -1,7 +1,7 @@
 package com.maukaim.bulo.io.stages.events;
 
 import com.maukaim.bulo.io.shared.ExternalEvent;
-import com.maukaim.bulo.io.stages.shared.StageUpdateEventType;
+import com.maukaim.bulo.io.stages.models.stages.StageUpdateEventType;
 import com.maukaim.bulo.io.stages.models.stages.StageDto;
 
 import java.time.Instant;

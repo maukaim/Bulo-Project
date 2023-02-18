@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>stages-io</module>
-        <module>stages-io-shared</module>
     </modules>
 
 </project>

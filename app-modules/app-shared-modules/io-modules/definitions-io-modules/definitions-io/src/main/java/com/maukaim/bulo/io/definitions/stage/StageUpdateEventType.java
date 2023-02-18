@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.stages.shared;
+package com.maukaim.bulo.io.definitions.stage;
 
 public enum StageUpdateEventType {
     UPDATE,
