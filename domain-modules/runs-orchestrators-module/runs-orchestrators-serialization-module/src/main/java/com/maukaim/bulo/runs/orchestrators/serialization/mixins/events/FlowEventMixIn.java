@@ -2,8 +2,8 @@ package com.maukaim.bulo.runs.orchestrators.serialization.mixins.events;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.runs.orchestrators.io.models.flow.FlowDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flow.FlowEventType;
+import com.maukaim.bulo.io.runs.orchestrators.models.flow.FlowDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flow.FlowEventType;
 
 import java.time.Instant;
 

@@ -4,8 +4,8 @@ import com.maukaim.bulo.runs.orchestrators.data.flow.FlowStage;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowStageDtoAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputDependencyDtoAdapter;
-import com.maukaim.bulo.runs.orchestrators.io.models.flow.FlowStageDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flow.InputDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flow.FlowStageDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flow.InputDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

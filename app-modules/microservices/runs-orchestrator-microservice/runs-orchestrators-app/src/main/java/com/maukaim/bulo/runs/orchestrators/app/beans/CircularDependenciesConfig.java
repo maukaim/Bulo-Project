@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
 import com.maukaim.bulo.runs.orchestrators.app.connectors.StageRunConnectorImpl;
-import com.maukaim.bulo.runs.orchestrators.io.StageRunEventConsumer;
+import com.maukaim.bulo.io.runs.orchestrators.StageRunEventConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 

@@ -5,9 +5,9 @@ import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowStageDependencyAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ExecutionGraph;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.ContextualizedStageDependency;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.ExecutionGraphDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunStageDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowStageDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.ExecutionGraphDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.FlowRunStageDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.FlowStageDependencyDto;
 
 import java.util.Map;
 import java.util.Set;

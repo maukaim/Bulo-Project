@@ -7,10 +7,10 @@ import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDtoAdapter;
-import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.ExecutionGraphDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.FlowRunDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.flowrun.OrchestrableContextStatusDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.StageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.ExecutionGraphDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.FlowRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.OrchestrableContextStatusDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;

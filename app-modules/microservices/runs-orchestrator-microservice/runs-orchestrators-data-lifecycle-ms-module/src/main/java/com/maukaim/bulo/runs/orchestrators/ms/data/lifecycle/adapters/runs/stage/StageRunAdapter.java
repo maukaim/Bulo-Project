@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage;
 
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
-import com.maukaim.bulo.runs.orchestrators.io.models.StageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.StageRunDto;
 
 public interface StageRunAdapter {
     StageRun<?> adapte(StageRunDto<?> dto);

@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.imp
 
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputProviderDtoAdapter;
-import com.maukaim.bulo.runs.orchestrators.io.models.flow.InputProviderDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.flow.InputProviderDto;
 
 public class InputProviderDtoAdapterImpl implements InputProviderDtoAdapter {
     @Override

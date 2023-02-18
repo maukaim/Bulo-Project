@@ -2,8 +2,8 @@ package com.maukaim.bulo.runs.orchestrators.app.io.publishers;
 
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.runs.orchestrators.io.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.io.events.NeedStageRunExecutionEvent;
+import com.maukaim.bulo.io.runs.orchestrators.NeedStageRunExecutionEventPublisher;
+import com.maukaim.bulo.io.runs.orchestrators.events.NeedStageRunExecutionEvent;
 
 public class NeedStageRunExecutionEventPublisherImpl implements NeedStageRunExecutionEventPublisher {
     private final SystemConnector<ServiceEventType> systemConnector;

@@ -4,8 +4,8 @@ import com.maukaim.bulo.runs.orchestrators.data.definition.FsStage;
 import com.maukaim.bulo.runs.orchestrators.data.definition.IoDependency;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.FunctionalSubStageAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.IoDependencyAdapter;
-import com.maukaim.bulo.runs.orchestrators.io.models.definition.FsStageDto;
-import com.maukaim.bulo.runs.orchestrators.io.models.definition.IoDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.definition.FsStageDto;
+import com.maukaim.bulo.io.runs.orchestrators.models.definition.IoDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;
