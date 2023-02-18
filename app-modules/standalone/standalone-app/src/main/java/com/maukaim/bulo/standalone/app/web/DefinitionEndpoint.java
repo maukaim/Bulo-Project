@@ -1,11 +1,11 @@
 package com.maukaim.bulo.standalone.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.DefinitionClientEndpoint;
-import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.io.definitions.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.system.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

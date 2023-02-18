@@ -1,6 +1,6 @@
 package com.maukaim.bulo.io.runs.orchestrators.models;
 
-import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.StageType;
 import com.maukaim.bulo.io.runs.orchestrators.models.flowrun.ExecutionGraphDto;

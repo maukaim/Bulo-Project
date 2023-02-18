@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.serialization;
 
-import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
 import com.maukaim.bulo.io.runs.orchestrators.events.AcknowledgeRequestStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.BasicStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.DefinitionUpdateEvent;

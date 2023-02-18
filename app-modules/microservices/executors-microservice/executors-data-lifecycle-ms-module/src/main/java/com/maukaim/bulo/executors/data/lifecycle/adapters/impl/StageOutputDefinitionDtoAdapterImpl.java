@@ -3,7 +3,7 @@ package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.models.StageOutputDefinitionDto;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageOutputDefinitionDtoAdapter;
 import com.maukaim.bulo.runners.api.models.StageOutputDefinition;
 

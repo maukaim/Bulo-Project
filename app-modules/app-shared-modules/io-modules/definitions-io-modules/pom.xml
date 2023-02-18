@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>definitions-io</module>
+        <module>definitions-io-system</module>
         <module>definitions-io-client</module>
     </modules>
 </project>

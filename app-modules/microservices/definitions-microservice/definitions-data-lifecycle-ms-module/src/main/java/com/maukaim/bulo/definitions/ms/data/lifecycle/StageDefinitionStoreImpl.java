@@ -1,19 +1,19 @@
 package com.maukaim.bulo.definitions.ms.data.lifecycle;
 
 
-import com.maukaim.bulo.io.definitions.events.model.DefinitionEventType;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.system.events.model.DefinitionEventType;
+import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventPublisher;
-import com.maukaim.bulo.io.definitions.events.ExecutorUpdateEvent;
-import com.maukaim.bulo.io.definitions.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.definitions.system.TechnicalStageDefinitionEventPublisher;
+import com.maukaim.bulo.io.definitions.system.events.ExecutorUpdateEvent;
+import com.maukaim.bulo.io.definitions.system.events.StageDefinitionEvent;
 
 import java.time.Instant;
 import java.util.*;
 
-import static com.maukaim.bulo.io.definitions.events.model.DefinitionEventType.UPDATE;
+import static com.maukaim.bulo.io.definitions.system.events.model.DefinitionEventType.UPDATE;
 
 
 public class StageDefinitionStoreImpl implements StageDefinitionStore {

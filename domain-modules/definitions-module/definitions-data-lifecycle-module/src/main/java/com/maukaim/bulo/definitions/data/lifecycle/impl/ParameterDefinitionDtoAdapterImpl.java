@@ -3,7 +3,7 @@ package com.maukaim.bulo.definitions.data.lifecycle.impl;
 import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;
 import com.maukaim.bulo.io.data.types.ParameterTypeDto;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.models.ParameterDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.ParameterDefinitionDtoAdapter;
 

@@ -1,12 +1,12 @@
 package com.maukaim.bulo.definitions.registry.app.web;
 
-import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.io.definitions.CreateStageDefinitionConsumer;
-import com.maukaim.bulo.io.definitions.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventConsumer;
-import com.maukaim.bulo.io.definitions.events.ExecutorUpdateEvent;
-import com.maukaim.bulo.io.definitions.events.StageDefinitionEvent;
-import com.maukaim.bulo.io.definitions.events.StageUpdateEvent;
+import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.io.definitions.system.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.definitions.system.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.io.definitions.system.events.ExecutorUpdateEvent;
+import com.maukaim.bulo.io.definitions.system.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.definitions.system.events.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionCreateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IExecutorUpdateServiceEndpoint;

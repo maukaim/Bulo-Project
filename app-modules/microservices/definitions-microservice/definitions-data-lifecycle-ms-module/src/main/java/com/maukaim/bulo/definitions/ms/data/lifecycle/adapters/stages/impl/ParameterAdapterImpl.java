@@ -3,7 +3,7 @@ package com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.impl;
 
 import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.ParameterAdapter;
 import com.maukaim.bulo.definitions.data.stage.Parameter;
-import com.maukaim.bulo.io.definitions.stage.ParameterDto;
+import com.maukaim.bulo.io.definitions.system.stage.ParameterDto;
 
 public class ParameterAdapterImpl implements ParameterAdapter {
     @Override

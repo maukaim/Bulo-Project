@@ -1,7 +1,7 @@
 package com.maukaim.bulo.definitions.data.lifecycle.functional.impl;
 
-import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.FsStageDto;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.functional.IoDependencyDto;
+import com.maukaim.bulo.io.definitions.client.models.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.client.models.functional.IoDependencyDto;
 import com.maukaim.bulo.definitions.data.definition.functional.FsStage;
 import com.maukaim.bulo.definitions.data.definition.functional.IoDependency;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageDtoAdapter;

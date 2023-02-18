@@ -14,9 +14,9 @@ import com.maukaim.bulo.executors.serialization.mixins.runs.StandardStageRunEven
 import com.maukaim.bulo.executors.serialization.mixins.stages.ParameterDtoMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.stages.StageUpdateEventMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.stages.TechnicalStageDtoMixIn;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.ParameterDefinitionDto;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.StageInputDefinitionDto;
-import com.maukaim.bulo.io.definitions.shared.instructions.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.models.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.models.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.models.StageOutputDefinitionDto;
 import com.maukaim.bulo.io.executors.in.CancelRunInstruction;
 import com.maukaim.bulo.io.executors.in.RunInstruction;
 import com.maukaim.bulo.io.executors.in.StageUpdateEvent;

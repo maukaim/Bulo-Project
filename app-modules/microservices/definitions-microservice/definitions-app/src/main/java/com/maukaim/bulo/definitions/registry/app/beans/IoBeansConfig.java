@@ -2,10 +2,10 @@ package com.maukaim.bulo.definitions.registry.app.beans;
 
 import com.maukaim.bulo.definitions.data.StageStore;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
-import com.maukaim.bulo.io.definitions.CreateStageDefinitionConsumer;
-import com.maukaim.bulo.io.definitions.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventConsumer;
-import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventPublisher;
+import com.maukaim.bulo.io.definitions.system.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.definitions.system.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.io.definitions.system.TechnicalStageDefinitionEventPublisher;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.StageAdapter;
 import com.maukaim.bulo.definitions.registry.app.io.CreateStageDefinitionConsumerImpl;
