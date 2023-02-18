@@ -2,8 +2,8 @@ package com.maukaim.bulo.trigger.scheduler.app.io;
 
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
-import com.maukaim.bulo.triggers.io.events.BasicTriggerEvent;
+import com.maukaim.bulo.io.triggers.TriggerEventPublisher;
+import com.maukaim.bulo.io.triggers.events.BasicTriggerEvent;
 
 public class TriggerEventPublisherImpl implements TriggerEventPublisher {
     private final SystemConnector<ServiceEventType> systemConnector;

@@ -1,8 +1,8 @@
 package com.maukaim.bulo.scheduler.ms.data.lifecycle;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
-import com.maukaim.bulo.triggers.io.events.BasicTriggerEvent;
+import com.maukaim.bulo.io.triggers.TriggerEventPublisher;
+import com.maukaim.bulo.io.triggers.events.BasicTriggerEvent;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 
 import java.time.Instant;

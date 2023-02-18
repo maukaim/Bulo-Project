@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-scheduler-io-module</artifactId>
+            <artifactId>triggers-io-scheduler</artifactId>
             <version>${revision}</version>
         </dependency>
 

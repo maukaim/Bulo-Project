@@ -6,8 +6,8 @@ import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.trigger.scheduler.app.io.ScheduleTriggerConsumerImpl;
 import com.maukaim.bulo.trigger.scheduler.app.io.TriggerEventPublisherImpl;
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
-import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerConsumer;
-import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
+import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerConsumer;
+import com.maukaim.bulo.io.triggers.TriggerEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

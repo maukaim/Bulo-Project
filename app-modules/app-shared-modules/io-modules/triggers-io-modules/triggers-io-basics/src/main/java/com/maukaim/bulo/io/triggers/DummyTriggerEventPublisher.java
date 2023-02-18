@@ -1,6 +1,6 @@
-package com.maukaim.bulo.triggers.io;
+package com.maukaim.bulo.io.triggers;
 
-import com.maukaim.bulo.triggers.io.events.BasicTriggerEvent;
+import com.maukaim.bulo.io.triggers.events.BasicTriggerEvent;
 
 import java.time.Instant;
 

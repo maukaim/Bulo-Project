@@ -1,4 +1,4 @@
-package com.maukaim.bulo.trigger.scheduler.io;
+package com.maukaim.bulo.io.triggers.scheduler;
 
 import com.maukaim.bulo.commons.models.TriggerId;
 

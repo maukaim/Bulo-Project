@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-io-module</artifactId>
+            <artifactId>triggers-io-basics</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

@@ -3,7 +3,7 @@ package com.maukaim.bulo.standalone.app.web;
 import com.maukaim.bulo.app.commons.endpoints.controller.TriggerClientEndpoint;
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
-import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerAddInstruction;
+import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerAddInstruction;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

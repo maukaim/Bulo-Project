@@ -1,6 +1,6 @@
 package com.maukaim.bulo.trigger.scheduler.serialization;
 
-import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerAddInstruction;
+import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerAddInstruction;
 import com.maukaim.bulo.trigger.scheduler.serialization.mixins.ScheduleTriggerConfigDtoMixIn;
 
 import java.util.Map;

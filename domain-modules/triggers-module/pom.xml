@@ -14,7 +14,6 @@
 
     <modules>
         <module>triggers-scheduler</module>
-        <module>triggers-io-module</module>
         <module>triggers-serialization-module</module>
     </modules>
 </project>

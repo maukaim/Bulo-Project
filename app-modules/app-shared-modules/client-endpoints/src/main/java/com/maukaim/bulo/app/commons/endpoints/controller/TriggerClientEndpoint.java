@@ -4,7 +4,7 @@ import com.maukaim.bulo.app.commons.endpoints.ForClientEventType;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEndpointExpectedIn;
 import com.maukaim.bulo.commons.models.TriggerId;
-import com.maukaim.bulo.trigger.scheduler.io.ScheduleTriggerAddInstruction;
+import com.maukaim.bulo.io.triggers.scheduler.ScheduleTriggerAddInstruction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;

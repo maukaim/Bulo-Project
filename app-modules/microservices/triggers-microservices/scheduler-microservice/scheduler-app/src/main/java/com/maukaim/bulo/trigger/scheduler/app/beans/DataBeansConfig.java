@@ -1,6 +1,6 @@
 package com.maukaim.bulo.trigger.scheduler.app.beans;
 
-import com.maukaim.bulo.triggers.io.TriggerEventPublisher;
+import com.maukaim.bulo.io.triggers.TriggerEventPublisher;
 import com.maukaim.bulo.triggers.scheduler.data.TriggerConnector;
 import com.maukaim.bulo.scheduler.ms.data.lifecycle.TriggerConnectorImpl;
 import org.springframework.context.annotation.Bean;

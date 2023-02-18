@@ -14,7 +14,6 @@
 
     <modules>
         <module>triggers-scheduler-core</module>
-        <module>triggers-scheduler-io-module</module>
         <module>triggers-scheduler-serialization-module</module>
         <module>triggers-scheduler-cron-spring-engine</module>
         <module>triggers-scheduler-data-module</module>

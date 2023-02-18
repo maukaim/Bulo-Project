@@ -19,6 +19,7 @@
         <module>executors-io-modules</module>
         <module>runs-orchestrators-io-modules</module>
         <module>flows-io-modules</module>
+        <module>triggers-io-modules</module>
     </modules>
 
 </project>

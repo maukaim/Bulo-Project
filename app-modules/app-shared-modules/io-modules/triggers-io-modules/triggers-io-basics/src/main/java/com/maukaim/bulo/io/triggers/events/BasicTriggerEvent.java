@@ -1,4 +1,4 @@
-package com.maukaim.bulo.triggers.io.events;
+package com.maukaim.bulo.io.triggers.events;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
 
