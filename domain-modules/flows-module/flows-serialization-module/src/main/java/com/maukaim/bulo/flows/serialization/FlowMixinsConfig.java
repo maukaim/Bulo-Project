@@ -1,16 +1,24 @@
 package com.maukaim.bulo.flows.serialization;
 
 
-import com.maukaim.bulo.flows.io.definition.ParameterDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.StageInputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.StageOutputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
-import com.maukaim.bulo.flows.io.events.*;
-import com.maukaim.bulo.flows.io.flow.*;
-import com.maukaim.bulo.flows.io.stage.FunctionalStageDto;
-import com.maukaim.bulo.flows.io.stage.ParameterDto;
-import com.maukaim.bulo.flows.io.stage.StageDto;
-import com.maukaim.bulo.flows.io.stage.TechnicalStageDto;
+import com.maukaim.bulo.io.flows.definition.ParameterDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.StageInputDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.stageDefinitionDto;
+import com.maukaim.bulo.io.flows.events.CreateFlowInstruction;
+import com.maukaim.bulo.io.flows.events.FlowEvent;
+import com.maukaim.bulo.io.flows.events.RemoveFlowInstruction;
+import com.maukaim.bulo.io.flows.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.flows.events.StageUpdateEvent;
+import com.maukaim.bulo.io.flows.flow.FlowDto;
+import com.maukaim.bulo.io.flows.flow.FlowStageDto;
+import com.maukaim.bulo.io.flows.flow.InputProviderDto;
+import com.maukaim.bulo.io.flows.flow.IoDependencyDto;
+import com.maukaim.bulo.io.flows.flow.OwnerKeyDto;
+import com.maukaim.bulo.io.flows.stage.FunctionalStageDto;
+import com.maukaim.bulo.io.flows.stage.ParameterDto;
+import com.maukaim.bulo.io.flows.stage.StageDto;
+import com.maukaim.bulo.io.flows.stage.TechnicalStageDto;
 import com.maukaim.bulo.flows.serialization.mixins.definition.*;
 import com.maukaim.bulo.flows.serialization.mixins.flow.*;
 import com.maukaim.bulo.flows.serialization.mixins.stage.*;

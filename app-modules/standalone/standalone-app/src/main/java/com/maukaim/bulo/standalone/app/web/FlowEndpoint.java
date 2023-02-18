@@ -1,10 +1,10 @@
 package com.maukaim.bulo.standalone.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.FlowClientEndpoint;
-import com.maukaim.bulo.flows.io.CreateFlowInstructionConsumer;
-import com.maukaim.bulo.flows.io.RemoveFlowInstructionConsumer;
-import com.maukaim.bulo.flows.io.events.CreateFlowInstruction;
-import com.maukaim.bulo.flows.io.events.RemoveFlowInstruction;
+import com.maukaim.bulo.io.flows.CreateFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.RemoveFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.events.CreateFlowInstruction;
+import com.maukaim.bulo.io.flows.events.RemoveFlowInstruction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

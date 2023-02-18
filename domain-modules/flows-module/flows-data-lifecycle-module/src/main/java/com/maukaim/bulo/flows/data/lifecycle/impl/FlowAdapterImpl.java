@@ -6,9 +6,9 @@ import com.maukaim.bulo.flows.data.lifecycle.OwnerKeyAdapter;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 import com.maukaim.bulo.flows.data.models.flow.FlowStage;
 import com.maukaim.bulo.flows.data.models.flow.OwnerKey;
-import com.maukaim.bulo.flows.io.flow.FlowDto;
-import com.maukaim.bulo.flows.io.flow.FlowStageDto;
-import com.maukaim.bulo.flows.io.flow.OwnerKeyDto;
+import com.maukaim.bulo.io.flows.flow.FlowDto;
+import com.maukaim.bulo.io.flows.flow.FlowStageDto;
+import com.maukaim.bulo.io.flows.flow.OwnerKeyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

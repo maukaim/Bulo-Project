@@ -3,9 +3,9 @@ package com.maukaim.bulo.flows.app.io;
 import com.maukaim.bulo.flows.data.StageStore;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
-import com.maukaim.bulo.flows.io.StageUpdateEventConsumer;
-import com.maukaim.bulo.flows.io.events.StageUpdateEvent;
-import com.maukaim.bulo.flows.io.stage.StageDto;
+import com.maukaim.bulo.io.flows.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.flows.events.StageUpdateEvent;
+import com.maukaim.bulo.io.flows.stage.StageDto;
 
 public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     private final StageStore stageStore;

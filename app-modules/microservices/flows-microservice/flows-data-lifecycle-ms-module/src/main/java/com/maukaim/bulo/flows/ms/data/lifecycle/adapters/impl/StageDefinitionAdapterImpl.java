@@ -7,9 +7,9 @@ import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageOutputDefinition;
-import com.maukaim.bulo.flows.io.definition.StageInputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.StageOutputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.stageDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.StageInputDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.stageDefinitionDto;
 
 import java.util.Map;
 import java.util.stream.Collectors;

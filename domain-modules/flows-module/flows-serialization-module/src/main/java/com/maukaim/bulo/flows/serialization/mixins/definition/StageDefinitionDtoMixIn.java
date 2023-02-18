@@ -2,9 +2,9 @@ package com.maukaim.bulo.flows.serialization.mixins.definition;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.flows.io.definition.ParameterDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.StageInputDefinitionDto;
-import com.maukaim.bulo.flows.io.definition.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.ParameterDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.StageInputDefinitionDto;
+import com.maukaim.bulo.io.flows.definition.StageOutputDefinitionDto;
 
 import java.util.List;
 import java.util.Map;

@@ -1,15 +1,25 @@
 package com.maukaim.bulo.flows.app.beans;
 
-import com.maukaim.bulo.flows.app.io.*;
+import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.flows.app.io.CreateFlowInstructionConsumerImpl;
+import com.maukaim.bulo.flows.app.io.FlowEventConsumerImpl;
+import com.maukaim.bulo.flows.app.io.FlowEventPublisherImpl;
+import com.maukaim.bulo.flows.app.io.RemoveFlowInstructionConsumerImpl;
+import com.maukaim.bulo.flows.app.io.StageDefinitionConsumerImpl;
+import com.maukaim.bulo.flows.app.io.StageUpdateEventConsumerImpl;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.data.StageStore;
-import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
-import com.maukaim.bulo.flows.io.*;
-import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
+import com.maukaim.bulo.io.flows.CreateFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.FlowEventConsumer;
+import com.maukaim.bulo.io.flows.FlowEventPublisher;
+import com.maukaim.bulo.io.flows.RemoveFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.StageDefinitionConsumer;
+import com.maukaim.bulo.io.flows.StageUpdateEventConsumer;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,19 +45,19 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public RemoveFlowInstructionConsumer removeFlowInstructionConsumer(FlowService flowService){
+    public RemoveFlowInstructionConsumer removeFlowInstructionConsumer(FlowService flowService) {
         return new RemoveFlowInstructionConsumerImpl(flowService);
     }
 
     @Bean
     public StageUpdateEventConsumer stageUpdateEventConsumer(StageAdapter stageAdapter,
-                                                             StageStore stageStore){
+                                                             StageStore stageStore) {
         return new StageUpdateEventConsumerImpl(stageStore, stageAdapter);
     }
 
     @Bean
     public StageDefinitionConsumer stageDefinitionConsumer(StageDefinitionStore definitionStore,
-                                                                    StageDefinitionAdapter definitionAdapter){
+                                                           StageDefinitionAdapter definitionAdapter) {
         return new StageDefinitionConsumerImpl(definitionAdapter, definitionStore);
     }
 }
