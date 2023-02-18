@@ -3,8 +3,8 @@ package com.maukaim.bulo.flows.data.lifecycle.impl;
 import com.maukaim.bulo.flows.data.lifecycle.OwnerKeyDtoAdapter;
 import com.maukaim.bulo.flows.data.models.flow.OwnerKey;
 import com.maukaim.bulo.flows.data.models.flow.OwnerKeyType;
-import com.maukaim.bulo.io.flows.flow.OwnerKeyDto;
-import com.maukaim.bulo.io.flows.flow.OwnerKeyTypeDto;
+import com.maukaim.bulo.io.flows.system.flow.OwnerKeyDto;
+import com.maukaim.bulo.io.flows.system.flow.OwnerKeyTypeDto;
 
 public class OwnerKeyDtoAdapterImpl implements OwnerKeyDtoAdapter {
 

@@ -1,8 +1,8 @@
 package com.maukaim.bulo.flows.app.io;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.io.flows.FlowEventPublisher;
-import com.maukaim.bulo.io.flows.events.FlowEvent;
+import com.maukaim.bulo.io.flows.system.FlowEventPublisher;
+import com.maukaim.bulo.io.flows.system.events.FlowEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 
 public class FlowEventPublisherImpl implements FlowEventPublisher {

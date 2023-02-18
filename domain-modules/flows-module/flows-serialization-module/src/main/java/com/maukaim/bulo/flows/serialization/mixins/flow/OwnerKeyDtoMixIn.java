@@ -2,7 +2,7 @@ package com.maukaim.bulo.flows.serialization.mixins.flow;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.flows.flow.OwnerKeyTypeDto;
+import com.maukaim.bulo.io.flows.system.flow.OwnerKeyTypeDto;
 
 public class OwnerKeyDtoMixIn {
 

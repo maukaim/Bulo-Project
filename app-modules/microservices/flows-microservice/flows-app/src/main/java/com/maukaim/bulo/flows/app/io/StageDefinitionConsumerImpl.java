@@ -3,9 +3,9 @@ package com.maukaim.bulo.flows.app.io;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
-import com.maukaim.bulo.io.flows.StageDefinitionConsumer;
-import com.maukaim.bulo.io.flows.definition.stageDefinitionDto;
-import com.maukaim.bulo.io.flows.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.flows.system.StageDefinitionConsumer;
+import com.maukaim.bulo.io.flows.system.definition.stageDefinitionDto;
+import com.maukaim.bulo.io.flows.system.events.StageDefinitionEvent;
 
 public class StageDefinitionConsumerImpl implements StageDefinitionConsumer {
     private final StageDefinitionAdapter definitionAdapter;

@@ -3,8 +3,8 @@ package com.maukaim.bulo.standalone.app.io;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
-import com.maukaim.bulo.io.flows.CreateFlowInstructionConsumer;
-import com.maukaim.bulo.io.flows.events.CreateFlowInstruction;
+import com.maukaim.bulo.io.flows.system.CreateFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.system.events.CreateFlowInstruction;
 
 public class CreateFlowInstructionConsumerImpl implements CreateFlowInstructionConsumer {
     private final FlowService flowService;

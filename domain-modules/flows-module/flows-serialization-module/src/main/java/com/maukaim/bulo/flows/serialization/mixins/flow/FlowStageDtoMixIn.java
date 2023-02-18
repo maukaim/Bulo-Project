@@ -3,7 +3,7 @@ package com.maukaim.bulo.flows.serialization.mixins.flow;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.io.flows.flow.IoDependencyDto;
+import com.maukaim.bulo.io.flows.system.flow.IoDependencyDto;
 
 import java.util.Set;
 

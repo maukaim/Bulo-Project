@@ -5,7 +5,7 @@ import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.TriggerId;
-import com.maukaim.bulo.io.flows.flow.OwnerKeyTypeDto;
+import com.maukaim.bulo.io.flows.system.flow.OwnerKeyTypeDto;
 import com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder;
 import com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder;
 import com.maukaim.bulo.mockingbird.builders.StageDtoBuilder;

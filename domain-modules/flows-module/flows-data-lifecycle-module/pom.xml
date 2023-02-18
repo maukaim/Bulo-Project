@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-io</artifactId>
+            <artifactId>flows-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

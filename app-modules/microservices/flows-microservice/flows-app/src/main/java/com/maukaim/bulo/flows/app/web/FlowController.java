@@ -1,12 +1,12 @@
 package com.maukaim.bulo.flows.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.FlowClientEndpoint;
-import com.maukaim.bulo.io.flows.CreateFlowInstructionConsumer;
-import com.maukaim.bulo.io.flows.FlowEventConsumer;
-import com.maukaim.bulo.io.flows.RemoveFlowInstructionConsumer;
-import com.maukaim.bulo.io.flows.events.CreateFlowInstruction;
-import com.maukaim.bulo.io.flows.events.FlowEvent;
-import com.maukaim.bulo.io.flows.events.RemoveFlowInstruction;
+import com.maukaim.bulo.io.flows.system.CreateFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.system.FlowEventConsumer;
+import com.maukaim.bulo.io.flows.system.RemoveFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.system.events.CreateFlowInstruction;
+import com.maukaim.bulo.io.flows.system.events.FlowEvent;
+import com.maukaim.bulo.io.flows.system.events.RemoveFlowInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

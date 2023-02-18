@@ -13,6 +13,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>flows-io</module>
+        <module>flows-io-system</module>
     </modules>
 </project>

@@ -1,11 +1,11 @@
 package com.maukaim.bulo.mockingbird.builders;
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.io.flows.flow.FlowDto;
-import com.maukaim.bulo.io.flows.flow.FlowStageDto;
-import com.maukaim.bulo.io.flows.flow.InputProviderDto;
-import com.maukaim.bulo.io.flows.flow.IoDependencyDto;
-import com.maukaim.bulo.io.flows.flow.OwnerKeyDto;
-import com.maukaim.bulo.io.flows.flow.OwnerKeyTypeDto;
+import com.maukaim.bulo.io.flows.system.flow.FlowDto;
+import com.maukaim.bulo.io.flows.system.flow.FlowStageDto;
+import com.maukaim.bulo.io.flows.system.flow.InputProviderDto;
+import com.maukaim.bulo.io.flows.system.flow.IoDependencyDto;
+import com.maukaim.bulo.io.flows.system.flow.OwnerKeyDto;
+import com.maukaim.bulo.io.flows.system.flow.OwnerKeyTypeDto;
 
 import java.util.HashSet;
 import java.util.Set;
