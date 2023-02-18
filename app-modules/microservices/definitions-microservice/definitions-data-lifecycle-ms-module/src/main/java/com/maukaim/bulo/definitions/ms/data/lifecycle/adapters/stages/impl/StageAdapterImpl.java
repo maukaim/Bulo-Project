@@ -6,9 +6,9 @@ import com.maukaim.bulo.definitions.ms.data.lifecycle.adapters.stages.StageAdapt
 import com.maukaim.bulo.definitions.data.stage.FunctionalStage;
 import com.maukaim.bulo.definitions.data.stage.Stage;
 import com.maukaim.bulo.definitions.data.stage.TechnicalStage;
-import com.maukaim.bulo.definitions.io.stage.FunctionalStageDto;
-import com.maukaim.bulo.definitions.io.stage.StageDto;
-import com.maukaim.bulo.definitions.io.stage.TechnicalStageDto;
+import com.maukaim.bulo.io.definitions.stage.FunctionalStageDto;
+import com.maukaim.bulo.io.definitions.stage.StageDto;
+import com.maukaim.bulo.io.definitions.stage.TechnicalStageDto;
 
 import java.util.stream.Collectors;
 

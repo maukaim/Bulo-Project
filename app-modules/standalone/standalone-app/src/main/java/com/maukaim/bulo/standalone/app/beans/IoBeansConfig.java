@@ -18,7 +18,7 @@ import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.FunctionalSub
 import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.OutputProviderAdapterImpl;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.impl.OutputProviderDtoAdapterImpl;
 import com.maukaim.bulo.definitions.data.lifecycle.impl.*;
-import com.maukaim.bulo.definitions.io.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.io.definitions.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.lifecycle.*;

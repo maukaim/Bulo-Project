@@ -1,7 +1,7 @@
-package com.maukaim.bulo.definitions.io.events;
+package com.maukaim.bulo.io.definitions.events;
 
 
-import com.maukaim.bulo.definitions.io.stage.StageDto;
+import com.maukaim.bulo.io.definitions.stage.StageDto;
 import com.maukaim.bulo.io.shared.ExternalEvent;
 import com.maukaim.bulo.io.stages.shared.StageUpdateEventType;
 

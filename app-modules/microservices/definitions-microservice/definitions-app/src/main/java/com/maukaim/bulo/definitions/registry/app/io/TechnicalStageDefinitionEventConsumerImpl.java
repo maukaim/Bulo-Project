@@ -3,9 +3,9 @@ package com.maukaim.bulo.definitions.registry.app.io;
 import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventConsumer;
-import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
-import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.io.definitions.events.ExecutorUpdateEvent;
+import com.maukaim.bulo.io.definitions.events.StageDefinitionEvent;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
 
 public class TechnicalStageDefinitionEventConsumerImpl implements TechnicalStageDefinitionEventConsumer {

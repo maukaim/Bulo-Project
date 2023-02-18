@@ -6,9 +6,9 @@ import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitio
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
-import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
-import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventPublisher;
+import com.maukaim.bulo.io.definitions.events.ExecutorUpdateEvent;
+import com.maukaim.bulo.io.definitions.events.StageDefinitionEvent;
 
 import java.time.Instant;
 import java.util.*;

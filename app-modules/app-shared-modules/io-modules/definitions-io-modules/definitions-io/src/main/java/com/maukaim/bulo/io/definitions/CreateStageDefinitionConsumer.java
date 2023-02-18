@@ -1,4 +1,4 @@
-package com.maukaim.bulo.definitions.io;
+package com.maukaim.bulo.io.definitions;
 
 import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
 

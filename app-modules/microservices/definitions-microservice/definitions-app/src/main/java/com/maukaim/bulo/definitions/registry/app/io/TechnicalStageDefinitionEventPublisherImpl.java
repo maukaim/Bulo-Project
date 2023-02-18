@@ -1,8 +1,8 @@
 package com.maukaim.bulo.definitions.registry.app.io;
 
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
-import com.maukaim.bulo.definitions.io.events.ExecutorUpdateEvent;
-import com.maukaim.bulo.definitions.io.events.StageDefinitionEvent;
+import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventPublisher;
+import com.maukaim.bulo.io.definitions.events.ExecutorUpdateEvent;
+import com.maukaim.bulo.io.definitions.events.StageDefinitionEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
 

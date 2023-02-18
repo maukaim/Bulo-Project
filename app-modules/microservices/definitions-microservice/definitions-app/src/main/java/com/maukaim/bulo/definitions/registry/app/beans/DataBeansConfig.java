@@ -4,7 +4,7 @@ import com.maukaim.bulo.definitions.data.StageStore;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.StageStoreImpl;
-import com.maukaim.bulo.definitions.io.TechnicalStageDefinitionEventPublisher;
+import com.maukaim.bulo.io.definitions.TechnicalStageDefinitionEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
