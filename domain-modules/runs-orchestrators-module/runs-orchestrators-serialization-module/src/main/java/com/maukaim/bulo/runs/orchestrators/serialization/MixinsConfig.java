@@ -6,7 +6,7 @@ import com.maukaim.bulo.io.runs.orchestrators.events.BasicStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.DefinitionUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunInstruction;
+import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunStartEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.NeedStageRunCancellationEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.NeedStageRunExecutionEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.RunCancelledStageRunEvent;
@@ -97,7 +97,7 @@ public class MixinsConfig {
         putAll(FLOW_MIXINS);
         putAll(STAGE_MIXINS);
         putAll(DEFINITION_MIXINS);
-        put(FlowRunInstruction.class, TriggerEventMixIn.class);
+        put(FlowRunStartEvent.class, TriggerEventMixIn.class);
         put(NeedStageRunCancellationEvent.class, NeedStageRunCancellationEventMixIn.class);
         put(NeedStageRunExecutionEvent.class, NeedStageRunExecutionEventMixIn.class);
     }};

@@ -10,7 +10,7 @@ import com.maukaim.bulo.io.runs.orchestrators.events.BasicStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.DefinitionUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunInstruction;
+import com.maukaim.bulo.io.runs.orchestrators.events.FlowRunStartEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IFlowRunStartServiceEndpoint;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemEndpointsController {
 
     @RestController
-    class ServiceFlowRunStartEndpoint implements IFlowRunStartServiceEndpoint<FlowRunInstruction> {
+    class ServiceFlowRunStartEndpoint implements IFlowRunStartServiceEndpoint<FlowRunStartEvent> {
         private final TriggerEventConsumer triggerEventConsumer;
 
         @Autowired
@@ -35,7 +35,7 @@ public class SystemEndpointsController {
         }
 
         @Override
-        public void consume(@RequestBody FlowRunInstruction instruction) {
+        public void consume(@RequestBody FlowRunStartEvent instruction) {
             new Thread(() -> triggerEventConsumer.onFlowRunInstruction(instruction)).start();
         }
     }

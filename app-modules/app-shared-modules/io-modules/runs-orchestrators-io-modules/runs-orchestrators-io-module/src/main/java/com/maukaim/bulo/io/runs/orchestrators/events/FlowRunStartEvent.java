@@ -5,14 +5,14 @@ import com.maukaim.bulo.commons.models.ContextStageId;
 import java.time.Instant;
 import java.util.Set;
 
-public class FlowRunInstruction {
+public class FlowRunStartEvent {
     private final Instant instant;
     private String flowId;
     private Set<ContextStageId> contextStageIds;
 
-    public FlowRunInstruction(String flowId,
-                              Set<ContextStageId> contextStageIds,
-                              Instant instant) {
+    public FlowRunStartEvent(String flowId,
+                             Set<ContextStageId> contextStageIds,
+                             Instant instant) {
         this.flowId = flowId;
         this.contextStageIds = contextStageIds;
         this.instant = instant;
