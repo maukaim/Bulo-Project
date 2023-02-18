@@ -1,10 +1,10 @@
-package com.maukaim.bulo.io.definitions.client.models.technical;
+package com.maukaim.bulo.io.definitions.client.dtos.technical;
 
-import com.maukaim.bulo.io.definitions.client.models.ParameterDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageDefinitionTypeDto;
-import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageInputDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionTypeDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageOutputDefinitionDto;
 
 import java.util.List;
 import java.util.Map;

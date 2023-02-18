@@ -1,9 +1,9 @@
 package com.maukaim.bulo.definitions.data.lifecycle.impl;
 
-import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.FsStageDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.FunctionalStageDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.OutputProviderDto;
 import com.maukaim.bulo.definitions.data.definition.ParameterDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.definition.StageInputDefinition;
@@ -16,10 +16,10 @@ import com.maukaim.bulo.definitions.data.lifecycle.ParameterDefinitionDtoAdapter
 import com.maukaim.bulo.definitions.data.lifecycle.StageInputDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.StageOutputDefinitionDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.io.definitions.client.models.ParameterDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageInputDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.technical.TechnicalStageDefinitionDto;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.FunctionalSubStageDtoAdapter;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.OutputProviderDtoAdapter;
 

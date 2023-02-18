@@ -2,8 +2,8 @@ package com.maukaim.bulo.definitions.registry.serialization.mixins;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.maukaim.bulo.io.definitions.client.models.functional.FunctionalStageDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.technical.TechnicalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.technical.TechnicalStageDefinitionDto;
 
 @JsonTypeInfo(
         property = "stageDefinitionType",

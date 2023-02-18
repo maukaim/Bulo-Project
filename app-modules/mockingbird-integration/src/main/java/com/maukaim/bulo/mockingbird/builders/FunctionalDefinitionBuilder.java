@@ -1,15 +1,15 @@
 package com.maukaim.bulo.mockingbird.builders;
 
-import com.maukaim.bulo.io.definitions.client.models.functional.FsStageDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.FunctionalStageDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.InputProviderDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.IoDependencyDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FunctionalStageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.InputProviderDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.IoDependencyDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.OutputProviderDto;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
 import com.maukaim.bulo.io.data.types.ParameterTypeDto;
-import com.maukaim.bulo.io.definitions.client.models.ParameterDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageInputDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageOutputDefinitionDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.HashMap;

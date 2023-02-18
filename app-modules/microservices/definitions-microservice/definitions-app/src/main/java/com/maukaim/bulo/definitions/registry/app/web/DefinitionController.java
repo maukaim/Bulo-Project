@@ -2,10 +2,10 @@ package com.maukaim.bulo.definitions.registry.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.DefinitionClientEndpoint;
 import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
-import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
-import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionConsumer;
+import com.maukaim.bulo.definitions.data.lifecycle.CreateStageDefinitionConsumer;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

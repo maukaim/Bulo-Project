@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definiti
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.definitions.client.models.functional.IoDependencyDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.IoDependencyDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 
 import java.util.Set;

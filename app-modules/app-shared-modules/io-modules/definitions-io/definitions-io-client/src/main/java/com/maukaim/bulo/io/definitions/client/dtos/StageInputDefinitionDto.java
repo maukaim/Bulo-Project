@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.definitions.client.models;
+package com.maukaim.bulo.io.definitions.client.dtos;
 
 import com.maukaim.bulo.io.data.types.IoTypeDto;
 

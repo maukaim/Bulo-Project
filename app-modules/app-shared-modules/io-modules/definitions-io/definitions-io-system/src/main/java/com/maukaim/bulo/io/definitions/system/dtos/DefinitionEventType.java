@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.definitions.system.events.model;
+package com.maukaim.bulo.io.definitions.system.dtos;
 
 public enum DefinitionEventType {
     UPDATE,

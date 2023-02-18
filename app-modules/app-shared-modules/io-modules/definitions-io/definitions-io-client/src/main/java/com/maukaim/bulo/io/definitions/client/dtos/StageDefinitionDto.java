@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.definitions.client.models;
+package com.maukaim.bulo.io.definitions.client.dtos;
 
 import java.util.List;
 import java.util.Map;

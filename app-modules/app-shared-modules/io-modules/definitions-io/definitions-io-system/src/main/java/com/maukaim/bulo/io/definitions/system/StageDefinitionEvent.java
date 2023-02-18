@@ -1,7 +1,7 @@
-package com.maukaim.bulo.io.definitions.system.events;
+package com.maukaim.bulo.io.definitions.system;
 
-import com.maukaim.bulo.io.definitions.system.events.model.DefinitionEventType;
-import com.maukaim.bulo.io.definitions.client.models.StageDefinitionDto;
+import com.maukaim.bulo.io.definitions.system.dtos.DefinitionEventType;
+import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
 
 import java.time.Instant;
 

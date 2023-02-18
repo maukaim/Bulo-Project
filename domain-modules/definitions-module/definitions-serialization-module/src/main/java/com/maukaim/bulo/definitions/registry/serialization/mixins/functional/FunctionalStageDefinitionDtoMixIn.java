@@ -2,11 +2,11 @@ package com.maukaim.bulo.definitions.registry.serialization.mixins.functional;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maukaim.bulo.io.definitions.client.models.ParameterDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageInputDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.StageOutputDefinitionDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.FsStageDto;
-import com.maukaim.bulo.io.definitions.client.models.functional.OutputProviderDto;
+import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.StageOutputDefinitionDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.OutputProviderDto;
 
 import java.util.List;
 import java.util.Map;

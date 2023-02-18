@@ -1,6 +1,6 @@
 package com.maukaim.bulo.definitions.data.lifecycle.functional.impl;
 
-import com.maukaim.bulo.io.definitions.client.models.functional.InputProviderDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.InputProviderDto;
 import com.maukaim.bulo.definitions.data.definition.functional.InputProvider;
 import com.maukaim.bulo.definitions.data.lifecycle.functional.InputProviderDtoAdapter;
 

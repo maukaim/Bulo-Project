@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.definitions.client.models.functional;
+package com.maukaim.bulo.io.definitions.client.dtos.functional;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
 
