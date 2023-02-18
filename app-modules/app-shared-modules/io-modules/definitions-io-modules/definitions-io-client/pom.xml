@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>definitions-io-shared</artifactId>
+    <artifactId>definitions-io-client</artifactId>
 
     <dependencies>
         <dependency>

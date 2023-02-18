@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.definitions.shared;
+package com.maukaim.bulo.io.flows.definition;
 
 public enum DefinitionEventType {
     UPDATE,

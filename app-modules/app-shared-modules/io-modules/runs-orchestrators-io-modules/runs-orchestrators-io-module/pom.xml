@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-io-shared</artifactId>
+            <artifactId>definitions-io-client</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

@@ -14,6 +14,6 @@
 
     <modules>
         <module>definitions-io</module>
-        <module>definitions-io-shared</module>
+        <module>definitions-io-client</module>
     </modules>
 </project>

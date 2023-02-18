@@ -1,6 +1,6 @@
 package com.maukaim.bulo.io.definitions.events;
 
-import com.maukaim.bulo.io.definitions.shared.DefinitionEventType;
+import com.maukaim.bulo.io.definitions.events.model.DefinitionEventType;
 import com.maukaim.bulo.io.definitions.shared.instructions.models.StageDefinitionDto;
 
 import java.time.Instant;

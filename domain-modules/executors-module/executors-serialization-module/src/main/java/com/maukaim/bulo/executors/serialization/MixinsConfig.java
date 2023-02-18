@@ -1,6 +1,19 @@
 package com.maukaim.bulo.executors.serialization;
 
-import com.maukaim.bulo.io.definitions.shared.instructions.CreateStageDefinitionInstruction;
+import com.maukaim.bulo.executors.serialization.mixins.definitions.ParameterDefinitionDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.definitions.StageInputDefinitionDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.definitions.StageOutputDefinitionDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.AcknowledgeStageRunEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.NeedStageRunCancelEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.NeedStageRunEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.StageRunAncestorDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.StageRunDependencyDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.StandardStageRunEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.stages.ParameterDtoMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.stages.StageUpdateEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.stages.TechnicalStageDtoMixIn;
 import com.maukaim.bulo.io.definitions.shared.instructions.models.ParameterDefinitionDto;
 import com.maukaim.bulo.io.definitions.shared.instructions.models.StageInputDefinitionDto;
 import com.maukaim.bulo.io.definitions.shared.instructions.models.StageOutputDefinitionDto;
@@ -18,16 +31,6 @@ import com.maukaim.bulo.io.executors.out.RunSuccessfulStageRunEvent;
 import com.maukaim.bulo.io.executors.out.StageRunResultEvent;
 import com.maukaim.bulo.io.executors.out.StartRunStageRunEvent;
 import com.maukaim.bulo.io.executors.out.model.StageRunResultDto;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.ParameterDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.StageDefinitionCreateInstructionMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.StageInputDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.StageOutputDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultEventMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.runs.*;
-import com.maukaim.bulo.executors.serialization.mixins.stages.ParameterDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.stages.StageUpdateEventMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.stages.TechnicalStageDtoMixIn;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,7 +61,6 @@ public class MixinsConfig {
     );
 
     private static Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = Map.of(
-            CreateStageDefinitionInstruction.class, StageDefinitionCreateInstructionMixIn.class,
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class

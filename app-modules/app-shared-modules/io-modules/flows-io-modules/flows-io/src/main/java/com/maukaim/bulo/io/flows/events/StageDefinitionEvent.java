@@ -1,7 +1,7 @@
 package com.maukaim.bulo.io.flows.events;
 
+import com.maukaim.bulo.io.flows.definition.DefinitionEventType;
 import com.maukaim.bulo.io.flows.definition.stageDefinitionDto;
-import com.maukaim.bulo.io.definitions.shared.DefinitionEventType;
 
 import java.time.Instant;
 
