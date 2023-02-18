@@ -42,7 +42,7 @@ import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.stage.Sta
 import java.util.HashMap;
 import java.util.Map;
 
-public class MixinsConfig {
+public class OrchestratorMixinsConfig {
 
     public static Map<Class<?>, Class<?>> FLOW_RUN_MIXINS = Map.of(
             FlowRunEvent.class, FlowRunEventMixIn.class,

@@ -1,7 +1,8 @@
 package com.maukaim.bulo.executors.app.deserializer;
 
 import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
-import com.maukaim.bulo.executors.serialization.MixinsConfig;
+import com.maukaim.bulo.executors.serialization.ExecutorMixinsConfig;
+import com.maukaim.bulo.runs.orchestrators.serialization.OrchestratorMixinsConfig;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,8 @@ public class DeserializerConfig {
         return jacksonObjectMapperBuilder -> {
             jacksonObjectMapperBuilder.deserializersByType(COMMON_DESERIALIZERS);
             jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);
-            jacksonObjectMapperBuilder.mixIns(MixinsConfig.EXECUTORS_SERVICE_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(ExecutorMixinsConfig.EXECUTORS_SERVICE_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(OrchestratorMixinsConfig.ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN);
         };
     }
 }

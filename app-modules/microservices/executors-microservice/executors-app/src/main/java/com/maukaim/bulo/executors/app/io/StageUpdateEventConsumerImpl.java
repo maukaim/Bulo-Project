@@ -4,10 +4,10 @@ import com.maukaim.bulo.commons.models.StageType;
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.executors.data.stages.Stage;
-import com.maukaim.bulo.io.executors.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.executors.system.in.StageUpdateEvent;
-import com.maukaim.bulo.io.executors.system.in.model.StageDto;
-import com.maukaim.bulo.io.executors.system.in.model.TechnicalStageDto;
+import com.maukaim.bulo.executors.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.stages.client.model.StageDto;
+import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
+import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
 
 public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     private final StageStore stageStore;
@@ -36,7 +36,7 @@ public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
 
     private Stage resolve(StageDto dto) {
         return switch (dto.getStageType()) {
-            case TECHNICAL -> this.stageAdapter.adapte((TechnicalStageDto) (dto));
+            case TECHNICAL -> this.stageAdapter.adapte((TechnicalStageDto)dto);
             case FUNCTIONAL -> throw new RuntimeException("Impossible, we should not receive Functional Stages here!");
         };
     }

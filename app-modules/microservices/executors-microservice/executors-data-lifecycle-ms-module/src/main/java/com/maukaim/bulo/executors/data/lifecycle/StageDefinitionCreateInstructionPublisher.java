@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.executors.system;
+package com.maukaim.bulo.executors.data.lifecycle;
 
 
 import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;

@@ -1,14 +1,15 @@
-package com.maukaim.bulo.io.executors.system.in;
+package com.maukaim.bulo.io.executors.system;
 
 import com.maukaim.bulo.io.shared.ExternalEvent;
 
 import java.time.Instant;
 
-public class CancelRunInstruction implements ExternalEvent {
-    private String stageRunId;
-    private Instant instant;
+public abstract class StageRunEvent implements ExternalEvent {
 
-    public CancelRunInstruction(String stageRunId, Instant instant) {
+    protected final String stageRunId;
+    protected final Instant instant;
+
+    public StageRunEvent(String stageRunId, Instant instant) {
         this.stageRunId = stageRunId;
         this.instant = instant;
     }
@@ -17,14 +18,13 @@ public class CancelRunInstruction implements ExternalEvent {
         return stageRunId;
     }
 
-    @Override
     public Instant getInstant() {
         return instant;
     }
 
     @Override
     public String toString() {
-        return "NeedStageRunCancelEvent{" +
+        return getClass().getSimpleName() + "{" +
                 "stageRunId='" + stageRunId + '\'' +
                 ", instant=" + instant +
                 '}';

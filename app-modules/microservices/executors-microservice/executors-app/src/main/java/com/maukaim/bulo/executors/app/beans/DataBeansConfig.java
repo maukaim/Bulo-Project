@@ -12,9 +12,9 @@ import com.maukaim.bulo.executors.data.lifecycle.StageStoreImpl;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolver;
 import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolverImpl;
-import com.maukaim.bulo.io.executors.system.StageDefinitionCreateInstructionPublisher;
-import com.maukaim.bulo.io.executors.system.StageRunEventPublisher;
-import com.maukaim.bulo.io.executors.system.StageRunResultEventPublisher;
+import com.maukaim.bulo.executors.data.lifecycle.StageDefinitionCreateInstructionPublisher;
+import com.maukaim.bulo.executors.data.lifecycle.StageRunEventPublisher;
+import com.maukaim.bulo.executors.data.lifecycle.StageRunResultEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

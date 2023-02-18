@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.executors.system.out.model;
+package com.maukaim.bulo.io.executors.system.dtos;
 
 import java.util.Map;
 

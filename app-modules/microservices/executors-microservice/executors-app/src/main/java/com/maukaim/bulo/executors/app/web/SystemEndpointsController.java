@@ -1,13 +1,13 @@
 package com.maukaim.bulo.executors.app.web;
 
-import com.maukaim.bulo.io.executors.system.NeedStageRunCancelEventConsumer;
-import com.maukaim.bulo.io.executors.system.NeedStageRunEventConsumer;
-import com.maukaim.bulo.io.executors.system.StageRunResultEventConsumer;
-import com.maukaim.bulo.io.executors.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.executors.system.in.CancelRunInstruction;
-import com.maukaim.bulo.io.executors.system.in.RunInstruction;
-import com.maukaim.bulo.io.executors.system.in.StageUpdateEvent;
-import com.maukaim.bulo.io.executors.system.out.StageRunResultEvent;
+import com.maukaim.bulo.executors.data.lifecycle.NeedStageRunCancelEventConsumer;
+import com.maukaim.bulo.executors.data.lifecycle.NeedStageRunEventConsumer;
+import com.maukaim.bulo.executors.data.lifecycle.StageRunResultEventConsumer;
+import com.maukaim.bulo.executors.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.executors.system.StageRunResultEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunCancellationEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutionEvent;
+import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunCancellationServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunRequiredServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunResultServiceEndpoint;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SystemEndpointsController {
     @RestController
-    public class ServiceStageRunRequiredEndpoint implements IStageRunRequiredServiceEndpoint<RunInstruction> {
+    public class ServiceStageRunRequiredEndpoint implements IStageRunRequiredServiceEndpoint<NeedStageRunExecutionEvent> {
         private final NeedStageRunEventConsumer needStageRunEventConsumer;
 
         public ServiceStageRunRequiredEndpoint(NeedStageRunEventConsumer needStageRunEventConsumer) {
@@ -26,7 +26,7 @@ public class SystemEndpointsController {
         }
 
         @Override
-        public void consume(@RequestBody RunInstruction instruction) {
+        public void consume(@RequestBody NeedStageRunExecutionEvent instruction) {
             Thread thread = new Thread(() -> this.needStageRunEventConsumer.consume(instruction));
             thread.start();
         }
@@ -61,7 +61,7 @@ public class SystemEndpointsController {
     }
 
     @RestController
-    public class ServiceStageRunCancellationEndpoint implements IStageRunCancellationServiceEndpoint<CancelRunInstruction> {
+    public class ServiceStageRunCancellationEndpoint implements IStageRunCancellationServiceEndpoint<NeedStageRunCancellationEvent> {
         private final NeedStageRunCancelEventConsumer needStageRunCancelEventConsumer;
 
         public ServiceStageRunCancellationEndpoint(NeedStageRunCancelEventConsumer needStageRunCancelEventConsumer) {
@@ -69,7 +69,7 @@ public class SystemEndpointsController {
         }
 
         @Override
-        public void consume(CancelRunInstruction event) {
+        public void consume(NeedStageRunCancellationEvent event) {
             Thread thread = new Thread(() -> this.needStageRunCancelEventConsumer.consume(event));
             thread.start();
         }

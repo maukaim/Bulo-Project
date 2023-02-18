@@ -1,6 +1,6 @@
-package com.maukaim.bulo.io.executors.system.out;
+package com.maukaim.bulo.io.executors.system;
 
-import com.maukaim.bulo.io.executors.system.out.model.StageRunEventType;
+import com.maukaim.bulo.io.executors.system.dtos.StageRunEventType;
 
 import java.time.Instant;
 

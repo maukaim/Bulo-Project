@@ -2,7 +2,7 @@ package com.maukaim.bulo.executors.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.executors.data.lifecycle.adapters.ParameterAdapter;
 import com.maukaim.bulo.executors.data.stages.Parameter;
-import com.maukaim.bulo.io.executors.system.in.model.ParameterDto;
+import com.maukaim.bulo.io.stages.client.model.ParameterDto;
 
 public class ParameterAdapterImpl implements ParameterAdapter {
     @Override

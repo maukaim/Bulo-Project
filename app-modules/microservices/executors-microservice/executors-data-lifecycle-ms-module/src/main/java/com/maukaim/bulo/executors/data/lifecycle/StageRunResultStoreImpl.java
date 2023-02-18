@@ -4,11 +4,9 @@ import com.maukaim.bulo.executors.data.StageRunResultStore;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunResultDtoAdapter;
 import com.maukaim.bulo.executors.data.lifecycle.resolver.StageRunEventResolver;
 import com.maukaim.bulo.executors.data.result.StageRunResult;
-import com.maukaim.bulo.io.executors.system.StageRunEventPublisher;
-import com.maukaim.bulo.io.executors.system.StageRunResultEventPublisher;
-import com.maukaim.bulo.io.executors.system.out.StageRunEvent;
-import com.maukaim.bulo.io.executors.system.out.StageRunResultEvent;
-import com.maukaim.bulo.io.executors.system.out.model.StageRunResultDto;
+import com.maukaim.bulo.io.executors.system.StageRunEvent;
+import com.maukaim.bulo.io.executors.system.StageRunResultEvent;
+import com.maukaim.bulo.io.executors.system.dtos.StageRunResultDto;
 
 import java.time.Instant;
 import java.util.HashMap;
