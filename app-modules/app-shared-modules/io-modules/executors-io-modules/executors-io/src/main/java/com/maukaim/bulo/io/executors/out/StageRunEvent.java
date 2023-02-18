@@ -1,10 +1,11 @@
 package com.maukaim.bulo.io.executors.out;
 
-import com.maukaim.bulo.io.executors.shared.IStageRunEvent;
+import com.maukaim.bulo.io.shared.ExternalEvent;
 
 import java.time.Instant;
 
-public abstract class StageRunEvent implements IStageRunEvent {
+public abstract class StageRunEvent implements ExternalEvent {
+
     protected final String stageRunId;
     protected final Instant instant;
 
@@ -13,12 +14,10 @@ public abstract class StageRunEvent implements IStageRunEvent {
         this.instant = instant;
     }
 
-    @Override
     public String getStageRunId() {
         return stageRunId;
     }
 
-    @Override
     public Instant getInstant() {
         return instant;
     }

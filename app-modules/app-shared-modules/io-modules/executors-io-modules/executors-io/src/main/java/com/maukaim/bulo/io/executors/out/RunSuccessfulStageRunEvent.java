@@ -1,6 +1,6 @@
 package com.maukaim.bulo.io.executors.out;
 
-import com.maukaim.bulo.io.executors.shared.StageRunEventType;
+import com.maukaim.bulo.io.executors.out.model.StageRunEventType;
 
 import java.time.Instant;
 
@@ -10,7 +10,6 @@ public class RunSuccessfulStageRunEvent extends StageRunEvent {
         super(stageRunId, instant);
     }
 
-    @Override
     public StageRunEventType getEventType() {
         return StageRunEventType.RUN_SUCCESSFUL;
     }

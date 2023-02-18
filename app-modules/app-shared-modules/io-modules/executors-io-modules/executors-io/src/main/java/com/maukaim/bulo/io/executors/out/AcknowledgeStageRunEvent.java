@@ -1,6 +1,6 @@
 package com.maukaim.bulo.io.executors.out;
 
-import com.maukaim.bulo.io.executors.shared.StageRunEventType;
+import com.maukaim.bulo.io.executors.out.model.StageRunEventType;
 
 import java.time.Instant;
 
@@ -14,7 +14,6 @@ public class AcknowledgeStageRunEvent extends StageRunEvent {
         this.executorId = executorId;
     }
 
-    @Override
     public StageRunEventType getEventType() {
         return StageRunEventType.ACKNOWLEDGE_REQUEST;
     }

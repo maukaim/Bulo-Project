@@ -24,11 +24,6 @@
         </dependency>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-io-shared</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>definitions-io-shared</artifactId>
             <version>${revision}</version>
         </dependency>

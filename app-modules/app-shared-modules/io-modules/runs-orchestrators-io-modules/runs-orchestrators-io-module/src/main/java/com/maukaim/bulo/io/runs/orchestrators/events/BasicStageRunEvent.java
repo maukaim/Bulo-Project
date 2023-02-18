@@ -1,11 +1,10 @@
 package com.maukaim.bulo.io.runs.orchestrators.events;
 
-import com.maukaim.bulo.io.executors.shared.IStageRunEvent;
-import com.maukaim.bulo.io.executors.shared.StageRunEventType;
+import com.maukaim.bulo.io.shared.ExternalEvent;
 
 import java.time.Instant;
 
-public abstract class BasicStageRunEvent implements IStageRunEvent {
+public abstract class BasicStageRunEvent implements ExternalEvent {
     protected final String stageRunId;
     protected final Instant instant;
     protected final StageRunEventType eventType;
@@ -16,17 +15,14 @@ public abstract class BasicStageRunEvent implements IStageRunEvent {
         this.eventType = eventType;
     }
 
-    @Override
     public String getStageRunId() {
         return stageRunId;
     }
 
-    @Override
-    public StageRunEventType getEventType(){
+    public StageRunEventType getEventType() {
         return eventType;
     }
 
-    @Override
     public Instant getInstant() {
         return instant;
     }

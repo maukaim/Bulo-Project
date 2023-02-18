@@ -1,7 +1,7 @@
 package com.maukaim.bulo.io.runs.orchestrators;
 
-import com.maukaim.bulo.io.executors.shared.IStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.events.BasicStageRunEvent;
 
 public interface StageRunEventConsumer {
-    void onStageRunEvent(IStageRunEvent stageRunEvent);
+    void onStageRunEvent(BasicStageRunEvent stageRunEvent);
 }

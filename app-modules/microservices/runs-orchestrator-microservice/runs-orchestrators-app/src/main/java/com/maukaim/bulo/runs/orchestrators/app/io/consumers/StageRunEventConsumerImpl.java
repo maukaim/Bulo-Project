@@ -1,17 +1,21 @@
 package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 
-import com.maukaim.bulo.io.executors.shared.IStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.StageRunEventConsumer;
 import com.maukaim.bulo.io.runs.orchestrators.events.AcknowledgeRequestStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.events.BasicStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.RunCancelledStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.RunFailedStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.RunSuccessfulStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.events.StartRunStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.core.impl.*;
+import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeTechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledTechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedTechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulTechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunTechnicalStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRunContext;
-import com.maukaim.bulo.io.runs.orchestrators.StageRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 
 import java.util.function.Consumer;
 
@@ -39,7 +43,7 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
     }
 
     @Override
-    public void onStageRunEvent(IStageRunEvent event) {
+    public void onStageRunEvent(BasicStageRunEvent event) {
         System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
             case ACKNOWLEDGE_REQUEST -> this.onAcknowledged((AcknowledgeRequestStageRunEvent) event);
