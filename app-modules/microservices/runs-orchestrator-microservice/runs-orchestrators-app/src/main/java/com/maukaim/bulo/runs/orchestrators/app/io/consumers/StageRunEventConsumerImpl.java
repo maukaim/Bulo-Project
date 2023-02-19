@@ -1,12 +1,11 @@
 package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 
-import com.maukaim.bulo.io.runs.orchestrators.system.StageRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.AcknowledgeRequestStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.BasicStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.StartRunStageRunEvent;
+import com.maukaim.bulo.io.executors.system.AcknowledgeStageRunEvent;
+import com.maukaim.bulo.io.executors.system.RunCancelledStageRunEvent;
+import com.maukaim.bulo.io.executors.system.RunFailedStageRunEvent;
+import com.maukaim.bulo.io.executors.system.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.io.executors.system.StageRunEvent;
+import com.maukaim.bulo.io.executors.system.StartRunStageRunEvent;
 import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeTechnicalStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledTechnicalStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedTechnicalStageRunEventProcessor;
@@ -16,6 +15,7 @@ import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
 
 import java.util.function.Consumer;
 
@@ -43,10 +43,10 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
     }
 
     @Override
-    public void onStageRunEvent(BasicStageRunEvent event) {
+    public void onStageRunEvent(StageRunEvent event) {
         System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
-            case ACKNOWLEDGE_REQUEST -> this.onAcknowledged((AcknowledgeRequestStageRunEvent) event);
+            case ACKNOWLEDGE_REQUEST -> this.onAcknowledged((AcknowledgeStageRunEvent) event);
             case LAUNCH_RUN -> this.onStarted((StartRunStageRunEvent) event);
             case RUN_CANCELLED -> this.onCancelled((RunCancelledStageRunEvent) event);
             case RUN_FAILED -> this.onFailed((RunFailedStageRunEvent) event);
@@ -56,7 +56,7 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
         }
     }
 
-    private void onAcknowledged(AcknowledgeRequestStageRunEvent event) {
+    private void onAcknowledged(AcknowledgeStageRunEvent event) {
         String stageRunId = event.getStageRunId();
         processUnderContext(stageRunId,
                 flowContext ->

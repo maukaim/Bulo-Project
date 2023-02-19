@@ -1,4 +1,4 @@
-package com.maukaim.bulo.io.runs.orchestrators.system;
+package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle;
 
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutionEvent;
 

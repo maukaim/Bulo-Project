@@ -10,12 +10,8 @@ public class AcknowledgeStageRunEvent extends StageRunEvent {
     public AcknowledgeStageRunEvent(String executorId,
                                     String stageRunId,
                                     Instant instant) {
-        super(stageRunId, instant);
+        super(stageRunId, StageRunEventType.ACKNOWLEDGE_REQUEST, instant);
         this.executorId = executorId;
-    }
-
-    public StageRunEventType getEventType() {
-        return StageRunEventType.ACKNOWLEDGE_REQUEST;
     }
 
     public String getExecutorId() {

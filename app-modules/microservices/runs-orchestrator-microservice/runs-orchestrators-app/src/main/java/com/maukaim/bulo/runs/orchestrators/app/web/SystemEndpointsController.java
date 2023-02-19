@@ -1,12 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.web;
 
-import com.maukaim.bulo.io.runs.orchestrators.system.DefinitionUpdateEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.FlowEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.FlowRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.StageRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.TriggerEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.BasicStageRunEvent;
+import com.maukaim.bulo.io.executors.system.StageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
@@ -18,6 +12,12 @@ import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IFlowRunUpdateSer
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IFlowUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageUpdateServiceEndpoint;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.DefinitionUpdateEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.TriggerEventConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -97,7 +97,7 @@ public class SystemEndpointsController {
     }
 
     @RestController
-    public class ServiceStageRunUpdateEndpoint implements IStageRunUpdateServiceEndpoint<BasicStageRunEvent> {
+    public class ServiceStageRunUpdateEndpoint implements IStageRunUpdateServiceEndpoint<StageRunEvent> {
         private final StageRunEventConsumer stageRunEventConsumer;
 
         @Autowired
@@ -105,7 +105,7 @@ public class SystemEndpointsController {
             this.stageRunEventConsumer = stageRunEventConsumer;
         }
 
-        public void consume(@RequestBody BasicStageRunEvent event) {
+        public void consume(@RequestBody StageRunEvent event) {
             new Thread(() -> this.stageRunEventConsumer.onStageRunEvent(event)).start();
         }
     }

@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
-import com.maukaim.bulo.io.runs.orchestrators.system.TriggerEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.TriggerEventConsumer;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
 
 import java.util.Set;

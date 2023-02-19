@@ -1,15 +1,15 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.io.runs.orchestrators.system.DefinitionUpdateEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.FlowEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.FlowRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.FlowRunEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.system.NeedStageRunCancellationEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.system.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.system.StageRunEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.runs.orchestrators.system.TriggerEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.DefinitionUpdateEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunCancellationEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecutionEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.TriggerEventConsumer;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.DefinitionUpdateEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowEventConsumerImpl;

@@ -7,10 +7,7 @@ import java.time.Instant;
 public class RunCancelledStageRunEvent extends StageRunEvent {
 
     public RunCancelledStageRunEvent(String stageRunId, Instant instant) {
-        super(stageRunId, instant);
+        super(stageRunId, StageRunEventType.RUN_CANCELLED, instant);
     }
 
-    public StageRunEventType getEventType() {
-        return StageRunEventType.RUN_CANCELLED;
-    }
 }

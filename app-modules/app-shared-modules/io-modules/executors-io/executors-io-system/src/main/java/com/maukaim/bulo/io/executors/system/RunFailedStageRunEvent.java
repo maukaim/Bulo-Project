@@ -1,16 +1,13 @@
 package com.maukaim.bulo.io.executors.system;
 
-import com.maukaim.bulo.io.executors.system.dtos.StageRunEventType;
-
 import java.time.Instant;
+
+import static com.maukaim.bulo.io.executors.system.dtos.StageRunEventType.RUN_FAILED;
 
 public class RunFailedStageRunEvent extends StageRunEvent {
 
     public RunFailedStageRunEvent(String stageRunId, Instant instant) {
-        super(stageRunId, instant);
+        super(stageRunId, RUN_FAILED, instant);
     }
 
-    public StageRunEventType getEventType() {
-        return StageRunEventType.RUN_FAILED;
-    }
 }

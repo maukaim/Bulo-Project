@@ -6,6 +6,7 @@ import com.maukaim.bulo.executors.serialization.mixins.definitions.StageOutputDe
 import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultDtoMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultEventMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.runs.AcknowledgeStageRunEventMixIn;
+import com.maukaim.bulo.executors.serialization.mixins.runs.StageRunEventMixIn;
 import com.maukaim.bulo.executors.serialization.mixins.runs.StandardStageRunEventMixIn;
 import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
 import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
@@ -14,6 +15,7 @@ import com.maukaim.bulo.io.executors.system.AcknowledgeStageRunEvent;
 import com.maukaim.bulo.io.executors.system.RunCancelledStageRunEvent;
 import com.maukaim.bulo.io.executors.system.RunFailedStageRunEvent;
 import com.maukaim.bulo.io.executors.system.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.io.executors.system.StageRunEvent;
 import com.maukaim.bulo.io.executors.system.StageRunResultEvent;
 import com.maukaim.bulo.io.executors.system.StartRunStageRunEvent;
 import com.maukaim.bulo.io.executors.system.dtos.StageRunResultDto;
@@ -33,7 +35,8 @@ public class ExecutorMixinsConfig {
             RunCancelledStageRunEvent.class, StandardStageRunEventMixIn.class,
             RunFailedStageRunEvent.class, StandardStageRunEventMixIn.class,
             RunSuccessfulStageRunEvent.class, StandardStageRunEventMixIn.class,
-            StartRunStageRunEvent.class, StandardStageRunEventMixIn.class
+            StartRunStageRunEvent.class, StandardStageRunEventMixIn.class,
+            StageRunEvent.class, StageRunEventMixIn.class
     );
 
     private static Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = Map.of(

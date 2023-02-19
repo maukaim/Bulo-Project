@@ -1,20 +1,19 @@
 package com.maukaim.bulo.runs.orchestrators.serialization;
 
 import com.maukaim.bulo.io.definitions.client.dtos.functional.OutputProviderDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.AcknowledgeRequestStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.BasicStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunCancellationEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutionEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunSuccessfulStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.StageUpdateEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.StartRunStageRunEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.FunctionalStageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.TechnicalStageRunDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.FsStageDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.InputProviderDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.IoDependencyDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.StageDefinitionDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.FlowDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.FlowStageDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.InputDependencyDto;
@@ -23,16 +22,30 @@ import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.ExecutionGra
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowRunDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowRunStageDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowStageDependencyDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunAncestorDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.FunctionalStageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.TechnicalStageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.FsStageDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.IoDependencyDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.StageDefinitionDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stage.StageDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunAncestorDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.*;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.*;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.DefinitionUpdateEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.FlowEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.FlowRunEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.NeedStageRunCancellationEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.NeedStageRunExecutionEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.StageUpdateEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.TriggerEventMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.ExecutionGraphDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowRunDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowRunStageDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowStageAncestorDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowStageDependencyDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowStageDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FunctionalStageRunDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.InputDependencyDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.InputProviderDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.OwnerKeyDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.StageRunAncestorDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.StageRunDependencyDtoMixIn;
+import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.TechnicalStageRunDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.FsStageDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.IoDependencyDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.OutputProviderDtoMixIn;
@@ -57,16 +70,7 @@ public class OrchestratorMixinsConfig {
             StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> STAGE_RUN_EVENTS_MIXINS = Map.of(
-            AcknowledgeRequestStageRunEvent.class, AcknowledgeRequestStageRunEventMixIn.class,
-            RunCancelledStageRunEvent.class, StandardStageRunEventMixIn.class,
-            RunFailedStageRunEvent.class, StandardStageRunEventMixIn.class,
-            RunSuccessfulStageRunEvent.class, StandardStageRunEventMixIn.class,
-            StartRunStageRunEvent.class, StandardStageRunEventMixIn.class,
-            BasicStageRunEvent.class, BasicStageRunEventMixIn.class
-    );
-
-    public static Map<Class<?>,Class<?>> FLOW_MIXINS = Map.of(
+    public static Map<Class<?>, Class<?>> FLOW_MIXINS = Map.of(
             FlowEvent.class, FlowEventMixIn.class,
             FlowDto.class, FlowDtoMixIn.class,
             OwnerKeyDto.class, OwnerKeyDtoMixIn.class,
@@ -75,12 +79,12 @@ public class OrchestratorMixinsConfig {
             com.maukaim.bulo.io.runs.orchestrators.system.models.flow.InputProviderDto.class, InputProviderDtoMixIn.class
     );
 
-    public static Map<Class<?>,Class<?>> STAGE_MIXINS = Map.of(
+    public static Map<Class<?>, Class<?>> STAGE_MIXINS = Map.of(
             StageUpdateEvent.class, StageUpdateEventMixIn.class,
             StageDto.class, StageDtoMixIn.class
     );
 
-    public static Map<Class<?>,Class<?>> DEFINITION_MIXINS = Map.of(
+    public static Map<Class<?>, Class<?>> DEFINITION_MIXINS = Map.of(
             DefinitionUpdateEvent.class, DefinitionUpdateEventMixIn.class,
             StageDefinitionDto.class, StageDefinitionDtoMixIn.class,
 
@@ -92,7 +96,6 @@ public class OrchestratorMixinsConfig {
     );
 
     public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
-        putAll(STAGE_RUN_EVENTS_MIXINS);
         putAll(FLOW_RUN_MIXINS);
         putAll(FLOW_MIXINS);
         putAll(STAGE_MIXINS);

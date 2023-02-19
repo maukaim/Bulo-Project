@@ -1,16 +1,13 @@
 package com.maukaim.bulo.io.executors.system;
 
-import com.maukaim.bulo.io.executors.system.dtos.StageRunEventType;
-
 import java.time.Instant;
+
+import static com.maukaim.bulo.io.executors.system.dtos.StageRunEventType.LAUNCH_RUN;
 
 public class StartRunStageRunEvent extends StageRunEvent {
 
     public StartRunStageRunEvent(String stageRunId, Instant instant) {
-        super(stageRunId, instant);
+        super(stageRunId, LAUNCH_RUN, instant);
     }
 
-    public StageRunEventType getEventType() {
-        return StageRunEventType.LAUNCH_RUN;
-    }
 }

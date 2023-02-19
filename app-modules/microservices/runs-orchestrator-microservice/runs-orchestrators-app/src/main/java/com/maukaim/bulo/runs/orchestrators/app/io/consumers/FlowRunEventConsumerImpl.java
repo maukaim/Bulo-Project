@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.app.io.consumers;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunStoreImpl;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowRunAdapter;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
-import com.maukaim.bulo.io.runs.orchestrators.system.FlowRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventConsumer;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 
 public class FlowRunEventConsumerImpl implements FlowRunEventConsumer {

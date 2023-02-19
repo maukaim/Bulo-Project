@@ -1,19 +1,19 @@
 package com.maukaim.bulo.runs.orchestrators.app.connectors;
 
-import com.maukaim.bulo.io.runs.orchestrators.system.events.AcknowledgeRequestStageRunEvent;
+import com.maukaim.bulo.io.executors.system.AcknowledgeStageRunEvent;
+import com.maukaim.bulo.io.executors.system.RunCancelledStageRunEvent;
+import com.maukaim.bulo.io.executors.system.RunFailedStageRunEvent;
+import com.maukaim.bulo.io.executors.system.RunSuccessfulStageRunEvent;
+import com.maukaim.bulo.io.executors.system.StartRunStageRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunCancellationEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutionEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunCancelledStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunFailedStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.RunSuccessfulStageRunEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.StartRunStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDependencyDtoAdapter;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
-import com.maukaim.bulo.io.runs.orchestrators.system.NeedStageRunCancellationEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.system.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.io.runs.orchestrators.system.StageRunEventConsumer;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
+import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunCancellationEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecutionEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.stage.StageRunDependencyDtoAdapter;
 
 import java.time.Instant;
 import java.util.Set;
@@ -33,7 +33,7 @@ public class StageRunConnectorImpl implements StageRunConnector {
         this.stageRunDependencyDtoAdapter = stageRunDependencyDtoAdapter;
     }
 
-    public void setConsumer(StageRunEventConsumer consumer){
+    public void setConsumer(StageRunEventConsumer consumer) {
         this.stageRunEventConsumer = consumer;
     }
 
@@ -55,7 +55,7 @@ public class StageRunConnectorImpl implements StageRunConnector {
     @Override
     public void propagateFunctionalStageRunAcknowleged(String stageRunId) {
         String executorId = "SELF_APP";
-        this.stageRunEventConsumer.onStageRunEvent(new AcknowledgeRequestStageRunEvent(executorId, stageRunId, Instant.now()));
+        this.stageRunEventConsumer.onStageRunEvent(new AcknowledgeStageRunEvent(executorId, stageRunId, Instant.now()));
     }
 
     @Override

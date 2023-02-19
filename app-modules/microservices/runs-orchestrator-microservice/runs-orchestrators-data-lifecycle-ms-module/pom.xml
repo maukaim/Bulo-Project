@@ -23,5 +23,11 @@
             <artifactId>runs-orchestrators-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>executors-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>
