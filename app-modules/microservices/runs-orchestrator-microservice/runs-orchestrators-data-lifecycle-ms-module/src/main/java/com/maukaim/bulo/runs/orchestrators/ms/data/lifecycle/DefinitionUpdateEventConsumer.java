@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle;
 
-import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
+import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
 
 public interface DefinitionUpdateEventConsumer {
-    void onDefinitionEvent(DefinitionUpdateEvent event);
+    void onDefinitionEvent(StageDefinitionEvent event);
 }

@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.app.web;
 
+import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
 import com.maukaim.bulo.io.executors.system.StageRunEvent;
 import com.maukaim.bulo.io.flows.system.FlowEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.StageUpdateEvent;
@@ -83,7 +83,7 @@ public class SystemEndpointsController {
     }
 
     @RestController
-    public class ServiceDefinitionUpdateEndpoint implements IDefinitionUpdateServiceEndpoint<DefinitionUpdateEvent> {
+    public class ServiceDefinitionUpdateEndpoint implements IDefinitionUpdateServiceEndpoint<StageDefinitionEvent> {
         private final DefinitionUpdateEventConsumer definitionUpdateEventConsumer;
 
         public ServiceDefinitionUpdateEndpoint(DefinitionUpdateEventConsumer definitionUpdateEventConsumer) {
@@ -91,7 +91,7 @@ public class SystemEndpointsController {
         }
 
         @Override
-        public void consume(DefinitionUpdateEvent event) {
+        public void consume(StageDefinitionEvent event) {
             this.definitionUpdateEventConsumer.onDefinitionEvent(event);
         }
     }

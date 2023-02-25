@@ -1,6 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.app.deserializers;
 
 import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
+import com.maukaim.bulo.definitions.registry.serialization.DefinitionMixinsConfig;
 import com.maukaim.bulo.executors.serialization.ExecutorMixinsConfig;
 import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
 import com.maukaim.bulo.runs.orchestrators.serialization.OrchestratorMixinsConfig;
@@ -23,6 +24,7 @@ public class DeserializerConfig {
 
             jacksonObjectMapperBuilder.mixIns(ExecutorMixinsConfig.EXECUTORS_SERVICE_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(FlowMixinsConfig.SERIALIZATION_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(DefinitionMixinsConfig.DEFINITIONS_REGISTRY_JACKSON_MIXIN);
         };
     }
 }

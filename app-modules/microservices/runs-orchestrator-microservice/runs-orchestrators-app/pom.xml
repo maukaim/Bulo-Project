@@ -85,6 +85,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-serialization-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>commons-serialization</artifactId>
             <version>${revision}</version>
         </dependency>

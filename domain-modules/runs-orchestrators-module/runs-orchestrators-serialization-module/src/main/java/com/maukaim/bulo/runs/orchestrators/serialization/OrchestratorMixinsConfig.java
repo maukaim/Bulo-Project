@@ -1,7 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.serialization;
 
-import com.maukaim.bulo.io.definitions.client.dtos.functional.OutputProviderDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunCancellationEvent;
@@ -9,10 +7,6 @@ import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutio
 import com.maukaim.bulo.io.runs.orchestrators.system.events.StageUpdateEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.FunctionalStageRunDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.TechnicalStageRunDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.FsStageDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.InputProviderDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.IoDependencyDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.StageDefinitionDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.ExecutionGraphDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowRunDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowRunStageDto;
@@ -20,7 +14,6 @@ import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowStageDep
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stage.StageDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunAncestorDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.DefinitionUpdateEventMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.FlowRunEventMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.NeedStageRunCancellationEventMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.NeedStageRunExecutionEventMixIn;
@@ -35,10 +28,6 @@ import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.Functiona
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.StageRunAncestorDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.StageRunDependencyDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.TechnicalStageRunDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.FsStageDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.IoDependencyDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.OutputProviderDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.StageDefinitionDtoMixIn;
 import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.stage.StageDtoMixIn;
 
 import java.util.HashMap;
@@ -64,21 +53,9 @@ public class OrchestratorMixinsConfig {
             StageDto.class, StageDtoMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> DEFINITION_MIXINS = Map.of(
-            DefinitionUpdateEvent.class, DefinitionUpdateEventMixIn.class,
-            StageDefinitionDto.class, StageDefinitionDtoMixIn.class,
-
-            FsStageDto.class, FsStageDtoMixIn.class,
-            IoDependencyDto.class, IoDependencyDtoMixIn.class,
-            InputProviderDto.class,
-            com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.definition.InputProviderDtoMixIn.class,
-            OutputProviderDto.class, OutputProviderDtoMixIn.class
-    );
-
     public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
         putAll(FLOW_RUN_MIXINS);
         putAll(STAGE_MIXINS);
-        putAll(DEFINITION_MIXINS);
         put(FlowRunStartEvent.class, TriggerEventMixIn.class);
         put(NeedStageRunCancellationEvent.class, NeedStageRunCancellationEventMixIn.class);
         put(NeedStageRunExecutionEvent.class, NeedStageRunExecutionEventMixIn.class);

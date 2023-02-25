@@ -1,11 +1,11 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl;
 
+import com.maukaim.bulo.io.definitions.client.dtos.functional.InputProviderDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.IoDependencyDto;
 import com.maukaim.bulo.runs.orchestrators.data.definition.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.data.definition.IoDependency;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.InputProviderAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.IoDependencyAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.InputProviderDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.IoDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

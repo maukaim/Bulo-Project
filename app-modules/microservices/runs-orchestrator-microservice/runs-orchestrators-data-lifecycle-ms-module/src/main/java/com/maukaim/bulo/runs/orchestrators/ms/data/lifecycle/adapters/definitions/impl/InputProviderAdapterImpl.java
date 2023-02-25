@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl;
 
+import com.maukaim.bulo.io.definitions.client.dtos.functional.InputProviderDto;
 import com.maukaim.bulo.runs.orchestrators.data.definition.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.InputProviderAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.InputProviderDto;
 
 public class InputProviderAdapterImpl implements InputProviderAdapter {
     @Override

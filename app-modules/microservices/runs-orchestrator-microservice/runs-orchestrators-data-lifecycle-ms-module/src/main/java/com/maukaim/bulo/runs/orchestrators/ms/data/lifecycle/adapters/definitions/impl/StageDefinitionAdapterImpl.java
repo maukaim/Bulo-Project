@@ -1,5 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.impl;
 
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FsStageDto;
+import com.maukaim.bulo.io.definitions.client.dtos.functional.FunctionalStageDefinitionDto;
 import com.maukaim.bulo.io.definitions.client.dtos.functional.OutputProviderDto;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FsStage;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
@@ -7,8 +9,6 @@ import com.maukaim.bulo.runs.orchestrators.data.definition.OutputProvider;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.FunctionalSubStageAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.OutputProviderAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.StageDefinitionAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.FsStageDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.definition.StageDefinitionDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,7 +24,7 @@ public class StageDefinitionAdapterImpl implements StageDefinitionAdapter {
     }
 
     @Override
-    public FunctionalStageDefinition adapte(StageDefinitionDto dto) {
+    public FunctionalStageDefinition adapte(FunctionalStageDefinitionDto dto) {
         return new FunctionalStageDefinition(
                 dto.getDefinitionId(),
                 resolve(dto.getFunctionalSubStages()),
