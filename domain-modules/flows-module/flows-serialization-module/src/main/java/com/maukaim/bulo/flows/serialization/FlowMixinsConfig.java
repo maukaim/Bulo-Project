@@ -14,7 +14,7 @@ import com.maukaim.bulo.io.flows.client.RemoveFlowInstruction;
 import com.maukaim.bulo.io.flows.client.model.FlowDto;
 import com.maukaim.bulo.io.flows.client.model.FlowStageDto;
 import com.maukaim.bulo.io.flows.client.model.InputProviderDto;
-import com.maukaim.bulo.io.flows.client.model.IoDependencyDto;
+import com.maukaim.bulo.io.flows.client.model.InputDependencyDto;
 import com.maukaim.bulo.io.flows.client.model.OwnerKeyDto;
 import com.maukaim.bulo.io.flows.system.FlowEvent;
 
@@ -28,7 +28,7 @@ public class FlowMixinsConfig {
             FlowDto.class, FlowDtoMixIn.class,
             OwnerKeyDto.class, OwnerKeyDtoMixIn.class,
             FlowStageDto.class, FlowStageDtoMixIn.class,
-            IoDependencyDto.class, IoDependencyDtoMixIn.class,
+            InputDependencyDto.class, IoDependencyDtoMixIn.class,
             InputProviderDto.class, InputProviderDtoMixIn.class
     );
 }

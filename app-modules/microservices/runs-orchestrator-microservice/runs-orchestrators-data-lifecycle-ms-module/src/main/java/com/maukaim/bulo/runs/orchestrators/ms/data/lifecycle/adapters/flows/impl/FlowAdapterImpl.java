@@ -1,14 +1,14 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl;
 
+import com.maukaim.bulo.io.flows.client.model.FlowDto;
+import com.maukaim.bulo.io.flows.client.model.FlowStageDto;
+import com.maukaim.bulo.io.flows.client.model.OwnerKeyDto;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 import com.maukaim.bulo.runs.orchestrators.data.flow.FlowStage;
 import com.maukaim.bulo.runs.orchestrators.data.flow.OwnerKey;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowStageAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.OwnerKeyAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.FlowDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.FlowStageDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.OwnerKeyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

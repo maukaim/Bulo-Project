@@ -3,8 +3,8 @@ package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.imp
 import com.maukaim.bulo.runs.orchestrators.data.flow.OwnerKey;
 import com.maukaim.bulo.runs.orchestrators.data.flow.OwnerKeyType;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.OwnerKeyAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.OwnerKeyDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.OwnerKeyTypeDto;
+import com.maukaim.bulo.io.flows.client.model.OwnerKeyDto;
+import com.maukaim.bulo.io.flows.client.model.OwnerKeyTypeDto;
 
 public class OwnerKeyAdapterImpl implements OwnerKeyAdapter {
     @Override

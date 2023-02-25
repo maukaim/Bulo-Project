@@ -5,7 +5,7 @@ import com.maukaim.bulo.flows.data.lifecycle.IoDependencyAdapter;
 import com.maukaim.bulo.flows.data.models.flow.InputProvider;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
 import com.maukaim.bulo.io.flows.client.model.InputProviderDto;
-import com.maukaim.bulo.io.flows.client.model.IoDependencyDto;
+import com.maukaim.bulo.io.flows.client.model.InputDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class IoDependencyAdapterImpl implements IoDependencyAdapter {
     }
 
     @Override
-    public IoDependency adapte(IoDependencyDto dto) {
+    public IoDependency adapte(InputDependencyDto dto) {
         return new IoDependency(
                 dto.getInputId(),
                 resolveProviders(dto.getInputProviders())

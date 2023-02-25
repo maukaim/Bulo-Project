@@ -5,7 +5,7 @@ import com.maukaim.bulo.flows.data.lifecycle.IoDependencyDtoAdapter;
 import com.maukaim.bulo.flows.data.models.flow.FlowStage;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
 import com.maukaim.bulo.io.flows.client.model.FlowStageDto;
-import com.maukaim.bulo.io.flows.client.model.IoDependencyDto;
+import com.maukaim.bulo.io.flows.client.model.InputDependencyDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,7 +25,7 @@ public class FlowStageDtoAdapterImpl implements FlowStageDtoAdapter {
         );
     }
 
-    private Set<IoDependencyDto> resolveDependencies(Set<IoDependency> ioDependencies) {
+    private Set<InputDependencyDto> resolveDependencies(Set<IoDependency> ioDependencies) {
         return ioDependencies == null ? null : ioDependencies.stream()
                 .map(this.ioDependencyDtoAdapter::adapte)
                 .collect(Collectors.toSet());

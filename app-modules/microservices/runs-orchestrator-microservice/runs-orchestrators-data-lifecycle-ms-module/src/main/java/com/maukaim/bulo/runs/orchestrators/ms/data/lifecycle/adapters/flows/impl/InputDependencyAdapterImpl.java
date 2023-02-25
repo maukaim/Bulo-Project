@@ -1,11 +1,13 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl;
 
+import com.maukaim.bulo.io.flows.client.model.InputDependencyDto;
+import com.maukaim.bulo.io.flows.client.model.InputProviderDto;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputDependency;
 import com.maukaim.bulo.runs.orchestrators.data.flow.InputProvider;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputDependencyAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.InputProviderAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.InputDependencyDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.InputProviderDto;
+import com.maukaim.bulo.io.flows.client.model.InputDependencyDto;
+import com.maukaim.bulo.io.flows.client.model.InputProviderDto;
 
 import java.util.Set;
 import java.util.stream.Collectors;

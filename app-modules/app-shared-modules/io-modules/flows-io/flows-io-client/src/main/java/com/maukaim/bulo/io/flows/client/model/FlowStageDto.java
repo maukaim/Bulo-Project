@@ -7,9 +7,9 @@ import java.util.Set;
 
 public class FlowStageDto {
     private final ContextStageId contextStageId;
-    private final Set<IoDependencyDto> ioDependencies;
+    private final Set<InputDependencyDto> ioDependencies;
 
-    public FlowStageDto(ContextStageId contextStageId, Set<IoDependencyDto> ioDependencies) {
+    public FlowStageDto(ContextStageId contextStageId, Set<InputDependencyDto> ioDependencies) {
         this.contextStageId = contextStageId;
         this.ioDependencies = ioDependencies;
     }
@@ -18,7 +18,7 @@ public class FlowStageDto {
         return contextStageId;
     }
 
-    public Set<IoDependencyDto> getIoDependencies() {
+    public Set<InputDependencyDto> getIoDependencies() {
         return ioDependencies;
     }
 

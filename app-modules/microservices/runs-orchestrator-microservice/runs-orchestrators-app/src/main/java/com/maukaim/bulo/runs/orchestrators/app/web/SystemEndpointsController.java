@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.app.web;
 
 import com.maukaim.bulo.io.executors.system.StageRunEvent;
+import com.maukaim.bulo.io.flows.system.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.DefinitionUpdateEvent;
-import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.StageUpdateEvent;

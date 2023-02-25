@@ -3,11 +3,11 @@ package com.maukaim.bulo.io.flows.client.model;
 import java.util.Objects;
 import java.util.Set;
 
-public class IoDependencyDto {
+public class InputDependencyDto {
     private final String inputId;
     private final Set<InputProviderDto> inputProviders;
 
-    public IoDependencyDto(String inputId, Set<InputProviderDto> inputProviders) {
+    public InputDependencyDto(String inputId, Set<InputProviderDto> inputProviders) {
         this.inputId = inputId;
         this.inputProviders = inputProviders;
     }
@@ -32,7 +32,7 @@ public class IoDependencyDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IoDependencyDto that = (IoDependencyDto) o;
+        InputDependencyDto that = (InputDependencyDto) o;
         return Objects.equals(inputId, that.inputId);
     }
 

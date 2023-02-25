@@ -29,5 +29,11 @@
             <artifactId>executors-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>flows-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

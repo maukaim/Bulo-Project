@@ -1,10 +1,10 @@
 package com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.impl;
 
+import com.maukaim.bulo.io.flows.client.model.OwnerKeyDto;
+import com.maukaim.bulo.io.flows.client.model.OwnerKeyTypeDto;
 import com.maukaim.bulo.runs.orchestrators.data.flow.OwnerKey;
 import com.maukaim.bulo.runs.orchestrators.data.flow.OwnerKeyType;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.OwnerKeyDtoAdapter;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.OwnerKeyDto;
-import com.maukaim.bulo.io.runs.orchestrators.system.models.flow.OwnerKeyTypeDto;
 
 public class OwnerKeyDtoAdapterImpl implements OwnerKeyDtoAdapter {
     @Override
@@ -16,7 +16,7 @@ public class OwnerKeyDtoAdapterImpl implements OwnerKeyDtoAdapter {
     }
 
     private OwnerKeyTypeDto resolve(OwnerKeyType type) {
-        return type == null ? null : switch (type){
+        return type == null ? null : switch (type) {
             case USER -> OwnerKeyTypeDto.USER;
             case TEAM -> OwnerKeyTypeDto.TEAM;
         };
