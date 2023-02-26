@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.definitions.system.DefinitionSystemMixinsConfig;
-import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
+import com.maukaim.bulo.serialization.flows.system.FlowSystemMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.stage.StageMixinsConfig;
 import com.maukaim.bulo.trigger.scheduler.serialization.SchedulerMixinsConfig;
@@ -29,7 +29,7 @@ public class MarshallerProvider {
             putAll(DefinitionSystemMixinsConfig.DEFINITIONS_SYSTEM_JACKSON_MIXIN);
             putAll(DataTypeMixInsConfig.DATA_TYPES_COMMONS_MIXINS);
             putAll(StageMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
-            putAll(FlowMixinsConfig.SERIALIZATION_JACKSON_MIXIN);
+            putAll(FlowSystemMixinsConfig.FLOW_SERIALIZATION_JACKSON_MIXIN);
             putAll(SchedulerMixinsConfig.TRIGGER_SCHEDULER_JACKSON_MIXIN);
             putAll(TriggersMixinsConfig.TRIGGERS_JACKSON_MIXIN);
             putAll(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);

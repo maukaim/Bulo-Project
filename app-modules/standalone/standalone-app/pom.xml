@@ -55,7 +55,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-serialization-module</artifactId>
+            <artifactId>flows-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 

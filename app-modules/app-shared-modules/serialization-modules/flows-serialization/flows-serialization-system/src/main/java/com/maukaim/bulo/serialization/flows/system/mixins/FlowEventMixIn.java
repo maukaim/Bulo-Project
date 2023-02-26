@@ -1,4 +1,4 @@
-package com.maukaim.bulo.flows.serialization.mixins;
+package com.maukaim.bulo.serialization.flows.system.mixins;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

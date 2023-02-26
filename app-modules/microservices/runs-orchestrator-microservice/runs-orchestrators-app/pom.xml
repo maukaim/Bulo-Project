@@ -79,7 +79,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-serialization-module</artifactId>
+            <artifactId>flows-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

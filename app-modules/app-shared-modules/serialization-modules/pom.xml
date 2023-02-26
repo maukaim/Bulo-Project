@@ -16,5 +16,6 @@
         <module>data-types-serialization</module>
         <module>serialization-shared</module>
         <module>executors-serialization</module>
+        <module>flows-serialization</module>
     </modules>
 </project>

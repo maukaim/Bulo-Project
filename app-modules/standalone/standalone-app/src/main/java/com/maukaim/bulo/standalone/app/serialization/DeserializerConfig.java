@@ -1,9 +1,9 @@
 package com.maukaim.bulo.standalone.app.serialization;
 
-import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
-import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.definitions.client.DefinitionClientMixinsConfig;
+import com.maukaim.bulo.serialization.flows.client.FlowClientMixinsConfig;
+import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.stage.StageMixinsConfig;
 import com.maukaim.bulo.trigger.scheduler.serialization.SchedulerMixinsConfig;
 import com.maukaim.bulo.triggers.serialization.TriggersMixinsConfig;
@@ -22,7 +22,7 @@ public class DeserializerConfig {
             jacksonObjectMapperBuilder.deserializersByType(COMMON_DESERIALIZERS);
             jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);
             jacksonObjectMapperBuilder.mixIns(StageMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
-            jacksonObjectMapperBuilder.mixIns(FlowMixinsConfig.SERIALIZATION_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(FlowClientMixinsConfig.FLOW_CLIENT_SERIALIZATION_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(TriggersMixinsConfig.TRIGGERS_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(SchedulerMixinsConfig.TRIGGER_SCHEDULER_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(DefinitionClientMixinsConfig.DEFINITIONS_CLIENT_JACKSON_MIXIN);
