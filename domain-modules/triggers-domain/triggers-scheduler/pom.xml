@@ -3,24 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bulo-project</artifactId>
+        <artifactId>triggers-domain</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>domain-modules</artifactId>
+    <artifactId>triggers-scheduler</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>flows-domain</module>
-        <module>users-domain</module>
-        <module>shared-domain-modules</module>
-        <module>triggers-domain</module>
-        <module>teams-domain</module>
-        <module>stages-domain</module>
-        <module>runs-orchestrators-domain</module>
-        <module>executors-domain</module>
-        <module>definitions-domain</module>
+        <module>triggers-scheduler-core</module>
+        <module>triggers-scheduler-cron-spring-engine</module>
+        <module>triggers-scheduler-data-module</module>
     </modules>
+
 </project>
