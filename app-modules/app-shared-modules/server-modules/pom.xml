@@ -9,7 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>data-lifecycle-modules</artifactId>
+    <artifactId>server-modules</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>server-core</module>
+        <module>spring-server-core</module>
+    </modules>
 </project>
