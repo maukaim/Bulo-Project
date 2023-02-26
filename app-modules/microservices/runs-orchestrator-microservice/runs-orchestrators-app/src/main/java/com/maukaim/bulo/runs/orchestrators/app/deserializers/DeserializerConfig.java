@@ -3,7 +3,7 @@ package com.maukaim.bulo.runs.orchestrators.app.deserializers;
 import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.executors.system.ExecutorMixinsConfig;
 import com.maukaim.bulo.serialization.flows.system.FlowSystemMixinsConfig;
-import com.maukaim.bulo.runs.orchestrators.serialization.OrchestratorMixinsConfig;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.OrchestratorMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.definitions.system.DefinitionSystemMixinsConfig;
 import com.maukaim.bulo.serialization.stage.StageMixinsConfig;

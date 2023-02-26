@@ -67,7 +67,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runs-orchestrators-serialization-module</artifactId>
+            <artifactId>runs-orchestrators-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

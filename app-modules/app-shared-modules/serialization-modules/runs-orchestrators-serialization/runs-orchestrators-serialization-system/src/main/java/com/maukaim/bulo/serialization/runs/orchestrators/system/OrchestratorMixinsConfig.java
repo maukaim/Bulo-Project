@@ -1,4 +1,4 @@
-package com.maukaim.bulo.runs.orchestrators.serialization;
+package com.maukaim.bulo.serialization.runs.orchestrators.system;
 
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
@@ -12,19 +12,19 @@ import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowRunStage
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowStageDependencyDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunAncestorDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.FlowRunEventMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.NeedStageRunCancellationEventMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.NeedStageRunExecutionEventMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.events.TriggerEventMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.ExecutionGraphDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowRunDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowRunStageDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowStageAncestorDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FlowStageDependencyDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.FunctionalStageRunDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.StageRunAncestorDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.StageRunDependencyDtoMixIn;
-import com.maukaim.bulo.runs.orchestrators.serialization.mixins.models.TechnicalStageRunDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.events.FlowRunEventMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.events.NeedStageRunCancellationEventMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.events.NeedStageRunExecutionEventMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.events.TriggerEventMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.ExecutionGraphDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.FlowRunDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.FlowRunStageDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.FlowStageAncestorDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.FlowStageDependencyDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.FunctionalStageRunDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.StageRunAncestorDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.StageRunDependencyDtoMixIn;
+import com.maukaim.bulo.serialization.runs.orchestrators.system.mixins.models.TechnicalStageRunDtoMixIn;
 
 import java.util.HashMap;
 import java.util.Map;
