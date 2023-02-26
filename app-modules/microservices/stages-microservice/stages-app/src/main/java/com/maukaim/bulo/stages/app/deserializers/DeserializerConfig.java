@@ -1,6 +1,6 @@
 package com.maukaim.bulo.stages.app.deserializers;
 
-import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
+import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.definitions.system.DefinitionSystemMixinsConfig;
 import com.maukaim.bulo.serialization.stage.StageMixinsConfig;

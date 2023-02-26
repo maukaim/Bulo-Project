@@ -1,6 +1,6 @@
 package com.maukaim.bulo.standalone.app.serialization;
 
-import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
+import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.definitions.client.DefinitionClientMixinsConfig;

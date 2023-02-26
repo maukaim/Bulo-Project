@@ -1,6 +1,6 @@
 package com.maukaim.bulo.runs.orchestrators.app.deserializers;
 
-import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
+import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.executors.system.ExecutorMixinsConfig;
 import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
 import com.maukaim.bulo.runs.orchestrators.serialization.OrchestratorMixinsConfig;

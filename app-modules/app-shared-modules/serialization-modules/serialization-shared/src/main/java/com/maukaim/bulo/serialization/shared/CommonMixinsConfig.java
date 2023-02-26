@@ -1,7 +1,7 @@
-package com.maukaim.bulo.commons.serialization;
+package com.maukaim.bulo.serialization.shared;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.commons.serialization.mixins.ContextStageIdMixIn;
+import com.maukaim.bulo.serialization.shared.mixins.ContextStageIdMixIn;
 
 import java.util.HashMap;
 import java.util.Map;
