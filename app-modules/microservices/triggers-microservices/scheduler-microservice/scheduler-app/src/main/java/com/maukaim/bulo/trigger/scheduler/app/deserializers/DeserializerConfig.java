@@ -1,8 +1,8 @@
 package com.maukaim.bulo.trigger.scheduler.app.deserializers;
 
 import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
-import com.maukaim.bulo.trigger.scheduler.serialization.SchedulerMixinsConfig;
-import com.maukaim.bulo.triggers.serialization.TriggersMixinsConfig;
+import com.maukaim.bulo.serialization.triggers.system.TriggersMixinsConfig;
+import com.maukaim.bulo.trigger.serialization.scheduler.client.SchedulerMixinsConfig;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

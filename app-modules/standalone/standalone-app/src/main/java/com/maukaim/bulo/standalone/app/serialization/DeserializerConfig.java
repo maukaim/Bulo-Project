@@ -5,8 +5,8 @@ import com.maukaim.bulo.serialization.definitions.client.DefinitionClientMixinsC
 import com.maukaim.bulo.serialization.flows.client.FlowClientMixinsConfig;
 import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.stages.client.StageClientMixinsConfig;
-import com.maukaim.bulo.trigger.scheduler.serialization.SchedulerMixinsConfig;
-import com.maukaim.bulo.triggers.serialization.TriggersMixinsConfig;
+import com.maukaim.bulo.trigger.serialization.scheduler.client.SchedulerMixinsConfig;
+import com.maukaim.bulo.serialization.triggers.system.TriggersMixinsConfig;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,9 +1,9 @@
-package com.maukaim.bulo.triggers.serialization;
+package com.maukaim.bulo.serialization.triggers.system;
 
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.io.triggers.system.events.BasicTriggerEvent;
-import com.maukaim.bulo.triggers.serialization.mixins.TriggerEventMixIn;
-import com.maukaim.bulo.triggers.serialization.mixins.TriggerIdMixIn;
+import com.maukaim.bulo.serialization.triggers.system.mixins.TriggerIdMixIn;
+import com.maukaim.bulo.serialization.triggers.system.mixins.TriggerEventMixIn;
 
 import java.util.Map;
 

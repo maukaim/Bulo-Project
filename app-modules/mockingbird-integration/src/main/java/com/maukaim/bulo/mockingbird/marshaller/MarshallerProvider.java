@@ -7,8 +7,8 @@ import com.maukaim.bulo.serialization.definitions.system.DefinitionSystemMixinsC
 import com.maukaim.bulo.serialization.flows.system.FlowSystemMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.stages.system.StageSystemMixinsConfig;
-import com.maukaim.bulo.trigger.scheduler.serialization.SchedulerMixinsConfig;
-import com.maukaim.bulo.triggers.serialization.TriggersMixinsConfig;
+import com.maukaim.bulo.trigger.serialization.scheduler.client.SchedulerMixinsConfig;
+import com.maukaim.bulo.serialization.triggers.system.TriggersMixinsConfig;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -67,7 +67,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-scheduler-serialization-module</artifactId>
+            <artifactId>scheduler-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -85,7 +85,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-serialization-module</artifactId>
+            <artifactId>triggers-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 
