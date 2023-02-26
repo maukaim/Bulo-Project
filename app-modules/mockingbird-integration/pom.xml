@@ -38,7 +38,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-serialization-module</artifactId>
+            <artifactId>definitions-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

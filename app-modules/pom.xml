@@ -19,6 +19,7 @@
         <module>mockingbird-integration</module>
         <module>app-shared-modules/serialization-modules</module>
         <module>app-shared-modules/system-communication-modules</module>
+        <module>app-shared-modules/serialization-modules/definitions-serialization</module>
     </modules>
 
 </project>

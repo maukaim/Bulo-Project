@@ -3,7 +3,8 @@ package com.maukaim.bulo.mockingbird.marshaller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.maukaim.bulo.commons.serialization.CommonMixinsConfig;
-import com.maukaim.bulo.definitions.registry.serialization.DefinitionMixinsConfig;
+import com.maukaim.bulo.serialization.definitions.client.DefinitionClientMixinsConfig;
+import com.maukaim.bulo.serialization.definitions.system.DefinitionSystemMixinsConfig;
 import com.maukaim.bulo.flows.serialization.FlowMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
 import com.maukaim.bulo.serialization.stage.StageMixinsConfig;
@@ -26,7 +27,7 @@ public class MarshallerProvider {
 
     private static Map<Class<?>, Class<?>> getAllMixIns() {
         return new HashMap<>() {{
-            putAll(DefinitionMixinsConfig.DEFINITIONS_JACKSON_MIXIN);
+            putAll(DefinitionSystemMixinsConfig.DEFINITIONS_SYSTEM_JACKSON_MIXIN);
             putAll(DataTypeMixInsConfig.DATA_TYPES_COMMONS_MIXINS);
             putAll(StageMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
             putAll(FlowMixinsConfig.SERIALIZATION_JACKSON_MIXIN);
@@ -35,5 +36,4 @@ public class MarshallerProvider {
             putAll(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);
         }};
     }
-
 }

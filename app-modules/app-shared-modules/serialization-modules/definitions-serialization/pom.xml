@@ -2,19 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>domain-modules</artifactId>
+        <artifactId>serialization-modules</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>definitions-module</artifactId>
+    <artifactId>definitions-serialization</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>definitions-core</module>
-        <module>definitions-data-module</module>
-        <module>definitions-data-lifecycle-module</module>
+        <module>definitions-serialization-system</module>
+        <module>definitions-serialization-client</module>
     </modules>
+
 </project>

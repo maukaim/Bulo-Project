@@ -91,7 +91,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-serialization-module</artifactId>
+            <artifactId>definitions-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 
