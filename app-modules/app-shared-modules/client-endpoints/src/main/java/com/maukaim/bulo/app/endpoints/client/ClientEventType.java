@@ -1,4 +1,4 @@
-package com.maukaim.bulo.app.commons.endpoints;
+package com.maukaim.bulo.app.endpoints.client;
 
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEventType;
 

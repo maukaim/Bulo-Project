@@ -1,7 +1,7 @@
 package com.maukaim.bulo.mockingbird.endpoint;
 
-import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
-import com.maukaim.bulo.app.commons.endpoints.ForClientEventType;
+import com.maukaim.bulo.app.endpoints.client.ClientEventType;
+import com.maukaim.bulo.app.endpoints.client.ForClientEventType;
 import com.maukaim.bulo.shared.server.core.SystemContext;
 import com.maukaim.bulo.app.shared.spring.servers.AbstractSpringEndpointConsumerResolver;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;

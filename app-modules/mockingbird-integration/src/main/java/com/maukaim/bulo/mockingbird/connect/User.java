@@ -1,6 +1,6 @@
 package com.maukaim.bulo.mockingbird.connect;
 
-import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
+import com.maukaim.bulo.app.endpoints.client.ClientEventType;
 import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
 import com.maukaim.bulo.io.definitions.client.dtos.functional.FunctionalStageDefinitionDto;
 import com.maukaim.bulo.commons.models.TriggerId;

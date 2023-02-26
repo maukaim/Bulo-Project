@@ -1,6 +1,7 @@
-package com.maukaim.bulo.app.commons.endpoints.controller;
+package com.maukaim.bulo.app.endpoints.client.controller;
 
-import com.maukaim.bulo.app.commons.endpoints.ForClientEventType;
+import com.maukaim.bulo.app.endpoints.client.ForClientEventType;
+import com.maukaim.bulo.app.endpoints.client.ClientEventType;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEndpointExpectedIn;
 import com.maukaim.bulo.io.definitions.client.CreateStageDefinitionInstruction;
@@ -13,17 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collection;
 
-import static com.maukaim.bulo.app.commons.endpoints.ClientEventType.DEFINITION_GET_ALL;
-import static com.maukaim.bulo.app.commons.endpoints.ClientEventType.STAGE_DEFINITION_CREATE_INSTRUCTION;
-
 @SystemEndpointExpectedIn({ServiceName.BULO_MS_DEFINITIONS_SERVICE, ServiceName.STANDALONE})
 @RequestMapping("api/v1/definitions")
 public interface DefinitionClientEndpoint {
-    @ForClientEventType(STAGE_DEFINITION_CREATE_INSTRUCTION)
+    @ForClientEventType(ClientEventType.STAGE_DEFINITION_CREATE_INSTRUCTION)
     @PostMapping(value = "/register")
     ResponseEntity<?> consume(@RequestBody CreateStageDefinitionInstruction event);
 
-    @ForClientEventType(DEFINITION_GET_ALL)
+    @ForClientEventType(ClientEventType.DEFINITION_GET_ALL)
     @GetMapping(value = "/getAll")
     ResponseEntity<Collection<StageDefinitionDto>> getAll();
 }

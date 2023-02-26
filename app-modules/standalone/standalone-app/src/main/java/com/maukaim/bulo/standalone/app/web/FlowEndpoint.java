@@ -1,6 +1,6 @@
 package com.maukaim.bulo.standalone.app.web;
 
-import com.maukaim.bulo.app.commons.endpoints.controller.FlowClientEndpoint;
+import com.maukaim.bulo.app.endpoints.client.controller.FlowClientEndpoint;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstructionConsumer;
 import com.maukaim.bulo.io.flows.client.RemoveFlowInstructionConsumer;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstruction;

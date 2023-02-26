@@ -1,10 +1,10 @@
 package com.maukaim.bulo.mockingbird.endpoint;
 
-import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
-import com.maukaim.bulo.app.commons.endpoints.controller.DefinitionClientEndpoint;
-import com.maukaim.bulo.app.commons.endpoints.controller.FlowClientEndpoint;
-import com.maukaim.bulo.app.commons.endpoints.controller.StageClientEndpoint;
-import com.maukaim.bulo.app.commons.endpoints.controller.TriggerClientEndpoint;
+import com.maukaim.bulo.app.endpoints.client.ClientEventType;
+import com.maukaim.bulo.app.endpoints.client.controller.DefinitionClientEndpoint;
+import com.maukaim.bulo.app.endpoints.client.controller.FlowClientEndpoint;
+import com.maukaim.bulo.app.endpoints.client.controller.StageClientEndpoint;
+import com.maukaim.bulo.app.endpoints.client.controller.TriggerClientEndpoint;
 
 import java.util.HashMap;
 import java.util.Map;

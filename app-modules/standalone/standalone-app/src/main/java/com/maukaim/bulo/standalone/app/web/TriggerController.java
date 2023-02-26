@@ -1,6 +1,6 @@
 package com.maukaim.bulo.standalone.app.web;
 
-import com.maukaim.bulo.app.commons.endpoints.controller.TriggerClientEndpoint;
+import com.maukaim.bulo.app.endpoints.client.controller.TriggerClientEndpoint;
 import com.maukaim.bulo.commons.models.TriggerId;
 import com.maukaim.bulo.trigger.scheduler.core.ScheduleTriggerService;
 import com.maukaim.bulo.io.scheduler.client.CreateScheduleTriggerInstruction;

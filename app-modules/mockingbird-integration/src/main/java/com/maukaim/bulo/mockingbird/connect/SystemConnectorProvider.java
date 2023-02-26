@@ -1,6 +1,6 @@
 package com.maukaim.bulo.mockingbird.connect;
 
-import com.maukaim.bulo.app.commons.endpoints.ClientEventType;
+import com.maukaim.bulo.app.endpoints.client.ClientEventType;
 import com.maukaim.bulo.shared.server.core.ServerUtils;
 import com.maukaim.bulo.shared.server.core.SystemContext;
 import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
