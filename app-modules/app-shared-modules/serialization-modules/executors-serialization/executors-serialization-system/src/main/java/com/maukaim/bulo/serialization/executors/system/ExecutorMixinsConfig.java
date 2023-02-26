@@ -1,13 +1,13 @@
-package com.maukaim.bulo.executors.serialization;
+package com.maukaim.bulo.serialization.executors.system;
 
-import com.maukaim.bulo.executors.serialization.mixins.definitions.ParameterDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.StageInputDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.definitions.StageOutputDefinitionDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultDtoMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.results.StageRunResultEventMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.runs.AcknowledgeStageRunEventMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.runs.StageRunEventMixIn;
-import com.maukaim.bulo.executors.serialization.mixins.runs.StandardStageRunEventMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.definitions.ParameterDefinitionDtoMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.definitions.StageInputDefinitionDtoMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.definitions.StageOutputDefinitionDtoMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.results.StageRunResultDtoMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.results.StageRunResultEventMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.runs.AcknowledgeStageRunEventMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.runs.StageRunEventMixIn;
+import com.maukaim.bulo.serialization.executors.system.mixins.runs.StandardStageRunEventMixIn;
 import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
 import com.maukaim.bulo.io.definitions.client.dtos.StageInputDefinitionDto;
 import com.maukaim.bulo.io.definitions.client.dtos.StageOutputDefinitionDto;

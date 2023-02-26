@@ -73,7 +73,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-serialization-module</artifactId>
+            <artifactId>executors-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

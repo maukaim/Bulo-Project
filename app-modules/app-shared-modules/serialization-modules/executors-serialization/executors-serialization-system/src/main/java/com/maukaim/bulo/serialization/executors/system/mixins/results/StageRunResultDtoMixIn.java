@@ -1,4 +1,4 @@
-package com.maukaim.bulo.executors.serialization.mixins.results;
+package com.maukaim.bulo.serialization.executors.system.mixins.results;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
