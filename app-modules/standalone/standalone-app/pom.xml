@@ -97,7 +97,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-data-lifecycle-module</artifactId>
+            <artifactId>definitions-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

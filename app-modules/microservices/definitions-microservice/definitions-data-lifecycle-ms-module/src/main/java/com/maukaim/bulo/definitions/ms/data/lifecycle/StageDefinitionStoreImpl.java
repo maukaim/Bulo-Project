@@ -5,7 +5,7 @@ import com.maukaim.bulo.io.definitions.system.dtos.DefinitionEventType;
 import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
 import com.maukaim.bulo.definitions.data.StageDefinitionStore;
 import com.maukaim.bulo.definitions.data.definition.StageDefinition;
-import com.maukaim.bulo.definitions.data.lifecycle.StageDefinitionDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.definitions.client.StageDefinitionDtoAdapter;
 import com.maukaim.bulo.io.definitions.system.ExecutorUpdateEvent;
 import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
 

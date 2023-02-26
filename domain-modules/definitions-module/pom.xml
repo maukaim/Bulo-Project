@@ -15,6 +15,5 @@
     <modules>
         <module>definitions-core</module>
         <module>definitions-data-module</module>
-        <module>definitions-data-lifecycle-module</module>
     </modules>
 </project>
