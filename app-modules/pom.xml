@@ -18,6 +18,7 @@
         <module>app-shared-modules</module>
         <module>mockingbird-integration</module>
         <module>app-shared-modules/serialization-modules</module>
+        <module>app-shared-modules/system-communication-modules</module>
     </modules>
 
 </project>

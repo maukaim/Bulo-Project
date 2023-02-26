@@ -12,4 +12,8 @@
     <artifactId>serialization-modules</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>data-types-serialization</module>
+        <module>serialization-shared</module>
+    </modules>
 </project>

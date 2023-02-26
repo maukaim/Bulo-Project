@@ -43,7 +43,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-serialization</artifactId>
+            <artifactId>serialization-shared</artifactId>
             <version>${revision}</version>
         </dependency>
 

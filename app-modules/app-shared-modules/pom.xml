@@ -14,8 +14,6 @@
 
     <modules>
         <module>client-endpoints</module>
-        <module>system-communication-core</module>
-        <module>system-communication-api</module>
         <module>swagger-starter</module>
         <module>io-modules</module>
         <module>data-client-lifecycle-modules</module>

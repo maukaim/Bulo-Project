@@ -55,6 +55,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>data-types-serialization</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>runs-orchestrators-serialization-module</artifactId>
             <version>${revision}</version>
         </dependency>
@@ -79,7 +85,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>commons-serialization</artifactId>
+            <artifactId>serialization-shared</artifactId>
             <version>${revision}</version>
         </dependency>
 
