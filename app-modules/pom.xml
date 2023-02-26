@@ -16,11 +16,7 @@
         <module>microservices</module>
         <module>standalone</module>
         <module>app-shared-modules</module>
-        <module>mockingbird-integration</module>
-        <module>app-shared-modules/serialization-modules</module>
-        <module>app-shared-modules/system-communication-modules</module>
-        <module>app-shared-modules/serialization-modules/definitions-serialization</module>
-        <module>app-shared-modules/serialization-modules/triggers-serialization</module>
+        <module>mockingbird</module>
     </modules>
 
 </project>

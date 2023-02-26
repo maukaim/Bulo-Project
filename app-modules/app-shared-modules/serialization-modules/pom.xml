@@ -19,6 +19,8 @@
         <module>flows-serialization</module>
         <module>runs-orchestrators-serialization</module>
         <module>stages-serialization</module>
+        <module>definitions-serialization</module>
+        <module>triggers-serialization</module>
     </modules>
 
     <dependencies>

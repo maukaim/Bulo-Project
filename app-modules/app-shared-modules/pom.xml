@@ -18,6 +18,8 @@
         <module>io-modules</module>
         <module>client-data-lifecycle-modules</module>
         <module>server-modules</module>
+        <module>serialization-modules</module>
+        <module>system-communication-modules</module>
     </modules>
 
 </project>
