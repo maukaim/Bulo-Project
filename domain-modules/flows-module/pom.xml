@@ -15,7 +15,6 @@
     <modules>
         <module>flows-core</module>
         <module>flows-data-module</module>
-        <module>flows-data-lifecycle-module</module>
     </modules>
 
 </project>

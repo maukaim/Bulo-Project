@@ -24,6 +24,16 @@ import com.maukaim.bulo.data.lifecycle.definitions.client.impl.StageInputDefinit
 import com.maukaim.bulo.data.lifecycle.definitions.client.impl.StageInputDefinitionDtoAdapterImpl;
 import com.maukaim.bulo.data.lifecycle.definitions.client.impl.StageOutputDefinitionAdapterImpl;
 import com.maukaim.bulo.data.lifecycle.definitions.client.impl.StageOutputDefinitionDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowStageAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.InputProviderAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.IoDependencyAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.OwnerKeyAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.impl.FlowAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.flows.client.impl.FlowStageAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.flows.client.impl.InputProviderAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.flows.client.impl.IoDependencyAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.flows.client.impl.OwnerKeyAdapterImpl;
 import com.maukaim.bulo.definitions.data.lifecycle.*;
 import com.maukaim.bulo.data.lifecycle.definitions.client.functional.FunctionalSubStageAdapter;
 import com.maukaim.bulo.data.lifecycle.definitions.client.functional.FunctionalSubStageDtoAdapter;
@@ -37,7 +47,6 @@ import com.maukaim.bulo.data.lifecycle.definitions.client.CreateStageDefinitionC
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.lifecycle.*;
-import com.maukaim.bulo.flows.data.lifecycle.impl.*;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstructionConsumer;
 import com.maukaim.bulo.io.flows.client.RemoveFlowInstructionConsumer;
 import com.maukaim.bulo.stages.core.StageService;

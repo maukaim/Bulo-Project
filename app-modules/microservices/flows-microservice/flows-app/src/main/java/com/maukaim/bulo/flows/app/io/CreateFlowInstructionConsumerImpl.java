@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.app.io;
 
 import com.maukaim.bulo.flows.core.FlowService;
-import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowAdapter;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstructionConsumer;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstruction;

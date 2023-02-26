@@ -6,7 +6,7 @@ import com.maukaim.bulo.flows.data.StageStore;
 import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.flows.ms.data.lifecycle.StageDefinitionStoreImpl;
 import com.maukaim.bulo.flows.ms.data.lifecycle.StageStoreImpl;
-import com.maukaim.bulo.flows.data.lifecycle.FlowDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowDtoAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.FlowEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

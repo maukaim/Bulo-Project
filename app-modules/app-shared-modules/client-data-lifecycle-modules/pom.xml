@@ -14,5 +14,6 @@
 
     <modules>
         <module>definitions-client-data-lifecycle</module>
+        <module>flows-client-data-lifecycle</module>
     </modules>
 </project>

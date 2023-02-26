@@ -10,7 +10,7 @@ import com.maukaim.bulo.flows.app.io.StageUpdateEventConsumerImpl;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.data.StageStore;
-import com.maukaim.bulo.flows.data.lifecycle.FlowAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;

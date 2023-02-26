@@ -61,7 +61,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-data-lifecycle-module</artifactId>
+            <artifactId>flows-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

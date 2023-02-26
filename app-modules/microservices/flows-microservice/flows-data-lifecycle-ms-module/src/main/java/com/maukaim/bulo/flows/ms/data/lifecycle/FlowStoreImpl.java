@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.ms.data.lifecycle;
 
 import com.maukaim.bulo.flows.data.FlowStore;
-import com.maukaim.bulo.flows.data.lifecycle.FlowDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowDtoAdapter;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 import com.maukaim.bulo.io.flows.system.FlowEvent;
 import com.maukaim.bulo.io.flows.client.model.FlowDto;
