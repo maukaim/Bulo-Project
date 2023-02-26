@@ -4,7 +4,7 @@ import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
 import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
-import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageAdapter;
 import com.maukaim.bulo.stages.models.stage.Stage;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
 

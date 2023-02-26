@@ -5,7 +5,7 @@ import com.maukaim.bulo.io.stages.client.model.StageDto;
 import com.maukaim.bulo.io.stages.system.StageUpdateEventType;
 import com.maukaim.bulo.stages.models.StageStore;
 import com.maukaim.bulo.stages.models.stage.Stage;
-import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageDtoAdapter;
 
 import java.time.Instant;
 import java.util.List;

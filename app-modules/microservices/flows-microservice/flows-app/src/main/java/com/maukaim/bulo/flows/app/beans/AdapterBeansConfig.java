@@ -24,9 +24,18 @@ import com.maukaim.bulo.data.lifecycle.flows.client.impl.IoDependencyAdapterImpl
 import com.maukaim.bulo.data.lifecycle.flows.client.impl.IoDependencyDtoAdapterImpl;
 import com.maukaim.bulo.data.lifecycle.flows.client.impl.OwnerKeyAdapterImpl;
 import com.maukaim.bulo.data.lifecycle.flows.client.impl.OwnerKeyDtoAdapterImpl;
-import com.maukaim.bulo.flows.data.lifecycle.*;
-import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.*;
-import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.*;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.ParameterAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageInputDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageOutputDefinitionAdapter;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.ParameterAdapterImpl;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.ParameterDefinitionAdapterImpl;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.StageAdapterImpl;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.StageDefinitionAdapterImpl;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.StageInputDefinitionAdapterImpl;
+import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl.StageOutputDefinitionAdapterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

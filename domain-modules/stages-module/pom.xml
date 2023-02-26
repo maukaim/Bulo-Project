@@ -15,6 +15,5 @@
     <modules>
         <module>stages-core</module>
         <module>stages-data-module</module>
-        <module>stages-data-lifecycle-module</module>
     </modules>
 </project>

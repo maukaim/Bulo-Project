@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.app.beans;
 
 import com.maukaim.bulo.api.data.types.natives.StringType;
-import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageDtoAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventPublisher;
 import com.maukaim.bulo.stages.models.StageDefinitionStore;
 import com.maukaim.bulo.stages.models.definition.ParameterDefinition;

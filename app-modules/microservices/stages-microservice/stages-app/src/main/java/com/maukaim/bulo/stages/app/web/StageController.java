@@ -10,7 +10,7 @@ import com.maukaim.bulo.io.stages.client.DeleteStageInstruction;
 import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 import com.maukaim.bulo.io.stages.client.model.StageDto;
 import com.maukaim.bulo.stages.models.stage.Stage;
-import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageDtoAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

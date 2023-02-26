@@ -10,7 +10,7 @@ import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.StageDefinitionService;
-import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import org.springframework.context.annotation.Bean;

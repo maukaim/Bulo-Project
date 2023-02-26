@@ -2,7 +2,7 @@ package com.maukaim.bulo.standalone.app.io;
 
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.validators.StageCreateReport;
-import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageAdapter;
 import com.maukaim.bulo.io.stages.client.CreateStageEventConsumer;
 import com.maukaim.bulo.io.stages.client.CreateStageInstruction;
 import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;

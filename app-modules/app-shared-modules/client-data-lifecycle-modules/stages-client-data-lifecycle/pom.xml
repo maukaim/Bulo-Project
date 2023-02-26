@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>stages-module</artifactId>
+        <artifactId>client-data-lifecycle-modules</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>stages-data-lifecycle-module</artifactId>
+    <artifactId>stages-client-data-lifecycle</artifactId>
 
     <dependencies>
         <dependency>

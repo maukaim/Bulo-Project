@@ -1,19 +1,19 @@
 package com.maukaim.bulo.stages.app.beans;
 
-import com.maukaim.bulo.stages.data.lifecycle.ParameterAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.ParameterAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
-import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageAdapter;
 import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.ParameterDefinitionAdapterImpl;
 import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeAdapterImpl;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.StageDefinitionAdapterImpl;
-import com.maukaim.bulo.stages.data.lifecycle.impl.ParameterAdapterImpl;
-import com.maukaim.bulo.stages.data.lifecycle.impl.StageAdapterImpl;
-import com.maukaim.bulo.stages.data.lifecycle.ParameterDtoAdapter;
-import com.maukaim.bulo.stages.data.lifecycle.impl.ParameterDtoAdapterImpl;
-import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
-import com.maukaim.bulo.stages.data.lifecycle.impl.StageDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.stages.client.impl.ParameterAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.stages.client.impl.StageAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.stages.client.ParameterDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.impl.ParameterDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.impl.StageDtoAdapterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

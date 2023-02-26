@@ -2,7 +2,7 @@ package com.maukaim.bulo.standalone.app.web;
 
 import com.maukaim.bulo.app.commons.endpoints.controller.StageClientEndpoint;
 import com.maukaim.bulo.stages.core.StageService;
-import com.maukaim.bulo.stages.data.lifecycle.StageDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageDtoAdapter;
 import com.maukaim.bulo.io.stages.client.CreateStageEventConsumer;
 import com.maukaim.bulo.io.stages.client.DeleteStageEventConsumer;
 import com.maukaim.bulo.io.stages.client.CreateStageInstruction;

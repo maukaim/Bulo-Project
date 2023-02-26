@@ -1,4 +1,4 @@
-package com.maukaim.bulo.stages.data.lifecycle;
+package com.maukaim.bulo.data.lifecycle.stages.client;
 
 import com.maukaim.bulo.io.stages.client.model.StageDto;
 import com.maukaim.bulo.stages.models.stage.Stage;

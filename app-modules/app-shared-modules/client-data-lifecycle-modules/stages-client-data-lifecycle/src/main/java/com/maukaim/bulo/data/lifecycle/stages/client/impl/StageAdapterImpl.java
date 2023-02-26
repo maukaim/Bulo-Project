@@ -1,11 +1,11 @@
-package com.maukaim.bulo.stages.data.lifecycle.impl;
+package com.maukaim.bulo.data.lifecycle.stages.client.impl;
 
+import com.maukaim.bulo.data.lifecycle.stages.client.ParameterAdapter;
+import com.maukaim.bulo.data.lifecycle.stages.client.StageAdapter;
 import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
 import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
 import com.maukaim.bulo.stages.models.stage.FunctionalStage;
 import com.maukaim.bulo.stages.models.stage.TechnicalStage;
-import com.maukaim.bulo.stages.data.lifecycle.ParameterAdapter;
-import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
 
 import java.util.UUID;
 import java.util.stream.Collectors;

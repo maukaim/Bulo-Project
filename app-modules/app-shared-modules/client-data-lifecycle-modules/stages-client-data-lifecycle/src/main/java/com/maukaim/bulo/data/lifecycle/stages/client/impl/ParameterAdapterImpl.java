@@ -1,8 +1,8 @@
-package com.maukaim.bulo.stages.data.lifecycle.impl;
+package com.maukaim.bulo.data.lifecycle.stages.client.impl;
 
+import com.maukaim.bulo.data.lifecycle.stages.client.ParameterAdapter;
 import com.maukaim.bulo.io.stages.client.model.ParameterDto;
 import com.maukaim.bulo.stages.models.stage.Parameter;
-import com.maukaim.bulo.stages.data.lifecycle.ParameterAdapter;
 
 public class ParameterAdapterImpl implements ParameterAdapter {
     @Override
