@@ -67,7 +67,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-serialization-module</artifactId>
+            <artifactId>stages-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 

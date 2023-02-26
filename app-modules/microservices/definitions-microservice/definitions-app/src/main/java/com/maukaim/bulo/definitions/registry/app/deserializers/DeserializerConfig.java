@@ -3,7 +3,7 @@ package com.maukaim.bulo.definitions.registry.app.deserializers;
 import com.maukaim.bulo.serialization.shared.CommonMixinsConfig;
 import com.maukaim.bulo.serialization.definitions.system.DefinitionSystemMixinsConfig;
 import com.maukaim.bulo.serialization.data.types.DataTypeMixInsConfig;
-import com.maukaim.bulo.serialization.stage.StageMixinsConfig;
+import com.maukaim.bulo.serialization.stages.system.StageSystemMixinsConfig;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class DeserializerConfig {
             jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);
             jacksonObjectMapperBuilder.mixIns(DefinitionSystemMixinsConfig.DEFINITIONS_SYSTEM_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(DataTypeMixInsConfig.DATA_TYPES_COMMONS_MIXINS);
-            jacksonObjectMapperBuilder.mixIns(StageMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(StageSystemMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
         };
     }
 }
