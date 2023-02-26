@@ -13,7 +13,6 @@
 
     <properties>
         <apache.commons.io.version>2.11.0</apache.commons.io.version>
-        <jackson.library.version>2.14.1</jackson.library.version>
     </properties>
 
     <dependencies>
@@ -32,7 +31,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.library.version}</version>
+            <version>${jackson.version}</version>
             <scope>provided</scope>
         </dependency>
 

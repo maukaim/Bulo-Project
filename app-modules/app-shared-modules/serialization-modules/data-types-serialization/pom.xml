@@ -11,32 +11,11 @@
 
     <artifactId>data-types-serialization</artifactId>
 
-    <properties>
-        <jackson.version>2.11.4</jackson.version>
-    </properties>
-
     <dependencies>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
-            <!--            TODO: Should be provided, see at applications level how to solve that.-->
-            <!--            <scope>provided</scope>-->
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-            <!--            TODO: Should be provided, see at applications level how to solve that.-->
-            <!--            <scope>provided</scope>-->
-        </dependency>
-
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>data-types-io</artifactId>
             <version>${revision}</version>
         </dependency>
-
     </dependencies>
 </project>
