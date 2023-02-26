@@ -17,7 +17,7 @@ public class DeserializerConfig {
         return jacksonObjectMapperBuilder -> {
             jacksonObjectMapperBuilder.deserializersByType(COMMON_DESERIALIZERS);
             jacksonObjectMapperBuilder.mixIns(CommonMixinsConfig.COMMON_SERIALIZATION_JACKSON_MIXINS);
-            jacksonObjectMapperBuilder.mixIns(DefinitionMixinsConfig.DEFINITIONS_REGISTRY_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(DefinitionMixinsConfig.DEFINITIONS_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(StageMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
         };
     }

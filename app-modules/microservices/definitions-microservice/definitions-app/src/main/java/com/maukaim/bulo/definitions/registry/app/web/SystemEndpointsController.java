@@ -6,7 +6,7 @@ import com.maukaim.bulo.definitions.ms.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.definitions.ms.data.lifecycle.TechnicalStageDefinitionEventConsumer;
 import com.maukaim.bulo.io.definitions.system.ExecutorUpdateEvent;
 import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
-import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionCreateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IExecutorUpdateServiceEndpoint;

@@ -7,7 +7,7 @@ import com.maukaim.bulo.executors.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.io.executors.system.StageRunResultEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunCancellationEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.NeedStageRunExecutionEvent;
-import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunCancellationServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunRequiredServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageRunResultServiceEndpoint;

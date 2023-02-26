@@ -56,7 +56,7 @@ public class DefinitionMixinsConfig {
             OutputProviderDto.class, OutputProviderDtoMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> DEFINITIONS_REGISTRY_JACKSON_MIXIN = new HashMap<>() {{
+    public static Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = new HashMap<>() {{
         putAll(COMMON_DEFINITIONS_MIXINS);
         putAll(FUNCTIONAL_DEFINITIONS_MIXINS);
         putAll(TECHNICAL_DEFINITIONS_MIXINS);

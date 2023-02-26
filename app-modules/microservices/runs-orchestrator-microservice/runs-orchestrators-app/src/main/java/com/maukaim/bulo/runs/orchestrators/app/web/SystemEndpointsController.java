@@ -5,7 +5,7 @@ import com.maukaim.bulo.io.executors.system.StageRunEvent;
 import com.maukaim.bulo.io.flows.system.FlowEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunStartEvent;
-import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IFlowRunStartServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IFlowRunUpdateServiceEndpoint;

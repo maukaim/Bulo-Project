@@ -25,7 +25,7 @@ public class MarshallerProvider {
 
     private static Map<Class<?>, Class<?>> getAllMixIns() {
         return new HashMap<>() {{
-            putAll(DefinitionMixinsConfig.DEFINITIONS_REGISTRY_JACKSON_MIXIN);
+            putAll(DefinitionMixinsConfig.DEFINITIONS_JACKSON_MIXIN);
             putAll(StageMixinsConfig.STAGES_SERVICE_JACKSON_MIXIN);
             putAll(FlowMixinsConfig.SERIALIZATION_JACKSON_MIXIN);
             putAll(SchedulerMixinsConfig.TRIGGER_SCHEDULER_JACKSON_MIXIN);

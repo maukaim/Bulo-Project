@@ -32,6 +32,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>common-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>

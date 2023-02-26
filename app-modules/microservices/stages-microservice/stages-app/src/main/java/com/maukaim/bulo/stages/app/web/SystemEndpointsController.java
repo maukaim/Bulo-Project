@@ -1,11 +1,11 @@
 package com.maukaim.bulo.stages.app.web;
 
+import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IDefinitionUpdateServiceEndpoint;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.IStageUpdateServiceEndpoint;
-import com.maukaim.bulo.io.stages.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.stages.system.TechnicalStageDefinitionEventConsumer;
-import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
-import com.maukaim.bulo.io.stages.system.events.TechnicalStageDefinitionEvent;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageDefinitionEventConsumer;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,15 +29,15 @@ public class SystemEndpointsController {
     }
 
     @RestController
-    public class ServiceDefinitionUpdateEndpoint implements IDefinitionUpdateServiceEndpoint<TechnicalStageDefinitionEvent> {
-        private TechnicalStageDefinitionEventConsumer definitionEventConsumer;
+    public class ServiceDefinitionUpdateEndpoint implements IDefinitionUpdateServiceEndpoint<StageDefinitionEvent> {
+        private StageDefinitionEventConsumer definitionEventConsumer;
 
-        public ServiceDefinitionUpdateEndpoint(TechnicalStageDefinitionEventConsumer definitionEventConsumer) {
+        public ServiceDefinitionUpdateEndpoint(StageDefinitionEventConsumer definitionEventConsumer) {
             this.definitionEventConsumer = definitionEventConsumer;
         }
 
         @Override
-        public void consume(TechnicalStageDefinitionEvent event) {
+        public void consume(StageDefinitionEvent event) {
             this.definitionEventConsumer.consume(event);
         }
     }

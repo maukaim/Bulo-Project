@@ -3,16 +3,16 @@ package com.maukaim.bulo.stages.app.beans;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
 import com.maukaim.bulo.io.stages.client.CreateStageEventConsumer;
 import com.maukaim.bulo.io.stages.client.DeleteStageEventConsumer;
-import com.maukaim.bulo.io.stages.system.StageUpdateEventConsumer;
-import com.maukaim.bulo.io.stages.system.StageUpdateEventPublisher;
-import com.maukaim.bulo.io.stages.system.TechnicalStageDefinitionEventConsumer;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventPublisher;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageDefinitionEventConsumer;
 import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.StageDefinitionService;
 import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageStoreImpl;
-import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,8 +43,8 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionEventConsumer technicalStageDefinitionEventConsumer(StageDefinitionService definitionService,
-                                                                                       TechnicalStageDefinitionAdapter definitionAdapter){
+    public StageDefinitionEventConsumer technicalStageDefinitionEventConsumer(StageDefinitionService definitionService,
+                                                                              StageDefinitionAdapter definitionAdapter){
         return new StageDefinitionEventConsumerImpl(definitionAdapter,definitionService);
     }
 

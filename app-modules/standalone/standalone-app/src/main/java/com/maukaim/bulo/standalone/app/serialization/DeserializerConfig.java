@@ -24,7 +24,7 @@ public class DeserializerConfig {
             jacksonObjectMapperBuilder.mixIns(FlowMixinsConfig.SERIALIZATION_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(TriggersMixinsConfig.TRIGGERS_JACKSON_MIXIN);
             jacksonObjectMapperBuilder.mixIns(SchedulerMixinsConfig.TRIGGER_SCHEDULER_JACKSON_MIXIN);
-            jacksonObjectMapperBuilder.mixIns(DefinitionMixinsConfig.DEFINITIONS_REGISTRY_JACKSON_MIXIN);
+            jacksonObjectMapperBuilder.mixIns(DefinitionMixinsConfig.DEFINITIONS_JACKSON_MIXIN);
         };
     }
 }

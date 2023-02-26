@@ -1,7 +1,7 @@
 package com.maukaim.bulo.stages.app.io;
 
-import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
-import com.maukaim.bulo.io.stages.system.StageUpdateEventConsumer;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
+import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.io.stages.client.model.FunctionalStageDto;
 import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
 import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;

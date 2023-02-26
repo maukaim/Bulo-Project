@@ -4,10 +4,10 @@ import com.maukaim.bulo.stages.data.lifecycle.ParameterAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.stages.data.lifecycle.StageAdapter;
 import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
-import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.TechnicalStageDefinitionAdapter;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.ParameterDefinitionAdapterImpl;
 import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeAdapterImpl;
-import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.TechnicalStageDefinitionAdapterImpl;
+import com.maukaim.bulo.stages.ms.data.lifecycle.adapters.impl.StageDefinitionAdapterImpl;
 import com.maukaim.bulo.stages.data.lifecycle.impl.ParameterAdapterImpl;
 import com.maukaim.bulo.stages.data.lifecycle.impl.StageAdapterImpl;
 import com.maukaim.bulo.stages.data.lifecycle.ParameterDtoAdapter;
@@ -51,7 +51,7 @@ public class AdapterBeansConfig {
     }
 
     @Bean
-    public TechnicalStageDefinitionAdapter technicalStageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter) {
-        return new TechnicalStageDefinitionAdapterImpl(parameterDefinitionAdapter);
+    public StageDefinitionAdapter technicalStageDefinitionAdapter(ParameterDefinitionAdapter parameterDefinitionAdapter) {
+        return new StageDefinitionAdapterImpl(parameterDefinitionAdapter);
     }
 }

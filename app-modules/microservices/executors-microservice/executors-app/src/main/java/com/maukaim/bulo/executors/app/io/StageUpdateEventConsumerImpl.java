@@ -7,7 +7,7 @@ import com.maukaim.bulo.executors.data.stages.Stage;
 import com.maukaim.bulo.executors.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.io.stages.client.model.StageDto;
 import com.maukaim.bulo.io.stages.client.model.TechnicalStageDto;
-import com.maukaim.bulo.io.stages.system.events.StageUpdateEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
 
 public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     private final StageStore stageStore;
