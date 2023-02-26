@@ -1,13 +1,13 @@
 package com.maukaim.bulo.standalone.app.beans;
 
-import com.maukaim.bulo.common.data.lifecycle.IoTypeAdapter;
-import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
-import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
-import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;
-import com.maukaim.bulo.common.data.lifecycle.impl.IoTypeAdapterImpl;
-import com.maukaim.bulo.common.data.lifecycle.impl.IoTypeDtoAdapterImpl;
-import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeAdapterImpl;
-import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.IoTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.IoTypeDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.ParameterTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.ParameterTypeDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.IoTypeAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.IoTypeDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.ParameterTypeAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.ParameterTypeDtoAdapterImpl;
 import com.maukaim.bulo.data.lifecycle.definitions.client.ParameterDefinitionAdapter;
 import com.maukaim.bulo.data.lifecycle.definitions.client.ParameterDefinitionDtoAdapter;
 import com.maukaim.bulo.data.lifecycle.definitions.client.StageDefinitionAdapter;

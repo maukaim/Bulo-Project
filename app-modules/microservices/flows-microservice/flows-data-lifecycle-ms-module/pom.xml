@@ -44,7 +44,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>common-data-lifecycle</artifactId>
+            <artifactId>data-types-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

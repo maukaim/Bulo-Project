@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.api.data.types.io.IoType;
-import com.maukaim.bulo.common.data.lifecycle.IoTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.IoTypeAdapter;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageInputDefinitionAdapter;

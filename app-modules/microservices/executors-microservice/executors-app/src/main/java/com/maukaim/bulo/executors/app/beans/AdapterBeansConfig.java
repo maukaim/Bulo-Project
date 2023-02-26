@@ -1,9 +1,9 @@
 package com.maukaim.bulo.executors.app.beans;
 
-import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
-import com.maukaim.bulo.common.data.lifecycle.impl.IoTypeDtoAdapterImpl;
-import com.maukaim.bulo.common.data.lifecycle.ParameterTypeDtoAdapter;
-import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.IoTypeDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.IoTypeDtoAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.ParameterTypeDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.ParameterTypeDtoAdapterImpl;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.*;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.impl.*;
 import org.springframework.context.annotation.Bean;

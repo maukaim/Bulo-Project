@@ -1,7 +1,7 @@
 package com.maukaim.bulo.flows.ms.data.lifecycle.adapters.impl;
 
 import com.maukaim.bulo.api.data.types.parameters.ParameterType;
-import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.ParameterTypeAdapter;
 import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.ParameterDefinitionAdapter;
 import com.maukaim.bulo.flows.data.models.definition.ParameterDefinition;

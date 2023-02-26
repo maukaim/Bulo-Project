@@ -1,4 +1,4 @@
-package com.maukaim.bulo.common.data.lifecycle.impl;
+package com.maukaim.bulo.data.lifecycle.data.types.client.impl;
 
 import com.maukaim.bulo.api.data.types.natives.BooleanType;
 import com.maukaim.bulo.api.data.types.natives.NumberType;
@@ -6,7 +6,7 @@ import com.maukaim.bulo.api.data.types.natives.StringType;
 import com.maukaim.bulo.api.data.types.parameters.ArrayParameterType;
 import com.maukaim.bulo.api.data.types.parameters.BuloParameterType;
 import com.maukaim.bulo.api.data.types.parameters.ParameterType;
-import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.ParameterTypeAdapter;
 import com.maukaim.bulo.io.data.types.ArrayParameterTypeDto;
 import com.maukaim.bulo.io.data.types.BuloParameterTypeDto;
 import com.maukaim.bulo.io.data.types.ParameterTypeDto;

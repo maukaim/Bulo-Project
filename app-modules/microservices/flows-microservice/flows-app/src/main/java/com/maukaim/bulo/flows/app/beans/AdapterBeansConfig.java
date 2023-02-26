@@ -1,9 +1,9 @@
 package com.maukaim.bulo.flows.app.beans;
 
-import com.maukaim.bulo.common.data.lifecycle.IoTypeAdapter;
-import com.maukaim.bulo.common.data.lifecycle.ParameterTypeAdapter;
-import com.maukaim.bulo.common.data.lifecycle.impl.IoTypeAdapterImpl;
-import com.maukaim.bulo.common.data.lifecycle.impl.ParameterTypeAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.IoTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.ParameterTypeAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.IoTypeAdapterImpl;
+import com.maukaim.bulo.data.lifecycle.data.types.client.impl.ParameterTypeAdapterImpl;
 import com.maukaim.bulo.data.lifecycle.flows.client.FlowAdapter;
 import com.maukaim.bulo.data.lifecycle.flows.client.FlowDtoAdapter;
 import com.maukaim.bulo.data.lifecycle.flows.client.FlowStageAdapter;

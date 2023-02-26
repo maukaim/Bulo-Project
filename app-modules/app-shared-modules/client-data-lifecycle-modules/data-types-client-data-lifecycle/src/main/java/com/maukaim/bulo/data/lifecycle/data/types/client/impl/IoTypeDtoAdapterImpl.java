@@ -1,10 +1,10 @@
-package com.maukaim.bulo.common.data.lifecycle.impl;
+package com.maukaim.bulo.data.lifecycle.data.types.client.impl;
 
 import com.maukaim.bulo.api.data.types.NativeType;
 import com.maukaim.bulo.api.data.types.io.ArrayIoType;
 import com.maukaim.bulo.api.data.types.io.BuloIoType;
 import com.maukaim.bulo.api.data.types.io.IoType;
-import com.maukaim.bulo.common.data.lifecycle.IoTypeDtoAdapter;
+import com.maukaim.bulo.data.lifecycle.data.types.client.IoTypeDtoAdapter;
 import com.maukaim.bulo.io.data.types.ArrayIoTypeDto;
 import com.maukaim.bulo.io.data.types.BuloIoTypeDto;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
