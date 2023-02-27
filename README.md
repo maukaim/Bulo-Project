@@ -1,7 +1,6 @@
 <div>
     <h1 class="title"><img src="docs/assets/bulo-logo.svg" width="100" alt="Bulo logo" /> Bulo Automation Platform (ALPHA)</h1>  
 </div>
-_____________________________________________________
 
 Bulo Platform is a solution for IT & Operational teams to collaborate and automate their business.   
 
