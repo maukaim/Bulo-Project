@@ -1,15 +1,15 @@
 <div>
     <h1 class="title"><img src="docs/assets/bulo-logo.svg" width="100" alt="Bulo logo" /> Bulo Automation Platform (ALPHA)</h1>  
-</div>
+</div>  
+<br/>
 
-Bulo Platform is a solution for IT & Operational teams to collaborate and automate their business.   
+
+**Bulo Platform is a solution for IT & Operational teams to collaborate and automate their business.**   
 
 Create complexe workflows, increase your productivity and avoid coding 2 times the same feature.
 Bulo is built as an Open Source Software under the MIT license, and has been designed to be flexible and customizable to fit all company size.
 
-__*Bulo is in Alpha version. Fast iterations until the 1st release in mid 2023, 
-the code base and structure may significantly change.  
-Please check before engaging in a PR.*__
+__*Alpha version. Fast iterations until release mid 2023. Code base & structure may change. Please check before engaging in a PR.*__
 
 ## Features  
 
