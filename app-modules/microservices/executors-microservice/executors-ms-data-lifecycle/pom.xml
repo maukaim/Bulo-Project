@@ -3,44 +3,42 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>standalone</artifactId>
+        <artifactId>executors-microservice</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>standalone-data-lifecycle-module</artifactId>
+    <artifactId>executors-ms-data-lifecycle</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-data-module</artifactId>
+            <artifactId>executors-models</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runs-orchestrators-data-module</artifactId>
+            <artifactId>executors-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>runs-orchestrators-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>stages-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-data-module</artifactId>
-            <version>${revision}</version>
-        </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-data-module</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-data-module</artifactId>
+            <artifactId>data-types-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>
-
 </project>

@@ -14,6 +14,6 @@
 
     <modules>
         <module>stages-app</module>
-        <module>stages-data-lifecycle-ms-module</module>
+        <module>stages-ms-data-lifecycle</module>
     </modules>
 </project>

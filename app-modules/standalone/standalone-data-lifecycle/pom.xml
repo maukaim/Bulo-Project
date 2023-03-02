@@ -3,49 +3,44 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>flows-microservice</artifactId>
+        <artifactId>standalone</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>flows-data-lifecycle-ms-module</artifactId>
+    <artifactId>standalone-data-lifecycle</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-data-module</artifactId>
+            <artifactId>flows-models</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-io-system</artifactId>
+            <artifactId>runs-orchestrators-models</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-io-system</artifactId>
+            <artifactId>stages-models</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-io-system</artifactId>
+            <artifactId>executors-models</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-client-data-lifecycle</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>data-types-client-data-lifecycle</artifactId>
+            <artifactId>definitions-models</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>
+
 </project>

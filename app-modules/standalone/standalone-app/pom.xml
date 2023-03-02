@@ -151,7 +151,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>standalone-data-lifecycle-module</artifactId>
+            <artifactId>standalone-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

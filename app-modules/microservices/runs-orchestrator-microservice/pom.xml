@@ -14,6 +14,6 @@
 
     <modules>
         <module>runs-orchestrators-app</module>
-        <module>runs-orchestrators-data-lifecycle-ms-module</module>
+        <module>runs-orchestrators-ms-data-lifecycle</module>
     </modules>
 </project>

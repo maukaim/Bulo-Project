@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-data-module</artifactId>
+            <artifactId>flows-models</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

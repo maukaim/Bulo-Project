@@ -14,7 +14,7 @@
 
     <modules>
         <module>flows-core</module>
-        <module>flows-data-module</module>
+        <module>flows-models</module>
     </modules>
 
 </project>

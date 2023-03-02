@@ -61,7 +61,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-data-lifecycle-ms-module</artifactId>
+            <artifactId>stages-ms-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

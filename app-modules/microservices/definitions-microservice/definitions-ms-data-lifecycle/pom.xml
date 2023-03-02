@@ -3,42 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>stages-microservice</artifactId>
+        <artifactId>definitions-microservice</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>stages-data-lifecycle-ms-module</artifactId>
+    <artifactId>definitions-ms-data-lifecycle</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-data-module</artifactId>
+            <artifactId>definitions-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-client-data-lifecycle</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>stages-io-system</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-io-system</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>data-types-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

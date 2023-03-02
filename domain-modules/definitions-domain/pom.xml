@@ -14,6 +14,6 @@
 
     <modules>
         <module>definitions-core</module>
-        <module>definitions-data-module</module>
+        <module>definitions-models</module>
     </modules>
 </project>

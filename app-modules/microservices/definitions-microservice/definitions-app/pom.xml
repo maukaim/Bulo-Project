@@ -73,7 +73,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-data-lifecycle-ms-module</artifactId>
+            <artifactId>definitions-ms-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

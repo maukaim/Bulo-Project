@@ -13,6 +13,6 @@
 
     <modules>
         <module>flows-app</module>
-        <module>flows-data-lifecycle-ms-module</module>
+        <module>flows-ms-data-lifecycle</module>
     </modules>
 </project>

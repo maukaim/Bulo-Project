@@ -3,37 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>executors-microservice</artifactId>
+        <artifactId>stages-microservice</artifactId>
         <groupId>com.maukaim.bulo</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>executors-data-lifecycle-module</artifactId>
+    <artifactId>stages-ms-data-lifecycle</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-data-module</artifactId>
+            <artifactId>stages-models</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-io-system</artifactId>
+            <artifactId>stages-client-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runs-orchestrators-io-system</artifactId>
-            <version>${revision}</version>
-        </dependency>
+
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>stages-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>

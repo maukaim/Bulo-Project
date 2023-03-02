@@ -14,7 +14,7 @@
 
 
     <modules>
-        <module>standalone-data-lifecycle-module</module>
+        <module>standalone-data-lifecycle</module>
         <module>standalone-app</module>
     </modules>
 </project>

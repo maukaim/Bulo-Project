@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-data-module</artifactId>
+            <artifactId>definitions-models</artifactId>
             <version>${revision}</version>
         </dependency>
 

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>executors-data-module</artifactId>
+            <artifactId>executors-models</artifactId>
             <version>${revision}</version>
         </dependency>
 

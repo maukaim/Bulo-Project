@@ -61,7 +61,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runs-orchestrators-data-lifecycle-module</artifactId>
+            <artifactId>runs-orchestrators-ms-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

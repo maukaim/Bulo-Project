@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-scheduler-data-module</artifactId>
+            <artifactId>triggers-scheduler-models</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

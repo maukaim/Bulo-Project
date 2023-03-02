@@ -73,7 +73,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-scheduler-data-lifecycle-module</artifactId>
+            <artifactId>scheduler-ms-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 

@@ -14,6 +14,6 @@
 
     <modules>
         <module>stages-core</module>
-        <module>stages-data-module</module>
+        <module>stages-models</module>
     </modules>
 </project>

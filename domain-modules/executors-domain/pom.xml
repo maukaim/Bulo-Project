@@ -14,7 +14,7 @@
 
     <modules>
         <module>executors-core</module>
-        <module>executors-data-module</module>
+        <module>executors-models</module>
         <module>runners-module</module>
     </modules>
 </project>

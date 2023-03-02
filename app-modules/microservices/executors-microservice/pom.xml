@@ -14,6 +14,6 @@
 
     <modules>
         <module>executors-app</module>
-        <module>executors-data-lifecycle-ms-module</module>
+        <module>executors-ms-data-lifecycle</module>
     </modules>
 </project>

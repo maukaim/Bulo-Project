@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runs-orchestrators-data-module</artifactId>
+            <artifactId>runs-orchestrators-models</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>
