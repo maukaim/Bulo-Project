@@ -31,7 +31,6 @@ import springfox.documentation.swagger2.configuration.Swagger2DocumentationConfi
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -54,14 +53,17 @@ import java.util.List;
         HttpMessageConvertersAutoConfiguration.class,
         RepositoryRestMvcAutoConfiguration.class})
 public class MaukaimSwaggerAutoConfiguration {
-    @Autowired
-    private MaukaimSwaggerProperties swaggerProperties;
+    private final MaukaimSwaggerProperties swaggerProperties;
+    private final List<SwaggerConfigCustomizer> configurationCustomizers;
+    private final List<DocketCustomizer> docketCustomizers;
 
-    @Autowired(required = false)
-    private List<SwaggerConfigCustomizer> configurationCustomizers = Collections.emptyList();
-
-    @Autowired(required = false)
-    private List<DocketCustomizer> docketCustomizers = Collections.emptyList();
+    public MaukaimSwaggerAutoConfiguration(@Autowired MaukaimSwaggerProperties swaggerProperties,
+                                           @Autowired(required = false) List<SwaggerConfigCustomizer> configurationCustomizers,
+                                           @Autowired(required = false) List<DocketCustomizer> docketCustomizers) {
+        this.swaggerProperties = swaggerProperties;
+        this.configurationCustomizers = configurationCustomizers == null ? new ArrayList<>() : configurationCustomizers;
+        this.docketCustomizers = docketCustomizers == null ? new ArrayList<>() : docketCustomizers;
+    }
 
     @PostConstruct
     void customizeConfiguration() {
