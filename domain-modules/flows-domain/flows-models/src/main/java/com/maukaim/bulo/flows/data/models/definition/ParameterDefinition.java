@@ -4,8 +4,8 @@ import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinition implements ParameterDefinitionInterface {
-    private String name;
-    private ParameterType parameterType;
+    private final String name;
+    private final ParameterType parameterType;
 
     public ParameterDefinition(String name, ParameterType parameterType) {
         this.name = name;

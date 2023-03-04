@@ -8,7 +8,7 @@ import com.maukaim.bulo.definitions.data.definition.ParameterDefinition;
 import com.maukaim.bulo.io.definitions.client.dtos.ParameterDefinitionDto;
 
 public class ParameterDefinitionAdapterImpl implements ParameterDefinitionAdapter {
-    private ParameterTypeAdapter parameterTypeAdapter;
+    private final ParameterTypeAdapter parameterTypeAdapter;
 
     public ParameterDefinitionAdapterImpl(ParameterTypeAdapter parameterTypeAdapter) {
         this.parameterTypeAdapter = parameterTypeAdapter;

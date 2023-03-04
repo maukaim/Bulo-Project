@@ -4,8 +4,8 @@ import com.maukaim.bulo.api.data.types.DataTypeCategory;
 import com.maukaim.bulo.api.data.types.io.IoType;
 
 public class StageInputDefinition {
-    private String name;
-    private IoType type;
+    private final String name;
+    private final IoType type;
 
     public StageInputDefinition(String name,
                                 IoType type) {

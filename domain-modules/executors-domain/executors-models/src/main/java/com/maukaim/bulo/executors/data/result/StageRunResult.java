@@ -3,9 +3,9 @@ package com.maukaim.bulo.executors.data.result;
 import java.util.Map;
 
 public class StageRunResult {
-    private String stageRunId;
-    private StageRunStatus status;
-    private Map<String, String> outputsByName;
+    private final String stageRunId;
+    private final StageRunStatus status;
+    private final Map<String, String> outputsByName;
 
     public static StageRunResult of(String stageRunId, StageRunStatus status){
         return new StageRunResult(stageRunId, status, Map.of());

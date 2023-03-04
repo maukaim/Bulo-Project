@@ -11,12 +11,12 @@ import java.util.Map;
 
 public class DefinitionSystemMixinsConfig {
 
-    private static Map<Class<?>, Class<?>> SYSTEM_EVENTS_DEFINITIONS_MIXINS = Map.of(
+    private static final Map<Class<?>, Class<?>> SYSTEM_EVENTS_DEFINITIONS_MIXINS = Map.of(
             StageDefinitionEvent.class, StageDefinitionEventMixIn.class,
             ExecutorUpdateEvent.class, ExecutorUpdateEventMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> DEFINITIONS_SYSTEM_JACKSON_MIXIN = new HashMap<>() {{
+    public static final Map<Class<?>, Class<?>> DEFINITIONS_SYSTEM_JACKSON_MIXIN = new HashMap<>() {{
         putAll(SYSTEM_EVENTS_DEFINITIONS_MIXINS);
         putAll(DefinitionClientMixinsConfig.DEFINITIONS_CLIENT_JACKSON_MIXIN);
     }};

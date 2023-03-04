@@ -6,10 +6,10 @@ import com.maukaim.bulo.io.stages.client.model.StageDto;
 import java.time.Instant;
 
 public class StageUpdateEvent implements ExternalEvent {
-    private String stageId;
-    private StageDto stage;
-    private StageUpdateEventType eventType;
-    private Instant instant;
+    private final String stageId;
+    private final StageDto stage;
+    private final StageUpdateEventType eventType;
+    private final Instant instant;
 
     public StageUpdateEvent(String stageId, StageDto stage, StageUpdateEventType eventType, Instant instant) {
         this.stageId = stageId;

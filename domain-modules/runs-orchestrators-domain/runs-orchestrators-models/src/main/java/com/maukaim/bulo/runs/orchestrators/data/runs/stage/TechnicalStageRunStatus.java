@@ -18,8 +18,8 @@ public enum TechnicalStageRunStatus implements RunStatus{
         this.description = description;
     }
 
-    private static Set<TechnicalStageRunStatus> TERMINAL_STATES = Set.of(CANCELLED, FAILED, SUCCESS);
-    private static Set<TechnicalStageRunStatus> PROBLEM_STATES = Set.of(CANCELLED, FAILED);
+    private static final Set<TechnicalStageRunStatus> TERMINAL_STATES = Set.of(CANCELLED, FAILED, SUCCESS);
+    private static final Set<TechnicalStageRunStatus> PROBLEM_STATES = Set.of(CANCELLED, FAILED);
 
     @Override
     public boolean isTerminal() {

@@ -6,9 +6,9 @@ import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
 import java.time.Instant;
 
 public class StageDefinitionEvent {
-    private StageDefinitionDto stageDefinition;
-    private DefinitionEventType eventType;
-    private Instant instant;
+    private final StageDefinitionDto stageDefinition;
+    private final DefinitionEventType eventType;
+    private final Instant instant;
 
     public StageDefinitionEvent(StageDefinitionDto stageDefinition, DefinitionEventType eventType, Instant instant) {
         this.stageDefinition = stageDefinition;

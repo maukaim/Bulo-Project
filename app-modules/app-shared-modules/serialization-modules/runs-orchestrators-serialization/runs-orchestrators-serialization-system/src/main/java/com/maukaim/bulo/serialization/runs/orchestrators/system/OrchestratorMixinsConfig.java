@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class OrchestratorMixinsConfig {
 
-    public static Map<Class<?>, Class<?>> FLOW_RUN_MIXINS = Map.of(
+    public static final Map<Class<?>, Class<?>> FLOW_RUN_MIXINS = Map.of(
             FlowRunEvent.class, FlowRunEventMixIn.class,
             FlowRunDto.class, FlowRunDtoMixIn.class,
             ExecutionGraphDto.class, ExecutionGraphDtoMixIn.class,
@@ -44,7 +44,7 @@ public class OrchestratorMixinsConfig {
             StageRunAncestorDto.class, StageRunAncestorDtoMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
+    public static final Map<Class<?>, Class<?>> ORCHESTRATOR_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
         putAll(FLOW_RUN_MIXINS);
         put(FlowRunStartEvent.class, TriggerEventMixIn.class);
         put(NeedStageRunCancellationEvent.class, NeedStageRunCancellationEventMixIn.class);

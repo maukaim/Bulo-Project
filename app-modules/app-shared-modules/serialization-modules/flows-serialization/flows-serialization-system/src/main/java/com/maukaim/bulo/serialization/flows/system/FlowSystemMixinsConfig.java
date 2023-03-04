@@ -10,11 +10,11 @@ import java.util.Map;
 
 public class FlowSystemMixinsConfig {
 
-    public static Map<Class<?>, Class<?>> FLOW_EVENT_SERIALIZATION_JACKSON_MIXIN = Map.of(
+    public static final Map<Class<?>, Class<?>> FLOW_EVENT_SERIALIZATION_JACKSON_MIXIN = Map.of(
             FlowEvent.class, FlowEventMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> FLOW_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
+    public static final Map<Class<?>, Class<?>> FLOW_SERIALIZATION_JACKSON_MIXIN = new HashMap<>() {{
         putAll(FLOW_EVENT_SERIALIZATION_JACKSON_MIXIN);
         putAll(FlowClientMixinsConfig.FLOW_CLIENT_SERIALIZATION_JACKSON_MIXIN);
     }};

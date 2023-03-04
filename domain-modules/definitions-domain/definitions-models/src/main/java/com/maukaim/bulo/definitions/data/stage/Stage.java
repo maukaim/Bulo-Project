@@ -5,10 +5,10 @@ import com.maukaim.bulo.commons.models.StageType;
 import java.util.List;
 
 public abstract class Stage {
-    protected String stageId;
-    protected String definitionId;
-    protected StageType stageType;
-    protected List<Parameter> parameters;
+    protected final String stageId;
+    protected final String definitionId;
+    protected final StageType stageType;
+    protected final List<Parameter> parameters;
 
     public Stage(String stageId, String definitionId, StageType stageType, List<Parameter> parameters) {
         this.stageId = stageId;
@@ -23,10 +23,6 @@ public abstract class Stage {
 
     public String getStageId() {
         return stageId;
-    }
-
-    public StageType getStageType() {
-        return stageType;
     }
 
     public List<Parameter> getParameters() {

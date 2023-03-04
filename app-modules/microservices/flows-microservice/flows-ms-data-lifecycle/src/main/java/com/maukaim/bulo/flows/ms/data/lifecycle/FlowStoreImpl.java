@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FlowStoreImpl implements FlowStore {
-    private Map<String, Flow> flowById;
+    private final Map<String, Flow> flowById;
     private final FlowEventPublisher flowEventPublisher;
     private final FlowDtoAdapter flowDtoAdapter;
 

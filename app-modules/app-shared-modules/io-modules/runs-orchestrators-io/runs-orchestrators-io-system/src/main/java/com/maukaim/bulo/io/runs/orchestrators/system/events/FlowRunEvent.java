@@ -6,8 +6,8 @@ import com.maukaim.bulo.io.shared.ExternalEvent;
 import java.time.Instant;
 
 public class FlowRunEvent implements ExternalEvent {
-    private FlowRunDto flowRunDto;
-    private Instant instant;
+    private final FlowRunDto flowRunDto;
+    private final Instant instant;
 
     public FlowRunEvent(FlowRunDto flowRunDto, Instant instant) {
         this.flowRunDto = flowRunDto;

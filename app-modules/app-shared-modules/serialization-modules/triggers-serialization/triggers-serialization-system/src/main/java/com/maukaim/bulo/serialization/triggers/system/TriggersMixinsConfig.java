@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class TriggersMixinsConfig {
 
-    public static Map<Class<?>, Class<?>> TRIGGERS_JACKSON_MIXIN = Map.of(
+    public static final Map<Class<?>, Class<?>> TRIGGERS_JACKSON_MIXIN = Map.of(
             BasicTriggerEvent.class, TriggerEventMixIn.class,
             TriggerId.class, TriggerIdMixIn.class
     );

@@ -3,8 +3,8 @@ package com.maukaim.bulo.io.data.types;
 import com.maukaim.bulo.api.data.types.DataTypeCategory;
 
 public class ArrayParameterTypeDto implements ParameterTypeDto {
-    private ParameterTypeDto contentType;
-    private Boolean required;
+    private final ParameterTypeDto contentType;
+    private final Boolean required;
 
     public ArrayParameterTypeDto(ParameterTypeDto contentType, boolean required) {
         this.required = required;

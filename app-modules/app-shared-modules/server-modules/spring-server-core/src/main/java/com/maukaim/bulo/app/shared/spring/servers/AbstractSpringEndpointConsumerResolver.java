@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public abstract class AbstractSpringEndpointConsumerResolver<TYPE extends SystemEventType> implements SystemEventConsumerResolver<RestSystemEventConsumer, TYPE> {
-    private SystemContext systemContext;
-    private Map<TYPE, Class<?>> systemEndpointMap;
-    private ApplicationMode applicationMode;
+    private final SystemContext systemContext;
+    private final Map<TYPE, Class<?>> systemEndpointMap;
+    private final ApplicationMode applicationMode;
 
     public AbstractSpringEndpointConsumerResolver(SystemContext systemContext,
                                                   Map<TYPE, Class<?>> systemEndpointMap,

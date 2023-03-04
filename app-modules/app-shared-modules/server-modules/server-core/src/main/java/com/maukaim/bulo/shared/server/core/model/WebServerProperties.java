@@ -3,8 +3,8 @@ package com.maukaim.bulo.shared.server.core.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WebServerProperties {
-    private int port;
-    private DnsProperties dnsProperties;
+    private final int port;
+    private final DnsProperties dnsProperties;
 
     public WebServerProperties(@JsonProperty("port") int port,
                                @JsonProperty("dns") DnsProperties dnsProperties) {

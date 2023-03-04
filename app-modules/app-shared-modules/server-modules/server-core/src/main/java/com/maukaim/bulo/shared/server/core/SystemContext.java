@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 public class SystemContext {
-    private ApplicationEnvironment environment;
-    private BuloSystemProperties buloSystemProperties;
+    private final ApplicationEnvironment environment;
+    private final BuloSystemProperties buloSystemProperties;
 
     public SystemContext(ApplicationEnvironment environment, BuloSystemProperties buloSystemProperties) {
         this.environment = environment;

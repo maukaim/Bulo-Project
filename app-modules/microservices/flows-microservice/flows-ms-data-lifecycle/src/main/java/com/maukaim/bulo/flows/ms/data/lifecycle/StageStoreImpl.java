@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StageStoreImpl implements StageStore {
-    private Map<String, Stage> stageCache;
+    private final Map<String, Stage> stageCache;
 
     public StageStoreImpl(Map<String, Stage> initialCache) {
         this.stageCache = new HashMap<>(initialCache);

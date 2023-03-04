@@ -3,9 +3,9 @@ package com.maukaim.bulo.executors.data.stages;
 import java.util.List;
 
 public class Stage {
-    private String stageId;
-    private String definitionId;
-    protected List<Parameter> parameters;
+    private final String stageId;
+    private final String definitionId;
+    protected final List<Parameter> parameters;
 
     public Stage(String stageId, List<Parameter> parameters, String definitionId) {
         this.stageId = stageId;

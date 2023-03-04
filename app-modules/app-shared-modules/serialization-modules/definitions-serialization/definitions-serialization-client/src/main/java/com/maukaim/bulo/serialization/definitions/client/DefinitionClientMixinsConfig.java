@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class DefinitionClientMixinsConfig {
 
-    private static Map<Class<?>, Class<?>> COMMON_DEFINITIONS_MIXINS = Map.of(
+    private static final Map<Class<?>, Class<?>> COMMON_DEFINITIONS_MIXINS = Map.of(
             CreateStageDefinitionInstruction.class, StageDefinitionCreateInstructionMixIn.class,
 
             StageDefinitionDto.class, StageDefinitionDtoMixIn.class,
@@ -38,11 +38,11 @@ public class DefinitionClientMixinsConfig {
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class
     );
-    private static Map<Class<?>, Class<?>> TECHNICAL_DEFINITIONS_MIXINS = Map.of(
+    private static final Map<Class<?>, Class<?>> TECHNICAL_DEFINITIONS_MIXINS = Map.of(
             TechnicalStageDefinitionDto.class, TechnicalStageDefinitionDtoMixIn.class
     );
 
-    private static Map<Class<?>, Class<?>> FUNCTIONAL_DEFINITIONS_MIXINS = Map.of(
+    private static final Map<Class<?>, Class<?>> FUNCTIONAL_DEFINITIONS_MIXINS = Map.of(
             FunctionalStageDefinitionDto.class, FunctionalStageDefinitionDtoMixIn.class,
 
             FsStageDto.class, FsStageDtoMixIn.class,
@@ -51,7 +51,7 @@ public class DefinitionClientMixinsConfig {
             OutputProviderDto.class, OutputProviderDtoMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> DEFINITIONS_CLIENT_JACKSON_MIXIN = new HashMap<>() {{
+    public static final Map<Class<?>, Class<?>> DEFINITIONS_CLIENT_JACKSON_MIXIN = new HashMap<>() {{
         putAll(COMMON_DEFINITIONS_MIXINS);
         putAll(FUNCTIONAL_DEFINITIONS_MIXINS);
         putAll(TECHNICAL_DEFINITIONS_MIXINS);

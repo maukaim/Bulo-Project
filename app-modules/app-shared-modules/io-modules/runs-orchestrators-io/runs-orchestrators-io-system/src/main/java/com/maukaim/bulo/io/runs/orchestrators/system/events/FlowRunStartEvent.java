@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class FlowRunStartEvent {
     private final Instant instant;
-    private String flowId;
-    private Set<ContextStageId> contextStageIds;
+    private final String flowId;
+    private final Set<ContextStageId> contextStageIds;
 
     public FlowRunStartEvent(String flowId,
                              Set<ContextStageId> contextStageIds,

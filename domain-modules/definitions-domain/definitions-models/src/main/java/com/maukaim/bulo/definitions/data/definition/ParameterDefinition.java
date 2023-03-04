@@ -4,10 +4,10 @@ import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinition implements ParameterDefinitionInterface {
-    private String name;
-    private ParameterType parameterType;
-    private String hint;
-    private String description;
+    private final String name;
+    private final ParameterType parameterType;
+    private final String hint;
+    private final String description;
 
     public ParameterDefinition(String name, ParameterType parameterType, String hint, String description) {
         this.name = name;

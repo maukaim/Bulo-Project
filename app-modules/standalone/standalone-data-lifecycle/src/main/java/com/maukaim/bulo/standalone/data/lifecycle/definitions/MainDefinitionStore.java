@@ -6,8 +6,8 @@ import com.maukaim.bulo.definitions.data.definition.StageDefinition;
 import java.util.*;
 
 public class MainDefinitionStore implements StageDefinitionStore {
-    private Map<String, Set<String>> executorsByStageDefinitionId;
-    private Map<String, StageDefinition> stageDefinitions;
+    private final Map<String, Set<String>> executorsByStageDefinitionId;
+    private final Map<String, StageDefinition> stageDefinitions;
 
     public MainDefinitionStore() {
         this.executorsByStageDefinitionId = new HashMap<>();

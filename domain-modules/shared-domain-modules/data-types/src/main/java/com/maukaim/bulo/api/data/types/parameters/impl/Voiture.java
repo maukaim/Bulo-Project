@@ -9,9 +9,9 @@ import com.maukaim.bulo.api.data.types.annotations.BuloFieldOverride;
  * Should have at least 1 @BuloDescriptor
  */
 public class Voiture {
-    private Motor motor;
-    private String brand;
-    private Boolean isUsable;
+    private final Motor motor;
+    private final String brand;
+    private final Boolean isUsable;
 
     @BuloDescriptor
     public Voiture(

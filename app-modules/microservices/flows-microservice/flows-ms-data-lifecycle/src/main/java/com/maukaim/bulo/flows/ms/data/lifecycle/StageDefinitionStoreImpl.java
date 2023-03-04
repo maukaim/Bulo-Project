@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StageDefinitionStoreImpl implements StageDefinitionStore {
-    private Map<String, StageDefinition> definitionCache;
+    private final Map<String, StageDefinition> definitionCache;
 
     public StageDefinitionStoreImpl(Map<String, StageDefinition> initialCache) {
         this.definitionCache = new HashMap<>(initialCache);

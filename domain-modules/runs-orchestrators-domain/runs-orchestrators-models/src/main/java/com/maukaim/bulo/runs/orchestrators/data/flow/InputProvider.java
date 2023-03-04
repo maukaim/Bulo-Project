@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 public class InputProvider {
-    private ContextStageId contextStageId;
-    private Set<String> outputIds;
+    private final ContextStageId contextStageId;
+    private final Set<String> outputIds;
 
     public InputProvider(ContextStageId contextStageId, Set<String> outputIds) {
         this.contextStageId = contextStageId;

@@ -12,7 +12,7 @@ public enum ServiceName {
     BULO_MS_STAGES_SERVICE(microservices),
     BULO_MS_TRIGGER_SCHEDULER_SERVICE(microservices);
 
-    private ApplicationMode applicationMode;
+    private final ApplicationMode applicationMode;
 
     ServiceName(ApplicationMode applicationMode) {
         this.applicationMode = applicationMode;

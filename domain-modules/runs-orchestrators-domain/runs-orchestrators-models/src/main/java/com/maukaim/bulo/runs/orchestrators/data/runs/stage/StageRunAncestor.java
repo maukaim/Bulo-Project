@@ -4,8 +4,8 @@ import java.util.Objects;
 import java.util.Set;
 
 public class StageRunAncestor {
-    private String stageRunId;
-    private Set<String> outputIds;
+    private final String stageRunId;
+    private final Set<String> outputIds;
 
     public StageRunAncestor(String stageRunId, Set<String> outputIds) {
         this.stageRunId = stageRunId;

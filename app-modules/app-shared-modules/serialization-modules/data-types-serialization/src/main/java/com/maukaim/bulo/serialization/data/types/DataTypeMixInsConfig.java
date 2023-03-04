@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataTypeMixInsConfig {
-    public static Map<Class<?>, Class<?>> DATA_TYPES_COMMONS_MIXINS = Map.of(
+    public static final Map<Class<?>, Class<?>> DATA_TYPES_COMMONS_MIXINS = Map.of(
             IoTypeDto.class, IoTypeDtoMixIn.class,
             ParameterTypeDto.class, ParameterTypeDtoMixIn.class,
 
@@ -31,7 +31,7 @@ public class DataTypeMixInsConfig {
             ArrayIoTypeDto.class, ArrayIoTypeDtoMixIn.class
     );
 
-    public static Map<Class<?>, JsonDeserializer<?>> COMMON_DESERIALIZERS = new HashMap<>() {{
+    public static final Map<Class<?>, JsonDeserializer<?>> COMMON_DESERIALIZERS = new HashMap<>() {{
         put(NativeTypeDto.class, new NativeTypeDtoDeserializer());
     }};
 }

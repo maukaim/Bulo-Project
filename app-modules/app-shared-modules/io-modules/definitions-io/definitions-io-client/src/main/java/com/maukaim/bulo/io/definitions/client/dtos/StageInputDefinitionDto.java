@@ -3,7 +3,7 @@ package com.maukaim.bulo.io.definitions.client.dtos;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
 
 public class StageInputDefinitionDto {
-    private IoTypeDto ioType;
+    private final IoTypeDto ioType;
 
     public StageInputDefinitionDto(IoTypeDto ioType) {
         this.ioType = ioType;

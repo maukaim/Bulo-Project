@@ -5,8 +5,8 @@ import com.maukaim.bulo.commons.models.StageDefinitionInterface;
 import java.util.List;
 
 public class StageDefinition implements StageDefinitionInterface {
-    private String id;
-    private List<ParameterDefinition> parameters;
+    private final String id;
+    private final List<ParameterDefinition> parameters;
 
     public StageDefinition(String id, List<ParameterDefinition> parameters) {
         this.id = id;

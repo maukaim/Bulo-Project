@@ -13,8 +13,8 @@ import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 import java.io.IOException;
 
 public class NativeTypeDtoDeserializer extends JsonDeserializer<NativeTypeDto> {
-    private static String NATIVE_CATEGORY_FIELD = "nativeTypeCategory";
-    private static String REQUIRED_FIELD = "required";
+    private static final String NATIVE_CATEGORY_FIELD = "nativeTypeCategory";
+    private static final String REQUIRED_FIELD = "required";
 
     @Override
     public NativeTypeDto deserialize(JsonParser jsonParser, DeserializationContext ctx) throws IOException {

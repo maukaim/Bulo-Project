@@ -6,7 +6,7 @@ import com.maukaim.bulo.io.data.types.IoTypeDto;
 import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 
 public abstract class NativeTypeDto implements ParameterTypeDto, IoTypeDto {
-    protected boolean required;
+    protected final boolean required;
 
     public NativeTypeDto(boolean required) {
         this.required = required;

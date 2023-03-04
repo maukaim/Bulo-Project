@@ -3,9 +3,9 @@ package com.maukaim.bulo.io.executors.system.dtos;
 import java.util.Map;
 
 public class StageRunResultDto {
-    private String stageRunId;
-    private StageRunStatusDto status;
-    private Map<String, String> outputsByName;
+    private final String stageRunId;
+    private final StageRunStatusDto status;
+    private final Map<String, String> outputsByName;
 
     public StageRunResultDto(String stageRunId, StageRunStatusDto status, Map<String, String> outputsByName) {
         this.stageRunId = stageRunId;

@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 public class StageRunAncestorDto {
-    private ContextStageId contextStageId;
-    private Set<String> outputIds;
+    private final ContextStageId contextStageId;
+    private final Set<String> outputIds;
 
     public StageRunAncestorDto(ContextStageId contextStageId, Set<String> outputIds) {
         this.contextStageId = contextStageId;

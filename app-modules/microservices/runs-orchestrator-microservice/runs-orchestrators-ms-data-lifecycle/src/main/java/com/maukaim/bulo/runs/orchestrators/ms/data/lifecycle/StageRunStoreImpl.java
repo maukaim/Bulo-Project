@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
 public class StageRunStoreImpl implements StageRunStore {
-    private Map<String, StageRun<?>> mappedStageRunId = new ConcurrentHashMap<>();
+    private final Map<String, StageRun<?>> mappedStageRunId = new ConcurrentHashMap<>();
 
     @Override
     public void put(String stageRunId, StageRun<?> technicalStageRun) {

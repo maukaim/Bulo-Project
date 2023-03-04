@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 public class CommonMixinsConfig {
-    public static Map<Class<?>, Class<?>> COMMON_SERIALIZATION_JACKSON_MIXINS = new HashMap<>() {{
+    public static final Map<Class<?>, Class<?>> COMMON_SERIALIZATION_JACKSON_MIXINS = new HashMap<>() {{
         put(ContextStageId.class, ContextStageIdMixIn.class);
     }};
 }

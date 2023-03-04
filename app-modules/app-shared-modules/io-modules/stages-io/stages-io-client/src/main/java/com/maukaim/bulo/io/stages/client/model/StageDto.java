@@ -6,10 +6,10 @@ import com.maukaim.bulo.commons.models.StageType;
 import java.util.List;
 
 public abstract class StageDto {
-    protected StageType stageType;
-    protected List<ParameterDto> parameters;
-    protected String stageId;
-    protected String definitionId;
+    protected final StageType stageType;
+    protected final List<ParameterDto> parameters;
+    protected final String stageId;
+    protected final String definitionId;
 
     public StageDto(String stageId, String definitionId, StageType stageType, List<ParameterDto> parameters) {
         this.stageId = stageId;

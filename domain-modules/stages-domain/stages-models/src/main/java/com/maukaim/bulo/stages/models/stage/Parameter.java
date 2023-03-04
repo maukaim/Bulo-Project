@@ -1,9 +1,9 @@
 package com.maukaim.bulo.stages.models.stage;
 
 public class Parameter {
-    private String value;
-    private String name;
-    private String additionalDetails;
+    private final String value;
+    private final String name;
+    private final String additionalDetails;
 
     public Parameter(String value, String name, String additionalDetails) {
         this.value = value;

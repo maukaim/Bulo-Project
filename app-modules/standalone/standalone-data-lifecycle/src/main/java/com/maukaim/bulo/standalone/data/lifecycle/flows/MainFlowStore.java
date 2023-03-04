@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainFlowStore implements FlowStore {
-    private Map<String, Flow> flowById;
+    private final Map<String, Flow> flowById;
 
     public MainFlowStore(Map<String, Flow> initialCache) {
         this.flowById = new HashMap<>(initialCache);

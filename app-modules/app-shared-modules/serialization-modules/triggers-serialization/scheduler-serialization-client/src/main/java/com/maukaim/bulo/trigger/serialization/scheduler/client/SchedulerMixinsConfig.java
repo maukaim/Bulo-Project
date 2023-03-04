@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class SchedulerMixinsConfig {
 
-    public static Map<Class<?>, Class<?>> TRIGGER_SCHEDULER_JACKSON_MIXIN = Map.of(
+    public static final Map<Class<?>, Class<?>> TRIGGER_SCHEDULER_JACKSON_MIXIN = Map.of(
             CreateScheduleTriggerInstruction.class, ScheduleTriggerConfigDtoMixIn.class
     );
 }

@@ -16,8 +16,8 @@ import static com.maukaim.bulo.io.definitions.system.dtos.DefinitionEventType.UP
 
 
 public class StageDefinitionStoreImpl implements StageDefinitionStore {
-    private Map<String, Set<String>> executorsByStageDefinitionId;
-    private Map<String, StageDefinition> stageDefinitions;
+    private final Map<String, Set<String>> executorsByStageDefinitionId;
+    private final Map<String, StageDefinition> stageDefinitions;
     private final TechnicalStageDefinitionEventPublisher definitionEventPublisher;
     private final StageDefinitionDtoAdapter definitionDtoAdapter;
 

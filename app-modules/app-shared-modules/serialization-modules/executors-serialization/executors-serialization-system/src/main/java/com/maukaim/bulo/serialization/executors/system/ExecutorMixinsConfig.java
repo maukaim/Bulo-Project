@@ -25,12 +25,12 @@ import java.util.Map;
 
 public class ExecutorMixinsConfig {
 
-    private static Map<Class<?>, Class<?>> RESULTS_JACKSON_MIXIN = Map.of(
+    private static final Map<Class<?>, Class<?>> RESULTS_JACKSON_MIXIN = Map.of(
             StageRunResultEvent.class, StageRunResultEventMixIn.class,
             StageRunResultDto.class, StageRunResultDtoMixIn.class
     );
 
-    private static Map<Class<?>, Class<?>> STAGE_RUNS_JACKSON_MIXIN = Map.of(
+    private static final Map<Class<?>, Class<?>> STAGE_RUNS_JACKSON_MIXIN = Map.of(
             AcknowledgeStageRunEvent.class, AcknowledgeStageRunEventMixIn.class,
             RunCancelledStageRunEvent.class, StandardStageRunEventMixIn.class,
             RunFailedStageRunEvent.class, StandardStageRunEventMixIn.class,
@@ -39,13 +39,13 @@ public class ExecutorMixinsConfig {
             StageRunEvent.class, StageRunEventMixIn.class
     );
 
-    private static Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = Map.of(
+    private static final Map<Class<?>, Class<?>> DEFINITIONS_JACKSON_MIXIN = Map.of(
             StageInputDefinitionDto.class, StageInputDefinitionDtoMixIn.class,
             StageOutputDefinitionDto.class, StageOutputDefinitionDtoMixIn.class,
             ParameterDefinitionDto.class, ParameterDefinitionDtoMixIn.class
     );
 
-    public static Map<Class<?>, Class<?>> EXECUTORS_SERVICE_JACKSON_MIXIN = new HashMap<>() {{
+    public static final Map<Class<?>, Class<?>> EXECUTORS_SERVICE_JACKSON_MIXIN = new HashMap<>() {{
         putAll(RESULTS_JACKSON_MIXIN);
         putAll(STAGE_RUNS_JACKSON_MIXIN);
         putAll(DEFINITIONS_JACKSON_MIXIN);

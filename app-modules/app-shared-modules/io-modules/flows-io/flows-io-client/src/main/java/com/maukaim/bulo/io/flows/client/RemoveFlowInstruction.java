@@ -5,8 +5,8 @@ import com.maukaim.bulo.io.shared.ExternalEvent;
 import java.time.Instant;
 
 public class RemoveFlowInstruction implements ExternalEvent {
-    private String flowId;
-    private Instant instant;
+    private final String flowId;
+    private final Instant instant;
 
     public RemoveFlowInstruction(String flowId, Instant instant) {
         this.flowId = flowId;

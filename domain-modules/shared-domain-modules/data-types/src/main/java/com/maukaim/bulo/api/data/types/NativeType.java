@@ -5,7 +5,7 @@ import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
 import com.maukaim.bulo.api.data.types.parameters.ParameterType;
 
 public abstract class NativeType implements DataType, ParameterType, IoType {
-    protected boolean required;
+    protected final boolean required;
 
     public NativeType(boolean required) {
         this.required = required;

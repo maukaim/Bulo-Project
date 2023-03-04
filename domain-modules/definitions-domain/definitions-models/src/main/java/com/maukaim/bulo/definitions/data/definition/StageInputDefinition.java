@@ -5,7 +5,7 @@ import com.maukaim.bulo.api.data.types.io.IoType;
 import com.maukaim.bulo.commons.models.definitions.InputDefinition;
 
 public class StageInputDefinition implements InputDefinition {
-    private IoType ioType;
+    private final IoType ioType;
 
     public StageInputDefinition(IoType ioType) {
         this.ioType = ioType;

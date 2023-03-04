@@ -5,10 +5,10 @@ import com.maukaim.bulo.io.definitions.system.dtos.DefinitionEventType;
 import java.time.Instant;
 
 public class ExecutorUpdateEvent {
-    private String executorId;
-    private String definitionId;
-    private DefinitionEventType eventType;
-    private Instant instant;
+    private final String executorId;
+    private final String definitionId;
+    private final DefinitionEventType eventType;
+    private final Instant instant;
 
     public ExecutorUpdateEvent(String executorId, String definitionId, DefinitionEventType eventType, Instant instant) {
         this.executorId = executorId;

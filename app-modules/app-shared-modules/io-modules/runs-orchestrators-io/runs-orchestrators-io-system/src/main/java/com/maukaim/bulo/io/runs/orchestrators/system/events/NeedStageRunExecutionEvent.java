@@ -7,10 +7,10 @@ import java.time.Instant;
 import java.util.Set;
 
 public class NeedStageRunExecutionEvent implements ExternalEvent {
-    private String stageId;
-    private String stageRunId;
-    private Set<StageRunDependencyDto> dependencies;
-    private Instant instant;
+    private final String stageId;
+    private final String stageRunId;
+    private final Set<StageRunDependencyDto> dependencies;
+    private final Instant instant;
 
     public NeedStageRunExecutionEvent(String stageId, String stageRunId, Set<StageRunDependencyDto> stageRunDependencies, Instant instant) {
         this.stageId = stageId;

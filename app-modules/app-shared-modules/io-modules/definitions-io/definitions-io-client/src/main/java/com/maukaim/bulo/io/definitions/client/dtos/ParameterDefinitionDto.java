@@ -4,10 +4,10 @@ import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 import com.maukaim.bulo.commons.models.ParameterDefinitionInterface;
 
 public class ParameterDefinitionDto implements ParameterDefinitionInterface {
-    private String name;
-    private ParameterTypeDto parameterType;
-    private String hint;
-    private String description;
+    private final String name;
+    private final ParameterTypeDto parameterType;
+    private final String hint;
+    private final String description;
 
     public ParameterDefinitionDto(String name, ParameterTypeDto parameterType, String hint, String description) {
         this.name = name;

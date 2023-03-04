@@ -1,9 +1,8 @@
 package com.maukaim.bulo.definitions.data.stage;
 
 public class Parameter {
-    private String value;
-    private String name;
-    private String valueType;
+    private final String value;
+    private final String name;
 
     public Parameter(String value, String name) {
         this.value = value;

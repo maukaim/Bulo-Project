@@ -30,7 +30,7 @@ public class SystemEndpointsController {
 
     @RestController
     public class ServiceDefinitionUpdateEndpoint implements IDefinitionUpdateServiceEndpoint<StageDefinitionEvent> {
-        private StageDefinitionEventConsumer definitionEventConsumer;
+        private final StageDefinitionEventConsumer definitionEventConsumer;
 
         public ServiceDefinitionUpdateEndpoint(StageDefinitionEventConsumer definitionEventConsumer) {
             this.definitionEventConsumer = definitionEventConsumer;

@@ -3,10 +3,10 @@ package com.maukaim.bulo.executors.core;
 import java.util.Map;
 
 public class StageRunConfig {
-    private String stageRunId;
-    private String definitionId;
-    private Map<String, String> inputsByName;
-    private Map<String, String> parametersByName;
+    private final String stageRunId;
+    private final String definitionId;
+    private final Map<String, String> inputsByName;
+    private final Map<String, String> parametersByName;
 
     public StageRunConfig(String stageRunId, String definitionId, Map<String, String> inputsByName, Map<String, String> parametersByName) {
         this.stageRunId = stageRunId;

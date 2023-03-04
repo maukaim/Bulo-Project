@@ -6,9 +6,9 @@ import com.maukaim.bulo.io.definitions.client.dtos.StageDefinitionDto;
 import java.time.Instant;
 
 public class CreateStageDefinitionInstruction implements ExternalEvent {
-    private String stageExecutorId;
-    private StageDefinitionDto stageDefinition;
-    private Instant instant;
+    private final String stageExecutorId;
+    private final StageDefinitionDto stageDefinition;
+    private final Instant instant;
 
     public CreateStageDefinitionInstruction(String stageExecutorId, StageDefinitionDto stageDefinition, Instant instant) {
         this.stageExecutorId = stageExecutorId;

@@ -19,7 +19,7 @@ import com.maukaim.bulo.serialization.flows.client.mixins.RemoveFlowInstructionM
 import java.util.Map;
 
 public class FlowClientMixinsConfig {
-    public static Map<Class<?>, Class<?>> FLOW_CLIENT_SERIALIZATION_JACKSON_MIXIN = Map.of(
+    public static final Map<Class<?>, Class<?>> FLOW_CLIENT_SERIALIZATION_JACKSON_MIXIN = Map.of(
             CreateFlowInstruction.class, CreateFlowInstructionMixIn.class,
             RemoveFlowInstruction.class, RemoveFlowInstructionMixIn.class,
             FlowDto.class, FlowDtoMixIn.class,

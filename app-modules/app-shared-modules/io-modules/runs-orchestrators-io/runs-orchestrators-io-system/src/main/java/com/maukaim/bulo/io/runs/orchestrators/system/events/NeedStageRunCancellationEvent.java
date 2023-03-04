@@ -5,9 +5,9 @@ import com.maukaim.bulo.io.shared.ExternalEvent;
 import java.time.Instant;
 
 public class NeedStageRunCancellationEvent implements ExternalEvent {
-    private String stageRunId;
-    private String executorId;
-    private Instant instant;
+    private final String stageRunId;
+    private final String executorId;
+    private final Instant instant;
 
     public NeedStageRunCancellationEvent(String stageRunId, String executorId, Instant instant) {
         this.stageRunId = stageRunId;

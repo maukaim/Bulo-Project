@@ -31,7 +31,7 @@ public class SystemEndpointsController {
 
     @RestController
     public class ServiceFlowUpdateEndpoint implements IFlowUpdateServiceEndpoint<FlowEvent> {
-        private FlowEventConsumer flowEventConsumer;
+        private final FlowEventConsumer flowEventConsumer;
 
         public ServiceFlowUpdateEndpoint(FlowEventConsumer flowEventConsumer) {
             this.flowEventConsumer = flowEventConsumer;

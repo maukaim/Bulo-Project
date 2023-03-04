@@ -3,8 +3,8 @@ package com.maukaim.bulo.api.data.types;
 import static com.maukaim.bulo.api.data.types.DataTypeCategory.ARRAY;
 
 public class ArrayType<T> implements DataType{
-    private T contentType;
-    private boolean required;
+    private final T contentType;
+    private final boolean required;
     public ArrayType(T contentType, boolean required) {
         this.contentType = contentType;
         this.required = required;

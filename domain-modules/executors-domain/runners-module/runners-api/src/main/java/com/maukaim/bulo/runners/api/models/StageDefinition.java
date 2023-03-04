@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 public class StageDefinition {
-    private String technicalStageDefinitionId;
-    private Map<String, StageInputDefinition> inputsByName;
-    private Map<String, StageOutputDefinition> outputsByName;
-    private List<ParameterDefinition> parameters;
+    private final String technicalStageDefinitionId;
+    private final Map<String, StageInputDefinition> inputsByName;
+    private final Map<String, StageOutputDefinition> outputsByName;
+    private final List<ParameterDefinition> parameters;
 
     public StageDefinition(String technicalStageDefinitionId,
                            Map<String, StageInputDefinition> inputsByName,

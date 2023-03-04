@@ -4,9 +4,9 @@ import java.util.List;
 
 public class StageDefinitionCreateReport {
     public static final String DEFAULT_SUCCESS_REPORT = "Stage Definition validation successfully passed.";
-    private List<String> details;
-    private ReportStatus reportStatus;
-    private String definitionId;
+    private final List<String> details;
+    private final ReportStatus reportStatus;
+    private final String definitionId;
 
     public static StageDefinitionCreateReport failReport(String stageId, String reason) {
         return failReport(stageId, List.of(reason));

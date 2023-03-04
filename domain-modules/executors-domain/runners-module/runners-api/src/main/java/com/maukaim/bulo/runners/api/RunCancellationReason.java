@@ -4,7 +4,7 @@ public enum RunCancellationReason {
     JSON_DESERIALIZATION("Problem encoutered during deserialization"),
     UNDEFINED("No particular reason provided.");
 
-    private String description;
+    private final String description;
 
     RunCancellationReason(String description) {
         this.description = description;
