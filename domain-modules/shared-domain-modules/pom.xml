@@ -14,7 +14,7 @@
 
     <modules>
         <module>commons-models</module>
-        <module>common-utils</module>
+        <module>data-types-utils</module>
         <module>data-types</module>
         <module>marshalling-module</module>
     </modules>
