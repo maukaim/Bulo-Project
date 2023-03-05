@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class AnyTypeDeserializer extends JsonDeserializer<Any<?>> {
-    private static final long serialVersionUID = 8571162321775154979L;
 
     @Override
     public Any<?> deserialize(JsonParser jsonParser, DeserializationContext ctx) throws IOException, JacksonException {
@@ -46,7 +45,7 @@ public class AnyTypeDeserializer extends JsonDeserializer<Any<?>> {
 
         Map<String, ? extends Any<?>> anyMap = StreamSupport.stream(spliterator, false)
                 .collect(Collectors.toMap(
-                        entry -> entry.getKey(),
+                        Map.Entry::getKey,
                         entry -> resolveAny(entry.getValue())
                 ));
         return new AnyObject(anyMap);
@@ -54,7 +53,7 @@ public class AnyTypeDeserializer extends JsonDeserializer<Any<?>> {
 
     private List<? extends Any<?>> getList(ArrayNode arrayNode) {
         return StreamSupport.stream(arrayNode.spliterator(), false)
-                .map(item -> resolveAny(item))
+                .map(this::resolveAny)
                 .collect(Collectors.toList());
     }
 }
