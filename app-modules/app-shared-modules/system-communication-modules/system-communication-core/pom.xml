@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>server-core</artifactId>
+            <artifactId>marshalling-module</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

@@ -26,7 +26,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>spring-server-core</artifactId>
+            <artifactId>spring-server-starter</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -38,19 +38,19 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-serialization-system</artifactId>
+            <artifactId>definitions-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-serialization-system</artifactId>
+            <artifactId>flows-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-serialization-system</artifactId>
+            <artifactId>stages-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 

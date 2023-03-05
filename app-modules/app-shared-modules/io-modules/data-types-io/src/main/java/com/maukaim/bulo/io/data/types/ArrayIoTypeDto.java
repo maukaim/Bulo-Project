@@ -1,6 +1,5 @@
 package com.maukaim.bulo.io.data.types;
 
-import com.maukaim.bulo.api.data.types.DataTypeCategory;
 
 public class ArrayIoTypeDto implements IoTypeDto{
     private final IoTypeDto contentType;
@@ -15,8 +14,8 @@ public class ArrayIoTypeDto implements IoTypeDto{
         return required;
     }
 
-    public DataTypeCategory getDataTypeCategory() {
-        return DataTypeCategory.ARRAY;
+    public DataTypeCategoryDto getDataTypeCategory() {
+        return DataTypeCategoryDto.ARRAY;
     }
 
     public IoTypeDto getContentType() {

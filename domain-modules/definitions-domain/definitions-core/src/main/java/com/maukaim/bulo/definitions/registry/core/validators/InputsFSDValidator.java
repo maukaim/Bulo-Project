@@ -31,7 +31,7 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
         Map<String, StageInputDefinition> functionalStageInputDefinitions = definition.getInputsByName();
 
         if (rootsDefinitionByInputs.size() != functionalStageInputDefinitions.size()) {
-            throw new RuntimeException("Expected as much inputs as roots this functional stage does declare: " + rootsDefinitionByInputs.size());
+            throw new RuntimeException("Expected as much inputs as roots this functional stage declares: " + rootsDefinitionByInputs.size());
         } else {
 
             rootsDefinitionByInputs.forEach((inputName, rootDefinitions) -> {
@@ -46,6 +46,7 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
         return true;
     }
 
+    //TODO: Flaky result, need debugging
     private Map<String, List<StageDefinition>> getRootsInputDefinitions(Set<FsStage> functionalSubStages) {
         return functionalSubStages.stream()
                 .filter(this::isRoot)

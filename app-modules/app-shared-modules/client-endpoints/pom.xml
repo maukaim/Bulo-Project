@@ -58,5 +58,11 @@
             <artifactId>flows-io-system</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

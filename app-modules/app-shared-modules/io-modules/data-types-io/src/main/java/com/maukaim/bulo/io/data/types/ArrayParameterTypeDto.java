@@ -1,7 +1,5 @@
 package com.maukaim.bulo.io.data.types;
 
-import com.maukaim.bulo.api.data.types.DataTypeCategory;
-
 public class ArrayParameterTypeDto implements ParameterTypeDto {
     private final ParameterTypeDto contentType;
     private final Boolean required;
@@ -15,8 +13,8 @@ public class ArrayParameterTypeDto implements ParameterTypeDto {
         return required;
     }
 
-    public DataTypeCategory getDataTypeCategory() {
-        return DataTypeCategory.ARRAY;
+    public DataTypeCategoryDto getDataTypeCategory() {
+        return DataTypeCategoryDto.ARRAY;
     }
 
     public ParameterTypeDto getContentType() {

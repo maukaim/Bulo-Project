@@ -18,5 +18,12 @@
             <version>${revision}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-system</artifactId>
+            <version>${revision}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

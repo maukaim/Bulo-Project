@@ -13,8 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-servers-starter</module>
-        <module>service-endpoints</module>
+        <module>spring-microservices-starter</module>
+        <module>microservices-endpoints</module>
     </modules>
 
 </project>

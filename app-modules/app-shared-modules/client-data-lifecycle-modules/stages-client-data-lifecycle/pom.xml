@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-io-system</artifactId>
+            <artifactId>stages-io-client</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

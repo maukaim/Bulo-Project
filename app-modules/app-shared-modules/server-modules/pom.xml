@@ -14,6 +14,6 @@
 
     <modules>
         <module>server-core</module>
-        <module>spring-server-core</module>
+        <module>spring-server-starter</module>
     </modules>
 </project>

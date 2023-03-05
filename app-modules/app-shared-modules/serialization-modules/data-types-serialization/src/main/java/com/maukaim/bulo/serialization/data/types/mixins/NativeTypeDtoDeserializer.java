@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeCategoryDto;
 import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
 import com.maukaim.bulo.io.data.types.natives.impl.BooleanTypeDto;
 import com.maukaim.bulo.io.data.types.natives.impl.NumberTypeDto;
@@ -21,7 +21,7 @@ public class NativeTypeDtoDeserializer extends JsonDeserializer<NativeTypeDto> {
         JsonNode jsonNode = ctx.readTree(jsonParser);
         JsonNode nativeCategoryField = jsonNode.get(NATIVE_CATEGORY_FIELD);
         if (nativeCategoryField.isTextual()) {
-            NativeTypeCategory nativeTypeCategory = NativeTypeCategory.valueOf(nativeCategoryField.asText());
+            NativeTypeCategoryDto nativeTypeCategory = NativeTypeCategoryDto.valueOf(nativeCategoryField.asText());
             if (nativeCategoryField == null) {
                 throw new IOException("Not recognized value for NativeTypeCategory: " + nativeCategoryField.asText());
             }

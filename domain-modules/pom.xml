@@ -14,10 +14,8 @@
 
     <modules>
         <module>flows-domain</module>
-        <module>users-domain</module>
         <module>shared-domain-modules</module>
         <module>triggers-domain</module>
-        <module>teams-domain</module>
         <module>stages-domain</module>
         <module>runs-orchestrators-domain</module>
         <module>executors-domain</module>

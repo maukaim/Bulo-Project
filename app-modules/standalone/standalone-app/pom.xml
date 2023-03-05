@@ -11,30 +11,15 @@
 
     <artifactId>application-standalone</artifactId>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>spring-server-core</artifactId>
+            <artifactId>spring-server-starter</artifactId>
             <version>${revision}</version>
         </dependency>
 
+        <!-- Core modules -->
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>runs-orchestrators-core</artifactId>
@@ -49,31 +34,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-io-system</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-serialization-client</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>flows-client-data-lifecycle</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>executors-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>runners-embedded</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -85,7 +46,20 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-io-system</artifactId>
+            <artifactId>stages-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>triggers-scheduler-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--  Serialization modules -->
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>flows-serialization-client</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -97,49 +71,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-client-data-lifecycle</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-io-system</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>stages-serialization-client</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>stages-client-data-lifecycle</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-scheduler-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-scheduler-cron-spring-engine</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>triggers-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -151,7 +83,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>standalone-data-lifecycle</artifactId>
+            <artifactId>triggers-serialization-system</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -161,6 +93,65 @@
             <version>${revision}</version>
         </dependency>
 
+        <!-- Data Lifecycle -->
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>flows-client-data-lifecycle</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>stages-client-data-lifecycle</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-client-data-lifecycle</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>standalone-data-lifecycle</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--  IO System  -->
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>flows-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>definitions-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>stages-io-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Divers Domain modules -->
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>runners-embedded</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>triggers-scheduler-cron-spring-engine</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Divers Server/App modules -->
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>client-endpoints</artifactId>

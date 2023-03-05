@@ -1,7 +1,6 @@
 package com.maukaim.bulo.io.data.types.natives;
 
-import com.maukaim.bulo.api.data.types.DataTypeCategory;
-import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
+import com.maukaim.bulo.io.data.types.DataTypeCategoryDto;
 import com.maukaim.bulo.io.data.types.IoTypeDto;
 import com.maukaim.bulo.io.data.types.ParameterTypeDto;
 
@@ -12,10 +11,10 @@ public abstract class NativeTypeDto implements ParameterTypeDto, IoTypeDto {
         this.required = required;
     }
 
-    public abstract NativeTypeCategory getNativeTypeCategory();
+    public abstract NativeTypeCategoryDto getNativeTypeCategory();
 
-    public DataTypeCategory getDataTypeCategory() {
-        return DataTypeCategory.NATIVE;
+    public DataTypeCategoryDto getDataTypeCategory() {
+        return DataTypeCategoryDto.NATIVE;
     }
 
     public boolean isRequired() {

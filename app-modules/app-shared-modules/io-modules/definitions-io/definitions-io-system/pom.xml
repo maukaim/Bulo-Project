@@ -20,12 +20,6 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>data-types-io</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>definitions-io-client</artifactId>
             <version>${revision}</version>
         </dependency>

@@ -1,7 +1,5 @@
 package com.maukaim.bulo.io.data.types;
 
-import com.maukaim.bulo.api.data.types.DataTypeCategory;
-
 import java.util.Map;
 
 public class BuloParameterTypeDto implements ParameterTypeDto {
@@ -23,8 +21,8 @@ public class BuloParameterTypeDto implements ParameterTypeDto {
     }
 
     @Override
-    public DataTypeCategory getDataTypeCategory() {
-        return DataTypeCategory.BULO;
+    public DataTypeCategoryDto getDataTypeCategory() {
+        return DataTypeCategoryDto.BULO;
     }
 
     @Override

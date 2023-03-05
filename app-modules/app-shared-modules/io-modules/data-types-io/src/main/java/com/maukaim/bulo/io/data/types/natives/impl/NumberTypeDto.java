@@ -1,6 +1,6 @@
 package com.maukaim.bulo.io.data.types.natives.impl;
 
-import com.maukaim.bulo.api.data.types.natives.NativeTypeCategory;
+import com.maukaim.bulo.io.data.types.natives.NativeTypeCategoryDto;
 import com.maukaim.bulo.io.data.types.natives.NativeTypeDto;
 
 public class NumberTypeDto extends NativeTypeDto {
@@ -10,8 +10,8 @@ public class NumberTypeDto extends NativeTypeDto {
     }
 
     @Override
-    public NativeTypeCategory getNativeTypeCategory() {
-        return NativeTypeCategory.NUMBER;
+    public NativeTypeCategoryDto getNativeTypeCategory() {
+        return NativeTypeCategoryDto.NUMBER;
     }
 
     @Override

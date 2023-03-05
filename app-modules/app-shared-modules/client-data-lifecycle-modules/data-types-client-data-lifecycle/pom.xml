@@ -14,6 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>data-types</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>data-types-io</artifactId>
             <version>${revision}</version>
         </dependency>

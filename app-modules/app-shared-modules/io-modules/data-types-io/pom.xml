@@ -11,11 +11,4 @@
 
     <artifactId>data-types-io</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
-            <artifactId>data-types</artifactId>
-            <version>${revision}</version>
-        </dependency>
-    </dependencies>
 </project>

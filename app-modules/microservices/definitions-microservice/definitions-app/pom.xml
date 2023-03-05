@@ -11,33 +11,10 @@
 
     <artifactId>definitions-app</artifactId>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.maukaim.bulo</groupId>
-                <artifactId>serialization-shared</artifactId>
-                <version>${revision}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>spring-server-core</artifactId>
+            <artifactId>spring-microservices-starter</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -49,7 +26,7 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>spring-servers-starter</artifactId>
+            <artifactId>client-endpoints</artifactId>
             <version>${revision}</version>
         </dependency>
 
@@ -73,25 +50,19 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>definitions-ms-data-lifecycle</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.maukaim.bulo</groupId>
             <artifactId>serialization-shared</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>swagger-starter</artifactId>
+            <artifactId>definitions-ms-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>client-endpoints</artifactId>
+            <artifactId>swagger-starter</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>
