@@ -14,6 +14,5 @@
     <modules>
         <module>runners-embedded</module>
         <module>runners-api</module>
-        <module>runners-plugin-starter</module>
     </modules>
 </project>
