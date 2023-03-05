@@ -7,10 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
 
-
-/**
- * Initialized with Embedded Runners.
- */
 public class StageRunManagerImpl implements StageRunManager {
     private final StageRunnerRegistry runnerRegistry;
     private final RunExecutor runExecutor;

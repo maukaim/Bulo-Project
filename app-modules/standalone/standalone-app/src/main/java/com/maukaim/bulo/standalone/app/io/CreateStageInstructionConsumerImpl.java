@@ -32,10 +32,3 @@ public class CreateStageInstructionConsumerImpl implements CreateStageEventConsu
         return stageCreateReport.getStageId();
     }
 }
-
-//Il faut que les deserializers soient par module ou par ms.
-// Comme ca on peut import le deserializer qu'il faut pour les instructions, dans ms ou standalone.
-// 1 - Creer un deserialization-ms-module dans les dossiers de ms de Flow, Stages et Triggers.
-// 2 - Split MixIns Maps de Stages, Flows et Triggers.
-// 3 - Dans MS et dans Standalone, import ce qu'ils ont besoin d'import.
-// 4 -

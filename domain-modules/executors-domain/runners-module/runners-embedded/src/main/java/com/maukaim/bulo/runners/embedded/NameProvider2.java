@@ -14,8 +14,6 @@ import com.maukaim.bulo.runners.api.RunnerUtils;
 import java.util.List;
 import java.util.Map;
 
-//TODO: Add an ObjectMapper so it is able to translate inputs and Parameters
-
 public class NameProvider2 implements StageRunner {
     private final static String DEF_ID = "NameProviding2";
 

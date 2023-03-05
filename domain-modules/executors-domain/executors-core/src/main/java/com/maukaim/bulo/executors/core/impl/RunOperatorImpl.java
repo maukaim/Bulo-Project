@@ -32,18 +32,12 @@ public class RunOperatorImpl implements RunOperator {
             Map<String, String> runOutput = this.runner.run(ctx);
             runResult = new StageRunResult(config.getStageRunId(), StageRunStatus.SUCCESS, runOutput);
         } catch (ExecutionCancelledException cancellationThrowable) {
-            //TODO: duplicate of Cancelllation info. Better handle this.
-            // What about the CancellableThread idea?
             runResult = StageRunResult.of(config.getStageRunId(), StageRunStatus.CANCELLED);
         } catch (Throwable t) {
             runResult = StageRunResult.of(config.getStageRunId(), StageRunStatus.FAILED);
         } finally {
-            if (runResult != null) {
-                this.stageRunResultStore.put(runResult);
-            } else {
-                System.out.println("Hmm.... no runResult, bizarre cette histoire");
-                //TODO: log problem.
-            }
+            runResult = runResult == null ? StageRunResult.of(config.getStageRunId(), StageRunStatus.FAILED) : runResult;
+            this.stageRunResultStore.put(runResult);
         }
     }
 }

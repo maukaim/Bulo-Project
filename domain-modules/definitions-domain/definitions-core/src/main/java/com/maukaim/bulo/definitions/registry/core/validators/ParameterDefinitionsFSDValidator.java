@@ -7,8 +7,7 @@ import com.maukaim.bulo.definitions.registry.core.FunctionalStageDefinitionValid
 import java.util.List;
 
 public class ParameterDefinitionsFSDValidator implements FunctionalStageDefinitionValidator {
-    //TODO: Quand ContextParameter sera en place, valider les Parameters against le type des sub stqges qui
-    // on declaré une ContextParameterValue
+
     @Override
     public boolean isValid(FunctionalStageDefinition definition) {
         List<ParameterDefinition> parameters = definition.getParameters();

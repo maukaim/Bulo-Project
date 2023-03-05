@@ -46,7 +46,6 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
         return true;
     }
 
-    //TODO: Flaky result, need debugging
     private Map<String, List<StageDefinition>> getRootsInputDefinitions(Set<FsStage> functionalSubStages) {
         return functionalSubStages.stream()
                 .filter(this::isRoot)

@@ -18,7 +18,6 @@ import com.maukaim.bulo.executors.data.stages.Stage;
 import java.util.*;
 import java.util.stream.Collectors;
 
-//TODO: All the validation logic should go to validators.
 public class StageRunEventProcessorImpl implements StageRunEventProcessor {
     private final StageRunManager runnerManager;
     private final StageStore stageStore;

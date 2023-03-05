@@ -75,8 +75,6 @@ public class FlowRunServiceImpl implements FlowRunService {
         return flowRunStore.getRun(flowRunId);
     }
 
-    //TODO -> How to make a better lock? maybe here : https://stackoverflow.com/questions/51716527/how-to-lock-on-key-in-a-concurrenthashmap
-
     @Override
     public synchronized FlowRun computeStageRunUpdateUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun<?>>> stageRunViewComputer) {
         AtomicReference<List<StageRun<?>>> toBeRequestedReference = new AtomicReference<>();

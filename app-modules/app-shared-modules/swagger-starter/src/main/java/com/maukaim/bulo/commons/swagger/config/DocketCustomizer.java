@@ -6,7 +6,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 public interface DocketCustomizer {
 
     /**
-     *  Allow to customize the docket before it is returned.
+     *  Enable to customize the docket before it is returned.
      *
      * @param docket , the docket to customize.
      */

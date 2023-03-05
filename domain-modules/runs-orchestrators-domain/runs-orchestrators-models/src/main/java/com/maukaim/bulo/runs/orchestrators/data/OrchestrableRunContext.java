@@ -21,7 +21,6 @@ public abstract class OrchestrableRunContext<KEY> {
 
     abstract public ExecutionGraph getExecutionGraph();
 
-    //TODO: StageRun should not be there, it should be in StageRunService, here only StageRunIds !!
     abstract public Map<String, StageRun<?>> getStageRunsById();
 
     abstract public RunContext<KEY> toRunContext();
