@@ -5,10 +5,10 @@ import com.maukaim.bulo.app.shared.spring.servers.SystemAwareConfig;
 import com.maukaim.bulo.marshalling.Marshaller;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemEventConsumerResolver;
-import com.maukaim.bulo.app.shared.system.communication.core.rest.RestSystemEventConnector;
-import com.maukaim.bulo.app.shared.system.communication.core.rest.RestSystemEventConsumer;
-import com.maukaim.bulo.ms.shared.spring.servers.ServiceSpringEndpointConsumerResolver;
-import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
+import com.maukaim.bulo.app.shared.systen.communication.rest.RestSystemEventConnector;
+import com.maukaim.bulo.app.shared.systen.communication.rest.RestSystemEventSender;
+import com.maukaim.bulo.ms.shared.spring.servers.ServiceSpringRestEndpointConsumerResolver;
+import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import com.maukaim.bulo.ms.shared.system.endpoints.SystemEndpointProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -24,15 +24,14 @@ import java.net.http.HttpClient;
 public class SystemConnectorConfig {
     @Bean
     @ConditionalOnMissingBean(SystemConnector.class)
-    public SystemConnector<ServiceEventType> systemConnector(Marshaller marshaller,
-                                           SystemEventConsumerResolver<RestSystemEventConsumer, ServiceEventType> systemConsumerResolver) {
+    public SystemConnector<MicroServiceEventType> systemConnector(Marshaller marshaller,
+                                                                  SystemEventConsumerResolver<RestSystemEventSender, MicroServiceEventType> systemConsumerResolver) {
         return new RestSystemEventConnector<>(HttpClient.newHttpClient(), systemConsumerResolver, marshaller, false);
     }
 
     @Bean
-    public SystemEventConsumerResolver<RestSystemEventConsumer, ServiceEventType> restSystemEventConsumerResolver(SystemContext systemContext) {
-        return new ServiceSpringEndpointConsumerResolver(systemContext, SystemEndpointProvider.getSystemEndpointClasses());
-
+    public SystemEventConsumerResolver<RestSystemEventSender, MicroServiceEventType> restSystemEventConsumerResolver(SystemContext systemContext) {
+        return new ServiceSpringRestEndpointConsumerResolver(systemContext, SystemEndpointProvider.getSystemEndpointClasses());
     }
 }
 

@@ -1,5 +1,5 @@
 package com.maukaim.bulo.app.shared.system.communication.core;
 
-public interface SystemEventConsumer {
+public interface SystemEventSender {
     String getIdentifier();
 }

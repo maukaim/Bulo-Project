@@ -1,11 +1,11 @@
-package com.maukaim.bulo.ms.shared.system.endpoints;
+package com.maukaim.bulo.ms.shared.system.communication.api;
 
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEventType;
 
 /**
  * All event types (either a single event or a group of events) transiting in the system.
  */
-public enum ServiceEventType implements SystemEventType {
+public enum MicroServiceEventType implements SystemEventType {
     //from Triggers service
     TRIGGER_FLOW_RUN,
 

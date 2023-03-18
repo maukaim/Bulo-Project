@@ -1,7 +1,7 @@
 package com.maukaim.bulo.mockingbird.connect;
 
 import com.maukaim.bulo.app.endpoints.client.ClientEventType;
-import com.maukaim.bulo.app.shared.system.communication.core.rest.RestSystemEventConnector;
+import com.maukaim.bulo.app.shared.systen.communication.rest.RestSystemEventConnector;
 import com.maukaim.bulo.mockingbird.marshaller.MockingBirdMarshaller;
 
 import java.util.List;

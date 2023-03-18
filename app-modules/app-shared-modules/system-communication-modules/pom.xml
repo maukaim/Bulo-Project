@@ -15,5 +15,6 @@
     <modules>
         <module>system-communication-core</module>
         <module>system-communication-api</module>
+        <module>system-communication-rest</module>
     </modules>
 </project>

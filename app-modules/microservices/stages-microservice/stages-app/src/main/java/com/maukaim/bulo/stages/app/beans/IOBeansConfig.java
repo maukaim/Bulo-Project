@@ -6,7 +6,7 @@ import com.maukaim.bulo.io.stages.client.DeleteStageEventConsumer;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageUpdateEventPublisher;
 import com.maukaim.bulo.stages.ms.data.lifecycle.StageDefinitionEventConsumer;
-import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
+import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import com.maukaim.bulo.stages.app.io.*;
 import com.maukaim.bulo.stages.core.StageService;
 import com.maukaim.bulo.stages.core.StageDefinitionService;
@@ -26,7 +26,7 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public StageUpdateEventPublisher stageUpdateEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public StageUpdateEventPublisher stageUpdateEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new StageUpdateEventPublisherImpl(systemConnector);
     }
 

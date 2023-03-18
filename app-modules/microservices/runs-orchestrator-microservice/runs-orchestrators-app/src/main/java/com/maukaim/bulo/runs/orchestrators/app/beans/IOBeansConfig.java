@@ -10,7 +10,7 @@ import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecuti
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageUpdateEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.TriggerEventConsumer;
-import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
+import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.DefinitionUpdateEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowRunEventConsumerImpl;
@@ -67,7 +67,7 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new FlowRunEventPublisherImpl(systemConnector);
     }
 
@@ -78,12 +78,12 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new NeedStageRunExecutionEventPublisherImpl(systemConnector);
     }
 
     @Bean
-    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new NeedStageRunCancellationEventPublisherImpl(systemConnector);
     }
 

@@ -39,9 +39,8 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
-            <artifactId>system-communication-api</artifactId>
+            <artifactId>system-communication-ms-api</artifactId>
             <version>${revision}</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>

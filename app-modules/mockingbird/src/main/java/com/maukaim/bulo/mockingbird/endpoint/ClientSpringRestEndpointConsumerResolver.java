@@ -3,18 +3,18 @@ package com.maukaim.bulo.mockingbird.endpoint;
 import com.maukaim.bulo.app.endpoints.client.ClientEventType;
 import com.maukaim.bulo.app.endpoints.client.ForClientEventType;
 import com.maukaim.bulo.shared.server.core.SystemContext;
-import com.maukaim.bulo.app.shared.spring.servers.AbstractSpringEndpointConsumerResolver;
+import com.maukaim.bulo.app.shared.spring.servers.AbstractSpringRestEndpointConsumerResolver;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.lang.reflect.Method;
 import java.util.Map;
 
-public class ClientSpringEndpointConsumerResolver extends AbstractSpringEndpointConsumerResolver<ClientEventType> {
+public class ClientSpringRestEndpointConsumerResolver extends AbstractSpringRestEndpointConsumerResolver<ClientEventType> {
 
-    public ClientSpringEndpointConsumerResolver(SystemContext systemContext,
-                                                Map<ClientEventType, Class<?>> systemEndpointMap,
-                                                ApplicationMode applicationMode) {
+    public ClientSpringRestEndpointConsumerResolver(SystemContext systemContext,
+                                                    Map<ClientEventType, Class<?>> systemEndpointMap,
+                                                    ApplicationMode applicationMode) {
         super(systemContext, systemEndpointMap, applicationMode);
     }
 

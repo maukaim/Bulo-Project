@@ -20,7 +20,7 @@ import com.maukaim.bulo.flows.ms.data.lifecycle.FlowEventPublisher;
 import com.maukaim.bulo.io.flows.client.RemoveFlowInstructionConsumer;
 import com.maukaim.bulo.flows.ms.data.lifecycle.StageDefinitionConsumer;
 import com.maukaim.bulo.flows.ms.data.lifecycle.StageUpdateEventConsumer;
-import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
+import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
 public class IoBeansConfig {
 
     @Bean
-    public FlowEventPublisher flowEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public FlowEventPublisher flowEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new FlowEventPublisherImpl(systemConnector);
     }
 
