@@ -8,7 +8,7 @@ import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.app.shared.systen.communication.rest.RestSystemEventConnector;
 import com.maukaim.bulo.marshalling.Marshaller;
 import com.maukaim.bulo.mockingbird.endpoint.ClientEndpointConfig;
-import com.maukaim.bulo.mockingbird.endpoint.ClientSpringRestEndpointConsumerResolver;
+import com.maukaim.bulo.mockingbird.endpoint.ClientSpringRestSenderResolver;
 import com.maukaim.bulo.mockingbird.marshaller.MarshallerProvider;
 
 import java.net.http.HttpClient;
@@ -17,13 +17,13 @@ public class SystemConnectorProvider {
 
     public static RestSystemEventConnector<ClientEventType> get(ApplicationEnvironment applicationEnvironment, ApplicationMode appMode) {
         SystemContext systemContext = getSystemContext(applicationEnvironment);
-        ClientSpringRestEndpointConsumerResolver consumerResolver = getConsumerResolver(systemContext, appMode);
+        ClientSpringRestSenderResolver consumerResolver = getConsumerResolver(systemContext, appMode);
         Marshaller marshaller = MarshallerProvider.get();
         return new RestSystemEventConnector<>(HttpClient.newHttpClient(), consumerResolver, marshaller, true);
     }
 
-    private static ClientSpringRestEndpointConsumerResolver getConsumerResolver(SystemContext systemContext, ApplicationMode appMode) {
-        return new ClientSpringRestEndpointConsumerResolver(systemContext, ClientEndpointConfig.getClientEndpointClasses(), appMode);
+    private static ClientSpringRestSenderResolver getConsumerResolver(SystemContext systemContext, ApplicationMode appMode) {
+        return new ClientSpringRestSenderResolver(systemContext, ClientEndpointConfig.getClientEndpointClasses(), appMode);
     }
 
     private static SystemContext getSystemContext(ApplicationEnvironment applicationEnvironment) {

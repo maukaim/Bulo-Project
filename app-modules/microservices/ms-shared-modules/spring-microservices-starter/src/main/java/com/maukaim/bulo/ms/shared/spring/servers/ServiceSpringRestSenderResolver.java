@@ -1,7 +1,7 @@
 package com.maukaim.bulo.ms.shared.spring.servers;
 
 import com.maukaim.bulo.shared.server.core.SystemContext;
-import com.maukaim.bulo.app.shared.spring.servers.AbstractSpringRestEndpointConsumerResolver;
+import com.maukaim.bulo.app.shared.spring.servers.AbstractSpringRestSenderResolver;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import com.maukaim.bulo.ms.shared.system.endpoints.ForServiceEventType;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-public class ServiceSpringRestEndpointConsumerResolver extends AbstractSpringRestEndpointConsumerResolver<MicroServiceEventType> {
+public class ServiceSpringRestSenderResolver extends AbstractSpringRestSenderResolver<MicroServiceEventType> {
 
-    public ServiceSpringRestEndpointConsumerResolver(SystemContext systemContext,
-                                                     Map<MicroServiceEventType, Class<?>> systemEndpointMap) {
+    public ServiceSpringRestSenderResolver(SystemContext systemContext,
+                                           Map<MicroServiceEventType, Class<?>> systemEndpointMap) {
         super(systemContext, systemEndpointMap, ApplicationMode.microservices);
     }
 

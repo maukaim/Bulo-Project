@@ -3,6 +3,7 @@ package com.maukaim.bulo.shared.server.core;
 import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
 import com.maukaim.bulo.shared.server.core.model.BuloSystemProperties;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
+import com.maukaim.bulo.shared.server.core.model.KafkaProperties;
 import com.maukaim.bulo.shared.server.core.model.WebServerProperties;
 
 import java.util.List;
@@ -28,6 +29,10 @@ public class SystemContext {
     public List<String> getHosts(ServiceName serviceName) {
         WebServerProperties webServerProperties = getWebServerProperties(serviceName);
         return webServerProperties.getDnsProperties().getHosts(environment);
+    }
+
+    public KafkaProperties getKafkaBrokers() {
+        return buloSystemProperties.getKafkaPropertiesMap().get(environment);
     }
 
     private WebServerProperties getWebServerProperties(ServiceName serviceName) {

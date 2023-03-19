@@ -21,9 +21,12 @@ public abstract class StdSystemConnector<T extends SystemEventSender, TYPE exten
 
     @Override
     public List<Object> sendExternal(Object event, TYPE type) {
-        List<T> consumers = this.systemEventSenderResolver.resolve(type);
+        List<T> senders = this.systemEventSenderResolver.resolve(type);
+        if(senders.isEmpty()){
+            throw new MessageTransmissionException("No sender found for type " + type);
+        }
         List<Object> results = new ArrayList<>();
-        for (T consumer : consumers) {
+        for (T consumer : senders) {
             try {
                 List<Object> resultsForConsumer = this.send(event, consumer);
                 results.addAll(resultsForConsumer);
@@ -32,7 +35,6 @@ public abstract class StdSystemConnector<T extends SystemEventSender, TYPE exten
                     throw new MessageTransmissionException(e);
                 } else {
                     System.out.println(">>> Problem while contacting consumer " + consumer.getIdentifier() + " reason is : " + e.getMessage());
-                    e.printStackTrace();
                 }
             }
         }

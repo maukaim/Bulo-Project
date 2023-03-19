@@ -4,3 +4,6 @@ maukaim:
     description: Service to register and communicate items definitions across the system.
     version: ALPHA
     enabled: true
+bulo:
+  communication:
+    mode: compound

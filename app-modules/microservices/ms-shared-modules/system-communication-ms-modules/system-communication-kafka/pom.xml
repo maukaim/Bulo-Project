@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>system-communication-kafka</artifactId>
+    <properties>
+        <kafka.dependency.version>3.2.3</kafka.dependency.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -23,6 +26,13 @@
             <artifactId>system-communication-ms-api</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.dependency.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

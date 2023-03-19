@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class AbstractSpringRestEndpointConsumerResolver<TYPE extends SystemEventType> implements SystemEventConsumerResolver<RestSystemEventSender, TYPE> {
+public abstract class AbstractSpringRestSenderResolver<TYPE extends SystemEventType> implements SystemEventConsumerResolver<RestSystemEventSender, TYPE> {
     private final SystemContext systemContext;
     private final Map<TYPE, Class<?>> systemEndpointMap;
     private final ApplicationMode applicationMode;
 
-    public AbstractSpringRestEndpointConsumerResolver(SystemContext systemContext,
-                                                      Map<TYPE, Class<?>> systemEndpointMap,
-                                                      ApplicationMode applicationMode) {
+    public AbstractSpringRestSenderResolver(SystemContext systemContext,
+                                            Map<TYPE, Class<?>> systemEndpointMap,
+                                            ApplicationMode applicationMode) {
         this.systemContext = systemContext;
         this.systemEndpointMap = systemEndpointMap;
         this.applicationMode = applicationMode;

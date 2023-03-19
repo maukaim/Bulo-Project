@@ -1,5 +1,18 @@
 {
   "license": "MIT",
+  "kafka": {
+    "dev": {
+      "brokers": [
+        "localhost:9092"
+      ]
+    },
+    "uat": {
+      "brokers": []
+    },
+    "prod": {
+      "brokers": []
+    }
+  },
   "services": {
     "STANDALONE": {
       "port": 10020,

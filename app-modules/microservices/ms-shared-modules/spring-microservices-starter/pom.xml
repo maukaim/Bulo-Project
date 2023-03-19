@@ -38,6 +38,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>system-communication-kafka</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>microservices-endpoints</artifactId>
             <version>${revision}</version>
         </dependency>
