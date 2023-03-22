@@ -12,6 +12,7 @@
     <artifactId>system-communication-kafka</artifactId>
     <properties>
         <kafka.dependency.version>3.2.3</kafka.dependency.version>
+        <kafka.reactor.dependency.version>1.3.17</kafka.reactor.dependency.version>
     </properties>
 
     <dependencies>
@@ -31,6 +32,12 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.dependency.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.projectreactor.kafka</groupId>
+            <artifactId>reactor-kafka</artifactId>
+            <version>${kafka.reactor.dependency.version}</version>
         </dependency>
 
     </dependencies>
