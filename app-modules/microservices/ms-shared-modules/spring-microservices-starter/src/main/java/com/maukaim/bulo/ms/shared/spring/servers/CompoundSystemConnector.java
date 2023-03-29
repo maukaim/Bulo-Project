@@ -20,7 +20,7 @@ public class CompoundSystemConnector implements SystemConnector<MicroServiceEven
         try{
             return this.mainSystemConnector.sendExternal(event, type);
         }catch (MessageTransmissionException e){
-            System.out.println("Fallback on REST HTTP connection...");
+            System.out.println("Fallback on REST HTTP connection..." + e);
             return this.secondSystemConnector.sendExternal(event, type);
         }
     }

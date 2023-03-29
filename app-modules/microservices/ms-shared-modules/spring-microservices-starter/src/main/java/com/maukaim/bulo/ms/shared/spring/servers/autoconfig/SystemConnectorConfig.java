@@ -9,6 +9,7 @@ import com.maukaim.bulo.ms.shared.spring.servers.CompoundSystemConnector;
 import com.maukaim.bulo.ms.shared.spring.servers.KafkaSenderResolver;
 import com.maukaim.bulo.ms.shared.spring.servers.ServiceSpringRestSenderResolver;
 import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
+import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumerFactory;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaSystemEventConnector;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.topics.KafkaTopicMapProvider;
 import com.maukaim.bulo.ms.shared.system.endpoints.SystemEndpointProvider;
@@ -44,7 +45,16 @@ public class SystemConnectorConfig {
     }
 
     protected KafkaSenderResolver getKafkaSenderResolver(SystemContext systemContext) {
-        return new KafkaSenderResolver(systemContext.getKafkaBrokers(), KafkaTopicMapProvider.getTopicMap(), Map.of());
+        return new KafkaSenderResolver(systemContext.getKafkaBrokers(),
+                KafkaTopicMapProvider.getTopicMap(),
+                Map.of());
+    }
+
+    protected KafkaConsumerFactory getKafkaConsumerFactory(Marshaller marshaller, SystemContext systemContext) {
+        return new KafkaConsumerFactory(marshaller,
+                systemContext.getKafkaBrokers().getBrokers(),
+                KafkaTopicMapProvider.getTopicMap()
+        );
     }
 
     @Configuration
@@ -62,8 +72,7 @@ public class SystemConnectorConfig {
         @Bean
         @ConditionalOnMissingBean(KafkaSystemEventConnector.class)
         KafkaSystemEventConnector kafkaSystemConnector(KafkaSenderResolver kafkaSystemConsumerResolver,
-                                                                 Marshaller marshaller) {
-            System.out.println("Kafka is king");
+                                                       Marshaller marshaller) {
             return getKafkaSystemEventConnector(kafkaSystemConsumerResolver, marshaller);
         }
 
@@ -74,8 +83,14 @@ public class SystemConnectorConfig {
         }
 
         @Bean
+        @ConditionalOnMissingBean(KafkaConsumerFactory.class)
+        protected KafkaConsumerFactory kafkaConsumerFactory(Marshaller marshaller, SystemContext systemContext) {
+            return getKafkaConsumerFactory(marshaller, systemContext);
+        }
+
+        @Bean
         RestSystemEventConnector<MicroServiceEventType> restSystemConnector(AbstractSpringRestSenderResolver<MicroServiceEventType> restSystemConsumerResolver,
-                                                                                      Marshaller marshaller) {
+                                                                            Marshaller marshaller) {
             return getRestSystemConnector(restSystemConsumerResolver, marshaller);
         }
 
@@ -93,7 +108,6 @@ public class SystemConnectorConfig {
         @ConditionalOnMissingBean(KafkaSystemEventConnector.class)
         protected KafkaSystemEventConnector kafkaSystemConnector(KafkaSenderResolver kafkaSystemConsumerResolver,
                                                                  Marshaller marshaller) {
-            System.out.println("Kafka is king");
             return getKafkaSystemEventConnector(kafkaSystemConsumerResolver, marshaller);
         }
 
@@ -101,6 +115,12 @@ public class SystemConnectorConfig {
         @ConditionalOnMissingBean(KafkaSenderResolver.class)
         protected KafkaSenderResolver kafkaSenderResolver(SystemContext systemContext) {
             return getKafkaSenderResolver(systemContext);
+        }
+
+        @Bean
+        @ConditionalOnMissingBean(KafkaConsumerFactory.class)
+        protected KafkaConsumerFactory kafkaConsumerFactory(Marshaller marshaller, SystemContext systemContext) {
+            return getKafkaConsumerFactory(marshaller, systemContext);
         }
     }
 

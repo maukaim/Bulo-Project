@@ -1,8 +1,10 @@
 package com.maukaim.bulo.app.shared.spring.servers;
 
+import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.shared.server.core.ServerUtils;
 import com.maukaim.bulo.shared.server.core.SystemContext;
 import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -19,9 +21,11 @@ import static com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment.u
 public class SystemAwareConfig {
 
     @Bean
-    public SystemContext systemContext(Environment environment) {
+    @ConditionalOnBean(ServiceName.class)
+    public SystemContext systemContext(Environment environment,
+                                       ServiceName serviceName) {
         resolveAppEnvironment(environment);
-        return new SystemContext(ServerUtils.getApplicationEnvironment(), ServerUtils.getBuloSystemProperties());
+        return new SystemContext(serviceName, ServerUtils.getApplicationEnvironment(), ServerUtils.getBuloSystemProperties());
     }
 
     private void resolveAppEnvironment(Environment env) {

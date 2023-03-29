@@ -13,6 +13,7 @@ public abstract class StandardSpringApplication {
 
     protected static ConfigurableApplicationContext launchSpringApp(ServiceName serviceName, Class<?> primarySource, String... args) {
         SpringApplication app = new SpringApplication(primarySource);
+        app.addInitializers(new ServiceNameInitializer(serviceName));
         configure(app, serviceName);
         return app.run(args);
     }

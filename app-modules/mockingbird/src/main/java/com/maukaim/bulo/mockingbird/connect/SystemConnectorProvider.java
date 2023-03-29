@@ -28,7 +28,7 @@ public class SystemConnectorProvider {
 
     private static SystemContext getSystemContext(ApplicationEnvironment applicationEnvironment) {
         resolveAppEnvironment(applicationEnvironment);
-        return new SystemContext(ServerUtils.getApplicationEnvironment(), ServerUtils.getBuloSystemProperties());
+        return new SystemContext(null, ServerUtils.getApplicationEnvironment(), ServerUtils.getBuloSystemProperties());
     }
 
     private static void resolveAppEnvironment(ApplicationEnvironment applicationEnvironment) {
