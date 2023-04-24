@@ -40,8 +40,8 @@ public class StageRunDtoAdapterImpl implements StageRunDtoAdapter {
     @Override
     public StageRunDto<?> adapte(StageRun<?> stageRun) {
         return switch (stageRun.getStageType()) {
-            case TECHNICAL -> resolve((FunctionalStageRun)stageRun);
-            case FUNCTIONAL -> resolve((TechnicalStageRun)stageRun);
+            case TECHNICAL -> resolve((TechnicalStageRun)stageRun);
+            case FUNCTIONAL -> resolve((FunctionalStageRun)stageRun);
         };
     }
 

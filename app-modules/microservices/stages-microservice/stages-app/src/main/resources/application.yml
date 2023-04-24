@@ -3,3 +3,6 @@ maukaim:
     title: Stages Micro-Service
     version: ALPHA
     enabled: true
+bulo:
+  communication:
+    mode: compound

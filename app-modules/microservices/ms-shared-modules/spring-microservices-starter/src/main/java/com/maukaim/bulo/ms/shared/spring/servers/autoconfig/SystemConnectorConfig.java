@@ -8,21 +8,27 @@ import com.maukaim.bulo.marshalling.Marshaller;
 import com.maukaim.bulo.ms.shared.spring.servers.CompoundSystemConnector;
 import com.maukaim.bulo.ms.shared.spring.servers.KafkaSenderResolver;
 import com.maukaim.bulo.ms.shared.spring.servers.ServiceSpringRestSenderResolver;
+import com.maukaim.bulo.ms.shared.spring.servers.autoconfig.conditions.KafkaActivatedCondition;
 import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
+import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumer;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumerFactory;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaSystemEventConnector;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.topics.KafkaTopicMapProvider;
 import com.maukaim.bulo.ms.shared.system.endpoints.SystemEndpointProvider;
 import com.maukaim.bulo.shared.server.core.SystemContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.AnyNestedCondition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import java.net.http.HttpClient;
+import java.util.List;
 import java.util.Map;
 
 @Configuration

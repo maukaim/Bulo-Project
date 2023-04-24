@@ -12,7 +12,7 @@ public class SystemEndpointProvider {
         Map<MicroServiceEventType, Class<?>> one = Map.of(
                 MicroServiceEventType.TRIGGER_FLOW_RUN, IFlowRunStartServiceEndpoint.class,
                 MicroServiceEventType.DEF_CREATE_INSTRUCTION, IDefinitionCreateServiceEndpoint.class,
-                MicroServiceEventType.NEED_STAGE_RUN_EVENT, IStageRunRequiredServiceEndpoint.class,
+                MicroServiceEventType.STAGE_RUN_READY_TO_START_EVENT, IStageRunRequiredServiceEndpoint.class,
                 MicroServiceEventType.FLOW_RUN_UPDATE, IFlowRunUpdateServiceEndpoint.class,
                 MicroServiceEventType.STAGE_UPDATE, IStageUpdateServiceEndpoint.class,
                 MicroServiceEventType.FLOW_UPDATE, IFlowUpdateServiceEndpoint.class,

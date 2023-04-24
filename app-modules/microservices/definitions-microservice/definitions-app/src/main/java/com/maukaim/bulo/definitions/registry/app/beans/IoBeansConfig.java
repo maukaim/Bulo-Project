@@ -14,17 +14,23 @@ import com.maukaim.bulo.definitions.registry.app.io.StageUpdateEventConsumerImpl
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventConsumerImpl;
 import com.maukaim.bulo.definitions.registry.app.io.TechnicalStageDefinitionEventPublisherImpl;
 import com.maukaim.bulo.definitions.registry.core.StageDefinitionService;
+import com.maukaim.bulo.io.definitions.system.ExecutorUpdateEvent;
 import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
+import com.maukaim.bulo.ms.shared.spring.servers.KafkaConsumerProvider;
+import com.maukaim.bulo.ms.shared.spring.servers.autoconfig.conditions.KafkaActivatedCondition;
 import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumer;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumerFactory;
 import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaUtil;
 import com.maukaim.bulo.shared.server.core.SystemContext;
 import org.apache.kafka.clients.consumer.OffsetResetStrategy;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class IoBeansConfig {
@@ -50,17 +56,45 @@ public class IoBeansConfig {
         return new StageUpdateEventConsumerImpl(stageStore, stageAdapter);
     }
 
-    @ConditionalOnProperty(prefix = "bulo.communication", value = "mode", havingValue = "compound")
-    public class KafkaConsumerConfig {
+    @Conditional(KafkaActivatedCondition.class)
+    public class KafkaConsumerConfig extends KafkaConsumerProvider {
+        private SystemContext systemContext;
+        private TechnicalStageDefinitionEventConsumer technicalStageDefinitionConsumer;
+        private StageUpdateEventConsumer stageUpdateEventConsumer;
+
+        @Autowired
+        public KafkaConsumerConfig(
+                StageUpdateEventConsumer stageUpdateEventConsumer,
+                TechnicalStageDefinitionEventConsumer technicalStageDefinitionConsumer,
+                SystemContext systemContext,
+                KafkaConsumerFactory kafkaConsumerFactory) {
+            super(kafkaConsumerFactory);
+            this.systemContext = systemContext;
+            this.stageUpdateEventConsumer = stageUpdateEventConsumer;
+            this.technicalStageDefinitionConsumer = technicalStageDefinitionConsumer;
+        }
+
         @Bean
-        public KafkaConsumer<StageDefinitionEvent> getKafkaDefinitionConsumer(SystemContext systemContext,
-                                                                              KafkaConsumerFactory kafkaConsumerFactory,
-                                                                              TechnicalStageDefinitionEventConsumer technicalStageDefinitionConsumer) {
-            return kafkaConsumerFactory.create(MicroServiceEventType.DEF_UPDATE,
-                    StageDefinitionEvent.class,
-                    (e) -> technicalStageDefinitionConsumer.consume(e),
-                    OffsetResetStrategy.LATEST,
-                    KafkaUtil.toGroupId(systemContext.getServiceName())
+        @Override
+        public List<KafkaConsumer<?>> getConsumers() {
+            return List.of(
+                    kafkaConsumerFactory.create(MicroServiceEventType.DEF_UPDATE,
+                            StageDefinitionEvent.class,
+                            (e) -> technicalStageDefinitionConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName())),
+
+                    kafkaConsumerFactory.create(MicroServiceEventType.EXECUTOR_UPDATE,
+                            ExecutorUpdateEvent.class,
+                            (e) -> technicalStageDefinitionConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName())),
+
+                    kafkaConsumerFactory.create(MicroServiceEventType.STAGE_UPDATE,
+                            StageUpdateEvent.class,
+                            (e) -> stageUpdateEventConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName()))
             );
         }
     }

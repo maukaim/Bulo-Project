@@ -18,7 +18,7 @@ public class DefinitionUpdateEventConsumerImpl implements DefinitionUpdateEventC
     }
 
     @Override
-    public void onDefinitionEvent(StageDefinitionEvent event) {
+    public void consume(StageDefinitionEvent event) {
         System.out.println("Consuming event: " + event);
         switch (event.getStageDefinition().getStageDefinitionType()) {
             case FUNCTIONAL -> onFunctionalDefinition(event);

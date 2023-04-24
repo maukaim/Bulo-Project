@@ -17,7 +17,7 @@ public class FlowEventConsumerImpl implements FlowEventConsumer {
     }
 
     @Override
-    public void onFlowEvent(FlowEvent event) {
+    public void consume(FlowEvent event) {
         System.out.println("Consume event: " + event);
 
         switch (event.getFlowEventType()) {

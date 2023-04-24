@@ -2,31 +2,26 @@ package com.maukaim.bulo.ms.shared.system.communication.kafka.topics;
 
 import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class KafkaTopicMapProvider {
     public static Map<MicroServiceEventType, KafkaTopicName> getTopicMap() {
-        Map<MicroServiceEventType, KafkaTopicName> one = Map.of(
-                MicroServiceEventType.DEF_UPDATE, KafkaTopicName.TEST_TOPIC
-//                MicroServiceEventType.EXECUTOR_UPDATE, KafkaTopicName.TEST_TOPIC
-//                MicroServiceEventType.DEF_CREATE_INSTRUCTION,
-//                MicroServiceEventType.NEED_STAGE_RUN_EVENT,
-//                MicroServiceEventType.FLOW_RUN_UPDATE,
-//                MicroServiceEventType.STAGE_UPDATE,
-//                MicroServiceEventType.FLOW_UPDATE,
-//                MicroServiceEventType.DEF_UPDATE,
-//                MicroServiceEventType.EXECUTOR_UPDATE,
-        );
-//        Map<MicroServiceEventType, Class<?>> second = Map.of(
-//                MicroServiceEventType.STAGE_RUN_RESULT,
-//                MicroServiceEventType.STAGE_RUN_UPDATE,
-//                MicroServiceEventType.NEED_STAGE_RUN_CANCEL,
-//        );
+        return Map.ofEntries(
+                Map.entry(MicroServiceEventType.DEF_UPDATE, KafkaTopicName.DEFINITION_TOPIC),
+                Map.entry(MicroServiceEventType.EXECUTOR_UPDATE, KafkaTopicName.EXECUTOR_UPDATE_TOPIC),
+                Map.entry(MicroServiceEventType.STAGE_UPDATE, KafkaTopicName.STAGE_UPDATE_TOPIC),
+                Map.entry(MicroServiceEventType.FLOW_UPDATE, KafkaTopicName.FLOW_UPDATE_TOPIC),
+                Map.entry(MicroServiceEventType.FLOW_RUN_UPDATE, KafkaTopicName.FLOW_RUN_UPDATE_TOPIC),
+                Map.entry(MicroServiceEventType.STAGE_RUN_UPDATE, KafkaTopicName.STAGE_RUN_UPDATE_TOPIC),
+                Map.entry(MicroServiceEventType.STAGE_RUN_READY_TO_START_EVENT, KafkaTopicName.STAGE_RUN_READY_TO_START_TOPIC),
+                Map.entry(MicroServiceEventType.NEED_STAGE_RUN_CANCEL, KafkaTopicName.STAGE_RUN_TO_BE_CANCELLED_TOPIC)
 
-        return new HashMap<>() {{
-            putAll(one);
-//            putAll(second);
-        }};
+//                // I don't know what to choose?
+//                MicroServiceEventType.STAGE_RUN_RESULT, should be just Database save?
+
+//                // Should be REST calls only?
+//                MicroServiceEventType.TRIGGER_FLOW_RUN
+//                MicroServiceEventType.DEF_CREATE_INSTRUCTION,
+        );
     }
 }

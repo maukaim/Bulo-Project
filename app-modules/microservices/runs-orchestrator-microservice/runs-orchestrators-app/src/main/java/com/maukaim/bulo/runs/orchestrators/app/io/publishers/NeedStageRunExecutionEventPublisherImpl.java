@@ -15,7 +15,7 @@ public class NeedStageRunExecutionEventPublisherImpl implements NeedStageRunExec
     @Override
     public boolean publish(NeedStageRunExecutionEvent needStageRunExecutionEvent) {
         System.out.println("Publish event: "+ needStageRunExecutionEvent);
-        return !this.systemConnector.sendExternal(needStageRunExecutionEvent, MicroServiceEventType.NEED_STAGE_RUN_EVENT)
+        return !this.systemConnector.sendExternal(needStageRunExecutionEvent, MicroServiceEventType.STAGE_RUN_READY_TO_START_EVENT)
                 .isEmpty();
     }
 }

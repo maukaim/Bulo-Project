@@ -10,7 +10,7 @@ public enum MicroServiceEventType implements SystemEventType {
     TRIGGER_FLOW_RUN,
 
     //From Orchestrator service
-    NEED_STAGE_RUN_EVENT,
+    STAGE_RUN_READY_TO_START_EVENT,
     NEED_STAGE_RUN_CANCEL,
     FLOW_RUN_UPDATE,
 

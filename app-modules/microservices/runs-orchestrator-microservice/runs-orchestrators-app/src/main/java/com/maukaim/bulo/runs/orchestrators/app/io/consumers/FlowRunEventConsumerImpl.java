@@ -17,7 +17,7 @@ public class FlowRunEventConsumerImpl implements FlowRunEventConsumer {
     }
 
     @Override
-    public void onFlowRunEvent(FlowRunEvent flowRunEvent) {
+    public void consume(FlowRunEvent flowRunEvent) {
         System.out.println("Consume event: " + flowRunEvent);
         FlowRun flowRunToSave = this.flowRunAdapter.adapte(flowRunEvent.getFlowRunDto());
         this.flowRunStore.save(flowRunToSave);
