@@ -27,8 +27,3 @@ public class ServiceNameInitializer implements ApplicationContextInitializer<Con
         registry.registerBeanDefinition("serviceName", serviceNameBeanDefinition);
     }
 }
-
-
-
-
-

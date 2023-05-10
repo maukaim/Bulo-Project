@@ -104,19 +104,19 @@ public class IoBeansConfig {
                     kafkaConsumerFactory.create(MicroServiceEventType.FLOW_UPDATE,
                             FlowEvent.class,
                             (e) -> flowEventConsumer.consume(e),
-                            OffsetResetStrategy.EARLIEST,
+                            OffsetResetStrategy.LATEST,
                             KafkaUtil.toGroupId(systemContext.getServiceName())),
 
                     kafkaConsumerFactory.create(MicroServiceEventType.DEF_UPDATE,
                             StageDefinitionEvent.class,
                             (e) -> stageDefinitionEventConsumer.consume(e),
-                            OffsetResetStrategy.EARLIEST,
+                            OffsetResetStrategy.LATEST,
                             KafkaUtil.toGroupId(systemContext.getServiceName())),
 
                     kafkaConsumerFactory.create(MicroServiceEventType.STAGE_UPDATE,
                             StageUpdateEvent.class,
                             (e) -> stageUpdateEventConsumer.consume(e),
-                            OffsetResetStrategy.EARLIEST,
+                            OffsetResetStrategy.LATEST,
                             KafkaUtil.toGroupId(systemContext.getServiceName()))
             );
         }

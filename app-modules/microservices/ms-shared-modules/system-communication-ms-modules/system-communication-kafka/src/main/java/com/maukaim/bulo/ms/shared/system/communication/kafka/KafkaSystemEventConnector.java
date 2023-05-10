@@ -22,6 +22,6 @@ public class KafkaSystemEventConnector extends StdSystemConnector<KafkaSender, M
     protected List<Object> send(Object event, KafkaSender kafkaProducer) throws ConnectIOException {
         String eventAsJson = marshaller.marshall(event);
         kafkaProducer.send(eventAsJson);
-        return List.of();
+        return List.of(event);
     }
 }
