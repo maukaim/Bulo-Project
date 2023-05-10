@@ -1,3 +1,6 @@
 maukaim:
   swagger:
     enabled: true
+bulo:
+  communication:
+    mode: compound

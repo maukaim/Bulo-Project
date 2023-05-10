@@ -42,7 +42,7 @@ public class SystemEndpointsController {
 
         @Override
         public void consume(StageUpdateEvent event) {
-            this.stageUpdateEventConsumer.onStageUpdateEvent(event);
+            this.stageUpdateEventConsumer.consume(event);
         }
     }
 

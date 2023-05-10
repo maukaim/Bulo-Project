@@ -55,27 +55,27 @@ public class StageRunConnectorImpl implements StageRunConnector {
     @Override
     public void propagateFunctionalStageRunAcknowleged(String stageRunId) {
         String executorId = "SELF_APP";
-        this.stageRunEventConsumer.onStageRunEvent(new AcknowledgeStageRunEvent(executorId, stageRunId, Instant.now()));
+        this.stageRunEventConsumer.consume(new AcknowledgeStageRunEvent(executorId, stageRunId, Instant.now()));
     }
 
     @Override
     public void propagateFunctionalStageRunStarted(String stageRunId) {
-        this.stageRunEventConsumer.onStageRunEvent(new StartRunStageRunEvent(stageRunId, Instant.now()));
+        this.stageRunEventConsumer.consume(new StartRunStageRunEvent(stageRunId, Instant.now()));
     }
 
     @Override
     public void propagateFunctionalStageRunCancelled(String stageRunId) {
-        this.stageRunEventConsumer.onStageRunEvent(new RunCancelledStageRunEvent(stageRunId, Instant.now()));
+        this.stageRunEventConsumer.consume(new RunCancelledStageRunEvent(stageRunId, Instant.now()));
     }
 
     @Override
     public void propagateFunctionalStageRunFailed(String stageRunId) {
-        this.stageRunEventConsumer.onStageRunEvent(new RunFailedStageRunEvent(stageRunId, Instant.now()));
+        this.stageRunEventConsumer.consume(new RunFailedStageRunEvent(stageRunId, Instant.now()));
     }
 
     @Override
     public void propagateFunctionalStageRunSuccesful(String stageRunId) {
-        this.stageRunEventConsumer.onStageRunEvent(new RunSuccessfulStageRunEvent(stageRunId, Instant.now()));
+        this.stageRunEventConsumer.consume(new RunSuccessfulStageRunEvent(stageRunId, Instant.now()));
     }
 
     private Set<StageRunDependencyDto> resolve(Set<RunDependency> stageRunDependencies) {

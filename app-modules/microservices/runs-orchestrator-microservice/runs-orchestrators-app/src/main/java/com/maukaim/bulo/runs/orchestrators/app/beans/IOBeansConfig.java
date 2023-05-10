@@ -1,16 +1,17 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.DefinitionUpdateEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunCancellationEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecutionEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageUpdateEventConsumer;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.TriggerEventConsumer;
-import com.maukaim.bulo.ms.shared.system.endpoints.ServiceEventType;
+import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
+import com.maukaim.bulo.io.executors.system.StageRunEvent;
+import com.maukaim.bulo.io.flows.system.FlowEvent;
+import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
+import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
+import com.maukaim.bulo.ms.shared.spring.servers.KafkaConsumerProvider;
+import com.maukaim.bulo.ms.shared.spring.servers.autoconfig.conditions.KafkaActivatedCondition;
+import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
+import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumer;
+import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaConsumerFactory;
+import com.maukaim.bulo.ms.shared.system.communication.kafka.KafkaUtil;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.DefinitionUpdateEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowEventConsumerImpl;
 import com.maukaim.bulo.runs.orchestrators.app.io.consumers.FlowRunEventConsumerImpl;
@@ -30,12 +31,27 @@ import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunTechnicalStageRunEv
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.DefinitionUpdateEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunCancellationEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecutionEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageUpdateEventConsumer;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.TriggerEventConsumer;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.StageDefinitionAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.flows.FlowAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.runs.flow.FlowRunAdapter;
+import com.maukaim.bulo.shared.server.core.SystemContext;
+import org.apache.kafka.clients.consumer.OffsetResetStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class IOBeansConfig {
@@ -67,7 +83,7 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public FlowRunEventPublisher flowRunEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new FlowRunEventPublisherImpl(systemConnector);
     }
 
@@ -78,12 +94,12 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public NeedStageRunExecutionEventPublisher needStageRunExecutionEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new NeedStageRunExecutionEventPublisherImpl(systemConnector);
     }
 
     @Bean
-    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector<ServiceEventType> systemConnector) {
+    public NeedStageRunCancellationEventPublisher needStageRunCancellationEventPublisher(SystemConnector<MicroServiceEventType> systemConnector) {
         return new NeedStageRunCancellationEventPublisherImpl(systemConnector);
     }
 
@@ -96,5 +112,69 @@ public class IOBeansConfig {
     public DefinitionUpdateEventConsumer definitionUpdateEventConsumer(StageDefinitionAdapter stageDefinitionAdapter,
                                                                        FunctionalStageDefinitionService definitionService) {
         return new DefinitionUpdateEventConsumerImpl(stageDefinitionAdapter, definitionService);
+    }
+
+    @Conditional(KafkaActivatedCondition.class)
+    public class KafkaConsumerConfig extends KafkaConsumerProvider {
+        private SystemContext systemContext;
+        private DefinitionUpdateEventConsumer definitionUpdateEventConsumer;
+        private StageUpdateEventConsumer stageUpdateEventConsumer;
+        private FlowEventConsumer flowEventConsumer;
+        private FlowRunEventConsumer flowRunEventConsumer;
+        private StageRunEventConsumer stageRunEventConsumer;
+
+        @Autowired
+        public KafkaConsumerConfig(
+                SystemContext systemContext,
+                StageUpdateEventConsumer stageUpdateEventConsumer,
+                DefinitionUpdateEventConsumer definitionUpdateEventConsumer,
+                FlowEventConsumer flowEventConsumer,
+                FlowRunEventConsumer flowRunEventConsumer,
+                StageRunEventConsumer stageRunEventConsumer,
+                KafkaConsumerFactory kafkaConsumerFactory) {
+            super(kafkaConsumerFactory);
+            this.systemContext = systemContext;
+            this.stageUpdateEventConsumer = stageUpdateEventConsumer;
+            this.definitionUpdateEventConsumer = definitionUpdateEventConsumer;
+            this.flowEventConsumer = flowEventConsumer;
+            this.flowRunEventConsumer = flowRunEventConsumer;
+            this.stageRunEventConsumer = stageRunEventConsumer;
+        }
+
+        @Bean
+        @Override
+        public List<KafkaConsumer<?>> getConsumers() {
+            return List.of(
+                    kafkaConsumerFactory.create(MicroServiceEventType.DEF_UPDATE,
+                            StageDefinitionEvent.class,
+                            (e) -> definitionUpdateEventConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName())),
+
+                    kafkaConsumerFactory.create(MicroServiceEventType.STAGE_UPDATE,
+                            StageUpdateEvent.class,
+                            (e) -> stageUpdateEventConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName())),
+
+                    kafkaConsumerFactory.create(MicroServiceEventType.FLOW_UPDATE,
+                            FlowEvent.class,
+                            (e) -> flowEventConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName())),
+
+                    kafkaConsumerFactory.create(MicroServiceEventType.FLOW_RUN_UPDATE,
+                            FlowRunEvent.class,
+                            (e) -> flowRunEventConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName())),
+
+                    kafkaConsumerFactory.create(MicroServiceEventType.STAGE_RUN_UPDATE,
+                            StageRunEvent.class,
+                            (e) -> stageRunEventConsumer.consume(e),
+                            OffsetResetStrategy.LATEST,
+                            KafkaUtil.toGroupId(systemContext.getServiceName()))
+            );
+        }
     }
 }

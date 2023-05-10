@@ -19,7 +19,7 @@ public class StageUpdateEventConsumerImpl implements StageUpdateEventConsumer {
     }
 
     @Override
-    public void onStageUpdateEvent(StageUpdateEvent event) {
+    public void consume(StageUpdateEvent event) {
         System.out.println("Consume event: " + event);
         if (event.getStage().getStageType() == StageType.TECHNICAL) {
             switch (event.getEventType()) {

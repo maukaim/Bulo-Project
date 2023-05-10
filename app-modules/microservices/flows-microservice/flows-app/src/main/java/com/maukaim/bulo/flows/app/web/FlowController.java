@@ -41,6 +41,6 @@ public class FlowController implements FlowClientEndpoint {
 
     @PostMapping(value = "/flowUpdate")
     public void onFlowEvent(@RequestBody FlowEvent event) {
-        this.flowEventConsumer.onFlowEvent(event);
+        this.flowEventConsumer.consume(event);
     }
 }

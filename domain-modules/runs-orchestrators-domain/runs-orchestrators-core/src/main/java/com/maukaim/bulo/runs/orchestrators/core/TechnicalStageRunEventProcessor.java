@@ -20,6 +20,7 @@ public abstract class TechnicalStageRunEventProcessor {
     protected StageRun<?> getActualRun(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId){
         StageRun<?> actual = orchestrableRunContext.getStageRunsById().get(stageRunId);
         if (actual == null) {
+            // La version de FlowRun qui est en memoire ne connait pas le stageRunId. WHY? En rest, on le voit???
             throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
         }
         return actual;

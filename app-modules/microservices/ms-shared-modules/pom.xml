@@ -15,6 +15,7 @@
     <modules>
         <module>spring-microservices-starter</module>
         <module>microservices-endpoints</module>
+        <module>system-communication-ms-modules</module>
     </modules>
 
 </project>

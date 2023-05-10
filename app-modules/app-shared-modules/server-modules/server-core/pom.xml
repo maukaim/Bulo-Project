@@ -40,5 +40,13 @@
             <artifactId>system-communication-api</artifactId>
             <version>${revision}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>system-communication-rest</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 </project>

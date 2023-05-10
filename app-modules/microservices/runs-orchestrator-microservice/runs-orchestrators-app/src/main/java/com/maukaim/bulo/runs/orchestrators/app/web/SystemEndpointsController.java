@@ -50,7 +50,7 @@ public class SystemEndpointsController {
 
         @Override
         public void consume(FlowRunEvent flowRunEvent) {
-            new Thread(() -> this.flowRunEventConsumer.onFlowRunEvent(flowRunEvent)).start();
+            new Thread(() -> this.flowRunEventConsumer.consume(flowRunEvent)).start();
         }
     }
 
@@ -64,7 +64,7 @@ public class SystemEndpointsController {
 
         @Override
         public void consume(StageUpdateEvent event) {
-            this.stageUpdateEventConsumer.onStageUpdate(event);
+            this.stageUpdateEventConsumer.consume(event);
         }
     }
 
@@ -78,7 +78,7 @@ public class SystemEndpointsController {
 
         @Override
         public void consume(FlowEvent flowEvent) {
-            this.flowEventConsumer.onFlowEvent(flowEvent);
+            this.flowEventConsumer.consume(flowEvent);
         }
     }
 
@@ -92,7 +92,7 @@ public class SystemEndpointsController {
 
         @Override
         public void consume(StageDefinitionEvent event) {
-            this.definitionUpdateEventConsumer.onDefinitionEvent(event);
+            this.definitionUpdateEventConsumer.consume(event);
         }
     }
 
@@ -106,7 +106,7 @@ public class SystemEndpointsController {
         }
 
         public void consume(@RequestBody StageRunEvent event) {
-            new Thread(() -> this.stageRunEventConsumer.onStageRunEvent(event)).start();
+            new Thread(() -> this.stageRunEventConsumer.consume(event)).start();
         }
     }
 }

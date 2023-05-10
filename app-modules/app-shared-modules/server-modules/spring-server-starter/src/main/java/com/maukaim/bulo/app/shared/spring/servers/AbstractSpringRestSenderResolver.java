@@ -5,7 +5,7 @@ import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEventType;
 import com.maukaim.bulo.app.shared.system.communication.core.SystemEventConsumerResolver;
-import com.maukaim.bulo.app.shared.system.communication.core.rest.RestSystemEventConsumer;
+import com.maukaim.bulo.app.shared.systen.communication.rest.RestSystemEventSender;
 import com.maukaim.bulo.app.shared.system.communication.api.SystemEndpointExpectedIn;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class AbstractSpringEndpointConsumerResolver<TYPE extends SystemEventType> implements SystemEventConsumerResolver<RestSystemEventConsumer, TYPE> {
+public abstract class AbstractSpringRestSenderResolver<TYPE extends SystemEventType> implements SystemEventConsumerResolver<RestSystemEventSender, TYPE> {
     private final SystemContext systemContext;
     private final Map<TYPE, Class<?>> systemEndpointMap;
     private final ApplicationMode applicationMode;
 
-    public AbstractSpringEndpointConsumerResolver(SystemContext systemContext,
-                                                  Map<TYPE, Class<?>> systemEndpointMap,
-                                                  ApplicationMode applicationMode) {
+    public AbstractSpringRestSenderResolver(SystemContext systemContext,
+                                            Map<TYPE, Class<?>> systemEndpointMap,
+                                            ApplicationMode applicationMode) {
         this.systemContext = systemContext;
         this.systemEndpointMap = systemEndpointMap;
         this.applicationMode = applicationMode;
@@ -30,7 +30,7 @@ public abstract class AbstractSpringEndpointConsumerResolver<TYPE extends System
     abstract protected String getAppendixServicePath(Class<?> systemEndpointClass, TYPE eventType);
 
     @Override
-    public List<RestSystemEventConsumer> resolve(TYPE eventType) {
+    public List<RestSystemEventSender> resolve(TYPE eventType) {
         Map<ServiceName, String> serviceNamesToServicePath = resolveConsumersServicePath(eventType);
 
         return serviceNamesToServicePath.keySet().stream()
@@ -38,7 +38,7 @@ public abstract class AbstractSpringEndpointConsumerResolver<TYPE extends System
                     List<String> potentialHosts = systemContext.getHosts(serviceName);
                     String port = systemContext.getPort(serviceName);
                     String servicePath = serviceNamesToServicePath.get(serviceName);
-                    return new RestSystemEventConsumer(serviceName, potentialHosts, port, servicePath);
+                    return new RestSystemEventSender(serviceName, potentialHosts, port, servicePath);
                 }).toList();
     }
 

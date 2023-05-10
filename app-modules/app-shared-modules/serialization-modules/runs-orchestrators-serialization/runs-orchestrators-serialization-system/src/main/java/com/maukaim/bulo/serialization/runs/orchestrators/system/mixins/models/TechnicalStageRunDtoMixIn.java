@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.StageRunStatusDto;
+import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.RunContextDto;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.stagerun.StageRunDependencyDto;
 
 import java.time.Instant;
@@ -13,10 +14,11 @@ public class TechnicalStageRunDtoMixIn {
     @JsonCreator
     public TechnicalStageRunDtoMixIn(@JsonProperty("stageRunId") String stageRunId,
                                      @JsonProperty("flowStageId") ContextStageId contextStageId,
-                                     @JsonProperty("flowRunId") String flowRunId,
-                                     @JsonProperty("stageRunStatus") StageRunStatusDto stageRunStatus,
+                                     @JsonProperty("context") RunContextDto<?> context,
+                                     @JsonProperty("status") StageRunStatusDto stageRunStatus,
                                      @JsonProperty("executorId") String executorId,
                                      @JsonProperty("dependencies") Set<StageRunDependencyDto> dependencies,
                                      @JsonProperty("startTime") Instant startTime,
-                                     @JsonProperty("endTime") Instant endTime){}
+                                     @JsonProperty("endTime") Instant endTime) {
+    }
 }

@@ -9,7 +9,7 @@ import java.util.List;
  * Only apps can know exactly where/what to contact on event;
  * @param <T>
  */
-public interface SystemEventConsumerResolver<T extends SystemEventConsumer, TYPE extends SystemEventType> {
+public interface SystemEventConsumerResolver<T extends SystemEventSender, TYPE extends SystemEventType> {
 
     List<T> resolve(TYPE eventType);
 }

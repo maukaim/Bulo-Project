@@ -28,17 +28,12 @@ public class FlowRunStoreImpl implements FlowRunStore {
     }
 
     @Override
-    public FlowRun put(FlowRun flowRun) {
-        FlowRun newVersion = this.flowRunById.compute(flowRun.getContextId(), (id, previous) -> flowRun);
-        FlowRunDto dto = this.flowRunDtoAdapter.adapte(newVersion);
+    public synchronized FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer){
+        FlowRun persistedFlowRun = this.flowRunById.compute(flowRunId, valueComputer);
+        FlowRunDto dto = this.flowRunDtoAdapter.adapte(persistedFlowRun);
         FlowRunEvent flowRunEvent = new FlowRunEvent(dto, Instant.now());
         flowRunEventPublisher.publish(flowRunEvent);
-        return newVersion;
-    }
-
-    @Override
-    public synchronized FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer){
-        return this.flowRunById.compute(flowRunId, valueComputer);
+        return persistedFlowRun;
     }
 
     @Override
@@ -56,7 +51,8 @@ public class FlowRunStoreImpl implements FlowRunStore {
     }
 
     public FlowRun save(FlowRun flowRun) {
-        System.out.println("Will save flowRun -> " + flowRun);
+        System.out.println((flowRun.getStatus().isTerminal()? ">>> Save TERMINAL flowRun -> " : "Save intermediate flowRun -> ") + flowRun);
+        //Only save if it is one NOT managed by this instance
         return this.flowRunById.put(flowRun.getContextId(), flowRun);
     }
 }

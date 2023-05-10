@@ -5,12 +5,15 @@ import static com.maukaim.bulo.app.shared.system.communication.api.ApplicationMo
 
 public enum ServiceName {
     STANDALONE(standalone),
+
     BULO_MS_DEFINITIONS_SERVICE(microservices),
     BULO_MS_EXECUTORS_SERVICE(microservices),
     BULO_MS_FLOWS_SERVICE(microservices),
     BULO_MS_ORCHESTRATOR_SERVICE(microservices),
     BULO_MS_STAGES_SERVICE(microservices),
-    BULO_MS_TRIGGER_SCHEDULER_SERVICE(microservices);
+    BULO_MS_TRIGGER_SCHEDULER_SERVICE(microservices),
+
+    MOCKINGBIRD(standalone);
 
     private final ApplicationMode applicationMode;
 

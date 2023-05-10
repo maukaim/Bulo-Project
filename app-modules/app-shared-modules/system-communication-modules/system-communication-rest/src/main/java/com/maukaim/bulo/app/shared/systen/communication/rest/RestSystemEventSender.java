@@ -1,19 +1,19 @@
-package com.maukaim.bulo.app.shared.system.communication.core.rest;
+package com.maukaim.bulo.app.shared.systen.communication.rest;
 
 import com.maukaim.bulo.app.shared.system.communication.api.ServiceName;
-import com.maukaim.bulo.app.shared.system.communication.core.SystemEventConsumer;
+import com.maukaim.bulo.app.shared.system.communication.core.SystemEventSender;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RestSystemEventConsumer implements SystemEventConsumer {
+public class RestSystemEventSender implements SystemEventSender {
     private final ServiceName serviceName;
     private final List<String> potentialHosts;
     private final String rootPort;
     private final String servicePath;
 
-    public RestSystemEventConsumer(ServiceName serviceName, Collection<String> potentialHosts, String rootPort, String servicePath) {
+    public RestSystemEventSender(ServiceName serviceName, Collection<String> potentialHosts, String rootPort, String servicePath) {
         this.serviceName = serviceName;
         this.potentialHosts = List.copyOf(potentialHosts);
         this.rootPort = rootPort;

@@ -13,5 +13,5 @@ public interface SystemConnector<TYPE extends SystemEventType> {
      * @param type used to resolve where we connect
      * @return successful sending
      */
-    List<Object> sendExternal(Object event, TYPE type);
+    List<Object> sendExternal(Object event, TYPE type) throws MessageTransmissionException;
 }

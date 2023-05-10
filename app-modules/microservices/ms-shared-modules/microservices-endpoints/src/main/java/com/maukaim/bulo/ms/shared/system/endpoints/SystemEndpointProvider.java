@@ -1,5 +1,6 @@
 package com.maukaim.bulo.ms.shared.system.endpoints;
 
+import com.maukaim.bulo.ms.shared.system.communication.api.MicroServiceEventType;
 import com.maukaim.bulo.ms.shared.system.endpoints.controllers.*;
 
 import java.util.HashMap;
@@ -7,21 +8,21 @@ import java.util.Map;
 
 public class SystemEndpointProvider {
 
-    public static Map<ServiceEventType, Class<?>> getSystemEndpointClasses() {
-        Map<ServiceEventType, Class<?>> one = Map.of(
-                ServiceEventType.TRIGGER_FLOW_RUN, IFlowRunStartServiceEndpoint.class,
-                ServiceEventType.DEF_CREATE_INSTRUCTION, IDefinitionCreateServiceEndpoint.class,
-                ServiceEventType.NEED_STAGE_RUN_EVENT, IStageRunRequiredServiceEndpoint.class,
-                ServiceEventType.FLOW_RUN_UPDATE, IFlowRunUpdateServiceEndpoint.class,
-                ServiceEventType.STAGE_UPDATE, IStageUpdateServiceEndpoint.class,
-                ServiceEventType.FLOW_UPDATE, IFlowUpdateServiceEndpoint.class,
-                ServiceEventType.DEF_UPDATE, IDefinitionUpdateServiceEndpoint.class,
-                ServiceEventType.EXECUTOR_UPDATE, IExecutorUpdateServiceEndpoint.class
+    public static Map<MicroServiceEventType, Class<?>> getSystemEndpointClasses() {
+        Map<MicroServiceEventType, Class<?>> one = Map.of(
+                MicroServiceEventType.TRIGGER_FLOW_RUN, IFlowRunStartServiceEndpoint.class,
+                MicroServiceEventType.DEF_CREATE_INSTRUCTION, IDefinitionCreateServiceEndpoint.class,
+                MicroServiceEventType.STAGE_RUN_READY_TO_START_EVENT, IStageRunRequiredServiceEndpoint.class,
+                MicroServiceEventType.FLOW_RUN_UPDATE, IFlowRunUpdateServiceEndpoint.class,
+                MicroServiceEventType.STAGE_UPDATE, IStageUpdateServiceEndpoint.class,
+                MicroServiceEventType.FLOW_UPDATE, IFlowUpdateServiceEndpoint.class,
+                MicroServiceEventType.DEF_UPDATE, IDefinitionUpdateServiceEndpoint.class,
+                MicroServiceEventType.EXECUTOR_UPDATE, IExecutorUpdateServiceEndpoint.class
         );
-        Map<ServiceEventType, Class<?>> second = Map.of(
-                ServiceEventType.STAGE_RUN_RESULT, IStageRunResultServiceEndpoint.class,
-                ServiceEventType.STAGE_RUN_UPDATE, IStageRunUpdateServiceEndpoint.class,
-                ServiceEventType.NEED_STAGE_RUN_CANCEL, IStageRunCancellationServiceEndpoint.class
+        Map<MicroServiceEventType, Class<?>> second = Map.of(
+                MicroServiceEventType.STAGE_RUN_RESULT, IStageRunResultServiceEndpoint.class,
+                MicroServiceEventType.STAGE_RUN_UPDATE, IStageRunUpdateServiceEndpoint.class,
+                MicroServiceEventType.NEED_STAGE_RUN_CANCEL, IStageRunCancellationServiceEndpoint.class
         );
 
         return new HashMap<>() {{

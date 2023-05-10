@@ -8,6 +8,4 @@ public interface FlowRunStore extends ContextStore<FlowRun, String>{
     FlowRun getRun(String flowRunId);
 
     FlowRun add(FlowRun flowRun);
-
-    FlowRun put(FlowRun flowRun);
 }

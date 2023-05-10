@@ -2,7 +2,12 @@ package com.maukaim.bulo.runs.orchestrators.data.runs.flow;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -62,10 +67,11 @@ public class ExecutionGraph {
 
     public Map<ContextStageId, Set<ContextualizedStageDependency>> toDependencyMap() {
         return Stream.concat(
+                        this.dependenciesByFlowStageId.keySet().stream(),
                         this.getRootsIds().stream()
-                                .map(f -> Map.entry(f, Set.<ContextualizedStageDependency>of())),
-                        this.dependenciesByFlowStageId.entrySet().stream()
-                )
+                ).distinct()
+                .map(contextStageId ->
+                        Map.entry(contextStageId, this.dependenciesByFlowStageId.getOrDefault(contextStageId, Set.of())))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 

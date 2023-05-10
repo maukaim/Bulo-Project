@@ -43,7 +43,7 @@ public class StageRunEventConsumerImpl implements StageRunEventConsumer {
     }
 
     @Override
-    public void onStageRunEvent(StageRunEvent event) {
+    public void consume(StageRunEvent event) {
         System.out.println("Consume event: " + event);
         switch (event.getEventType()) {
             case ACKNOWLEDGE_REQUEST -> this.onAcknowledged((AcknowledgeStageRunEvent) event);

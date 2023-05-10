@@ -23,6 +23,10 @@ public class ContextStageId {
         return stageId;
     }
 
+    public Integer getMarker() {
+        return marker;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

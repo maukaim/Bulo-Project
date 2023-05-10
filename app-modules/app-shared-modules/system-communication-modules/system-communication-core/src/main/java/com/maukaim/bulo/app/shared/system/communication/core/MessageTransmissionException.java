@@ -4,4 +4,7 @@ public class MessageTransmissionException extends RuntimeException {
     public MessageTransmissionException(Exception e) {
         super(e);
     }
+    public MessageTransmissionException(String msg) {
+        super(msg);
+    }
 }

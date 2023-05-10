@@ -8,6 +8,7 @@ import com.maukaim.bulo.definitions.data.definition.StageInputDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.FsStage;
 import com.maukaim.bulo.definitions.data.definition.functional.FunctionalStageDefinition;
 import com.maukaim.bulo.definitions.data.definition.functional.InputProvider;
+import com.maukaim.bulo.definitions.data.stage.Stage;
 import com.maukaim.bulo.definitions.registry.core.FunctionalStageDefinitionValidator;
 
 import java.util.List;
@@ -49,15 +50,20 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
     private Map<String, List<StageDefinition>> getRootsInputDefinitions(Set<FsStage> functionalSubStages) {
         return functionalSubStages.stream()
                 .filter(this::isRoot)
-                .map(fsStage -> this.stageStore.getById(fsStage.getContextualizedId().getStageId()))
-                .peek(fsStage -> {
-                    if (fsStage == null)
-                        throw new RuntimeException("Stage referenced but does not exist.");
+                .map(fsStage -> {
+                    Stage stage = this.stageStore.getById(fsStage.getContextualizedId().getStageId());
+                    if (stage == null) {
+                        throw new RuntimeException("Stage referenced but does not exist. " + fsStage.getContextualizedId().getStageId());
+                    }
+                    return stage;
                 })
-                .map(stage -> this.stageDefinitionStore.getById(stage.getDefinitionId()))
-                .peek(fsStage -> {
-                    if (fsStage == null)
-                        throw new RuntimeException("Stage referenced but does not exist.");
+
+                .map(stage -> {
+                    StageDefinition stageDefinition = this.stageDefinitionStore.getById(stage.getDefinitionId());
+                    if (stageDefinition == null) {
+                        throw new RuntimeException("stageDefinition referenced but does not exist. " + stage.getDefinitionId());
+                    }
+                    return stageDefinition;
                 })
                 .flatMap(stageDefinition ->
                         stageDefinition.getInputsByName().entrySet().stream()
