@@ -22,12 +22,6 @@ public class MainFlowRunStore implements FlowRunStore {
     }
 
     @Override
-    public FlowRun put(FlowRun flowRun) {
-        FlowRun newVersion = this.flowRunById.compute(flowRun.getContextId(), (id, previous) -> flowRun);
-        return newVersion;
-    }
-
-    @Override
     public synchronized FlowRun compute(String flowRunId, BiFunction<String, FlowRun, FlowRun> valueComputer) {
         return this.flowRunById.compute(flowRunId, valueComputer);
     }
