@@ -1,15 +1,15 @@
 package com.maukaim.bulo.mockingbird;
 
-import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
 import com.maukaim.bulo.app.shared.system.communication.api.ApplicationMode;
-import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.commons.models.TriggerId;
+import com.maukaim.bulo.io.data.types.natives.impl.StringTypeDto;
 import com.maukaim.bulo.io.flows.client.model.OwnerKeyTypeDto;
 import com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder;
 import com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder;
 import com.maukaim.bulo.mockingbird.builders.StageDtoBuilder;
 import com.maukaim.bulo.mockingbird.connect.User;
+import com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +18,14 @@ import java.util.Set;
 
 import static com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder.inputProvider;
 import static com.maukaim.bulo.mockingbird.builders.FlowDtoBuilder.ioDependency;
-import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.*;
+import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.aDefinition;
+import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.fsStage;
+import static com.maukaim.bulo.mockingbird.builders.FunctionalDefinitionBuilder.outputProvider;
 
 public class SanityCheckTests {
     private User user;
 
-    private final ApplicationMode applicationMode = ApplicationMode.microservices;
+    private final ApplicationMode applicationMode = ApplicationMode.standalone;
     private final ApplicationEnvironment applicationEnv = ApplicationEnvironment.dev;
 
     @BeforeEach

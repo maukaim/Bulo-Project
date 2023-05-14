@@ -202,7 +202,7 @@ public class StageRunServiceImpl implements StageRunService {
                         this.stageRunConnector.propagateFunctionalStageRunCancelled(finalStageRun.getStageRunId());
                 case FAILED -> this.stageRunConnector.propagateFunctionalStageRunFailed(finalStageRun.getStageRunId());
                 case SUCCESS ->
-                        this.stageRunConnector.propagateFunctionalStageRunSuccesful(finalStageRun.getStageRunId());
+                        this.stageRunConnector.propagateFunctionalStageRunSuccessful(finalStageRun.getStageRunId());
             }
         }
     }

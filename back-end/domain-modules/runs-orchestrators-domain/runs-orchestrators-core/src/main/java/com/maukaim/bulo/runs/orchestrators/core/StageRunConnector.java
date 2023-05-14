@@ -17,5 +17,5 @@ public interface StageRunConnector {
 
     void propagateFunctionalStageRunFailed(String stageRunId);
 
-    void propagateFunctionalStageRunSuccesful(String stageRunId);
+    void propagateFunctionalStageRunSuccessful(String stageRunId);
 }

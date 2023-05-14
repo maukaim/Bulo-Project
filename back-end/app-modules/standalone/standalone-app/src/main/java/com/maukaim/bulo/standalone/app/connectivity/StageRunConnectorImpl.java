@@ -60,8 +60,8 @@ public class StageRunConnectorImpl implements StageRunConnector {
     }
 
     @Override
-    public void propagateFunctionalStageRunSuccesful(String stageRunId) {
-        this.stageRunResultListener.onFailed(stageRunId, Instant.now());
+    public void propagateFunctionalStageRunSuccessful(String stageRunId) {
+        this.stageRunResultListener.onSuccessful(stageRunId, Instant.now());
     }
 
     private Set<com.maukaim.bulo.executors.data.runs.StageRunDependency> resolve(Set<RunDependency> stageRunDependencies) {
