@@ -1,5 +1,5 @@
 <div>
-    <h1 class="title"><img src="docs/assets/bulo-logo.svg" width="100" alt="Bulo logo" /> Bulo Automation Platform (ALPHA)</h1>  
+    <h1 class="title"><img src="docs/assets/bulo-logo-alpha.svg" width="100" alt="Bulo logo" /> Bulo Automation Platform (ALPHA)</h1>  
 </div>  
 <br/>
 
