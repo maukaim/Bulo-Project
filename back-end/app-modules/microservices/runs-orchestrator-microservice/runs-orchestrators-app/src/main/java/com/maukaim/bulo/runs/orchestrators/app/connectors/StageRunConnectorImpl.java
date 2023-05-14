@@ -74,7 +74,7 @@ public class StageRunConnectorImpl implements StageRunConnector {
     }
 
     @Override
-    public void propagateFunctionalStageRunSuccesful(String stageRunId) {
+    public void propagateFunctionalStageRunSuccessful(String stageRunId) {
         this.stageRunEventConsumer.consume(new RunSuccessfulStageRunEvent(stageRunId, Instant.now()));
     }
 
