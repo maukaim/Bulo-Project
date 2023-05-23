@@ -1,4 +1,4 @@
-import 'package:bulo_ui/ui/home.dart';
+import 'package:bulo_ui/widgets/ui/home.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class BuloApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
