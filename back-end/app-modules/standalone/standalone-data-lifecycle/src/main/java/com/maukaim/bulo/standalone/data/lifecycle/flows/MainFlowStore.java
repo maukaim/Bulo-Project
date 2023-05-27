@@ -4,6 +4,7 @@ import com.maukaim.bulo.flows.data.FlowStore;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainFlowStore implements FlowStore {
@@ -29,5 +30,10 @@ public class MainFlowStore implements FlowStore {
     public Flow remove(Flow flow) {
         System.out.println("Removing flow: " + flow.getFlowId());
         return this.flowById.remove(flow.getFlowId());
+    }
+
+    @Override
+    public List<Flow> getAll() {
+        return flowById.values().stream().toList();
     }
 }

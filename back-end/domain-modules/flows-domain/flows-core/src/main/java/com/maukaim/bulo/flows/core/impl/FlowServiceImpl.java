@@ -6,6 +6,7 @@ import com.maukaim.bulo.flows.core.FlowValidator;
 import com.maukaim.bulo.flows.data.FlowStore;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
 
+import java.util.List;
 import java.util.UUID;
 
 public class FlowServiceImpl implements FlowService {
@@ -20,6 +21,11 @@ public class FlowServiceImpl implements FlowService {
     @Override
     public Flow getFlow(String flowId) {
         return flowStore.getById(flowId);
+    }
+
+    @Override
+    public List<Flow> getAll() {
+        return this.flowStore.getAll();
     }
 
     @Override

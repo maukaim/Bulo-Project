@@ -9,6 +9,7 @@ import com.maukaim.bulo.io.flows.system.FlowEventType;
 
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FlowStoreImpl implements FlowStore {
@@ -48,6 +49,11 @@ public class FlowStoreImpl implements FlowStore {
         FlowEvent event = new FlowEvent(dto, FlowEventType.ARCHIVED, Instant.now());
         boolean published = this.flowEventPublisher.publish(event);
         return published ? flow : this.delete(flow.getFlowId());
+    }
+
+    @Override
+    public List<Flow> getAll() {
+        return flowById.values().stream().toList();
     }
 
     public Flow save(Flow flow) {

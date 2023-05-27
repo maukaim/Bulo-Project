@@ -2,9 +2,11 @@ package com.maukaim.bulo.flows.app.beans;
 
 import com.maukaim.bulo.app.shared.system.communication.core.SystemConnector;
 import com.maukaim.bulo.data.lifecycle.flows.client.FlowAdapter;
+import com.maukaim.bulo.data.lifecycle.flows.client.FlowDtoAdapter;
 import com.maukaim.bulo.flows.app.io.CreateFlowInstructionConsumerImpl;
 import com.maukaim.bulo.flows.app.io.FlowEventConsumerImpl;
 import com.maukaim.bulo.flows.app.io.FlowEventPublisherImpl;
+import com.maukaim.bulo.flows.app.io.GetAllFlowsInstructionConsumerImpl;
 import com.maukaim.bulo.flows.app.io.RemoveFlowInstructionConsumerImpl;
 import com.maukaim.bulo.flows.app.io.StageDefinitionConsumerImpl;
 import com.maukaim.bulo.flows.app.io.StageUpdateEventConsumerImpl;
@@ -20,6 +22,7 @@ import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageAdapter;
 import com.maukaim.bulo.flows.ms.data.lifecycle.adapters.StageDefinitionAdapter;
 import com.maukaim.bulo.io.definitions.system.StageDefinitionEvent;
 import com.maukaim.bulo.io.flows.client.CreateFlowInstructionConsumer;
+import com.maukaim.bulo.io.flows.client.GetAllFlowsInstructionConsumer;
 import com.maukaim.bulo.io.flows.client.RemoveFlowInstructionConsumer;
 import com.maukaim.bulo.io.flows.system.FlowEvent;
 import com.maukaim.bulo.io.stages.system.StageUpdateEvent;
@@ -56,6 +59,12 @@ public class IoBeansConfig {
     CreateFlowInstructionConsumer createFlowInstructionConsumer(FlowService flowService,
                                                                 FlowAdapter flowAdapter) {
         return new CreateFlowInstructionConsumerImpl(flowService, flowAdapter);
+    }
+
+    @Bean
+    GetAllFlowsInstructionConsumer getAllFlowsInstructionConsumer(FlowService flowService,
+                                                                  FlowDtoAdapter flowDtoAdapter){
+        return new GetAllFlowsInstructionConsumerImpl(flowService, flowDtoAdapter);
     }
 
     @Bean

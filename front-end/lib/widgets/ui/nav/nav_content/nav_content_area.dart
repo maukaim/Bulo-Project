@@ -1,103 +1,35 @@
-
+import 'package:bulo_ui/domains/flows/providers.dart';
+import 'package:bulo_ui/widgets/ui/nav/nav_content/flows/flow_list_item.dart';
+import 'package:bulo_ui/widgets/ui/nav/nav_content/flows/nav_flows_area.dart';
+import 'package:bulo_ui/widgets/ui/nav/nav_tab/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NavContentArea extends StatelessWidget{
+import '../nav_tab/nav_menu_type.dart';
+
+class NavContentArea extends ConsumerWidget {
   const NavContentArea({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Expanded(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(0, 32, 0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(
-                    size: 16,
-                    CupertinoIcons.arrow_2_squarepath,
-                    color: Colors.blueGrey,
-                  ),
-                  Text(
-                    " Flows Available",
-                    style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  )
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
-                child: Column(
-                  children: [
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                    Text(
-                      "Mail Automatisation - Maukaim",
-                      style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    var tabMenuType = ref.watch(selectedTabMenuProvider);
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 16, 12, 16),
+        child:(() {
+          switch (tabMenuType) {
+            case NavMenuType.flowMenu:
+              return NavFlowsArea();
+            case NavMenuType.stageMenu:
+              return Container(color: Colors.blue,);
+            case NavMenuType.teamMenu:
+              return Container(color: Colors.green,);
+            default:
+              return const Center();
+          }
+        }()),
       ),
     );
   }
-
 }

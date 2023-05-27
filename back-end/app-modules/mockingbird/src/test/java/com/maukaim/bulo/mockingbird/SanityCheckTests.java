@@ -100,7 +100,7 @@ public class SanityCheckTests {
         ContextStageId functionalNameProviderContextId = ContextStageId.of(functionalStageId, 4);
 
         String flowId = user.createFlow(FlowDtoBuilder.aFlow()
-                .withFlowId("Babar")
+                .withFlowId("Babar La barbade")
                 .withOwnerKey(user.getUserName(), OwnerKeyTypeDto.USER)
                 .withFlowStage(flowNameProviderContextId)
                 .withFlowStage(flowPrinterContextId1,

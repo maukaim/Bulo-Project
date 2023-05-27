@@ -11,7 +11,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MultiSplitViewController _controller = MultiSplitViewController(areas: [
-      Area(weight: 0.16, minimalWeight: .10),
+      Area(weight: 0.16, minimalSize: 150),
       Area(minimalWeight: .66)
     ]);
 
@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
           padding: const EdgeInsets.all(0.0),
           child: MultiSplitView(
             controller: _controller,
-            children: [NavBar(), MainContent()],
+            children: [NavBar(), MainArea()],
           ),
         ),
       ),

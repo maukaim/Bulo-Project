@@ -11,7 +11,7 @@ class NavBar extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 24, horizontal: 0),
+      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 0),
       child: Column(
         children: [
           LogoArea(),
