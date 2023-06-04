@@ -29,18 +29,18 @@ pipeline {
                 // Runs unit tests with Maven
                 dir('back-end'){
                     script {
-                                            def pom = readMavenPom file: 'pom.xml'
+                        def pom = readMavenPom file: 'pom.xml'
 
-                                            def builders = [:]
-                                            for (module in pom.modules) {
-                                                builders[module] = {
-                                                    stage("Test: ${module}") {
-                                                        sh "mvn test -pl ${module}"
-                                                    }
-                                                }
-                                            }
-                                            parallel builders
-                                        }
+                        def builders = [:]
+                        for (module in pom.modules) {
+                            builders[module] = {
+                                step("Test: ${module}") {
+                                    sh "mvn test -pl ${module}"
+                                }
+                            }
+                        }
+                        parallel builders
+                    }
                 }
             }
         }
