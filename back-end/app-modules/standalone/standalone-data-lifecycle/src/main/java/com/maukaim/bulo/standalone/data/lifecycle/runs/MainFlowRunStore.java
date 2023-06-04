@@ -4,6 +4,7 @@ import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRunStoreException;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
@@ -35,5 +36,12 @@ public class MainFlowRunStore implements FlowRunStore {
             return flowRun;
         });
         return persistedValue;
+    }
+
+    @Override
+    public List<FlowRun> getByFlowId(String flowId) {
+        return flowRunById.values().stream()
+                .filter(flowRun -> flowId.equals(flowRun.getFlowId()))
+                .toList();
     }
 }

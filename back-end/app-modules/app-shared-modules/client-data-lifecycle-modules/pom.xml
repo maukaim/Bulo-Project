@@ -17,5 +17,6 @@
         <module>flows-client-data-lifecycle</module>
         <module>stages-client-data-lifecycle</module>
         <module>data-types-client-data-lifecycle</module>
+        <module>runs-client-data-lifecycle</module>
     </modules>
 </project>

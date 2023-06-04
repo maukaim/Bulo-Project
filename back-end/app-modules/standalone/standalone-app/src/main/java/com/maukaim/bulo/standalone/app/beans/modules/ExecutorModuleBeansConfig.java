@@ -104,11 +104,11 @@ public class ExecutorModuleBeansConfig {
     }
 
     @Bean
-    public StageRunResultListener stageRunResultListener(AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor,
-                                                         StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor,
-                                                         RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor,
-                                                         RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor,
-                                                         RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor,
+    public StageRunResultListener stageRunResultListener(AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor,
+                                                         StartRunStageRunEventProcessor startRunStageEventProcessor,
+                                                         RunCancelledStageRunEventProcessor runCancelledStageEventProcessor,
+                                                         RunFailedStageRunEventProcessor runFailedStageEventProcessor,
+                                                         RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor,
                                                          StageRunStore stageRunStore,
                                                          MainStageRunResultStore mainStageRunResultStore) {
         StageRunResultListenerImpl stageRunResultListener = new StageRunResultListenerImpl(acknowledgeStageEventProcessor,

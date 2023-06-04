@@ -8,17 +8,17 @@ import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 import java.util.Map;
 import java.util.function.Function;
 
-public abstract class TechnicalStageRunEventProcessor {
+public abstract class StageRunEventProcessor {
     protected final FlowRunService flowRunService;
     protected final StageRunService stageRunService;
 
-    public TechnicalStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
+    public StageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
         this.flowRunService = flowRunService;
         this.stageRunService = stageRunService;
     }
 
     protected StageRun<?> getActualRun(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId){
-        StageRun<?> actual = orchestrableRunContext.getStageRunsById().get(stageRunId);
+        StageRun<?> actual = this.stageRunService.getById(stageRunId);
         if (actual == null) {
             // La version de FlowRun qui est en memoire ne connait pas le stageRunId. WHY? En rest, on le voit???
             throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");

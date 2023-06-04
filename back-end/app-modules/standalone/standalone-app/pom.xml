@@ -114,6 +114,12 @@
 
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
+            <artifactId>runs-client-data-lifecycle</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
             <artifactId>standalone-data-lifecycle</artifactId>
             <version>${revision}</version>
         </dependency>

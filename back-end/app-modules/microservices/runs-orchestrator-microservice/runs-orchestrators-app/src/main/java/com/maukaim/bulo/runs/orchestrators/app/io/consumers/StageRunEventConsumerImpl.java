@@ -6,11 +6,11 @@ import com.maukaim.bulo.io.executors.system.RunFailedStageRunEvent;
 import com.maukaim.bulo.io.executors.system.RunSuccessfulStageRunEvent;
 import com.maukaim.bulo.io.executors.system.StageRunEvent;
 import com.maukaim.bulo.io.executors.system.StartRunStageRunEvent;
-import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunTechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRunContext;
@@ -20,19 +20,19 @@ import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunEventConsum
 import java.util.function.Consumer;
 
 public class StageRunEventConsumerImpl implements StageRunEventConsumer {
-    private final AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor;
-    private final RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor;
-    private final RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor;
-    private final RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor;
-    private final StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor;
+    private final AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor;
+    private final RunCancelledStageRunEventProcessor runCancelledStageEventProcessor;
+    private final RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor;
+    private final RunFailedStageRunEventProcessor runFailedStageEventProcessor;
+    private final StartRunStageRunEventProcessor startRunStageEventProcessor;
     private final StageRunStore stageRunStore;
 
 
-    public StageRunEventConsumerImpl(AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor,
-                                     RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor,
-                                     RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor,
-                                     RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor,
-                                     StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor,
+    public StageRunEventConsumerImpl(AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor,
+                                     RunCancelledStageRunEventProcessor runCancelledStageEventProcessor,
+                                     RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor,
+                                     RunFailedStageRunEventProcessor runFailedStageEventProcessor,
+                                     StartRunStageRunEventProcessor startRunStageEventProcessor,
                                      StageRunStore stageRunStore) {
         this.acknowledgeStageEventProcessor = acknowledgeStageEventProcessor;
         this.runCancelledStageEventProcessor = runCancelledStageEventProcessor;

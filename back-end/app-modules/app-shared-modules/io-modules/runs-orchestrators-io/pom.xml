@@ -14,5 +14,6 @@
 
     <modules>
         <module>runs-orchestrators-io-system</module>
+        <module>runs-io-client</module>
     </modules>
 </project>

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:bulo_ui/core/connect/backend_connector.dart';
 
@@ -11,10 +10,10 @@ class FlowRunsService {
   FlowRunsService(this._backendConnector);
 
   @override
-  Future<List<FlowRun>> getByFlowId(String flowId) async {
-    print("blalaba");
-    var response = await _backendConnector.get("flowRuns/$flowId");
+  Future<List<FlowRunView>> getByFlowId(String flowId) async {
+    var response =
+        await _backendConnector.get("runs/getByFlowId", {'flowId': flowId});
     var decode = json.decode(response.body);
-    return [for (var x in decode) FlowRun.fromJson(x)];
+    return [for (var x in decode) FlowRunView.fromJson(x)];
   }
 }

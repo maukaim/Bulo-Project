@@ -26,7 +26,6 @@ public interface FlowClientEndpoint {
     @PostMapping(value = "/remove")
     void onRemove(@RequestBody RemoveFlowInstruction instruction);
 
-    @ForClientEventType(ClientEventType.FLOW_REMOVE_INSTRUCTION)
     @GetMapping
     ResponseEntity<List<FlowDto>> getAll();
 }

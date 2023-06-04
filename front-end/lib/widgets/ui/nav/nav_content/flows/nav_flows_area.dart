@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../global/buttons/basic_button.dart';
 import 'flow_list_item.dart';
 
 class NavFlowsArea extends ConsumerWidget{
@@ -55,6 +56,9 @@ class NavFlowsArea extends ConsumerWidget{
       const Divider(
         color: Color.fromRGBO(150, 150, 150, 0.5), // Color of the divider
       ),
+      CustomButton(
+        color: Colors.blueGrey,
+          onPressed: ()=> print("hihi"), child: Text("hihi")),
       SingleChildScrollView(
         child: availableFlows.when(
             data: (flows) => ListView.builder(

@@ -17,5 +17,11 @@
             <artifactId>runs-orchestrators-models</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>com.maukaim.bulo</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 </project>

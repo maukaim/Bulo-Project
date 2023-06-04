@@ -8,6 +8,7 @@ import com.maukaim.bulo.io.runs.orchestrators.system.events.FlowRunEvent;
 import com.maukaim.bulo.io.runs.orchestrators.system.models.flowrun.FlowRunDto;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
@@ -48,6 +49,13 @@ public class FlowRunStoreImpl implements FlowRunStore {
         FlowRunEvent flowRunEvent = new FlowRunEvent(dto, Instant.now());
         flowRunEventPublisher.publish(flowRunEvent);
         return persistedValue;
+    }
+
+    @Override
+    public List<FlowRun> getByFlowId(String flowId) {
+        return flowRunById.values().stream()
+                .filter(flowRun -> flowId.equals(flowRun.getFlowId()))
+                .toList();
     }
 
     public FlowRun save(FlowRun flowRun) {

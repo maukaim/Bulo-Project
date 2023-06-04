@@ -76,11 +76,17 @@ public class FlowRunServiceImpl implements FlowRunService {
     }
 
     @Override
+    public List<FlowRun> getByFlowId(String flowId) {
+        return flowRunStore.getByFlowId(flowId);
+    }
+
+    @Override
     public synchronized FlowRun computeStageRunUpdateUnderLock(String flowRunId, Function<FlowRun, Map<String, StageRun<?>>> stageRunViewComputer) {
         AtomicReference<List<StageRun<?>>> toBeRequestedReference = new AtomicReference<>();
         FlowRun flowRunPersisted = this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
             Map<String, StageRun<?>> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
+            saveAllTechnicalStageRuns(stageRunViewToUpdate);
             newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
 
             List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
@@ -101,5 +107,13 @@ public class FlowRunServiceImpl implements FlowRunService {
             });
         }
         return flowRunPersisted;
+    }
+
+    private void saveAllTechnicalStageRuns(Map<String, StageRun<?>> stageRunViewToUpdate) {
+        stageRunViewToUpdate.forEach((stageId, stageRun) -> {
+            if (stageRun instanceof TechnicalStageRun) {
+                this.stageRunService.put(stageId,stageRun);
+            }
+        });
     }
 }

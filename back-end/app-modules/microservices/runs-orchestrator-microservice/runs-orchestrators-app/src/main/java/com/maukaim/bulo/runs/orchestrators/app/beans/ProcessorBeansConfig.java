@@ -9,32 +9,32 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ProcessorBeansConfig {
     @Bean
-    public AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor(StageRunService stageRunService,
-                                                                                     FlowRunService flowRunService) {
-        return new AcknowledgeTechnicalStageRunEventProcessor(flowRunService, stageRunService);
+    public AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor(StageRunService stageRunService,
+                                                                            FlowRunService flowRunService) {
+        return new AcknowledgeStageRunEventProcessor(flowRunService, stageRunService);
     }
 
     @Bean
-    public StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor(StageRunService stageRunService,
-                                                                               FlowRunService flowRunService) {
-        return new StartRunTechnicalStageRunEventProcessor(flowRunService, stageRunService);
+    public StartRunStageRunEventProcessor startRunStageEventProcessor(StageRunService stageRunService,
+                                                                      FlowRunService flowRunService) {
+        return new StartRunStageRunEventProcessor(flowRunService, stageRunService);
     }
 
     @Bean
-    public RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor(StageRunService stageRunService,
-                                                                                 FlowRunService flowRunService) {
-        return new RunFailedTechnicalStageRunEventProcessor(flowRunService, stageRunService);
+    public RunFailedStageRunEventProcessor runFailedStageEventProcessor(StageRunService stageRunService,
+                                                                        FlowRunService flowRunService) {
+        return new RunFailedStageRunEventProcessor(flowRunService, stageRunService);
     }
 
     @Bean
-    public RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor(FlowRunService flowRunService,
-                                                                                       StageRunService stageRunService) {
-        return new RunCancelledTechnicalStageRunEventProcessor(flowRunService, stageRunService);
+    public RunCancelledStageRunEventProcessor runCancelledStageEventProcessor(FlowRunService flowRunService,
+                                                                              StageRunService stageRunService) {
+        return new RunCancelledStageRunEventProcessor(flowRunService, stageRunService);
     }
 
     @Bean
-    public RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor(StageRunService stageRunService,
-                                                                                         FlowRunService flowRunService) {
-        return new RunSuccessfulTechnicalStageRunEventProcessor(flowRunService, stageRunService);
+    public RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor(StageRunService stageRunService,
+                                                                                FlowRunService flowRunService) {
+        return new RunSuccessfulStageRunEventProcessor(flowRunService, stageRunService);
     }
 }

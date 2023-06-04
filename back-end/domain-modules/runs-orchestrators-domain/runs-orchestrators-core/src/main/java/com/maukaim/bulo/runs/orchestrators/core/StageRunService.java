@@ -14,5 +14,7 @@ public interface StageRunService extends OrchestrableContextService<FunctionalSt
 
     StageRun<?> getById(String stageRunId);
 
+    void put(String stageRunId, StageRun<?> stageRun);
+
     void requestCancel(String stageRunId, String executorId);
 }

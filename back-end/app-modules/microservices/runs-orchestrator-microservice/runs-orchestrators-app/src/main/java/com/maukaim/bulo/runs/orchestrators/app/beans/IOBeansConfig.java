@@ -23,11 +23,11 @@ import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunCancell
 import com.maukaim.bulo.runs.orchestrators.app.io.publishers.NeedStageRunExecutionEventPublisherImpl;
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.FunctionalStageDefinitionService;
-import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulTechnicalStageRunEventProcessor;
-import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunTechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.AcknowledgeStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
@@ -68,11 +68,11 @@ public class IOBeansConfig {
     }
 
     @Bean
-    public StageRunEventConsumer stageRunEventConsumer(AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor,
-                                                       RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor,
-                                                       RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor,
-                                                       RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor,
-                                                       StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor,
+    public StageRunEventConsumer stageRunEventConsumer(AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor,
+                                                       RunCancelledStageRunEventProcessor runCancelledStageEventProcessor,
+                                                       RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor,
+                                                       RunFailedStageRunEventProcessor runFailedStageEventProcessor,
+                                                       StartRunStageRunEventProcessor startRunStageEventProcessor,
                                                        StageRunStore stageRunStore) {
         return new StageRunEventConsumerImpl(acknowledgeStageEventProcessor,
                 runCancelledStageEventProcessor,

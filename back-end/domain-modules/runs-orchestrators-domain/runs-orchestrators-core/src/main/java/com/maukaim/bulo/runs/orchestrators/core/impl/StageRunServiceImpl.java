@@ -147,6 +147,11 @@ public class StageRunServiceImpl implements StageRunService {
     }
 
     @Override
+    public void put(String stageRunId, StageRun<?> stageRun) {
+        this.stageRunStore.put(stageRunId, stageRun);
+    }
+
+    @Override
     public void requestCancel(String stageRunId, String executorId) {
         StageRun<?> stageRun = this.getById(stageRunId);
         if (stageRun instanceof TechnicalStageRun) {
@@ -176,6 +181,7 @@ public class StageRunServiceImpl implements StageRunService {
 
             Map<String, StageRun<?>> stageRunViewToUpdate = contextUpdator.apply(functionalStageRun);
             FunctionalStageRun newStageRun = FunctionalStageRunFactory.updateStageRunView(functionalStageRun, stageRunViewToUpdate);
+            saveAllTechnicalStageRuns(stageRunViewToUpdate);
             newStageRun = FunctionalStageRunFactory.updateState(newStageRun, resolveStatus(newStageRun));
 
             List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
@@ -189,6 +195,14 @@ public class StageRunServiceImpl implements StageRunService {
         FunctionalStageRun finalStageRun = requestAndResolve(contextId, stageRunPersisted, toBeRequestedRuns);
         propagateIfNewStatus(finalStageRun, previousStatus.get()); //ICI propagate dans les processors
         return finalStageRun;
+    }
+
+    private void saveAllTechnicalStageRuns(Map<String, StageRun<?>> stageRunViewToUpdate) {
+        stageRunViewToUpdate.forEach((stageId, stageRun) -> {
+            if (stageRun instanceof TechnicalStageRun) {
+                this.put(stageId,stageRun);
+            }
+        });
     }
 
     private void propagateIfNewStatus(FunctionalStageRun finalStageRun, OrchestrableContextStatus oldStatus) {

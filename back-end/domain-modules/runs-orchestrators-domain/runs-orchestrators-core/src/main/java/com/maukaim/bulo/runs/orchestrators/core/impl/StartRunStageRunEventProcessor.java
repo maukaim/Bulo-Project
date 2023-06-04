@@ -2,7 +2,7 @@ package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
-import com.maukaim.bulo.runs.orchestrators.core.TechnicalStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.StageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FunctionalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.factories.TechnicalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
@@ -15,9 +15,9 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class StartRunTechnicalStageRunEventProcessor extends TechnicalStageRunEventProcessor {
+public class StartRunStageRunEventProcessor extends StageRunEventProcessor {
 
-    public StartRunTechnicalStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
+    public StartRunStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
         super(flowRunService, stageRunService);
     }
 

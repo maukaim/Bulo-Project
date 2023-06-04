@@ -1,8 +1,10 @@
+import 'package:bulo_ui/widgets/ui/content/flow/flow_content_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../nav/nav_tab/nav_menu_type.dart';
 import '../nav/nav_tab/providers.dart';
+import 'flow/runs/flow_runs_area.dart';
 
 class MainArea extends ConsumerWidget {
   const MainArea({super.key});
@@ -45,18 +47,20 @@ class MainArea extends ConsumerWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(12),
-          child: (() {
-            switch (tabMenuType) {
-              case NavMenuType.flowMenu:
-                return Container(color: Colors.red,);
-              case NavMenuType.stageMenu:
-                return Container(color: Colors.blue,);
-              case NavMenuType.teamMenu:
-                return Container(color: Colors.green,);
-              default:
-                return const Center(child: Text("Welcome ! Choose a menu."),);
-            }
-          }()),
+          child: ClipRect(
+            child: (() {
+              switch (tabMenuType) {
+                case NavMenuType.flowMenu:
+                  return FlowContentArea();
+                case NavMenuType.stageMenu:
+                  return Container(color: Colors.blue,);
+                case NavMenuType.teamMenu:
+                  return Container(color: Colors.green,);
+                default:
+                  return const Center(child: Text("Welcome ! Choose a menu."),);
+              }
+            }()),
+          ),
         ),
       ),
     );

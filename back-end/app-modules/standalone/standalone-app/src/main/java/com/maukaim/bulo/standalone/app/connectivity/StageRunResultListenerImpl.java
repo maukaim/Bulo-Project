@@ -11,18 +11,18 @@ import java.time.Instant;
 import java.util.function.Consumer;
 
 public class StageRunResultListenerImpl implements StageRunResultListener {
-    private final AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor;
-    private final RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor;
-    private final RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor;
-    private final RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor;
-    private final StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor;
+    private final AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor;
+    private final RunCancelledStageRunEventProcessor runCancelledStageEventProcessor;
+    private final RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor;
+    private final RunFailedStageRunEventProcessor runFailedStageEventProcessor;
+    private final StartRunStageRunEventProcessor startRunStageEventProcessor;
     private final StageRunStore stageRunStore;
 
-    public StageRunResultListenerImpl(AcknowledgeTechnicalStageRunEventProcessor acknowledgeStageEventProcessor,
-                                      RunCancelledTechnicalStageRunEventProcessor runCancelledStageEventProcessor,
-                                      RunSuccessfulTechnicalStageRunEventProcessor runSuccessfulStageEventProcessor,
-                                      RunFailedTechnicalStageRunEventProcessor runFailedStageEventProcessor,
-                                      StartRunTechnicalStageRunEventProcessor startRunStageEventProcessor,
+    public StageRunResultListenerImpl(AcknowledgeStageRunEventProcessor acknowledgeStageEventProcessor,
+                                      RunCancelledStageRunEventProcessor runCancelledStageEventProcessor,
+                                      RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor,
+                                      RunFailedStageRunEventProcessor runFailedStageEventProcessor,
+                                      StartRunStageRunEventProcessor startRunStageEventProcessor,
                                       StageRunStore stageRunStore) {
         this.acknowledgeStageEventProcessor = acknowledgeStageEventProcessor;
         this.runCancelledStageEventProcessor = runCancelledStageEventProcessor;

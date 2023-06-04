@@ -12,7 +12,6 @@
     <artifactId>stages-io-client</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
             <artifactId>io-shared</artifactId>

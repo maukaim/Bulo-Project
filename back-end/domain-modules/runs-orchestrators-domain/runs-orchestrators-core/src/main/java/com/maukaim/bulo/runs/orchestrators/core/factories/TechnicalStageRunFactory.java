@@ -1,7 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.core.factories;
 
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.runs.orchestrators.core.utils.TimeHelper;
+import com.maukaim.bulo.commons.utils.TimeHelper;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;

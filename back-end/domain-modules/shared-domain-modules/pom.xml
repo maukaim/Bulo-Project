@@ -17,5 +17,6 @@
         <module>data-types-utils</module>
         <module>data-types</module>
         <module>marshalling-module</module>
+        <module>commons-utils</module>
     </modules>
 </project>

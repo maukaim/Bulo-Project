@@ -7,6 +7,8 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../content/flow/providers.dart';
+
 class FlowListItem extends ConsumerWidget {
   final fl.Flow flow;
 
@@ -31,6 +33,7 @@ class FlowListItem extends ConsumerWidget {
       // hover color with transparency
       onTap: () {
         ref.read(selectedFlowProvider.notifier).state = flow.flowId;
+        ref.read(isOnRunModeProvider.notifier).state = true;
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
