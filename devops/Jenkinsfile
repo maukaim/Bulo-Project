@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        JAVA_HOME = "/Users/julienelkaim/code/env/jdk/Contents/Home/"
+        JAVA_HOME = "/usr/bin/java"
     }
 
     tools {
