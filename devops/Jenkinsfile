@@ -33,7 +33,7 @@ pipeline {
                         def builders = [:]
                         for (module in modules) {
                             builders[module] = {
-                                step("Test: ${module}") {
+                                stage("Test: ${module}") {
                                     sh "mvn test -pl ${module}"
                                 }
                             }
