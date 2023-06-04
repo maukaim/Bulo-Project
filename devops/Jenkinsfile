@@ -17,15 +17,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Builds the project with Maven
-                sh 'mvn clean compile'
+                dir('backend') {
+                    // Builds the project with Maven
+                    sh 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
                 // Runs unit tests with Maven
-                sh 'mvn test'
+                dir('backend'){
+                    sh 'mvn test'
+                }
             }
         }
 
