@@ -1,14 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-        JAVA_HOME = "/usr/bin/java"
-    }
-
     tools {
         // Specify the Maven version installed in Jenkins
         maven 'Maven local'
-//         jdk 'jdk'
     }
 
     stages {
