@@ -29,10 +29,9 @@ pipeline {
                 // Runs unit tests with Maven
                 dir('back-end'){
                     script {
-                        def pom = readMavenPom file: 'pom.xml'
-
+                        def modules = sh(script: 'mvn --quiet --non-recursive exec:exec -Dexec.executable="pwd"', returnStdout: true).trim().split(System.getProperty("line.separator"))
                         def builders = [:]
-                        for (module in pom.modules) {
+                        for (module in modules) {
                             builders[module] = {
                                 step("Test: ${module}") {
                                     sh "mvn test -pl ${module}"
