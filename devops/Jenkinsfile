@@ -33,9 +33,7 @@ pipeline {
                         def builders = [:]
                         for (module in modules) {
                             builders[module] = {
-                                stage("Test: ${module}") {
-                                    sh "mvn test -pl ${module}"
-                                }
+                                sh "mvn test -pl ${module}"
                             }
                         }
                         parallel builders
