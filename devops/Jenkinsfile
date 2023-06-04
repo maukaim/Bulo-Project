@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('backend') {
+                dir('back-end') {
                     // Builds the project with Maven
                     sh 'mvn clean compile'
                 }
@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Runs unit tests with Maven
-                dir('backend'){
+                dir('back-end'){
                     sh 'mvn test'
                 }
             }
