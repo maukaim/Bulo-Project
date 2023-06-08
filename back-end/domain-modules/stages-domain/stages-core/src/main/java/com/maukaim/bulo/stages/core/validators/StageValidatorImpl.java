@@ -15,6 +15,12 @@ import java.util.stream.Collectors;
 import static com.maukaim.bulo.stages.core.validators.ValidationReport.DEFAULT_SUCCESS_REPORT;
 
 public class StageValidatorImpl implements StageValidator {
+    private final ParameterTypeComparator parameterTypeComparator;
+
+    public StageValidatorImpl(ParameterTypeComparator parameterTypeComparator){
+        this.parameterTypeComparator = parameterTypeComparator;
+    }
+
     @Override
     public ValidationReport validate(Stage actualStage, StageDefinition definition) {
         List<String> failReasons = new ArrayList<>();
@@ -55,7 +61,7 @@ public class StageValidatorImpl implements StageValidator {
         if (matchedParameter.getValue() == null) {
             failReasons.add(String.format("Value of parameter %s is null, should be at least an empty string.",
                     expectedName));
-        } else if (!ParameterTypeComparator.isValueValid(matchedParameter.getValue(), parameterDefinition.getParameterType())) {
+        } else if (!parameterTypeComparator.isValueValid(matchedParameter.getValue(), parameterDefinition.getParameterType())) {
             failReasons.add(String.format("Specified type for parameter %s does not match value. Type was %s and raw value : %s",
                     expectedName,
                     parameterDefinition.getParameterType(),

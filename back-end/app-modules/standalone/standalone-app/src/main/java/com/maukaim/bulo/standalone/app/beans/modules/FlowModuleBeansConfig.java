@@ -1,7 +1,20 @@
 package com.maukaim.bulo.standalone.app.beans.modules;
 
-import com.maukaim.bulo.flows.core.*;
-import com.maukaim.bulo.flows.core.impl.*;
+import com.maukaim.bulo.common.utils.ParameterTypeComparator;
+import com.maukaim.bulo.flows.core.DefinitionService;
+import com.maukaim.bulo.flows.core.FlowService;
+import com.maukaim.bulo.flows.core.FlowStageIoValidator;
+import com.maukaim.bulo.flows.core.FlowValidator;
+import com.maukaim.bulo.flows.core.StageInputValidator;
+import com.maukaim.bulo.flows.core.StageInputValidatorImpl;
+import com.maukaim.bulo.flows.core.StageParameterValidator;
+import com.maukaim.bulo.flows.core.StageParameterValidatorImpl;
+import com.maukaim.bulo.flows.core.StageService;
+import com.maukaim.bulo.flows.core.impl.DefinitionServiceImpl;
+import com.maukaim.bulo.flows.core.impl.FlowServiceImpl;
+import com.maukaim.bulo.flows.core.impl.FlowStageIoValidatorImpl;
+import com.maukaim.bulo.flows.core.impl.FlowValidatorImpl;
+import com.maukaim.bulo.flows.core.impl.StageServiceImpl;
 import com.maukaim.bulo.flows.data.FlowStore;
 import com.maukaim.bulo.flows.data.StageDefinitionStore;
 import com.maukaim.bulo.flows.data.StageStore;
@@ -27,8 +40,8 @@ public class FlowModuleBeansConfig {
     }
 
     @Bean
-    public StageParameterValidator stageParameterValidator() {
-        return new StageParameterValidatorImpl();
+    public StageParameterValidator stageParameterValidator(ParameterTypeComparator parameterTypeComparator) {
+        return new StageParameterValidatorImpl(parameterTypeComparator);
     }
 
     @Bean

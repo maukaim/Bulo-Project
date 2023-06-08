@@ -22,7 +22,7 @@ import static com.maukaim.bulo.api.data.types.DataTypeCategory.ARRAY;
 
 public class ParameterTypeComparator {
 
-    public static boolean isValueValid(String value, ParameterType parameterType) {
+    public boolean isValueValid(String value, ParameterType parameterType) {
         if (!parameterType.isRequired() && (value == null || value.isBlank())) {
             return true;
         } else if (value == null) {
@@ -46,7 +46,7 @@ public class ParameterTypeComparator {
         }
     }
 
-    private static boolean isValueValid(JsonNode value, ArrayParameterType parameterType) {
+    private boolean isValueValid(JsonNode value, ArrayParameterType parameterType) {
         if (!parameterType.isRequired() && (value == null || value.isNull() || value.isEmpty())) {
             return true;
         }
@@ -61,7 +61,7 @@ public class ParameterTypeComparator {
                 .allMatch(jsonNode -> isValueValid(jsonNode, parameterType.getContentType()));
     }
 
-    private static boolean isValueValid(JsonNode value, BuloParameterType parameterType) {
+    private boolean isValueValid(JsonNode value, BuloParameterType parameterType) {
         if (!parameterType.isRequired() && (value == null || value.isNull() || value.isEmpty())) {
             return true;
         }
@@ -74,7 +74,7 @@ public class ParameterTypeComparator {
                 });
     }
 
-    private static boolean isValueValid(JsonNode value, ParameterType parameterType) {
+    private boolean isValueValid(JsonNode value, ParameterType parameterType) {
         if (!parameterType.isRequired() && (value == null || value.isNull() || value.isEmpty())) {
             return true;
         } else if (value == null || value.isNull()) {
