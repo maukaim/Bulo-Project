@@ -52,7 +52,6 @@ public class StageServiceImpl implements StageService {
         return switch (stage.getStageType()) {
             case TECHNICAL -> addTechnicalStage((TechnicalStage) stage);
             case FUNCTIONAL -> addFunctionalStage((FunctionalStage) stage);
-            default -> throw new RuntimeException("Not supported StageType: " + stage.getStageType());
         };
     }
 

@@ -21,7 +21,9 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     @Override
     public StageDefinition remove(String definitionId) {
         StageDefinition stageDefinition = this.stageDefinitionStore.getById(definitionId);
-        return stageDefinition == null ? null : this.stageDefinitionStore.remove(stageDefinition);
+        return stageDefinition == null
+                ? null
+                : this.stageDefinitionStore.remove(stageDefinition);
     }
 
     @Override

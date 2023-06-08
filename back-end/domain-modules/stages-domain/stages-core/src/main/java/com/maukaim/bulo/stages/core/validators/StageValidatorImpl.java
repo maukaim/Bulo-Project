@@ -37,7 +37,9 @@ public class StageValidatorImpl implements StageValidator {
                     definition.getDefinitionId()
             ));
         }
-        return failReasons.isEmpty() ? DEFAULT_SUCCESS_REPORT : ValidationReport.no(failReasons);
+        return failReasons.isEmpty()
+                ? DEFAULT_SUCCESS_REPORT
+                : ValidationReport.no(failReasons);
     }
 
     private List<String> validateParameterDefinition(ParameterDefinition parameterDefinition, Map<String, Parameter> parametersByName) {
@@ -50,25 +52,18 @@ public class StageValidatorImpl implements StageValidator {
 
         List<String> failReasons = new ArrayList<>();
 
-        if (!ParameterTypeComparator.isValueValid(matchedParameter.getValue(), parameterDefinition.getParameterType())) {
-            failReasons.add(String.format("Specified type for parameter %s does not match value. Type was %s and raw value : %s",
-                    expectedName,
-                    parameterDefinition.getParameterType(),
-                    matchedParameter.getValue()
-            ));
-        }
-
-        if (matchedParameter.getAdditionalDetails() == null) {
-            failReasons.add(String.format("Technical issue. additionalDetails for parameter %s is null, should at least be empty list.",
-                    expectedName));
-        }
-
         if (matchedParameter.getValue() == null) {
             failReasons.add(String.format("Value of parameter %s is null, should be at least an empty string.",
                     expectedName));
+        } else if (!ParameterTypeComparator.isValueValid(matchedParameter.getValue(), parameterDefinition.getParameterType())) {
+            failReasons.add(String.format("Specified type for parameter %s does not match value. Type was %s and raw value : %s",
+                    expectedName,
+                    parameterDefinition.getParameterType(),
+                    matchedParameter.getValue()));
+        } else if (matchedParameter.getAdditionalDetails() == null) {
+            failReasons.add(String.format("Technical issue. additionalDetails for parameter %s is null, should at least be empty list.",
+                    expectedName));
         }
-
         return failReasons;
     }
-
 }

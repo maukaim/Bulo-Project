@@ -88,7 +88,7 @@ public class ParameterTypeComparator {
         }
     }
 
-    public static boolean areEquals(ParameterType type1, ParameterType type2) {
+    private static boolean areEquals(ParameterType type1, ParameterType type2) {
         if (sameInMemory(type1, type2)) {
             return true;
         }
