@@ -16,20 +16,22 @@ import java.util.stream.Collectors;
 
 public class FsStagesFSDValidator implements FunctionalStageDefinitionValidator {
     private final StageStore stageStore;
+    private final AcyclicValidator<ContextStageId> acyclicValidator;
 
-    public FsStagesFSDValidator(StageStore stageStore) {
+    public FsStagesFSDValidator(StageStore stageStore, AcyclicValidator<ContextStageId> acyclicValidator) {
         this.stageStore = stageStore;
+        this.acyclicValidator = acyclicValidator;
     }
 
     @Override
-    public boolean isValid(FunctionalStageDefinition definition) {
+    public boolean validate(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();
-        if(functionalSubStages == null){
+        if(functionalSubStages == null || functionalSubStages.isEmpty()){
             throw new RuntimeException("SubStages can't be null. It would mean the FunctionalStage does nothing.");
         }
         validateAllSubStageExist(functionalSubStages);
         Map<ContextStageId, Set<ContextStageId>> simplifiedIoDependencies = simplifiedIoDependencies(functionalSubStages);
-        new AcyclicValidator<>(simplifiedIoDependencies).validate();
+        acyclicValidator.validate(simplifiedIoDependencies);
 
         return true;
     }

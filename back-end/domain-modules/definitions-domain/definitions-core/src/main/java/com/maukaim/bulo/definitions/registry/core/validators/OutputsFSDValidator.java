@@ -20,21 +20,23 @@ import java.util.stream.Collectors;
 public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
     private final StageStore stageStore;
     private final StageDefinitionStore stageDefinitionStore;
+    private final IoTypeComparator ioTypeComparator;
 
     public OutputsFSDValidator(StageStore stageStore,
-                               StageDefinitionStore stageDefinitionStore) {
+                               StageDefinitionStore stageDefinitionStore,
+                               IoTypeComparator ioTypeComparator) {
         this.stageStore = stageStore;
         this.stageDefinitionStore = stageDefinitionStore;
+        this.ioTypeComparator = ioTypeComparator;
     }
 
     @Override
-    public boolean isValid(FunctionalStageDefinition definition) {
+    public boolean validate(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();
-        Set<OutputProvider> outputProviders = definition.getOutputProviders(); //Les leaves Id avec les outputs qu'ils donnent
+        Set<OutputProvider> outputProviders = definition.getOutputProviders();
         Map<String, List<StageDefinition>> leavesDefinitionsByOutputId = validateOutputProviders(outputProviders, functionalSubStages);
-        Map<String, StageOutputDefinition> actualOutputs = definition.getOutputsByName();
+        validateStageOutputs(leavesDefinitionsByOutputId, definition.getOutputsByName());
 
-        validateStageOutputs(leavesDefinitionsByOutputId, actualOutputs);
         return true;
     }
 
@@ -45,11 +47,8 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
 
         for (String outputId : actualOutputs.keySet()) {
             List<StageDefinition> leavesDefinitions = leavesDefinitionsByOutputId.get(outputId);
-            if (leavesDefinitions == null) {
-                throw new RuntimeException("Output declared by functional stage but no providers. Output ID is: " + outputId);
-            }
 
-            if (isOutputValid(outputId, actualOutputs.get(outputId), leavesDefinitions)) {
+            if (!isOutputValid(outputId, actualOutputs.get(outputId), leavesDefinitions)) {
                 throw new RuntimeException("Declared output named " + outputId + " but does not match expected type regarding the declared providers:" + leavesDefinitions);
             }
         }
@@ -58,7 +57,7 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
     private boolean isOutputValid(String outputId, StageOutputDefinition fsOutputDefinition, List<StageDefinition> leavesDefinitions) {
         if (!fsOutputDefinition.isAlwaysPresent()) {
             return leavesDefinitions.stream()
-                    .allMatch(leaveDef -> areDifferent(fsOutputDefinition,
+                    .noneMatch(leaveDef -> areDifferent(fsOutputDefinition,
                             leaveDef.getOutputsByName().get(outputId),
                             true));
         } else {
@@ -73,10 +72,15 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
             }
 
             return leavesDefinitions.stream()
-                    .allMatch(leaveDef -> areDifferent(fsOutputDefinition,
+                    .noneMatch(leaveDef -> areDifferent(fsOutputDefinition,
                             leaveDef.getOutputsByName().get(outputId),
                             false));
         }
+    }
+
+    private boolean areDifferent(StageOutputDefinition newVal, StageOutputDefinition leaveDefinition, boolean skipIsEqualCheck) {
+        return newVal.canBeMultiple() != leaveDefinition.canBeMultiple()
+                || !ioTypeComparator.areEquals(newVal.getType(), leaveDefinition.getType(), skipIsEqualCheck);
     }
 
     private Map<String, List<StageDefinition>> validateOutputProviders(Set<OutputProvider> outputProviders, Set<FsStage> functionalSubStages) {
@@ -108,10 +112,5 @@ public class OutputsFSDValidator implements FunctionalStageDefinitionValidator {
                             .map(entry -> Map.entry(entry.getKey(), stageDefinition));
                 })
                 .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
-    }
-
-    private boolean areDifferent(StageOutputDefinition newVal, StageOutputDefinition oldVal, boolean skipIsEqualCheck) {
-        return newVal.canBeMultiple() != oldVal.canBeMultiple() ||
-                !IoTypeComparator.areEquals(newVal.getType(), oldVal.getType(), skipIsEqualCheck);
     }
 }

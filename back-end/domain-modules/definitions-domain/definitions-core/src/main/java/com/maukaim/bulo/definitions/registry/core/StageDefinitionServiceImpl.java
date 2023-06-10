@@ -27,11 +27,11 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
     public StageDefinitionCreateReport register(FunctionalStageDefinition definition) {
         StageDefinition existingDefinition = definitionStore.getById(definition.getDefinitionId());
         if (existingDefinition == null) {
-            if (this.functionalValidators.stream().allMatch(validator -> validator.isValid(definition))) {
+            if (this.functionalValidators.stream().allMatch(validator -> validator.validate(definition))) {
                 StageDefinition stageDefinition = this.definitionStore.addDefinition(attachUUID(definition));
                 return StageDefinitionCreateReport.successReport(stageDefinition.getDefinitionId(), DEFAULT_SUCCESS_REPORT);
             } else {
-                return StageDefinitionCreateReport.failReport(null, "Definition rejected, did not pass ALL validators");
+                return StageDefinitionCreateReport.failReport(null, "Definition rejected, did not pass ALL validators.");
             }
         } else {
             return StageDefinitionCreateReport.failReport(null, "Definition already exist.");
@@ -59,7 +59,7 @@ public class StageDefinitionServiceImpl implements StageDefinitionService {
             this.definitionStore.addExecutor(stageExecutorId, definition.getDefinitionId());
             return StageDefinitionCreateReport.successReport(definition.getDefinitionId(), DEFAULT_SUCCESS_REPORT);
         } else {
-            return StageDefinitionCreateReport.failReport(definition.getDefinitionId(), "Definition rejected, did not pass ALL validators");
+            return StageDefinitionCreateReport.failReport(definition.getDefinitionId(), "Definition rejected, did not pass ALL validators.");
         }
     }
 

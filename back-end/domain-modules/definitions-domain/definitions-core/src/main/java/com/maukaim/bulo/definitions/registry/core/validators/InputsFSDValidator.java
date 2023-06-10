@@ -19,14 +19,16 @@ import java.util.stream.Collectors;
 public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
     private final StageDefinitionStore stageDefinitionStore;
     private final StageStore stageStore;
+    private final IoTypeComparator ioTypeComparator;
 
-    public InputsFSDValidator(StageDefinitionStore stageDefinitionStore, StageStore stageStore) {
+    public InputsFSDValidator(StageDefinitionStore stageDefinitionStore, StageStore stageStore, IoTypeComparator ioTypeComparator) {
         this.stageDefinitionStore = stageDefinitionStore;
         this.stageStore = stageStore;
+        this.ioTypeComparator = ioTypeComparator;
     }
 
     @Override
-    public boolean isValid(FunctionalStageDefinition definition) {
+    public boolean validate(FunctionalStageDefinition definition) {
         Set<FsStage> functionalSubStages = definition.getFunctionalSubStages();
         Map<String, List<StageDefinition>> rootsDefinitionByInputs = getRootsInputDefinitions(functionalSubStages);
         Map<String, StageInputDefinition> functionalStageInputDefinitions = definition.getInputsByName();
@@ -39,7 +41,7 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
                 StageInputDefinition stageInputDefinition = functionalStageInputDefinitions.get(inputName);
                 if (stageInputDefinition == null) {
                     throw new RuntimeException("Expected input name " + inputName + " in functional Stage's input definitions, but not found.");
-                } else if (isInputValid(inputName, stageInputDefinition, rootDefinitions)) {
+                } else if (!isInputValid(inputName, stageInputDefinition, rootDefinitions)) {
                     throw new RuntimeException("Different definition for input name " + inputName + " between FunctionalStage and its roots.");
                 }
             });
@@ -81,7 +83,7 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
     private boolean isInputValid(String inputName, StageInputDefinition fsInputDefinition, List<StageDefinition> rootDefinitions) {
         if (fsInputDefinition.isRequired()) {
             return rootDefinitions.stream()
-                    .allMatch(rootDef -> areDifferent(fsInputDefinition,
+                    .noneMatch(rootDef -> areDifferent(fsInputDefinition,
                             rootDef.getInputsByName().get(inputName),
                             true));
         } else {
@@ -97,14 +99,14 @@ public class InputsFSDValidator implements FunctionalStageDefinitionValidator {
                         inputName, nbRootsWithRequiredInput));
             }
             return rootDefinitions.stream()
-                    .allMatch(rootDef -> areDifferent(fsInputDefinition,
+                    .noneMatch(rootDef -> areDifferent(fsInputDefinition,
                             rootDef.getInputsByName().get(inputName),
                             false));
         }
     }
 
-    private boolean areDifferent(StageInputDefinition existingDefinition, StageInputDefinition val, boolean skipIsRequiredCheck) {
-        return existingDefinition.canBeMultiple() != val.canBeMultiple() ||
-                !IoTypeComparator.areEquals(existingDefinition.getType(), val.getType(), skipIsRequiredCheck);
+    private boolean areDifferent(StageInputDefinition fsInputDef, StageInputDefinition rootInputDef, boolean skipIsRequiredCheck) {
+        return fsInputDef.canBeMultiple() != rootInputDef.canBeMultiple() ||
+                !ioTypeComparator.areEquals(fsInputDef.getType(), rootInputDef.getType(), skipIsRequiredCheck);
     }
 }

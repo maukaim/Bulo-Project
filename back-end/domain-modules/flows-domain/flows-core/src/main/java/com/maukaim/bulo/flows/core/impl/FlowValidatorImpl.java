@@ -2,7 +2,13 @@ package com.maukaim.bulo.flows.core.impl;
 
 import com.maukaim.bulo.commons.models.AcyclicValidator;
 import com.maukaim.bulo.commons.models.ContextStageId;
-import com.maukaim.bulo.flows.core.*;
+import com.maukaim.bulo.flows.core.DefinitionService;
+import com.maukaim.bulo.flows.core.FlowStageIoValidator;
+import com.maukaim.bulo.flows.core.FlowValidationException;
+import com.maukaim.bulo.flows.core.FlowValidator;
+import com.maukaim.bulo.flows.core.StageInputValidator;
+import com.maukaim.bulo.flows.core.StageParameterValidator;
+import com.maukaim.bulo.flows.core.StageService;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.flow.Flow;
@@ -11,7 +17,10 @@ import com.maukaim.bulo.flows.data.models.flow.InputProvider;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
 import com.maukaim.bulo.flows.data.models.stage.Stage;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FlowValidatorImpl implements FlowValidator {
@@ -20,13 +29,20 @@ public class FlowValidatorImpl implements FlowValidator {
     private final StageParameterValidator stageParameterValidator;
     private final FlowStageIoValidator flowStageIoValidator;
     private final StageInputValidator stageInputValidator;
+    private final AcyclicValidator<ContextStageId> acyclicValidator;
 
-    public FlowValidatorImpl(StageService stageService, DefinitionService definitionService, StageParameterValidator stageParameterValidator, FlowStageIoValidator flowStageIoValidator, StageInputValidator stageInputValidator) {
+    public FlowValidatorImpl(StageService stageService,
+                             DefinitionService definitionService,
+                             StageParameterValidator stageParameterValidator,
+                             FlowStageIoValidator flowStageIoValidator,
+                             StageInputValidator stageInputValidator,
+                             AcyclicValidator<ContextStageId> acyclicValidator) {
         this.stageService = stageService;
         this.definitionService = definitionService;
         this.stageParameterValidator = stageParameterValidator;
         this.flowStageIoValidator = flowStageIoValidator;
         this.stageInputValidator = stageInputValidator;
+        this.acyclicValidator = acyclicValidator;
     }
 
     @Override
@@ -38,7 +54,7 @@ public class FlowValidatorImpl implements FlowValidator {
 
         Map<ContextStageId, Set<ContextStageId>> simplifiedIoDependencies = simplifiedIoDependencies(flowStages);
         try {
-            new AcyclicValidator<>(simplifiedIoDependencies).validate();
+            acyclicValidator.validate(simplifiedIoDependencies);
         } catch (Throwable t) {
             throw new FlowValidationException("Acyclic test failed on dependency graph. Following reason: " + t.getMessage());
         }
@@ -60,7 +76,7 @@ public class FlowValidatorImpl implements FlowValidator {
         for (Map.Entry<ContextStageId, Set<ContextStageId>> entry : simplifiedIoDependencies.entrySet()) {
             Set<ContextStageId> ancestors = entry.getValue();
             for (ContextStageId ancestorId : ancestors) {
-                if(!simplifiedIoDependencies.containsKey(ancestorId)){
+                if (!simplifiedIoDependencies.containsKey(ancestorId)) {
                     throw new FlowValidationException(String.format(
                             "%s marked as ancestor of %s but not present itself in the Flow.",
                             ancestorId, entry.getKey())

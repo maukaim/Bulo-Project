@@ -1,6 +1,9 @@
 package com.maukaim.bulo.standalone.app.beans.modules;
 
+import com.maukaim.bulo.common.utils.IoTypeComparator;
 import com.maukaim.bulo.common.utils.ParameterTypeComparator;
+import com.maukaim.bulo.commons.models.AcyclicValidator;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.flows.core.DefinitionService;
 import com.maukaim.bulo.flows.core.FlowService;
 import com.maukaim.bulo.flows.core.FlowStageIoValidator;
@@ -35,8 +38,9 @@ public class FlowModuleBeansConfig {
                                        DefinitionService definitionService,
                                        StageParameterValidator stageParameterValidator,
                                        FlowStageIoValidator flowStageIoValidator,
-                                       StageInputValidator stageInputValidator) {
-        return new FlowValidatorImpl(stageService, definitionService, stageParameterValidator, flowStageIoValidator, stageInputValidator);
+                                       StageInputValidator stageInputValidator,
+                                       AcyclicValidator<ContextStageId> acyclicValidator) {
+        return new FlowValidatorImpl(stageService, definitionService, stageParameterValidator, flowStageIoValidator, stageInputValidator, acyclicValidator);
     }
 
     @Bean
@@ -46,8 +50,8 @@ public class FlowModuleBeansConfig {
 
     @Bean
     public FlowStageIoValidator flowStageIoValidator(DefinitionService definitionService,
-                                                     StageService stageService) {
-        return new FlowStageIoValidatorImpl(definitionService, stageService);
+                                                     StageService stageService, IoTypeComparator ioTypeComparator) {
+        return new FlowStageIoValidatorImpl(definitionService, stageService, ioTypeComparator);
     }
 
     @Bean

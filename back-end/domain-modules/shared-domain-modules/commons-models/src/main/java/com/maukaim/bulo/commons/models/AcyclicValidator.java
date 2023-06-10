@@ -5,24 +5,19 @@ import java.util.Map;
 import java.util.Set;
 
 public class AcyclicValidator<T> {
-    private final Map<T, Set<T>> ancestorIdsByStageId;
 
-    public AcyclicValidator(Map<T, Set<T>> ancestorIdsByStageId) {
-        this.ancestorIdsByStageId = Map.copyOf(ancestorIdsByStageId);
-    }
-
-    public void validate() throws IllegalArgumentException {
-        Set<T> stageImages = this.ancestorIdsByStageId.keySet();
+    public void validate(Map<T, Set<T>> allAncestorIdMap) throws IllegalArgumentException {
+        Set<T> stageImages = allAncestorIdMap.keySet();
         for (T stageImage : stageImages) {
-            validate(stageImage, new HashSet<>());
+            validate(stageImage, new HashSet<>(), allAncestorIdMap);
         }
     }
 
-    private void validate(T stageImage, Set<T> visited) {
+    private void validate(T stageImage, Set<T> visited, Map<T, Set<T>> allAncestorIdsMap) {
         if (!visited.contains(stageImage)) {
             visited.add(stageImage);
-            for (T parentId : this.ancestorIdsByStageId.getOrDefault(stageImage, Set.of())) {
-                this.validate(parentId, new HashSet<>(visited));
+            for (T parentId : allAncestorIdsMap.getOrDefault(stageImage, Set.of())) {
+                this.validate(parentId, new HashSet<>(visited), allAncestorIdsMap);
             }
         } else {
             throw new IllegalArgumentException(String.format(

@@ -16,10 +16,12 @@ import java.util.*;
 public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
     private final DefinitionService definitionService;
     private final StageService stageService;
+    private IoTypeComparator ioTypeComparator;
 
-    public FlowStageIoValidatorImpl(DefinitionService definitionService, StageService stageService) {
+    public FlowStageIoValidatorImpl(DefinitionService definitionService, StageService stageService, IoTypeComparator ioTypeComparator){
         this.definitionService = definitionService;
         this.stageService = stageService;
+        this.ioTypeComparator = ioTypeComparator;
     }
 
     @Override
@@ -99,7 +101,7 @@ public class FlowStageIoValidatorImpl implements FlowStageIoValidator {
         if (stageOutputDefinition.canBeMultiple() && !multipleOutputAllowed) {
             throw new FlowValidationException("Input Provider potentially provide a collection. Not allowed here.");
         }
-        if (!IoTypeComparator.areEquals(stageOutputDefinition.getType(), stageInputDefinition.getType(), skipIsRequiredCheck)) {
+        if (!ioTypeComparator.areEquals(stageOutputDefinition.getType(), stageInputDefinition.getType(), skipIsRequiredCheck)) {
             throw new FlowValidationException(String.format("Output of ancestor is type %s but input expected should be type %s",
                     stageOutputDefinition.getType(), stageInputDefinition.getType()));
         }

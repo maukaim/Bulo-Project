@@ -1,6 +1,9 @@
 package com.maukaim.bulo.flows.app.beans;
 
+import com.maukaim.bulo.common.utils.IoTypeComparator;
 import com.maukaim.bulo.common.utils.ParameterTypeComparator;
+import com.maukaim.bulo.commons.models.AcyclicValidator;
+import com.maukaim.bulo.commons.models.ContextStageId;
 import com.maukaim.bulo.flows.core.DefinitionService;
 import com.maukaim.bulo.flows.core.FlowStageIoValidator;
 import com.maukaim.bulo.flows.core.FlowValidator;
@@ -21,9 +24,10 @@ public class ValidatorBeansConfig {
                                        DefinitionService definitionService,
                                        StageParameterValidator stageParameterValidator,
                                        FlowStageIoValidator flowStageIoValidator,
-                                       StageInputValidator stageInputValidator
+                                       StageInputValidator stageInputValidator,
+                                       AcyclicValidator<ContextStageId> acyclicValidator
     ) {
-        return new FlowValidatorImpl(stageService, definitionService, stageParameterValidator, flowStageIoValidator, stageInputValidator);
+        return new FlowValidatorImpl(stageService, definitionService, stageParameterValidator, flowStageIoValidator, stageInputValidator, acyclicValidator);
     }
 
     @Bean
@@ -38,8 +42,19 @@ public class ValidatorBeansConfig {
 
     @Bean
     public FlowStageIoValidator flowStageIoValidator(StageService stageService,
-                                                     DefinitionService definitionService) {
-        return new FlowStageIoValidatorImpl(definitionService, stageService);
+                                                     DefinitionService definitionService,
+                                                     IoTypeComparator ioTypeComparator) {
+        return new FlowStageIoValidatorImpl(definitionService, stageService, ioTypeComparator);
+    }
+
+    @Bean
+    public IoTypeComparator ioTypeComparator(){
+        return new IoTypeComparator();
+    }
+
+    @Bean
+    public AcyclicValidator<ContextStageId> acyclicValidator(){
+        return new AcyclicValidator<>();
     }
 
     @Bean

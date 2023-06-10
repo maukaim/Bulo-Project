@@ -11,7 +11,7 @@ import static com.maukaim.bulo.api.data.types.DataTypeCategory.ARRAY;
 
 public class IoTypeComparator {
 
-    public static boolean areEquals(IoType type1, IoType type2, boolean skipIsRequiredCheck) {
+    public boolean areEquals(IoType type1, IoType type2, boolean skipIsRequiredCheck) {
         if (sameInMemory(type1, type2)) {
             return true;
         }
@@ -32,23 +32,23 @@ public class IoTypeComparator {
         };
     }
 
-    private static boolean areEquals(ArrayIoType type1, ArrayIoType type2, boolean skipIsRequiredCheck) {
+    private boolean areEquals(ArrayIoType type1, ArrayIoType type2, boolean skipIsRequiredCheck) {
         return areEquals(type1.getContentType(), type2.getContentType(), false) &&
                 isRequiredIsValid(skipIsRequiredCheck, type1, type2);
     }
 
-    private static boolean isRequiredIsValid(boolean skipIsRequiredCheck, IoType type1, IoType type2) {
+    private boolean isRequiredIsValid(boolean skipIsRequiredCheck, IoType type1, IoType type2) {
         return skipIsRequiredCheck || type1.isRequired() == type2.isRequired();
     }
 
-    private static boolean areEquals(BuloIoType type1, BuloIoType type2, boolean skipIsRequiredCheck) {
+    private boolean areEquals(BuloIoType type1, BuloIoType type2, boolean skipIsRequiredCheck) {
         if (!skipIsRequiredCheck && type1.isRequired() != type2.isRequired()) {
             return false;
         }
         return areEquals(type1.getFields(), type2.getFields());
     }
 
-    private static boolean areEquals(Map<String, IoType> fieldsType1, Map<String, IoType> fieldsType2) {
+    private boolean areEquals(Map<String, IoType> fieldsType1, Map<String, IoType> fieldsType2) {
         if (!fieldsType1.keySet().equals(fieldsType2.keySet())) {
             return false;
         } else {
@@ -61,16 +61,16 @@ public class IoTypeComparator {
         }
     }
 
-    private static boolean dataTypeCategoriesAreDifferent(IoType type1, IoType type2) {
+    private boolean dataTypeCategoriesAreDifferent(IoType type1, IoType type2) {
         return type1.getDataTypeCategory() != type2.getDataTypeCategory();
     }
 
-    private static boolean onlyOneIsNull(DataType type1, IoType type2) {
+    private boolean onlyOneIsNull(DataType type1, IoType type2) {
         return (type1 == null && type2 != null) ||
                 (type1 != null && type2 == null);
     }
 
-    private static boolean sameInMemory(IoType type1, IoType type2) {
+    private boolean sameInMemory(IoType type1, IoType type2) {
         return type1 == type2;
     }
 }

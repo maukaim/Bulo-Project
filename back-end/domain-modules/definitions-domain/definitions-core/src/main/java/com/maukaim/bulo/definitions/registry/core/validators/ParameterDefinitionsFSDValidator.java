@@ -9,7 +9,7 @@ import java.util.List;
 public class ParameterDefinitionsFSDValidator implements FunctionalStageDefinitionValidator {
 
     @Override
-    public boolean isValid(FunctionalStageDefinition definition) {
+    public boolean validate(FunctionalStageDefinition definition) {
         List<ParameterDefinition> parameters = definition.getParameters();
         if (parameters != null) {
             long count = parameters.stream().map(ParameterDefinition::getName).distinct().count();

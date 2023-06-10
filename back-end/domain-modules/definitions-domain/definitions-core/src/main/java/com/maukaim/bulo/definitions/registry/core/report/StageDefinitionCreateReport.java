@@ -9,7 +9,7 @@ public class StageDefinitionCreateReport {
     private final String definitionId;
 
     public static StageDefinitionCreateReport failReport(String stageId, String reason) {
-        return failReport(stageId, List.of(reason));
+        return failReport(stageId, reason == null || reason.isEmpty() ? List.of("No reason provided.") : List.of(reason));
     }
 
     public static StageDefinitionCreateReport failReport(String stageId, List<String> reasons) {
@@ -17,7 +17,8 @@ public class StageDefinitionCreateReport {
     }
 
     public static StageDefinitionCreateReport successReport(String stageId, String msg) {
-        return new StageDefinitionCreateReport(ReportStatus.SUCCESS, stageId, List.of(msg));
+        return new StageDefinitionCreateReport(ReportStatus.SUCCESS, stageId,
+                msg == null || msg.isEmpty() ? List.of() : List.of(msg));
     }
 
     public StageDefinitionCreateReport(ReportStatus reportStatus, String definitionId, List<String> details) {
