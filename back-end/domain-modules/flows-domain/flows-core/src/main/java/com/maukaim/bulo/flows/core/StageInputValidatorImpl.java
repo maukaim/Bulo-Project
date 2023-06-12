@@ -1,17 +1,17 @@
 package com.maukaim.bulo.flows.core;
 
-import com.maukaim.bulo.flows.core.util.FlowUtils;
 import com.maukaim.bulo.flows.data.models.definition.StageDefinition;
 import com.maukaim.bulo.flows.data.models.definition.StageInputDefinition;
 import com.maukaim.bulo.flows.data.models.flow.IoDependency;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class StageInputValidatorImpl implements StageInputValidator {
     @Override
     public void validate(Set<IoDependency> ioDependencies, StageDefinition definition) throws FlowValidationException {
-        Set<String> inputIds = FlowUtils.getInputIds(ioDependencies);
+        Set<String> inputIds = this.getInputIds(ioDependencies);
 
         Map<String, StageInputDefinition> inputsByName = definition.getInputsByName();
         for (Map.Entry<String, StageInputDefinition> inputEntry : inputsByName.entrySet()) {
@@ -29,4 +29,9 @@ public class StageInputValidatorImpl implements StageInputValidator {
         }
     }
 
+    private Set<String> getInputIds(Set<IoDependency> ioDependencies) {
+        return ioDependencies == null ? Set.of() : ioDependencies.stream()
+                .map(IoDependency::getInputId)
+                .collect(Collectors.toSet());
+    }
 }

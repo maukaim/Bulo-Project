@@ -14,6 +14,9 @@ public class SpringCronExecutorServiceImpl implements CronExecutorService {
     }
     @Override
     public ScheduledFuture<?> schedule(Runnable task, String cronExpression) {
+        if(task == null){
+            throw new IllegalArgumentException("Task cannot be null.");
+        }
         CronTrigger cronTrigger = new CronTrigger(cronExpression);
         return this.executors.schedule(task, cronTrigger);
     }

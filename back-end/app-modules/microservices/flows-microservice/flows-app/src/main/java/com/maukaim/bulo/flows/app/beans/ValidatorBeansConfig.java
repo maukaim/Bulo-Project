@@ -1,6 +1,8 @@
 package com.maukaim.bulo.flows.app.beans;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maukaim.bulo.common.utils.IoTypeComparator;
+import com.maukaim.bulo.common.utils.NativeTypeComparator;
 import com.maukaim.bulo.common.utils.ParameterTypeComparator;
 import com.maukaim.bulo.commons.models.AcyclicValidator;
 import com.maukaim.bulo.commons.models.ContextStageId;
@@ -36,8 +38,13 @@ public class ValidatorBeansConfig {
     }
 
     @Bean
-    public ParameterTypeComparator parameterTypeComparator() {
-        return new ParameterTypeComparator();
+    public ParameterTypeComparator parameterTypeComparator(NativeTypeComparator nativeTypeComparator, ObjectMapper objectMapper) {
+        return new ParameterTypeComparator(nativeTypeComparator, objectMapper);
+    }
+
+    @Bean
+    public NativeTypeComparator nativeTypeComparator() {
+        return new NativeTypeComparator();
     }
 
     @Bean
@@ -48,12 +55,12 @@ public class ValidatorBeansConfig {
     }
 
     @Bean
-    public IoTypeComparator ioTypeComparator(){
+    public IoTypeComparator ioTypeComparator() {
         return new IoTypeComparator();
     }
 
     @Bean
-    public AcyclicValidator<ContextStageId> acyclicValidator(){
+    public AcyclicValidator<ContextStageId> acyclicValidator() {
         return new AcyclicValidator<>();
     }
 

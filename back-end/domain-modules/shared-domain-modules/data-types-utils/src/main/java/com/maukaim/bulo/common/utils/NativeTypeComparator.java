@@ -5,9 +5,11 @@ import com.maukaim.bulo.api.data.types.NativeType;
 
 public class NativeTypeComparator {
 
-    public static boolean isValueValid(JsonNode value, NativeType nativeType){
+    public boolean isValueValid(JsonNode value, NativeType nativeType){
         if (!nativeType.isRequired() && (value == null || value.isNull())){
             return true;
+        } else if (value == null || value.isNull()) {
+            return false;
         }else{
             return switch (nativeType.getNativeTypeCategory()) {
                 case STRING -> value.isTextual();

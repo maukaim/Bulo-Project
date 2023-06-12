@@ -29,7 +29,7 @@ public class AcknowledgeStageRunEventProcessor extends StageRunEventProcessor {
     }
 
     private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, String executorId) {
-        StageRun<?> stageRun = getActualRun(orchestrableRunContext, stageRunId);
+        StageRun<?> stageRun = getActualRun(stageRunId);
         if (orchestrableRunContext.getStatus().isProblem() && !stageRun.getStatus().isTerminal()) {
             this.stageRunService.requestCancel(stageRun.getStageRunId(), executorId);
         }

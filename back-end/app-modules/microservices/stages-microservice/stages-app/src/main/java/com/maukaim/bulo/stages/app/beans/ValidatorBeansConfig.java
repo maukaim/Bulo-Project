@@ -1,5 +1,7 @@
 package com.maukaim.bulo.stages.app.beans;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.maukaim.bulo.common.utils.NativeTypeComparator;
 import com.maukaim.bulo.common.utils.ParameterTypeComparator;
 import com.maukaim.bulo.stages.core.StageValidator;
 import com.maukaim.bulo.stages.core.validators.StageValidatorImpl;
@@ -14,7 +16,12 @@ public class ValidatorBeansConfig {
     }
 
     @Bean
-    public ParameterTypeComparator parameterTypeComparator(){
-        return new ParameterTypeComparator();
+    public ParameterTypeComparator parameterTypeComparator(NativeTypeComparator nativeTypeComparator, ObjectMapper objectMapper) {
+        return new ParameterTypeComparator(nativeTypeComparator, objectMapper);
+    }
+
+    @Bean
+    public NativeTypeComparator nativeTypeComparator() {
+        return new NativeTypeComparator();
     }
 }

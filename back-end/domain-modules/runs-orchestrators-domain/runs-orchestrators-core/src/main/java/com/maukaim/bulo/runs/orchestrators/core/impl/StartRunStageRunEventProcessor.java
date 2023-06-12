@@ -32,7 +32,7 @@ public class StartRunStageRunEventProcessor extends StageRunEventProcessor {
     }
 
     private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
-        StageRun<?> actualRun = getActualRun(orchestrableRunContext, stageRunId);
+        StageRun<?> actualRun = getActualRun(stageRunId);
         AtomicReference<String> executorIdReference = new AtomicReference<>();
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.RUNNING)),

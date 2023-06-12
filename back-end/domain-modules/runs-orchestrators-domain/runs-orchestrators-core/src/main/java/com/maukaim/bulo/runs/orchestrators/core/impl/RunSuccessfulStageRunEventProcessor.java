@@ -34,7 +34,7 @@ public class RunSuccessfulStageRunEventProcessor extends StageRunEventProcessor 
     }
 
     private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
-        StageRun<?> actualRun = getActualRun(orchestrableRunContext, stageRunId);
+        StageRun<?> actualRun = getActualRun(stageRunId);
         Map<String, StageRun<?>> result = new HashMap<>();
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.SUCCESS)),

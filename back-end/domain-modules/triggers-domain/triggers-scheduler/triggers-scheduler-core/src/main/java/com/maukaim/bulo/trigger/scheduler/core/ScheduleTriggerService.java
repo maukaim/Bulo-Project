@@ -41,7 +41,7 @@ public class ScheduleTriggerService {
         if (this.scheduledFutureCache.containsKey(key)) {
             ScheduledFuture<?> removedItem = this.scheduledFutureCache.remove(key);
             removedItem.cancel(true);
-            return removedItem != null;
+            return true;
         }
         return false;
     }

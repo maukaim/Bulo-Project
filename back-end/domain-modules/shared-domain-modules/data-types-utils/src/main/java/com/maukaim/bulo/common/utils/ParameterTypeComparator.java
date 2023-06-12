@@ -21,14 +21,20 @@ import java.util.stream.StreamSupport;
 import static com.maukaim.bulo.api.data.types.DataTypeCategory.ARRAY;
 
 public class ParameterTypeComparator {
+    private final NativeTypeComparator nativeTypeComparator;
+    private final ObjectMapper mapper;
+
+    public ParameterTypeComparator(NativeTypeComparator nativeTypeComparator, ObjectMapper mapper) {
+        this.nativeTypeComparator = nativeTypeComparator;
+        this.mapper = mapper;
+    }
 
     public boolean isValueValid(String value, ParameterType parameterType) {
         if (!parameterType.isRequired() && (value == null || value.isBlank())) {
             return true;
-        } else if (value == null) {
+        } else if (value == null || value.isBlank()) {
             return false;
         } else {
-            ObjectMapper mapper = new ObjectMapper();
             JsonFactory factory = mapper.getFactory();
             JsonNode jsonNode;
             try {
@@ -39,7 +45,7 @@ public class ParameterTypeComparator {
             }
 
             return switch (parameterType.getDataTypeCategory()) {
-                case NATIVE -> NativeTypeComparator.isValueValid(jsonNode, (NativeType) parameterType);
+                case NATIVE -> nativeTypeComparator.isValueValid(jsonNode, (NativeType) parameterType);
                 case BULO -> isValueValid(jsonNode, (BuloParameterType) parameterType);
                 case ARRAY -> isValueValid(jsonNode, (ArrayParameterType) parameterType);
             };
@@ -81,14 +87,14 @@ public class ParameterTypeComparator {
             return false;
         } else {
             return switch (parameterType.getDataTypeCategory()) {
-                case NATIVE -> NativeTypeComparator.isValueValid(value, (NativeType) parameterType);
+                case NATIVE -> nativeTypeComparator.isValueValid(value, (NativeType) parameterType);
                 case BULO -> isValueValid(value, (BuloParameterType) parameterType);
                 case ARRAY -> isValueValid(value, (ArrayParameterType) parameterType);
             };
         }
     }
 
-    private static boolean areEquals(ParameterType type1, ParameterType type2) {
+    private boolean areEquals(ParameterType type1, ParameterType type2) {
         if (sameInMemory(type1, type2)) {
             return true;
         }
@@ -109,21 +115,21 @@ public class ParameterTypeComparator {
         };
     }
 
-    private static boolean areEquals(ArrayParameterType type1, ArrayParameterType type2) {
+    private boolean areEquals(ArrayParameterType type1, ArrayParameterType type2) {
         if (type1.isRequired() != type2.isRequired()) {
             return false;
         }
         return areEquals(type1.getContentType(), type2.getContentType());
     }
 
-    private static boolean areEquals(BuloParameterType type1, BuloParameterType type2) {
+    private boolean areEquals(BuloParameterType type1, BuloParameterType type2) {
         if (type1.isRequired() != type2.isRequired()) {
             return false;
         }
         return areEquals(type1.getFields(), type2.getFields());
     }
 
-    private static boolean areEquals(Map<String, ParameterType> fieldsType1, Map<String, ParameterType> fieldsType2) {
+    private boolean areEquals(Map<String, ParameterType> fieldsType1, Map<String, ParameterType> fieldsType2) {
         if (!fieldsType1.keySet().equals(fieldsType2.keySet())) {
             return false;
         } else {
@@ -136,16 +142,16 @@ public class ParameterTypeComparator {
         }
     }
 
-    private static boolean subTypesAreDifferent(ParameterType type1, ParameterType type2) {
+    private boolean subTypesAreDifferent(ParameterType type1, ParameterType type2) {
         return type1.getDataTypeCategory() != type2.getDataTypeCategory();
     }
 
-    private static boolean onlyOneIsNull(DataType type1, ParameterType type2) {
+    private boolean onlyOneIsNull(DataType type1, ParameterType type2) {
         return (type1 == null && type2 != null) ||
                 (type1 != null && type2 == null);
     }
 
-    private static boolean sameInMemory(ParameterType type1, ParameterType type2) {
+    private boolean sameInMemory(ParameterType type1, ParameterType type2) {
         return type1 == type2;
     }
 }

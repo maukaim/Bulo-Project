@@ -32,7 +32,7 @@ public class RunFailedStageRunEventProcessor extends StageRunEventProcessor {
 
     private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
         Map<String, StageRun<?>> result = new HashMap<>();
-        StageRun<?> actualRun = getActualRun(orchestrableRunContext, stageRunId);
+        StageRun<?> actualRun = getActualRun(stageRunId);
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.FAILED)),
                 technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.failed(technicalStageRun, instant)));

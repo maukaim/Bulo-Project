@@ -1,6 +1,5 @@
 package com.maukaim.bulo.runs.orchestrators.core;
 
-import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
@@ -17,18 +16,17 @@ public abstract class StageRunEventProcessor {
         this.stageRunService = stageRunService;
     }
 
-    protected StageRun<?> getActualRun(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId){
+    protected StageRun<?> getActualRun(String stageRunId) {
         StageRun<?> actual = this.stageRunService.getById(stageRunId);
         if (actual == null) {
-            // La version de FlowRun qui est en memoire ne connait pas le stageRunId. WHY? En rest, on le voit???
             throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
         }
         return actual;
     }
 
-    protected Map<String, StageRun<?>> splitProcess(StageRun<?> stageRun, Function<FunctionalStageRun, Map<String,StageRun<?>>> functionalStageConsumer,
-                                                 Function<TechnicalStageRun, Map<String,StageRun<?>>> technicalStageRunConsumer){
-        if(stageRun instanceof FunctionalStageRun)
+    protected Map<String, StageRun<?>> splitProcess(StageRun<?> stageRun, Function<FunctionalStageRun, Map<String, StageRun<?>>> functionalStageConsumer,
+                                                    Function<TechnicalStageRun, Map<String, StageRun<?>>> technicalStageRunConsumer) {
+        if (stageRun instanceof FunctionalStageRun)
             return functionalStageConsumer.apply((FunctionalStageRun) stageRun);
         else if (stageRun instanceof TechnicalStageRun)
             return technicalStageRunConsumer.apply((TechnicalStageRun) stageRun);
