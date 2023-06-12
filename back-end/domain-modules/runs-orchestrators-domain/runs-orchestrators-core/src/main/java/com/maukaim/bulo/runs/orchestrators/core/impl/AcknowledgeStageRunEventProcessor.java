@@ -37,7 +37,5 @@ public class AcknowledgeStageRunEventProcessor extends StageRunEventProcessor {
                 functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.PENDING_START)),
                 technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.acknowledged(technicalStageRun, executorId))
         );
-
     }
-
 }
