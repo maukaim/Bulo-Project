@@ -22,6 +22,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 @Configuration
@@ -59,7 +61,8 @@ public class RunBeansConfig {
 
     @Bean
     public RunExecutor runExecutor() {
-        return new RunExecutorImpl(4);
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        return new RunExecutorImpl(executorService);
     }
 
     @Bean
@@ -97,10 +100,10 @@ public class RunBeansConfig {
     }
 
     @Bean
-    public StageRunEventProcessor stageRunEventProcessor(StageRunManager stageRunManager,
-                                                         StageStore stageStore,
-                                                         StageRunResultStore stageRunResultStore,
-                                                         StageDefinitionStore stageDefinitionStore) {
-        return new StageRunEventProcessorImpl(stageRunManager, stageStore, stageRunResultStore, stageDefinitionStore);
+    public StageRunProcessor stageRunEventProcessor(StageRunManager stageRunManager,
+                                                    StageStore stageStore,
+                                                    StageRunResultStore stageRunResultStore,
+                                                    StageDefinitionStore stageDefinitionStore) {
+        return new StageRunProcessorImpl(stageRunManager, stageStore, stageRunResultStore, stageDefinitionStore);
     }
 }

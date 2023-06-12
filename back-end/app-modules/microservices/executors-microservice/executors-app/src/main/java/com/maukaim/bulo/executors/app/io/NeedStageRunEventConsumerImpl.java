@@ -1,6 +1,6 @@
 package com.maukaim.bulo.executors.app.io;
 
-import com.maukaim.bulo.executors.core.StageRunEventProcessor;
+import com.maukaim.bulo.executors.core.StageRunProcessor;
 import com.maukaim.bulo.executors.data.lifecycle.adapters.StageRunDependencyAdapter;
 import com.maukaim.bulo.executors.data.runs.StageRunDependency;
 import com.maukaim.bulo.executors.data.lifecycle.NeedStageRunEventConsumer;
@@ -11,12 +11,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class NeedStageRunEventConsumerImpl implements NeedStageRunEventConsumer {
-    private final StageRunEventProcessor stageRunEventProcessor;
+    private final StageRunProcessor stageRunProcessor;
     private final StageRunDependencyAdapter stageRunDependencyAdapter;
 
-    public NeedStageRunEventConsumerImpl(StageRunEventProcessor stageRunEventProcessor,
+    public NeedStageRunEventConsumerImpl(StageRunProcessor stageRunProcessor,
                                          StageRunDependencyAdapter stageRunDependencyAdapter) {
-        this.stageRunEventProcessor = stageRunEventProcessor;
+        this.stageRunProcessor = stageRunProcessor;
         this.stageRunDependencyAdapter = stageRunDependencyAdapter;
     }
 
@@ -24,7 +24,7 @@ public class NeedStageRunEventConsumerImpl implements NeedStageRunEventConsumer 
     public void consume(NeedStageRunExecutionEvent event) {
         System.out.println("Consume event: " + event);
         Set<StageRunDependency> stageRunDependencies = resolve(event.getDependencies());
-        this.stageRunEventProcessor.onRunRequest(event.getStageId(),
+        this.stageRunProcessor.onRunRequest(event.getStageId(),
                 event.getStageRunId(), stageRunDependencies);
     }
 

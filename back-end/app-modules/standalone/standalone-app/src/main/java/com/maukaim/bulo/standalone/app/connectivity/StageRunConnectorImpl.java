@@ -1,6 +1,6 @@
 package com.maukaim.bulo.standalone.app.connectivity;
 
-import com.maukaim.bulo.executors.core.StageRunEventProcessor;
+import com.maukaim.bulo.executors.core.StageRunProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
 import com.maukaim.bulo.standalone.data.lifecycle.StageRunResultListener;
@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 
 public class StageRunConnectorImpl implements StageRunConnector {
     private final StageRunDependencyAdapter stageRunDependencyAdapter;
-    private final StageRunEventProcessor stageRunEventProcessor;
+    private final StageRunProcessor stageRunProcessor;
     private StageRunResultListener stageRunResultListener;
 
     public StageRunConnectorImpl(StageRunDependencyAdapter stageRunDependencyAdapter,
-                                 StageRunEventProcessor stageRunEventProcessor) {
+                                 StageRunProcessor stageRunProcessor) {
         this.stageRunDependencyAdapter = stageRunDependencyAdapter;
-        this.stageRunEventProcessor = stageRunEventProcessor;
+        this.stageRunProcessor = stageRunProcessor;
     }
 
     public void setStageRunResultListener(StageRunResultListener stageRunResultListener) {
@@ -27,13 +27,13 @@ public class StageRunConnectorImpl implements StageRunConnector {
 
     @Override
     public boolean requestCancel(String stageRunId, String executorId) {
-        this.stageRunEventProcessor.onCancelRequest(stageRunId);
+        this.stageRunProcessor.onCancelRequest(stageRunId);
         return true;
     }
 
     @Override
     public boolean requestRun(String stageId, String stageRunId, Set<RunDependency> stageRunDependencies) {
-        this.stageRunEventProcessor.onRunRequest(stageId,
+        this.stageRunProcessor.onRunRequest(stageId,
                 stageRunId,
                 resolve(stageRunDependencies));
         return true;

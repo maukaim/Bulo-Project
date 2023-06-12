@@ -46,7 +46,7 @@ public class BuloRunnerMarshaller implements RunnerMarshaller {
 
     @Override
     public <T> T unmarshall(String marshall, Class<T> clazz) {
-        if (clazz.isAssignableFrom(Any.class)) {
+        if (Any.class.isAssignableFrom(clazz)){
             return clazz.cast(this.unmarshallAsGenericType(marshall));
         }
         return unmarshall(marshall, objectMapper.constructType(clazz), clazz);

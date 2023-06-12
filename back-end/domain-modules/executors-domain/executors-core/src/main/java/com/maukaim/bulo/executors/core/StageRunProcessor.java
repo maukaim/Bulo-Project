@@ -4,7 +4,7 @@ import com.maukaim.bulo.executors.data.runs.StageRunDependency;
 
 import java.util.Set;
 
-public interface StageRunEventProcessor {
+public interface StageRunProcessor {
     void onRunRequest(String stageId,
                       String stageRunId,
                       Set<StageRunDependency> dependencies);

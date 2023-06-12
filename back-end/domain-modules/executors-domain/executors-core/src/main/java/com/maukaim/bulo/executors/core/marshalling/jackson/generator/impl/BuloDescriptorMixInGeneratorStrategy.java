@@ -21,6 +21,7 @@ import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
+//TODO: Cover with Unit Tests
 public class BuloDescriptorMixInGeneratorStrategy extends MixInGeneratorStrategy {
     private static final String BULO_PREFIX_CLASS_NAME = "Bulo";
     private static final String MIXIN_SUFFIX_CLASS_NAME = "MixIn";

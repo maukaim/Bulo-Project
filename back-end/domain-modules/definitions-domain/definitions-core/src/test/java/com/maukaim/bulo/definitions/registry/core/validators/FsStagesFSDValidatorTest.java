@@ -55,7 +55,6 @@ class FsStagesFSDValidatorTest {
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> fsStagesFSDValidator.validate(definition));
         assertEquals("SubStages can't be null. It would mean the FunctionalStage does nothing.", exception.getMessage());
-
     }
 
     @Test

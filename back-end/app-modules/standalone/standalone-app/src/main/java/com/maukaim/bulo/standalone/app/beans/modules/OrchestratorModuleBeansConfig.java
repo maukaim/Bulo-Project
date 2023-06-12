@@ -1,6 +1,6 @@
 package com.maukaim.bulo.standalone.app.beans.modules;
 
-import com.maukaim.bulo.executors.core.StageRunEventProcessor;
+import com.maukaim.bulo.executors.core.StageRunProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.*;
 import com.maukaim.bulo.runs.orchestrators.core.impl.*;
 import com.maukaim.bulo.runs.orchestrators.data.*;
@@ -36,9 +36,9 @@ public class OrchestratorModuleBeansConfig {
     }
 
     @Bean
-    public StageRunConnectorImpl stageRunConnector(StageRunEventProcessor stageRunEventProcessor,
-                                               StageRunDependencyAdapter stageRunDependencyAdapter) {
-        return new StageRunConnectorImpl(stageRunDependencyAdapter, stageRunEventProcessor);
+    public StageRunConnectorImpl stageRunConnector(StageRunProcessor stageRunProcessor,
+                                                   StageRunDependencyAdapter stageRunDependencyAdapter) {
+        return new StageRunConnectorImpl(stageRunDependencyAdapter, stageRunProcessor);
     }
 
     @Bean

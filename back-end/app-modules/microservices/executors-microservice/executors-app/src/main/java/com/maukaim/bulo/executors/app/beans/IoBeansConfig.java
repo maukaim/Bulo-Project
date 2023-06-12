@@ -8,7 +8,7 @@ import com.maukaim.bulo.executors.app.io.NeedStageRunEventConsumerImpl;
 import com.maukaim.bulo.executors.app.io.StageRunResultEventConsumerImpl;
 import com.maukaim.bulo.executors.app.io.StageRunResultEventPublisherImpl;
 import com.maukaim.bulo.executors.app.io.StageUpdateEventConsumerImpl;
-import com.maukaim.bulo.executors.core.StageRunEventProcessor;
+import com.maukaim.bulo.executors.core.StageRunProcessor;
 import com.maukaim.bulo.executors.data.StageStore;
 import com.maukaim.bulo.executors.data.lifecycle.NeedStageRunCancelEventConsumer;
 import com.maukaim.bulo.executors.data.lifecycle.NeedStageRunEventConsumer;
@@ -58,14 +58,14 @@ public class IoBeansConfig {
     }
 
     @Bean
-    public NeedStageRunEventConsumer needStageRunEventConsumer(StageRunEventProcessor stageRunEventProcessor,
+    public NeedStageRunEventConsumer needStageRunEventConsumer(StageRunProcessor stageRunProcessor,
                                                                StageRunDependencyAdapter stageRunDependencyAdapter) {
-        return new NeedStageRunEventConsumerImpl(stageRunEventProcessor, stageRunDependencyAdapter);
+        return new NeedStageRunEventConsumerImpl(stageRunProcessor, stageRunDependencyAdapter);
     }
 
     @Bean
-    public NeedStageRunCancelEventConsumer needStageRunCancelEventConsumer(StageRunEventProcessor stageRunEventProcessor) {
-        return new NeedStageRunCancelEventConsumerImpl(stageRunEventProcessor);
+    public NeedStageRunCancelEventConsumer needStageRunCancelEventConsumer(StageRunProcessor stageRunProcessor) {
+        return new NeedStageRunCancelEventConsumerImpl(stageRunProcessor);
     }
 
     @Bean

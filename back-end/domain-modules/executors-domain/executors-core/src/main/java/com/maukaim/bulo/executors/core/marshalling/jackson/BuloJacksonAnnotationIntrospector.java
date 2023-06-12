@@ -26,7 +26,7 @@ public class BuloJacksonAnnotationIntrospector extends JacksonAnnotationIntrospe
     @Override
     public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
         Map<String, String> overrides = Stream.of(enumType.getDeclaredFields())
-                .filter(it -> !it.isEnumConstant())
+                .filter(it -> it.isEnumConstant())
                 .filter(it -> it.getAnnotation(BuloField.class) != null)
                 .collect(Collectors.toMap(
                         Field::getName,
