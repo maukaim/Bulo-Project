@@ -1,5 +1,7 @@
 package com.maukaim.bulo.runs.orchestrators.core;
 
+import com.maukaim.bulo.runs.orchestrators.core.factories.FunctionalStageRunFactory;
+import com.maukaim.bulo.runs.orchestrators.core.factories.TechnicalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
 import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
@@ -10,10 +12,17 @@ import java.util.function.Function;
 public abstract class StageRunEventProcessor {
     protected final FlowRunService flowRunService;
     protected final StageRunService stageRunService;
+    protected final FunctionalStageRunFactory functionalStageRunFactory;
+    protected final TechnicalStageRunFactory technicalStageRunFactory;
 
-    public StageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
+    public StageRunEventProcessor(FlowRunService flowRunService,
+                                  StageRunService stageRunService,
+                                  FunctionalStageRunFactory functionalStageRunFactory,
+                                  TechnicalStageRunFactory technicalStageRunFactory){
         this.flowRunService = flowRunService;
         this.stageRunService = stageRunService;
+        this.functionalStageRunFactory = functionalStageRunFactory;
+        this.technicalStageRunFactory = technicalStageRunFactory;
     }
 
     protected StageRun<?> getActualRun(String stageRunId) {

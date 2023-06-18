@@ -13,15 +13,15 @@ import java.util.UUID;
 
 public class TechnicalStageRunFactory {
 
-    public static TechnicalStageRun toBeRequested(RunContext<?> runContext, ContextStageId stageId, Set<RunDependency> stageRunDependencies) {
+    public TechnicalStageRun toBeRequested(RunContext<?> runContext, ContextStageId stageId, Set<RunDependency> stageRunDependencies) {
         return new TechnicalStageRun(UUID.randomUUID().toString(), stageId, runContext, TechnicalStageRunStatus.TO_BE_REQUESTED, null, stageRunDependencies, null, null);
     }
 
-    public static TechnicalStageRun requested(TechnicalStageRun previousView) {
+    public TechnicalStageRun requested(TechnicalStageRun previousView) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.REQUESTED, null, previousView.getStageRunDependencies(), Instant.now(), previousView.getEndTime());
     }
 
-    public static TechnicalStageRun acknowledged(TechnicalStageRun previousView, String executorId) {
+    public TechnicalStageRun acknowledged(TechnicalStageRun previousView, String executorId) {
         return new TechnicalStageRun(previousView.getStageRunId(),
                 previousView.getContextualizedStageId(),
                 previousView.getContext(),
@@ -32,30 +32,30 @@ public class TechnicalStageRunFactory {
                 previousView.getEndTime());
     }
 
-    public static TechnicalStageRun launched(TechnicalStageRun previousView, Instant startTime) {
+    public TechnicalStageRun launched(TechnicalStageRun previousView, Instant startTime) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.RUNNING.resolveComparedTo(previousView.getStatus()), previousView.getExecutorId(),
                 previousView.getStageRunDependencies(), startTime,
                 previousView.getEndTime());
     }
 
-    public static TechnicalStageRun toBeCancelled(TechnicalStageRun previousView) {
+    public TechnicalStageRun toBeCancelled(TechnicalStageRun previousView) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.TO_BE_CANCELLED.resolveComparedTo(previousView.getStatus()), previousView.getExecutorId(),
                 previousView.getStageRunDependencies(), previousView.getStartTime(), previousView.getEndTime());
     }
 
-    public static TechnicalStageRun cancelled(TechnicalStageRun previousView, Instant endTime) {
+    public TechnicalStageRun cancelled(TechnicalStageRun previousView, Instant endTime) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.CANCELLED.resolveComparedTo(previousView.getStatus()), previousView.getExecutorId(),
                 previousView.getStageRunDependencies(), previousView.getStartTime(),
                 TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
     }
 
-    public static TechnicalStageRun failed(TechnicalStageRun previousView, Instant endTime) {
+    public TechnicalStageRun failed(TechnicalStageRun previousView, Instant endTime) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.FAILED.resolveComparedTo(previousView.getStatus()), previousView.getExecutorId(),
                 previousView.getStageRunDependencies(), previousView.getStartTime(),
                 TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());
     }
 
-    public static TechnicalStageRun success(TechnicalStageRun previousView, Instant endTime) {
+    public TechnicalStageRun success(TechnicalStageRun previousView, Instant endTime) {
         return new TechnicalStageRun(previousView.getStageRunId(), previousView.getContextualizedStageId(), previousView.getContext(), TechnicalStageRunStatus.SUCCESS.resolveComparedTo(previousView.getStatus()), previousView.getExecutorId(),
                 previousView.getStageRunDependencies(), previousView.getStartTime(),
                 TimeHelper.isAfter(endTime, previousView.getEndTime()) ? endTime : previousView.getEndTime());

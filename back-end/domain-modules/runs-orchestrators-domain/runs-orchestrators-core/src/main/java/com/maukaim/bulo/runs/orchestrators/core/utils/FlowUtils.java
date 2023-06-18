@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class FlowUtils {
 
-    public static Set<ContextStageId> getRootIds(Flow flow){
+    public Set<ContextStageId> getRootIds(Flow flow){
         if(flow == null || flow.getFlowStages() == null){
             return Set.of();
         }else{

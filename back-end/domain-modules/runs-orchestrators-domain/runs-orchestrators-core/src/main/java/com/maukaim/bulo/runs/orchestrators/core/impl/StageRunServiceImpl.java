@@ -11,10 +11,19 @@ import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.*;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.RunDependency;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRun;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
@@ -29,17 +38,23 @@ public class StageRunServiceImpl implements StageRunService {
     private final ExecutorService executorService;
     private final FunctionalStageService functionalStageService;
     private final FunctionalStageDefinitionService functionalStageDefinitionService;
+    private final FunctionalStageRunFactory functionalStageRunFactory;
+    private final TechnicalStageRunFactory technicalStageRunFactory;
 
     public StageRunServiceImpl(StageRunConnector stageRunConnector,
                                StageRunStore stageRunStore,
                                int threadPoolCapacity,
                                FunctionalStageService functionalStageService,
-                               FunctionalStageDefinitionService functionalStageDefinitionService) {
+                               FunctionalStageDefinitionService functionalStageDefinitionService,
+                               FunctionalStageRunFactory functionalStageRunFactory,
+                               TechnicalStageRunFactory technicalStageRunFactory) {
         this.executorService = Executors.newFixedThreadPool(threadPoolCapacity);
         this.stageRunConnector = stageRunConnector;
         this.stageRunStore = stageRunStore;
         this.functionalStageService = functionalStageService;
         this.functionalStageDefinitionService = functionalStageDefinitionService;
+        this.functionalStageRunFactory = functionalStageRunFactory;
+        this.technicalStageRunFactory = technicalStageRunFactory;
     }
 
     public Map<String, StageRun<?>> getNextStageRuns(RunContext<?> runContext, Map<ContextStageId, Set<RunDependency>> stageToRunByDependencies) {
@@ -50,10 +65,10 @@ public class StageRunServiceImpl implements StageRunService {
             StageRun<?> newRun;
             String definitionId = functionalStageService.getDefinitionId(contextStageId.getStageId());
             if (definitionId == null) {
-                newRun = TechnicalStageRunFactory.toBeRequested(runContext, contextStageId, runDependencies);
+                newRun = technicalStageRunFactory.toBeRequested(runContext, contextStageId, runDependencies);
             } else {
                 FunctionalStageDefinition definition = functionalStageDefinitionService.getById(definitionId);
-                newRun = FunctionalStageRunFactory.create(definition, runContext, contextStageId, runDependencies);
+                newRun = functionalStageRunFactory.create(definition, runContext, contextStageId, runDependencies);
                 System.out.println(String.format("For FS %s, stageDependencies are %s", contextStageId.getStageId(), runDependencies));
             }
             this.stageRunStore.put(newRun.getStageRunId(), newRun);
@@ -111,12 +126,12 @@ public class StageRunServiceImpl implements StageRunService {
                     this.computeStageRunUpdateUnderLock(functionalStageRun.getContextId(), (previous) -> stageRunsToRequest);
                 } catch (Throwable t) {
                     System.out.println("Problem while scheduling execution: " + t);
-                    FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED);
+                    functionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED);
                 }
             });
         } catch (Throwable t) {
             System.out.println("Problem while scheduling execution: " + t);
-            FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED);
+            functionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED);
         }
         return Map.of();
     }
@@ -137,8 +152,8 @@ public class StageRunServiceImpl implements StageRunService {
     private Map<String, StageRun<?>> startTechnicalStage(TechnicalStageRun stageRun) {
         boolean started = this.stageRunConnector.requestRun(stageRun.getContextualizedStageId().getStageId(), stageRun.getStageRunId(), stageRun.getStageRunDependencies());
         return Map.of(stageRun.getStageRunId(), started ?
-                TechnicalStageRunFactory.requested(stageRun) :
-                TechnicalStageRunFactory.failed(stageRun, Instant.now()));
+                technicalStageRunFactory.requested(stageRun) :
+                technicalStageRunFactory.failed(stageRun, Instant.now()));
     }
 
     @Override
@@ -180,9 +195,9 @@ public class StageRunServiceImpl implements StageRunService {
             previousStatus.set(functionalStageRun.getStatus());
 
             Map<String, StageRun<?>> stageRunViewToUpdate = contextUpdator.apply(functionalStageRun);
-            FunctionalStageRun newStageRun = FunctionalStageRunFactory.updateStageRunView(functionalStageRun, stageRunViewToUpdate);
+            FunctionalStageRun newStageRun = functionalStageRunFactory.updateStageRunView(functionalStageRun, stageRunViewToUpdate);
             saveAllTechnicalStageRuns(stageRunViewToUpdate);
-            newStageRun = FunctionalStageRunFactory.updateState(newStageRun, resolveStatus(newStageRun));
+            newStageRun = functionalStageRunFactory.updateState(newStageRun, resolveStatus(newStageRun));
 
             List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
@@ -200,7 +215,7 @@ public class StageRunServiceImpl implements StageRunService {
     private void saveAllTechnicalStageRuns(Map<String, StageRun<?>> stageRunViewToUpdate) {
         stageRunViewToUpdate.forEach((stageId, stageRun) -> {
             if (stageRun instanceof TechnicalStageRun) {
-                this.put(stageId,stageRun);
+                this.put(stageId, stageRun);
             }
         });
     }
@@ -225,8 +240,8 @@ public class StageRunServiceImpl implements StageRunService {
         if (toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()) {
             return this.stageRunStore.compute(contextId, (id, flowRun) -> {
                 Map<String, StageRun<?>> stageRunsAfterRequest = this.startRuns(toBeRequestedRuns);
-                FunctionalStageRun stageRunAfterRequested = FunctionalStageRunFactory.updateStageRunView(stageRunPersisted, stageRunsAfterRequest);
-                stageRunAfterRequested = FunctionalStageRunFactory.updateState(stageRunAfterRequested, resolveStatus(stageRunAfterRequested));
+                FunctionalStageRun stageRunAfterRequested = functionalStageRunFactory.updateStageRunView(stageRunPersisted, stageRunsAfterRequest);
+                stageRunAfterRequested = functionalStageRunFactory.updateState(stageRunAfterRequested, resolveStatus(stageRunAfterRequested));
 
                 return stageRunAfterRequested;
             });

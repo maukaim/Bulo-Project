@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 public class FunctionalStageRunFactory {
 
-    public static FunctionalStageRun updateState(FunctionalStageRun stageRun, OrchestrableContextStatus newStatus) {
+    public FunctionalStageRun updateState(FunctionalStageRun stageRun, OrchestrableContextStatus newStatus) {
         return new FunctionalStageRun(
                 stageRun.getContextId(),
                 stageRun.getContextualizedStageId(),
@@ -36,7 +36,7 @@ public class FunctionalStageRunFactory {
                 stageRun.getStageRunsById());
     }
 
-    public static FunctionalStageRun updateStageRunView(FunctionalStageRun stageRun, Map<String, StageRun<?>> mapOfViewToBeUpdated) {
+    public FunctionalStageRun updateStageRunView(FunctionalStageRun stageRun, Map<String, StageRun<?>> mapOfViewToBeUpdated) {
         HashMap<String, StageRun<?>> newStageRunViewMap = new HashMap<>(stageRun.getStageRunsById());
         newStageRunViewMap.putAll(mapOfViewToBeUpdated);
         return new FunctionalStageRun(stageRun.getContextId(),
@@ -52,7 +52,7 @@ public class FunctionalStageRunFactory {
         );
     }
 
-    public static FunctionalStageRun create(FunctionalStageDefinition definition,
+    public FunctionalStageRun create(FunctionalStageDefinition definition,
                                             RunContext<?> runContext,
                                             ContextStageId contextStageId,
                                             Set<RunDependency> stageRunDependencies) {
@@ -69,7 +69,7 @@ public class FunctionalStageRunFactory {
                 new HashMap<>());
     }
 
-    private static Map<ContextStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FsStage> fsStages) {
+    private Map<ContextStageId, Set<ContextualizedStageDependency>> resolveFlowStages(Set<FsStage> fsStages) {
         return fsStages == null ? Map.of() : fsStages.stream()
                 .collect(Collectors.toMap(
                         FsStage::getContextualizedId,
@@ -77,26 +77,26 @@ public class FunctionalStageRunFactory {
                 ));
     }
 
-    private static Set<ContextualizedStageDependency> resolveInputDependencies(Set<IoDependency> inputDependencies) {
+    private Set<ContextualizedStageDependency> resolveInputDependencies(Set<IoDependency> inputDependencies) {
         return inputDependencies == null ? Set.of() : inputDependencies.stream()
-                .map(FunctionalStageRunFactory::resolveInputDependency)
+                .map(this::resolveInputDependency)
                 .collect(Collectors.toSet());
     }
 
-    private static ContextualizedStageDependency resolveInputDependency(IoDependency inputDependency) {
+    private ContextualizedStageDependency resolveInputDependency(IoDependency inputDependency) {
         return inputDependency == null ? null : new ContextualizedStageDependency(
                 inputDependency.getInputId(),
                 resolveInputProviders(inputDependency.getInputProviders())
         );
     }
 
-    private static Set<ContextStageAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
+    private Set<ContextStageAncestor> resolveInputProviders(Set<InputProvider> inputProviders) {
         return inputProviders == null ? Set.of() : inputProviders.stream()
-                .map(FunctionalStageRunFactory::resolveInputProvider)
+                .map(this::resolveInputProvider)
                 .collect(Collectors.toSet());
     }
 
-    private static ContextStageAncestor resolveInputProvider(InputProvider inputProvider) {
+    private ContextStageAncestor resolveInputProvider(InputProvider inputProvider) {
         return inputProvider == null ? null : new ContextStageAncestor(inputProvider.getFlowStageId(), inputProvider.getOutputIds());
     }
 }

@@ -19,8 +19,8 @@ import static java.util.stream.Collectors.toMap;
 
 public class RunSuccessfulStageRunEventProcessor extends StageRunEventProcessor {
 
-    public RunSuccessfulStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
-        super(flowRunService, stageRunService);
+    public RunSuccessfulStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService, FunctionalStageRunFactory functionalStageRunFactory, TechnicalStageRunFactory technicalStageRunFactory) {
+        super(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
     }
 
     public void process(String stageRunId, Instant instant, FunctionalStageRunContext context) {
@@ -37,8 +37,8 @@ public class RunSuccessfulStageRunEventProcessor extends StageRunEventProcessor 
         StageRun<?> actualRun = getActualRun(stageRunId);
         Map<String, StageRun<?>> result = new HashMap<>();
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
-                functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.SUCCESS)),
-                technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.success(technicalStageRun, instant))
+                functionalStageRun -> Map.of(stageRunId, functionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.SUCCESS)),
+                technicalStageRun -> Map.of(stageRunId, technicalStageRunFactory.success(technicalStageRun, instant))
         );
         result.putAll(currentRunResult);
 

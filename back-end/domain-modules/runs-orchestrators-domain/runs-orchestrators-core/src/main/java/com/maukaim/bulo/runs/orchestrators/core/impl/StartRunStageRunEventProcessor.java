@@ -17,8 +17,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class StartRunStageRunEventProcessor extends StageRunEventProcessor {
 
-    public StartRunStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
-        super(flowRunService, stageRunService);
+    public StartRunStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService, FunctionalStageRunFactory functionalStageRunFactory, TechnicalStageRunFactory technicalStageRunFactory) {
+        super(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
     }
 
     public void process(String stageRunId, Instant instant, FunctionalStageRunContext context) {
@@ -35,10 +35,10 @@ public class StartRunStageRunEventProcessor extends StageRunEventProcessor {
         StageRun<?> actualRun = getActualRun(stageRunId);
         AtomicReference<String> executorIdReference = new AtomicReference<>();
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
-                functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.RUNNING)),
+                functionalStageRun -> Map.of(stageRunId, functionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.RUNNING)),
                 technicalStageRun -> {
                     executorIdReference.set(technicalStageRun.getExecutorId());
-                    return Map.of(stageRunId, TechnicalStageRunFactory.launched(technicalStageRun, instant));
+                    return Map.of(stageRunId, technicalStageRunFactory.launched(technicalStageRun, instant));
                 }
         );
 

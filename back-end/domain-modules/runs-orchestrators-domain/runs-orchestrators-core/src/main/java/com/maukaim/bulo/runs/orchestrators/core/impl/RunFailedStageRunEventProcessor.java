@@ -1,13 +1,16 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FunctionalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.factories.TechnicalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.OrchestrableContextStatus;
-import com.maukaim.bulo.runs.orchestrators.data.runs.stage.*;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FlowRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.FunctionalStageRunContext;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.StageRun;
+import com.maukaim.bulo.runs.orchestrators.data.runs.stage.TechnicalStageRunStatus;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -16,8 +19,8 @@ import java.util.Set;
 
 public class RunFailedStageRunEventProcessor extends StageRunEventProcessor {
 
-    public RunFailedStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
-        super(flowRunService, stageRunService);
+    public RunFailedStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService, FunctionalStageRunFactory functionalStageRunFactory, TechnicalStageRunFactory technicalStageRunFactory) {
+        super(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
     }
 
     public void process(String stageRunId, Instant instant, FunctionalStageRunContext context) {
@@ -34,8 +37,8 @@ public class RunFailedStageRunEventProcessor extends StageRunEventProcessor {
         Map<String, StageRun<?>> result = new HashMap<>();
         StageRun<?> actualRun = getActualRun(stageRunId);
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualRun,
-                functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.FAILED)),
-                technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.failed(technicalStageRun, instant)));
+                functionalStageRun -> Map.of(stageRunId, functionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.FAILED)),
+                technicalStageRun -> Map.of(stageRunId, technicalStageRunFactory.failed(technicalStageRun, instant)));
         result.putAll(currentRunResult);
 
         Map<String, StageRun<?>> toBeCancelledStages = cancelOtherStages(stageRunId, orchestrableRunContext.getInFlightStageRuns());
@@ -56,7 +59,7 @@ public class RunFailedStageRunEventProcessor extends StageRunEventProcessor {
                         String inflightStageRunId = technicalStageRun.getStageRunId();
                         if (!currentStageRunId.equals(inflightStageRunId) && technicalStageRun.getStatus() != TechnicalStageRunStatus.TO_BE_CANCELLED) {
                             this.stageRunService.requestCancel(inflightStageRunId, technicalStageRun.getExecutorId());
-                            return Map.of(inflightStageRunId, TechnicalStageRunFactory.toBeCancelled(technicalStageRun));
+                            return Map.of(inflightStageRunId, technicalStageRunFactory.toBeCancelled(technicalStageRun));
                         }
                         return Map.of();
                     });

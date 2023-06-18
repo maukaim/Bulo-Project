@@ -27,19 +27,25 @@ public class FlowRunServiceImpl implements FlowRunService {
     private final FlowService flowService;
     private final FlowRunStore flowRunStore;
     private final StageRunService stageRunService;
+    private final FlowUtils flowUtils;
+    private final FlowRunFactory flowRunFactory;
 
     public FlowRunServiceImpl(FlowService flowService,
                               FlowRunStore flowRunStore,
-                              StageRunService stageRunService) {
+                              StageRunService stageRunService,
+                              FlowUtils flowUtils,
+                              FlowRunFactory flowRunFactory ){
         this.flowService = flowService;
         this.flowRunStore = flowRunStore;
         this.stageRunService = stageRunService;
+        this.flowUtils = flowUtils;
+        this.flowRunFactory = flowRunFactory;
     }
 
     @Override
     public FlowRun startRun(String flowId, Set<ContextStageId> rootStageIds) {
         Flow flow = this.getExistingFlow(flowId);
-        Set<ContextStageId> rootIds = FlowUtils.getRootIds(flow);
+        Set<ContextStageId> rootIds = flowUtils.getRootIds(flow);
         Set<ContextStageId> flowStagesToRunId;
         if (rootStageIds == null || rootStageIds.isEmpty()) {
             flowStagesToRunId = rootIds;
@@ -51,7 +57,7 @@ public class FlowRunServiceImpl implements FlowRunService {
                     rootStageIds));
         }
 
-        FlowRun newRunNonPersisted = FlowRunFactory.create(flow);
+        FlowRun newRunNonPersisted = flowRunFactory.create(flow);
         FlowRun newRunPersisted = this.flowRunStore.add(newRunNonPersisted);
         Map<String, StageRun<?>> stageRunsToRequest = this.stageRunService.getNextStageRuns(newRunPersisted.toRunContext(), resolveLocalRunDependenciesForRoots(flowStagesToRunId));
         return this.computeStageRunUpdateUnderLock(newRunPersisted.getContextId(), (previous) -> stageRunsToRequest);
@@ -85,9 +91,9 @@ public class FlowRunServiceImpl implements FlowRunService {
         AtomicReference<List<StageRun<?>>> toBeRequestedReference = new AtomicReference<>();
         FlowRun flowRunPersisted = this.flowRunStore.compute(flowRunId, (id, flowRun) -> {
             Map<String, StageRun<?>> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
-            FlowRun newFlowRunValue = FlowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
+            FlowRun newFlowRunValue = flowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             saveAllTechnicalStageRuns(stageRunViewToUpdate);
-            newFlowRunValue = FlowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
+            newFlowRunValue = flowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
 
             List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
@@ -100,8 +106,8 @@ public class FlowRunServiceImpl implements FlowRunService {
         if(toBeRequestedRuns != null && !toBeRequestedRuns.isEmpty()){
             return this.flowRunStore.compute(flowRunId,(id,flowRun)->{
                 Map<String, StageRun<?>> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
-                FlowRun flowRunAfterRequested = FlowRunFactory.updateStageRunView(flowRunPersisted, stageRunsAfterRequest);
-                flowRunAfterRequested = FlowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
+                FlowRun flowRunAfterRequested = flowRunFactory.updateStageRunView(flowRunPersisted, stageRunsAfterRequest);
+                flowRunAfterRequested = flowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
 
                 return flowRunAfterRequested;
             });

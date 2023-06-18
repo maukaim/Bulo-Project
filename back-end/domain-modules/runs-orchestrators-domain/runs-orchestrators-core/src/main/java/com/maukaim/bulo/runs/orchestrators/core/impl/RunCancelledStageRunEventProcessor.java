@@ -1,8 +1,8 @@
 package com.maukaim.bulo.runs.orchestrators.core.impl;
 
 import com.maukaim.bulo.runs.orchestrators.core.FlowRunService;
-import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FunctionalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.factories.TechnicalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
@@ -19,8 +19,9 @@ import java.util.Set;
 
 public class RunCancelledStageRunEventProcessor extends StageRunEventProcessor {
 
-    public RunCancelledStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService) {
-        super(flowRunService, stageRunService);
+
+    public RunCancelledStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService, FunctionalStageRunFactory functionalStageRunFactory, TechnicalStageRunFactory technicalStageRunFactory) {
+        super(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
     }
 
     public void process(String stageRunId, Instant instant, FunctionalStageRunContext context) {
@@ -34,13 +35,12 @@ public class RunCancelledStageRunEventProcessor extends StageRunEventProcessor {
     }
 
     private Map<String, StageRun<?>> commonProcess(OrchestrableRunContext<?> orchestrableRunContext, String stageRunId, Instant instant) {
-        Map<String, StageRun<?>> result = new HashMap<>();
         StageRun<?> actualView = getActualRun(stageRunId);
         Map<String, StageRun<?>> currentRunResult = splitProcess(actualView,
-                functionalStageRun -> Map.of(stageRunId, FunctionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED)),
-                technicalStageRun -> Map.of(stageRunId, TechnicalStageRunFactory.cancelled(technicalStageRun, instant))
+                functionalStageRun -> Map.of(stageRunId, functionalStageRunFactory.updateState(functionalStageRun, OrchestrableContextStatus.CANCELLED)),
+                technicalStageRun -> Map.of(stageRunId, technicalStageRunFactory.cancelled(technicalStageRun, instant))
         );
-        result.putAll(currentRunResult);
+        Map<String, StageRun<?>> result = new HashMap<>(currentRunResult);
 
         Map<String, StageRun<?>> toBeCancelledStages = cancelOtherStages(stageRunId, orchestrableRunContext.getInFlightStageRuns());
         result.putAll(toBeCancelledStages);
@@ -60,7 +60,7 @@ public class RunCancelledStageRunEventProcessor extends StageRunEventProcessor {
                         String inflightStageRunId = technicalStageRun.getStageRunId();
                         if (!currentStageRunId.equals(inflightStageRunId) && technicalStageRun.getStatus() != TechnicalStageRunStatus.TO_BE_CANCELLED) {
                             this.stageRunService.requestCancel(inflightStageRunId, technicalStageRun.getExecutorId());
-                            return Map.of(inflightStageRunId, TechnicalStageRunFactory.toBeCancelled(technicalStageRun));
+                            return Map.of(inflightStageRunId, technicalStageRunFactory.toBeCancelled(technicalStageRun));
                         }
                         return Map.of();
                     });
