@@ -21,6 +21,8 @@ import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulStageRunEventP
 import com.maukaim.bulo.runs.orchestrators.core.impl.StageRunServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
+import com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver;
+import com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableUtils;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
@@ -46,8 +48,12 @@ public class OrchestratorModuleBeansConfig {
     public StageRunService stageRunService(StageRunStore stageRunStore,
                                            StageRunConnector stageRunConnector,
                                            FunctionalStageService functionalStageService,
-                                           FunctionalStageDefinitionService functionalStageDefinitionService) {
-        return new StageRunServiceImpl(stageRunConnector, stageRunStore, 4, functionalStageService, functionalStageDefinitionService);
+                                           FunctionalStageDefinitionService functionalStageDefinitionService,
+                                           TechnicalStageRunFactory technicalStageRunFactory,
+                                           FunctionalStageRunFactory functionalStageRunFactory,
+                                           OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
+        return new StageRunServiceImpl(stageRunConnector, stageRunStore, 4, functionalStageService, functionalStageDefinitionService,
+                functionalStageRunFactory, technicalStageRunFactory, orchestrableContextStatusResolver);
     }
 
     @Bean
@@ -55,8 +61,9 @@ public class OrchestratorModuleBeansConfig {
                                          StageRunService stageRunService,
                                          FlowRunStore flowRunStore,
                                          FlowUtils flowUtils,
-                                         FlowRunFactory flowRunFactory) {
-        return new FlowRunServiceImpl(flowService, flowRunStore, stageRunService, flowUtils, flowRunFactory);
+                                         FlowRunFactory flowRunFactory,
+                                         OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
+        return new FlowRunServiceImpl(flowService, flowRunStore, stageRunService, flowUtils, flowRunFactory,orchestrableContextStatusResolver);
     }
 
     @Bean
@@ -93,6 +100,16 @@ public class OrchestratorModuleBeansConfig {
     @Bean
     public TechnicalStageRunFactory technicalStageRunFactory() {
         return new TechnicalStageRunFactory();
+    }
+
+    @Bean
+    public OrchestrableContextStatusResolver orchestrableContextStatusResolver(){
+        return new OrchestrableContextStatusResolver();
+    }
+
+    @Bean
+    public OrchestrableUtils orchestrableUtils(){
+        return new OrchestrableUtils();
     }
 
     @Configuration
@@ -133,8 +150,9 @@ public class OrchestratorModuleBeansConfig {
         public RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor(StageRunService stageRunService,
                                                                                     FlowRunService flowRunService,
                                                                                     TechnicalStageRunFactory technicalStageRunFactory,
-                                                                                    FunctionalStageRunFactory functionalStageRunFactory) {
-            return new RunSuccessfulStageRunEventProcessor(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
+                                                                                    FunctionalStageRunFactory functionalStageRunFactory,
+                                                                                    OrchestrableUtils orchestrableUtils) {
+            return new RunSuccessfulStageRunEventProcessor(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory, orchestrableUtils);
         }
     }
 

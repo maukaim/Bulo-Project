@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.toMap;
 
 public class OrchestrableUtils {
 
-    public static Set<RunDependency> getRunDependencies(ContextStageId contextStageId,
+    public Set<RunDependency> getRunDependencies(ContextStageId contextStageId,
                                                         OrchestrableRunContext<?> orchestrableRunContext,
                                                         Set<StageRun<?>> previousRuns) {
         Set<RunDependency> result = new HashSet<>();
@@ -71,7 +71,7 @@ public class OrchestrableUtils {
         for (OutputProvider outputProvider : functionalStageRun.getOutputProviders()) {
             StageRun<?> stageRun = runMap.get(outputProvider.getContextStageId());
             if(stageRun == null){
-                throw new RuntimeException("No Run available for contextStageId" + outputProvider.getContextStageId());
+                throw new RuntimeException("No Run available for contextStageId " + outputProvider.getContextStageId());
             }
             Set<String> providedOutputs = outputProvider.getOutputIds().stream()
                     .filter(functionalStageExpectedOutputs::contains)

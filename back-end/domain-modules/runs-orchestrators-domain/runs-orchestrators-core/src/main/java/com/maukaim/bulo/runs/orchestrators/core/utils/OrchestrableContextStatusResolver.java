@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class OrchestrableContextStatusResolver {
 
-    public static OrchestrableContextStatus resolveStatus(OrchestrableRunContext<?> orchestrableRunContext) {
+    public OrchestrableContextStatus resolveStatus(OrchestrableRunContext<?> orchestrableRunContext) {
         OrchestrableContextStatus actualStatus = orchestrableRunContext.getStatus();
         if (actualStatus.isTerminal()) {
             return actualStatus;

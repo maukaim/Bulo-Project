@@ -7,12 +7,15 @@ import com.maukaim.bulo.runs.orchestrators.core.FunctionalStageService;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FlowRunFactory;
+import com.maukaim.bulo.runs.orchestrators.core.factories.FunctionalStageRunFactory;
+import com.maukaim.bulo.runs.orchestrators.core.factories.TechnicalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.impl.FlowRunServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.core.impl.FlowServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.core.impl.FunctionalStageDefinitionServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.core.impl.FunctionalStageServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.core.impl.StageRunServiceImpl;
 import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
+import com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
@@ -33,17 +36,21 @@ public class ServiceBeansConfig {
                                              FlowRunStore flowRunStore,
                                              StageRunService stageRunService,
                                              FlowUtils flowUtils,
-                                             FlowRunFactory flowRunFactory) {
-        return new FlowRunServiceImpl(flowService, flowRunStore, stageRunService, flowUtils, flowRunFactory);
+                                             FlowRunFactory flowRunFactory,
+                                             OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
+        return new FlowRunServiceImpl(flowService, flowRunStore, stageRunService, flowUtils, flowRunFactory, orchestrableContextStatusResolver);
     }
 
     @Bean
     public StageRunService stageRunService(StageRunStore stageRunStore,
                                            StageRunConnector stageRunConnector,
                                            FunctionalStageService functionalStageService,
-                                           FunctionalStageDefinitionService functionalStageDefinitionService) {
+                                           FunctionalStageDefinitionService functionalStageDefinitionService,
+                                           TechnicalStageRunFactory technicalStageRunFactory,
+                                           FunctionalStageRunFactory functionalStageRunFactory,
+                                           OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
         return new StageRunServiceImpl(stageRunConnector, stageRunStore, 4,
-                functionalStageService, functionalStageDefinitionService);
+                functionalStageService, functionalStageDefinitionService, functionalStageRunFactory, technicalStageRunFactory, orchestrableContextStatusResolver);
     }
 
     @Bean

@@ -9,6 +9,7 @@ import com.maukaim.bulo.runs.orchestrators.core.impl.RunCancelledStageRunEventPr
 import com.maukaim.bulo.runs.orchestrators.core.impl.RunFailedStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.impl.RunSuccessfulStageRunEventProcessor;
 import com.maukaim.bulo.runs.orchestrators.core.impl.StartRunStageRunEventProcessor;
+import com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -50,7 +51,8 @@ public class ProcessorBeansConfig {
     public RunSuccessfulStageRunEventProcessor runSuccessfulStageEventProcessor(StageRunService stageRunService,
                                                                                 FlowRunService flowRunService,
                                                                                 TechnicalStageRunFactory technicalStageRunFactory,
-                                                                                FunctionalStageRunFactory functionalStageRunFactory) {
-        return new RunSuccessfulStageRunEventProcessor(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
+                                                                                FunctionalStageRunFactory functionalStageRunFactory,
+                                                                                OrchestrableUtils orchestrableUtils) {
+        return new RunSuccessfulStageRunEventProcessor(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory, orchestrableUtils);
     }
 }

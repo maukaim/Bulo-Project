@@ -7,6 +7,7 @@ import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.exceptions.FlowRunStartException;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FlowRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.utils.FlowUtils;
+import com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver;
 import com.maukaim.bulo.runs.orchestrators.data.FlowRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.flow.Flow;
 import com.maukaim.bulo.runs.orchestrators.data.runs.flow.FlowRun;
@@ -20,7 +21,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver.resolveStatus;
 
 public class FlowRunServiceImpl implements FlowRunService {
 
@@ -29,17 +29,20 @@ public class FlowRunServiceImpl implements FlowRunService {
     private final StageRunService stageRunService;
     private final FlowUtils flowUtils;
     private final FlowRunFactory flowRunFactory;
+    private final OrchestrableContextStatusResolver orchestrableContextStatusResolver;
 
     public FlowRunServiceImpl(FlowService flowService,
                               FlowRunStore flowRunStore,
                               StageRunService stageRunService,
                               FlowUtils flowUtils,
-                              FlowRunFactory flowRunFactory ){
+                              FlowRunFactory flowRunFactory,
+                              OrchestrableContextStatusResolver orchestrableContextStatusResolver){
         this.flowService = flowService;
         this.flowRunStore = flowRunStore;
         this.stageRunService = stageRunService;
         this.flowUtils = flowUtils;
         this.flowRunFactory = flowRunFactory;
+        this.orchestrableContextStatusResolver = orchestrableContextStatusResolver;
     }
 
     @Override
@@ -93,7 +96,7 @@ public class FlowRunServiceImpl implements FlowRunService {
             Map<String, StageRun<?>> stageRunViewToUpdate = stageRunViewComputer.apply(flowRun);
             FlowRun newFlowRunValue = flowRunFactory.updateStageRunView(flowRun, stageRunViewToUpdate);
             saveAllTechnicalStageRuns(stageRunViewToUpdate);
-            newFlowRunValue = flowRunFactory.updateState(newFlowRunValue, resolveStatus(newFlowRunValue));
+            newFlowRunValue = flowRunFactory.updateState(newFlowRunValue, orchestrableContextStatusResolver.resolveStatus(newFlowRunValue));
 
             List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
@@ -107,7 +110,7 @@ public class FlowRunServiceImpl implements FlowRunService {
             return this.flowRunStore.compute(flowRunId,(id,flowRun)->{
                 Map<String, StageRun<?>> stageRunsAfterRequest = this.stageRunService.startRuns(toBeRequestedRuns);
                 FlowRun flowRunAfterRequested = flowRunFactory.updateStageRunView(flowRunPersisted, stageRunsAfterRequest);
-                flowRunAfterRequested = flowRunFactory.updateState(flowRunAfterRequested, resolveStatus(flowRunAfterRequested));
+                flowRunAfterRequested = flowRunFactory.updateState(flowRunAfterRequested, orchestrableContextStatusResolver.resolveStatus(flowRunAfterRequested));
 
                 return flowRunAfterRequested;
             });

@@ -18,9 +18,15 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toMap;
 
 public class RunSuccessfulStageRunEventProcessor extends StageRunEventProcessor {
+    private OrchestrableUtils orchestrableUtils;
 
-    public RunSuccessfulStageRunEventProcessor(FlowRunService flowRunService, StageRunService stageRunService, FunctionalStageRunFactory functionalStageRunFactory, TechnicalStageRunFactory technicalStageRunFactory) {
+    public RunSuccessfulStageRunEventProcessor(FlowRunService flowRunService,
+                                               StageRunService stageRunService,
+                                               FunctionalStageRunFactory functionalStageRunFactory,
+                                               TechnicalStageRunFactory technicalStageRunFactory,
+                                               OrchestrableUtils orchestrableUtils) {
         super(flowRunService, stageRunService, functionalStageRunFactory, technicalStageRunFactory);
+        this.orchestrableUtils = orchestrableUtils;
     }
 
     public void process(String stageRunId, Instant instant, FunctionalStageRunContext context) {
@@ -58,7 +64,7 @@ public class RunSuccessfulStageRunEventProcessor extends StageRunEventProcessor 
                 .filter(childStageId -> orchestrableRunContext.otherAncestorsAreSuccessful(childStageId, currentStageId))
                 .collect(toMap(
                         flowStageId -> flowStageId,
-                        flowStageId -> OrchestrableUtils.getRunDependencies(flowStageId, orchestrableRunContext, previousStageRuns)
+                        flowStageId -> orchestrableUtils.getRunDependencies(flowStageId, orchestrableRunContext, previousStageRuns)
                 ));
         return this.stageRunService.getNextStageRuns(orchestrableRunContext.toRunContext(), childrenToStart);
     }

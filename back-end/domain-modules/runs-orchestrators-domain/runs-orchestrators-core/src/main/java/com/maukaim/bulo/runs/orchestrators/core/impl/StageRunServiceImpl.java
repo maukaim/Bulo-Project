@@ -7,6 +7,7 @@ import com.maukaim.bulo.runs.orchestrators.core.StageRunConnector;
 import com.maukaim.bulo.runs.orchestrators.core.StageRunService;
 import com.maukaim.bulo.runs.orchestrators.core.factories.FunctionalStageRunFactory;
 import com.maukaim.bulo.runs.orchestrators.core.factories.TechnicalStageRunFactory;
+import com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver;
 import com.maukaim.bulo.runs.orchestrators.data.OrchestrableRunContext;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.data.definition.FunctionalStageDefinition;
@@ -30,7 +31,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.maukaim.bulo.runs.orchestrators.core.utils.OrchestrableContextStatusResolver.resolveStatus;
 
 public class StageRunServiceImpl implements StageRunService {
     private final StageRunConnector stageRunConnector;
@@ -40,6 +40,7 @@ public class StageRunServiceImpl implements StageRunService {
     private final FunctionalStageDefinitionService functionalStageDefinitionService;
     private final FunctionalStageRunFactory functionalStageRunFactory;
     private final TechnicalStageRunFactory technicalStageRunFactory;
+    private final OrchestrableContextStatusResolver orchestrableContextStatusResolver;
 
     public StageRunServiceImpl(StageRunConnector stageRunConnector,
                                StageRunStore stageRunStore,
@@ -47,7 +48,8 @@ public class StageRunServiceImpl implements StageRunService {
                                FunctionalStageService functionalStageService,
                                FunctionalStageDefinitionService functionalStageDefinitionService,
                                FunctionalStageRunFactory functionalStageRunFactory,
-                               TechnicalStageRunFactory technicalStageRunFactory) {
+                               TechnicalStageRunFactory technicalStageRunFactory,
+                               OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
         this.executorService = Executors.newFixedThreadPool(threadPoolCapacity);
         this.stageRunConnector = stageRunConnector;
         this.stageRunStore = stageRunStore;
@@ -55,6 +57,7 @@ public class StageRunServiceImpl implements StageRunService {
         this.functionalStageDefinitionService = functionalStageDefinitionService;
         this.functionalStageRunFactory = functionalStageRunFactory;
         this.technicalStageRunFactory = technicalStageRunFactory;
+        this.orchestrableContextStatusResolver = orchestrableContextStatusResolver;
     }
 
     public Map<String, StageRun<?>> getNextStageRuns(RunContext<?> runContext, Map<ContextStageId, Set<RunDependency>> stageToRunByDependencies) {
@@ -197,7 +200,7 @@ public class StageRunServiceImpl implements StageRunService {
             Map<String, StageRun<?>> stageRunViewToUpdate = contextUpdator.apply(functionalStageRun);
             FunctionalStageRun newStageRun = functionalStageRunFactory.updateStageRunView(functionalStageRun, stageRunViewToUpdate);
             saveAllTechnicalStageRuns(stageRunViewToUpdate);
-            newStageRun = functionalStageRunFactory.updateState(newStageRun, resolveStatus(newStageRun));
+            newStageRun = functionalStageRunFactory.updateState(newStageRun, orchestrableContextStatusResolver.resolveStatus(newStageRun));
 
             List<StageRun<?>> tobeRequestedTechnicalStageRuns = stageRunViewToUpdate.values().stream()
                     .filter(stageRun -> stageRun.getStatus().isRunNeeded())
@@ -241,7 +244,7 @@ public class StageRunServiceImpl implements StageRunService {
             return this.stageRunStore.compute(contextId, (id, flowRun) -> {
                 Map<String, StageRun<?>> stageRunsAfterRequest = this.startRuns(toBeRequestedRuns);
                 FunctionalStageRun stageRunAfterRequested = functionalStageRunFactory.updateStageRunView(stageRunPersisted, stageRunsAfterRequest);
-                stageRunAfterRequested = functionalStageRunFactory.updateState(stageRunAfterRequested, resolveStatus(stageRunAfterRequested));
+                stageRunAfterRequested = functionalStageRunFactory.updateState(stageRunAfterRequested, orchestrableContextStatusResolver.resolveStatus(stageRunAfterRequested));
 
                 return stageRunAfterRequested;
             });
