@@ -1,18 +1,17 @@
 package com.maukaim.bulo.runs.orchestrators.app.beans;
 
 import com.maukaim.bulo.runs.orchestrators.app.connectors.StageRunConnectorImpl;
-import com.maukaim.bulo.runs.orchestrators.app.data.FakeContextProvider;
 import com.maukaim.bulo.runs.orchestrators.data.FlowStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageDefinitionStore;
 import com.maukaim.bulo.runs.orchestrators.data.FunctionalStageStore;
 import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunCancellationEventPublisher;
-import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecutionEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowRunStoreImpl;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FlowStoreImpl;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FunctionalStageDefinitionStoreImpl;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.FunctionalStageStoreImpl;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunCancellationEventPublisher;
+import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.NeedStageRunExecutionEventPublisher;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.StageRunStoreImpl;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.FunctionalSubStageAdapter;
 import com.maukaim.bulo.runs.orchestrators.ms.data.lifecycle.adapters.definitions.InputProviderAdapter;
@@ -79,9 +78,7 @@ public class DataBeansConfig {
     public static class FlowDataBeansConfig {
         @Bean
         public FlowStore flowStoreImpl() {
-            FlowStoreImpl flowStore = new FlowStoreImpl();
-            flowStore.put(FakeContextProvider.FLOW_1);
-            return flowStore;
+            return new FlowStoreImpl();
         }
 
         @Bean
