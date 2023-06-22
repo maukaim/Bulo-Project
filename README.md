@@ -3,6 +3,7 @@
 </div>  
 <br/>
 
+### Solve your problems once, not twice.
 
 **Bulo Platform is a solution for IT & Operational teams to collaborate and automate their business.**   
 
