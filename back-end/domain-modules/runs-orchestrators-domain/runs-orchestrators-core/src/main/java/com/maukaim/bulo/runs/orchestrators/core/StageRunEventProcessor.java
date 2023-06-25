@@ -28,7 +28,7 @@ public abstract class StageRunEventProcessor {
     protected StageRun<?> getActualRun(String stageRunId) {
         StageRun<?> actual = this.stageRunService.getById(stageRunId);
         if (actual == null) {
-            throw new IllegalArgumentException("This stage id was not requested to run under this flowRun");
+            throw new IllegalArgumentException("This stage id was not requested to run under this flowRun.");
         }
         return actual;
     }
