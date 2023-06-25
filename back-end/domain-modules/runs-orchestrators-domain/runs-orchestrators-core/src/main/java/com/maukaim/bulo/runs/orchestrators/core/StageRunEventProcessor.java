@@ -40,6 +40,6 @@ public abstract class StageRunEventProcessor {
         else if (stageRun instanceof TechnicalStageRun)
             return technicalStageRunConsumer.apply((TechnicalStageRun) stageRun);
         else
-            throw new UnsupportedOperationException("Does not support the following StageRun<?> class: " + stageRun.getClass().getName());
+            throw new UnsupportedOperationException("Does not support the following StageRun class: " + stageRun.getClass().getName());
     }
 }
