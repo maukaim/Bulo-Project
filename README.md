@@ -69,7 +69,8 @@ Alternatively, the easiest solution is to use an IDE, it will discover all the a
 <div align="center">
 <img src="docs/assets/flow_example_twitter.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
 </div>
-Every one is welcomed ! In ALPHA version, the development is flexible and a lot can change week-to-week.  
+
+Everybody is welcome ! In ALPHA version, the development is very flexible and a lot can change week-to-week in the repo.  
 The best approach is to contact me directly on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com).
 
 # Roadmap in Alpha version - Updated on June 2023
