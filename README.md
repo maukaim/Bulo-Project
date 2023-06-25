@@ -1,18 +1,30 @@
-<div>
-    <h1 class="title"><img src="docs/assets/bulo-logo-alpha.svg" width="100" alt="Bulo logo" /> Bulo Automation Platform (ALPHA)</h1>  
-</div>  
+<img src="docs/assets/bulo-logo-alpha-FULL-NAME.svg" width="200" alt="Bulo logo" />
 <br/>
 
-### Solve your problems once, not twice.
+# About
+[![CICD Tool](https://img.shields.io/badge/CI/CD-Jenkins-008b61.svg?logo=jenkins&logoColor=d24939&labelColor=123456)]()
+[![Back-end Stack](https://img.shields.io/badge/Back--end-Java_17_%28LTS%29-008b61.svg?logo=oracle&logoColor=f80000&labelColor=123456)]()
+[![Front-end Stack](https://img.shields.io/badge/Front--end-Flutter_3.10-008b61.svg?logo=flutter&logoColor=02569b&labelColor=123456)]()
+[![Microservices Communication](https://img.shields.io/badge/Inter--Services-Kafka_2.13-008b61.svg?logo=apachekafka&logoColor=dddddd&labelColor=123456)]()
+[![Cloud Integration](https://img.shields.io/badge/Cloud-AWS-008b61.svg?logo=amazonaws&logoColor=ff9900&labelColor=123456)]()
 
-**Bulo Platform is a solution for IT & Operational teams to collaborate and automate their business.**   
+#### Solve Your Problem Once, Not Twice.
 
-Create complexe workflows, increase your productivity and avoid coding 2 times the same feature in the same company.
-Bulo is built as an Open Source Software under the MIT license, and has been designed to be flexible and customizable to fit all company size.
+In a nutshell, Bulo Project is an open-source initiative to help companies automate their business processes. 
+Built with Java and Flutter, it supports automating virtually anything, so that humans can spend their time doing things machines cannot.
 
-__*Alpha version. Fast iterations until release end 2023. Early joiners welcome, send me a message if you want to participate.*__
+# What to Use Bulo for and When to Use It   
 
-## Bulo in 4 points  
+Use Bulo to automate your business processes, so you can focus on what matters the most. Bulo is useful to:
+- Automate simple to complex workflows.
+- Create & schedule automated reports to send.
+- Avoid redundancy within the organization by leveraging on existing bricks.
+- React to your company's events in real-time, and trigger actions based on custom rules.
+
+Code it once, reuse everywhere. IT & Business teams can collaborate to Build, Schedule, Maintain and Enhance complex workflows. 
+Bulo is Meant to reduce the SDLC and make it easier for small to large companies to automate the business.
+
+## If We Had to Describe Bulo in just 4 Keywords  
 
 - ### Collaborative
     Bulo is a tool for operational teams to automate their workflows, leveraging on *Stages* built by IT colleagues.  
@@ -27,7 +39,6 @@ Test the functionalities on your PC to play around, or deploy the microservices 
     The code structure of Bulo's Backend is designed to be easily customizable, nearly all services can be switched with your own implementations!
     Domain and App source code are well separated, which makes it very easy to migrate Bulo on your company-compliant framework if needed.
     Interfaces are extensively used to make it easy to substitute services and extend the app features based on your need.
-
 
 ## Getting Started
 As of June 2023, Bulo can run in Standalone (easier for a quick start) or in Microservices. 
