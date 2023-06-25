@@ -38,7 +38,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploys the project with Maven
-                echo 'Deployed something great'
+                echo 'Deployed something great.'
             }
         }
     }
