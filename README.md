@@ -2,10 +2,10 @@
 
 # About
 [![CICD Tool](https://img.shields.io/badge/CI/CD-Jenkins-008b61.svg?logo=jenkins&logoColor=d24939&labelColor=123456)]()
+[![Cloud Integration](https://img.shields.io/badge/Cloud-AWS-008b61.svg?logo=amazonaws&logoColor=ff9900&labelColor=123456)]()
+[![Microservices Communication](https://img.shields.io/badge/Inter--Services-Kafka_2.13-008b61.svg?logo=apachekafka&logoColor=dddddd&labelColor=123456)]()
 [![Back-end Stack](https://img.shields.io/badge/Back--end-Java_17_%28LTS%29-008b61.svg?logo=oracle&logoColor=f80000&labelColor=123456)]()
 [![Front-end Stack](https://img.shields.io/badge/Front--end-Flutter_3.10-008b61.svg?logo=flutter&logoColor=02569b&labelColor=123456)]()
-[![Microservices Communication](https://img.shields.io/badge/Inter--Services-Kafka_2.13-008b61.svg?logo=apachekafka&logoColor=dddddd&labelColor=123456)]()
-[![Cloud Integration](https://img.shields.io/badge/Cloud-AWS-008b61.svg?logo=amazonaws&logoColor=ff9900&labelColor=123456)]()
 
 #### Solve Your Problem Once, Not Twice.
 
