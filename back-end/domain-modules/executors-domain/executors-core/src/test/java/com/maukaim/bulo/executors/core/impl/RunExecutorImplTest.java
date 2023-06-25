@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class RunExecutorImplTest {
-    private ExecutorService executorService = mock(ExecutorService.class);
+    private final ExecutorService executorService = mock(ExecutorService.class);
     private RunExecutorImpl executor;
 
     @BeforeEach
