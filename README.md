@@ -66,7 +66,9 @@ Alternatively, the easiest solution is to use an IDE, it will discover all the a
 - For microservices, as of June 2023, only 1 requirement: launch Executor Service after any other service.
 
 # How To Contribute to This Project
-
+<div align="center">
+<img src="docs/assets/flow_example_twitter.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
+</div>
 Every one is welcomed ! In ALPHA version, the development is flexible and a lot can change week-to-week.  
 The best approach is to contact me directly on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com).
 
@@ -88,10 +90,3 @@ Prioritized items:
 - [ ] Add Plugin System for Python runners (++ User requirements.txt manager to setup venvs accordingly)
 - [ ] Refine Kafka consumer groups to prepare multiple instances
 - [ ] Refactor Orchestrator (FlowRun/StageRun?) service's consumption schema to handle multiple instances (This service SHOULD NOT accept Eventual Consistency)
-
-
-<br/>
-<div align="center">
-<img src="docs/assets/flow_example_twitter.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
-</div>  
-<br/>
