@@ -16,11 +16,11 @@ Built with Java and Flutter, it supports automating virtually anything, so that 
 
 Use Bulo to automate your workflows, so you can focus on what matters the most. Bulo is useful to:
 - Automate simple to complex workflows.
-- Create & schedule automated reports to send.
+- Create, Schedule & Send automated reports.
 - Avoid redundancy within the organization by leveraging on existing bricks.
 - React to your company's events in real-time, and trigger actions when it's needed.
 
-Code it once, use it everywhere. IT & Business teams can collaborate to Build, Schedule, Maintain and Enhance complex systems. 
+Code it once, use it everywhere thanks to the _Stage system_. IT & Business teams can collaborate to Build, Schedule, Maintain and Enhance complex systems. 
 Bulo is meant to reduce the SDLC and make it easier for small to large companies to automate the business.
 
 # If We Had to Describe Bulo in just 4 Keywords  
