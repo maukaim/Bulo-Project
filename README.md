@@ -39,11 +39,13 @@ Test the functionalities on your PC to play around, or deploy the microservices 
     Domain and App source code are well separated, which makes it very easy to migrate Bulo on your company-compliant framework if needed.
     Interfaces are extensively used to make it easy to substitute services and extend the app features based on your need.
 
-# Getting Started
-As of June 2023, Bulo can run in Standalone (easier for a quick start) or in Microservices. 
-Microservices are shaped to use Kafka (prod), but a kafka-less version exists for non production environment. By Default, in dev, services communicate with REST calls.
+# How to Start with Bulo Server
+As of June 2023, Bulo server can run in Standalone (easier for a quick start) or in Microservices. 
 
-_Java 17 (LTS) required_. 
+The Microservices are shaped to use Kafka to communicate, but a kafka-less version exists for UAT and DEV environment, using simple REST calls.
+All environments will use Kafka once Docker templates are added to the project.
+
+_Java 17 (LTS) required to compile_. 
 
 Copy the Java project on your local machine:
 ```shell
@@ -63,18 +65,17 @@ Alternatively, the easiest solution is to use an IDE, it will discover all the a
 - Standalone provides a turnkey jar. 
 - For microservices, as of June 2023, only 1 requirement: launch Executor Service after any other service.
 
-# Contributing
+# How To Contribute to This Project
 
-Every one is welcomed ! You can help on the architecture design, build a new Stage Runners or help with documentation. 
-If you are interested feel free to reach out : julienelk@gmail.com 
-To understand how to make your first contribution to the project, please read [CONTRIBUTE_ME.md](docs/CONTRIBUTEME.md)  
+Every one is welcomed ! In ALPHA version, the development is flexible and a lot can change week-to-week.  
+The best approach is to contact me directly on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com).
 
+# Roadmap in Alpha version - Updated on June 2023
 
-# Roadmap Alpha version - Start of 2023
+<img src="docs/assets/architecture/target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>  
 
-<img src="docs/assets/architecture/target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>
-**Feel free to contact me if you want to work on one of these projects.**
-Prioritized items (as of Feb-March 2023):
+Prioritized items:
+
 - [X] Add Mockingbird module (integration tests)
 - [X] Refactor, standardize modules coding style.
 - [X] Add Kafka integration
@@ -85,8 +86,9 @@ Prioritized items (as of Feb-March 2023):
 - [ ] Add Plugin System for Java runners (Existing implementation in another Maukaim project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
 - [ ] Pluggable Logging system (Wrapper API on Logback)
 - [ ] Add Plugin System for Python runners (++ User requirements.txt manager to setup venvs accordingly)
-- [ ] refine Kafka consumer groups to prepare multiple instances
-- [ ] Refactor Orchestrator (FlowRun/StageRun?) service's consumption schema to handle multiple instances (This service can't accept Eventual Consistency)
+- [ ] Refine Kafka consumer groups to prepare multiple instances
+- [ ] Refactor Orchestrator (FlowRun/StageRun?) service's consumption schema to handle multiple instances (This service SHOULD NOT accept Eventual Consistency)
+
 
 <br/>
 <div align="center">
