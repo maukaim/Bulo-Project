@@ -36,6 +36,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Configuration
 public class OrchestratorModuleBeansConfig {
@@ -52,7 +54,8 @@ public class OrchestratorModuleBeansConfig {
                                            TechnicalStageRunFactory technicalStageRunFactory,
                                            FunctionalStageRunFactory functionalStageRunFactory,
                                            OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
-        return new StageRunServiceImpl(stageRunConnector, stageRunStore, 4, functionalStageService, functionalStageDefinitionService,
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        return new StageRunServiceImpl(stageRunConnector, stageRunStore, executorService, functionalStageService, functionalStageDefinitionService,
                 functionalStageRunFactory, technicalStageRunFactory, orchestrableContextStatusResolver);
     }
 

@@ -24,6 +24,9 @@ import com.maukaim.bulo.runs.orchestrators.data.StageRunStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Configuration
 public class ServiceBeansConfig {
     @Bean
@@ -49,7 +52,8 @@ public class ServiceBeansConfig {
                                            TechnicalStageRunFactory technicalStageRunFactory,
                                            FunctionalStageRunFactory functionalStageRunFactory,
                                            OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
-        return new StageRunServiceImpl(stageRunConnector, stageRunStore, 4,
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        return new StageRunServiceImpl(stageRunConnector, stageRunStore, executorService,
                 functionalStageService, functionalStageDefinitionService, functionalStageRunFactory, technicalStageRunFactory, orchestrableContextStatusResolver);
     }
 

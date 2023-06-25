@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -44,13 +43,13 @@ public class StageRunServiceImpl implements StageRunService {
 
     public StageRunServiceImpl(StageRunConnector stageRunConnector,
                                StageRunStore stageRunStore,
-                               int threadPoolCapacity,
+                               ExecutorService executorService,
                                FunctionalStageService functionalStageService,
                                FunctionalStageDefinitionService functionalStageDefinitionService,
                                FunctionalStageRunFactory functionalStageRunFactory,
                                TechnicalStageRunFactory technicalStageRunFactory,
                                OrchestrableContextStatusResolver orchestrableContextStatusResolver) {
-        this.executorService = Executors.newFixedThreadPool(threadPoolCapacity);
+        this.executorService = executorService;
         this.stageRunConnector = stageRunConnector;
         this.stageRunStore = stageRunStore;
         this.functionalStageService = functionalStageService;
@@ -173,10 +172,10 @@ public class StageRunServiceImpl implements StageRunService {
     public void requestCancel(String stageRunId, String executorId) {
         StageRun<?> stageRun = this.getById(stageRunId);
         if (stageRun instanceof TechnicalStageRun) {
-            boolean requested = this.stageRunConnector.requestCancel(stageRunId, executorId);
-            if (!requested) {
-                System.out.printf("LogTemp:::WARN Cancel request to executor %s did not succeed%n", executorId);
-            }
+            this.stageRunConnector.requestCancel(stageRunId, executorId);
+//            if (!requested) {
+//                System.out.printf("LogTemp:::WARN Cancel request to executor %s did not succeed%n", executorId);
+//            }
         } else if (stageRun instanceof FunctionalStageRun) {
             for (StageRun<?> inFlightStageRun : ((FunctionalStageRun) stageRun).getInFlightStageRuns()) {
                 if (inFlightStageRun instanceof TechnicalStageRun) {

@@ -68,7 +68,7 @@ public class FlowRunServiceImpl implements FlowRunService {
 
     private Map<ContextStageId, Set<RunDependency>> resolveLocalRunDependenciesForRoots(Set<ContextStageId> contextStageIds) {
         return contextStageIds == null ? Map.of() : contextStageIds.stream()
-                .collect(Collectors.toMap(flowStageId -> flowStageId, flowStageId -> Set.of())); // No inputs for roots in FlowRUn
+                .collect(Collectors.toMap(contextStageId -> contextStageId, contextStageId -> Set.of())); // No inputs for roots in FlowRun
     }
 
     private Flow getExistingFlow(String flowId) {
