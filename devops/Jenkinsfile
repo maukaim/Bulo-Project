@@ -29,7 +29,7 @@ pipeline {
                 // Runs unit tests with Maven
                 dir('back-end'){
                     script {
-                    sh "mvn test -T 4"
+                    sh "mvn test"
                     }
                 }
             }
