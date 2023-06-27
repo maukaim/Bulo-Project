@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checks out the code from your Git repository
-                git branch: 'main', url: 'https://github.com/maukaim/Bulo-Project'
+                git branch: 'jenkins-coverage', url: 'https://github.com/maukaim/Bulo-Project'
             }
         }
 

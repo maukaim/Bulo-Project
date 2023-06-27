@@ -11,6 +11,10 @@
 
     <artifactId>definitions-core</artifactId>
 
+    <properties>
+        <jacoco.report.skip>false</jacoco.report.skip>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.maukaim.bulo</groupId>
