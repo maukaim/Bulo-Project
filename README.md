@@ -83,11 +83,17 @@ Prioritized items:
 - [X] Refactor, standardize modules coding style.
 - [X] Add Kafka integration
 - [X] Add Jenkins templates to kick-start CI/CD pipeline.
+- [ ] UI features: Flow CRUD (no visual map), Flow Scheduling, Flow Manual Trigger.
+- [ ] Client Executable: Embed Java server into Client.
+- [ ] Add Plugin System for Java runners (Existing implementation in another Maukaim project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
 - [ ] Add Terraform template with AWS Provider.
 - [ ] Add Dockers to universalize development.
 - [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service, see [details here.](docs/Architecture_refacto_project.md))
-- [ ] Add Plugin System for Java runners (Existing implementation in another Maukaim project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
 - [ ] Pluggable Logging system (Wrapper API on Logback)
 - [ ] Add Plugin System for Python runners (++ User requirements.txt manager to setup venvs accordingly)
 - [ ] Refine Kafka consumer groups to prepare multiple instances
 - [ ] Refactor Orchestrator (FlowRun/StageRun?) service's consumption schema to handle multiple instances (This service SHOULD NOT accept Eventual Consistency)
+- [ ] Add Authentication Server side.
+- [ ] Add Authentication UI Side.
+- [ ] Add Authorization Server side.
+- [ ] Add Authorization Management UI Side.
