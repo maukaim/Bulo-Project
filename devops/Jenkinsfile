@@ -8,6 +8,12 @@ pipeline {
     }
 
     stages {
+        stage('Trigger the Bro'){
+            steps{
+                build job: 'thebro'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 // Checks out the code from your Git repository
