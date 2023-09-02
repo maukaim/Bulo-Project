@@ -1,4 +1,4 @@
-    #### Long story short, the folder resources is marked as Bundle Resource in XCode.  
+#### Long story short, the folder resources is marked as Bundle Resource in XCode.  
 
 ```
 See Runner.xcodeproj > project.pbxproj
