@@ -21,6 +21,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# MacOS .pkg
+*.pkg
+
 # Symbolication related
 app.*.symbols
 

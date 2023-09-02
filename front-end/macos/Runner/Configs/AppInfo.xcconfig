@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = bulo_ui
+PRODUCT_NAME = Bulo Community Edition;
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.maukaim.bulo.buloUi
+PRODUCT_BUNDLE_IDENTIFIER = com.maukaim.bulo;
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2023 com.maukaim.bulo. All rights reserved.
