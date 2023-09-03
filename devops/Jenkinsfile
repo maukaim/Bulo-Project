@@ -3,6 +3,7 @@ pipeline {
 
     tools {
         // It needs to be set in your Jenkins server.
+
         maven 'Maven local'
         jdk 'MyJDK'
     }
