@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        // Specify the Maven version installed in Jenkins
+        // It needs to be set in your Jenkins server.
         maven 'Maven local'
         jdk 'MyJDK'
     }
@@ -10,15 +10,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checks out the code from your Git repository
-                git branch: 'main', url: 'https://github.com/maukaim/Bulo-Project'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
                 dir('back-end') {
-                    // Builds the project with Maven
                     sh 'mvn clean compile'
                 }
             }
@@ -26,7 +24,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Runs unit tests with Maven
                 dir('back-end'){
                     script {
                     sh "mvn test -T 4"
@@ -34,22 +31,17 @@ pipeline {
                 }
             }
         }
+
         stage('Coverage Report'){
             steps{
-//                 jacoco(execPattern: '**/target/jacoco.exec')
-                recordCoverage(tools: [[parser: 'JACOCO']],
-                        id: 'jacoco', name: 'JaCoCo Coverage',
-                        sourceCodeRetention: 'EVERY_BUILD',
-                        qualityGates: [
-                                [threshold: 60.0, metric: 'LINE', baseline: 'PROJECT', unstable: true],
-                                [threshold: 60.0, metric: 'BRANCH', baseline: 'PROJECT', unstable: true]])
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Deploys the project with Maven
-                echo 'Deployed something great.'
+                jacoco(execPattern: '**/*core*/target/jacoco.exec')
+                // Old way to do coverage
+//                 recordCoverage(tools: [[parser: 'JACOCO']],
+//                         id: 'jacoco', name: 'JaCoCo Coverage',
+//                         sourceCodeRetention: 'EVERY_BUILD',
+//                         qualityGates: [
+//                                 [threshold: 60.0, metric: 'LINE', baseline: 'PROJECT', unstable: true],
+//                                 [threshold: 60.0, metric: 'BRANCH', baseline: 'PROJECT', unstable: true]])
             }
         }
     }
