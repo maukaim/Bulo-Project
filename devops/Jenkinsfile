@@ -8,16 +8,11 @@ pipeline {
     }
 
     stages {
-        stage('Trigger the Bro'){
-            steps{
-                build job: 'thebro'
-            }
-        }
-
         stage('Checkout') {
             steps {
                 // Checks out the code from your Git repository
-                git branch: 'jenkins-coverage', url: 'https://github.com/maukaim/Bulo-Project'
+                checkout scm
+//                 git branch: 'jenkins-coverage', url: 'https://github.com/maukaim/Bulo-Project'
             }
         }
 
