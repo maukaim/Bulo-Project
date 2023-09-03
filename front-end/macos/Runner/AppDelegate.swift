@@ -20,7 +20,7 @@ class AppDelegate: FlutterAppDelegate {
       startEmbeddedServer(embeddedAppPath)
   }
   func startEmbeddedServer(_ jarFilePath: String) {
-      let jdkFolderName = "jdk"
+      let jdkFolderName = "jdk17"
       let javaPathInJdk = "Contents/Home/bin/java"
 
       var javaExecutablePath = "/usr/bin/java"
