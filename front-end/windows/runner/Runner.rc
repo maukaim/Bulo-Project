@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.maukaim.bulo" "\0"
-            VALUE "FileDescription", "bulo_ui" "\0"
+            VALUE "FileDescription", "Bulo Community Edition" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "bulo_ui" "\0"
+            VALUE "InternalName", "Bulo Community Edition" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.maukaim.bulo. All rights reserved." "\0"
             VALUE "OriginalFilename", "bulo_ui.exe" "\0"
-            VALUE "ProductName", "bulo_ui" "\0"
+            VALUE "ProductName", "Bulo Community Edition" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
