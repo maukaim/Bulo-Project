@@ -1,6 +1,7 @@
 <img src="docs/assets/bulo-logo-alpha-FULL-NAME.svg" width="200" alt="Bulo logo" />
 
 # About
+![Jenkins Coverage](https://img.shields.io/jenkins/coverage/apiv4?jobUrl=http%3A%2F%2Fload-balancer-jenkins-master-1462245991.ap-northeast-1.elb.amazonaws.com%3A8080%2Fjob%2FBackend%2520CI-Build%2F&logo=codecov&logoColor=00ff00&label=Backend%20-%20domain%20coverage&labelColor=123456)   
 [![CICD Tool](https://img.shields.io/badge/CI/CD-Jenkins-008b61.svg?logo=jenkins&logoColor=d24939&labelColor=123456)]()
 [![Cloud Integration](https://img.shields.io/badge/Cloud-AWS-008b61.svg?logo=amazonaws&logoColor=ff9900&labelColor=123456)]()
 [![Microservices Communication](https://img.shields.io/badge/Inter--Services-Kafka_2.13-008b61.svg?logo=apachekafka&logoColor=dddddd&labelColor=123456)]()
