@@ -45,43 +45,26 @@ Test the functionalities on your PC to play around, or deploy the microservices 
     Domain and App source code are well separated, which makes it very easy to migrate Bulo on your company-compliant framework if needed.
     Interfaces are extensively used to make it easy to substitute services and extend the app features based on your need.
 
-# How to Start with Bulo Server
-As of June 2023, Bulo server can run in Standalone (easier for a quick start) or in Microservices. 
+# How to Start contributing to the Bulo Project
 
-The Microservices are shaped to use Kafka to communicate, but a kafka-less version exists for UAT and DEV environment, using simple REST calls.
-All environments will use Kafka once Docker templates are added to the project.
+The [Wiki page "Get Started!"](https://github.com/maukaim/Bulo-Project/wiki/Get-Started) is here to help you to set up your environment and be dev-ready!  
 
-_Java 17 (LTS) required to compile_. 
+Every one is welcomed to contribute! You may contact me, or go directly to the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab to see all the projects and features that requires your help!
+Feel free to say _Hi!_ on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com). 
 
-Copy the Java project on your local machine:
-```shell
-git clone git@github.com:maukaim/Bulo-Project.git
-```  
+# What comes next?  
 
-You may already build the microservices with Uber-Jar. Run:
-```shell
-mvn clean install
-```
-and use java command line to launch the applications jar (all xxx-app modules). i.e:
-```shell
-java -jar application-standalone-1.0.0-SNAPSHOT.jar
-```
+**We are preparing Bulo BETA !**  
 
-Alternatively, the easiest solution is to use an IDE, it will discover all the apps available in the project and make it runnable for you.
-- Standalone provides a turnkey jar. 
-- For microservices, as of June 2023, only 1 requirement: launch Executor Service after any other service.
+The features list for BETA version is still to be fixed. We will update this section once ready.
 
-# How To Contribute to This Project
+For a full picture, see the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab in Github.
+
+
+<img src="docs/assets/architecture/target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>    
 <div align="center">
 <img src="docs/assets/flow_example_twitter.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
 </div>
-
-Everybody is welcome ! In ALPHA version, the development is very flexible and a lot can change week-to-week in the repo.  
-The best approach is to contact me directly on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com).
-
-# Roadmap in Alpha version - Updated on June 2023
-
-<img src="docs/assets/architecture/target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>  
 
 Prioritized items:
 
