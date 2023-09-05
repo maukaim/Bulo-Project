@@ -45,7 +45,7 @@ Test the functionalities on your PC to play around, or deploy the microservices 
     Domain and App source code are well separated, which makes it very easy to migrate Bulo on your company-compliant framework if needed.
     Interfaces are extensively used to make it easy to substitute services and extend the app features based on your need.
 
-# How to Start contributing to the Bulo Project
+# How to Start contributing
 
 The [Wiki page "Get Started!"](https://github.com/maukaim/Bulo-Project/wiki/Get-Started) is here to help you to set up your environment and be dev-ready!  
 
@@ -55,8 +55,9 @@ Feel free to say _Hi!_ on [Linkedin](https://www.linkedin.com/in/elkaim-julien/)
 
 # What comes next?  
 
-**We are preparing Bulo BETA !**  
+**We are preparing Bulo BETA !** 
+Mac OS and Windows App will be available. UI & Standalone Embedded version for now. 
 
-The features list for BETA version is still to be fixed. We will update this section once ready.
+The features list for BETA version is not yet fixed. We will update this section once ready.
 
-For a full picture, see the [Projects](https://github.com/maukaim/Bulo-Project/projects) or the [Issues](https://github.com/maukaim/Bulo-Project/issues) tabs in Github.
+For a full picture of what's comming soon, see the [Projects](https://github.com/maukaim/Bulo-Project/projects) or the [Issues](https://github.com/maukaim/Bulo-Project/issues) tabs in Github to have an idea.
