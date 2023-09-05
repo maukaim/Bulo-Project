@@ -20,4 +20,4 @@ jobs:
         with:
           project: Native Stages
           column: 🏗 In progress
-          repo-token: ${{ secrets.BULO_ASSIGNED_ISSUES_MOVER }}
+          repo-token: ${{ secrets.BULO_OVERALL_ASSIGN_MOVE_SECRET }}
