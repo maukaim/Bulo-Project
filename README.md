@@ -49,7 +49,8 @@ Test the functionalities on your PC to play around, or deploy the microservices 
 
 The [Wiki page "Get Started!"](https://github.com/maukaim/Bulo-Project/wiki/Get-Started) is here to help you to set up your environment and be dev-ready!  
 
-Every one is welcomed to contribute! You may contact me, or go directly to the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab to see all the projects and features that requires your help!
+Every one is welcomed to contribute! You may contact me, or go directly to the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab to see all the projects and features that requires your help! If a card is not assigned, it means you can start working on it.  
+
 Feel free to say _Hi!_ on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com). 
 
 # What comes next?  
@@ -59,30 +60,3 @@ Feel free to say _Hi!_ on [Linkedin](https://www.linkedin.com/in/elkaim-julien/)
 The features list for BETA version is still to be fixed. We will update this section once ready.
 
 For a full picture, see the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab in Github.
-
-
-<img src="docs/assets/architecture/target_architecture.png" width="800" alt="Architecture ALPHA version of Bulo"/>    
-<div align="center">
-<img src="docs/assets/flow_example_twitter.gif" width="600" alt="A simple flow execution represented. Twitter stages, excel, and send a mail."/>
-</div>
-
-Prioritized items:
-
-- [X] Add Mockingbird module (integration tests)
-- [X] Refactor, standardize modules coding style.
-- [X] Add Kafka integration
-- [X] Add Jenkins templates to kick-start CI/CD pipeline.
-- [ ] UI features: Flow CRUD (no visual map), Flow Scheduling, Flow Manual Trigger.
-- [ ] Client Executable: Embed Java server into Client.
-- [ ] Add Plugin System for Java runners (Existing implementation in another Maukaim project, [Moula, module plugin-core](https://github.com/maukaim/prototype-moula-backend-api))
-- [ ] Add Terraform template with AWS Provider.
-- [ ] Add Dockers to universalize development.
-- [ ] Refactor flaws in current MS Architecture (Orchestrator becomes FlowRun service + StageRun service, see [details here.](docs/Architecture_refacto_project.md))
-- [ ] Pluggable Logging system (Wrapper API on Logback)
-- [ ] Add Plugin System for Python runners (++ User requirements.txt manager to setup venvs accordingly)
-- [ ] Refine Kafka consumer groups to prepare multiple instances
-- [ ] Refactor Orchestrator (FlowRun/StageRun?) service's consumption schema to handle multiple instances (This service SHOULD NOT accept Eventual Consistency)
-- [ ] Add Authentication Server side.
-- [ ] Add Authentication UI Side.
-- [ ] Add Authorization Server side.
-- [ ] Add Authorization Management UI Side.
