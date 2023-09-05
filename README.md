@@ -49,7 +49,7 @@ Test the functionalities on your PC to play around, or deploy the microservices 
 
 The [Wiki page "Get Started!"](https://github.com/maukaim/Bulo-Project/wiki/Get-Started) is here to help you to set up your environment and be dev-ready!  
 
-Every one is welcomed to contribute! You may contact me, or go directly to the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab to see all the projects and features that requires your help! If a card is not assigned, it means you can start working on it.  
+Every one is welcomed to contribute! You may contact me, or go directly to the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab to see all the projects and features that requires your help! Also visible in [Issues](https://github.com/maukaim/Bulo-Project/issues). An issue is not assigned? Means you can start working on it !  
 
 Feel free to say _Hi!_ on [Linkedin](https://www.linkedin.com/in/elkaim-julien/) or via [mail](julienelk@gmail.com). 
 
@@ -59,4 +59,4 @@ Feel free to say _Hi!_ on [Linkedin](https://www.linkedin.com/in/elkaim-julien/)
 
 The features list for BETA version is still to be fixed. We will update this section once ready.
 
-For a full picture, see the [Projects](https://github.com/maukaim/Bulo-Project/projects) tab in Github.
+For a full picture, see the [Projects](https://github.com/maukaim/Bulo-Project/projects) or the [Issues](https://github.com/maukaim/Bulo-Project/issues) tabs in Github.
