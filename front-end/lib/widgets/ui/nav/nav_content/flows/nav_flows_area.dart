@@ -1,14 +1,11 @@
-
 import 'package:bulo_ui/domains/flows/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../global/buttons/basic_button.dart';
 import 'flow_list_item.dart';
 
-class NavFlowsArea extends ConsumerWidget{
+class NavFlowsArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var availableFlows = ref.watch(flowsAvailableProvider);
@@ -39,8 +36,7 @@ class NavFlowsArea extends ConsumerWidget{
             hoverColor: Colors.blueGrey.withOpacity(0.3),
             onTap: () {
               ref.refresh(flowsAvailableProvider);
-              print(
-                  "Refresh button tapped!"); // Add your refresh function here
+              print("Refresh button tapped!"); // Add your refresh function here
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
