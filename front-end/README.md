@@ -43,6 +43,3 @@ and run the rename command:
 ```shell
 flutter pub global run rename --appname "Bulo Community Edition" --target [macOS, windows, android, ios, linux, web]
 ```
-
-[//]: # (TODO: Next is to add this rename thing in the scripts.)
-[//]: # (Also should use this as variable and pass it to the different command as the .app will have this name too.)
