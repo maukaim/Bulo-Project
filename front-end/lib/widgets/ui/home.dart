@@ -16,7 +16,7 @@ class MyHomePage extends StatelessWidget {
     ]);
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 253, 253, 253),
       body: MultiSplitViewTheme(
         data: MultiSplitViewThemeData(
           dividerThickness: 4,
