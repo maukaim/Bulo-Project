@@ -27,7 +27,7 @@ class FlowListItem extends ConsumerWidget {
 
   Widget myNormalFlowCard(WidgetRef ref) {
     return InkWell(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(6),
       // rounded corners
       hoverColor: Colors.blueGrey.withOpacity(0.075),
       // hover color with transparency
@@ -65,19 +65,19 @@ class FlowListItem extends ConsumerWidget {
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(
-              color: Color(0xFF7BB5B1),
+              color: Color(0xFFDFDFDF),
               offset: Offset(2, 2),
               blurRadius: 2,
               // spreadRadius: -5.0,
               inset: true),
           BoxShadow(
-              color: Color(0xFFA7F5EF),
+              color: Color(0xFFEFEFEF),
               offset: Offset(-2, -2),
               blurRadius: 2,
               // spreadRadius: -5.0,
               inset: true),
         ],
-        borderRadius: BorderRadius.circular(8), // Set the border radius here
+        borderRadius: BorderRadius.circular(6), // Set the border radius here
       ),
       child: myNormalFlowCard(ref),
     );
