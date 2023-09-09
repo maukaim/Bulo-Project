@@ -5,7 +5,7 @@ cp -r macos/bundles/templates/application-standalone-* macos/bundles/resources/
 
 # Rename the app across platforms
 APP_NAME="Bulo Community Edition"
-flutter pub global run rename --appname "${APP_NAME}"
+flutter pub global run rename --appname "${APP_NAME}" --target macOS
 
 # Build the Flutter app for macOS
 flutter build macos

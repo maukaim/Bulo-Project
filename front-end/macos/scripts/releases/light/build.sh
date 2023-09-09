@@ -3,7 +3,7 @@ find macos/bundles/resources/ ! -name '.gitignore' -mindepth 1 -delete
 
 # Rename the app across platforms
 APP_NAME="Bulo Light Edition"
-flutter pub global run rename --appname "${APP_NAME}"
+flutter pub global run rename --appname "${APP_NAME}" --target macOS
 
 # Build the Flutter app for macOS
 flutter build macos
