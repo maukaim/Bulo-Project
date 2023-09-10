@@ -2,12 +2,12 @@
 
 import 'package:bulo_ui/domains/flows/model/flow.dart' as fl;
 import 'package:bulo_ui/widgets/global/icons/fonticons/bulo_logo_icon_icons.dart';
+import 'package:bulo_ui/widgets/ui/content/flow/providers.dart';
 import 'package:bulo_ui/widgets/ui/nav/nav_content/flows/providers.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../content/flow/providers.dart';
 
 class FlowListItem extends ConsumerWidget {
   final fl.Flow flow;
