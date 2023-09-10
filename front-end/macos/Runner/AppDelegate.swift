@@ -4,10 +4,14 @@ import Foundation
 
 @NSApplicationMain
 class AppDelegate: FlutterAppDelegate{
+    var EVENT_CHANNEL_FULLSCREEN_STATE = "com.maukaim.bulo/full_screen_state";
+    var METHOD_CHANNEL_EMBEDDED_SERVER = "com.maukaim.bulo/hasEmbeddedServer";
+
     var javaProcess: Process?
-    var hasServerEmbedded: Bool = true
+    var hasServerEmbedded: Bool = false
     var isFullScreen: Bool = false
     var eventSink: FlutterEventSink?
+    var methodChannel: FlutterMethodChannel?;
     
     override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
@@ -15,25 +19,38 @@ class AppDelegate: FlutterAppDelegate{
     
     override func applicationDidFinishLaunching(_ aNotification: Notification) {
         setFullScreenStateEventChannel()
-        guard let embeddedAppPath = Bundle.main.path(forResource: "resources/application-standalone-1.0.0", ofType: "jar") else {
-            print("No Embedded Server to start, we are in Light mode.")
-            hasServerEmbedded = false
-            return
-        }
-        startEmbeddedServer(embeddedAppPath)
-        
+        startEmbeddedServer()
     }
     
     func setFullScreenStateEventChannel(){
         self.mainFlutterWindow.delegate = self
         
-        let controller: FlutterViewController = self.mainFlutterWindow?.contentViewController as! FlutterViewController
-        let fullscreenChannel = FlutterEventChannel(name: "com.maukaim.bulo/full_screen_state", binaryMessenger: controller.engine.binaryMessenger)
+        let controller: FlutterViewController = getController();
+        let fullscreenChannel = FlutterEventChannel(name: EVENT_CHANNEL_FULLSCREEN_STATE, binaryMessenger: controller.engine.binaryMessenger)
         
         fullscreenChannel.setStreamHandler(self)
     }
     
-    func startEmbeddedServer(_ jarFilePath: String) {
+    func startEmbeddedServer() {
+        let controller: FlutterViewController = getController();
+        self.methodChannel = FlutterMethodChannel(name: METHOD_CHANNEL_EMBEDDED_SERVER, binaryMessenger: controller.engine.binaryMessenger)
+        self.methodChannel?.setMethodCallHandler{ (call, result) in
+            switch call.method {
+            case "hasEmbeddedServer":
+                result(self.hasServerEmbedded);
+                return
+            default:
+                result(FlutterMethodNotImplemented)
+            }
+        }
+        
+        guard let jarFilePath = Bundle.main.path(forResource: "resources/application-standalone-1.0.0", ofType: "jar") else {
+            print("No Embedded Server to start, we are in Light mode.")
+            self.hasServerEmbedded = false
+            return
+        }
+        self.hasServerEmbedded = true
+        
         let jdkFolderName = "jdk17"
         let javaPathInJdk = "Contents/Home/bin/java"
         
@@ -63,6 +80,11 @@ class AppDelegate: FlutterAppDelegate{
         javaProcess?.terminate()
         javaProcess = nil
     }
+    
+    func getController() -> FlutterViewController {
+        return self.mainFlutterWindow?.contentViewController as! FlutterViewController
+    }
+
 }
 
 extension AppDelegate: FlutterStreamHandler {

@@ -1,3 +1,4 @@
+import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/widgets/ui/nav/controls/macos/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,21 +15,31 @@ class MacOSControlsHeader extends ConsumerWidget {
 
     return SizedBox(
       height: flashLightControlsHeight,
-      child: getNavControls(fullScreenStateStream),
+      child: getNavControls(fullScreenStateStream, ref),
     );
   }
 
-  Widget getNavControls(AsyncValue<bool> fullScreenStateStream) {
+  Widget getNavControls(AsyncValue<bool> fullScreenStateStream, WidgetRef ref) {
+    var hasEmbeddedServer = ref.watch(hasEmbeddedServerProvider);
     double flashLightControlsHWidth = 60;
 
     List<Widget> children = [
-      const Expanded(
+      Expanded(
         child: Center(
           child: Icon(
-            size: 20,
-            CupertinoIcons.desktopcomputer,
-            color: Colors.green,
-          ),
+              size: 20,
+              CupertinoIcons.desktopcomputer,
+              color: hasEmbeddedServer.when(
+                loading: () => Colors.grey,
+                data: (data) {
+                  return data ? Colors.green : Colors.deepPurple;
+                },
+                error: (_, __) {
+                  print(
+                      "Issue when checking EmbeddedServer. Error itself: $_ \nStack Trace: $__");
+                  return Colors.red;
+                },
+              )),
         ),
       ),
     ];
