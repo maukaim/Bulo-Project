@@ -1,8 +1,8 @@
 // import 'package:flutter/cupertino.dart';
 
 import 'package:bulo_ui/domains/flows/model/flow.dart' as fl;
+import 'package:bulo_ui/widgets/global/icons/fonticons/bulo_logo_icon_icons.dart';
 import 'package:bulo_ui/widgets/ui/nav/nav_content/flows/providers.dart';
-import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,10 +39,13 @@ class FlowListItem extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Row(
           children: [
-            const Icon(
-              size: 16,
-              CupertinoIcons.arrow_2_squarepath,
-              color: Colors.blueGrey,
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+              child: Icon(
+                size: 12,
+                BuloLogoIcon.bulo_logo_alpha,
+                color: Colors.cyanAccent,
+              ),
             ),
             Flexible(
               child: Text(

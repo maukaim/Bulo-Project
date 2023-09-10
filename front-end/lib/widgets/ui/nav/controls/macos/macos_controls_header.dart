@@ -1,4 +1,5 @@
 import 'package:bulo_ui/widgets/ui/nav/controls/macos/providers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,18 +22,30 @@ class MacOSControlsHeader extends ConsumerWidget {
     double flashLightControlsHWidth = 60;
 
     List<Widget> children = [
-      //TODO: Add the Server Icon and dropdown to switch
+      const Expanded(
+        child: Center(
+          child: Icon(
+            size: 20,
+            CupertinoIcons.desktopcomputer,
+            color: Colors.green,
+          ),
+        ),
+      ),
     ];
 
     return fullScreenStateStream.when(
       data: (isFullscreen) {
         if (!isFullscreen) {
-          children.add(Container(
-            width: flashLightControlsHWidth,
-            color: Colors.transparent,
-          ));
+          children.insert(
+              0,
+              Container(
+                width: flashLightControlsHWidth,
+                color: Colors.transparent,
+              ));
         }
-        return Row(children: children);
+        return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: children);
       },
       loading: () => CircularProgressIndicator(),
       error: (error, stackTrace) => Text('Error: $error'),

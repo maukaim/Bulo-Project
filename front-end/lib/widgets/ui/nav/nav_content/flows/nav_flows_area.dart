@@ -33,7 +33,7 @@ class NavFlowsArea extends ConsumerWidget {
           InkWell(
             borderRadius: BorderRadius.circular(4),
             // rounded corners
-            hoverColor: Colors.blueGrey.withOpacity(0.3),
+            hoverColor: Colors.black26.withOpacity(0.2),
             onTap: () {
               ref.refresh(flowsAvailableProvider);
               print("Refresh button tapped!"); // Add your refresh function here
@@ -43,7 +43,7 @@ class NavFlowsArea extends ConsumerWidget {
               child: Icon(
                 CupertinoIcons.refresh,
                 size: 16,
-                color: Colors.blueGrey,
+                color: Colors.black26,
               ),
             ),
           ),

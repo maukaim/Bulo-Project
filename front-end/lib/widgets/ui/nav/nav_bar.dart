@@ -14,7 +14,10 @@ class NavBar extends StatelessWidget {
       child: Column(
         children: [
           ControlsHeaderArea(),
-          LogoArea(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical:8, horizontal: 0),
+            child: LogoArea(),
+          ),
           NavContentArea(),
           NavTabArea(),
         ],
