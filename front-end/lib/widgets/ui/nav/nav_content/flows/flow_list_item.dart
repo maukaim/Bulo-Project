@@ -32,8 +32,12 @@ class FlowListItem extends ConsumerWidget {
       hoverColor: Colors.blueGrey.withOpacity(0.075),
       // hover color with transparency
       onTap: () {
+        var previouslySelectedFlowId = ref.read(selectedFlowProvider);
         ref.read(selectedFlowProvider.notifier).state = flow.flowId;
-        ref.read(isOnRunModeProvider.notifier).state = true;
+
+        if (previouslySelectedFlowId != flow.flowId) {
+          ref.read(isOnRunModeProvider.notifier).state = true;
+        }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
