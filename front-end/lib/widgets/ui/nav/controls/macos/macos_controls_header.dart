@@ -32,12 +32,12 @@ class MacOSControlsHeader extends ConsumerWidget {
               color: hasEmbeddedServer.when(
                 loading: () => Colors.grey,
                 data: (data) {
-                  return data ? Colors.green : Colors.deepPurple;
+                  return data ? Colors.green : Colors.red;
                 },
                 error: (_, __) {
                   print(
                       "Issue when checking EmbeddedServer. Error itself: $_ \nStack Trace: $__");
-                  return Colors.red;
+                  return Colors.orangeAccent;
                 },
               )),
         ),
