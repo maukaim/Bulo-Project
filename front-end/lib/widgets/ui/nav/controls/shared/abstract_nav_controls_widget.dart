@@ -6,7 +6,7 @@ abstract class AbstractNavControlsWidget extends ConsumerWidget {
   const AbstractNavControlsWidget({super.key});
 
   Widget getSharedNavWidget() {
-    return Expanded(
+    return Flexible(
       child: Center(
         child: ServerManagerWidget(),
       ),

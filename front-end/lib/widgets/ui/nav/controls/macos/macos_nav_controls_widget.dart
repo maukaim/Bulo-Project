@@ -42,6 +42,7 @@ class MacOSNavControlsWidget extends AbstractNavControlsWidget {
 
   Widget getRowWidget(List<Widget> children) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: children,
     );

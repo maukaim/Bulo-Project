@@ -8,17 +8,21 @@ class ControlsHeaderArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [getPlatformControlsHeader()],
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [getPlatformControlsHeader()],
+      ),
     );
   }
 
   getPlatformControlsHeader() {
     switch (currentSystem) {
       case System.macOS:
-        return  MacOSNavControlsWidget();
+        return MacOSNavControlsWidget();
       case System.windows:
-        return  WindowsNavControlsWidget();
+        return WindowsNavControlsWidget();
       default:
         return const Text("Platform not Officially supported.");
     }
