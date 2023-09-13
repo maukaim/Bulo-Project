@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/domains/flows/providers.dart';
 import 'package:bulo_ui/widgets/ui/nav/nav_content/flows/providers.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +12,8 @@ import 'flow_list_item.dart';
 class NavFlowsArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var availableFlows = ref.watch(flowsAvailableProvider);
+    var currentServerDomain = ref.watch(currentServerDomainProvider);
+    var availableFlows = ref.watch(flowsAvailableProvider(currentServerDomain));
 
     return Column(children: [
       Row(
@@ -36,7 +40,8 @@ class NavFlowsArea extends ConsumerWidget {
             // rounded corners
             hoverColor: Colors.black26.withOpacity(0.2),
             onTap: () {
-              ref.refresh(flowsAvailableProvider).whenData((value) =>
+              var currentServerDomain = ref.watch(currentServerDomainProvider);
+              ref.refresh(flowsAvailableProvider(currentServerDomain)).whenData((value) =>
                   ref.read(selectedFlowProvider.notifier).state = null);
 
               print("Refresh button tapped!"); // Add your refresh function here
@@ -45,6 +50,23 @@ class NavFlowsArea extends ConsumerWidget {
               padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
               child: Icon(
                 CupertinoIcons.refresh,
+                size: 16,
+                color: Colors.black26,
+              ),
+            ),
+          ),
+          InkWell(
+            borderRadius: BorderRadius.circular(4),
+            // rounded corners
+            hoverColor: Colors.black26.withOpacity(0.2),
+            onTap: () {
+              var newValue = "localhost ${Random.secure().nextInt(100)}";
+              var currentServerDomain = ref.read(currentServerDomainProvider.notifier).state = newValue;
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              child: Icon(
+                CupertinoIcons.device_desktop,
                 size: 16,
                 color: Colors.black26,
               ),

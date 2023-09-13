@@ -16,3 +16,5 @@ final hasEmbeddedServerProvider = FutureProvider<bool>((ref) async {
       await hasEmbeddedServerChannel.invokeMethod('hasEmbeddedServer');
   return hasEmbeddedServer;
 });
+
+final currentServerDomainProvider = StateProvider((ref) => "localhost"); // Default value to Machine.

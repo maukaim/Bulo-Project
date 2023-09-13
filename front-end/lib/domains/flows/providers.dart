@@ -7,7 +7,7 @@ import 'model/flow.dart';
 final flowServiceProvider =
     Provider((ref) => FlowService(ref.watch(backendConnectorProvider)));
 
-final flowsAvailableProvider = FutureProvider.autoDispose<List<Flow>>((ref) async {
+final flowsAvailableProvider = FutureProvider.autoDispose.family<List<Flow>,String>((ref,currentServerDomain) async {
   var flowService = ref.watch(flowServiceProvider);
   return flowService.getAll();
 });
