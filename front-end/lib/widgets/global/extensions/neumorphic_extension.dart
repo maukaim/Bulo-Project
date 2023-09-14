@@ -29,20 +29,20 @@ extension WidgetExtension on Widget {
     return ClipRRect(
       borderRadius: borderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.white70,
+              color: Colors.white,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withOpacity(0.5),
                 blurRadius: 20.0,
                 offset: Offset(0, 10),
               ),
             ],
-            color: Colors.white.withOpacity(0.4),
+            color: Colors.white.withOpacity(0.7),
           ),
           child: this,
         ),

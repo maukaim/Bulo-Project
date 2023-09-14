@@ -1,9 +1,7 @@
 import 'package:bulo_ui/widgets/global/buttons/general_button.dart';
-import 'package:bulo_ui/widgets/global/extensions/container/glassmorphic_extension.dart';
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
 import 'package:bulo_ui/widgets/ui/splitter/home_divider_painter.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:multi_split_view/multi_split_view.dart';
 
@@ -15,7 +13,7 @@ class SettingsDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 36, 24, 0),
+      padding: const EdgeInsets.fromLTRB(24, 36, 24, 24),
       child: Column(
         children: [
           getDialogHeader(),

@@ -17,7 +17,7 @@ class ServerSettingsButton extends ConsumerWidget {
     return InkWell(
       onTap: () {
         showDialog(
-          barrierColor: Colors.transparent.withOpacity(0.05),
+          barrierColor: Colors.black12.withOpacity(0.15),
           context: context,
           builder: (BuildContext context) {
             return SettingsDialog(dialogContext: context);
