@@ -37,12 +37,12 @@ extension WidgetExtension on Widget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.white.withOpacity(0.6),
                 blurRadius: 20.0,
                 offset: Offset(0, 10),
               ),
             ],
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withOpacity(0.5),
           ),
           child: this,
         ),

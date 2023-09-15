@@ -55,23 +55,6 @@ class NavFlowsArea extends ConsumerWidget {
               ),
             ),
           ),
-          InkWell(
-            borderRadius: BorderRadius.circular(4),
-            // rounded corners
-            hoverColor: Colors.black26.withOpacity(0.2),
-            onTap: () {
-              var newValue = "localhost ${Random.secure().nextInt(100)}";
-              var currentServerDomain = ref.read(currentServerDomainProvider.notifier).state = newValue;
-            },
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-              child: Icon(
-                CupertinoIcons.device_desktop,
-                size: 16,
-                color: Colors.black26,
-              ),
-            ),
-          ),
         ],
       ),
       const Divider(

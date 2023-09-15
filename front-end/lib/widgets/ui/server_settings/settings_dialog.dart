@@ -13,13 +13,13 @@ class SettingsDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 36, 24, 24),
+      padding: const EdgeInsets.fromLTRB(36, 48, 36, 36),
       child: Column(
         children: [
           getDialogHeader(),
           getDialogContent(),
         ],
-      ).glassmorphic(borderRadius: BorderRadius.circular(10)),
+      ).glassmorphic(borderRadius: BorderRadius.circular(16)),
     );
   }
 
@@ -31,7 +31,7 @@ class SettingsDialog extends ConsumerWidget {
             icon: const Icon(
               Icons.clear,
               size: 16,
-              color: Colors.black26,
+              color: Colors.black54,
             ),
             onTap: () {
               Navigator.of(dialogContext).pop();
