@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:bulo_ui/core/connect/backend_connector.dart';
+import 'package:bulo_ui/core/connect/server_connector.dart';
 
 import 'model/flow_run.dart';
 
 class FlowRunsService {
-  final BackendConnector _backendConnector;
+  final ServerConnector _backendConnector;
 
   FlowRunsService(this._backendConnector);
 

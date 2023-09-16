@@ -1,18 +1,16 @@
-import 'package:bulo_ui/core/connect/providers.dart';
+import 'package:bulo_ui/core/connect/server_connector.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'flow_service.dart';
 import 'model/flow.dart';
 
-final flowServiceProvider =
-    Provider((ref) => FlowService(ref.watch(backendConnectorProvider)));
+final flowServiceProvider = Provider.autoDispose
+    .family<FlowService, ServerConnector>((ref, serverConnector) {
+  return FlowService(serverConnector);
+});
 
-final flowsAvailableProvider = FutureProvider.autoDispose.family<List<Flow>,String>((ref,currentServerDomain) async {
-  var flowService = ref.watch(flowServiceProvider);
+final flowsAvailableProvider = FutureProvider.autoDispose
+    .family<List<Flow>, ServerConnector>((ref, serverConnector) async {
+  var flowService = ref.watch(flowServiceProvider(serverConnector));
   return flowService.getAll();
 });
-/**
- // * 1. utiliser ce flowsAvailableProvider, pour afficher la liste des flows dans la navbar
- * 2. ajouter le call au backend dans le FlowService
- * 3. ajouter le button refresh qui ref._refresh(<provider>)
- */

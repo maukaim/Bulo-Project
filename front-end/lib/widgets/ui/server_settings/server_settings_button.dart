@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/widgets/ui/server_settings/settings_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ServerSettingsButton extends ConsumerWidget {
   const ServerSettingsButton({super.key});
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var hasEmbeddedServer = ref.watch(hasEmbeddedServerProvider);
@@ -17,7 +14,7 @@ class ServerSettingsButton extends ConsumerWidget {
     return InkWell(
       onTap: () {
         showDialog(
-          barrierColor: Colors.black12.withOpacity(0.15),
+          barrierColor: Colors.black12.withOpacity(0.2),
           context: context,
           builder: (BuildContext context) {
             return SettingsDialog(dialogContext: context);

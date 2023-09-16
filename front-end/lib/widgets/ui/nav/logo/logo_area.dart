@@ -1,5 +1,4 @@
 import 'package:bulo_ui/core/connect/providers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,14 +7,15 @@ class LogoArea extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasEmbeddedServer =  ref.watch(hasEmbeddedServerProvider);
+    final isCurrentServerConnected =
+        ref.watch(isServerConnectedProvider(getCurrentServerConnector(ref)));
     return Padding(
       padding: const EdgeInsets.fromLTRB(4, 0, 10, 10),
       child: Center(
         child: Image.asset(
           'assets/images/bulo-logo-alpha-FULL-NAME.png',
           height: 40,
-          color: hasEmbeddedServer.when(
+          color: isCurrentServerConnected.when(
             loading: () => Colors.deepPurpleAccent,
             data: (data) {
               return data ? null : Colors.grey;

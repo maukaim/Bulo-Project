@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/domains/flows/providers.dart';
 import 'package:bulo_ui/widgets/ui/nav/nav_content/flows/providers.dart';
@@ -12,8 +10,8 @@ import 'flow_list_item.dart';
 class NavFlowsArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var currentServerDomain = ref.watch(currentServerDomainProvider);
-    var availableFlows = ref.watch(flowsAvailableProvider(currentServerDomain));
+    var availableFlows =
+        ref.watch(flowsAvailableProvider(getCurrentServerConnector(ref)));
 
     return Column(children: [
       Row(
@@ -40,9 +38,11 @@ class NavFlowsArea extends ConsumerWidget {
             // rounded corners
             hoverColor: Colors.black26.withOpacity(0.2),
             onTap: () {
-              var currentServerDomain = ref.watch(currentServerDomainProvider);
-              ref.refresh(flowsAvailableProvider(currentServerDomain)).whenData((value) =>
-                  ref.read(selectedFlowProvider.notifier).state = null);
+              ref
+                  .refresh(
+                      flowsAvailableProvider(getCurrentServerConnector(ref)))
+                  .whenData((value) =>
+                      ref.read(selectedFlowProvider.notifier).state = null);
 
               print("Refresh button tapped!"); // Add your refresh function here
             },
