@@ -34,7 +34,7 @@ final hasEmbeddedServerProvider = FutureProvider<bool>((ref) async {
   final bool hasEmbeddedServer =
       await hasEmbeddedServerChannel.invokeMethod('hasEmbeddedServer');
   if (hasEmbeddedServer) {
-    serverManager.add(EmbeddedServer(10020, "dummyPathUnusedAnyway"));
+    serverManager.add(EmbeddedServerConfig(10020, "dummyPathUnusedAnyway"));
   }
   return hasEmbeddedServer;
 });

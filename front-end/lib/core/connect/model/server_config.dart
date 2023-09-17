@@ -1,30 +1,60 @@
 import 'package:bulo_ui/core/connect/model/server_nature.dart';
 import 'package:bulo_ui/core/connect/model/server_type.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class ServerConfig extends Equatable {
-  final String id;
-  final String serverName;
-  final String addressRoot;
-  final int port;
-  final ServerNature serverNature;
-  final ServerType serverType;
+  final String _id;
+  String _serverName;
+  String _addressRoot;
+  int _port;
+  final ServerNature _serverNature;
+  final ServerType _serverType;
 
-  ServerConfig(this.addressRoot, this.port, this.serverNature, this.serverType,
-      this.serverName)
-      : id = const Uuid().v4();
+  ServerConfig(
+    this._serverName,
+    this._addressRoot,
+    this._port,
+    this._serverNature,
+    this._serverType,
+  ) : _id = const Uuid().v4();
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+  String get id => _id;
 
-    return other is ServerConfig && other.id == id;
+  String get serverName => _serverName;
+
+  String get addressRoot => _addressRoot;
+
+  int get port => _port;
+
+  ServerNature get serverNature => _serverNature;
+
+  ServerType get serverType => _serverType;
+
+  set serverName(String value) {
+    _serverName = value;
+  }
+  set addressRoot(String value) {
+    _addressRoot = value;
+  }
+
+  set port(int value) {
+    _port = value;
   }
 
   @override
-  int get hashCode => id.hashCode;
+  List<Object?> get props => [_id];
 
-  @override
-  List<Object?> get props => [id];
+//
+// @override
+// bool operator ==(Object other) {
+//   if (identical(this, other)) return true;
+//
+//   return other is ServerConfig && other.id == id;
+// }
+//
+// @override
+// int get hashCode => _id.hashCode;
+
 }

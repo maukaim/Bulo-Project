@@ -2,15 +2,20 @@ import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/model/server_nature.dart';
 import 'package:bulo_ui/core/connect/model/server_type.dart';
 
-class EmbeddedServer extends ServerConfig {
+class EmbeddedServerConfig extends ServerConfig {
   final String javaExecutablePath;
 
-  EmbeddedServer(int port, this.javaExecutablePath)
-      : super(
-          "localhost",
-          port,
-          ServerNature.embedded,
-          ServerType.standalone,
-          "This Computer",
-        );
+  EmbeddedServerConfig(int port, this.javaExecutablePath)
+      : super("This Computer", "localhost", port, ServerNature.embedded,
+            ServerType.standalone);
+
+  @override
+  set addressRoot(String value) {
+    throw Exception("Setter not allowed by default.");
+  }
+
+  @override
+  set serverName(String value) {
+    throw Exception("Setter not allowed by default.");
+  }
 }

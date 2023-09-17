@@ -1,9 +1,9 @@
 import 'package:bulo_ui/widgets/ui/content/flow/flow_content_area.dart';
+import 'package:bulo_ui/widgets/ui/nav/nav_tab/nav_menu_type.dart';
+import 'package:bulo_ui/widgets/ui/nav/nav_tab/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../nav/nav_tab/nav_menu_type.dart';
-import '../nav/nav_tab/providers.dart';
 import 'flow/runs/flow_runs_area.dart';
 
 class MainArea extends ConsumerWidget {
