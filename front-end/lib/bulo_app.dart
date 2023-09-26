@@ -1,3 +1,4 @@
+import 'package:bulo_ui/core/util/current_system.dart';
 import 'package:bulo_ui/widgets/ui/home.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,11 @@ class BuloApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DesktopWindow.setMinWindowSize(const Size(470, 380));
+    if (currentSystem case System.macOS) {
+      DesktopWindow.setMinWindowSize(const Size(470, 380));
+    } else if (currentSystem case System.windows) {
+      DesktopWindow.setMinWindowSize(const Size(1200, 380));
+    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

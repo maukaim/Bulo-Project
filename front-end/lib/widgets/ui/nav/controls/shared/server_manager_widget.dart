@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ServerManagerWidget extends ConsumerWidget {
+  final double serverIconSize;
+
+  const ServerManagerWidget(this.serverIconSize);
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +27,7 @@ class ServerManagerWidget extends ConsumerWidget {
         // Handle your click action here
       },
       child: Icon(
-        size: 20,
+        size: serverIconSize,
         CupertinoIcons.desktopcomputer,
         color: hasEmbeddedServer.when(
           loading: () => Colors.grey,

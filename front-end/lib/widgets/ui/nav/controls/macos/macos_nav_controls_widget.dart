@@ -21,7 +21,7 @@ class MacOSNavControlsWidget extends AbstractNavControlsWidget {
   Widget getNavControls(AsyncValue<bool> fullScreenStateStream, WidgetRef ref) {
     double flashLightControlsHWidth = 60;
 
-    List<Widget> children = [getSharedNavWidget()];
+    List<Widget> children = [getSharedNavWidget(20)];
 
     return fullScreenStateStream.when(
       data: (isFullscreen) {

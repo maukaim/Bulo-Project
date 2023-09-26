@@ -9,9 +9,10 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return  const Padding(
       padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ControlsHeaderArea(),
           Padding(

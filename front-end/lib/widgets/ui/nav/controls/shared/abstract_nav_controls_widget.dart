@@ -5,10 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 abstract class AbstractNavControlsWidget extends ConsumerWidget {
   const AbstractNavControlsWidget({super.key});
 
-  Widget getSharedNavWidget() {
+  Widget getSharedNavWidget(double serverIconSize) {
     return Flexible(
       child: Center(
-        child: ServerManagerWidget(),
+        child: ServerManagerWidget(serverIconSize),
       ),
     );
   }
