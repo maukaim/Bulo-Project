@@ -1,6 +1,7 @@
 import 'package:bulo_ui/widgets/global/buttons/general_button.dart';
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
 import 'package:bulo_ui/widgets/global/splitter/home_divider_painter.dart';
+import 'package:bulo_ui/widgets/server_settings/content/content_area.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/server_settings_navbar.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -73,11 +74,9 @@ class SettingsDialog extends ConsumerWidget {
             children: [
               ServerSettingsNavBar(),
               Padding(
-                padding: const EdgeInsets.all(0),
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  child: Text("ICi les futures configs"),
-                ).neumorphicPressed(borderRadius: BorderRadius.circular(6)),
+                padding: const EdgeInsets.all(10),
+                child: ServerSettingsContentArea()
+                    .neumorphicPressed(borderRadius: BorderRadius.circular(6)),
               )
             ],
           ),

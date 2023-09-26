@@ -10,12 +10,7 @@ class MacOSNavControlsWidget extends AbstractNavControlsWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final fullScreenStateStream = ref.watch(fullscreenStatusProvider);
 
-    double flashLightControlsHeight = 28;
-
-    return SizedBox(
-      height: flashLightControlsHeight,
-      child: getNavControls(fullScreenStateStream, ref),
-    );
+    return getNavControls(fullScreenStateStream, ref);
   }
 
   Widget getNavControls(AsyncValue<bool> fullScreenStateStream, WidgetRef ref) {
@@ -42,7 +37,6 @@ class MacOSNavControlsWidget extends AbstractNavControlsWidget {
 
   Widget getRowWidget(List<Widget> children) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: children,
     );

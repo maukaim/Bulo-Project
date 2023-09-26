@@ -7,25 +7,46 @@ class LogoArea extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var hasEmbeddedServer = ref.watch(hasEmbeddedServerProvider);
     final isCurrentServerConnected =
         ref.watch(isServerConnectedProvider(getCurrentServerConnector(ref)));
     return Padding(
       padding: const EdgeInsets.fromLTRB(4, 0, 10, 10),
       child: Center(
-        child: Image.asset(
-          'assets/images/bulo-logo-alpha-FULL-NAME.png',
-          height: 40,
-          color: isCurrentServerConnected.when(
-            loading: () => Colors.deepPurpleAccent,
-            data: (data) {
-              return data ? null : Colors.grey;
-            },
-            error: (_, __) {
-              print(
-                  "Issue when checking EmbeddedServer. Error itself: $_ \nStack Trace: $__");
-              return Colors.grey;
-            },
-          ), // For when The current server is not reachable
+        child: Stack(
+          alignment: AlignmentDirectional.topEnd,
+          children: [
+            Image.asset(
+              'assets/images/bulo-logo-alpha-FULL-NAME.png',
+              height: 40,
+              color: isCurrentServerConnected.when(
+                loading: () => Colors.deepPurpleAccent,
+                data: (data) {
+                  return data ? null : Colors.grey;
+                },
+                error: (_, __) {
+                  print(
+                      "Issue when checking EmbeddedServer. Error itself: $_ \nStack Trace: $__");
+                  return Colors.grey;
+                },
+              ), // For when The current server is not reachable
+            ),
+
+            if (hasEmbeddedServer.maybeWhen(
+                data: (data) => data,
+                loading: () => false,
+                error: (_, __) => false,
+                orElse: () => false) ??
+                false)
+              const Tooltip(
+                message: "This app has an embedded server.",
+                child: Icon(
+                  Icons.circle,
+                  color: Colors.green,
+                  size: 6,
+                ),
+              ),
+          ],
         ),
       ),
     );

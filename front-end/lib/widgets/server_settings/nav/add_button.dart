@@ -7,17 +7,21 @@ class ServerConfigAddButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: CustomButton(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
           hoverColor: Colors.blueGrey.withOpacity(0.075),
           onPressed: () {
             print("Hehe on a click sur add");
           },
-          child: Row(
+          child: const Row(
             children: [
-              Icon(
-                Icons.add,
-                size: 16,
-                weight: 800,
-                // color: Colors.blueGrey,
+              Padding(
+                padding: EdgeInsets.only(right: 4.0),
+                child: Icon(
+                  Icons.add,
+                  size: 16,
+                  weight: 800,
+                  // color: Colors.blueGrey,
+                ),
               ),
               Flexible(
                 child: Text(

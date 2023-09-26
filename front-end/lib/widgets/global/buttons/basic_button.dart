@@ -43,7 +43,7 @@ class _CustomButtonState extends State<CustomButton> {
                 ? widget.pressedColor ?? widget.color
                 : (_isHovering ? widget.hoverColor ?? widget.color : widget
                 .color),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: widget.borderRadius,
           ),
           padding: widget.padding,
           child: widget.child,
