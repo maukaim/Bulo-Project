@@ -1,5 +1,7 @@
+import 'package:bulo_ui/core/connect/model/remote_server_config.dart';
 import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/providers.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod/src/provider.dart';
 import 'package:riverpod/src/state_controller.dart';
 
@@ -7,7 +9,14 @@ class ServerManager {
   final Map<String, ServerConfig> serverMap = {};
   final ProviderRef<ServerManager> providerRef;
 
-  ServerManager(this.providerRef);
+  ServerManager(this.providerRef){
+    var fake1 = RemoteServerConfig("localhost", 10020, "Another local");
+    var fake2 = RemoteServerConfig("error.com", 10020, "SocGen Server");
+    serverMap.addAll({
+      fake1.id: fake1,
+      fake2.id: fake2,
+    });
+  }
 
   switchCurrentServer(ServerConfig? server) {
     getCurrentServerController().state = server;
@@ -24,10 +33,10 @@ class ServerManager {
     }
   }
 
-  delete(String serverId) {
+  delete(String serverId, WidgetRef widgetRef) {
     ServerConfig? server = serverMap.remove(serverId);
 
-    if (server == providerRef.watch(currentServerProvider)) {
+    if (server == widgetRef.read(currentServerProvider)) {
       getCurrentServerController().state = serverMap.values.firstOrNull;
     }
 

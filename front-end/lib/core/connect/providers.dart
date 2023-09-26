@@ -20,11 +20,7 @@ final serverConnectorProvider = Provider.autoDispose
   return ServerConnector(currentServ);
 });
 
-final currentServerProvider = StateProvider<ServerConfig?>((ref) {
-  var serverManager = ref.watch(serverManagerProvider);
-  List<ServerConfig> allPreConfigServers = serverManager.allServers;
-  return allPreConfigServers.firstOrNull;
-});
+final currentServerProvider = StateProvider<ServerConfig?>((ref) => null);
 
 // Embedded Server Management
 const hasEmbeddedServerChannel =

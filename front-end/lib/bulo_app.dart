@@ -1,4 +1,4 @@
-import 'package:bulo_ui/widgets/ui/home.dart';
+import 'package:bulo_ui/widgets/main_window/home.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 

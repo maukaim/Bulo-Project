@@ -46,6 +46,10 @@ abstract class ServerConfig extends Equatable {
   @override
   List<Object?> get props => [_id];
 
+  bool isEmbedded(){
+    return serverNature == ServerNature.embedded;
+  }
+
 //
 // @override
 // bool operator ==(Object other) {

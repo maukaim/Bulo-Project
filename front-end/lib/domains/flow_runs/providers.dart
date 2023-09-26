@@ -3,7 +3,7 @@ import 'package:bulo_ui/core/connect/server_connector.dart';
 import 'package:bulo_ui/domains/flow_runs/flow_runs_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../widgets/ui/nav/nav_content/flows/providers.dart';
+import '../../widgets/main_window/nav/nav_content/flows/providers.dart';
 import 'model/flow_run.dart';
 
 final flowRunsServiceProvider = Provider.autoDispose

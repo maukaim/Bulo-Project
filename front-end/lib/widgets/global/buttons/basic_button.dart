@@ -6,14 +6,17 @@ class CustomButton extends StatefulWidget {
   final Color color;
   final Color? hoverColor;
   final Color? pressedColor;
+  final EdgeInsets? padding;
+  final BorderRadius? borderRadius;
 
-  const CustomButton(
-      {super.key,
-      this.color = const Color(0x00FFFFFF),
-      this.hoverColor,
-      this.pressedColor,
-      required this.onPressed,
-      required this.child});
+  const CustomButton({super.key,
+    this.color = const Color(0x00FFFFFF),
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+    this.hoverColor =  const Color(0x12607D8B),
+    this.pressedColor,
+    required this.onPressed,
+    required this.child});
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -37,11 +40,12 @@ class _CustomButtonState extends State<CustomButton> {
         child: Container(
           decoration: BoxDecoration(
             color: _isPressing
-                ? widget.pressedColor?? widget.color
-                : (_isHovering ? widget.hoverColor?? widget.color : widget.color),
+                ? widget.pressedColor ?? widget.color
+                : (_isHovering ? widget.hoverColor ?? widget.color : widget
+                .color),
             borderRadius: BorderRadius.circular(8),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: widget.padding,
           child: widget.child,
         ),
       ),
