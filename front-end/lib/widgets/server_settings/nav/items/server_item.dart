@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final ValueNotifier<bool> _isHovered = ValueNotifier<bool>(false);
+
 
 class ServerItem extends ConsumerWidget {
   final ServerConfig serverConfig;
@@ -16,6 +16,8 @@ class ServerItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final ValueNotifier<bool> _isHovered = ValueNotifier<bool>(false);
+
     return MouseRegion(
       onEnter: (_) => _isHovered.value = true,
       onExit: (_) => _isHovered.value = false,
