@@ -1,5 +1,5 @@
+import 'package:bulo_ui/widgets/server_settings/content/server_details_update_area.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/providers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,7 +8,9 @@ class ServerSettingsContentArea extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedServer = ref.watch(selectedServerConfigForSettingsWindow);
 
-    return selectedServer == null ? getDefaultScreen() : Text("Selected ${selectedServer.serverName}");
+    return selectedServer == null
+        ? getDefaultScreen()
+        : ServerDetailsUpdateArea(selectedServer);
   }
 
   Widget getDefaultScreen() {
