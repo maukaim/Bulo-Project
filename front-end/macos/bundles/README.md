@@ -25,6 +25,9 @@ To do so, go in your terminal, navigate to the templates folder, and from there 
 For this clone to work, you will need git lfs. The reaosn is that JDKs usually have long files (>100MB).
 in newer git version, a simple git clone is enough, and will handle lfs if any.
 
+Once the project cloned, go in the jdsk folder do `git lfs install` and follow with `git lfs pull` .
+
+
 ## Bonus: How to get git lfs locally  
 
 You should download git lfs from the official website: https://git-lfs.com/
