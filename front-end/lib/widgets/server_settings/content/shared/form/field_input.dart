@@ -36,6 +36,24 @@ class ServerConfigFieldInput extends StatelessWidget {
                   width: 1,
                 ),
               ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.green,
+                  width: 2,
+                ),
+              ),
+              focusedErrorBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red,
+                  width: 2,
+                ),
+              ),
+              errorBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red,
+                  width: 1,
+                ),
+              ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.blueGrey.shade200,
@@ -44,12 +62,6 @@ class ServerConfigFieldInput extends StatelessWidget {
               ),
               disabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
-              ),
-              errorBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.red,
-                  width: 1,
-                ),
               ),
               fillColor: Colors.grey.shade200,
               filled: !isEnabled,

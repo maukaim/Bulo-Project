@@ -43,8 +43,6 @@ class NavFlowsArea extends ConsumerWidget {
                       flowsAvailableProvider(getCurrentServerConnector(ref)))
                   .whenData((value) =>
                       ref.read(selectedFlowProvider.notifier).state = null);
-
-              print("Refresh button tapped!"); // Add your refresh function here
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),

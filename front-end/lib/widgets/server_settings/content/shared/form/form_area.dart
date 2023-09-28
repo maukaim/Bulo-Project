@@ -1,15 +1,17 @@
 import 'package:bulo_ui/core/connect/model/server_config.dart';
-import 'package:bulo_ui/widgets/server_settings/content/form/field_input.dart';
-import 'package:bulo_ui/widgets/server_settings/content/server_details_update_area.dart';
+import 'package:bulo_ui/widgets/server_settings/content/shared/form/field_input.dart';
+import 'package:bulo_ui/widgets/server_settings/content/shared/server_details_area.dart';
 import 'package:flutter/cupertino.dart';
 
 class ServerConfigFormArea extends StatelessWidget {
   final ServerConfig serverConfig;
   final GlobalKey<FormState> formKey;
   final FormControllers controllers;
+  final VoidCallback onFormChanged;
 
   const ServerConfigFormArea(
       {super.key,
+      required this.onFormChanged,
       required this.serverConfig,
       required this.formKey,
       required this.controllers});
@@ -17,13 +19,14 @@ class ServerConfigFormArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      onChanged: onFormChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       key: formKey,
       child: Column(
         children: [
           ServerConfigFieldInput(
-            "Name",
-            "Only latin characters",
+            "Server Name",
+            "A meaningful name...",
             !serverConfig.isEmbedded(),
             controller: controllers.serverNameController,
             validator: serverNameValidator,
@@ -38,7 +41,7 @@ class ServerConfigFormArea extends StatelessWidget {
                   flex: 4,
                   child: ServerConfigFieldInput(
                     "Address",
-                    "domain, IPv4 or localhost",
+                    "i.e demo.bulo.com, 127.0.0.1 or localhost",
                     !serverConfig.isEmbedded(),
                     controller: controllers.addressController,
                     validator: addressValidator,
@@ -85,7 +88,7 @@ class ServerConfigFormArea extends StatelessWidget {
 
   FormFieldValidator<String> get addressValidator => (value) {
         final regexMatchAddressFormat = RegExp(
-            r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|(([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})|(localhost)');
+            r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|(^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$)|(^localhost$)');
 
         if (value == null || value.isEmpty) {
           return "Address can't be empty";

@@ -3,6 +3,7 @@ import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/widgets/global/buttons/basic_button.dart';
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/providers.dart';
+import 'package:bulo_ui/widgets/server_settings/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,13 +50,13 @@ class ServerItem extends ConsumerWidget {
   }
 
   Widget getServerItemVisual(WidgetRef ref, bool isHovered) {
+    var currentServer = ref.watch(currentServerProvider);
+
     var selectedServerForSettings =
         ref.watch(selectedServerConfigForSettingsWindow);
 
     var isServerConnected = ref.watch(
         isServerConnectedProvider(getServerConnector(ref, serverConfig)));
-    var currentServer = ref.watch(currentServerProvider);
-
     return CustomButton(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       hoverColor: Colors.blueGrey.withOpacity(0.075),
@@ -80,7 +81,7 @@ class ServerItem extends ConsumerWidget {
               error: (_, __) {
                 print(
                     "Issue when checking IsServerConnected for ${serverConfig.serverName}. Error itself: $_ \nStack Trace: $__");
-                return Colors.red;
+                return Colors.grey;
               },
             ),
           ),
@@ -112,13 +113,7 @@ class ServerItem extends ConsumerWidget {
                 size: 10,
               ),
               onPressed: () {
-                if (selectedServerForSettings == serverConfig) {
-                  ref.invalidate(selectedServerConfigForSettingsWindow);
-                }
-
-                var serverManager = ref.watch(serverManagerProvider);
-                serverManager.delete(serverConfig.id, ref);
-                ref.invalidate(availableServersProvider);
+                deleteServer(ref, serverConfig);
               },
             ),
           ] else if (currentServer == serverConfig) ...[

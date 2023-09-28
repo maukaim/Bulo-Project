@@ -11,7 +11,6 @@ class FlowService {
 
   @override
   Future<List<Flow>> getAll() async {
-    print("blalaba");
     var response = await _backendConnector.get("flows");
     var decode = json.decode(response.body);
     return [for (var x in decode) Flow.fromJson(x)];

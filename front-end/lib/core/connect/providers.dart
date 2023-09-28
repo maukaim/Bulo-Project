@@ -15,8 +15,6 @@ final serverManagerProvider = Provider<ServerManager>((ref) {
 
 final serverConnectorProvider = Provider.autoDispose
     .family<ServerConnector, ServerConfig?>((ref, currentServ) {
-  print("Construct my backend Connector with...$currentServ");
-
   return ServerConnector(currentServ);
 });
 
@@ -40,7 +38,18 @@ final isServerConnectedProvider = FutureProvider.autoDispose
   if (serverConnector.serverConfig == null) {
     return false;
   }
+  bool isConnected = await isServerConnected(serverConnector);
+  ref.listenSelf((previous, next) {
+    Timer(const Duration(seconds: 10), () {
+      //TODO: Looks like long pooling. No better way before Servers support socket?
+      ref.invalidateSelf();
+    });
+  });
 
+  return isConnected;
+});
+
+Future<bool> isServerConnected(ServerConnector serverConnector) async {
   Socket? socket;
   try {
     socket = await Socket.connect(serverConnector.serverConfig!.addressRoot,
@@ -52,14 +61,8 @@ final isServerConnectedProvider = FutureProvider.autoDispose
     return false;
   } finally {
     socket?.destroy();
-    ref.listenSelf((previous, next) {
-      Timer(const Duration(seconds: 10), () {
-        //TODO: Looks like long pooling. No better way before Servers support socket?
-        ref.invalidateSelf();
-      });
-    });
   }
-});
+}
 
 ServerConnector getCurrentServerConnector(dynamic ref) {
   return ref.watch(serverConnectorProvider(ref.watch(currentServerProvider)));

@@ -9,7 +9,7 @@ class ServerManager {
 
   ServerManager(this.providerRef) {
     var fake1 = RemoteServerConfig("localhost", 10020, "Another local");
-    var fake2 = RemoteServerConfig("error.com", 10020, "SocGen Server");
+    var fake2 = RemoteServerConfig("error.c", 10020, "SocGen Server");
     serverMap.addAll({
       fake1.id: fake1,
       fake2.id: fake2,
@@ -21,7 +21,7 @@ class ServerManager {
   }
 
   ServerConfig? getById(String id) {
-    return serverMap[ServerConfig];
+    return serverMap[id];
   }
 
   add(ServerConfig server) {
