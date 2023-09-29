@@ -18,7 +18,7 @@ class ServerSettingsButton extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 4.0),
         child: CustomButton(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(18)),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
           onPressed: () {
             showDialog(
               barrierColor: Colors.black12.withOpacity(0.2),

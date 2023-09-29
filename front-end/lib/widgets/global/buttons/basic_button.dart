@@ -18,7 +18,7 @@ class CustomButton extends StatefulWidget {
       this.disableColor = const Color(0x99FAFAFA),
       this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       this.borderRadius = const BorderRadius.all(Radius.circular(8)),
-      this.hoverColor = const Color(0x12607D8B),
+      this.hoverColor = const Color(0x34607D8B),
       this.pressedColor,
       required this.onPressed,
       required this.child});
