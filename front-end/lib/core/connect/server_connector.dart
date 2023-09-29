@@ -1,14 +1,16 @@
 import 'package:bulo_ui/core/connect/model/server_config.dart';
+import 'package:bulo_ui/core/log/logger.dart';
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 
 class ServerConnector extends Equatable {
   final ServerConfig? serverConfig;
+  final Logger logger;
   static const String API_VERSION = 'api/v1';
   static const String HTTP_PROTOCOL = 'http';
   bool serverIsUp = false;
 
-  ServerConnector(this.serverConfig);
+  ServerConnector(this.serverConfig, this.logger);
 
   Future<http.Response> get(String addressPath,
       [Map<String, String> requestParam = const {}]) async {
@@ -18,12 +20,18 @@ class ServerConnector extends Equatable {
       print("GET $uri");
       http.Response response = await http.get(uri);
       if (response.statusCode == 200) {
+        logger.info(
+            "GET from $addressPath successful. Data received is:\n ${response.body}");
         return response;
       } else {
-        throw Exception('Failed to load from GET method on $uri');
+        String errorMessage = 'Failed to load from GET method on $uri';
+        logger.error(errorMessage);
+        throw Exception(errorMessage);
       }
     } else {
-      throw Exception("No server config selected. Please choose one");
+      String errorMessage = "No server config selected. Please choose one";
+      logger.error(errorMessage);
+      throw Exception(errorMessage);
     }
   }
 

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:bulo_ui/core/connect/model/embedded_server_config.dart';
 import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/server_manager.dart';
+import 'package:bulo_ui/core/log/providers.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,8 +15,9 @@ final serverManagerProvider = Provider<ServerManager>((ref) {
 });
 
 final serverConnectorProvider = Provider.autoDispose
-    .family<ServerConnector, ServerConfig?>((ref, currentServ) {
-  return ServerConnector(currentServ);
+    .family<ServerConnector, ServerConfig?>((ref, serverConfig) {
+      var logger = ref.watch(loggerProvider(serverConfig));
+  return ServerConnector(serverConfig,logger);
 });
 
 final currentServerProvider = StateProvider<ServerConfig?>((ref) => null);
@@ -35,10 +37,20 @@ final hasEmbeddedServerProvider = FutureProvider<bool>((ref) async {
 
 final isServerConnectedProvider = FutureProvider.autoDispose
     .family<bool, ServerConnector>((ref, serverConnector) async {
-  if (serverConnector.serverConfig == null) {
+  var serverConfig = serverConnector.serverConfig;
+  if (serverConfig == null) {
     return false;
   }
-  bool isConnected = await isServerConnected(serverConnector);
+  final logger = ref.watch(loggerProvider(serverConfig));
+  String? isConnectedErrorMessage = await isServerConnected(serverConnector);
+
+  String serverQualifier = "${serverConfig.serverName} at ${serverConfig.addressRoot}:${serverConfig.port}";
+  if(isConnectedErrorMessage == null){
+    logger.info("Successfully pinged $serverQualifier !");
+  }else{
+    logger.error("Could not contact $isConnectedErrorMessage");
+  }
+
   ref.listenSelf((previous, next) {
     Timer(const Duration(seconds: 10), () {
       //TODO: Looks like long pooling. No better way before Servers support socket?
@@ -46,19 +58,19 @@ final isServerConnectedProvider = FutureProvider.autoDispose
     });
   });
 
-  return isConnected;
+  return isConnectedErrorMessage == null;
 });
 
-Future<bool> isServerConnected(ServerConnector serverConnector) async {
+Future<String?> isServerConnected(ServerConnector serverConnector) async {
   Socket? socket;
   try {
     socket = await Socket.connect(serverConnector.serverConfig!.addressRoot,
         serverConnector.serverConfig!.port,
         timeout: Duration(seconds: 2));
-    return true;
+    return null;
   } catch (e) {
     print('Server is down: $e');
-    return false;
+    return 'Server is down: $e';
   } finally {
     socket?.destroy();
   }

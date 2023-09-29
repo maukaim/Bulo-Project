@@ -1,4 +1,5 @@
 import 'package:bulo_ui/widgets/server_settings/content/shared/form/form_area.dart';
+import 'package:bulo_ui/widgets/server_settings/content/shared/logs/logs_area.dart';
 import 'package:bulo_ui/widgets/server_settings/content/shared/server_details_area.dart';
 import 'package:bulo_ui/widgets/server_settings/content/update/actions_bar.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class ServerDetailsUpdateAreaState
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
-                child: Container(color: Colors.green),
+                child: LogsArea(widget.serverConfig),
               ),
             ),
             ValueListenableBuilder<bool>(

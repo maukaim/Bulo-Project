@@ -13,7 +13,7 @@ class ServerSettingsContentArea extends ConsumerWidget {
         ? getDefaultScreen()
         : selectedServer.serverName.isEmpty
             ? ServerDetailsCreateArea(serverConfig: selectedServer)
-            : ServerDetailsUpdateArea( serverConfig: selectedServer);
+            : ServerDetailsUpdateArea(serverConfig: selectedServer);
   }
 
   Widget getDefaultScreen() {

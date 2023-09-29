@@ -7,7 +7,7 @@ class ServerConnectionNotifier extends StateNotifier<bool?> {
 
   void checkConnection(ServerConnector serverConnector) async {
     final isConnected = await isServerConnected(serverConnector);
-    state = isConnected;
+    state = isConnected == null;
   }
 }
 
