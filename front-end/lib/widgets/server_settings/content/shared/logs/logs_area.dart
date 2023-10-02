@@ -83,10 +83,10 @@ class LogsArea extends ConsumerWidget {
 
   TextStyle getSharedTextStyle({bool isError = false}) {
     return TextStyle(
-      color: isError ? Colors.black : Colors.white,
+      color: isError ? Colors.white : Colors.white,
       fontSize: 10,
       backgroundColor:
-      isError ? Colors.red.withOpacity(0.8) : Colors.transparent,
+      isError ? Colors.red.withOpacity(0.3) : Colors.transparent,
     );
   }
 
