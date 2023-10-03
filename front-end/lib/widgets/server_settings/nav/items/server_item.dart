@@ -2,6 +2,7 @@ import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/widgets/global/buttons/basic_button.dart';
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
+import 'package:bulo_ui/widgets/server_settings/nav/items/server_item_icon.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/providers.dart';
 import 'package:bulo_ui/widgets/server_settings/providers.dart';
 import 'package:flutter/cupertino.dart';
@@ -55,8 +56,6 @@ class ServerItem extends ConsumerWidget {
     var selectedServerForSettings =
         ref.watch(selectedServerConfigForSettingsWindow);
 
-    var isServerConnected = ref.watch(
-        isServerConnectedProvider(getServerConnector(ref, serverConfig)));
     return CustomButton(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       hoverColor: Colors.blueGrey.withOpacity(0.075),
@@ -68,23 +67,7 @@ class ServerItem extends ConsumerWidget {
       },
       child: Row(
         children: [
-          Icon(
-            size: 20,
-            serverConfig.isEmbedded()
-                ? CupertinoIcons.desktopcomputer
-                : Icons.public,
-            color: isServerConnected.when(
-              loading: () => Colors.black87,
-              data: (data) {
-                return data ? Colors.green : Colors.red;
-              },
-              error: (_, __) {
-                print(
-                    "Issue when checking IsServerConnected for ${serverConfig.serverName}. Error itself: $_ \nStack Trace: $__");
-                return Colors.grey;
-              },
-            ),
-          ),
+          ServerItemIcon(serverConfig),
           Flexible(
             fit: FlexFit.tight,
             child: Padding(
