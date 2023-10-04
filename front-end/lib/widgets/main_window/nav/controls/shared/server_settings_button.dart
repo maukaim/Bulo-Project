@@ -20,6 +20,7 @@ class ServerSettingsButton extends ConsumerWidget {
     final isCurrentServerConnected =
         ref.watch(isServerConnectedProvider(getCurrentServerConnector(ref)));
     var servers = ref.watch(availableServersProvider);
+    servers.sort((a, b) => (b.isEmbedded() ? 1 : 0) - (a.isEmbedded() ? 1 : 0));
 
     var serverManager = ref.watch(serverManagerProvider);
 
@@ -32,11 +33,10 @@ class ServerSettingsButton extends ConsumerWidget {
           itemBuilder: (ServerConfig value) {
             if (value == placeHolderForGeneralSettings) {
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical:2.0),
+                padding: const EdgeInsets.symmetric(vertical: 2.0),
                 child: Text("Server Settings...",
                     style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.blueGrey.shade300)),
+                        fontSize: 12, color: Colors.blueGrey.shade300)),
               );
             } else {
               return ServerDetailsChoice(server: value);
