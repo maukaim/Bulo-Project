@@ -1,6 +1,6 @@
 #!/bin/bash
 find macos/bundles/resources/ ! -name '.gitignore' -mindepth 1 -delete
-cp -r macos/bundles/templates/jdk/intel/jdk17 macos/bundles/resources/
+cp -r macos/bundles/templates/jdk/intel/jdk macos/bundles/resources/
 cp -r macos/bundles/templates/application-standalone-* macos/bundles/resources/
 
 # Rename the app across platforms

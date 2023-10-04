@@ -28,6 +28,8 @@ public class SanityCheckTests {
     private final ApplicationMode applicationMode = ApplicationMode.standalone;
     private final ApplicationEnvironment applicationEnv = ApplicationEnvironment.dev;
 
+    private static String FLOW_NAME = "Henri le crocodile";
+
     @BeforeEach
     void init() {
         user = switch (applicationEnv) {
@@ -100,7 +102,7 @@ public class SanityCheckTests {
         ContextStageId functionalNameProviderContextId = ContextStageId.of(functionalStageId, 4);
 
         String flowId = user.createFlow(FlowDtoBuilder.aFlow()
-                .withFlowId("Bobie La barbade")
+                .withFlowId(FLOW_NAME)
                 .withOwnerKey(user.getUserName(), OwnerKeyTypeDto.USER)
                 .withFlowStage(flowNameProviderContextId)
                 .withFlowStage(flowPrinterContextId1,

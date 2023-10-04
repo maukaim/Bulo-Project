@@ -1,0 +1,1 @@
+enum ServerNature { embedded, remote }

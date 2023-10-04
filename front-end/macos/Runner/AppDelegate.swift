@@ -51,7 +51,7 @@ class AppDelegate: FlutterAppDelegate{
         }
         self.hasServerEmbedded = true
         
-        let jdkFolderName = "jdk17"
+        let jdkFolderName = "jdk"
         let javaPathInJdk = "Contents/Home/bin/java"
         
         var javaExecutablePath = "/usr/bin/java"

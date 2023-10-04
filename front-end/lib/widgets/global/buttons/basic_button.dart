@@ -6,11 +6,19 @@ class CustomButton extends StatefulWidget {
   final Color color;
   final Color? hoverColor;
   final Color? pressedColor;
+  final Color disableColor;
+  final EdgeInsets? padding;
+  final BorderRadius? borderRadius;
+  final bool isEnabled;
 
   const CustomButton(
       {super.key,
       this.color = const Color(0x00FFFFFF),
-      this.hoverColor,
+      this.isEnabled = true,
+      this.disableColor = const Color(0x99FAFAFA),
+      this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+      this.hoverColor = const Color(0x34607D8B),
       this.pressedColor,
       required this.onPressed,
       required this.child});
@@ -26,22 +34,34 @@ class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => _isHovering = true),
-      onExit: (_) => setState(() => _isHovering = false),
-      cursor: SystemMouseCursors.click,
+      onEnter:
+          widget.isEnabled ? (_) => setState(() => _isHovering = true) : null,
+      onExit:
+          widget.isEnabled ? (_) => setState(() => _isHovering = false) : null,
+      cursor: widget.isEnabled
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic,
       child: GestureDetector(
-        onTapDown: (_) => setState(() => _isPressing = true),
-        onTapUp: (_) => setState(() => _isPressing = false),
-        onTapCancel: () => setState(() => _isPressing = false),
-        onTap: widget.onPressed,
+        onTapDown:
+            widget.isEnabled ? (_) => setState(() => _isPressing = true) : null,
+        onTapUp: widget.isEnabled
+            ? (_) => setState(() => _isPressing = false)
+            : null,
+        onTapCancel:
+            widget.isEnabled ? () => setState(() => _isPressing = false) : null,
+        onTap: widget.isEnabled ? widget.onPressed : null,
         child: Container(
           decoration: BoxDecoration(
-            color: _isPressing
-                ? widget.pressedColor?? widget.color
-                : (_isHovering ? widget.hoverColor?? widget.color : widget.color),
-            borderRadius: BorderRadius.circular(8),
+            color: !widget.isEnabled
+                ? widget.disableColor
+                : (_isPressing
+                    ? widget.pressedColor ?? widget.color
+                    : (_isHovering
+                        ? widget.hoverColor ?? widget.color
+                        : widget.color)),
+            borderRadius: widget.borderRadius,
           ),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: widget.padding,
           child: widget.child,
         ),
       ),
