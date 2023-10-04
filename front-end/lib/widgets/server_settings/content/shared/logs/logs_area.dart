@@ -15,7 +15,7 @@ class LogsArea extends ConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-          color: Color(0xFF262525),
+          color: Color(0xFF2B2D30),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: Colors.blueGrey.withOpacity(0.4),
@@ -32,7 +32,6 @@ class LogsArea extends ConsumerWidget {
                 children: [
                   logsAsyncValue.when(
                     data: (logs) {
-                      print("youhoy");
                       return Flexible(
                         child: SelectableText.rich(
                           TextSpan(
@@ -40,7 +39,7 @@ class LogsArea extends ConsumerWidget {
                               return (TextSpan(
                                 children: logToTextSpanList(log),
                                 style:
-                                getSharedTextStyle(isError: log.isError()),
+                                    getSharedTextStyle(isError: log.isError()),
                               ));
                             }).toList(),
                           ),
@@ -51,26 +50,24 @@ class LogsArea extends ConsumerWidget {
                           cursorWidth: 1.0,
                           cursorColor: Colors.red,
                           selectionControls:
-                          DesktopTextSelectionControls(), // Assuming you have this custom control.
+                              DesktopTextSelectionControls(), // Assuming you have this custom control.
                         ),
                       );
                     },
-                    loading: () =>
-                        Row(
-                          children: [
-                            Text("Waiting for logs....",
-                                style: getSharedTextStyle())
-                          ],
+                    loading: () => Row(
+                      children: [
+                        Text("Waiting for logs....",
+                            style: getSharedTextStyle())
+                      ],
+                    ),
+                    error: (error, stack) => Row(
+                      children: [
+                        Text(
+                          "Error, can't print logs: $error",
+                          style: getSharedTextStyle(),
                         ),
-                    error: (error, stack) =>
-                        Row(
-                          children: [
-                            Text(
-                              "Error, can't print logs: $error",
-                              style: getSharedTextStyle(),
-                            ),
-                          ],
-                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -85,8 +82,7 @@ class LogsArea extends ConsumerWidget {
     return TextStyle(
       color: isError ? Colors.white : Colors.white,
       fontSize: 10,
-      backgroundColor:
-      isError ? Colors.red.withOpacity(0.3) : Colors.transparent,
+      backgroundColor: isError ? Colors.red.withOpacity(0) : Colors.transparent,
     );
   }
 
@@ -102,7 +98,12 @@ class LogsArea extends ConsumerWidget {
         style: TextStyle(color: log.color),
       ),
       TextSpan(text: "  "),
-      TextSpan(text: "${log.msg}"),
+      TextSpan(
+        text: "${log.msg}",
+        style: TextStyle(
+          fontWeight: log.isError() ? FontWeight.bold : FontWeight.normal,
+        ),
+      ),
       TextSpan(text: "\n"),
     ];
   }

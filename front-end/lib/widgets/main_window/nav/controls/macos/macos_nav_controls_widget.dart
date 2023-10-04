@@ -28,16 +28,16 @@ class MacOSNavControlsWidget extends AbstractNavControlsWidget {
                 color: Colors.transparent,
               ));
         }
-        return getRowWidget(children);
+        return getRowWidget(children, isFullscreen);
       },
-      loading: () => getRowWidget(children),
-      error: (error, stackTrace) => getRowWidget(children),
+      loading: () => getRowWidget(children, false),
+      error: (error, stackTrace) => getRowWidget(children, false),
     );
   }
 
-  Widget getRowWidget(List<Widget> children) {
+  Widget getRowWidget(List<Widget> children, bool isFullscreen) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: isFullscreen ? MainAxisAlignment.end: MainAxisAlignment.spaceBetween,
       children: children,
     );
   }

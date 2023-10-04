@@ -1,4 +1,5 @@
 import 'package:bulo_ui/core/connect/providers.dart';
+import 'package:bulo_ui/core/util/current_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,7 +8,10 @@ class LogoArea extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var hasEmbeddedServer = ref.watch(hasEmbeddedServerProvider);
+    AsyncValue hasEmbeddedServer = currentSystem.isDesktop
+        ? ref.watch(hasEmbeddedServerProvider)
+        : const AsyncValue.data(false);
+
     final isCurrentServerConnected =
         ref.watch(isServerConnectedProvider(getCurrentServerConnector(ref)));
     return Padding(
@@ -31,12 +35,11 @@ class LogoArea extends ConsumerWidget {
                 },
               ), // For when The current server is not reachable
             ),
-
             if (hasEmbeddedServer.maybeWhen(
-                data: (data) => data,
-                loading: () => false,
-                error: (_, __) => false,
-                orElse: () => false) ??
+                    data: (data) => data,
+                    loading: () => false,
+                    error: (_, __) => false,
+                    orElse: () => false) ??
                 false)
               const Tooltip(
                 message: "This app has an embedded server.",

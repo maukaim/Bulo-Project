@@ -1,5 +1,9 @@
+import 'package:bulo_ui/core/connect/model/remote_server_config.dart';
+import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/providers.dart';
-import 'package:bulo_ui/widgets/global/buttons/basic_button.dart';
+import 'package:bulo_ui/widgets/global/buttons/popup_button.dart';
+import 'package:bulo_ui/widgets/main_window/nav/controls/shared/server_details_choice.dart';
+import 'package:bulo_ui/widgets/server_settings/nav/providers.dart';
 import 'package:bulo_ui/widgets/server_settings/settings_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,21 +17,35 @@ class ServerSettingsButton extends ConsumerWidget {
     var currentServer = ref.watch(currentServerProvider);
     final isCurrentServerConnected =
         ref.watch(isServerConnectedProvider(getCurrentServerConnector(ref)));
+    var servers = ref.watch(availableServersProvider);
+
+    var serverManager = ref.watch(serverManagerProvider);
+
+    var placeHolderForGeneralSettings = RemoteServerConfig("", 80, "");
     return Flexible(
       child: Padding(
         padding: const EdgeInsets.only(left: 4.0),
-        child: CustomButton(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
-          onPressed: () {
-            showDialog(
-              barrierColor: Colors.black12.withOpacity(0.2),
-              context: context,
-              builder: (BuildContext context) {
-                return SettingsDialog(dialogContext: context);
-              },
-            );
-            // Handle your click action here
+        child: CustomPopupButton(
+          choices: [...servers, placeHolderForGeneralSettings],
+          itemBuilder: (ServerConfig value) {
+            if (value == placeHolderForGeneralSettings) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical:2.0),
+                child: Text("Server Settings...",
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blueGrey.shade300)),
+              );
+            } else {
+              return ServerDetailsChoice(server: value);
+            }
+          },
+          onSelected: (ServerConfig? choice) {
+            if (servers.contains(choice)) {
+              serverManager.switchCurrentServer(choice);
+            } else {
+              _showPopupMenu(context);
+            }
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -68,6 +86,16 @@ class ServerSettingsButton extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _showPopupMenu(BuildContext context) {
+    showDialog(
+      barrierColor: Colors.black12.withOpacity(0.2),
+      context: context,
+      builder: (BuildContext context) {
+        return SettingsDialog(dialogContext: context);
+      },
     );
   }
 }
