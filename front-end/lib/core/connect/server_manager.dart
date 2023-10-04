@@ -29,8 +29,8 @@ class ServerManager {
     serverMap.addAll({server.id: server});
     if (serverMap.length == 1 || getCurrentServerController().state == null) {
       getCurrentServerController().state = server;
-      providerRef.invalidate(availableServersProvider);
     }
+    providerRef.invalidate(availableServersProvider);
   }
 
   delete(String serverId, WidgetRef widgetRef) {
@@ -40,8 +40,8 @@ class ServerManager {
       getCurrentServerController().state = serverMap.values.firstOrNull;
     }
 
-    //invalidate the providers relying on this record. The dependents chain should ALL be GC.
     providerRef.invalidate(serverConnectorProvider(server));
+    providerRef.invalidate(availableServersProvider);
   }
 
   List<ServerConfig> get allServers {
