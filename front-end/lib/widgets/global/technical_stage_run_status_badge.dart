@@ -9,7 +9,7 @@ class TechnicalStageRunStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
     return Container(
       decoration: BoxDecoration(
         color: getBgColor().withOpacity(0.6),
