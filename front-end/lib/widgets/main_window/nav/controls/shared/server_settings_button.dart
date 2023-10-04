@@ -29,6 +29,7 @@ class ServerSettingsButton extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 4.0),
         child: CustomPopupButton(
+          tooltip: "Servers available...",
           choices: [...servers, placeHolderForGeneralSettings],
           itemBuilder: (ServerConfig value) {
             if (value == placeHolderForGeneralSettings) {
