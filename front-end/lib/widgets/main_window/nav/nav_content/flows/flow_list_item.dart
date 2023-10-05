@@ -53,7 +53,7 @@ class FlowListItem extends ConsumerWidget {
               child: Icon(
                 size: 12,
                 BuloLogoIcon.bulo_logo_alpha,
-                color: Colors.cyanAccent,
+                color: Color(0xff6bd0b3),
               ),
             ),
             Flexible(
