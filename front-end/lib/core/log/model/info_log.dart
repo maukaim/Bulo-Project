@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class InfoLog extends Log {
   InfoLog(String msg)
       : super(
-            color: Colors.yellow,
+            color: Colors.green,
             msg: msg,
             timeStr: Log.timeStamp(),
             logLevel: LogLevel.info);

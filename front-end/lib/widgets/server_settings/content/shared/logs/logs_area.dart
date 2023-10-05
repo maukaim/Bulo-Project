@@ -15,7 +15,7 @@ class LogsArea extends ConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-          color: Color(0xFF2B2D30),
+          color: Color(0xFF09090b),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: Colors.blueGrey.withOpacity(0.4),
@@ -82,26 +82,28 @@ class LogsArea extends ConsumerWidget {
     return TextStyle(
       color: isError ? Colors.white : Colors.white,
       fontSize: 10,
-      backgroundColor: isError ? Colors.red.withOpacity(0) : Colors.transparent,
+      // height: isError? 2: 0,
+      // backgroundColor: isError ? Colors.red.withOpacity(0.2) : Colors.transparent,
     );
   }
 
   List<TextSpan> logToTextSpanList(Log log) {
     return [
       TextSpan(
-        text: "${log.timeStr}",
-        style: TextStyle(color: Colors.green),
-      ),
-      TextSpan(text: "  "),
-      TextSpan(
         text: "${log.logLevel.asPrintable}",
         style: TextStyle(color: log.color),
       ),
       TextSpan(text: "  "),
       TextSpan(
+        text: "${log.timeStr}",
+        style: TextStyle(color: Colors.grey),
+      ),
+      TextSpan(text: "  "),
+      TextSpan(
         text: "${log.msg}",
         style: TextStyle(
-          fontWeight: log.isError() ? FontWeight.bold : FontWeight.normal,
+          // letterSpacing: log.isError() ? 1.5 : 0,
+          color: log.isError() ? Colors.red.shade400 : Colors.white
         ),
       ),
       TextSpan(text: "\n"),
