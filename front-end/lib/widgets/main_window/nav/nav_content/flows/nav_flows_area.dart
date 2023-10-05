@@ -42,7 +42,7 @@ class NavFlowsArea extends ConsumerWidget {
                   .refresh(
                       flowsAvailableProvider(getCurrentServerConnector(ref)))
                   .whenData((value) =>
-                      ref.read(selectedFlowProvider.notifier).state = null);
+                      ref..read(getSelectedFlowProvider(ref).notifier).state = null);
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),

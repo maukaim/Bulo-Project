@@ -13,7 +13,7 @@ import '../providers.dart';
 class FlowRunsArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var flowSelected = ref.watch(selectedFlowProvider);
+    var flowSelected = ref.watch(getSelectedFlowProvider(ref));
     var flowRuns = ref.watch(flowRunsOfFlowSelectedProvider);
 
     return Column(

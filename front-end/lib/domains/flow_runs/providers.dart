@@ -13,7 +13,7 @@ final flowRunsServiceProvider = Provider.autoDispose
 
 var flowRunsOfFlowSelectedProvider =
     FutureProvider.autoDispose<List<FlowRunView>>((ref) async {
-  final selectedFlow = ref.watch(selectedFlowProvider);
+  final selectedFlow = ref.watch(getSelectedFlowProvider(ref));
   if (selectedFlow != null && selectedFlow.isNotEmpty) {
     final FlowRunsService flowRunService =
         ref.watch(flowRunsServiceProvider(getCurrentServerConnector(ref)));

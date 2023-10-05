@@ -1,5 +1,6 @@
 // import 'package:flutter/cupertino.dart';
 
+import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/domains/flows/model/flow.dart' as fl;
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
 import 'package:bulo_ui/widgets/global/icons/fonticons/bulo_logo_icon_icons.dart';
@@ -15,7 +16,8 @@ class FlowListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String? flowIdSelected = ref.watch(selectedFlowProvider);
+
+    String? flowIdSelected = ref.watch(getSelectedFlowProvider(ref));
     Widget card = myNormalFlowCard(ref);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
@@ -34,8 +36,9 @@ class FlowListItem extends ConsumerWidget {
       hoverColor: Colors.blueGrey.withOpacity(0.075),
       // hover color with transparency
       onTap: () {
-        var previouslySelectedFlowId = ref.read(selectedFlowProvider);
-        ref.read(selectedFlowProvider.notifier).state = flow.flowId;
+        var flowSelectProvider = selectedFlowProvider(getCurrentServerConnector(ref));
+        var previouslySelectedFlowId = ref.read(flowSelectProvider);
+        ref.read(flowSelectProvider.notifier).state = flow.flowId;
 
         if (previouslySelectedFlowId != flow.flowId) {
           ref.read(isOnRunModeProvider.notifier).state = true;

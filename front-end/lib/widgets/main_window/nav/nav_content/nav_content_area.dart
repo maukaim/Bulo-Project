@@ -1,3 +1,4 @@
+import 'package:bulo_ui/core/connect/providers.dart';
 import 'package:bulo_ui/widgets/main_window/nav/nav_content/flows/nav_flows_area.dart';
 import 'package:bulo_ui/widgets/main_window/nav/nav_tab/providers.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class NavContentArea extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var tabMenuType = ref.watch(selectedTabMenuProvider);
+    var tabMenuType = ref.watch(selectedTabMenuProvider(getCurrentServerConnector(ref)));
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 16, 12, 16),

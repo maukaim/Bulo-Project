@@ -10,7 +10,7 @@ class FlowContentArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isOnRunMode = ref.watch(isOnRunModeProvider);
-    var selectedFlowId = ref.watch(selectedFlowProvider);
+    var selectedFlowId = ref.watch(getSelectedFlowProvider(ref));
     return selectedFlowId == null
         ? getDefaultScreen()
         : isOnRunMode
