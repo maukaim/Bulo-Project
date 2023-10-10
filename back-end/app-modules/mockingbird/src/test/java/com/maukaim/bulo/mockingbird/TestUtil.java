@@ -8,11 +8,12 @@ import com.maukaim.bulo.mockingbird.connect.SystemConnectorProvider;
 import com.maukaim.bulo.mockingbird.connect.Application;
 
 import static com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment.dev;
+import static com.maukaim.bulo.shared.server.core.model.ApplicationEnvironment.uat;
 
 public class TestUtil {
 
     public static Application getUatApp(ApplicationMode appMode) {
-        RestSystemEventConnector<ClientEventType> connector = SystemConnectorProvider.get(dev, appMode);
+        RestSystemEventConnector<ClientEventType> connector = SystemConnectorProvider.get(uat, appMode);
         return new Application(connector, MarshallerProvider.get());
     }
 

@@ -20,7 +20,9 @@
         "dev": [
           "localhost"
         ],
-        "uat": [],
+        "uat": [
+          "load-balancer-jenkins-master-1462245991.ap-northeast-1.elb.amazonaws.com"
+        ],
         "prod": []
       }
     },

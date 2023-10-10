@@ -9,8 +9,8 @@ class ServerManager {
   final ProviderRef<ServerManager> providerRef;
 
   ServerManager(this.providerRef) {
-    var fake1 = RemoteServerConfig("localhost", 10020, "Another local");
-    var fake2 = RemoteServerConfig("error.c", 10020, "SocGen Server");
+    var fake1 = RemoteServerConfig("localhost", 10020, "Local server");
+    var fake2 = RemoteServerConfig("load-balancer-jenkins-master-1462245991.ap-northeast-1.elb.amazonaws.com", 10020, "Dev AWS Server");
     serverMap.addAll({
       fake1.id: fake1,
       fake2.id: fake2,

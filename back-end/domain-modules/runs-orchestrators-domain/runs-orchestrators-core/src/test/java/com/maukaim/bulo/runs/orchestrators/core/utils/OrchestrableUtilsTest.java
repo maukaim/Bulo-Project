@@ -127,7 +127,7 @@ class OrchestrableUtilsTest {
     }
 
     @Test
-    void hehe(){
+    void getRunDependency_whenStageRunTypeIsNotSupported_thenThrow(){
         StageRun stageRun = mock(StageRun.class);
         when(stageRun.getContextualizedStageId()).thenReturn(contextStageId1);
 

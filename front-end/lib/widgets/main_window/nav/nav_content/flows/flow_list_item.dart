@@ -58,7 +58,7 @@ class FlowListItem extends ConsumerWidget {
             ),
             Flexible(
               child: Text(
-                "Hehe ${flow.flowId}",
+                flow.flowId,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     color: Colors.blueGrey,

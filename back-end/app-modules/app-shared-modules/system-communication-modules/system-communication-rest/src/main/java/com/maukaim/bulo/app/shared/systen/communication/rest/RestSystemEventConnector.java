@@ -30,9 +30,6 @@ public class RestSystemEventConnector<TYPE extends SystemEventType> extends StdS
     @Override
     protected List<Object> send(Object event, RestSystemEventSender consumer) throws ConnectIOException {
         String eventAsJson = marshaller.marshall(event);
-        if(event.getClass().getSimpleName().toLowerCase().contains("flowrun")){
-            System.out.println(eventAsJson);
-        }
         List<String> potentialUris = consumer.getPotentialUris();
 
         List<ConnectIOException> stackedExceptions = new ArrayList<>();
