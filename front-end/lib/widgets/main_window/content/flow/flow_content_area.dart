@@ -1,9 +1,11 @@
+import 'package:bulo_ui/widgets/main_window/content/flow/dashborad/flows_dashboard.dart';
 import 'package:bulo_ui/widgets/main_window/content/flow/providers.dart';
+import 'package:bulo_ui/widgets/main_window/nav/nav_content/flows/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../nav/nav_content/flows/providers.dart';
+
 import 'runs/flow_runs_area.dart';
 
 class FlowContentArea extends ConsumerWidget {
@@ -12,10 +14,20 @@ class FlowContentArea extends ConsumerWidget {
     var isOnRunMode = ref.watch(isOnRunModeProvider);
     var selectedFlowId = ref.watch(getSelectedFlowProvider(ref));
     return selectedFlowId == null
-        ? getDefaultScreen()
+        ? getDashboard()
         : isOnRunMode
             ? FlowRunsArea()
             : Container(color: Colors.blueGrey);
+  }
+
+
+  Widget getDashboard(){
+    print("hihion montre dashboard");
+    return Column(
+      children: [
+        FlowsDashboard(),
+      ],
+    );
   }
 
   Widget getDefaultScreen() {
