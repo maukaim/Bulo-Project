@@ -26,7 +26,7 @@ public class SanityCheckTests {
     private User user;
 
     private final ApplicationMode applicationMode = ApplicationMode.standalone;
-    private final ApplicationEnvironment applicationEnv = ApplicationEnvironment.dev;
+    private final ApplicationEnvironment applicationEnv = ApplicationEnvironment.uat;
 
     private static String FLOW_NAME = "Henri le crocodile";
 
@@ -39,6 +39,20 @@ public class SanityCheckTests {
         };
     }
 
+    @Test
+    void createMultipleFakeFlowForUAT(){
+        createAndTriggerTypicalFakeFlow(FLOW_NAME);
+        createAndTriggerTypicalFakeFlow(FLOW_NAME);
+        createAndTriggerTypicalFakeFlow("Fanny la Bagarreuse");
+        createAndTriggerTypicalFakeFlow("Fanny la Bagarreuse");
+        createAndTriggerTypicalFakeFlow("Fanny la Bagarreuse");
+        createAndTriggerTypicalFakeFlow("Le Serpent Tarpan");
+        createAndTriggerTypicalFakeFlow("La Panthere ta mere");
+        createAndTriggerTypicalFakeFlow("La Panthere ta mere");
+        createAndTriggerTypicalFakeFlow("La Panthere ta mere");
+        createAndTriggerTypicalFakeFlow("La Panthere ta mere");
+        createAndTriggerTypicalFakeFlow("Billy le Ouistiti");
+    }
     @Test
     void sanityCheckCustomIOType() {
         String stageId = user.createStage(
@@ -54,7 +68,11 @@ public class SanityCheckTests {
     }
 
     @Test
-    void SanityCheckMicroservices() {
+    void generateAFlow() {
+        createAndTriggerTypicalFakeFlow(FLOW_NAME);
+    }
+
+    void createAndTriggerTypicalFakeFlow(String flowName){
         //1 - Create 2 Technical Stages.
         List<String> stageIds = user.createMultipleStages(
                 StageDtoBuilder.aTechnicalStage()
@@ -102,7 +120,7 @@ public class SanityCheckTests {
         ContextStageId functionalNameProviderContextId = ContextStageId.of(functionalStageId, 4);
 
         String flowId = user.createFlow(FlowDtoBuilder.aFlow()
-                .withFlowId(FLOW_NAME)
+                .withFlowId(flowName)
                 .withOwnerKey(user.getUserName(), OwnerKeyTypeDto.USER)
                 .withFlowStage(flowNameProviderContextId)
                 .withFlowStage(flowPrinterContextId1,
