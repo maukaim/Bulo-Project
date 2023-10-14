@@ -1,7 +1,7 @@
 import 'package:bulo_ui/core/connect/model/remote_server_config.dart';
 import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/providers.dart';
-import 'package:bulo_ui/widgets/global/buttons/popup_button.dart';
+import 'package:bulo_ui/widgets/global/buttons/bulo_popup_menu_button.dart';
 import 'package:bulo_ui/widgets/main_window/nav/controls/shared/server_details_choice.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/providers.dart';
 import 'package:bulo_ui/widgets/server_settings/settings_dialog.dart';
@@ -25,16 +25,20 @@ class ServerSettingsButton extends ConsumerWidget {
     var serverManager = ref.watch(serverManagerProvider);
 
     var placeHolderForGeneralSettings = RemoteServerConfig("", 80, "");
+
     return Flexible(
       child: Padding(
         padding: const EdgeInsets.only(left: 4.0),
-        child: CustomPopupButton(
-          tooltip: "Servers available...",
+        child: BuloPopupMenu(
+          borderRadius:
+              const BorderRadius.vertical(bottom: Radius.circular(12)),
+          tooltip: "Select a server",
           choices: [...servers, placeHolderForGeneralSettings],
           itemBuilder: (ServerConfig value) {
             if (value == placeHolderForGeneralSettings) {
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 2.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Text("Server Settings...",
                     style: TextStyle(
                         fontSize: 12, color: Colors.blueGrey.shade300)),
@@ -50,42 +54,43 @@ class ServerSettingsButton extends ConsumerWidget {
               _showPopupMenu(context);
             }
           },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Icon(
-                  size: serverIconSize,
-                  currentServer == null
-                      ? Icons.public
-                      : currentServer.isEmbedded()
-                          ? CupertinoIcons.desktopcomputer
-                          : Icons.public,
-                  color: isCurrentServerConnected.when(
-                    loading: () => Colors.grey,
-                    data: (data) {
-                      return data ? Colors.green : Colors.red;
-                    },
-                    error: (_, __) {
-                      print(
-                          "Issue when checking EmbeddedServer. Error itself: $_ \nStack Trace: $__");
-                      return Colors.orangeAccent;
-                    },
+          button: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Icon(
+                    size: serverIconSize,
+                    currentServer == null
+                        ? Icons.public
+                        : currentServer.isEmbedded()
+                            ? CupertinoIcons.desktopcomputer
+                            : Icons.public,
+                    color: isCurrentServerConnected.when(
+                      loading: () => Colors.grey,
+                      data: (data) {
+                        return data ? Colors.green : Colors.red;
+                      },
+                      error: (_, __) {
+                        return Colors.orangeAccent;
+                      },
+                    ),
                   ),
                 ),
-              ),
-              Flexible(
-                child: Text(
-                  currentServer?.serverName ?? "Select server",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueGrey.shade300),
+                Flexible(
+                  child: Text(
+                    currentServer?.serverName ?? "Select server",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey.shade300),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

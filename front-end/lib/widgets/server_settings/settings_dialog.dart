@@ -1,4 +1,4 @@
-import 'package:bulo_ui/widgets/global/buttons/general_button.dart';
+import 'package:bulo_ui/widgets/global/buttons/bulo_button.dart';
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
 import 'package:bulo_ui/widgets/global/splitter/home_divider_painter.dart';
 import 'package:bulo_ui/widgets/server_settings/content/content_area.dart';
@@ -28,19 +28,19 @@ class SettingsDialog extends ConsumerWidget {
   Widget getDialogHeader() {
     return Row(
       children: [
-        Container(
-          child: CustomIconButton(
-            icon: const Icon(
-              Icons.clear,
-              size: 16,
-              color: Colors.black54,
-            ),
-            onTap: () {
-              Navigator.of(dialogContext).pop();
-            },
+        BuloButton(
+          borderRadius:
+              const BorderRadius.only(bottomRight: Radius.circular(8)),
+          child: const Icon(
+            Icons.clear,
+            size: 16,
+            color: Colors.black54,
           ),
+          onPressed: () {
+            Navigator.of(dialogContext).pop();
+          },
         ),
-        Flexible(
+        const Flexible(
           child: Center(
             child: Text(
               "Server Settings",

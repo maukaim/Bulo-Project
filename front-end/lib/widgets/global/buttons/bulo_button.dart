@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatefulWidget {
-  final Widget child;
-  final VoidCallback onPressed;
+class BuloButton extends StatefulWidget {
+  final Widget? child;
+  final VoidCallback? onPressed;
   final Color color;
   final Color? hoverColor;
   final Color? pressedColor;
@@ -11,7 +11,7 @@ class CustomButton extends StatefulWidget {
   final BorderRadius? borderRadius;
   final bool isEnabled;
 
-  const CustomButton(
+  const BuloButton(
       {super.key,
       this.color = const Color(0x00FFFFFF),
       this.isEnabled = true,
@@ -24,10 +24,10 @@ class CustomButton extends StatefulWidget {
       required this.child});
 
   @override
-  _CustomButtonState createState() => _CustomButtonState();
+  _BuloButtonState createState() => _BuloButtonState();
 }
 
-class _CustomButtonState extends State<CustomButton> {
+class _BuloButtonState extends State<BuloButton> {
   bool _isHovering = false;
   bool _isPressing = false;
 
