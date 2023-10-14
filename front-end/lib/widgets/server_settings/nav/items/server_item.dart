@@ -1,6 +1,6 @@
 import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/providers.dart';
-import 'package:bulo_ui/widgets/global/buttons/basic_button.dart';
+import 'package:bulo_ui/widgets/global/buttons/bulo_button.dart';
 import 'package:bulo_ui/widgets/global/extensions/neumorphic_extension.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/items/server_item_icon.dart';
 import 'package:bulo_ui/widgets/server_settings/nav/providers.dart';
@@ -56,7 +56,7 @@ class ServerItem extends ConsumerWidget {
     var selectedServerForSettings =
         ref.watch(selectedServerConfigForSettingsWindow);
 
-    return CustomButton(
+    return BuloButton(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       hoverColor: Colors.blueGrey.withOpacity(0.075),
       onPressed: () {
@@ -88,7 +88,7 @@ class ServerItem extends ConsumerWidget {
             ),
           ),
           if (isHovered && !serverConfig.isEmbedded()) ...[
-            CustomButton(
+            BuloButton(
               borderRadius: BorderRadius.zero,
               padding: EdgeInsets.all(4),
               child: Icon(
