@@ -8,9 +8,32 @@ class ServerConnector extends Equatable {
   final Logger logger;
   static const String API_VERSION = 'api/v1';
   static const String HTTP_PROTOCOL = 'http';
+
+  static const String HEALTH_CHECK_PATH ='swagger-ui';
   bool serverIsUp = false;
 
   ServerConnector(this.serverConfig, this.logger);
+
+  Future<bool> healthCheck() async {
+    if (serverConfig != null) {
+      var uri = Uri.http('${serverConfig!.addressRoot}:${serverConfig!.port}',
+          '/$HEALTH_CHECK_PATH/');
+      http.Response response = await http.head(uri);
+
+      if (response.statusCode == 200) {
+        logger.info("Head check successful!");
+        return true;
+      } else {
+        String errorMessage = 'Sounds like an issue with $uri. Response status code is ${response.statusCode}.';
+        logger.error(errorMessage);
+        return false;
+      }
+    } else {
+      String errorMessage = "No server config, can't health check.";
+      logger.error(errorMessage);
+      return false;
+    }
+  }
 
   Future<http.Response> get(String addressPath,
       [Map<String, String> requestParam = const {}]) async {

@@ -5,8 +5,10 @@ import 'package:bulo_ui/core/connect/model/embedded_server_config.dart';
 import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/server_manager.dart';
 import 'package:bulo_ui/core/log/providers.dart';
+import 'package:bulo_ui/core/util/current_system.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
 
 import 'server_connector.dart';
 
@@ -62,6 +64,25 @@ final isServerConnectedProvider = FutureProvider.autoDispose
 });
 
 Future<String?> isServerConnected(ServerConnector serverConnector) async {
+  var currentSystem = getCurrentSystem();
+  if(currentSystem.isDesktop){
+    return isServerConnectedDesktop(serverConnector);
+  }else{
+    return isServerConnectedWeb(serverConnector);
+  }
+}
+
+Future<String?> isServerConnectedWeb(ServerConnector serverConnector) async {
+  try {
+    return await serverConnector.healthCheck() ? null : "Server is down. Check logs.";
+
+  } catch (e) {
+    print('Server is down: $e');
+    return 'Server is down: $e';
+  }
+}
+
+Future<String?> isServerConnectedDesktop(ServerConnector serverConnector) async {
   Socket? socket;
   try {
     socket = await Socket.connect(serverConnector.serverConfig!.addressRoot,

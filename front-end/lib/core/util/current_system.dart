@@ -22,10 +22,11 @@ System getCurrentSystem(){
 enum System{
   macOS(isDesktop: true),
   windows(isDesktop: true),
-  web,
+  web(isWeb: true),
   unsupported;
 
   final bool isDesktop;
+  final bool isWeb;
 
-  const System({this.isDesktop = false});
+  const System({this.isDesktop = false, this.isWeb = false});
 }
