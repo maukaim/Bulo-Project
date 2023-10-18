@@ -1,7 +1,6 @@
 import 'package:bulo_ui/core/connect/model/server_nature.dart';
 import 'package:bulo_ui/core/connect/model/server_type.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class ServerConfig extends Equatable {

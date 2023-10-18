@@ -21,6 +21,8 @@ class BuloLogoIcon {
   static const _kFontFam = 'BuloLogoIcon';
   static const String? _kFontPkg = null;
 
+  // ignore: constant_identifier_names
   static const IconData bulo_logo_alpha = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // ignore: constant_identifier_names
   static const IconData bulo_logo_alpha_full = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

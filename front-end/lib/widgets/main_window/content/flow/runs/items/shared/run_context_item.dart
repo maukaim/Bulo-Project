@@ -18,7 +18,7 @@ abstract class RunContextItemState<DD extends StatefulWidget>
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
-          this.isExpanded = !isExpanded;
+          this.isExpanded = isExpanded;
         });
       },
       children: [
@@ -31,13 +31,15 @@ abstract class RunContextItemState<DD extends StatefulWidget>
               endTime: getEndTime(),
             );
           },
-          body: ListView.builder(
-              shrinkWrap: true,
-              itemCount: stageRuns.length,
-              itemBuilder: (ctx, index) => Padding(
-                    padding: const EdgeInsets.fromLTRB(18, 8, 0, 8),
-                    child: getSubStageWidget(stageRuns[index]),
-                  )),
+          body: SingleChildScrollView(
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: stageRuns.length,
+                itemBuilder: (ctx, index) => Padding(
+                      padding: const EdgeInsets.fromLTRB(18, 8, 0, 8),
+                      child: getSubStageWidget(stageRuns[index]),
+                    )),
+          ),
           isExpanded: isExpanded,
         ),
       ],

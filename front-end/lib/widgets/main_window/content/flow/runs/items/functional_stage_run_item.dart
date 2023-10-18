@@ -10,6 +10,7 @@ class FunctionalStageRunItem extends StatefulWidget {
       {super.key, required this.functionalStageRunView});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FunctionalStageRunItemState createState() => _FunctionalStageRunItemState();
 }
 

@@ -11,6 +11,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers.dart';
 
 class FlowRunsArea extends ConsumerWidget {
+  const FlowRunsArea({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var flowSelected = ref.watch(getSelectedFlowProvider(ref));
@@ -50,12 +52,12 @@ class FlowRunsArea extends ConsumerWidget {
             const SizedBox(
               width: 12,
             ),
-            LastRunStatusBadge()
+            const LastRunStatusBadge()
             // Widget pour le badge  de success/ error
           ],
         ),
         flowRuns.when(
-          data: (data) => Text("Runs History (${data.length})"),
+          data: (data) => Text("  Runs History (${data.length})"),
           error: (err, stack) => const Text("Impossible to load Runs History"),
           loading: () => const Text("Runs History (loading)"),
         ),
@@ -63,7 +65,7 @@ class FlowRunsArea extends ConsumerWidget {
           thickness: 2,
           color: Colors.black54,
         ),
-        FlowRunsListArea()
+        const FlowRunsListArea()
       ],
     );
   }
@@ -84,6 +86,8 @@ class FlowRunsArea extends ConsumerWidget {
 }
 
 class LastRunStatusBadge extends ConsumerWidget {
+  const LastRunStatusBadge({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final flowRunsAsync = ref.watch(flowRunsOfFlowSelectedProvider);

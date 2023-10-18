@@ -18,7 +18,7 @@ class NavContentArea extends ConsumerWidget {
         child: (() {
           switch (tabMenuType) {
             case NavMenuType.flowMenu:
-              return NavFlowsArea();
+              return const NavFlowsArea();
             case NavMenuType.stageMenu:
               return Container(
                 color: Colors.blue,

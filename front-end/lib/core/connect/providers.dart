@@ -6,9 +6,9 @@ import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/connect/server_manager.dart';
 import 'package:bulo_ui/core/log/providers.dart';
 import 'package:bulo_ui/core/util/current_system.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:http/http.dart' as http;
 
 import 'server_connector.dart';
 
@@ -77,7 +77,7 @@ Future<String?> isServerConnectedWeb(ServerConnector serverConnector) async {
     return await serverConnector.healthCheck() ? null : "Server is down. Check logs.";
 
   } catch (e) {
-    print('Server is down: $e');
+    debugPrint('Server is down: $e');
     return 'Server is down: $e';
   }
 }
@@ -87,10 +87,10 @@ Future<String?> isServerConnectedDesktop(ServerConnector serverConnector) async 
   try {
     socket = await Socket.connect(serverConnector.serverConfig!.addressRoot,
         serverConnector.serverConfig!.port,
-        timeout: Duration(seconds: 2));
+        timeout: const Duration(seconds: 2));
     return null;
   } catch (e) {
-    print('Server is down: $e');
+    debugPrint('Server is down: $e');
     return 'Server is down: $e';
   } finally {
     socket?.destroy();

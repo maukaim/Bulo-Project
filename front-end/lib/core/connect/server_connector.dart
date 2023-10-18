@@ -1,6 +1,7 @@
 import 'package:bulo_ui/core/connect/model/server_config.dart';
 import 'package:bulo_ui/core/log/logger.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ServerConnector extends Equatable {
@@ -40,7 +41,7 @@ class ServerConnector extends Equatable {
     if (serverConfig != null) {
       var uri = Uri.http('${serverConfig!.addressRoot}:${serverConfig!.port}',
           '/$API_VERSION/$addressPath', requestParam);
-      print("GET $uri");
+      debugPrint("GET $uri");
       http.Response response = await http.get(uri);
       if (response.statusCode == 200) {
         logger.info(

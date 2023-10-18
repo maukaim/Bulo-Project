@@ -12,7 +12,7 @@ class BuloApp extends StatelessWidget {
       if (currentSystem case System.macOS) {
         DesktopWindow.setMinWindowSize(const Size(470, 380));
       } else if (currentSystem case System.windows) {
-       DesktopWindow.setMinWindowSize(const Size(1200, 380));
+       DesktopWindow.setMinWindowSize(const Size(1200, 600));
       }
     }
 

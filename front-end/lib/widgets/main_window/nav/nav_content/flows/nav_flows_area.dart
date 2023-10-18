@@ -8,6 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'flow_list_item.dart';
 
 class NavFlowsArea extends ConsumerWidget {
+  const NavFlowsArea({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var availableFlows =

@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ServerDetailsChoice extends ConsumerWidget {
   final ServerConfig server;
 
-  ServerDetailsChoice({super.key, required this.server});
+  const ServerDetailsChoice({super.key, required this.server});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +31,7 @@ class ServerDetailsChoice extends ConsumerWidget {
                   return data ? Colors.green : Colors.red;
                 },
                 error: (_, __) {
-                  print(
+                  debugPrint(
                       "Issue when checking EmbeddedServer. Error itself: $_ \nStack Trace: $__");
                   return Colors.orangeAccent;
                 },

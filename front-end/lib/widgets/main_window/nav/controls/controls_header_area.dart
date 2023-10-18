@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bulo_ui/core/util/current_system.dart';
 import 'package:bulo_ui/widgets/main_window/nav/controls/macos/macos_nav_controls_widget.dart';
 import 'package:bulo_ui/widgets/main_window/nav/controls/web/web_nav_controls_widget.dart';
@@ -15,16 +17,16 @@ class ControlsHeaderArea extends StatelessWidget {
   getPlatformControlsHeader() {
     switch (currentSystem) {
       case System.web:
-        return WebNavControlsWidget();
+        return const WebNavControlsWidget();
       case System.macOS:
-        return MacOSNavControlsWidget();
+        return const MacOSNavControlsWidget();
       case System.windows:
-        return WindowsNavControlsWidget();
+        return const WindowsNavControlsWidget();
       default:
-        return Row(
+        return const Row(
           children: [
             Flexible(
-              child: const Text("Platform not Officially supported.", overflow: TextOverflow.ellipsis,),
+              child: Text("Platform not Officially supported.", overflow: TextOverflow.ellipsis,),
             ),
           ],
         );
