@@ -10,6 +10,7 @@ class FlowRunItem extends StatefulWidget {
   const FlowRunItem({super.key, required this.flowRunView});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FlowRunItemState createState() => _FlowRunItemState();
 }
 

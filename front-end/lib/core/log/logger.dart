@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 class Logger extends Equatable {
   final LogManager logManager;
 
-  Logger(this.logManager);
+  const Logger(this.logManager);
 
   void info(String msg) {
     logManager.add(InfoLog(msg));

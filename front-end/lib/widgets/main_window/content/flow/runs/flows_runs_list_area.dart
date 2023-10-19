@@ -5,11 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'items/flow_run_item.dart';
 
 class FlowRunsListArea extends ConsumerWidget {
+  const FlowRunsListArea({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var flowRuns = ref.watch(flowRunsOfFlowSelectedProvider);
     return flowRuns.when(
-      loading: () => const CircularProgressIndicator(),
+      loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, stack) =>
           const Center(child: Text("Impossible to load Runs History")),
       data: (runs) => Expanded(

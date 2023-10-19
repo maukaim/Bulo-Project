@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class FlowListItem extends ConsumerWidget {
   final fl.Flow flow;
 
-  FlowListItem(this.flow, {super.key});
+  const FlowListItem(this.flow, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -17,6 +17,6 @@ abstract class Log{
   }
 
   bool isError(){
-    return this.logLevel == LogLevel.error;
+    return logLevel == LogLevel.error;
   }
 }

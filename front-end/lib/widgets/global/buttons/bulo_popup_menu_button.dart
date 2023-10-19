@@ -51,7 +51,7 @@ class BuloPopupMenu<T> extends StatelessWidget {
 class _BuloPopupMenuButton<T> extends PopupMenuButton<T> {
   final BorderRadius? borderRadius;
 
-  _BuloPopupMenuButton(
+  const _BuloPopupMenuButton(
       {super.key,
       required super.itemBuilder,
       super.onSelected,

@@ -11,8 +11,8 @@ class WindowsNavControlsWidget extends AbstractNavControlsWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 16.0),
+        const Padding(
+          padding: EdgeInsets.only(right: 16.0),
           child: WindowButtons(),
         ),
         getSharedNavWidget(18),
