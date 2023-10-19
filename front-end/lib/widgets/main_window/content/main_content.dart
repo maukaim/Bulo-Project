@@ -7,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 class MainArea extends ConsumerWidget {
-  final BorderRadius boxRadius = BorderRadius.all(Radius.circular(8));
-  MainArea({super.key});
+  final BorderRadius boxRadius = const BorderRadius.all(Radius.circular(8));
+  const MainArea({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +17,7 @@ class MainArea extends ConsumerWidget {
       padding: const EdgeInsets.fromLTRB(4, 10, 10, 10),
       child: Container(
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               offset: Offset(-4, -4),
               spreadRadius: -3,
@@ -51,7 +51,7 @@ class MainArea extends ConsumerWidget {
           child: (() {
             switch (tabMenuType) {
               case NavMenuType.flowMenu:
-                return FlowContentArea();
+                return const FlowContentArea();
               case NavMenuType.stageMenu:
                 return Container(color: Colors.blue,);
               case NavMenuType.teamMenu:

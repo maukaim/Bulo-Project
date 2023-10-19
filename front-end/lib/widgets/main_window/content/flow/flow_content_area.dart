@@ -8,6 +8,8 @@ import '../../nav/nav_content/flows/providers.dart';
 import 'runs/flow_runs_area.dart';
 
 class FlowContentArea extends ConsumerWidget {
+  const FlowContentArea({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isOnRunMode = ref.watch(isOnRunModeProvider);
@@ -16,12 +18,12 @@ class FlowContentArea extends ConsumerWidget {
       mainAxisSize: MainAxisSize.max, // Column takes maximum height
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        FlowContentHeader(),
+        const FlowContentHeader(),
         Flexible(
           child: selectedFlowId == null
               ? getDefaultScreen()
               : isOnRunMode
-                  ? FlowRunsArea()
+                  ? const FlowRunsArea()
                   : Container(color: Colors.blueGrey),
         ),
       ],
