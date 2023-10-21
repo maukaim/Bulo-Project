@@ -12,6 +12,15 @@ public class ExecutionCancelledException extends RuntimeException{
         return new ExecutionCancelledException(JSON_DESERIALIZATION, details);
     }
 
+    /**
+     * Use when Reason to Fail is not supported in the list.
+     * @param details
+     * @return
+     */
+    public static ExecutionCancelledException details(String details){
+        return new ExecutionCancelledException(UNDEFINED, details);
+    }
+
     public ExecutionCancelledException(){
         this(UNDEFINED, null);
     }
