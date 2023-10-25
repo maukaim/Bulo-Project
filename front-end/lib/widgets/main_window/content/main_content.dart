@@ -7,61 +7,59 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 class MainArea extends ConsumerWidget {
-  const MainArea({super.key});
+  final BorderRadius boxRadius = BorderRadius.all(Radius.circular(8));
+  MainArea({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     NavMenuType? tabMenuType = ref.watch(selectedTabMenuProvider(getCurrentServerConnector(ref)));
-    print("need to redraw main content");
     return Padding(
       padding: const EdgeInsets.fromLTRB(4, 10, 10, 10),
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               offset: Offset(-4, -4),
               spreadRadius: -3,
-              blurRadius: 4,
-              color: Color.fromRGBO(0, 0, 0, 0.15),
+              blurRadius: 3,
+              color: Color.fromRGBO(0, 0, 0, 0.10),
             ),
             BoxShadow(
               offset: Offset(4, 4),
               spreadRadius: -3,
-              blurRadius: 4,
-              color: Color.fromRGBO(0, 0, 0, 0.15),
+              blurRadius: 3,
+              color: Color.fromRGBO(0, 0, 0, 0.10),
             ),
             BoxShadow(
               offset: Offset(-4, 4),
               spreadRadius: -3,
-              blurRadius: 4,
-              color: Color.fromRGBO(0, 0, 0, 0.15),
+              blurRadius: 3,
+              color: Color.fromRGBO(0, 0, 0, 0.10),
             ),
             BoxShadow(
               offset: Offset(4, -4),
               spreadRadius: -3,
-              blurRadius: 4,
-              color: Color.fromRGBO(0, 0, 0, 0.15),
+              blurRadius: 3,
+              color: Color.fromRGBO(0, 0, 0, 0.10),
             ),
           ],
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: boxRadius,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: ClipRect(
-            child: (() {
-              switch (tabMenuType) {
-                case NavMenuType.flowMenu:
-                  return FlowContentArea();
-                case NavMenuType.stageMenu:
-                  return Container(color: Colors.blue,);
-                case NavMenuType.teamMenu:
-                  return Container(color: Colors.green,);
-                default:
-                  return const Center(child: Text("Welcome ! Choose a menu."),);
-              }
-            }()),
-          ),
+        child: ClipRRect(
+          borderRadius: boxRadius,
+          child: (() {
+            switch (tabMenuType) {
+              case NavMenuType.flowMenu:
+                return FlowContentArea();
+              case NavMenuType.stageMenu:
+                return Container(color: Colors.blue,);
+              case NavMenuType.teamMenu:
+                return Container(color: Colors.green,);
+              default:
+                return const Center(child: Text("Welcome ! Choose a menu."),);
+            }
+          }()),
         ),
       ),
     );
