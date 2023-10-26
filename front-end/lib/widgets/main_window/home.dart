@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
 
   Widget getDefaultHomePage(){
     MultiSplitViewController _controller = MultiSplitViewController(areas: [
-      Area(weight: 0.16, minimalSize: 150),
+      Area(weight: 0.16, minimalSize: 230),
       Area(minimalWeight: .66)
     ]);
     return Scaffold(
