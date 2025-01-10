@@ -1,6 +1,9 @@
 <img src="docs/assets/bulo-logo-alpha-FULL-NAME.svg" width="200" alt="Bulo logo" />
 
 # About  
+![Jenkins](https://img.shields.io/jenkins/build?jobUrl=http%3A%2F%2Fec2-3-25-243-144.ap-southeast-2.compute.amazonaws.com%3A8080%2Fjob%2FBulo-Pipeline%2F&logo=jenkins&logoColor=d24939&label=Current%20CI%20Build&labelColor=123456)
+![Jenkins Coverage](https://img.shields.io/jenkins/coverage/apiv4?jobUrl=http%3A%2F%2Fec2-3-25-243-144.ap-southeast-2.compute.amazonaws.com%3A8080%2Fjob%2FBulo-Pipeline%2F&logo=codecov&logoColor=00ff00&label=Backend%20-%20domain%20coverage&labelColor=123456)
+
 
 [![Back-end Stack](https://img.shields.io/badge/Back--end-Java_17_%28LTS%29-008b61.svg?logo=oracle&logoColor=f80000&labelColor=123456)]()
 [![Front-end Stack](https://img.shields.io/badge/Front--end-Flutter_3.10-008b61.svg?logo=flutter&logoColor=02569b&labelColor=123456)]()
